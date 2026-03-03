@@ -1,0 +1,958 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Brief Histories — A collection of curated timelines</title>
+<meta name="description" content="A growing collection of illustrated, interactive histories. Star Wars. Crypto. AI. More coming soon.">
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='4' fill='%230A0A0F'/><text x='4' y='23' font-family='Georgia,serif' font-size='18' fill='%23F0EDE6'>Bh</text></svg>">
+<meta name="theme-color" content="#0A0A0A">
+
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500&family=Cormorant:ital,wght@0,300;0,400;1,300&family=DM+Mono:ital,wght@0,300;0,400;1,300&display=swap" rel="stylesheet">
+
+<style>
+/* ═══════════════════════════════════════════════
+   TOKENS
+═══════════════════════════════════════════════ */
+:root {
+  --bg:     #0A0A0A;
+  --bg1:    #111111;
+  --bg2:    #161616;
+  --rule:   #222222;
+  --rule2:  #2E2E2E;
+  --muted:  #444444;
+  --dim:    #666666;
+  --text:   #999999;
+  --mid:    #CCCCCC;
+  --bright: #F0EDE6;
+
+  /* per-guide accent */
+  --ai-col:     #00D4F0;
+  --crypto-col: #39FF14;
+  --sw-col:     #FFD700;
+  --future-col: #888888;
+
+  --serif: 'Cormorant Garamond', Georgia, serif;
+  --mono:  'DM Mono', monospace;
+}
+
+/* ═══════════════════════════════════════════════
+   RESET
+═══════════════════════════════════════════════ */
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+html { font-size: 16px; scroll-behavior: smooth; }
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--serif);
+  overflow-x: hidden;
+  line-height: 1.5;
+  min-height: 100vh;
+}
+a { color: inherit; text-decoration: none; }
+
+/* ═══════════════════════════════════════════════
+   CUSTOM CURSOR
+═══════════════════════════════════════════════ */
+@media (pointer: fine) { body { cursor: none; } }
+#cur {
+  position: fixed; width: 5px; height: 5px;
+  background: var(--bright); border-radius: 50%;
+  pointer-events: none; z-index: 9999;
+  transform: translate(-50%, -50%);
+  transition: transform .15s, background .2s;
+  mix-blend-mode: difference;
+}
+#curRing {
+  position: fixed; width: 32px; height: 32px;
+  border: 1px solid rgba(240,237,230,.3);
+  border-radius: 50%; pointer-events: none; z-index: 9998;
+  transform: translate(-50%, -50%);
+  transition: left .1s, top .1s;
+}
+
+/* ═══════════════════════════════════════════════
+   NOISE TEXTURE OVERLAY
+═══════════════════════════════════════════════ */
+body::before {
+  content: '';
+  position: fixed; inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='1'/%3E%3C/svg%3E");
+  opacity: .022;
+  pointer-events: none; z-index: 0;
+}
+
+/* ═══════════════════════════════════════════════
+   NAV
+═══════════════════════════════════════════════ */
+.nav {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 800;
+  height: 52px;
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 0 2.5rem;
+  border-bottom: 1px solid var(--rule);
+  background: rgba(10,10,10,.92);
+  backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px);
+}
+.nav-wordmark {
+  font-family: var(--serif);
+  font-size: 1rem; font-weight: 300; letter-spacing: .18em;
+  text-transform: uppercase; color: var(--bright);
+  font-style: italic;
+}
+.nav-wordmark strong {
+  font-weight: 500; font-style: normal;
+  color: var(--bright);
+}
+.nav-right {
+  font-family: var(--mono);
+  font-size: .55rem; letter-spacing: .2em;
+  text-transform: uppercase; color: var(--muted);
+  display: flex; align-items: center; gap: 2rem;
+}
+.nav-count {
+  color: var(--dim);
+}
+.nav-count span {
+  color: var(--bright);
+}
+@media (max-width: 500px) { .nav-right { display: none; } }
+
+/* ═══════════════════════════════════════════════
+   HERO — FULL VIEWPORT STATEMENT
+═══════════════════════════════════════════════ */
+.hero {
+  min-height: 100vh;
+  display: flex; flex-direction: column;
+  align-items: center; justify-content: center;
+  position: relative; z-index: 1;
+  padding: 52px 2rem 4rem;
+  text-align: center;
+  overflow: hidden;
+}
+
+/* Diagonal rule grid — pure CSS background */
+.hero-grid {
+  position: absolute; inset: 0;
+  background-image:
+    linear-gradient(rgba(255,255,255,.018) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,255,255,.018) 1px, transparent 1px);
+  background-size: 80px 80px;
+  pointer-events: none;
+}
+
+/* Radial vignette */
+.hero-vignette {
+  position: absolute; inset: 0;
+  background: radial-gradient(ellipse 80% 70% at 50% 50%,
+    transparent 30%,
+    rgba(10,10,10,.7) 70%,
+    rgba(10,10,10,.97) 100%);
+  pointer-events: none;
+}
+
+.hero-content {
+  position: relative; z-index: 2;
+  display: flex; flex-direction: column;
+  align-items: center; gap: 0;
+}
+
+.hero-issue {
+  font-family: var(--mono);
+  font-size: .55rem; letter-spacing: .45em;
+  text-transform: uppercase; color: var(--muted);
+  margin-bottom: 2.5rem;
+  display: flex; align-items: center; gap: 1.2rem;
+}
+.hero-issue::before, .hero-issue::after {
+  content: ''; display: block;
+  width: 32px; height: 1px; background: var(--rule2);
+}
+
+/* BIG TITLE */
+.hero-title {
+  font-family: var(--serif);
+  font-size: clamp(3.5rem, 10vw, 10rem);
+  font-weight: 300; font-style: italic;
+  color: var(--bright);
+  line-height: .88;
+  letter-spacing: -.02em;
+  margin-bottom: .15em;
+}
+.hero-title-sub {
+  font-family: var(--serif);
+  font-size: clamp(1rem, 2.5vw, 2rem);
+  font-weight: 300;
+  color: var(--dim);
+  letter-spacing: .35em;
+  text-transform: uppercase;
+  margin-bottom: 3rem;
+}
+
+.hero-desc {
+  max-width: 480px;
+  font-family: var(--serif);
+  font-size: clamp(1rem, 1.5vw, 1.2rem);
+  font-weight: 300;
+  line-height: 1.9;
+  color: var(--dim);
+  margin-bottom: 3.5rem;
+}
+
+/* Issue count chips */
+.hero-chips {
+  display: flex; gap: 1.5rem; flex-wrap: wrap;
+  justify-content: center; margin-bottom: 3.5rem;
+}
+.chip {
+  font-family: var(--mono);
+  font-size: .52rem; letter-spacing: .18em;
+  text-transform: uppercase;
+  border: 1px solid var(--rule2);
+  padding: .35rem .8rem;
+  color: var(--muted);
+  display: flex; align-items: center; gap: .5rem;
+}
+.chip-dot {
+  width: 5px; height: 5px; border-radius: 50%;
+  flex-shrink: 0;
+}
+
+.hero-scroll {
+  font-family: var(--mono); font-size: .5rem;
+  letter-spacing: .3em; text-transform: uppercase;
+  color: var(--muted);
+  display: flex; flex-direction: column;
+  align-items: center; gap: .6rem;
+  animation: scrollBounce 2.5s ease-in-out infinite;
+}
+.hero-scroll-line {
+  width: 1px; height: 36px;
+  background: linear-gradient(var(--muted), transparent);
+}
+@keyframes scrollBounce {
+  0%, 100% { transform: translateY(0); opacity: .5; }
+  50% { transform: translateY(6px); opacity: 1; }
+}
+
+/* ═══════════════════════════════════════════════
+   SECTION LABEL
+═══════════════════════════════════════════════ */
+.section-label {
+  font-family: var(--mono);
+  font-size: .52rem; letter-spacing: .35em;
+  text-transform: uppercase; color: var(--muted);
+  display: flex; align-items: center; gap: 1rem;
+  padding: 2rem 2.5rem 1.5rem;
+  border-bottom: 1px solid var(--rule);
+  position: relative; z-index: 1;
+}
+.section-label::after {
+  content: ''; flex: 1;
+  height: 1px; background: var(--rule);
+}
+
+/* ═══════════════════════════════════════════════
+   GUIDE CARDS — THE CORE GRID
+═══════════════════════════════════════════════ */
+.guides {
+  position: relative; z-index: 1;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1px;
+  background: var(--rule);
+  border-top: 1px solid var(--rule);
+  border-bottom: 1px solid var(--rule);
+}
+@media (max-width: 960px) { .guides { grid-template-columns: 1fr; } }
+@media (min-width: 961px) and (max-width: 1200px) { .guides { grid-template-columns: 1fr 1fr; } }
+
+.guide-card {
+  background: var(--bg);
+  display: flex; flex-direction: column;
+  position: relative; overflow: hidden;
+  text-decoration: none; color: inherit;
+  transition: background .3s;
+  min-height: 520px;
+}
+.guide-card:hover { background: var(--bg1); }
+
+/* Top accent bar — slides in on hover */
+.guide-card::before {
+  content: '';
+  position: absolute; top: 0; left: 0; right: 0; height: 2px;
+  background: var(--c, var(--bright));
+  transform: scaleX(0); transform-origin: left;
+  transition: transform .5s cubic-bezier(.16, 1, .3, 1);
+  box-shadow: 0 0 12px var(--c, transparent);
+}
+.guide-card:hover::before { transform: scaleX(1); }
+
+/* Issue number — giant background */
+.guide-bg-num {
+  position: absolute; bottom: -1.5rem; right: -1rem;
+  font-family: var(--mono); font-weight: 400;
+  font-size: 14rem; line-height: 1;
+  color: var(--rule); opacity: .6;
+  pointer-events: none; user-select: none;
+  transition: color .3s, transform .5s cubic-bezier(.16,1,.3,1);
+  letter-spacing: -.05em;
+}
+.guide-card:hover .guide-bg-num {
+  color: var(--rule2);
+  transform: translateX(-8px) scale(1.04);
+}
+
+/* Visual swatch — top portion */
+.guide-visual {
+  height: 200px;
+  position: relative; overflow: hidden;
+  flex-shrink: 0;
+  border-bottom: 1px solid var(--rule);
+}
+.guide-visual-inner {
+  position: absolute; inset: 0;
+  display: flex; align-items: center; justify-content: center;
+  transition: transform .6s cubic-bezier(.16,1,.3,1);
+}
+.guide-card:hover .guide-visual-inner { transform: scale(1.04); }
+
+/* Content */
+.guide-body {
+  padding: 2rem 2rem 2rem;
+  display: flex; flex-direction: column;
+  flex: 1; position: relative; z-index: 2;
+}
+.guide-issue {
+  font-family: var(--mono); font-size: .5rem;
+  letter-spacing: .25em; text-transform: uppercase;
+  color: var(--muted); margin-bottom: 1rem;
+}
+.guide-title {
+  font-family: var(--serif); font-weight: 300; font-style: italic;
+  font-size: clamp(2rem, 3vw, 2.8rem);
+  line-height: .9; color: var(--bright);
+  letter-spacing: -.01em;
+  margin-bottom: .4rem;
+}
+.guide-title strong {
+  font-weight: 500; font-style: normal;
+  display: block;
+  color: var(--c, var(--bright));
+}
+.guide-subtitle {
+  font-family: var(--mono); font-size: .5rem;
+  letter-spacing: .2em; text-transform: uppercase;
+  color: var(--c, var(--muted));
+  margin-bottom: 1.2rem;
+  opacity: .8;
+}
+.guide-desc {
+  font-family: var(--serif); font-size: .95rem;
+  line-height: 1.75; color: var(--dim);
+  font-weight: 300; margin-bottom: 1.5rem;
+  flex: 1;
+}
+
+/* Feature pills */
+.guide-features {
+  display: flex; flex-wrap: wrap; gap: .3rem;
+  margin-bottom: 1.8rem;
+}
+.feat {
+  font-family: var(--mono); font-size: .42rem;
+  letter-spacing: .1em; text-transform: uppercase;
+  border: 1px solid var(--rule2); padding: .2rem .5rem;
+  color: var(--muted);
+  transition: color .2s, border-color .2s;
+}
+.guide-card:hover .feat {
+  color: var(--c, var(--mid));
+  border-color: color-mix(in srgb, var(--c, var(--muted)) 30%, var(--rule2));
+}
+
+/* CTA row */
+.guide-cta {
+  display: flex; align-items: center; justify-content: space-between;
+  padding-top: 1.2rem;
+  border-top: 1px solid var(--rule);
+}
+.guide-cta-label {
+  font-family: var(--mono); font-size: .5rem;
+  letter-spacing: .2em; text-transform: uppercase;
+  color: var(--dim);
+  transition: color .2s;
+}
+.guide-card:hover .guide-cta-label { color: var(--c, var(--mid)); }
+.guide-arrow {
+  font-size: 1rem; color: var(--muted);
+  transition: transform .25s, color .2s;
+}
+.guide-card:hover .guide-arrow {
+  transform: translateX(5px);
+  color: var(--c, var(--bright));
+}
+
+/* ── COMING SOON CARD ── */
+.guide-card.soon {
+  cursor: default;
+  border: 1px dashed var(--rule);
+  background: transparent;
+  opacity: .5;
+  min-height: 380px;
+}
+.guide-card.soon::before { display: none; }
+.guide-card.soon:hover { background: transparent; }
+.guide-card.soon .guide-visual-inner { opacity: .3; }
+.soon-badge {
+  display: inline-block;
+  font-family: var(--mono); font-size: .45rem;
+  letter-spacing: .2em; text-transform: uppercase;
+  border: 1px solid var(--rule2); padding: .2rem .55rem;
+  color: var(--muted); margin-bottom: .8rem;
+}
+
+/* ═══════════════════════════════════════════════
+   AI CARD VISUAL
+═══════════════════════════════════════════════ */
+.vis-ai {
+  background: #07090C;
+  width: 100%; height: 100%;
+}
+.vis-ai svg { width: 100%; height: 100%; }
+
+/* ═══════════════════════════════════════════════
+   CRYPTO CARD VISUAL
+═══════════════════════════════════════════════ */
+.vis-crypto {
+  background: #0A0D06;
+  width: 100%; height: 100%;
+  display: flex; align-items: center; justify-content: center;
+  overflow: hidden;
+}
+
+/* ═══════════════════════════════════════════════
+   STAR WARS CARD VISUAL
+═══════════════════════════════════════════════ */
+.vis-sw {
+  background: #07080F;
+  width: 100%; height: 100%;
+  display: flex; align-items: center; justify-content: center;
+  overflow: hidden;
+}
+
+/* ═══════════════════════════════════════════════
+   FEATURES SECTION — BELOW CARDS
+═══════════════════════════════════════════════ */
+.features-section {
+  position: relative; z-index: 1;
+  display: grid; grid-template-columns: repeat(4, 1fr);
+  gap: 1px; background: var(--rule);
+  border-bottom: 1px solid var(--rule);
+}
+@media (max-width: 768px) { .features-section { grid-template-columns: 1fr 1fr; } }
+@media (max-width: 480px) { .features-section { grid-template-columns: 1fr; } }
+
+.feature-item {
+  background: var(--bg);
+  padding: 2.2rem 2rem;
+  position: relative; overflow: hidden;
+}
+.feature-item::before {
+  content: '';
+  position: absolute; top: 0; left: 0;
+  width: 1px; height: 0;
+  background: var(--bright);
+  transition: height .6s ease;
+  opacity: .2;
+}
+.feature-item:hover::before { height: 100%; }
+.feat-icon {
+  font-size: 1.4rem; margin-bottom: .9rem;
+  display: block; opacity: .5;
+}
+.feat-name {
+  font-family: var(--serif); font-style: italic;
+  font-size: 1.1rem; color: var(--mid);
+  margin-bottom: .4rem;
+}
+.feat-desc {
+  font-family: var(--mono); font-size: .5rem;
+  letter-spacing: .1em; text-transform: uppercase;
+  color: var(--muted); line-height: 1.8;
+}
+
+/* ═══════════════════════════════════════════════
+   MANIFESTO STRIP
+═══════════════════════════════════════════════ */
+.manifesto {
+  position: relative; z-index: 1;
+  padding: 5rem 2.5rem;
+  border-bottom: 1px solid var(--rule);
+  display: grid; grid-template-columns: 1fr 2fr;
+  gap: 4rem; align-items: start;
+}
+@media (max-width: 768px) { .manifesto { grid-template-columns: 1fr; gap: 2rem; padding: 3rem 1.5rem; } }
+.manifesto-label {
+  font-family: var(--mono); font-size: .5rem;
+  letter-spacing: .35em; text-transform: uppercase;
+  color: var(--muted); padding-top: .5rem;
+}
+.manifesto-text {
+  font-family: var(--serif); font-style: italic;
+  font-size: clamp(1.4rem, 3vw, 2.4rem);
+  font-weight: 300; line-height: 1.35;
+  color: var(--mid); letter-spacing: -.01em;
+}
+.manifesto-text em {
+  font-style: normal; color: var(--bright);
+}
+
+/* ═══════════════════════════════════════════════
+   FOOTER
+═══════════════════════════════════════════════ */
+.footer {
+  position: relative; z-index: 1;
+  padding: 3rem 2.5rem 2rem;
+  display: flex; align-items: flex-start;
+  justify-content: space-between; flex-wrap: wrap;
+  gap: 2rem;
+  border-top: 1px solid var(--rule);
+}
+.footer-brand {
+  font-family: var(--serif); font-style: italic;
+  font-size: 1.5rem; font-weight: 300;
+  color: var(--bright); letter-spacing: -.01em;
+}
+.footer-brand strong { font-weight: 500; font-style: normal; }
+.footer-tagline {
+  font-family: var(--mono); font-size: .48rem;
+  letter-spacing: .2em; text-transform: uppercase;
+  color: var(--muted); margin-top: .4rem;
+}
+.footer-links {
+  display: flex; gap: 2rem; flex-wrap: wrap; align-items: center;
+}
+.footer-links a {
+  font-family: var(--mono); font-size: .5rem;
+  letter-spacing: .18em; text-transform: uppercase;
+  color: var(--dim); transition: color .2s;
+}
+.footer-links a:hover { color: var(--bright); }
+.footer-copy {
+  font-family: var(--mono); font-size: .45rem;
+  letter-spacing: .15em; text-transform: uppercase;
+  color: var(--muted); width: 100%;
+  padding-top: 2rem;
+  border-top: 1px solid var(--rule);
+  display: flex; justify-content: space-between;
+  flex-wrap: wrap; gap: .5rem;
+}
+
+/* ═══════════════════════════════════════════════
+   FADE IN
+═══════════════════════════════════════════════ */
+.fi { opacity: 1; transform: translateY(0); }
+.js-ready .fi {
+  opacity: 0; transform: translateY(24px);
+  transition: opacity .7s ease, transform .7s ease;
+}
+.js-ready .fi.visible { opacity: 1; transform: translateY(0); }
+
+/* ═══════════════════════════════════════════════
+   STAGGER DELAYS
+═══════════════════════════════════════════════ */
+.d1 { transition-delay: .1s !important; }
+.d2 { transition-delay: .2s !important; }
+.d3 { transition-delay: .3s !important; }
+.d4 { transition-delay: .4s !important; }
+.d5 { transition-delay: .5s !important; }
+.d6 { transition-delay: .6s !important; }
+
+/* ═══════════════════════════════════════════════
+   ANIMATED NUMBER COUNTER
+═══════════════════════════════════════════════ */
+.count-up { display: inline-block; }
+
+/* ═══════════════════════════════════════════════
+   PROGRESS LINE
+═══════════════════════════════════════════════ */
+#progress {
+  position: fixed; top: 0; left: 0; height: 1px;
+  background: var(--bright); width: 0%; z-index: 9100;
+  opacity: .4;
+}
+
+</style>
+</head>
+<body>
+
+<div id="progress"></div>
+<div id="cur"></div>
+<div id="curRing"></div>
+
+<!-- ══ NAV ══ -->
+<nav class="nav">
+  <div class="nav-wordmark">Brief <strong>Histories</strong></div>
+  <div class="nav-right">
+    <span class="nav-count"><span>3</span> guides published</span>
+    <span>More coming soon</span>
+  </div>
+</nav>
+
+<!-- ══ HERO ══ -->
+<section class="hero">
+  <div class="hero-grid"></div>
+  <div class="hero-vignette"></div>
+  <div class="hero-content">
+    <div class="hero-issue fi">The Collection</div>
+    <h1 class="hero-title fi d1">Brief<br>Histories</h1>
+    <div class="hero-title-sub fi d2">of Everything</div>
+    <p class="hero-desc fi d3">
+      Curated, interactive timelines for the subjects that shaped our world. Each guide is a deep dive — structured chronology, key figures, cultural context, and the moments that changed everything.
+    </p>
+    <div class="hero-chips fi d4">
+      <div class="chip"><div class="chip-dot" style="background:#00D4F0;"></div>Artificial Intelligence</div>
+      <div class="chip"><div class="chip-dot" style="background:#39FF14;"></div>Cryptocurrency</div>
+      <div class="chip"><div class="chip-dot" style="background:#FFD700;"></div>Star Wars</div>
+      <div class="chip"><div class="chip-dot" style="background:#555;"></div>More coming</div>
+    </div>
+    <div class="hero-scroll fi d5">
+      <div class="hero-scroll-line"></div>
+      View guides
+    </div>
+  </div>
+</section>
+
+<!-- ══ GUIDES ══ -->
+<div class="section-label">
+  <span>Published Guides — Vol. I</span>
+</div>
+
+<div class="guides">
+
+  <!-- ── AI ── -->
+  <a class="guide-card fi" href="https://abriefhistoryof-ai.com" target="_blank" rel="noopener" style="--c: var(--ai-col);">
+    <div class="guide-bg-num">01</div>
+    <div class="guide-visual">
+      <div class="guide-visual-inner">
+        <div class="vis-ai">
+          <svg viewBox="0 0 400 200" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice">
+            <!-- grid -->
+            <line x1="0" y1="50" x2="400" y2="50" stroke="#1a2230" stroke-width=".6"/>
+            <line x1="0" y1="100" x2="400" y2="100" stroke="#1a2230" stroke-width=".6"/>
+            <line x1="0" y1="150" x2="400" y2="150" stroke="#1a2230" stroke-width=".6"/>
+            <line x1="100" y1="0" x2="100" y2="200" stroke="#1a2230" stroke-width=".6"/>
+            <line x1="200" y1="0" x2="200" y2="200" stroke="#1a2230" stroke-width=".6"/>
+            <line x1="300" y1="0" x2="300" y2="200" stroke="#1a2230" stroke-width=".6"/>
+            <!-- nodes -->
+            <circle cx="60" cy="140" r="3" fill="#00D4F0" opacity=".7"/>
+            <circle cx="120" cy="120" r="3" fill="#00D4F0" opacity=".5"/>
+            <circle cx="180" cy="80" r="4" fill="#00D4F0" opacity=".9"/>
+            <circle cx="240" cy="60" r="3" fill="#00D4F0" opacity=".6"/>
+            <circle cx="300" cy="40" r="3" fill="#00D4F0" opacity=".7"/>
+            <circle cx="350" cy="30" r="4" fill="#00E87A" opacity=".8"/>
+            <!-- connecting lines -->
+            <polyline points="60,140 120,120 180,80 240,60 300,40 350,30" fill="none" stroke="#00D4F0" stroke-width="1.2" opacity=".4"/>
+            <!-- area fill -->
+            <polygon points="60,140 120,120 180,80 240,60 300,40 350,30 350,200 60,200" fill="#00D4F0" opacity=".04"/>
+            <!-- label -->
+            <text x="20" y="185" font-family="IBM Plex Mono,monospace" font-size="9" fill="#00D4F0" opacity=".4" letter-spacing="2">ARTIFICIAL INTELLIGENCE</text>
+            <!-- big faded text -->
+            <text x="20" y="170" font-family="IBM Plex Mono,monospace" font-size="72" font-weight="700" fill="#00D4F0" opacity=".04" letter-spacing="-3">AI</text>
+          </svg>
+        </div>
+      </div>
+    </div>
+    <div class="guide-body">
+      <div class="guide-issue">Issue 01 · Live at abriefhistoryof-ai.com</div>
+      <div class="guide-title">A Brief History<br><strong>of AI</strong></div>
+      <div class="guide-subtitle">1940s — Present · 8 Decades</div>
+      <p class="guide-desc">From Turing's imitation game to autonomous agents. The complete story of how machines learned to think, fail, and think again.</p>
+      <div class="guide-features">
+        <span class="feat">5 Eras</span>
+        <span class="feat">Timeline</span>
+        <span class="feat">Key People</span>
+        <span class="feat">Ecosystem Map</span>
+        <span class="feat">Light / Dark</span>
+        <span class="feat">IBM Plex Type</span>
+      </div>
+      <div class="guide-cta">
+        <span class="guide-cta-label">Visit guide →</span>
+        <span class="guide-arrow">→</span>
+      </div>
+    </div>
+  </a>
+
+  <!-- ── CRYPTO ── -->
+  <a class="guide-card fi d2" href="crypto-history.html" style="--c: var(--crypto-col);">
+    <div class="guide-bg-num">02</div>
+    <div class="guide-visual">
+      <div class="guide-visual-inner">
+        <div class="vis-crypto">
+          <svg viewBox="0 0 400 200" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice" style="width:100%;height:100%;">
+            <!-- log chart -->
+            <line x1="0" y1="50" x2="400" y2="50" stroke="#1C2410" stroke-width=".5"/>
+            <line x1="0" y1="100" x2="400" y2="100" stroke="#1C2410" stroke-width=".5"/>
+            <line x1="0" y1="150" x2="400" y2="150" stroke="#1C2410" stroke-width=".5"/>
+            <!-- BTC price curve (log scale, compressed) -->
+            <polygon points="10,195 40,192 70,180 100,155 130,130 160,160 190,140 220,80 250,150 280,50 310,120 350,30 380,40 380,200 10,200"
+              fill="#39FF14" opacity=".06"/>
+            <polyline points="10,195 40,192 70,180 100,155 130,130 160,160 190,140 220,80 250,150 280,50 310,120 350,30 380,40"
+              fill="none" stroke="#39FF14" stroke-width="1.5" opacity=".6"/>
+            <!-- event dots -->
+            <circle cx="70" cy="180" r="2.5" fill="#39FF14" opacity=".6"/>
+            <circle cx="130" cy="130" r="2.5" fill="#39FF14" opacity=".6"/>
+            <circle cx="220" cy="80" r="3" fill="#39FF14" opacity=".9"/>
+            <circle cx="280" cy="50" r="2.5" fill="#CCFF00" opacity=".8"/>
+            <circle cx="350" cy="30" r="3.5" fill="#39FF14" opacity="1"/>
+            <!-- glow on last point -->
+            <circle cx="350" cy="30" r="7" fill="#39FF14" opacity=".12"/>
+            <text x="20" y="185" font-family="Space Mono,monospace" font-size="9" fill="#39FF14" opacity=".35" letter-spacing="2">BITCOIN / USD — LOG SCALE</text>
+            <text x="30" y="160" font-family="Space Mono,monospace" font-size="60" font-weight="700" fill="#39FF14" opacity=".04" letter-spacing="-3">₿</text>
+          </svg>
+        </div>
+      </div>
+    </div>
+    <div class="guide-body">
+      <div class="guide-issue">Issue 02 · crypto-history.html</div>
+      <div class="guide-title">A Brief History<br><strong>of Crypto</strong></div>
+      <div class="guide-subtitle">2008 — Present · Bitcoin to ETFs</div>
+      <p class="guide-desc">From Satoshi's whitepaper to a trillion-dollar asset class. The story of Bitcoin, Ethereum, DeFi, NFTs — and everything in between.</p>
+      <div class="guide-features">
+        <span class="feat">6 Eras</span>
+        <span class="feat">BTC Price Chart</span>
+        <span class="feat">Live Ticker</span>
+        <span class="feat">Key Figures</span>
+        <span class="feat">Ecosystem Grid</span>
+        <span class="feat">Neon Green Theme</span>
+      </div>
+      <div class="guide-cta">
+        <span class="guide-cta-label">Open guide →</span>
+        <span class="guide-arrow">→</span>
+      </div>
+    </div>
+  </a>
+
+  <!-- ── STAR WARS ── -->
+  <a class="guide-card fi d3" href="starwars/index.html" style="--c: var(--sw-col);">
+    <div class="guide-bg-num">03</div>
+    <div class="guide-visual">
+      <div class="guide-visual-inner">
+        <div class="vis-sw">
+          <svg viewBox="0 0 400 200" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice" style="width:100%;height:100%;">
+            <!-- stars -->
+            <circle cx="30" cy="20" r="1" fill="white" opacity=".6"/>
+            <circle cx="80" cy="45" r=".8" fill="white" opacity=".4"/>
+            <circle cx="150" cy="15" r="1.2" fill="white" opacity=".8"/>
+            <circle cx="220" cy="35" r=".9" fill="white" opacity=".5"/>
+            <circle cx="290" cy="18" r="1" fill="white" opacity=".7"/>
+            <circle cx="350" cy="50" r=".8" fill="white" opacity=".4"/>
+            <circle cx="380" cy="25" r="1.1" fill="white" opacity=".6"/>
+            <circle cx="60" cy="80" r=".8" fill="white" opacity=".3"/>
+            <circle cx="170" cy="70" r="1" fill="white" opacity=".5"/>
+            <circle cx="310" cy="75" r=".9" fill="white" opacity=".4"/>
+            <circle cx="40" cy="160" r="1" fill="white" opacity=".3"/>
+            <circle cx="380" cy="170" r=".8" fill="white" opacity=".4"/>
+            <!-- planet -->
+            <circle cx="200" cy="240" r="160" fill="none" stroke="#FFD700" stroke-width=".5" opacity=".1"/>
+            <circle cx="200" cy="240" r="160"
+              fill="radial-gradient(circle, #1a1a2e 0%, #07080F 100%)"
+              opacity=".0"/>
+            <ellipse cx="200" cy="240" rx="200" ry="160"
+              fill="url(#planetGrad)" opacity="1"/>
+            <!-- lightsaber left -->
+            <rect x="60" y="90" width="2" height="80" rx="1" fill="#4FC3F7" opacity=".7"/>
+            <rect x="60" y="90" width="2" height="80" rx="1" fill="#4FC3F7" filter="blur(3px)" opacity=".4"/>
+            <rect x="57" y="160" width="8" height="12" rx="1" fill="#888" opacity=".6"/>
+            <!-- lightsaber right -->
+            <rect x="338" y="90" width="2" height="80" rx="1" fill="#FF3D3D" opacity=".7"/>
+            <rect x="338" y="90" width="2" height="80" rx="1" fill="#FF3D3D" filter="blur(3px)" opacity=".4"/>
+            <rect x="335" y="160" width="8" height="12" rx="1" fill="#888" opacity=".6"/>
+            <!-- title text -->
+            <text x="200" y="118" font-family="Georgia,serif" font-style="italic" font-size="13" fill="#FFD700" text-anchor="middle" opacity=".9" letter-spacing="1">A Brief History of</text>
+            <text x="200" y="148" font-family="Georgia,serif" font-weight="bold" font-size="28" fill="#FFD700" text-anchor="middle" opacity=".95" letter-spacing="3">STAR WARS</text>
+            <defs>
+              <radialGradient id="planetGrad" cx="40%" cy="35%" r="70%">
+                <stop offset="0%" stop-color="#1a1a3e" stop-opacity=".6"/>
+                <stop offset="100%" stop-color="#07080F" stop-opacity=".95"/>
+              </radialGradient>
+            </defs>
+          </svg>
+        </div>
+      </div>
+    </div>
+    <div class="guide-body">
+      <div class="guide-issue">Issue 03 · starwars/index.html · 4 pages</div>
+      <div class="guide-title">A Brief History<br><strong>of Star Wars</strong></div>
+      <div class="guide-subtitle">1977 — Present · 48 Years · 3 Eras</div>
+      <p class="guide-desc">Original Trilogy, Prequels, and the Disney Era. Four pages, three eras, a galaxy's worth of context — plus image placeholders ready for your artwork.</p>
+      <div class="guide-features">
+        <span class="feat">4 Pages</span>
+        <span class="feat">3 Eras</span>
+        <span class="feat">Jedi / Sith Toggle</span>
+        <span class="feat">Image Placeholders</span>
+        <span class="feat">Star Jedi Font</span>
+        <span class="feat">Character Cards</span>
+      </div>
+      <div class="guide-cta">
+        <span class="guide-cta-label">Enter the galaxy →</span>
+        <span class="guide-arrow">→</span>
+      </div>
+    </div>
+  </a>
+
+</div>
+
+<!-- ══ COMING SOON ROW ══ -->
+<div class="section-label">
+  <span>Coming Soon — More Volumes</span>
+</div>
+
+<div class="guides" style="grid-template-columns: repeat(3,1fr);">
+
+  <div class="guide-card soon fi">
+    <div class="guide-body" style="padding-top:3rem;">
+      <div class="soon-badge">Coming Soon</div>
+      <div class="guide-issue">Issue 04</div>
+      <div class="guide-title">A Brief History<br><strong>of the Internet</strong></div>
+      <div class="guide-subtitle">1969 — Present · ARPANET to AI Web</div>
+      <p class="guide-desc">From ARPANET to ChatGPT — the story of how a network of networks became the defining infrastructure of human civilisation.</p>
+    </div>
+  </div>
+
+  <div class="guide-card soon fi d2">
+    <div class="guide-body" style="padding-top:3rem;">
+      <div class="soon-badge">Coming Soon</div>
+      <div class="guide-issue">Issue 05</div>
+      <div class="guide-title">A Brief History<br><strong>of Space</strong></div>
+      <div class="guide-subtitle">1957 — Present · Sputnik to SpaceX</div>
+      <p class="guide-desc">From Sputnik's beep to Starship's ambitions — the race that defined the Cold War and the private industry rewriting its future.</p>
+    </div>
+  </div>
+
+  <div class="guide-card soon fi d3">
+    <div class="guide-body" style="padding-top:3rem;">
+      <div class="soon-badge">Coming Soon</div>
+      <div class="guide-issue">Issue 06</div>
+      <div class="guide-title">A Brief History<br><strong>of Hip-Hop</strong></div>
+      <div class="guide-subtitle">1973 — Present · The Bronx to Streaming</div>
+      <p class="guide-desc">From a park in the South Bronx to the world's most-streamed genre — how hip-hop rewrote music, fashion, language, and culture.</p>
+    </div>
+  </div>
+
+</div>
+
+<!-- ══ SHARED FEATURES ══ -->
+<div class="section-label">
+  <span>What Every Guide Includes</span>
+</div>
+
+<div class="features-section">
+  <div class="feature-item fi">
+    <span class="feat-icon">📖</span>
+    <div class="feat-name">Structured Chronology</div>
+    <div class="feat-desc">Events organised by era, each with context, significance scores, and connections to what came before and after.</div>
+  </div>
+  <div class="feature-item fi d2">
+    <span class="feat-icon">👤</span>
+    <div class="feat-name">Key Figures</div>
+    <div class="feat-desc">The people who made it happen — founders, rebels, visionaries, and villains — with profiles and their place in the story.</div>
+  </div>
+  <div class="feature-item fi d3">
+    <span class="feat-icon">🗺️</span>
+    <div class="feat-name">Ecosystem Maps</div>
+    <div class="feat-desc">The companies, organisations, and projects that define each field — linked, tagged by tier, and navigable.</div>
+  </div>
+  <div class="feature-item fi d4">
+    <span class="feat-icon">⚡</span>
+    <div class="feat-name">Interactive Design</div>
+    <div class="feat-desc">Custom cursors, section navigation, scroll progress, theme toggles, fade-in animations, and keyboard navigation throughout.</div>
+  </div>
+</div>
+
+<!-- ══ MANIFESTO ══ -->
+<div class="manifesto fi">
+  <div class="manifesto-label">The Brief Histories Project</div>
+  <div class="manifesto-text">
+    History is not a list of dates.<br>
+    It is a story about <em>why things happened</em>,<br>
+    who made them happen,<br>
+    and what we missed at the time.
+  </div>
+</div>
+
+<!-- ══ FOOTER ══ -->
+<footer class="footer">
+  <div>
+    <div class="footer-brand">Brief <strong>Histories</strong></div>
+    <div class="footer-tagline">A growing collection of curated timelines</div>
+  </div>
+  <div class="footer-links">
+    <a href="https://abriefhistoryof-ai.com" target="_blank" rel="noopener">AI Guide ↗</a>
+    <a href="crypto-history.html">Crypto Guide</a>
+    <a href="starwars/index.html">Star Wars Guide</a>
+  </div>
+  <div class="footer-copy">
+    <span>© 2025 Brief Histories</span>
+    <span>More volumes in progress</span>
+  </div>
+</footer>
+
+<script>
+(function(){
+  /* Cursor */
+  var isMobile = ('ontouchstart' in window) || window.innerWidth < 768;
+  var cur = document.getElementById('cur');
+  var ring = document.getElementById('curRing');
+  if (!isMobile && cur) {
+    var mx=0, my=0, rx=0, ry=0;
+    document.addEventListener('mousemove', function(e){
+      mx=e.clientX; my=e.clientY;
+      cur.style.left=mx+'px'; cur.style.top=my+'px';
+    }, {passive:true});
+    (function animRing(){
+      rx+=(mx-rx)*.1; ry+=(my-ry)*.1;
+      ring.style.left=rx+'px'; ring.style.top=ry+'px';
+      requestAnimationFrame(animRing);
+    })();
+  } else {
+    if(cur) cur.style.display='none';
+    if(ring) ring.style.display='none';
+  }
+
+  /* Progress */
+  var prog = document.getElementById('progress');
+  window.addEventListener('scroll', function(){
+    var sy = window.scrollY;
+    var max = document.documentElement.scrollHeight - window.innerHeight;
+    if(prog) prog.style.width = (max > 0 ? (sy/max)*100 : 0) + '%';
+  }, {passive:true});
+
+  /* Fade in */
+  document.body.classList.add('js-ready');
+  function revealAll(){
+    document.querySelectorAll('.fi').forEach(function(el){ el.classList.add('visible'); });
+  }
+  if ('IntersectionObserver' in window) {
+    var obs = new IntersectionObserver(function(entries){
+      entries.forEach(function(entry){
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          obs.unobserve(entry.target);
+        }
+      });
+    }, {threshold: 0, rootMargin: '160px 0px 160px 0px'});
+    document.querySelectorAll('.fi').forEach(function(el){ obs.observe(el); });
+    [100, 500, 1200].forEach(function(ms){
+      setTimeout(function(){
+        if(document.querySelectorAll('.fi:not(.visible)').length) revealAll();
+      }, ms);
+    });
+  } else {
+    revealAll();
+  }
+})();
+</script>
+</body>
+</html>
