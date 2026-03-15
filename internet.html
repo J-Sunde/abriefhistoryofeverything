@@ -1,0 +1,2147 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>A (Brief) History of the Internet</title>
+<meta name="description" content="From ARPANET's first packet to the age of AI — five decades of protocols, browsers, social networks, and the digital infrastructure that rewired civilization.">
+<meta name="keywords" content="internet history, ARPANET, world wide web, Tim Berners-Lee, Web 2.0, social media, broadband, TCP/IP, dot-com, mobile web">
+<meta name="author" content="abriefhistoryofeverything.com">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://abriefhistoryofeverything.com/internet">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://abriefhistoryofeverything.com/internet">
+<meta property="og:title" content="A (Brief) History of the Internet">
+<meta property="og:description" content="From ARPANET's first packet to the age of AI — five decades of protocols, browsers, and the digital infrastructure that rewired civilization.">
+<meta property="og:site_name" content="A (Brief) History of Everything_">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="A (Brief) History of the Internet">
+<meta name="twitter:description" content="From ARPANET's first packet to the age of AI — five decades of protocols, browsers, and the digital infrastructure that rewired civilization.">
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' fill='%23001233'/><text x='3' y='24' font-family='monospace' font-size='16' font-weight='700' fill='%2300CFFF'>NET</text></svg>">
+<meta name="theme-color" content="#001233">
+
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700;800;900&family=JetBrains+Mono:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400&display=swap" rel="stylesheet">
+
+<style>
+/* ══════════════════════════════════════════════════════════════
+   DESIGN TOKENS — DARK MODE (default)
+   Palette: Deep navy night, electric cyan, signal orange, node green, packet purple
+══════════════════════════════════════════════════════════════ */
+:root,
+[data-theme="dark"] {
+  --bg:        #000D1F;
+  --bg1:       #001029;
+  --bg2:       #001533;
+  --bg3:       #001A3D;
+  --rule:      #002255;
+  --rule2:     #002E70;
+  --muted:     #004499;
+  --dim:       #2266BB;
+  --text:      #90B8E0;
+  --bright:    #E0F0FF;
+  --accent:    #00CFFF;
+  --accent2:   #FF6A00;
+  --accent3:   #39FFB0;
+  --accent4:   #C060FF;
+
+  --nav-bg:    rgba(0,13,31,.92);
+  --sidenav-bg:rgba(0,13,31,.96);
+  --nav-border:rgba(0,34,85,1);
+
+  --toggle-bg: #001A3D;
+  --toggle-knob:#00CFFF;
+
+  --photo-filter: grayscale(1) contrast(1.15) brightness(.55) sepia(.2) hue-rotate(180deg);
+  --photo-hover:  grayscale(.2) contrast(1.1) brightness(.8) sepia(.05) hue-rotate(90deg);
+
+  --card-bg:   var(--bg);
+  --card-hover:var(--bg1);
+  --band-bg:   var(--bg1);
+  --tag-hover-bg: rgba(0,207,255,.05);
+  --co-hover-bg:  rgba(0,207,255,.04);
+
+  --sb-track:  var(--bg);
+  --sb-thumb:  var(--rule2);
+
+  --glow:    0 0 20px rgba(0,207,255,.35), 0 0 60px rgba(0,207,255,.12);
+  --glow-sm: 0 0 8px rgba(0,207,255,.45);
+  --glow-orange: 0 0 12px rgba(255,106,0,.4);
+}
+
+/* ══════════════════════════════════════════════════════════════
+   DESIGN TOKENS — LIGHT MODE
+══════════════════════════════════════════════════════════════ */
+[data-theme="light"] {
+  --bg:        #F0F6FF;
+  --bg1:       #E3EEFB;
+  --bg2:       #D4E5F7;
+  --bg3:       #C5DBF3;
+  --rule:      #A8CBE8;
+  --rule2:     #88B5D8;
+  --muted:     #5590BB;
+  --dim:       #336699;
+  --text:      #0D2A4A;
+  --bright:    #000D1F;
+  --accent:    #0077BB;
+  --accent2:   #D94F00;
+  --accent3:   #007A50;
+  --accent4:   #7730CC;
+
+  --nav-bg:    rgba(240,246,255,.93);
+  --sidenav-bg:rgba(227,238,251,.97);
+  --nav-border:rgba(168,203,232,1);
+
+  --toggle-bg: #C5DBF3;
+  --toggle-knob:#0077BB;
+
+  --photo-filter: grayscale(.4) contrast(1.05) brightness(1.05) sepia(.08);
+  --photo-hover:  grayscale(0) contrast(1.05) brightness(1.0);
+
+  --card-bg:   var(--bg);
+  --card-hover:var(--bg1);
+  --band-bg:   var(--bg1);
+  --tag-hover-bg: rgba(0,119,187,.06);
+  --co-hover-bg:  rgba(0,119,187,.05);
+
+  --sb-track:  var(--bg);
+  --sb-thumb:  var(--rule2);
+
+  --glow:    none;
+  --glow-sm: none;
+  --glow-orange: none;
+}
+
+/* ══════════════════════════════════════════════════════════════
+   SERIES BRAND COLORS
+══════════════════════════════════════════════════════════════ */
+:root {
+  --series-cyan:   #00D4F0;
+  --series-blue:   #0055EE;
+  --series-green:  #39E07A;
+  --series-orange: #FF5C20;
+}
+
+/* ══════════════════════════════════════════════════════════════
+   RESET + BASE
+══════════════════════════════════════════════════════════════ */
+*{margin:0;padding:0;box-sizing:border-box;}
+html{scroll-behavior:smooth;font-size:16px;}
+body{
+  background:var(--bg);color:var(--text);
+  font-family:'JetBrains Mono',monospace;
+  overflow-x:hidden;line-height:1.5;
+  transition:background .35s ease,color .35s ease;
+}
+a{color:inherit;text-decoration:none;}
+img{display:block;}
+
+/* ══════════════════════════════════════════════════════════════
+   SCROLLBAR
+══════════════════════════════════════════════════════════════ */
+::-webkit-scrollbar{width:5px;}
+::-webkit-scrollbar-track{background:var(--sb-track);}
+::-webkit-scrollbar-thumb{background:var(--sb-thumb);}
+
+/* ══════════════════════════════════════════════════════════════
+   TYPOGRAPHY
+══════════════════════════════════════════════════════════════ */
+.t-display { font-family:'Orbitron',sans-serif; }
+.t-mono    { font-family:'JetBrains Mono',monospace; }
+
+/* ══════════════════════════════════════════════════════════════
+   CURSOR
+══════════════════════════════════════════════════════════════ */
+@media(pointer:fine){body{cursor:none;}}
+.cur{
+  width:6px;height:6px;background:var(--accent);
+  position:fixed;pointer-events:none;z-index:9999;
+  transform:translate(-50%,-50%);border-radius:50%;
+  transition:background .15s,transform .1s;
+  box-shadow:var(--glow-sm);
+}
+.cur.active{transform:translate(-50%,-50%) scale(2);}
+.cur-ring{
+  width:28px;height:28px;border:1px solid var(--accent);
+  position:fixed;pointer-events:none;z-index:9998;
+  transform:translate(-50%,-50%);border-radius:50%;
+  transition:left .09s,top .09s,width .2s,height .2s,border-color .2s,opacity .2s;
+  opacity:.45;
+}
+
+/* ══════════════════════════════════════════════════════════════
+   PROGRESS BAR
+══════════════════════════════════════════════════════════════ */
+#progress{
+  position:fixed;top:0;left:0;height:2px;
+  background:var(--accent);width:0%;z-index:9100;
+  transition:width .08s linear;
+  box-shadow:var(--glow-sm);
+}
+
+/* ══════════════════════════════════════════════════════════════
+   TOP NAV
+══════════════════════════════════════════════════════════════ */
+.nav{
+  position:fixed;top:0;left:0;right:0;z-index:900;
+  display:flex;align-items:center;gap:1rem;
+  padding:0 1.5rem 0 4.5rem;height:52px;
+  background:var(--nav-bg);
+  backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);
+  border-bottom:1px solid var(--nav-border);
+  transition:background .35s,border-color .35s;
+}
+@media(min-width:901px){.nav{padding-left:calc(52px + 1.5rem);}}
+
+.nav-brand{
+  font-family:'Orbitron',sans-serif;
+  font-weight:700;font-size:.68rem;letter-spacing:.12em;
+  text-transform:uppercase;color:var(--dim);white-space:nowrap;
+  transition:color .2s;
+}
+.nav-brand:hover{color:var(--bright);}
+@media(max-width:960px){.nav-brand::after{content:'';}}
+@media(min-width:961px){.nav-brand-full{display:inline;}  .nav-brand-short{display:none;}}
+@media(max-width:960px){.nav-brand-full{display:none;} .nav-brand-short{display:inline;}}
+
+.nav-sep{color:var(--muted);font-size:.8rem;flex-shrink:0;}
+.nav-topic{
+  font-family:'Orbitron',sans-serif;
+  font-size:.72rem;font-weight:700;letter-spacing:.1em;
+  text-transform:uppercase;color:var(--accent);
+  text-shadow:var(--glow-sm);white-space:nowrap;
+}
+.nav-era-label{
+  font-family:'JetBrains Mono',monospace;
+  font-size:.65rem;letter-spacing:.15em;text-transform:uppercase;
+  color:var(--dim);flex:1;overflow:hidden;
+  white-space:nowrap;text-overflow:ellipsis;
+}
+@media(max-width:700px){.nav-era-label{display:none;}}
+
+/* Mode Toggle */
+.mode-toggle{
+  display:flex;align-items:center;gap:.55rem;
+  margin-left:auto;flex-shrink:0;
+}
+.mode-label{
+  font-family:'JetBrains Mono',monospace;
+  font-size:.6rem;letter-spacing:.15em;text-transform:uppercase;
+  color:var(--dim);
+}
+.toggle-switch{
+  width:38px;height:20px;background:var(--toggle-bg);
+  border:1px solid var(--rule2);position:relative;
+  cursor:pointer;transition:background .3s,border-color .3s;
+  flex-shrink:0;border-radius:2px;
+}
+.toggle-switch::after{
+  content:'';position:absolute;top:3px;left:3px;
+  width:12px;height:12px;background:var(--toggle-knob);
+  transition:transform .3s,background .3s;border-radius:1px;
+}
+[data-theme="light"] .toggle-switch::after{transform:translateX(18px);}
+.mode-icon{font-size:.9rem;color:var(--dim);line-height:1;transition:color .3s;user-select:none;}
+
+/* ══════════════════════════════════════════════════════════════
+   SERIES COLOR BAR — footer only (not fixed at top)
+══════════════════════════════════════════════════════════════ */
+.series-bar{
+  display:flex;height:6px;width:100%;
+}
+.series-bar-seg{flex:1;}
+
+/* ══════════════════════════════════════════════════════════════
+   SIDE NAV
+══════════════════════════════════════════════════════════════ */
+.sidenav{
+  position:fixed;top:50px;left:0;bottom:0;
+  width:52px;z-index:850;
+  background:var(--sidenav-bg);
+  backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);
+  border-right:1px solid var(--nav-border);
+  display:flex;flex-direction:column;align-items:center;
+  padding:1rem 0;gap:.2rem;
+  transition:background .35s,border-color .35s;
+}
+@media(max-width:900px){.sidenav{display:none;}}
+
+/* PAGE BODY — offset all content so sidenav never overlaps */
+.page-body{margin-left:0;}
+@media(min-width:901px){.page-body{margin-left:52px;}}
+
+.sn-idx{
+  font-family:'Orbitron',sans-serif;
+  font-size:.5rem;letter-spacing:.12em;
+  color:var(--accent);margin-bottom:.6rem;
+  font-weight:700;
+}
+.sn-item{
+  font-family:'JetBrains Mono',monospace;
+  font-size:.58rem;letter-spacing:.1em;
+  color:var(--dim);padding:.35rem 0;
+  width:100%;text-align:center;
+  transition:color .2s,background .2s;
+  cursor:pointer;border-left:2px solid transparent;
+}
+.sn-item:hover{color:var(--bright);}
+.sn-item.active{color:var(--accent);border-left-color:var(--accent);text-shadow:var(--glow-sm);}
+.sn-arrow{
+  margin-top:auto;
+  font-size:1rem;color:var(--dim);
+  animation:bounce 1.5s ease-in-out infinite;
+}
+@keyframes bounce{0%,100%{transform:translateY(0);}50%{transform:translateY(8px);}}
+
+/* ══════════════════════════════════════════════════════════════
+   TOOLTIP
+══════════════════════════════════════════════════════════════ */
+.pop-tip{
+  position:fixed;z-index:9990;pointer-events:none;
+  background:var(--bg);border:1px solid var(--accent);
+  color:var(--bright);
+  font-family:'JetBrains Mono',monospace;font-size:.68rem;
+  padding:.5rem .75rem;max-width:260px;line-height:1.5;
+  opacity:0;transition:opacity .15s;
+  box-shadow:var(--glow);
+}
+.pop-tip.show{opacity:1;}
+
+/* ══════════════════════════════════════════════════════════════
+   FADE-UP
+══════════════════════════════════════════════════════════════ */
+.fade-up{opacity:0;transform:translateY(40px);transition:opacity .6s ease,transform .6s ease;}
+.fade-up.visible{opacity:1;transform:translateY(0);}
+
+/* ══════════════════════════════════════════════════════════════
+   HERO
+══════════════════════════════════════════════════════════════ */
+.hero{
+  min-height:100vh;
+  background:var(--bg);
+  display:flex;flex-direction:column;justify-content:flex-end;
+  padding:0 2rem 4rem 2rem;
+  position:relative;overflow:hidden;
+  border-bottom:3px solid var(--rule);
+}
+@media(max-width:480px){.hero{padding-left:1.5rem;padding-bottom:3rem;}}
+
+/* Network node background animation */
+.hero-canvas{
+  position:absolute;inset:0;z-index:0;
+  opacity:.35;
+}
+
+.hero-index{
+  position:absolute;top:calc(50px + 2.5rem);right:2.5rem;
+  font-family:'Orbitron',sans-serif;font-size:.58rem;
+  letter-spacing:.25em;text-transform:uppercase;
+  color:var(--muted);
+  text-align:right;line-height:2;
+}
+.hero-index span{display:block;color:var(--accent);font-size:.9rem;font-weight:700;}
+
+.hero-kicker{display:none;}
+
+.hero-title{
+  font-family:'Orbitron',sans-serif;
+  font-size:clamp(3.5rem,8vw,8rem);
+  font-weight:900;line-height:.88;letter-spacing:-.02em;
+  text-transform:uppercase;
+  color:var(--bright);
+  position:relative;z-index:2;
+  margin-bottom:2rem;
+}
+.hero-title .of-the{
+  display:block;font-size:clamp(1rem,3vw,3rem);
+  font-weight:400;color:var(--dim);letter-spacing:.2em;
+  margin-bottom:.3rem;
+}
+.hero-title .cursor{
+  display:inline-block;color:var(--accent);
+  animation:blink 1s step-end infinite;
+}
+@keyframes blink{0%,100%{opacity:1;}50%{opacity:0;}}
+
+.hero-sub{
+  font-family:'JetBrains Mono',monospace;
+  font-size:clamp(.82rem,1.5vw,1.05rem);
+  color:var(--text);line-height:1.8;max-width:560px;
+  position:relative;z-index:2;margin-bottom:2rem;
+  border-left:1px solid var(--rule2);padding-left:1.2rem;
+}
+
+.hero-meta{
+  display:flex;gap:2rem;flex-wrap:wrap;
+  position:relative;z-index:2;
+}
+.hero-stat{
+  font-family:'JetBrains Mono',monospace;
+  font-size:.65rem;letter-spacing:.12em;text-transform:uppercase;
+  color:var(--dim);border-left:2px solid var(--accent);
+  padding-left:.75rem;
+}
+.hero-stat strong{display:block;color:var(--accent);font-size:1.1rem;font-family:'Orbitron',sans-serif;}
+
+.hero-scroll{
+  position:absolute;bottom:2rem;right:3rem;
+  font-family:'JetBrains Mono',monospace;font-size:.6rem;
+  letter-spacing:.2em;text-transform:uppercase;
+  color:var(--muted);writing-mode:vertical-rl;
+  display:flex;align-items:center;gap:.5rem;
+  animation:bounce 1.5s ease-in-out infinite;
+}
+
+/* ══════════════════════════════════════════════════════════════
+   STATS GRID (Warhol)
+══════════════════════════════════════════════════════════════ */
+.stats-grid{
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  border-top:4px solid var(--black,#000);
+}
+@media(max-width:599px){.stats-grid{grid-template-columns:repeat(2,1fr);}}
+
+.stat-cell{
+  aspect-ratio:1;
+  display:flex;flex-direction:column;justify-content:flex-end;
+  padding:1.5rem;
+  border-right:3px solid #000;border-bottom:3px solid #000;
+  transition:transform .2s;cursor:default;
+  position:relative;overflow:hidden;
+}
+.stat-cell:hover{transform:scale(1.04);z-index:2;}
+.stat-cell:nth-child(1){background:#00CFFF;color:#000;}
+.stat-cell:nth-child(2){background:#FF6A00;color:#000;}
+.stat-cell:nth-child(3){background:#39FFB0;color:#000;}
+.stat-cell:nth-child(4){background:#C060FF;color:#fff;}
+
+.stat-emoji{display:none;}
+.stat-num{
+  font-family:'Orbitron',sans-serif;
+  font-size:clamp(1.6rem,4vw,2.8rem);
+  font-weight:900;line-height:1;margin-bottom:.25rem;
+}
+.stat-label{
+  font-family:'JetBrains Mono',monospace;
+  font-size:.65rem;letter-spacing:.12em;text-transform:uppercase;
+  font-weight:700;opacity:.8;
+}
+
+/* ══════════════════════════════════════════════════════════════
+   MARQUEE
+══════════════════════════════════════════════════════════════ */
+.marquee-wrap{
+  background:#000;border-top:3px solid #000;border-bottom:3px solid #000;
+  overflow:hidden;padding:.6rem 0;
+}
+.marquee-track{
+  display:flex;white-space:nowrap;
+  animation:marqueeScroll 30s linear infinite;
+}
+.marquee-track span{
+  font-family:'Orbitron',sans-serif;
+  font-size:1rem;letter-spacing:.15em;text-transform:uppercase;
+  color:var(--accent);padding:0;
+  text-shadow:var(--glow-sm);
+}
+@keyframes marqueeScroll{0%{transform:translateX(0);}100%{transform:translateX(-50%);}}
+
+/* ══════════════════════════════════════════════════════════════
+   ERA SECTIONS
+══════════════════════════════════════════════════════════════ */
+.era{
+  padding:5rem 2rem 5rem 2rem;
+  border-bottom:3px solid #000;
+  position:relative;overflow:hidden;
+}
+@media(max-width:480px){.era{padding-left:1.5rem;padding-right:1.5rem;}}
+
+.era-header-card{
+  display:inline-flex;flex-direction:column;
+  border:3px solid #000;margin-bottom:3rem;
+  position:relative;overflow:hidden;
+}
+.era-year{
+  font-family:'Orbitron',sans-serif;
+  font-size:clamp(3rem,8vw,7rem);
+  font-weight:900;line-height:.9;letter-spacing:-.03em;
+  padding:1.2rem 1.5rem .6rem;
+  color:#000;
+}
+.era-name{
+  font-family:'Orbitron',sans-serif;
+  font-size:clamp(.85rem,2vw,1.5rem);
+  font-weight:700;letter-spacing:.12em;text-transform:uppercase;
+  padding:.5rem 1.5rem 1rem;
+  color:#000;border-top:2px solid rgba(0,0,0,.25);
+}
+
+/* Rocking animation on era card */
+@keyframes rock{0%,100%{transform:rotate(-1.5deg);}50%{transform:rotate(1.5deg);}}
+.era-header-card:hover{animation:rock .5s ease-in-out;}
+
+.era-intro{
+  font-family:'JetBrains Mono',monospace;
+  font-size:.9rem;line-height:1.8;
+  color:var(--text);max-width:680px;
+  margin-bottom:2.5rem;
+  border-left:2px solid var(--accent);
+  padding-left:1rem;
+}
+
+/* Event cards grid */
+.events-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fill,minmax(280px,1fr));
+  gap:1.5px;
+  border:1.5px solid var(--rule);
+}
+@media(max-width:768px){.events-grid{grid-template-columns:1fr;}}
+
+.event-card{
+  background:var(--card-bg);
+  border:1.5px solid var(--rule);
+  padding:1.5rem;
+  transition:background .2s,transform .15s;
+  cursor:default;position:relative;
+}
+.event-card:hover{background:var(--card-hover);transform:translateY(-2px);}
+
+.ev-year{
+  font-family:'Orbitron',sans-serif;
+  font-size:.72rem;letter-spacing:.2em;
+  color:var(--accent);margin-bottom:.5rem;font-weight:700;
+}
+.ev-title{
+  font-family:'Orbitron',sans-serif;
+  font-size:clamp(1rem,2vw,1.4rem);font-weight:700;
+  color:var(--bright);margin-bottom:.6rem;line-height:1.15;
+}
+.ev-body{
+  font-family:'JetBrains Mono',monospace;
+  font-size:.82rem;line-height:1.75;color:var(--text);
+}
+.ev-tag{
+  display:inline-block;
+  font-family:'JetBrains Mono',monospace;
+  font-size:.68rem;letter-spacing:.12em;text-transform:uppercase;
+  padding:.25rem .55rem;margin-top:.8rem;
+  border:1px solid var(--rule2);color:var(--dim);
+  transition:background .2s,color .2s;
+}
+.event-card:hover .ev-tag{background:var(--tag-hover-bg);color:var(--accent);}
+
+/* Haring burst SVG accent */
+.haring-burst{
+  position:absolute;right:-20px;bottom:-20px;
+  width:90px;height:90px;opacity:.07;
+  pointer-events:none;
+}
+
+/* ══════════════════════════════════════════════════════════════
+   ERA COLORS
+══════════════════════════════════════════════════════════════ */
+/* Era 0: ARPANET — deep navy stays, card in cyan */
+.era-0 .era-header-card{background:#00CFFF;}
+.era-0{background:var(--bg);}
+
+/* Era 1: Dial-Up / Web 1.0 — dark teal */
+.era-1{background:#001A2E;}
+.era-1 .era-header-card{background:#FF6A00;}
+
+/* Era 2: Broadband / Web 2.0 — dark blue-grey */
+.era-2{background:#050D1A;}
+.era-2 .era-header-card{background:#39FFB0;}
+.era-2 .era-year,.era-2 .era-name{color:#000;}
+
+/* Era 3: Mobile Web — near-black purple tint */
+.era-3{background:#08001A;}
+.era-3 .era-header-card{background:#C060FF;}
+
+/* Era 4: Platform Era — very dark */
+.era-4{background:#001008;}
+.era-4 .era-header-card{background:#00CFFF;}
+
+/* Era 5: AI Web — deep midnight */
+.era-5{background:#0A0014;}
+.era-5 .era-header-card{background:#FF6A00;}
+
+/* ══════════════════════════════════════════════════════════════
+   PHOTO STRIPS
+══════════════════════════════════════════════════════════════ */
+.photo-strip{
+  display:grid;grid-template-columns:repeat(3,1fr);
+  border-top:5px solid #000;border-bottom:5px solid #000;
+}
+@media(max-width:600px){.photo-strip{grid-template-columns:1fr 1fr;}}
+@media(max-width:600px){.photo-strip .ps-cell:nth-child(3){display:none;}}
+
+.ps-cell{
+  aspect-ratio:4/3;overflow:hidden;
+  position:relative;cursor:default;
+  border-right:3px solid #000;
+}
+.ps-cell:last-child{border-right:none;}
+.ps-cell img{
+  width:100%;height:100%;object-fit:cover;
+  filter:var(--photo-filter);
+  transition:filter .4s,transform .4s;
+}
+.ps-cell:hover img{filter:var(--photo-hover);transform:scale(1.07);}
+.ps-overlay{
+  position:absolute;inset:0;
+  mix-blend-mode:color;
+  opacity:.45;
+  transition:opacity .3s;
+}
+.ps-cell:hover .ps-overlay{opacity:.2;}
+.ps-caption{
+  position:absolute;bottom:0;left:0;right:0;
+  background:#000;padding:.4rem .7rem;
+  font-family:'Orbitron',sans-serif;font-size:.58rem;
+  letter-spacing:.15em;text-transform:uppercase;
+  color:var(--accent);
+}
+
+/* ══════════════════════════════════════════════════════════════
+   QUOTE BANDS
+══════════════════════════════════════════════════════════════ */
+.quote-band{
+  min-height:320px;overflow:hidden;
+  position:relative;
+  border-top:3px solid #000;border-bottom:3px solid #000;
+  display:flex;align-items:center;justify-content:center;
+  padding:4rem 2rem;
+}
+.quote-band-inner{
+  padding:0;text-align:center;
+  max-width:900px;
+  width:100%;
+}
+.pq-text{
+  font-family:'Orbitron',sans-serif;
+  font-size:clamp(1.6rem,4vw,3rem);
+  font-weight:700;line-height:1.35;letter-spacing:.01em;
+}
+.pq-hl{
+  display:inline;padding:0 .15em;
+}
+.pq-attr{
+  font-family:'JetBrains Mono',monospace;
+  font-size:.78rem;letter-spacing:.2em;text-transform:uppercase;
+  margin-top:1.5rem;opacity:.7;
+}
+
+/* ══════════════════════════════════════════════════════════════
+   FUTURE / CLOSING SECTION
+══════════════════════════════════════════════════════════════ */
+.future-section{
+  padding:6rem 2rem 6rem 2rem;
+  background:var(--bg);
+  border-bottom:3px solid #000;
+}
+@media(max-width:480px){.future-section{padding-left:1.5rem;}}
+
+.future-heading{
+  font-family:'Orbitron',sans-serif;
+  font-size:clamp(2rem,6vw,5rem);font-weight:900;
+  color:var(--bright);letter-spacing:-.02em;
+  margin-bottom:2rem;line-height:.9;text-transform:uppercase;
+}
+.future-heading .hl{color:var(--accent);text-shadow:var(--glow-sm);}
+
+.future-grid{
+  display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));
+  gap:1.5px;border:1.5px solid var(--rule);margin-top:2.5rem;
+}
+.future-card{
+  background:var(--card-bg);border:1.5px solid var(--rule);
+  padding:1.5rem;transition:background .2s;
+}
+.future-card:hover{background:var(--card-hover);}
+.fc-icon{display:none;}
+.fc-title{
+  font-family:'Orbitron',sans-serif;font-size:1rem;font-weight:700;
+  color:var(--bright);margin-bottom:.6rem;letter-spacing:.05em;
+}
+.fc-body{font-family:'JetBrains Mono',monospace;font-size:.8rem;line-height:1.75;color:var(--text);}
+
+/* ══════════════════════════════════════════════════════════════
+   ENTITY GRID
+══════════════════════════════════════════════════════════════ */
+.entity-section{
+  background:#000;
+  padding:5rem 2rem 5rem 2rem;
+  border-bottom:3px solid var(--rule);
+}
+@media(max-width:480px){.entity-section{padding-left:1.5rem;}}
+
+.entity-heading{
+  font-family:'Orbitron',sans-serif;
+  font-size:clamp(1.5rem,4vw,3rem);font-weight:900;
+  color:var(--accent);text-shadow:var(--glow);
+  letter-spacing:.05em;text-transform:uppercase;
+  margin-bottom:.5rem;
+}
+.entity-sub{
+  font-family:'JetBrains Mono',monospace;
+  font-size:.78rem;color:var(--muted);letter-spacing:.1em;
+  text-transform:uppercase;margin-bottom:2.5rem;
+}
+.entity-grid{
+  display:flex;flex-wrap:wrap;gap:.5rem;
+}
+.entity-badge{
+  font-family:'JetBrains Mono',monospace;
+  font-size:.68rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;
+  padding:.35rem .8rem;border:1px solid rgba(255,255,255,.1);
+  transition:transform .2s,box-shadow .2s,color .2s;
+  cursor:pointer;
+  display:inline-block;
+}
+.entity-badge:hover{transform:scale(1.12) rotate(-2deg);box-shadow:0 4px 18px rgba(0,0,0,.4);}
+
+/* ══════════════════════════════════════════════════════════════
+   ECOSYSTEM
+══════════════════════════════════════════════════════════════ */
+.ecosystem{
+  padding:5rem 2rem 5rem 2rem;
+  background:var(--bg1);border-bottom:3px solid #000;
+}
+@media(max-width:480px){.ecosystem{padding-left:1.5rem;}}
+
+.eco-header{
+  font-family:'Orbitron',sans-serif;
+  font-size:.75rem;letter-spacing:.25em;text-transform:uppercase;
+  color:var(--accent);margin-bottom:2.5rem;font-weight:700;
+  border-bottom:1px solid var(--rule);padding-bottom:1rem;
+}
+.eco-grid{
+  display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));
+  gap:2.5rem;
+}
+.eco-group-label{
+  font-family:'Orbitron',sans-serif;
+  font-size:.72rem;font-weight:700;letter-spacing:.2em;text-transform:uppercase;
+  color:var(--dim);margin-bottom:1rem;
+  border-bottom:1px solid var(--rule);padding-bottom:.5rem;
+}
+.eco-link{
+  display:block;
+  font-family:'JetBrains Mono',monospace;
+  font-size:.78rem;color:var(--text);
+  padding:.3rem 0;border-bottom:1px solid var(--rule);
+  transition:color .2s,padding-left .2s;
+}
+.eco-link:hover{color:var(--accent);padding-left:.5rem;}
+
+/* ══════════════════════════════════════════════════════════════
+   FOOTER
+══════════════════════════════════════════════════════════════ */
+footer{
+  padding:3rem 3rem 3rem 3rem;
+  display:grid;grid-template-columns:1fr 1fr 1fr;gap:3rem;
+  border-top:1px solid var(--rule);background:var(--bg1);
+  transition:background .35s,border-color .35s;
+}
+@media(max-width:768px){footer{grid-template-columns:1fr;padding:2.5rem 1.5rem;}}
+
+.footer-brand{
+  font-family:'Orbitron',sans-serif;
+  font-size:1.1rem;font-weight:700;letter-spacing:.08em;
+  text-transform:uppercase;color:var(--bright);
+  transition:color .35s;margin-bottom:.3rem;
+}
+.footer-brand span{color:var(--accent);}
+.footer-col-label{
+  font-family:'JetBrains Mono',monospace;
+  font-size:.68rem;letter-spacing:.25em;text-transform:uppercase;
+  color:var(--accent);margin-bottom:.8rem;transition:color .35s;
+  border-bottom:1px solid var(--rule);padding-bottom:.5rem;
+}
+.footer-note{
+  font-family:'JetBrains Mono',monospace;
+  font-size:.78rem;line-height:1.8;color:var(--text);transition:color .35s;
+}
+.footer-bar{
+  background:var(--bg);border-top:1px solid var(--rule);
+  padding:1rem 3rem;display:flex;align-items:center;justify-content:space-between;
+  font-family:'JetBrains Mono',monospace;
+  font-size:.68rem;letter-spacing:.16em;text-transform:uppercase;color:var(--dim);
+  transition:background .35s,border-color .35s,color .35s;
+}
+@media(max-width:768px){.footer-bar{padding:1rem 1.5rem;flex-direction:column;gap:.5rem;text-align:center;}}
+.footer-share-link{
+  font-family:'JetBrains Mono',monospace;
+  font-size:.78rem;letter-spacing:.16em;text-transform:uppercase;
+  color:var(--dim);text-decoration:none;
+  transition:color .2s;padding:.15rem 0;
+  border-bottom:1px solid transparent;
+}
+.footer-share-link:hover{color:var(--accent);border-bottom-color:var(--accent);}
+.footer-accent-bar{display:flex;height:3px;}
+.footer-accent-bar div{flex:1;}
+/* ══════════════════════════════════════════════════════════════
+   ARCHITECTS SECTION
+══════════════════════════════════════════════════════════════ */
+.architects{
+  padding:5rem 2rem 5rem 2rem;
+  background:var(--bg);
+  border-bottom:3px solid #000;
+}
+@media(max-width:480px){.architects{padding-left:1.5rem;}}
+
+.architects-heading{
+  font-family:'Orbitron',sans-serif;
+  font-size:clamp(1.5rem,4vw,3rem);font-weight:900;
+  color:var(--bright);letter-spacing:.04em;text-transform:uppercase;
+  margin-bottom:.4rem;line-height:1;
+}
+.architects-sub{
+  font-family:'JetBrains Mono',monospace;
+  font-size:.78rem;color:var(--dim);letter-spacing:.15em;
+  text-transform:uppercase;margin-bottom:2.5rem;
+  border-bottom:1px solid var(--rule);padding-bottom:1rem;
+}
+
+.architects-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fill,minmax(230px,1fr));
+  gap:1px;background:var(--rule);
+}
+
+.arch-card{
+  background:var(--card-bg);
+  display:flex;flex-direction:column;
+  position:relative;overflow:hidden;
+  cursor:default;
+  transition:background .2s;
+}
+.arch-card:hover{background:var(--card-hover);}
+.arch-card::before{
+  content:'';position:absolute;top:0;left:0;right:0;height:3px;
+  background:var(--p-accent,var(--accent));
+  transform:scaleX(0);transform-origin:left;
+  transition:transform .35s ease;z-index:2;
+}
+.arch-card:hover::before{transform:scaleX(1);}
+
+.arch-photo{
+  width:100%;aspect-ratio:1/1;
+  object-fit:cover;object-position:center top;
+  display:block;
+  filter:grayscale(1) contrast(1.12) brightness(.72);
+  transition:filter .4s ease;
+}
+.arch-card:hover .arch-photo{
+  filter:grayscale(.15) contrast(1.1) brightness(.9);
+}
+
+.arch-body{padding:1.2rem 1.4rem 1.4rem;}
+
+.arch-era{
+  font-family:'JetBrains Mono',monospace;
+  font-size:.68rem;letter-spacing:.2em;text-transform:uppercase;
+  color:var(--muted);margin-bottom:.45rem;
+}
+.arch-name{
+  font-family:'Orbitron',sans-serif;
+  font-size:clamp(.95rem,1.8vw,1.2rem);font-weight:700;
+  color:var(--bright);text-transform:uppercase;letter-spacing:.03em;
+  line-height:1.1;margin-bottom:.3rem;
+}
+.arch-role{
+  font-family:'JetBrains Mono',monospace;
+  font-size:.7rem;letter-spacing:.1em;text-transform:uppercase;
+  color:var(--p-accent,var(--accent));margin-bottom:.85rem;
+}
+.arch-bio{
+  font-family:'JetBrains Mono',monospace;
+  font-size:.78rem;line-height:1.75;color:var(--text);
+}
+.arch-link{
+  display:inline-flex;align-items:center;gap:.3rem;
+  margin-top:.9rem;
+  font-family:'JetBrains Mono',monospace;font-size:.58rem;
+  letter-spacing:.12em;text-transform:uppercase;
+  color:var(--muted);text-decoration:none;
+  transition:color .2s;
+}
+.arch-link:hover{color:var(--accent);}
+.arch-link::after{content:'↗';}
+
+/* Light mode accent overrides for bright colors */
+[data-theme="light"] .arch-card[style*="--p-accent:#00CFFF"]::before,
+[data-theme="light"] .arch-card[style*="--p-accent:#39FFB0"]::before{background:var(--accent)!important;}
+[data-theme="light"] .arch-card[style*="--p-accent:#00CFFF"] .arch-role,
+[data-theme="light"] .arch-card[style*="--p-accent:#39FFB0"] .arch-role{color:var(--accent)!important;}
+
+/* ══════════════════════════════════════════════════════════════
+   LIGHT MODE — ERA + SECTION OVERRIDES
+   Era sections have hardcoded dark backgrounds — override in light mode
+══════════════════════════════════════════════════════════════ */
+[data-theme="light"] .era-0,
+[data-theme="light"] .era-1,
+[data-theme="light"] .era-2,
+[data-theme="light"] .era-3,
+[data-theme="light"] .era-4,
+[data-theme="light"] .era-5{ background:var(--bg)!important; }
+
+[data-theme="light"] .quote-band[style*="background:#001"],
+[data-theme="light"] .quote-band[style*="background:#0A0"]{ 
+  background:var(--bg2)!important;color:var(--bright)!important; 
+}
+[data-theme="light"] .quote-band[style*="background:#001"] .pq-text,
+[data-theme="light"] .quote-band[style*="background:#0A0"] .pq-text,
+[data-theme="light"] .quote-band[style*="background:#001"] .pq-attr,
+[data-theme="light"] .quote-band[style*="background:#0A0"] .pq-attr{ color:var(--bright)!important; }
+[data-theme="light"] .quote-band[style*="background:#001"] .pq-hl,
+[data-theme="light"] .quote-band[style*="background:#0A0"] .pq-hl{ color:#000!important; }
+[data-theme="light"] .quote-band[style*="background:#FF6A00"]{ color:#000!important; }
+[data-theme="light"] .quote-band[style*="background:#39FFB0"]{ color:#000!important; }
+[data-theme="light"] .quote-band[style*="background:#C060FF"]{ color:var(--bright)!important; }
+
+[data-theme="light"] .entity-section{ background:var(--bg1)!important; }
+[data-theme="light"] .entity-heading{ text-shadow:none!important; }
+[data-theme="light"] .entity-badge{ border-color:var(--rule2)!important; color:var(--bright)!important; }
+
+[data-theme="light"] .marquee-wrap{ background:var(--bg1)!important; }
+[data-theme="light"] .marquee-track span{ color:var(--accent)!important; text-shadow:none!important; }
+
+/* Neon cyan/green accents unreadable on light — remap to theme accent */
+[data-theme="light"] .ev-year,
+[data-theme="light"] .sn-item.active,
+[data-theme="light"] .hero-stat strong,
+[data-theme="light"] .hero-index span{ color:var(--accent)!important; }
+
+[data-theme="light"] .era-header-card .era-year,
+[data-theme="light"] .era-header-card .era-name{ color:#000!important; }
+
+/* Event cards on dark era bg — make card bg follow theme */
+[data-theme="light"] .event-card{ background:var(--card-bg); border-color:var(--rule); }
+[data-theme="light"] .events-grid{ border-color:var(--rule); }
+
+/* Stat cells — keep their vivid colors, ensure text readable */
+[data-theme="light"] .stat-cell:nth-child(1),
+[data-theme="light"] .stat-cell:nth-child(2),
+[data-theme="light"] .stat-cell:nth-child(3){ color:#000!important; }
+[data-theme="light"] .stat-cell:nth-child(4){ color:#fff!important; }
+
+/* ══════════════════════════════════════════════════════════════
+   SHARE + PDF BUTTONS
+══════════════════════════════════════════════════════════════ */
+.action-btns{
+  display:flex;align-items:flex-start;gap:.75rem;margin-top:2.2rem;flex-wrap:wrap;
+  position:relative;z-index:2;
+}
+.share-wrap{position:relative;display:inline-block;}
+.pdf-btn{color:var(--dim)!important;}
+.pdf-btn:hover{color:#000!important;}
+.share-btn{
+  display:inline-flex;align-items:center;gap:.65rem;
+  font-family:'JetBrains Mono',monospace;font-weight:700;
+  font-size:0.72rem;letter-spacing:.22em;text-transform:uppercase;
+  color:var(--dim);background:transparent;
+  border:1px solid var(--rule2);padding:.7rem 1.4rem;
+  cursor:pointer;transition:color .2s,border-color .2s,background .2s;
+  position:relative;white-space:nowrap;
+}
+.share-btn::before{
+  content:'';position:absolute;top:0;left:0;bottom:0;width:2px;
+  background:var(--accent);transform:scaleY(0);transform-origin:top;
+  transition:transform .25s ease;
+}
+.share-btn:hover{color:#000;border-color:var(--accent);background:var(--accent);}
+[data-theme="light"] .share-btn:hover{color:#fff;background:var(--accent);border-color:var(--accent);}
+.share-btn:hover::before{transform:scaleY(0);}
+.share-btn svg{
+  width:13px;height:13px;stroke:currentColor;fill:none;
+  stroke-width:2;stroke-linecap:square;stroke-linejoin:miter;
+  flex-shrink:0;transition:stroke .2s;
+}
+.share-dropdown{
+  position:absolute;top:calc(100% + 4px);left:0;
+  background:var(--bg2);border:1px solid var(--rule2);
+  min-width:100%;z-index:500;
+  display:none;flex-direction:column;
+  transition:border-color .35s,background .35s;
+}
+.share-wrap.open .share-dropdown{display:flex;}
+.share-dropdown a{
+  font-family:'JetBrains Mono',monospace;font-size:0.68rem;
+  letter-spacing:.16em;text-transform:uppercase;
+  color:var(--dim);padding:.6rem 1rem;
+  border-bottom:1px solid var(--rule);
+  transition:color .15s,background .15s;text-decoration:none;white-space:nowrap;
+}
+.share-dropdown a:last-child{border-bottom:none;}
+.share-dropdown a:hover{color:var(--accent);background:rgba(0,207,255,.05);}
+</style>
+</head>
+
+<body>
+
+<!-- CURSOR -->
+<div class="cur" id="cur"></div>
+<div class="cur-ring" id="curRing"></div>
+
+<!-- PROGRESS -->
+<div id="progress"></div>
+
+<!-- TOOLTIP -->
+<div class="pop-tip" id="popTip"></div>
+
+<!-- NAV -->
+<nav class="nav">
+  <a href="https://abriefhistoryofeverything.com" class="nav-brand">
+    <span class="nav-brand-full">A (BRIEF) HISTORY OF EVERYTHING_</span>
+    <span class="nav-brand-short">A (BRIEF) HISTORY OF_</span>
+  </a>
+  <span class="nav-sep" style="display:none;"></span>
+  <span class="nav-topic">THE INTERNET</span>
+  <span class="nav-era-label" id="navEraLabel">// INITIALIZING</span>
+  <div class="mode-toggle">
+    <span class="mode-icon" id="modeIcon">☀</span>
+    <div class="toggle-switch" id="toggleSwitch" role="button" aria-label="Toggle dark/light mode" tabindex="0"></div>
+    <span class="mode-label" id="modeLabel">LIGHT</span>
+  </div>
+</nav>
+
+<!-- SIDE NAV -->
+<nav class="sidenav" aria-label="Section navigation">
+  <div class="sn-idx">003</div>
+  <div class="sn-item" data-sec="0" onclick="scrollTo(0,'s0')">00</div>
+  <div class="sn-item" data-sec="1" onclick="scrollTo(0,'s1')">01</div>
+  <div class="sn-item" data-sec="2" onclick="scrollTo(0,'s2')">02</div>
+  <div class="sn-item" data-sec="3" onclick="scrollTo(0,'s3')">03</div>
+  <div class="sn-item" data-sec="4" onclick="scrollTo(0,'s4')">04</div>
+  <div class="sn-item" data-sec="5" onclick="scrollTo(0,'s5')">05</div>
+  <div class="sn-item" data-sec="6" onclick="scrollTo(0,'s6')">06</div>
+  <div class="sn-item" data-sec="7" onclick="scrollTo(0,'architects')">07</div>
+  <div class="sn-arrow">↓</div>
+</nav>
+
+<!-- PAGE BODY -->
+<div class="page-body">
+
+<!-- ═══════════════════════════════════════════════════════════
+     HERO
+════════════════════════════════════════════════════════════ -->
+<section class="hero" id="s0">
+  <canvas class="hero-canvas" id="heroCanvas"></canvas>
+
+  <div class="hero-index" aria-label="Chronological Index 003">
+    CHRONOLOGICAL INDEX
+    <span>003</span>
+  </div>
+
+  <h1 class="hero-title fade-up">
+    <span class="of-the">A (BRIEF) HISTORY OF</span>
+    THE INTERNET<span class="cursor">_</span>
+  </h1>
+
+  <p class="hero-sub fade-up">
+    From a four-node military experiment in 1969 to a network connecting 5.4 billion people — the internet is the most transformative infrastructure ever built. This is the story of packets, protocols, browsers, platforms, and the ongoing battle for who controls it all.
+  </p>
+
+  <div class="hero-meta fade-up">
+    <div class="hero-stat" data-tip="As of 2024, approximately 5.4 billion people — 67% of the global population — use the internet.">
+      <strong>5.4B</strong> Users Worldwide
+    </div>
+    <div class="hero-stat" data-tip="The internet carries roughly 5.5 quintillion bytes of data every single day.">
+      <strong>5.5 × 10¹⁸</strong> Bytes / Day
+    </div>
+    <div class="hero-stat" data-tip="ARPANET sent its first packet between UCLA and SRI on October 29, 1969. The message was 'LO' before the system crashed.">
+      <strong>1969</strong> First Packet
+    </div>
+    <div class="hero-stat" data-tip="Over 1.1 billion websites exist, though fewer than 200 million are actively maintained.">
+      <strong>1.1B+</strong> Websites
+    </div>
+  </div>
+
+  <!-- Share + PDF buttons -->
+  <div class="action-btns fade-up">
+    <div class="share-wrap" id="shareWrap">
+      <button class="share-btn" id="shareBtn" aria-label="Share this page">
+        <svg viewBox="0 0 16 16" aria-hidden="true"><circle cx="13" cy="3" r="1.5"/><circle cx="13" cy="13" r="1.5"/><circle cx="3" cy="8" r="1.5"/><line x1="4.4" y1="7.2" x2="11.6" y2="4"/><line x1="4.4" y1="8.8" x2="11.6" y2="12"/></svg>
+        Share
+      </button>
+      <div class="share-dropdown" id="shareDropdown" role="menu">
+        <a href="https://twitter.com/intent/tweet?text=A%20(Brief)%20History%20of%20the%20Internet%20%E2%80%94%20from%20ARPANET%20to%20AI&url=https%3A%2F%2Fabriefhistoryofeverything.com%2Finternet" target="_blank" rel="noopener" role="menuitem">Share on X</a>
+        <a href="https://www.linkedin.com/sharing/share-offsite/?url=https%3A%2F%2Fabriefhistoryofeverything.com%2Finternet" target="_blank" rel="noopener" role="menuitem">Share on LinkedIn</a>
+      </div>
+    </div>
+    <!-- PDF BUTTON — uncomment when PDF is ready to distribute
+    <button class="share-btn pdf-btn" id="pdfBtn" aria-label="Download PDF">
+      <svg viewBox="0 0 16 16" aria-hidden="true"><rect x="3" y="1" width="10" height="14" rx="1" stroke-width="1.5" fill="none"/><line x1="6" y1="5" x2="10" y2="5"/><line x1="6" y1="8" x2="10" y2="8"/><line x1="6" y1="11" x2="8" y2="11"/><polyline points="9,10 11,12 9,14" fill="none"/></svg>
+      Download PDF
+    </button>
+    -->
+  </div>
+
+  <div class="hero-scroll">SCROLL ↓</div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════════
+     STATS GRID
+════════════════════════════════════════════════════════════ -->
+<div class="stats-grid" role="list">
+  <div class="stat-cell fade-up" data-tip="Internet traffic doubles roughly every 3 years. Global IP traffic surpassed 5 exabytes per day in 2023.">
+    <span class="stat-emoji">📡</span>
+    <div class="stat-num">5 EB</div>
+    <div class="stat-label">Daily Traffic</div>
+  </div>
+  <div class="stat-cell fade-up" data-tip="From 4 nodes in 1969 to nearly 15 billion connected devices in 2024 — and growing.">
+    <span class="stat-emoji">🔗</span>
+    <div class="stat-num">15B</div>
+    <div class="stat-label">Connected Devices</div>
+  </div>
+  <div class="stat-cell fade-up" data-tip="Tim Berners-Lee invented the World Wide Web in 1989, proposing hyperlinked documents on top of the existing internet.">
+    <span class="stat-emoji">🕸</span>
+    <div class="stat-num">1989</div>
+    <div class="stat-label">Web Invented</div>
+  </div>
+  <div class="stat-cell fade-up" data-tip="The internet economy is estimated at over $30 trillion globally — larger than any national economy.">
+    <span class="stat-emoji">💰</span>
+    <div class="stat-num">$30T</div>
+    <div class="stat-label">Global Value</div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════════════════════
+     MARQUEE
+════════════════════════════════════════════════════════════ -->
+<div class="marquee-wrap" aria-hidden="true">
+  <div class="marquee-track">
+    <span>ARPANET ✦ TCP/IP ✦ MOSAIC ✦ NETSCAPE ✦ HTML ✦ HTTP ✦ WWW ✦ GOOGLE ✦ BROADBAND ✦ WI-FI ✦ YOUTUBE ✦ TWITTER ✦ IPHONE ✦ CLOUD ✦ TLS ✦ IPv6 ✦ NET NEUTRALITY ✦ GDPR ✦ WEBASSEMBLY ✦ 5G ✦ LARGE LANGUAGE MODELS ✦ PACKET SWITCHING ✦ DNS ✦ BGP ✦ </span>
+    <span>ARPANET ✦ TCP/IP ✦ MOSAIC ✦ NETSCAPE ✦ HTML ✦ HTTP ✦ WWW ✦ GOOGLE ✦ BROADBAND ✦ WI-FI ✦ YOUTUBE ✦ TWITTER ✦ IPHONE ✦ CLOUD ✦ TLS ✦ IPv6 ✦ NET NEUTRALITY ✦ GDPR ✦ WEBASSEMBLY ✦ 5G ✦ LARGE LANGUAGE MODELS ✦ PACKET SWITCHING ✦ DNS ✦ BGP ✦ </span>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════════════════════
+     ERA 0: ARPANET & THE PRECONDITIONS (1950s–1983)
+════════════════════════════════════════════════════════════ -->
+<section class="era era-0" id="s1" data-era="0" data-era-name="// ARPANET ERA">
+  <div class="era-header-card fade-up">
+    <div class="era-year">1969</div>
+    <div class="era-name">ARPANET &amp; THE FOUNDATION</div>
+  </div>
+
+  <p class="era-intro fade-up">
+    Long before anyone called it "the internet," a handful of researchers at DARPA, Bell Labs, and a dozen universities were solving a deceptively simple problem: how do you keep a communications network alive when parts of it are destroyed? The answer — packet switching — would change everything.
+  </p>
+
+  <div class="events-grid">
+    <div class="event-card fade-up" data-tip="Sputnik's launch in 1957 shocked the U.S. into creating DARPA — the Defense Advanced Research Projects Agency — which would fund the foundational internet research.">
+      <div class="ev-year">1957</div>
+      <div class="ev-title">Sputnik Launches DARPA</div>
+      <p class="ev-body">The Soviet satellite shocks America into action. President Eisenhower creates DARPA to ensure U.S. technological supremacy. The agency will go on to fund almost every foundational internet technology.</p>
+      <span class="ev-tag">Origin</span>
+      <svg class="haring-burst" viewBox="0 0 100 100"><circle cx="50" cy="50" r="48" fill="none" stroke="currentColor" stroke-width="3"/><line x1="50" y1="2" x2="50" y2="98" stroke="currentColor" stroke-width="2"/><line x1="2" y1="50" x2="98" y2="50" stroke="currentColor" stroke-width="2"/><line x1="15" y1="15" x2="85" y2="85" stroke="currentColor" stroke-width="2"/><line x1="85" y1="15" x2="15" y2="85" stroke="currentColor" stroke-width="2"/></svg>
+    </div>
+
+    <div class="event-card fade-up" data-tip="Paul Baran at RAND Corporation and Donald Davies at NPL independently develop the concept of breaking messages into blocks — 'packets' — that route around damage in a network.">
+      <div class="ev-year">1961–62</div>
+      <div class="ev-title">Packet Switching Theory</div>
+      <p class="ev-body">Leonard Kleinrock, Paul Baran, and Donald Davies independently propose that communication networks could route data in small packets rather than dedicated circuits. The entire internet still works this way.</p>
+      <span class="ev-tag">Theory</span>
+    </div>
+
+    <div class="event-card fade-up" data-tip="ARPANET's first message was sent from UCLA's SDS Sigma 7 to the SRI SDS 940. The intended message was 'LOGIN' but the system crashed after 'LO', making the first internet transmission historically poetic.">
+      <div class="ev-year">Oct 29, 1969</div>
+      <div class="ev-title">First Packet: "LO"</div>
+      <p class="ev-body">Charley Kline at UCLA sends the first message across ARPANET to SRI in Menlo Park. The system crashes after two letters. The internet's first message was, accidentally, "LO" — as in, lo and behold.</p>
+      <span class="ev-tag">Milestone</span>
+    </div>
+
+    <div class="event-card fade-up" data-tip="Email was invented as a side project. Ray Tomlinson chose the @ symbol to separate the user name from the host machine — a convention still used by 4 billion email users today.">
+      <div class="ev-year">1971</div>
+      <div class="ev-title">Email Invented</div>
+      <p class="ev-body">Ray Tomlinson sends the first networked email and chooses the @ symbol to denote user@host addressing. Within two years, 75% of all ARPANET traffic is email — the network's killer app, decades before that phrase existed.</p>
+      <span class="ev-tag">Protocol</span>
+    </div>
+
+    <div class="event-card fade-up" data-tip="TCP/IP replaced ARPANET's NCP protocol on January 1, 1983, a date known as 'Flag Day.' All connected computers had to switch simultaneously — the internet's first major coordinated migration.">
+      <div class="ev-year">1974–1983</div>
+      <div class="ev-title">TCP/IP: The Universal Language</div>
+      <p class="ev-body">Vint Cerf and Bob Kahn publish the TCP specification in 1974. On January 1, 1983, ARPANET switches to TCP/IP. Any computer, anywhere, can now join the same network. The modern internet is born.</p>
+      <span class="ev-tag">Infrastructure</span>
+    </div>
+
+    <div class="event-card fade-up" data-tip="DNS was created because the internet's original host list — a single text file called HOSTS.TXT — became impossibly large as the network grew. Paul Mockapetris invented the Domain Name System in 1983.">
+      <div class="ev-year">1983</div>
+      <div class="ev-title">DNS: The Internet's Phone Book</div>
+      <p class="ev-body">Paul Mockapetris invents the Domain Name System, translating human-readable names (mit.edu) into IP addresses. DNS becomes one of the most critical — and attacked — pieces of internet infrastructure.</p>
+      <span class="ev-tag">Infrastructure</span>
+    </div>
+  </div>
+</section>
+
+<!-- PHOTO STRIP 1 -->
+<div class="photo-strip" aria-hidden="true">
+  <div class="ps-cell">
+    <img src="internet/images/img-arpanet-map.png" alt="ARPANET map 1977" loading="lazy">
+    <div class="ps-overlay" style="background:#00CFFF;"></div>
+    <div class="ps-caption">ARPANET MAP · 1977</div>
+  </div>
+  <div class="ps-cell">
+    <img src="internet/images/img-vint-cerf-2010.jpg" alt="Vint Cerf" loading="lazy">
+    <div class="ps-overlay" style="background:#FF6A00;"></div>
+    <div class="ps-caption">VINT CERF · FATHER OF TCP/IP</div>
+  </div>
+  <div class="ps-cell">
+    <img src="internet/images/img-bell-labs.jpg" alt="Bell Labs" loading="lazy">
+    <div class="ps-overlay" style="background:#39FFB0;"></div>
+    <div class="ps-caption">BELL LABS · THE INVENTION FACTORY</div>
+  </div>
+</div>
+
+<!-- PARALLAX QUOTE 1 -->
+<div class="quote-band" style="background:#001A3D;color:#E0F0FF;">
+  <div class="quote-band-inner" data-quote="1">
+    <div class="pq-text" style="color:#E0F0FF;">
+      "The internet is the world's largest experiment in <span class="pq-hl" style="background:#00CFFF;color:#000;padding:0 .2em;">anarchy</span>, with no single person, company, or government in charge — and it mostly works."
+    </div>
+    <div class="pq-attr" style="color:#2266BB;">— ANDREW BLUM, TUBES (2012)</div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════════════════════
+     ERA 1: DIAL-UP & WEB 1.0 (1984–1999)
+════════════════════════════════════════════════════════════ -->
+<section class="era era-1" id="s2" data-era="1" data-era-name="// WEB 1.0">
+  <div class="era-header-card fade-up">
+    <div class="era-year">1991</div>
+    <div class="era-name">DIAL-UP &amp; WEB 1.0</div>
+  </div>
+
+  <p class="era-intro fade-up">
+    The web began as a document-sharing system for physicists. Within a decade it had become the biggest library, marketplace, and publishing platform in human history. This era ended with a spectacular crash — but everything built after stood on its rubble.
+  </p>
+
+  <div class="events-grid">
+    <div class="event-card fade-up" data-tip="Berners-Lee wrote his original proposal in March 1989. His boss wrote 'Vague but exciting' on the cover. The web went live on August 6, 1991, with the first website at info.cern.ch.">
+      <div class="ev-year">1989–1991</div>
+      <div class="ev-title">Tim Berners-Lee Invents the Web</div>
+      <p class="ev-body">A physicist at CERN proposes a hypertext system for sharing documents. He builds HTML, HTTP, and the URL — and puts them in the public domain. The first website explains what the web is. It is still online.</p>
+      <span class="ev-tag">Foundation</span>
+    </div>
+
+    <div class="event-card fade-up" data-tip="NSFNet, the US academic backbone, formally opens to commercial traffic in 1991, allowing businesses to use the internet for the first time. The commercial internet era begins.">
+      <div class="ev-year">1991</div>
+      <div class="ev-title">NSFNet Goes Commercial</div>
+      <p class="ev-body">The US National Science Foundation lifts restrictions on commercial use of the internet backbone. Suddenly, any company can use the network. Within months, the first commercial ISPs appear.</p>
+      <span class="ev-tag">Policy</span>
+    </div>
+
+    <div class="event-card fade-up" data-tip="Mosaic, created by Marc Andreessen and Eric Bina at NCSA, was the first browser to display images inline with text. It made the web visual — and instantly popular with non-technical users.">
+      <div class="ev-year">1993</div>
+      <div class="ev-title">Mosaic: The First Graphical Browser</div>
+      <p class="ev-body">Marc Andreessen and Eric Bina release Mosaic at the University of Illinois. The first browser to show images and text together transforms the web from academic curiosity to consumer phenomenon. Downloads: 2 million in the first year.</p>
+      <span class="ev-tag">Browser</span>
+    </div>
+
+    <div class="event-card fade-up" data-tip="AOL's mailing of CDs — eventually 300 million discs — introduced millions of Americans to 'the internet.' You've got mail. The modem screech became a generational sound signature.">
+      <div class="ev-year">1993–1996</div>
+      <div class="ev-title">AOL Mails the Internet</div>
+      <p class="ev-body">America Online floods mailboxes across America with free trial CDs. At peak, AOL was the largest internet company in the world — 30 million subscribers behind walled gardens, buddy lists, and the scream of a 56k modem.</p>
+      <span class="ev-tag">Consumer</span>
+    </div>
+
+    <div class="event-card fade-up" data-tip="Amazon launched in July 1995 as an online bookstore. eBay launched three weeks later. The idea that people would buy things from strangers via a computer was considered wildly optimistic.">
+      <div class="ev-year">1994–1995</div>
+      <div class="ev-title">E-Commerce Is Born</div>
+      <p class="ev-body">Pizza Hut takes the first online order. Amazon launches as 'Earth's Biggest Bookstore.' eBay makes strangers into trading partners. SSL encryption, introduced by Netscape, makes credit cards on the internet feel (somewhat) safe.</p>
+      <span class="ev-tag">Commerce</span>
+    </div>
+
+    <div class="event-card fade-up" data-tip="Between 1995 and 2000, NASDAQ rose 400%. When the bubble burst in March 2000, $5 trillion in market cap evaporated. Pets.com, Webvan, and Kozmo.com became cautionary tales.">
+      <div class="ev-year">1995–2001</div>
+      <div class="ev-title">The Dot-Com Bubble</div>
+      <p class="ev-body">Venture capital floods the internet. Companies with no revenue go public and achieve billion-dollar valuations. 'Eyeballs' replace earnings as the metric. The NASDAQ crashes 78% from its peak, wiping out trillions — and clearing the field for the companies that survived.</p>
+      <span class="ev-tag">Crash</span>
+    </div>
+  </div>
+</section>
+
+<!-- PHOTO STRIP 2 -->
+<div class="photo-strip" aria-hidden="true">
+  <div class="ps-cell">
+    <img src="internet/images/img-tim-berners-lee.jpg" alt="Tim Berners-Lee" loading="lazy">
+    <div class="ps-overlay" style="background:#FF6A00;"></div>
+    <div class="ps-caption">TIM BERNERS-LEE · INVENTOR OF THE WEB</div>
+  </div>
+  <div class="ps-cell">
+    <img src="internet/images/img-netscape-navigator.png" alt="Netscape Navigator" loading="lazy">
+    <div class="ps-overlay" style="background:#C060FF;"></div>
+    <div class="ps-caption">NETSCAPE NAVIGATOR · 1995</div>
+  </div>
+  <div class="ps-cell">
+    <img src="internet/images/img-cable-modem.jpg" alt="Cable modem" loading="lazy">
+    <div class="ps-overlay" style="background:#39FFB0;"></div>
+    <div class="ps-caption">THE CABLE MODEM ERA</div>
+  </div>
+</div>
+
+<!-- PARALLAX QUOTE 2 -->
+<div class="quote-band" style="background:#FF6A00;color:#000;">
+  <div class="quote-band-inner" data-quote="2">
+    <div class="pq-text" style="color:#000;">
+      "We are all now connected by the internet, like neurons in a <span class="pq-hl" style="background:#000;color:#FF6A00;padding:0 .2em;">giant brain</span>."
+    </div>
+    <div class="pq-attr" style="color:rgba(0,0,0,.6);">— STEPHEN HAWKING</div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════════════════════
+     ERA 2: BROADBAND & WEB 2.0 (2000–2007)
+════════════════════════════════════════════════════════════ -->
+<section class="era era-2" id="s3" data-era="2" data-era-name="// WEB 2.0">
+  <div class="era-header-card fade-up">
+    <div class="era-year">2004</div>
+    <div class="era-name">BROADBAND &amp; WEB 2.0</div>
+  </div>
+
+  <p class="era-intro fade-up">
+    Broadband killed the modem screech. The surviving companies rebuilt the web on a new principle: users aren't just readers — they're writers, creators, and the product. Social networks, user-generated content, and search advertising became trillion-dollar industries. Web 2.0 rewired culture.
+  </p>
+
+  <div class="events-grid">
+    <div class="event-card fade-up" data-tip="Wikipedia launched on January 15, 2001, as a 'feeder' for Nupedia. By 2004 it had 1 million articles. The idea that anonymous volunteers would create the world's largest encyclopedia seemed absurd — until it worked.">
+      <div class="ev-year">2001</div>
+      <div class="ev-title">Wikipedia: The Hive Mind</div>
+      <p class="ev-body">Jimmy Wales and Larry Sanger launch Wikipedia as an experimental side project. Volunteers write, edit, and police 60 million articles across 320 languages — proving that open collaboration at internet scale could build something magnificent.</p>
+      <span class="ev-tag">Knowledge</span>
+    </div>
+
+    <div class="event-card fade-up" data-tip="Google launched PageRank in 1998, but its IPO in 2004 — raising $1.67 billion — marked the moment search advertising became the dominant internet business model.">
+      <div class="ev-year">2000–2004</div>
+      <div class="ev-title">Google Invents Search Advertising</div>
+      <p class="ev-body">AdWords launches in 2000 with 350 customers. By 2004, Google's IPO values the company at $23 billion. The core insight: intent signals in a search box are worth more than any other form of advertising.</p>
+      <span class="ev-tag">Revenue</span>
+    </div>
+
+    <div class="event-card fade-up" data-tip="Mark Zuckerberg launched 'Thefacebook' from his Harvard dorm room in February 2004. Within a month, half of Harvard was on it. Within a year, it had spread to hundreds of universities.">
+      <div class="ev-year">2004</div>
+      <div class="ev-title">Facebook: The Social Graph</div>
+      <p class="ev-body">A college social directory becomes the largest social network in history. Facebook introduces the News Feed in 2006, the Like button in 2009, and a surveillance capitalism model that vacuums up behavioral data to sell targeted advertising.</p>
+      <span class="ev-tag">Social</span>
+    </div>
+
+    <div class="event-card fade-up" data-tip="YouTube was acquired by Google for $1.65 billion in October 2006 — just 18 months after founding. Google was criticized for overpaying. Today YouTube generates over $30 billion annually.">
+      <div class="ev-year">2005–2006</div>
+      <div class="ev-title">YouTube: Everyone's a Broadcaster</div>
+      <p class="ev-body">Three former PayPal employees build YouTube in a garage. 'Me at the zoo' is the first upload. Within a year, 100 million videos stream daily. Google buys it for $1.65 billion. Broadcast television will never fully recover.</p>
+      <span class="ev-tag">Video</span>
+    </div>
+
+    <div class="event-card fade-up" data-tip="Amazon Web Services launched its S3 storage service in March 2006 and EC2 compute in August 2006. Cloud computing — renting infrastructure instead of owning it — becomes the default for every internet company that follows.">
+      <div class="ev-year">2006</div>
+      <div class="ev-title">AWS: The Internet's Backbone</div>
+      <p class="ev-body">Amazon launches S3 and EC2, renting computing and storage by the hour. Netflix, Airbnb, and millions of startups will be built on top of it. The cloud means no one needs to own servers anymore — and Amazon quietly becomes the infrastructure of the internet.</p>
+      <span class="ev-tag">Infrastructure</span>
+    </div>
+
+    <div class="event-card fade-up" data-tip="Twitter launched at SXSW in March 2007 with 140 characters — the length of an SMS message minus a 20-character username. The constraint shaped a new form of public discourse.">
+      <div class="ev-year">2006</div>
+      <div class="ev-title">Twitter: The Public Conversation</div>
+      <p class="ev-body">Jack Dorsey, Ev Williams, Biz Stone, and Noah Glass launch a micro-blogging service. 140 characters becomes the unit of public thought. From Arab Spring to presidential announcements, Twitter rewires how news flows.</p>
+      <span class="ev-tag">Social</span>
+    </div>
+  </div>
+</section>
+
+<!-- PARALLAX QUOTE 3 -->
+<div class="quote-band" style="background:#39FFB0;color:#000;">
+  <div class="quote-band-inner" data-quote="3">
+    <div class="pq-text" style="color:#000;">
+      "The web as I envisioned it, we have not seen it yet. The future is still <span class="pq-hl" style="background:#000;color:#39FFB0;padding:0 .2em;">so much bigger</span> than the past."
+    </div>
+    <div class="pq-attr" style="color:rgba(0,0,0,.55);">— TIM BERNERS-LEE</div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════════════════════
+     ERA 3: MOBILE WEB (2007–2013)
+════════════════════════════════════════════════════════════ -->
+<section class="era era-3" id="s4" data-era="3" data-era-name="// MOBILE ERA">
+  <div class="era-header-card fade-up">
+    <div class="era-year">2007</div>
+    <div class="era-name">THE MOBILE REVOLUTION</div>
+  </div>
+
+  <p class="era-intro fade-up">
+    The internet escaped the desktop. A single product announcement in January 2007 put a supercomputer in every pocket — and with it, always-on connectivity, GPS, cameras, and app stores. The internet became ambient. Mobile traffic surpassed desktop in 2016 and never looked back.
+  </p>
+
+  <div class="events-grid">
+    <div class="event-card fade-up" data-tip="Steve Jobs said the iPhone was 'five years ahead of anything else.' He was underestimating. At the 2007 launch, he described it as an iPod, a phone, and an internet communicator. The audience laughed. They didn't understand what was coming.">
+      <div class="ev-year">Jan 9, 2007</div>
+      <div class="ev-title">iPhone: The Internet in Your Pocket</div>
+      <p class="ev-body">Steve Jobs introduces a phone with a full web browser, touchscreen, and no keyboard. Safari shows real web pages, not watered-down mobile versions. The mobile internet era begins. Two billion iPhones will be sold over the next 17 years.</p>
+      <span class="ev-tag">Hardware</span>
+    </div>
+
+    <div class="event-card fade-up" data-tip="Google announced Android in November 2007, days after the iPhone SDK was released. Android now runs on over 3 billion active devices worldwide — the most widely used operating system in history.">
+      <div class="ev-year">2008</div>
+      <div class="ev-title">Android: Open Source Mobile</div>
+      <p class="ev-body">Google's open-source mobile OS launches on the HTC Dream. By giving Android away for free, Google ensures search and advertising follow users to mobile. Android now commands 72% of the global smartphone market.</p>
+      <span class="ev-tag">Platform</span>
+    </div>
+
+    <div class="event-card fade-up" data-tip="Apple launched the App Store on July 10, 2008, with 500 apps. It was an entirely new distribution model — a curated marketplace where Apple took 30% of every transaction. Today it processes over $1 trillion in annual sales.">
+      <div class="ev-year">2008</div>
+      <div class="ev-title">The App Store Economy</div>
+      <p class="ev-body">Apple's App Store and Google Play create new platform economics. The smartphone becomes a portal to millions of applications. By 2024, the App Store alone has processed over $1.7 trillion in developer billings. A new industry emerges: mobile app development.</p>
+      <span class="ev-tag">Marketplace</span>
+    </div>
+
+    <div class="event-card fade-up" data-tip="Instagram was acquired by Facebook for $1 billion in April 2012 — considered wildly overpriced for a 13-person company with no revenue. Instagram's revenue is now estimated at $30+ billion annually.">
+      <div class="ev-year">2010–2012</div>
+      <div class="ev-title">Instagram & the Visual Internet</div>
+      <p class="ev-body">Instagram launches in October 2010 and reaches 1 million users in two months. Photography becomes a social language. Facebook acquires it for $1 billion — its first major acquisition. The filter becomes a cultural artifact of the era.</p>
+      <span class="ev-tag">Social</span>
+    </div>
+
+    <div class="event-card fade-up" data-tip="WhatsApp had 450 million monthly users when Facebook acquired it for $19 billion in 2014 — the largest acquisition of a venture-backed company in history at the time. WhatsApp now has over 2 billion users.">
+      <div class="ev-year">2009–2014</div>
+      <div class="ev-title">Messaging Takes Over</div>
+      <p class="ev-body">WhatsApp, iMessage, WeChat, and Snapchat fragment communication into private channels. SMS usage peaks and begins its long decline. Facebook buys WhatsApp for $19 billion. The private internet grows larger than the public one.</p>
+      <span class="ev-tag">Messaging</span>
+    </div>
+
+    <div class="event-card fade-up" data-tip="Uber launched in San Francisco in June 2010. Airbnb launched in 2008. The 'sharing economy' was enabled by mobile, GPS, and ubiquitous connectivity — turning every car and spare room into an asset.">
+      <div class="ev-year">2008–2013</div>
+      <div class="ev-title">The Sharing Economy</div>
+      <p class="ev-body">Uber, Airbnb, Lyft, and TaskRabbit use mobile connectivity, GPS, and digital payments to unlock idle assets. 'Platform economy' enters the lexicon. Decades-old industries — taxis, hotels — are disrupted by apps with no physical infrastructure.</p>
+      <span class="ev-tag">Economy</span>
+    </div>
+  </div>
+</section>
+
+<!-- PHOTO STRIP 3 -->
+<div class="photo-strip" aria-hidden="true">
+  <div class="ps-cell">
+    <img src="internet/images/img-internet-map.jpg" alt="Internet infrastructure" loading="lazy">
+    <div class="ps-overlay" style="background:#C060FF;"></div>
+    <div class="ps-caption">THE NETWORK INFRASTRUCTURE</div>
+  </div>
+  <div class="ps-cell">
+    <img src="internet/images/img-amazon-warehouse.jpg" alt="Amazon warehouse" loading="lazy">
+    <div class="ps-overlay" style="background:#00CFFF;"></div>
+    <div class="ps-caption">AMAZON · THE E-COMMERCE ERA</div>
+  </div>
+  <div class="ps-cell">
+    <img src="internet/images/img-google-datacenter.jpg" alt="Google data center" loading="lazy">
+    <div class="ps-overlay" style="background:#FF6A00;"></div>
+    <div class="ps-caption">GOOGLE DATA CENTER · THE DALLES, OREGON</div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════════════════════
+     ERA 4: THE PLATFORM ERA (2013–2020)
+════════════════════════════════════════════════════════════ -->
+<section class="era era-4" id="s5" data-era="4" data-era-name="// PLATFORM ERA">
+  <div class="era-header-card fade-up">
+    <div class="era-year">2016</div>
+    <div class="era-name">THE PLATFORM ERA</div>
+  </div>
+
+  <p class="era-intro fade-up">
+    Five companies — Google, Apple, Facebook, Amazon, and Microsoft — achieved a concentration of digital power without historical precedent. As platforms devoured attention and commerce, regulators began to push back. The internet's founding promise of decentralization came under serious strain.
+  </p>
+
+  <div class="events-grid">
+    <div class="event-card fade-up" data-tip="NSA contractor Edward Snowden revealed in June 2013 that the NSA was collecting bulk phone records and operating PRISM, a program accessing data from Microsoft, Google, Apple, Facebook, and others. The revelations reshaped the privacy debate permanently.">
+      <div class="ev-year">2013</div>
+      <div class="ev-title">Snowden: The Surveillance Internet</div>
+      <p class="ev-body">Edward Snowden leaks classified NSA documents revealing mass internet surveillance. PRISM accessed data from all major tech companies. The revelations accelerate encrypted communications adoption and permanently alter trust in internet infrastructure.</p>
+      <span class="ev-tag">Privacy</span>
+    </div>
+
+    <div class="event-card fade-up" data-tip="Netflix began streaming in 2007, but its pivot away from DVD rental and into original content with House of Cards in 2013 marked the beginning of the streaming wars — and the slow collapse of linear television.">
+      <div class="ev-year">2013–2020</div>
+      <div class="ev-title">Streaming Kills Broadcast</div>
+      <p class="ev-body">Netflix, then Hulu, Disney+, HBO Max, and dozens more replace network television. 'Cord-cutting' accelerates. By 2020, streaming surpasses cable for the first time. Content becomes a platform war. Billions are spent on original programming.</p>
+      <span class="ev-tag">Media</span>
+    </div>
+
+    <div class="event-card fade-up" data-tip="The EU's General Data Protection Regulation took effect on May 25, 2018, establishing the most comprehensive digital privacy framework in history. It triggered similar laws globally and forced every major internet company to rethink data practices.">
+      <div class="ev-year">2018</div>
+      <div class="ev-title">GDPR: The Privacy Reckoning</div>
+      <p class="ev-body">Europe's General Data Protection Regulation takes effect, giving users rights over their data and fining companies up to 4% of global revenue for violations. A global cascade of privacy legislation follows. The era of consequence-free data harvesting ends.</p>
+      <span class="ev-tag">Regulation</span>
+    </div>
+
+    <div class="event-card fade-up" data-tip="TikTok's algorithm — recommending content based on behavior rather than social graph — changed what a social network could be. In 2022, the average American teenager spent 91 minutes per day on TikTok.">
+      <div class="ev-year">2018–2020</div>
+      <div class="ev-title">TikTok: The Algorithm Is the Product</div>
+      <p class="ev-body">ByteDance's TikTok reaches 1 billion users faster than any platform in history. Its recommendation algorithm, optimized purely for engagement, renders the social graph irrelevant — you don't need to follow anyone for the feed to know exactly what you want.</p>
+      <span class="ev-tag">Algorithm</span>
+    </div>
+
+    <div class="event-card fade-up" data-tip="Between 2017 and 2021, the US, EU, and dozens of governments launched antitrust investigations into Google, Apple, Amazon, Facebook, and Microsoft. The era of 'move fast and break things' without regulatory consequence was ending.">
+      <div class="ev-year">2017–2021</div>
+      <div class="ev-title">The Antitrust Era Begins</div>
+      <p class="ev-body">Global regulators open investigations into Big Tech. The EU fines Google €8 billion over a decade. The US Congress grills tech CEOs. Australia passes a news bargaining law. The question of who controls the internet shifts from technical to political.</p>
+      <span class="ev-tag">Regulation</span>
+    </div>
+
+    <div class="event-card fade-up" data-tip="COVID-19 lockdowns in 2020 compressed five years of digital adoption into five months. Zoom went from 10 million to 300 million daily meeting participants. E-commerce grew by 40% in a single year.">
+      <div class="ev-year">2020</div>
+      <div class="ev-title">COVID Accelerates Everything</div>
+      <p class="ev-body">Global lockdowns move work, school, healthcare, and social life online simultaneously. Zoom becomes the most downloaded app in history. Remote work becomes normalized. The internet proves it can bear the weight of civilization — barely.</p>
+      <span class="ev-tag">Society</span>
+    </div>
+  </div>
+</section>
+
+<!-- PARALLAX QUOTE 4 -->
+<div class="quote-band" style="background:#C060FF;color:#fff;">
+  <div class="quote-band-inner" data-quote="4">
+    <div class="pq-text" style="color:#fff;">
+      "The internet interprets <span class="pq-hl" style="background:#fff;color:#C060FF;padding:0 .2em;">censorship as damage</span> and routes around it."
+    </div>
+    <div class="pq-attr" style="color:rgba(255,255,255,.6);">— JOHN GILMORE (1993)</div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════════════════════
+     ERA 5: AI & THE NEXT WEB (2020–Present)
+════════════════════════════════════════════════════════════ -->
+<section class="era era-5" id="s6" data-era="5" data-era-name="// AI WEB">
+  <div class="era-header-card fade-up">
+    <div class="era-year">2023</div>
+    <div class="era-name">AI WEB &amp; WHAT COMES NEXT</div>
+  </div>
+
+  <p class="era-intro fade-up">
+    The internet that trained large language models is now being reshaped by them. Search is fragmenting. Social platforms are fighting bot-generated content. The question of whether a human wrote something — or what a human even is online — has become genuinely complex. The next internet is being written now.
+  </p>
+
+  <div class="events-grid">
+    <div class="event-card fade-up" data-tip="ChatGPT reached 100 million users in two months — the fastest product adoption in history, surpassing TikTok's previous record. Every major internet company immediately pivoted to incorporate LLMs.">
+      <div class="ev-year">Nov 2022</div>
+      <div class="ev-title">ChatGPT Reshapes the Web</div>
+      <p class="ev-body">OpenAI releases ChatGPT. 1 million users in five days. 100 million in two months. Every internet company announces an AI strategy. Search, once Google's unchallenged domain, faces its first existential challenger in two decades.</p>
+      <span class="ev-tag">AI</span>
+    </div>
+
+    <div class="event-card fade-up" data-tip="Generative AI creates a new class of search engine — AI overviews replace ten blue links with synthesized answers. Google, Bing, Perplexity, and others race to define what 'search' means in an LLM era.">
+      <div class="ev-year">2023–2024</div>
+      <div class="ev-title">AI Upends Search</div>
+      <p class="ev-body">Microsoft integrates GPT-4 into Bing, forcing Google to rush its own AI search features. Perplexity, Anthropic, and others offer AI-first search. The link — the fundamental building block of the web for 30 years — is being bypassed by synthesized answers.</p>
+      <span class="ev-tag">Search</span>
+    </div>
+
+    <div class="event-card fade-up" data-tip="Elon Musk acquired Twitter for $44 billion in October 2022, rebranding it X and implementing sweeping changes that halved its advertising revenue. The episode accelerated interest in decentralized social networks like Mastodon and Bluesky.">
+      <div class="ev-year">2022–2024</div>
+      <div class="ev-title">Social Media Fractures</div>
+      <p class="ev-body">Twitter's acquisition and transformation into X, Meta's Threads, Bluesky, and Mastodon fragment the public square. ActivityPub enables a federated web of interoperable social networks. The dream of a decentralized social internet flickers back to life.</p>
+      <span class="ev-tag">Social</span>
+    </div>
+
+    <div class="event-card fade-up" data-tip="Starlink has over 6,000 satellites in orbit and 3 million subscribers. For the first time, high-speed internet is available from any point on Earth's surface — including conflict zones, disaster areas, and the ocean.">
+      <div class="ev-year">2021–2025</div>
+      <div class="ev-title">Starlink: Internet from Space</div>
+      <p class="ev-body">SpaceX's Starlink constellation covers the entire globe with low-latency broadband. The last 2.7 billion people without reliable internet access come into reach. The infrastructure layer of the internet moves into orbit.</p>
+      <span class="ev-tag">Infrastructure</span>
+    </div>
+
+    <div class="event-card fade-up" data-tip="The EU AI Act, passed in 2024, is the world's first comprehensive AI regulation. It coincides with a global wave of internet governance legislation — from content moderation to algorithm accountability to digital markets.">
+      <div class="ev-year">2024–2025</div>
+      <div class="ev-title">The Regulation Era</div>
+      <p class="ev-body">The EU AI Act passes. Digital Markets Acts reshape app store economics. Countries globally assert sovereignty over data flows. The open global internet fragments into regulatory zones — a 'splinternet' shaped by law, not just technology.</p>
+      <span class="ev-tag">Policy</span>
+    </div>
+
+    <div class="event-card fade-up" data-tip="From HTTP/1.1 in 1997 to HTTP/3 over QUIC today — the protocol stack evolves continuously. WebAssembly, edge computing, and post-quantum cryptography are rewriting the internet's foundations even as 5 billion people use it.">
+      <div class="ev-year">Ongoing</div>
+      <div class="ev-title">The Protocol Never Stops</div>
+      <p class="ev-body">HTTP/3, WebTransport, QUIC, post-quantum TLS, and decentralized identity standards are being written and deployed right now. The internet is not a finished thing — it is a living protocol stack, continuously rewritten by tens of thousands of engineers working in public.</p>
+      <span class="ev-tag">Protocol</span>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════════
+     FUTURE SECTION
+════════════════════════════════════════════════════════════ -->
+<section class="future-section">
+  <div class="future-heading fade-up">
+    What Comes <span class="hl">Next_</span>
+  </div>
+  <p class="era-intro fade-up">The internet's next chapter will be written in the intersection of physical and digital — spatial computing, ambient AI, post-quantum cryptography, and the ongoing question of who owns the infrastructure.</p>
+
+  <div class="future-grid">
+    <div class="future-card fade-up" data-tip="Spatial computing — AR, VR, and mixed reality — blends digital content with physical space. Whether through glasses, headsets, or projections, the next interface may be the world itself.">
+      <span class="fc-icon">🥽</span>
+      <div class="fc-title">Spatial Computing</div>
+      <p class="fc-body">AR glasses and spatial interfaces dissolve the boundary between screen and world. Apple Vision Pro, Meta's Orion, and dozens of startups are racing to make the headset the next platform shift.</p>
+    </div>
+    <div class="future-card fade-up" data-tip="Shor's algorithm means that a sufficiently powerful quantum computer could break RSA and elliptic curve encryption — the foundations of HTTPS. NIST standardized post-quantum algorithms in 2024.">
+      <span class="fc-icon">🔐</span>
+      <div class="fc-title">Post-Quantum Security</div>
+      <p class="fc-body">Quantum computers threaten the cryptographic foundations of the internet. NIST finalized post-quantum encryption standards in 2024. The migration of billions of endpoints to new cryptography is underway — quietly, urgently.</p>
+    </div>
+    <div class="future-card fade-up" data-tip="AI agents that browse the web, execute code, and take actions on your behalf will fundamentally change what the internet is for — shifting from human-facing content to machine-readable infrastructure.">
+      <span class="fc-icon">🤖</span>
+      <div class="fc-title">Agentic AI</div>
+      <p class="fc-body">AI that can browse, code, transact, and communicate autonomously will change who — or what — is using the internet. The web may increasingly be navigated by agents on behalf of humans, rewriting assumptions about interfaces and content.</p>
+    </div>
+    <div class="future-card fade-up" data-tip="Decentralized protocols like ActivityPub, AT Protocol, and the Fediverse are gaining traction as alternatives to centralized platforms. The original vision of a federated, open web is being revisited.">
+      <span class="fc-icon">🌐</span>
+      <div class="fc-title">The Decentralized Web</div>
+      <p class="fc-body">ActivityPub, AT Protocol, and decentralized identity standards are building interoperable alternatives to walled gardens. The federated social web is small today — but it carries the original spirit of the internet's open architecture.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════════
+     ARCHITECTS OF THE INTERNET
+════════════════════════════════════════════════════════════ -->
+<section class="architects" id="architects">
+  <div class="architects-heading fade-up">Architects of the Internet_</div>
+  <div class="architects-sub">12 people who built the network</div>
+
+  <div class="architects-grid">
+
+    <div class="arch-card fade-up" style="--p-accent:#00CFFF;">
+      <img class="arch-photo" src="internet/images/img-paul-baran.jpg" alt="Paul Baran" loading="lazy">
+      <div class="arch-body">
+        <div class="arch-era">1926 – 2011</div>
+        <div class="arch-name">Paul Baran</div>
+        <div class="arch-role">Inventor of Packet Switching</div>
+        <p class="arch-bio">RAND Corporation engineer who, in 1964, proposed breaking messages into blocks to survive nuclear attacks. His distributed network concept is the structural DNA of every packet sent today.</p>
+        <a class="arch-link" href="https://en.wikipedia.org/wiki/Paul_Baran" target="_blank" rel="noopener">Wikipedia</a>
+      </div>
+    </div>
+
+    <div class="arch-card fade-up" style="--p-accent:#FF6A00;">
+      <img class="arch-photo" src="internet/images/img-vint-cerf-formal.jpg" alt="Vint Cerf" loading="lazy">
+      <div class="arch-body">
+        <div class="arch-era">b. 1943</div>
+        <div class="arch-name">Vint Cerf</div>
+        <div class="arch-role">Co-inventor of TCP/IP</div>
+        <p class="arch-bio">Co-authored TCP/IP with Bob Kahn in 1974 — the universal language that allows any computer to talk to any other. Widely called the Father of the Internet. Later became Google's Chief Internet Evangelist.</p>
+        <a class="arch-link" href="https://en.wikipedia.org/wiki/Vint_Cerf" target="_blank" rel="noopener">Wikipedia</a>
+      </div>
+    </div>
+
+    <div class="arch-card fade-up" style="--p-accent:#39FFB0;">
+      <img class="arch-photo" src="internet/images/img-bob-kahn.jpg" alt="Bob Kahn" loading="lazy">
+      <div class="arch-body">
+        <div class="arch-era">b. 1938</div>
+        <div class="arch-name">Bob Kahn</div>
+        <div class="arch-role">Co-inventor of TCP/IP</div>
+        <p class="arch-bio">DARPA program manager who partnered with Cerf to design TCP/IP. Also conceived the National Information Infrastructure and helped create CNRI. Shared the Turing Award with Cerf in 2004.</p>
+        <a class="arch-link" href="https://en.wikipedia.org/wiki/Bob_Kahn" target="_blank" rel="noopener">Wikipedia</a>
+      </div>
+    </div>
+
+    <div class="arch-card fade-up" style="--p-accent:#C060FF;">
+      <img class="arch-photo" src="internet/images/img-tim-berners-lee.jpg" alt="Tim Berners-Lee" loading="lazy">
+      <div class="arch-body">
+        <div class="arch-era">b. 1955</div>
+        <div class="arch-name">Tim Berners-Lee</div>
+        <div class="arch-role">Inventor of the World Wide Web</div>
+        <p class="arch-bio">CERN physicist who invented HTML, HTTP, and URLs in 1989 — then gave them to the world for free. Founded the W3C to steward web standards. Now leads the fight for a free and open web via the Web Foundation.</p>
+        <a class="arch-link" href="https://en.wikipedia.org/wiki/Tim_Berners-Lee" target="_blank" rel="noopener">Wikipedia</a>
+      </div>
+    </div>
+
+    <div class="arch-card fade-up" style="--p-accent:#00CFFF;">
+      <img class="arch-photo" src="internet/images/img-paul-mockapetris.jpg" alt="Paul Mockapetris" loading="lazy">
+      <div class="arch-body">
+        <div class="arch-era">b. 1948</div>
+        <div class="arch-name">Paul Mockapetris</div>
+        <div class="arch-role">Inventor of DNS</div>
+        <p class="arch-bio">Designed the Domain Name System in 1983, replacing a single text file with a distributed, scalable hierarchy. Without DNS, the web would be a network of impossible-to-remember numbers. Every URL owes him a debt.</p>
+        <a class="arch-link" href="https://en.wikipedia.org/wiki/Paul_Mockapetris" target="_blank" rel="noopener">Wikipedia</a>
+      </div>
+    </div>
+
+    <div class="arch-card fade-up" style="--p-accent:#FF6A00;">
+      <img class="arch-photo" src="internet/images/img-marc-andreessen.jpg" alt="Marc Andreessen" loading="lazy">
+      <div class="arch-body">
+        <div class="arch-era">b. 1971</div>
+        <div class="arch-name">Marc Andreessen</div>
+        <div class="arch-role">Creator of Mosaic &amp; Netscape</div>
+        <p class="arch-bio">Built Mosaic at 22 — the first browser to display images inline with text — then co-founded Netscape and triggered the dot-com era. Later co-founded Andreessen Horowitz, funding the next generation of internet companies.</p>
+        <a class="arch-link" href="https://en.wikipedia.org/wiki/Marc_Andreessen" target="_blank" rel="noopener">Wikipedia</a>
+      </div>
+    </div>
+
+    <div class="arch-card fade-up" style="--p-accent:#39FFB0;">
+      <img class="arch-photo" src="internet/images/img-jeff-bezos.jpg" alt="Jeff Bezos" loading="lazy">
+      <div class="arch-body">
+        <div class="arch-era">b. 1964</div>
+        <div class="arch-name">Jeff Bezos</div>
+        <div class="arch-role">Founder, Amazon &amp; AWS</div>
+        <p class="arch-bio">Launched Amazon as an online bookstore in 1994 and scaled it to reshape global retail. Then built AWS — almost by accident — which became the hidden foundation on which most of the modern internet runs.</p>
+        <a class="arch-link" href="https://en.wikipedia.org/wiki/Jeff_Bezos" target="_blank" rel="noopener">Wikipedia</a>
+      </div>
+    </div>
+
+    <div class="arch-card fade-up" style="--p-accent:#C060FF;">
+      <img class="arch-photo" src="internet/images/img-brin-page.jpg" alt="Larry Page and Sergey Brin" loading="lazy">
+      <div class="arch-body">
+        <div class="arch-era">b. 1973 &amp; 1973</div>
+        <div class="arch-name">Page &amp; Brin</div>
+        <div class="arch-role">Founders, Google</div>
+        <p class="arch-bio">Stanford PhD students who built BackRub — later Google — in 1996. PageRank transformed how humanity navigates information. Google's search advertising model, pioneered in 2000, became the economic engine of the entire internet.</p>
+        <a class="arch-link" href="https://en.wikipedia.org/wiki/Google" target="_blank" rel="noopener">Wikipedia</a>
+      </div>
+    </div>
+
+    <div class="arch-card fade-up" style="--p-accent:#00CFFF;">
+      <img class="arch-photo" src="internet/images/img-mark-zuckerberg.jpg" alt="Mark Zuckerberg" loading="lazy">
+      <div class="arch-body">
+        <div class="arch-era">b. 1984</div>
+        <div class="arch-name">Mark Zuckerberg</div>
+        <div class="arch-role">Founder, Facebook / Meta</div>
+        <p class="arch-bio">Built Facebook from a Harvard dorm in 2004. The social graph — connecting 3 billion people — redefined identity on the internet. Meta's advertising empire and its role in spreading misinformation reshaped democracies worldwide.</p>
+        <a class="arch-link" href="https://en.wikipedia.org/wiki/Mark_Zuckerberg" target="_blank" rel="noopener">Wikipedia</a>
+      </div>
+    </div>
+
+    <div class="arch-card fade-up" style="--p-accent:#FF6A00;">
+      <img class="arch-photo" src="internet/images/img-steve-jobs.jpg" alt="Steve Jobs" loading="lazy">
+      <div class="arch-body">
+        <div class="arch-era">1955 – 2011</div>
+        <div class="arch-name">Steve Jobs</div>
+        <div class="arch-role">Creator of the Mobile Internet</div>
+        <p class="arch-bio">The iPhone announcement on January 9, 2007, put the full internet in every pocket. Jobs insisted on a real web browser — not a 'mobile web.' That insistence triggered a platform shift that moved more than half of all internet traffic to mobile within a decade.</p>
+        <a class="arch-link" href="https://en.wikipedia.org/wiki/Steve_Jobs" target="_blank" rel="noopener">Wikipedia</a>
+      </div>
+    </div>
+
+    <div class="arch-card fade-up" style="--p-accent:#39FFB0;">
+      <img class="arch-photo" src="internet/images/img-jimmy-wales.jpg" alt="Jimmy Wales" loading="lazy">
+      <div class="arch-body">
+        <div class="arch-era">b. 1966</div>
+        <div class="arch-name">Jimmy Wales</div>
+        <div class="arch-role">Founder, Wikipedia</div>
+        <p class="arch-bio">Co-founded Wikipedia in 2001 as a side project and watched it become the world's largest encyclopedia — written by volunteers, free of charge, in 320 languages. One of the few internet idealists whose vision actually came true.</p>
+        <a class="arch-link" href="https://en.wikipedia.org/wiki/Jimmy_Wales" target="_blank" rel="noopener">Wikipedia</a>
+      </div>
+    </div>
+
+    <div class="arch-card fade-up" style="--p-accent:#C060FF;">
+      <img class="arch-photo" src="internet/images/img-snowden.jpg" alt="Edward Snowden" loading="lazy">
+      <div class="arch-body">
+        <div class="arch-era">b. 1983</div>
+        <div class="arch-name">Edward Snowden</div>
+        <div class="arch-role">NSA Whistleblower</div>
+        <p class="arch-bio">NSA contractor who in 2013 revealed the scale of mass internet surveillance — PRISM, XKeyscore, bulk phone records collection. His leaks permanently altered the politics of internet privacy, encryption adoption, and trust in digital infrastructure.</p>
+        <a class="arch-link" href="https://en.wikipedia.org/wiki/Edward_Snowden" target="_blank" rel="noopener">Wikipedia</a>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════════
+     ENTITY GRID
+════════════════════════════════════════════════════════════ -->
+<section class="entity-section">
+  <div class="entity-heading fade-up">Key Players_</div>
+  <div class="entity-sub">Companies · Protocols · People · Moments</div>
+  <div class="entity-grid" id="entityGrid"></div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════════
+     ECOSYSTEM
+════════════════════════════════════════════════════════════ -->
+<section class="ecosystem">
+  <div class="eco-header">ECOSYSTEM · THE INTERNET</div>
+  <div class="eco-grid">
+    <div class="eco-group">
+      <div class="eco-group-label">History &amp; Reference</div>
+      <a href="https://www.internetsociety.org/internet/history-internet/brief-history-internet/" class="eco-link" target="_blank">Internet Society History ↗</a>
+      <a href="https://www.computerhistory.org/internethistory/" class="eco-link" target="_blank">Computer History Museum ↗</a>
+      <a href="https://webfoundation.org" class="eco-link" target="_blank">World Wide Web Foundation ↗</a>
+      <a href="https://www.w3.org/History/" class="eco-link" target="_blank">W3C Web History ↗</a>
+    </div>
+    <div class="eco-group">
+      <div class="eco-group-label">Standards &amp; Governance</div>
+      <a href="https://www.ietf.org" class="eco-link" target="_blank">IETF (Internet Standards) ↗</a>
+      <a href="https://www.w3.org" class="eco-link" target="_blank">W3C (Web Standards) ↗</a>
+      <a href="https://www.icann.org" class="eco-link" target="_blank">ICANN (Domain Names) ↗</a>
+      <a href="https://www.iana.org" class="eco-link" target="_blank">IANA (Addresses &amp; Protocols) ↗</a>
+    </div>
+    <div class="eco-group">
+      <div class="eco-group-label">Infrastructure &amp; Tools</div>
+      <a href="https://web.archive.org" class="eco-link" target="_blank">Internet Archive / Wayback ↗</a>
+      <a href="https://radar.cloudflare.com" class="eco-link" target="_blank">Cloudflare Radar ↗</a>
+      <a href="https://www.akamai.com/internet-station" class="eco-link" target="_blank">Akamai Internet Station ↗</a>
+      <a href="https://bgp.he.net" class="eco-link" target="_blank">BGP Routing Explorer ↗</a>
+    </div>
+    <div class="eco-group">
+      <div class="eco-group-label">Research &amp; Policy</div>
+      <a href="https://www.pewresearch.org/topic/internet-technology/" class="eco-link" target="_blank">Pew Internet Research ↗</a>
+      <a href="https://www.eff.org" class="eco-link" target="_blank">Electronic Frontier Foundation ↗</a>
+      <a href="https://freedom.press" class="eco-link" target="_blank">Freedom of the Press Foundation ↗</a>
+      <a href="https://www.accessnow.org" class="eco-link" target="_blank">Access Now ↗</a>
+    </div>
+    <div class="eco-group">
+      <div class="eco-group-label">Deep Reading</div>
+      <a href="https://www.wired.com" class="eco-link" target="_blank">WIRED ↗</a>
+      <a href="https://stratechery.com" class="eco-link" target="_blank">Stratechery ↗</a>
+      <a href="https://every.to" class="eco-link" target="_blank">Every.to ↗</a>
+      <a href="https://spectrum.ieee.org" class="eco-link" target="_blank">IEEE Spectrum ↗</a>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER ACCENT BAR (series colors) -->
+<div class="footer-accent-bar">
+  <div style="background:#00CFFF;flex:2;"></div>
+  <div style="background:#0055EE;flex:1;"></div>
+  <div style="background:#39FFB0;flex:1;"></div>
+  <div style="background:#FF5C20;flex:1;"></div>
+  <div style="background:var(--rule2);flex:5;"></div>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <div>
+    <div class="footer-brand">THE <span>INTERNET</span> / History</div>
+    <div class="footer-note" style="margin-top:1rem;">From a four-node military experiment in 1969 to a network connecting 5.4 billion people — the story of packets, protocols, browsers, and the infrastructure that rewired civilization.</div>
+  </div>
+  <div>
+    <div class="footer-col-label">Part of</div>
+    <div class="footer-note">A (Brief) History of Everything_<br><a href="https://abriefhistoryofeverything.com" target="_blank" style="color:var(--accent);">abriefhistoryofeverything.com ↗</a></div>
+  </div>
+  <div>
+    <div class="footer-col-label">Typefaces</div>
+    <div class="footer-note">Orbitron — Display, Heroes, Data<br>JetBrains Mono — Body, Labels, UI</div>
+  </div>
+</footer>
+
+<!-- FOOTER BAR -->
+<div class="footer-bar">
+  <span>A (Brief) History of The Internet — Chronological Index · 7 Sections</span>
+  <span style="display:flex;gap:2rem;align-items:center;">
+    <a href="https://twitter.com/intent/tweet?text=A%20(Brief)%20History%20of%20the%20Internet%20%E2%80%94%20from%20ARPANET%20to%20the%20AI%20Web&url=https%3A%2F%2Fabriefhistoryofeverything.com%2Finternet" target="_blank" rel="noopener" class="footer-share-link">Share on X</a>
+    <a href="https://www.linkedin.com/sharing/share-offsite/?url=https%3A%2F%2Fabriefhistoryofeverything.com%2Finternet" target="_blank" rel="noopener" class="footer-share-link">Share on LinkedIn</a>
+    <span style="color:var(--muted);">1969 — Present</span>
+  </span>
+</div>
+
+</div><!-- end .page-body -->
+
+<script>
+(function(){
+'use strict';
+
+/* ══════════════════════════════════════════════════════════
+   TOUCH DETECTION
+══════════════════════════════════════════════════════════ */
+const isTouch = ('ontouchstart' in window) || (navigator.maxTouchPoints > 0);
+
+/* ══════════════════════════════════════════════════════════
+   CUSTOM CURSOR
+══════════════════════════════════════════════════════════ */
+const cur = document.getElementById('cur');
+const ring = document.getElementById('curRing');
+const palette = ['#00CFFF','#FF6A00','#39FFB0','#C060FF','#ffffff'];
+let ci = 0;
+
+if(isTouch){
+  if(cur) cur.style.display='none';
+  if(ring) ring.style.display='none';
+  document.body.style.cursor='auto';
+} else {
+  document.addEventListener('mousemove', e => {
+    if(cur){cur.style.left=e.clientX+'px';cur.style.top=e.clientY+'px';}
+    if(ring){ring.style.left=e.clientX+'px';ring.style.top=e.clientY+'px';}
+  });
+  document.addEventListener('mousedown', () => {
+    if(cur){cur.classList.add('active');ci=(ci+1)%palette.length;cur.style.background=palette[ci];}
+  });
+  document.addEventListener('mouseup', () => {
+    if(cur) cur.classList.remove('active');
+  });
+}
+
+/* ══════════════════════════════════════════════════════════
+   SCROLL PROGRESS
+══════════════════════════════════════════════════════════ */
+const prog = document.getElementById('progress');
+function updateProgress(){
+  const s = document.documentElement.scrollTop||document.body.scrollTop;
+  const h = document.documentElement.scrollHeight - window.innerHeight;
+  if(prog) prog.style.width = (h>0?(s/h*100):0)+'%';
+}
+window.addEventListener('scroll', updateProgress, {passive:true});
+
+/* ══════════════════════════════════════════════════════════
+   DARK / LIGHT TOGGLE
+══════════════════════════════════════════════════════════ */
+const html = document.documentElement;
+const sw = document.getElementById('toggleSwitch');
+const ml = document.getElementById('modeLabel');
+const mi = document.getElementById('modeIcon');
+
+function applyTheme(theme){
+  html.setAttribute('data-theme', theme);
+  if(ml) ml.textContent = theme === 'dark' ? 'LIGHT' : 'DARK';
+  if(mi) mi.textContent = theme === 'dark' ? '☀' : '☾';
+  try { localStorage.setItem('netHistTheme', theme); } catch(e){}
+}
+
+let savedTheme = 'dark';
+try { savedTheme = localStorage.getItem('netHistTheme') || 'dark'; } catch(e){}
+applyTheme(savedTheme);
+
+if(sw){
+  sw.addEventListener('click', () => {
+    applyTheme(html.getAttribute('data-theme')==='dark' ? 'light' : 'dark');
+  });
+  sw.addEventListener('keydown', e => {
+    if(e.key==='Enter'||e.key===' '){e.preventDefault();sw.click();}
+  });
+}
+
+/* ══════════════════════════════════════════════════════════
+   TOOLTIP
+══════════════════════════════════════════════════════════ */
+const tip = document.getElementById('popTip');
+let tipVisible = false;
+
+document.querySelectorAll('[data-tip]').forEach(el => {
+  el.addEventListener('mouseenter', e => {
+    if(!tip||isTouch) return;
+    tip.textContent = el.dataset.tip;
+    tip.classList.add('show');
+    tipVisible = true;
+  });
+  el.addEventListener('mousemove', e => {
+    if(!tip||!tipVisible) return;
+    tip.style.left = (e.clientX+15)+'px';
+    tip.style.top  = (e.clientY-10)+'px';
+  });
+  el.addEventListener('mouseleave', () => {
+    if(!tip) return;
+    tip.classList.remove('show');
+    tipVisible = false;
+  });
+});
+
+/* ══════════════════════════════════════════════════════════
+   FADE-UP OBSERVER
+══════════════════════════════════════════════════════════ */
+const fades = document.querySelectorAll('.fade-up');
+if('IntersectionObserver' in window){
+  const obs = new IntersectionObserver((entries) => {
+    entries.forEach((entry,i) => {
+      if(entry.isIntersecting){
+        setTimeout(() => { entry.target.classList.add('visible'); }, i * 80);
+        obs.unobserve(entry.target);
+      }
+    });
+  }, {threshold:0.08});
+  fades.forEach(el => obs.observe(el));
+} else {
+  fades.forEach(el => el.classList.add('visible'));
+}
+
+/* ══════════════════════════════════════════════════════════
+   SIDE NAV ACTIVE STATE
+══════════════════════════════════════════════════════════ */
+const eras = document.querySelectorAll('section[data-era]');
+const snItems = document.querySelectorAll('.sn-item');
+const navEra = document.getElementById('navEraLabel');
+const heroSec = document.getElementById('s0');
+
+function updateSideNav(id){
+  snItems.forEach(s => {
+    s.classList.toggle('active', s.dataset.sec === String(id));
+  });
+}
+
+if('IntersectionObserver' in window){
+  // Hero observer
+  const heroObs = new IntersectionObserver((entries) => {
+    if(entries[0].isIntersecting){
+      updateSideNav(0);
+      if(navEra) navEra.textContent = '// INITIALIZING';
+    }
+  },{threshold:0.3});
+  if(heroSec) heroObs.observe(heroSec);
+
+  // Era observers
+  eras.forEach(era => {
+    const obs2 = new IntersectionObserver((entries) => {
+      if(entries[0].isIntersecting){
+        const idx = parseInt(era.dataset.era);
+        updateSideNav(idx+1);
+        if(navEra) navEra.textContent = era.dataset.eraName || '';
+      }
+    },{threshold:0.25});
+    obs2.observe(era);
+  });
+}
+
+/* Side nav click scrolling */
+document.querySelectorAll('.sn-item').forEach(item => {
+  item.addEventListener('click', () => {
+    const sec = item.dataset.sec;
+    const target = sec === '0' ? document.getElementById('s0') : document.querySelector(`[data-era="${parseInt(sec)-1}"]`);
+    if(target) target.scrollIntoView({behavior:'smooth'});
+  });
+});
+
+/* ══════════════════════════════════════════════════════════
+   PARALLAX — disabled, quote bands are stationary
+══════════════════════════════════════════════════════════ */
+
+
+/* ══════════════════════════════════════════════════════════
+   HERO CANVAS — Network node animation
+══════════════════════════════════════════════════════════ */
+const canvas = document.getElementById('heroCanvas');
+if(canvas){
+  const ctx = canvas.getContext('2d');
+  let W, H, nodes=[], animId;
+
+  function resize(){
+    W = canvas.width = canvas.offsetWidth;
+    H = canvas.height = canvas.offsetHeight;
+  }
+  resize();
+  window.addEventListener('resize', resize, {passive:true});
+
+  const N = 55;
+  for(let i=0; i<N; i++){
+    nodes.push({
+      x: Math.random()*W,
+      y: Math.random()*H,
+      vx: (Math.random()-.5)*.4,
+      vy: (Math.random()-.5)*.4,
+      r: Math.random()*2.5+1
+    });
+  }
+
+  function drawNet(){
+    ctx.clearRect(0,0,W,H);
+    const accentColor = getComputedStyle(document.documentElement).getPropertyValue('--accent').trim() || '#00CFFF';
+
+    for(let i=0;i<nodes.length;i++){
+      const a = nodes[i];
+      for(let j=i+1;j<nodes.length;j++){
+        const b=nodes[j];
+        const dx=a.x-b.x, dy=a.y-b.y;
+        const d=Math.sqrt(dx*dx+dy*dy);
+        if(d<150){
+          ctx.beginPath();
+          ctx.moveTo(a.x,a.y);
+          ctx.lineTo(b.x,b.y);
+          ctx.strokeStyle = accentColor;
+          ctx.globalAlpha = (1-d/150)*.35;
+          ctx.lineWidth=.8;
+          ctx.stroke();
+        }
+      }
+    }
+    ctx.globalAlpha=1;
+
+    nodes.forEach(n => {
+      ctx.beginPath();
+      ctx.arc(n.x,n.y,n.r,0,Math.PI*2);
+      ctx.fillStyle = accentColor;
+      ctx.globalAlpha = .65;
+      ctx.fill();
+      ctx.globalAlpha = 1;
+
+      n.x += n.vx; n.y += n.vy;
+      if(n.x<0||n.x>W) n.vx*=-1;
+      if(n.y<0||n.y>H) n.vy*=-1;
+    });
+
+    animId = requestAnimationFrame(drawNet);
+  }
+  drawNet();
+}
+
+/* ══════════════════════════════════════════════════════════
+   ENTITY GRID
+══════════════════════════════════════════════════════════ */
+const entities = [
+  {name:'ARPANET',url:'https://en.wikipedia.org/wiki/ARPANET',c:'#00CFFF',t:'#000'},
+  {name:'TCP/IP',url:'https://en.wikipedia.org/wiki/Internet_protocol_suite',c:'#FF6A00',t:'#000'},
+  {name:'Tim Berners-Lee',url:'https://en.wikipedia.org/wiki/Tim_Berners-Lee',c:'#39FFB0',t:'#000'},
+  {name:'Vint Cerf',url:'https://en.wikipedia.org/wiki/Vint_Cerf',c:'#C060FF',t:'#fff'},
+  {name:'Mosaic',url:'https://en.wikipedia.org/wiki/Mosaic_(web_browser)',c:'#FF6A00',t:'#000'},
+  {name:'Netscape',url:'https://en.wikipedia.org/wiki/Netscape',c:'#00CFFF',t:'#000'},
+  {name:'AOL',url:'https://en.wikipedia.org/wiki/AOL',c:'#39FFB0',t:'#000'},
+  {name:'Google',url:'https://en.wikipedia.org/wiki/Google',c:'#C060FF',t:'#fff'},
+  {name:'Amazon',url:'https://en.wikipedia.org/wiki/Amazon_(company)',c:'#FF6A00',t:'#000'},
+  {name:'Wikipedia',url:'https://en.wikipedia.org/wiki/Wikipedia',c:'#00CFFF',t:'#000'},
+  {name:'YouTube',url:'https://en.wikipedia.org/wiki/YouTube',c:'#C060FF',t:'#fff'},
+  {name:'Facebook',url:'https://en.wikipedia.org/wiki/Facebook',c:'#39FFB0',t:'#000'},
+  {name:'iPhone',url:'https://en.wikipedia.org/wiki/IPhone',c:'#FF6A00',t:'#000'},
+  {name:'AWS',url:'https://en.wikipedia.org/wiki/Amazon_Web_Services',c:'#00CFFF',t:'#000'},
+  {name:'Twitter/X',url:'https://en.wikipedia.org/wiki/Twitter',c:'#C060FF',t:'#fff'},
+  {name:'HTTP',url:'https://en.wikipedia.org/wiki/HTTP',c:'#FF6A00',t:'#000'},
+  {name:'HTML',url:'https://en.wikipedia.org/wiki/HTML',c:'#39FFB0',t:'#000'},
+  {name:'DNS',url:'https://en.wikipedia.org/wiki/Domain_Name_System',c:'#00CFFF',t:'#000'},
+  {name:'SSL/TLS',url:'https://en.wikipedia.org/wiki/Transport_Layer_Security',c:'#C060FF',t:'#fff'},
+  {name:'Instagram',url:'https://en.wikipedia.org/wiki/Instagram',c:'#FF6A00',t:'#000'},
+  {name:'Netflix',url:'https://en.wikipedia.org/wiki/Netflix',c:'#39FFB0',t:'#000'},
+  {name:'TikTok',url:'https://en.wikipedia.org/wiki/TikTok',c:'#00CFFF',t:'#000'},
+  {name:'WhatsApp',url:'https://en.wikipedia.org/wiki/WhatsApp',c:'#C060FF',t:'#fff'},
+  {name:'Snowden',url:'https://en.wikipedia.org/wiki/Edward_Snowden',c:'#FF6A00',t:'#000'},
+  {name:'GDPR',url:'https://en.wikipedia.org/wiki/General_Data_Protection_Regulation',c:'#39FFB0',t:'#000'},
+  {name:'OpenAI',url:'https://en.wikipedia.org/wiki/OpenAI',c:'#00CFFF',t:'#000'},
+  {name:'Cloudflare',url:'https://en.wikipedia.org/wiki/Cloudflare',c:'#C060FF',t:'#fff'},
+  {name:'Starlink',url:'https://en.wikipedia.org/wiki/Starlink',c:'#FF6A00',t:'#000'},
+  {name:'ActivityPub',url:'https://en.wikipedia.org/wiki/ActivityPub',c:'#39FFB0',t:'#000'},
+  {name:'IPv6',url:'https://en.wikipedia.org/wiki/IPv6',c:'#00CFFF',t:'#000'},
+  {name:'Marc Andreessen',url:'https://en.wikipedia.org/wiki/Marc_Andreessen',c:'#C060FF',t:'#fff'},
+  {name:'Paul Baran',url:'https://en.wikipedia.org/wiki/Paul_Baran',c:'#FF6A00',t:'#000'},
+  {name:'NSFNet',url:'https://en.wikipedia.org/wiki/National_Science_Foundation_Network',c:'#39FFB0',t:'#000'},
+  {name:'Dot-Com Bubble',url:'https://en.wikipedia.org/wiki/Dot-com_bubble',c:'#00CFFF',t:'#000'},
+  {name:'Net Neutrality',url:'https://en.wikipedia.org/wiki/Net_neutrality',c:'#C060FF',t:'#fff'},
+  {name:'IETF',url:'https://www.ietf.org',c:'#FF6A00',t:'#000'},
+  {name:'ICANN',url:'https://www.icann.org',c:'#39FFB0',t:'#000'},
+  {name:'Web Archive',url:'https://web.archive.org',c:'#00CFFF',t:'#000'},
+];
+
+const grid = document.getElementById('entityGrid');
+if(grid){
+  entities.forEach(e => {
+    const a = document.createElement('a');
+    a.href = e.url;
+    a.target = '_blank';
+    a.rel = 'noopener';
+    a.className = 'entity-badge';
+    a.textContent = e.name;
+    a.style.background = e.c;
+    a.style.color = e.t;
+    a.style.borderColor = e.c;
+    grid.appendChild(a);
+  });
+}
+
+/* ══════════════════════════════════════════════════════════
+   SHARE BUTTON
+══════════════════════════════════════════════════════════ */
+const shareBtn = document.getElementById('shareBtn');
+const shareWrap = document.getElementById('shareWrap');
+const shareDropdown = document.getElementById('shareDropdown');
+if(shareBtn && shareWrap){
+  shareBtn.addEventListener('click', function(e){
+    e.stopPropagation();
+    shareWrap.classList.toggle('open');
+  });
+  document.addEventListener('click', function(){
+    shareWrap.classList.remove('open');
+  });
+}
+
+})();
+</script>
+</body>
+</html>
