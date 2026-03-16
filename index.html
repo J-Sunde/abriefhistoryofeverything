@@ -1,2650 +1,888 @@
 <!DOCTYPE html>
-<html lang="en" data-theme="dark">
+<html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>A (Brief) History of AI</title>
-<meta name="description" content="From Alan Turing's imitation game to autonomous agents — eight decades of machines learning to think, fail, and think again. A structured chronology of artificial intelligence.">
-<meta name="keywords" content="artificial intelligence, AI history, machine learning, deep learning, ChatGPT, transformer, Turing, neural networks, AI timeline">
-<meta name="author" content="abriefhistoryof-ai.com">
-<meta name="robots" content="index, follow">
-<link rel="canonical" href="https://abriefhistoryof-ai.com">
-
-<!-- Open Graph -->
+<title>A (Brief) History of Everything_</title>
+<meta name="description" content="Curated, interactive timelines for the subjects that shaped our world. Not lists of dates. Stories.">
+<link rel="canonical" href="https://abriefhistoryofeverything.com">
 <meta property="og:type" content="website">
-<meta property="og:url" content="https://abriefhistoryof-ai.com">
-<meta property="og:title" content="A (Brief) History of AI">
-<meta property="og:description" content="From Alan Turing's imitation game to autonomous agents — eight decades of machines learning to think, fail, and think again.">
-<meta property="og:image" content="https://abriefhistoryof-ai.com/images/og-image.jpg">
+<meta property="og:url" content="https://abriefhistoryofeverything.com">
+<meta property="og:title" content="A (Brief) History of Everything_">
+<meta property="og:description" content="Curated, interactive timelines for the subjects that shaped our world. Not lists of dates. Stories.">
+<meta property="og:site_name" content="A (Brief) History of Everything_">
+<meta property="og:image" content="https://abriefhistoryofeverything.com/og-brief-history-everything.png">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
-<meta property="og:site_name" content="A (Brief) History of AI">
-
-<!-- Twitter Card -->
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:url" content="https://abriefhistoryof-ai.com">
-<meta name="twitter:title" content="A (Brief) History of AI">
-<meta name="twitter:description" content="From Alan Turing's imitation game to autonomous agents — eight decades of machines learning to think, fail, and think again.">
-<meta name="twitter:image" content="https://abriefhistoryof-ai.com/images/og-image.jpg">
+<meta name="twitter:title" content="A (Brief) History of Everything_">
+<meta name="twitter:description" content="Curated, interactive timelines for the subjects that shaped our world. Not lists of dates. Stories.">
+<meta name="twitter:image" content="https://abriefhistoryofeverything.com/og-brief-history-everything.png">
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' fill='%230A0A0A'/><text x='4' y='23' font-family='Georgia,serif' font-size='18' fill='%23F0EDE6'>Bh</text></svg>">
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400&family=IBM+Plex+Sans+Condensed:wght@300;400;600;700&family=IBM+Plex+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
 
-<!-- Favicon — inline SVG as data URI -->
-<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' fill='%2307090C'/><text x='4' y='24' font-family='monospace' font-size='20' font-weight='700' fill='%2300D4F0'>AI</text></svg>">
-<link rel="apple-touch-icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' fill='%2307090C'/><text x='4' y='24' font-family='monospace' font-size='20' font-weight='700' fill='%2300D4F0'>AI</text></svg>">
-<meta name="theme-color" content="#07090C">
-
-<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400&family=IBM+Plex+Sans+Condensed:ital,wght@0,300;0,400;0,600;0,700;1,300&family=IBM+Plex+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
 <style>
-
-/* ══════════════════════════════════════════════════════════════
-   DESIGN TOKENS — DARK MODE (default)
-══════════════════════════════════════════════════════════════ */
-:root,
-[data-theme="dark"] {
-  --bg:        #07090C;
-  --bg1:       #0C0F14;
-  --bg2:       #10141A;
-  --bg3:       #141921;
-  --rule:      #1A2230;
-  --rule2:     #22303F;
-  --muted:     #334455;
-  --dim:       #607080;
-  --text:      #B8CCD8;
-  --bright:    #ECF2F6;
-  --accent:    #00D4F0;
-  --accent2:   #0055EE;
-  --accent3:   #00E87A;
-  --warn:      #FF5C20;
-
-  /* nav/sidenav */
-  --nav-bg:    rgba(7,9,12,.88);
-  --sidenav-bg:rgba(7,9,12,.94);
-  --nav-border:rgba(26,34,48,1);
-
-  /* theme toggle */
-  --toggle-bg: #1A2230;
-  --toggle-knob:#00D4F0;
-  --toggle-icon-dark: '☀';
-  --toggle-icon-light: '☾';
-
-  /* photo treatment */
-  --photo-filter: grayscale(1) contrast(1.1) brightness(.65);
-  --photo-hover:  grayscale(.15) contrast(1.15) brightness(.85);
-
-  /* card/band bg */
-  --card-bg:   var(--bg);
-  --card-hover:var(--bg1);
-  --band-bg:   var(--bg1);
-  --tag-hover-bg: rgba(0,212,240,.05);
-  --co-hover-bg:  rgba(0,212,240,.04);
-
-  /* scrollbar */
-  --sb-track:  var(--bg);
-  --sb-thumb:  var(--rule2);
-
-  /* ── Social Post Generator token aliases ── */
-  --sans:  'IBM Plex Mono', monospace;
-  --body:  'IBM Plex Sans', sans-serif;
+:root {
+  --bg:    #0A0A0A;
+  --bg1:   #111;
+  --bg2:   #181818;
+  --bg3:   #222;
+  --rule:  #2A2A2A;
+  --muted: #555;
+  --dim:   #888;
+  --text:  #CCC;
+  --bright:#F2EFE9;
   --mono:  'IBM Plex Mono', monospace;
-  --cream: var(--bg1);  /* dark mode: nearest light-ish surface */
+  --cond:  'IBM Plex Sans Condensed', sans-serif;
+  --sans:  'IBM Plex Sans', sans-serif;
 }
-
-/* ══════════════════════════════════════════════════════════════
-   DESIGN TOKENS — LIGHT MODE
-══════════════════════════════════════════════════════════════ */
-[data-theme="light"] {
-  --bg:        #F2EFE9;
-  --bg1:       #EAE6DF;
-  --bg2:       #E2DDD5;
-  --bg3:       #D8D2C8;
-  --rule:      #C8C0B4;
-  --rule2:     #B8AFA0;
-  --muted:     #9A9080;
-  --dim:       #6A6055;
-  --text:      #2A2218;
-  --bright:    #100C06;
-  --accent:    #005FCC;
-  --accent2:   #003D99;
-  --accent3:   #007740;
-  --warn:      #CC3300;
-
-  --nav-bg:    rgba(242,239,233,.92);
-  --sidenav-bg:rgba(234,230,223,.96);
-  --nav-border:rgba(200,192,180,1);
-
-  --toggle-bg: #C8C0B4;
-  --toggle-knob:#005FCC;
-
-  --photo-filter: grayscale(.6) contrast(1.05) brightness(1.05);
-  --photo-hover:  grayscale(0) contrast(1.05) brightness(1.0);
-
-  --card-bg:   var(--bg);
-  --card-hover:var(--bg1);
-  --band-bg:   var(--bg1);
-  --tag-hover-bg: rgba(0,95,204,.06);
-  --co-hover-bg:  rgba(0,95,204,.05);
-
-  --sb-track:  var(--bg);
-  --sb-thumb:  var(--rule2);
-
-  /* ── Social Post Generator token aliases ── */
-  --cream: #F2EFE9;  /* light mode page background */
-}
-
-/* ══════════════════════════════════════════════════════════════
-   RESET + BASE
-══════════════════════════════════════════════════════════════ */
-*{margin:0;padding:0;box-sizing:border-box;}
-html{scroll-behavior:smooth;font-size:16px;}
-body{
-  background:var(--bg);color:var(--text);
-  font-family:'IBM Plex Sans',sans-serif;
-  overflow-x:hidden;line-height:1.5;
-  transition:background .35s ease,color .35s ease;
-  padding-bottom:env(safe-area-inset-bottom,0);
-}
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box;}
+html{font-size:16px;scroll-behavior:smooth;}
+body{background:var(--bg);color:var(--text);font-family:var(--sans);overflow-x:hidden;min-height:100vh;}
 a{color:inherit;text-decoration:none;}
 img{display:block;}
-.stat-emoji{display:none;}
 
-/* ══════════════════════════════════════════════════════════════
-   TYPOGRAPHY SYSTEM
-   IBM Plex Mono  → hero titles, era numbers, data displays
-   IBM Plex Sans Condensed → era titles, card headings, UI labels
-   IBM Plex Sans  → body copy, descriptions
-══════════════════════════════════════════════════════════════ */
-.t-display  { font-family:'IBM Plex Mono',monospace; }
-.t-heading  { font-family:'IBM Plex Sans Condensed',sans-serif; }
-.t-body     { font-family:'IBM Plex Sans',sans-serif; }
-.t-mono     { font-family:'IBM Plex Mono',monospace; }
-
-/* ══════════════════════════════════════════════════════════════
-   LIVE NEWS PANEL
-══════════════════════════════════════════════════════════════ */
-#news-panel{
-  position:fixed;top:58px;right:1rem;
-  width:272px;z-index:800;
-  background:var(--bg1);
-  border:1px solid var(--rule2);
-  font-family:'IBM Plex Mono',monospace;
-  box-shadow:0 4px 24px rgba(0,0,0,.28);
-  transition:background .35s,border-color .35s,box-shadow .25s,opacity .4s ease,transform .4s ease;
-  opacity:1;transform:translateY(0);pointer-events:auto;
-}
-#news-panel.news-hidden{
-  opacity:0;transform:translateY(-8px);pointer-events:none;
-}
-#news-panel:hover{
-  border-color:var(--accent);
-  box-shadow:0 6px 32px rgba(0,212,240,.08);
-}
-#news-panel-header{
-  display:flex;align-items:center;justify-content:space-between;
-  padding:.55rem .75rem;
-  border-bottom:1px solid var(--rule);
-  transition:border-color .35s;
-}
-.news-label{
-  display:flex;align-items:center;gap:.55rem;
-  font-size:0.72rem;font-weight:700;letter-spacing:.22em;
-  text-transform:uppercase;color:var(--accent);
-}
-.news-live-dot{
-  width:6px;height:6px;border-radius:50%;
-  background:var(--accent);flex-shrink:0;
-  animation:newsPulse 1.4s ease-in-out infinite;
-}
-@keyframes newsPulse{0%,100%{opacity:1;transform:scale(1);}50%{opacity:.3;transform:scale(.65);}}
-#news-refresh-btn{
-  background:none;border:1px solid var(--rule2);
-  color:var(--dim);font-family:'IBM Plex Mono',monospace;
-  font-size:0.66rem;letter-spacing:.12em;text-transform:uppercase;
-  padding:.22rem .5rem;cursor:pointer;
-  transition:border-color .2s,color .2s,background .2s;
-  line-height:1.4;
-}
-#news-refresh-btn:hover{
-  border-color:var(--accent);color:var(--accent);
-  background:rgba(0,212,240,.05);
-}
-#news-items{
-  padding:.5rem 0;
-  display:flex;flex-direction:column;
-}
-.news-item{
-  padding:.65rem .75rem;
-  border-bottom:1px solid var(--rule);
-  position:relative;
-  transition:background .2s;
-  cursor:default;
-  display:block;
-  color:inherit;
-  text-decoration:none;
-}
-a.news-item{cursor:pointer;}
-a.news-item:hover .news-item-text{color:var(--accent);transition:color .2s;}
-a.news-item:hover .news-item-source{color:var(--accent);}
-.news-item:last-child{border-bottom:none;}
-.news-item:hover{background:var(--bg2);}
-.news-item::before{
-  content:'';position:absolute;left:0;top:0;bottom:0;
-  width:2px;background:var(--accent);
-  transform:scaleY(0);transform-origin:top;
-  transition:transform .25s ease;
-}
-.news-item:hover::before{transform:scaleY(1);}
-.news-item-idx{
-  font-size:0.66rem;letter-spacing:.2em;color:var(--muted);
-  display:block;margin-bottom:.3rem;
-  transition:color .35s;
-}
-.news-item-text{
-  font-family:'IBM Plex Sans',sans-serif;
-  font-size:0.84rem;line-height:1.55;
-  color:var(--text);transition:color .35s;
-}
-.news-item-source{
-  font-family:'IBM Plex Mono',monospace;
-  font-size:0.66rem;color:var(--muted);
-  margin-top:.3rem;letter-spacing:.08em;
-  transition:color .35s;
-}
-#news-loading{
-  padding:1.4rem .75rem;
-  display:flex;align-items:center;gap:.7rem;
-  font-family:'IBM Plex Mono',monospace;
-  font-size:0.72rem;letter-spacing:.1em;color:var(--muted);
-  transition:color .35s;
-}
-.news-spinner{
-  width:14px;height:14px;flex-shrink:0;
-  border:1.5px solid var(--rule2);
-  border-top-color:var(--accent);
-  border-radius:50%;
-  animation:newspin .7s linear infinite;
-}
-@keyframes newspin{to{transform:rotate(360deg);}}
-#news-error{
-  padding:.8rem .75rem;
-  font-family:'IBM Plex Mono',monospace;
-  font-size:0.72rem;letter-spacing:.08em;color:var(--warn);
-  transition:color .35s;
-}
-@media(max-width:900px){#news-panel{display:none;}}
-
-/* ══════════════════════════════════════════════════════════════
-   CURSOR
-══════════════════════════════════════════════════════════════ */
+/* ── CURSOR ── */
 @media(pointer:fine){body{cursor:none;}}
-.cur{
-  width:5px;height:5px;background:var(--accent);
-  position:fixed;pointer-events:none;z-index:9999;
-  transform:translate(-50%,-50%);border-radius:0;
-  transition:background .15s,transform .1s;
-}
-.cur.active{transform:translate(-50%,-50%) scale(1.8);}
-.cur-ring{
-  width:26px;height:26px;border:1px solid var(--accent);
-  position:fixed;pointer-events:none;z-index:9998;
-  transform:translate(-50%,-50%);border-radius:0;
-  transition:left .09s,top .09s,width .2s,height .2s,border-color .2s,opacity .2s;
-  opacity:.7;
-}
+#cur{position:fixed;width:5px;height:5px;background:var(--bright);border-radius:0;pointer-events:none;z-index:9999;transform:translate(-50%,-50%);transition:transform .1s;}
+#cur.big{transform:translate(-50%,-50%) scale(3);background:rgba(242,239,233,.25);border:1px solid rgba(242,239,233,.5);}
+#curRing{position:fixed;width:28px;height:28px;border:1px solid rgba(242,239,233,.2);border-radius:0;pointer-events:none;z-index:9998;transform:translate(-50%,-50%);transition:left .07s,top .07s;}
+#progress{position:fixed;top:0;left:0;height:2px;background:linear-gradient(90deg,#00D4F0,#39E07A);width:0;z-index:9100;}
 
-/* ══════════════════════════════════════════════════════════════
-   PROGRESS BAR
-══════════════════════════════════════════════════════════════ */
-#progress{
-  position:fixed;top:0;left:0;height:2px;
-  background:var(--accent);width:0%;z-index:9100;
-  transition:width .08s linear;
+/* ═══ NAV ═══ */
+nav{
+  position:fixed;top:0;left:0;right:0;z-index:800;
+  height:72px;display:flex;align-items:center;gap:2rem;
+  padding:0 2.5rem;
+  background:linear-gradient(to bottom,rgba(10,10,10,.95) 0%,rgba(10,10,10,0) 100%);
+  transition:background .4s;
 }
+nav.solid{background:rgba(10,10,10,.96);border-bottom:1px solid var(--rule);}
+.nav-logo{
+  font-family:var(--mono);font-weight:700;font-size:1.1rem;
+  letter-spacing:.04em;color:var(--bright);white-space:nowrap;
+}
+.nav-logo em{font-style:italic;font-weight:300;color:var(--dim);}
+.nav-sep{width:1px;height:20px;background:var(--rule);}
+.nav-links{display:flex;gap:1.6rem;}
+.nav-link{
+    font-family: var(--mono);
+    font-size: 0.86rem;
+    letter-spacing: .16em;
+    text-transform: uppercase;
+    color: var(--muted);
+    transition: color .2s;
+    cursor: pointer;
+}
+.nav-link:hover,.nav-link.active{color:var(--bright);}
+.nav-right{margin-left:auto;display:flex;align-items:center;gap:.8rem;}
+.nav-badge{
+  font-family:var(--mono);font-size:.68rem;letter-spacing:.12em;
+  text-transform:uppercase;
+  background:var(--bg3);border:1px solid var(--rule);
+  color:var(--dim);padding:.4rem 1rem;
+}
+.nav-badge span{color:#00D4F0;}
 
-/* ══════════════════════════════════════════════════════════════
-   TOP NAV
-══════════════════════════════════════════════════════════════ */
-.nav{
-  position:fixed;top:0;left:0;right:0;z-index:900;
-  display:flex;align-items:center;gap:1.5rem;
-  padding:0 1.5rem 0 4.5rem;height:50px;
-  background:var(--nav-bg);
-  backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);
-  border-bottom:1px solid var(--nav-border);
-  transition:background .35s,border-color .35s;
-}
-/* offset for sidenav on desktop */
-@media(min-width:901px){.nav{padding-left:calc(52px + 1.5rem);}}
-
-.nav-brand{
-  font-family:'IBM Plex Mono',monospace;
-  font-weight:700;font-size:0.78rem;letter-spacing:.12em;
-  text-transform:uppercase;color:var(--bright);white-space:nowrap;
-  text-decoration:none;flex-shrink:0;
-}
-/* Full text visible on desktop */
-.nav-brand .brand-full{display:inline;}
-.nav-brand .brand-short{display:none;}
-/* Shorten to "A (BRIEF) HISTORY OF_" on mobile < 960px */
-@media(max-width:960px){
-  .nav-brand .brand-full{display:none;}
-  .nav-brand .brand-short{display:inline;}
-}
-.nav-topic{
-  font-family:'IBM Plex Mono',monospace;
-  font-weight:700;font-size:0.78rem;letter-spacing:.12em;
-  text-transform:uppercase;color:var(--accent);
-  white-space:nowrap;flex-shrink:0;
-}
-
-.nav-era{
-  font-family:'IBM Plex Mono',monospace;
-  font-size:0.84rem;letter-spacing:.2em;text-transform:uppercase;
-  color:var(--dim);flex:1;overflow:hidden;
-  white-space:nowrap;text-overflow:ellipsis;
-}
-@media(max-width:600px){.nav-era{display:none;}}
-
-/* ─── MODE TOGGLE ─── */
-.mode-toggle{
-  display:flex;align-items:center;gap:.6rem;
-  margin-left:auto;flex-shrink:0;
-}
-.mode-label{
-  font-family:'IBM Plex Mono',monospace;
-  font-size:0.792rem;letter-spacing:.18em;text-transform:uppercase;
-  color:var(--dim);
-}
-.toggle-switch{
-  width:38px;height:20px;background:var(--toggle-bg);
-  border:1px solid var(--rule2);position:relative;
-  cursor:pointer;transition:background .3s,border-color .3s;
-  flex-shrink:0;
-}
-.toggle-switch::after{
-  content:'';position:absolute;top:3px;left:3px;
-  width:12px;height:12px;background:var(--toggle-knob);
-  transition:transform .3s,background .3s;
-}
-[data-theme="light"] .toggle-switch::after{transform:translateX(18px);}
-[data-theme="light"] .toggle-switch{background:var(--toggle-bg);}
-.mode-icon{
-  font-size:1.08rem;color:var(--dim);line-height:1;
-  transition:color .3s;user-select:none;
-}
-
-/* ══════════════════════════════════════════════════════════════
-   SIDE NAV — vertical section navigator
-   Desktop: fixed left strip
-   Mobile: horizontal pill bar, sticky below top nav
-══════════════════════════════════════════════════════════════ */
-
-/* Desktop */
-.sidenav{
-  position:fixed;top:50px;left:0;bottom:0;
-  width:52px;z-index:850;
-  display:flex;flex-direction:column;align-items:center;
-  justify-content:center;gap:0;
-  background:var(--sidenav-bg);
-  border-right:1px solid var(--nav-border);
-  backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);
-  transition:background .35s,border-color .35s;
-}
-@media(max-width:900px){.sidenav{display:none;}}
-
-.sidenav-item{
-  width:100%;display:flex;flex-direction:column;
-  align-items:center;justify-content:center;
-  padding:.9rem 0;cursor:pointer;position:relative;
-  transition:background .2s;
-  border-bottom:1px solid var(--nav-border);
-  text-decoration:none;
-}
-.sidenav-item:last-child{border-bottom:none;}
-.sidenav-item:hover{background:var(--bg2);}
-
-.sidenav-num{
-  font-family:'IBM Plex Mono',monospace;
-  font-size:0.792rem;font-weight:700;letter-spacing:.05em;
-  color:var(--muted);transition:color .25s;line-height:1;
-}
-.sidenav-dot{
-  width:4px;height:4px;background:var(--muted);margin-top:.4rem;
-  transition:background .25s,transform .25s;
-}
-
-/* active state — injected by JS */
-.sidenav-item.active .sidenav-num{color:var(--accent);}
-.sidenav-item.active .sidenav-dot{background:var(--accent);transform:scale(1.6);}
-.sidenav-item.active{background:var(--bg2);}
-
-/* tooltip on hover (desktop) */
-.sidenav-item::after{
-  content:attr(data-label);
-  position:absolute;left:calc(100% + 10px);
-  font-family:'IBM Plex Mono',monospace;
-  font-size:0.792rem;letter-spacing:.12em;text-transform:uppercase;
-  color:var(--bright);background:var(--bg2);
-  border:1px solid var(--rule2);
-  padding:.25rem .55rem;white-space:nowrap;
-  opacity:0;pointer-events:none;
-  transition:opacity .2s;z-index:20;
-}
-.sidenav-item:hover::after{opacity:1;}
-
-/* Mobile bottom bar */
-.mobile-nav{
-  display:none;
-  position:sticky;top:50px;z-index:800;
-  overflow-x:auto;
-  background:var(--sidenav-bg);
-  border-bottom:1px solid var(--nav-border);
-  backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);
-  scrollbar-width:none;
-  transition:background .35s,border-color .35s;
-}
-.mobile-nav::-webkit-scrollbar{display:none;}
-@media(max-width:900px){.mobile-nav{display:flex;}}
-
-.mobile-nav-track{
-  display:flex;align-items:stretch;white-space:nowrap;
-  min-width:max-content;
-}
-.mobile-nav-item{
-  display:flex;flex-direction:column;align-items:center;
-  justify-content:center;padding:.5rem 1.1rem;
-  cursor:pointer;text-decoration:none;
-  border-right:1px solid var(--nav-border);
-  transition:background .2s;flex-shrink:0;
-}
-.mobile-nav-item:last-child{border-right:none;}
-.mobile-nav-item:hover{background:var(--bg2);}
-.mobile-nav-item.active{background:var(--bg2);}
-
-.mobile-nav-num{
-  font-family:'IBM Plex Mono',monospace;
-  font-size:0.792rem;font-weight:700;letter-spacing:.08em;
-  color:var(--muted);transition:color .25s;
-}
-.mobile-nav-label{
-  font-family:'IBM Plex Sans Condensed',sans-serif;
-  font-size:0.864rem;letter-spacing:.1em;text-transform:uppercase;
-  color:var(--dim);margin-top:.15rem;transition:color .25s;
-}
-.mobile-nav-item.active .mobile-nav-num,
-.mobile-nav-item.active .mobile-nav-label{color:var(--accent);}
-
-/* ══════════════════════════════════════════════════════════════
-   MAIN CONTENT OFFSET (for sidenav)
-══════════════════════════════════════════════════════════════ */
-.page-body{margin-left:0;}
-@media(min-width:901px){.page-body{margin-left:52px;}}
-
-/* ══════════════════════════════════════════════════════════════
-   HERO
-══════════════════════════════════════════════════════════════ */
+/* ═══ HERO ═══ */
 .hero{
-  min-height:100vh;
-  display:grid;grid-template-columns:1fr 1fr;
-  position:relative;overflow:hidden;
-  border-bottom:1px solid var(--rule);
+  position:relative;
+  height:100vh;min-height:580px;max-height:860px;
+  display:flex;align-items:flex-end;
+  overflow:hidden;
 }
-@media(max-width:768px){.hero{grid-template-columns:1fr;}}
-
-.hero-left{
-  display:flex;flex-direction:column;justify-content:flex-end;
-  padding:8rem 3rem 4rem;
+.hero-img{
+  position:absolute;inset:0;z-index:0;
+  background:#07090C;
+}
+.hero-img img{
+  width:100%;height:100%;
+  object-fit:cover;object-position:center 20%;
+  filter:brightness(.55) saturate(.9);
+  display:block;
+}
+/* gradient overlay — left text readable, right image visible */
+.hero-overlay{
+  position:absolute;inset:0;z-index:1;
+  background:
+    linear-gradient(to right, rgba(7,9,12,.95) 0%, rgba(7,9,12,.7) 35%, rgba(7,9,12,.15) 65%, transparent 100%),
+    linear-gradient(to top, rgba(7,9,12,.9) 0%, rgba(7,9,12,.3) 30%, transparent 60%);
+}
+.hero-content{
   position:relative;z-index:2;
-  border-right:1px solid var(--rule);
+  padding:0 2.5rem 3.5rem;
+  max-width:620px;
 }
-@media(max-width:768px){.hero-left{padding:7rem 1.5rem 2rem;border-right:none;border-bottom:1px solid var(--rule);}}
-
-.hero-overline{
-  font-family:'IBM Plex Mono',monospace;
-  font-size:0.864rem;letter-spacing:.3em;text-transform:uppercase;
-  color:var(--accent);display:flex;align-items:center;gap:.8rem;margin-bottom:2rem;
+.hero-eyebrow{
+  font-family:var(--mono);font-size:.52rem;letter-spacing:.3em;
+  text-transform:uppercase;color:#00D4F0;
+  margin-bottom:.9rem;
+  display:flex;align-items:center;gap:.6rem;
 }
-.hero-overline::before{content:'';display:block;width:24px;height:1px;background:var(--accent);}
+.hero-dot{
+  width:7px;height:7px;border-radius:50%;
+  background:#00D4F0;box-shadow:0 0 10px #00D4F0;
+  animation:hdot 2s ease-in-out infinite;
+}
+@keyframes hdot{0%,100%{opacity:1}50%{opacity:.25}}
 
-/* HERO TITLE — IBM Plex Mono, the terminal centrepiece */
 .hero-title{
-  font-family:'IBM Plex Mono',monospace;
-  font-weight:700;
-  font-size:clamp(3.5rem,8vw,8rem);
-  line-height:.88;letter-spacing:-.03em;
-  color:var(--bright);text-transform:uppercase;
+    font-family: var(--cond);
+    font-weight: 700;
+    font-size: clamp(3rem,7vw,6.5rem);
+    line-height: .88;
+    letter-spacing: -.02em;
+    color: var(--bright);
+    margin-bottom: 1.5rem;
 }
-.hero-title em{
-  font-style:normal;color:var(--accent);
+.hero-title .a-brief{
+  display:block;font-weight:300;font-style:italic;
+  font-family:var(--mono);
+  font-size:clamp(.75rem,1.6vw,1.45rem);letter-spacing:.05em;
+  color:rgba(242,239,233,.55);margin-bottom:.1em;
 }
-
-@keyframes blink{0%,100%{opacity:1;}50%{opacity:0;}}
-.type-cursor{
-  display:inline;color:var(--accent);font-weight:300;
+.hero-title .cursor{
+  display:inline;color:#00D4F0;font-weight:300;
+  font-family:var(--mono);
   animation:blink .9s step-end infinite;
-  font-family:'IBM Plex Mono',monospace;
 }
-
-.hero-desc{
-  margin-top:2.5rem;max-width:400px;
-  font-family:'IBM Plex Sans',sans-serif;
-  font-size:1.128rem;line-height:1.8;color:var(--dim);
-  border-left:1px solid var(--rule2);padding-left:1.2rem;
-}
-
-.hero-scroll-hint{
-  margin-top:3rem;display:flex;align-items:center;gap:.8rem;
-  font-family:'IBM Plex Mono',monospace;
-  font-size:0.84rem;letter-spacing:.25em;text-transform:uppercase;color:var(--muted);
-}
-.scroll-line{width:36px;height:1px;background:var(--muted);}
-
-/* Hero right */
-.hero-right{
-  display:flex;flex-direction:column;justify-content:flex-end;
-  padding:8rem 3rem 4rem;position:relative;z-index:2;
-  gap:0;
-}
-@media(max-width:768px){.hero-right{padding:2rem 1.5rem 3rem;}}
-
-.hero-stat-grid{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--rule);}
-.hero-stat{
-  background:var(--card-bg);padding:1.8rem 1.5rem;
-  position:relative;overflow:hidden;
-  transition:background .35s;
-}
-.hero-stat::before{
-  content:'';position:absolute;top:0;left:0;width:2px;height:0;
-  background:var(--accent);transition:height .6s ease;
-  transition-delay:var(--d,0s);
-}
-.hero-stat.visible::before{height:100%;}
-
-.stat-num{
-  font-family:'IBM Plex Mono',monospace;font-weight:700;
-  font-size:clamp(2.2rem,4.5vw,3.5rem);
-  color:var(--bright);line-height:1;display:block;
-  transition:color .35s;
-}
-.stat-label{
-  font-family:'IBM Plex Mono',monospace;
-  font-size:0.792rem;letter-spacing:.22em;text-transform:uppercase;
-  color:var(--dim);margin-top:.4rem;display:block;transition:color .35s;
-}
-.stat-sub{
-  font-family:'IBM Plex Sans',sans-serif;
-  font-size:0.888rem;color:var(--muted);margin-top:.3rem;line-height:1.4;transition:color .35s;
-}
-
-/* hero bg grid */
-.hero::before{
-  content:'';position:absolute;inset:0;
-  background-image:
-    linear-gradient(var(--rule) 1px,transparent 1px),
-    linear-gradient(90deg,var(--rule) 1px,transparent 1px);
-  background-size:80px 80px;opacity:.35;z-index:0;
-  transition:opacity .35s;
-}
-.bracket{position:absolute;width:36px;height:36px;opacity:.4;transition:border-color .35s;}
-.bracket-tl{top:5rem;left:2rem;border-top:1px solid var(--accent);border-left:1px solid var(--accent);}
-.bracket-br{bottom:2rem;right:2rem;border-bottom:1px solid var(--accent);border-right:1px solid var(--accent);}
-
-/* ══════════════════════════════════════════════════════════════
-   SECTION LABEL
-══════════════════════════════════════════════════════════════ */
-.sec-label{
-  display:flex;align-items:center;gap:1rem;
-  font-family:'IBM Plex Mono',monospace;
-  font-size:0.84rem;letter-spacing:.3em;text-transform:uppercase;
-  color:var(--accent);margin-bottom:1rem;transition:color .35s;
-}
-.sec-label::after{content:'';flex:1;height:1px;background:var(--rule2);transition:background .35s;}
-
-/* ══════════════════════════════════════════════════════════════
-   STAT BAR
-══════════════════════════════════════════════════════════════ */
-.stat-bar{
-  display:grid;grid-template-columns:repeat(4,1fr);
-  border-top:1px solid var(--rule);border-bottom:1px solid var(--rule);
-}
-@media(max-width:600px){.stat-bar{grid-template-columns:1fr 1fr;}}
-.stat-bar-cell{
-  padding:2rem 2.5rem;border-right:1px solid var(--rule);
-  position:relative;overflow:hidden;transition:background .2s;
-}
-.stat-bar-cell:last-child{border-right:none;}
-.stat-bar-cell:hover{background:var(--bg1);}
-.stat-bar-cell::after{
-  content:'';position:absolute;bottom:0;left:0;right:0;height:2px;
-  background:var(--accent);transform:scaleX(0);transform-origin:left;
-  transition:transform .4s ease;
-}
-.stat-bar-cell:hover::after{transform:scaleX(1);}
-.sbc-n{
-  font-family:'IBM Plex Mono',monospace;font-weight:700;
-  font-size:2.2rem;color:var(--bright);display:block;line-height:1;
-  transition:color .35s;
-}
-.sbc-l{
-  font-family:'IBM Plex Mono',monospace;
-  font-size:0.792rem;letter-spacing:.2em;text-transform:uppercase;
-  color:var(--dim);margin-top:.4rem;display:block;transition:color .35s;
-}
-.sbc-d{
-  font-family:'IBM Plex Sans',sans-serif;
-  font-size:0.924rem;color:var(--muted);margin-top:.4rem;line-height:1.4;transition:color .35s;
-}
-
-/* ══════════════════════════════════════════════════════════════
-   TICKER
-══════════════════════════════════════════════════════════════ */
-.ticker{
-  overflow:hidden;background:var(--bg1);
-  padding:.5rem 0;border-top:1px solid var(--rule);border-bottom:1px solid var(--rule);
-  transition:background .35s,border-color .35s;
-}
-.ticker-track{
-  display:flex;white-space:nowrap;
-  animation:ticker 38s linear infinite;
-  font-family:'IBM Plex Mono',monospace;
-  font-size:0.84rem;letter-spacing:.2em;
-  text-transform:uppercase;color:var(--dim);
-}
-.ticker-track span{display:inline-flex;align-items:center;gap:2rem;padding:0 2rem;}
-.ticker-track .sep{color:var(--accent);font-size:0.72rem;}
-@keyframes ticker{0%{transform:translateX(0);}100%{transform:translateX(-50%);}}
-
-/* ══════════════════════════════════════════════════════════════
-   ERA BLOCKS
-══════════════════════════════════════════════════════════════ */
-.era{
-  display:grid;grid-template-columns:280px 1fr;
-  border-bottom:1px solid var(--rule);
-}
-@media(max-width:900px){.era{grid-template-columns:1fr;}}
-
-.era-sidebar{
-  padding:4rem 2.5rem;border-right:1px solid var(--rule);
-  position:relative;display:flex;flex-direction:column;justify-content:space-between;
-  transition:border-color .35s;
-}
-@media(max-width:900px){.era-sidebar{border-right:none;border-bottom:1px solid var(--rule);padding:2.5rem 1.5rem;}}
-
-/* big ghost number — IBM Plex Mono for the terminal feel */
-.era-index{
-  font-family:'IBM Plex Mono',monospace;font-weight:700;
-  font-size:clamp(4.5rem,9vw,7.5rem);
-  line-height:1;color:var(--rule2);
-  position:absolute;top:2rem;right:1.5rem;
-  transition:color .4s;pointer-events:none;letter-spacing:-.04em;
-}
-.era:hover .era-index{color:var(--rule);}
-
-.era-period{
-  font-family:'IBM Plex Sans Condensed',sans-serif;font-weight:700;
-  font-size:clamp(1.4rem,2.8vw,2rem);
-  color:var(--bright);line-height:1;
-  text-transform:uppercase;letter-spacing:.02em;
-  transition:color .35s;
-}
-.era-period-accent{display:block;color:var(--accent);font-size:.72em;transition:color .35s;}
-
-.era-title-main{
-  font-family:'IBM Plex Sans',sans-serif;font-weight:400;
-  font-size:1.092rem;color:var(--dim);margin-top:1rem;line-height:1.6;
-  transition:color .35s;
-}
-
-.era-meter{margin-top:auto;padding-top:2rem;}
-.era-meter-label{
-  font-family:'IBM Plex Mono',monospace;
-  font-size:0.744rem;letter-spacing:.2em;text-transform:uppercase;
-  color:var(--muted);margin-bottom:.5rem;transition:color .35s;
-}
-.era-meter-bar{height:1px;background:var(--rule2);position:relative;overflow:hidden;}
-.era-meter-fill{
-  position:absolute;inset:0;
-  background:linear-gradient(90deg,var(--accent),var(--accent2));
-  transform:scaleX(0);transform-origin:left;transition:transform 1.2s cubic-bezier(.16,1,.3,1) .3s;
-}
-.era-meter-fill.visible{transform:scaleX(1);}
-
-.era-main{padding:4rem 3rem;transition:background .35s;}
-@media(max-width:900px){.era-main{padding:2rem 1.5rem;}}
-
-/* ══════════════════════════════════════════════════════════════
-   CARD GRID
-══════════════════════════════════════════════════════════════ */
-.card-grid{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--rule);}
-@media(max-width:640px){.card-grid{grid-template-columns:1fr;}}
-
-.card{
-  background:var(--card-bg);padding:2.4rem 1.8rem 2rem;
-  position:relative;overflow:hidden;transition:background .2s;
-}
-.card:hover{background:var(--card-hover);}
-.card::before{
-  content:'';position:absolute;top:0;left:0;bottom:0;width:2px;
-  background:var(--c-accent,var(--accent));
-  transform:scaleY(0);transform-origin:top;transition:transform .3s ease;
-}
-.card:hover::before{transform:scaleY(1);}
-
-.card-idx{
-  position:absolute;top:1.2rem;right:1.5rem;
-  font-family:'IBM Plex Mono',monospace;
-  font-size:0.744rem;letter-spacing:.18em;color:var(--muted);
-}
-.card-year{
-  font-family:'IBM Plex Mono',monospace;font-weight:600;
-  font-size:1.368rem;color:var(--c-accent,var(--accent));
-  letter-spacing:.06em;display:block;margin-top:1.6rem;margin-bottom:.5rem;transition:color .35s;
-}
-.card h3{
-  font-family:'IBM Plex Sans Condensed',sans-serif;font-weight:700;
-  font-size:clamp(1.1rem,2.3vw,1.55rem);
-  color:var(--bright);line-height:1.05;
-  text-transform:uppercase;letter-spacing:.03em;margin-bottom:1rem;
-  transition:color .35s;
-}
-.card p{
-  font-family:'IBM Plex Sans',sans-serif;
-  font-size:1.032rem;line-height:1.8;color:var(--dim);transition:color .35s;
-}
-.card-tags{margin-top:1.5rem;display:flex;flex-wrap:wrap;gap:.4rem;}
-.tag{
-  font-family:'IBM Plex Mono',monospace;font-size:0.78rem;letter-spacing:.1em;
+@keyframes blink{0%,100%{opacity:1}50%{opacity:0}}
+.hero-sub{
+  font-family:var(--mono);font-size:.58rem;letter-spacing:.15em;
   text-transform:uppercase;color:var(--muted);
-  border:1px solid var(--rule2);padding:.3rem .65rem;
-  text-decoration:none;display:inline-block;
-  transition:color .2s,border-color .2s,background .2s;
+  margin-bottom:1.4rem;
 }
-.tag:hover{color:var(--accent);border-color:var(--accent);background:var(--tag-hover-bg);}
+.hero-desc{
+    font-family: var(--sans);
+    font-size: 1.2rem;
+    font-weight: 300;
+    line-height: 1.75;
+    color: var(--text);
+    max-width: 480px;
+    margin-bottom: 2rem;
+    border-left: 2px solid #00D4F0;
+    padding-left: 1rem;
+}
+.hero-actions{display:flex;gap:.8rem;align-items:center;flex-wrap:wrap;}
+.btn-primary{
+  font-family:var(--mono);font-size:.56rem;font-weight:700;
+  letter-spacing:.14em;text-transform:uppercase;
+  background:var(--bright);color:var(--bg);
+  border:none;padding:.75rem 2rem;cursor:pointer;
+  transition:opacity .18s,transform .18s;
+  display:inline-flex;align-items:center;gap:.5rem;
+}
+.btn-primary:hover{opacity:.88;transform:translateY(-1px);}
+.btn-ghost{
+  font-family:var(--mono);font-size:.56rem;font-weight:500;
+  letter-spacing:.14em;text-transform:uppercase;
+  background:rgba(242,239,233,.1);color:var(--bright);
+  border:1px solid rgba(242,239,233,.25);
+  padding:.75rem 1.5rem;cursor:pointer;
+  transition:background .2s,border-color .2s;
+  backdrop-filter:blur(8px);
+}
+.btn-ghost:hover{background:rgba(242,239,233,.18);border-color:rgba(242,239,233,.45);}
 
-.card-key{
-  position:absolute;top:0;left:0;
-  font-family:'IBM Plex Mono',monospace;font-size:0.72rem;letter-spacing:.15em;
-  text-transform:uppercase;color:var(--bg);
-  background:var(--c-accent,var(--accent));padding:.22rem .7rem;
+/* hero stats strip */
+.hero-stats{
+  display:flex;gap:2rem;margin-top:2rem;
+  border-top:1px solid rgba(242,239,233,.1);padding-top:1.5rem;
+}
+.hstat{display:flex;flex-direction:column;gap:.2rem;}
+.hstat-n{font-family:var(--mono);font-weight:700;font-size:1.6rem;color:var(--bright);line-height:1;}
+.hstat-l{font-family:var(--mono);font-size:.42rem;letter-spacing:.2em;text-transform:uppercase;color:var(--muted);}
+
+/* ═══ MAIN ═══ */
+main{padding-bottom:6rem;}
+
+/* ═══ SHELF SECTION ═══ */
+.section{padding-top:2.5rem;}
+
+.section-head{
+  display:flex;align-items:center;gap:1rem;
+  padding:0 2.5rem .9rem;
+}
+.section-accent{width:12px;height:12px;flex-shrink:0;}
+.section-label{
+  font-family:var(--cond);font-weight:700;font-size:1.2rem;
+  letter-spacing:.03em;color:var(--bright);flex:1;
+}
+.section-count{
+  font-family:var(--mono);font-size:.46rem;
+  letter-spacing:.16em;text-transform:uppercase;color:var(--muted);
 }
 
-/* ══════════════════════════════════════════════════════════════
-   PHOTO STRIPS
-══════════════════════════════════════════════════════════════ */
-.photo-strip{
-  display:grid;grid-template-columns:repeat(3,1fr);
-  border-top:1px solid var(--rule);border-bottom:1px solid var(--rule);
+/* ═══ GUIDES GRID HEADER ═══ */
+.grid-header{
+  display:flex;align-items:center;gap:1rem;
+  padding:2.5rem 2.5rem 1.5rem;
 }
+.grid-header-accent{width:12px;height:12px;flex-shrink:0;background:#00D4F0;box-shadow:0 0 8px #00D4F0;}
+.grid-header-label{
+  font-family:var(--cond);font-weight:700;font-size:1.2rem;
+  letter-spacing:.03em;color:var(--bright);flex:1;
+}
+.grid-header-count{
+  font-family:var(--mono);font-size:.46rem;
+  letter-spacing:.16em;text-transform:uppercase;color:var(--muted);
+}
+
+/* ═══ 3-COL INSTAGRAM-STYLE GRID ═══ */
+.guides-grid{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:1.5rem;
+  padding:0 2.5rem;
+}
+.grid-card{
+  position:relative;
+  aspect-ratio:3/4;
+  overflow:hidden;
+  cursor:pointer;
+  display:block;
+  background:var(--bg2);
+}
+.grid-card-inner{
+  width:100%;height:100%;
+  position:relative;
+  transition:transform .4s cubic-bezier(.16,1,.3,1);
+}
+.grid-card:hover .grid-card-inner{transform:scale(1.04);}
+.grid-card img{
+  width:100%;height:100%;object-fit:cover;
+  filter:brightness(.85) saturate(.95);
+  transition:filter .3s;
+}
+.grid-card:hover img{filter:brightness(1) saturate(1.05);}
+.grid-card-gradient-bg{
+  position:absolute;inset:0;z-index:0;
+}
+.grid-card-gradient-bg::after{
+  content:'';position:absolute;inset:0;
+  background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='1'/%3E%3C/svg%3E");
+  opacity:.08;mix-blend-mode:overlay;
+}
+/* bottom text overlay */
+.grid-card-overlay{
+  position:absolute;inset:0;z-index:2;
+  background:linear-gradient(to top, rgba(0,0,0,.85) 0%, rgba(0,0,0,.3) 45%, transparent 70%);
+  display:flex;flex-direction:column;justify-content:flex-end;
+  padding:.9rem 1rem;
+  opacity:1;
+  transition:opacity .25s;
+}
+.grid-card-label{
+    font-family: var(--mono);
+    font-weight: 300;
+    font-style: italic;
+    font-size: 1rem;
+    letter-spacing: .04em;
+    color: rgba(255,255,255,.5);
+    margin-bottom: .2rem;
+}
+.grid-card-title{
+  font-family:var(--cond);font-weight:700;
+  font-size:clamp(.9rem,1.8vw,1.15rem);line-height:1.05;
+  color:#fff;letter-spacing:.01em;
+}
+.grid-card-era{
+  font-family:var(--mono);
+  font-size:clamp(.55rem,.9vw,.72rem);
+  letter-spacing:.14em;
+  text-transform:none;
+  color:rgba(255,255,255,.5);
+  margin-top:.4rem;
+}
+/* issue badge */
+.grid-card-issue{
+  position:absolute;top:.55rem;right:.55rem;z-index:3;
+  font-family:var(--mono);font-size:.36rem;font-weight:600;
+  letter-spacing:.1em;
+  background:rgba(0,0,0,.6);color:rgba(255,255,255,.7);
+  padding:.2rem .45rem;backdrop-filter:blur(4px);
+}
+/* dot indicator */
+.grid-card-dot{
+  position:absolute;top:.6rem;left:.6rem;z-index:3;
+  width:6px;height:6px;border-radius:50%;
+  background:#00D4F0;box-shadow:0 0 8px #00D4F0;
+  animation:hdot 2s ease-in-out infinite;
+}
+
 @media(max-width:600px){
-  .photo-strip{grid-template-columns:1fr 1fr;}
-  .photo-strip .pc:last-child{display:none;}
+  .guides-grid{grid-template-columns:1fr;padding:0 1.5rem;gap:1rem;}
+  .grid-card{aspect-ratio:16/9;}
+  .grid-header{padding-left:1.5rem;padding-right:1.5rem;}
 }
-.pc{position:relative;overflow:hidden;aspect-ratio:16/9;border-right:1px solid var(--rule);}
-.pc:last-child{border-right:none;}
-.pc img{
-  width:100%;height:100%;object-fit:cover;display:block;
-  filter:var(--photo-filter);
-  transition:filter .5s,transform .5s;
+
+/* ═══ CARDS — portrait poster ratio ═══ */
+.card{
+  flex-shrink:0;
+  width:180px;
+  cursor:pointer;
+  display:block;
+  position:relative;
 }
-.pc:hover img{filter:var(--photo-hover);transform:scale(1.04);}
-.pc-cap{
-  position:absolute;bottom:0;left:0;right:0;padding:.5rem .8rem;
-  font-family:'IBM Plex Mono',monospace;
-  font-size:0.744rem;letter-spacing:.18em;text-transform:uppercase;color:var(--dim);
+.card-poster{
+  width:180px;height:260px;
+  position:relative;overflow:hidden;
+  border-radius:4px;
+  background:var(--bg2);
+  transition:transform .35s cubic-bezier(.16,1,.3,1), box-shadow .35s;
+}
+.card:hover .card-poster{
+  transform:scale(1.05) translateY(-4px);
+  box-shadow:0 20px 48px rgba(0,0,0,.6);
+}
+.card-poster img{
+  width:100%;height:100%;
+  object-fit:cover;
+  display:block;
+  filter:brightness(.9) saturate(.95);
+  transition:filter .3s;
+}
+.card:hover .card-poster img{filter:brightness(1) saturate(1.05);}
+
+/* Gradient poster — when no photo */
+.card-gradient{
+  width:100%;height:100%;
+  display:flex;flex-direction:column;
+  justify-content:flex-end;
+  padding:1rem 1.1rem;
+  position:relative;overflow:hidden;
+}
+.card-gradient-bg{
+  position:absolute;inset:0;z-index:0;
+}
+/* Noise texture on gradient cards */
+.card-gradient-bg::after{
+  content:'';position:absolute;inset:0;
+  background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='1'/%3E%3C/svg%3E");
+  opacity:.08;mix-blend-mode:overlay;
+}
+.card-gradient-label{
+  position:relative;z-index:1;
+  font-family:var(--mono);font-weight:300;font-style:italic;
+  font-size:.55rem;letter-spacing:.04em;
+  color:rgba(255,255,255,.55);margin-bottom:.25rem;
+}
+.card-gradient-title{
+  position:relative;z-index:1;
+  font-family:var(--cond);font-weight:700;
+  font-size:1.05rem;line-height:1.05;
+  color:#fff;letter-spacing:.01em;
+}
+.card-gradient-era{
+  position:relative;z-index:1;
+  font-family:var(--mono);font-size:.38rem;
+  letter-spacing:.16em;text-transform:uppercase;
+  color:rgba(255,255,255,.45);margin-top:.35rem;
+}
+/* issue badge top-right */
+.card-issue{
+  position:absolute;top:.6rem;right:.6rem;z-index:3;
+  font-family:var(--mono);font-size:.38rem;font-weight:600;
+  letter-spacing:.1em;
+  background:rgba(0,0,0,.6);color:rgba(255,255,255,.7);
+  padding:.2rem .5rem;backdrop-filter:blur(4px);
+}
+/* live indicator */
+.card-live{
+  position:absolute;top:.6rem;left:.6rem;z-index:3;
+  width:6px;height:6px;border-radius:50%;
+  background:#00D4F0;box-shadow:0 0 8px #00D4F0;
+  animation:hdot 2s ease-in-out infinite;
+}
+
+/* Card caption */
+.card-cap{padding:.6rem .1rem .3rem;}
+.card-cap-title{
+  font-family:var(--cond);font-weight:600;font-size:.88rem;
+  color:var(--text);line-height:1.2;
+  white-space:nowrap;overflow:hidden;text-overflow:ellipsis;
+}
+.card-cap-meta{
+  font-family:var(--mono);font-size:.38rem;
+  letter-spacing:.1em;text-transform:uppercase;
+  color:var(--muted);margin-top:.2rem;
+}
+
+/* ═══ WHAT EVERY GUIDE INCLUDES ═══ */
+.features-section{
+  padding:2.5rem 2.5rem 3rem;
   border-top:1px solid var(--rule);
-  background:rgba(7,9,12,.78);backdrop-filter:blur(8px);
+  margin-top:2rem;
 }
-[data-theme="light"] .pc-cap{background:rgba(242,239,233,.82);}
-.pc-num{color:var(--accent);margin-right:.5rem;}
+.features-head{
+    font-family: var(--mono);
+    font-size: 1.2em;
+    letter-spacing: .28em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 2rem;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+.features-head::after{content:'';flex:1;height:1px;background:var(--rule);}
+.features-grid{
+  display:grid;grid-template-columns:repeat(4,1fr);gap:0;
+}
+.feature-item{
+  padding:1.8rem 2rem 1.8rem 0;
+  border-right:1px solid var(--rule);
+  padding-right:2rem;
+}
+.feature-item:first-child{padding-left:0;}
+.feature-item:last-child{border-right:none;}
+.feature-item + .feature-item{padding-left:2rem;}
+.feat-bar{
+  width:2rem;height:3px;
+  margin-bottom:1.2rem;
+}
+.feat-name{
+    font-family: var(--cond);
+    font-weight: 700;
+    font-size: 1.3rem;
+    color: var(--bright);
+    line-height: 1.1;
+    margin-bottom: .7rem;
+    font-style: italic;
+}
+.feat-desc{
+    font-family: var(--mono);
+    font-size: 1rem;
+    letter-spacing: 0;
+    line-height: 1.5;
+    color: var(--muted);
+}
+@media(max-width:768px){
+  .features-grid{grid-template-columns:repeat(2,1fr);gap:0;}
+  .feature-item{border-right:none;border-bottom:1px solid var(--rule);padding:1.5rem 0;}
+  .feature-item:last-child{border-bottom:none;}
+  .feature-item + .feature-item{padding-left:0;}
+}
+@media(max-width:500px){
+  .features-grid{grid-template-columns:1fr;}
+  .features-section{padding-left:1.5rem;padding-right:1.5rem;}
+}
 
-/* ══════════════════════════════════════════════════════════════
-   PARALLAX BANDS
-══════════════════════════════════════════════════════════════ */
-.band{
-  height:300px;position:relative;overflow:hidden;
-  border-top:1px solid var(--rule);border-bottom:1px solid var(--rule);
-  display:flex;align-items:center;justify-content:center;
-  background:var(--band-bg);transition:background .35s,border-color .35s;
-}
-.band-bg{
-  position:absolute;inset:-100px;will-change:transform;display:flex;align-items:center;
-}
-.band-text{position:relative;z-index:2;text-align:center;padding:2rem;pointer-events:none;}
-.band-year{
-  font-family:'IBM Plex Mono',monospace;font-weight:400;font-style:italic;
-  font-size:clamp(1rem,2.5vw,1.32rem);letter-spacing:.35em;text-transform:uppercase;
-  color:var(--accent);display:block;margin-bottom:.8rem;transition:color .35s;
-}
-.band-headline{
-  font-family:'IBM Plex Mono',monospace;font-weight:700;
-  font-size:clamp(2rem,6vw,5.5rem);
-  line-height:.9;text-transform:uppercase;color:var(--bright);
-  letter-spacing:-.03em;transition:color .35s;
-}
-.band-headline em{font-style:normal;color:var(--accent);}
-
-/* ══════════════════════════════════════════════════════════════
-   QUOTE
-══════════════════════════════════════════════════════════════ */
-.quote-block{
-  padding:6rem 3rem;
-  display:grid;grid-template-columns:72px 1fr;gap:3rem;
-  border-bottom:1px solid var(--rule);position:relative;overflow:hidden;
-  transition:border-color .35s;
-}
-/* quote-band: Social Post Generator-compatible alias for quote-block */
-.quote-band{
-  padding:6rem 3rem;min-height:320px;
-  display:grid;grid-template-columns:72px 1fr;gap:3rem;
-  align-items:center;
-  border-bottom:1px solid var(--rule);position:relative;overflow:hidden;
-  transition:border-color .35s;
-}
-@media(max-width:600px){.quote-block,.quote-band{grid-template-columns:1fr;gap:1.5rem;padding:3rem 1.5rem;}}
-.quote-mark{
-  font-family:'IBM Plex Mono',monospace;font-weight:700;font-size:7rem;
-  line-height:.7;color:var(--rule2);flex-shrink:0;letter-spacing:-.05em;
-  transition:color .35s;
-}
-.quote-content blockquote{
-  font-family:'IBM Plex Sans Condensed',sans-serif;font-weight:600;
-  font-size:clamp(1.5rem,3.2vw,2.6rem);
-  line-height:1.1;color:var(--bright);text-transform:uppercase;
-  transition:color .35s;
-}
-.quote-content blockquote em{font-style:normal;color:var(--accent);}
-.quote-cite{
-  margin-top:1.5rem;
-  font-family:'IBM Plex Mono',monospace;
-  font-size:0.84rem;letter-spacing:.2em;text-transform:uppercase;
-  color:var(--dim);display:flex;align-items:center;gap:.8rem;
-  transition:color .35s;
-}
-.quote-cite::before{content:'';display:block;width:20px;height:1px;background:var(--dim);}
-.quote-bg-num{
-  position:absolute;right:-1rem;top:50%;transform:translateY(-50%);
-  font-family:'IBM Plex Mono',monospace;font-weight:700;
-  font-size:20rem;line-height:1;color:var(--rule);
-  pointer-events:none;opacity:.2;letter-spacing:-.05em;transition:color .35s;
-}
-/* pq-* — Social Post Generator semantic classes */
-.pq-text{
-  font-family:'IBM Plex Sans Condensed',sans-serif;font-weight:600;
-  font-size:clamp(1.5rem,3.2vw,2.6rem);
-  line-height:1.1;color:var(--bright);text-transform:uppercase;
-  transition:color .35s;
-}
-.pq-hl{font-style:normal;color:var(--accent);}
-.pq-attr{
-  margin-top:1.5rem;
-  font-family:'IBM Plex Mono',monospace;
-  font-size:0.84rem;letter-spacing:.2em;text-transform:uppercase;
-  color:var(--dim);display:flex;align-items:center;gap:.8rem;
-  transition:color .35s;
-}
-.pq-attr::before{content:'';display:block;width:20px;height:1px;background:var(--dim);}
-[data-theme="light"] .pq-text{color:var(--bright);}
-[data-theme="light"] .pq-attr{color:var(--dim);}
-
-/* ══════════════════════════════════════════════════════════════
-   COMPANY ECOSYSTEM
-══════════════════════════════════════════════════════════════ */
-.ecosystem{padding:5rem 3rem;border-bottom:1px solid var(--rule);}
-@media(max-width:768px){.ecosystem{padding:3rem 1.5rem;}}
-.eco-header{display:flex;align-items:flex-end;justify-content:space-between;margin-bottom:3rem;gap:2rem;}
-.eco-title{
-  font-family:'IBM Plex Sans Condensed',sans-serif;font-weight:700;
-  font-size:clamp(1.8rem,3.5vw,2.8rem);text-transform:uppercase;
-  color:var(--bright);letter-spacing:.02em;transition:color .35s;
-}
-.eco-sub{
-  font-family:'IBM Plex Mono',monospace;
-  font-size:0.84rem;letter-spacing:.18em;text-transform:uppercase;color:var(--dim);
-}
-@media(max-width:600px){.eco-header{flex-direction:column;align-items:flex-start;}}
-
-/* ══════════════════════════════════════════════════════════════
-   ENTITY GRID
-══════════════════════════════════════════════════════════════ */
+/* ═══ ENTITY TAGS ═══ */
 .entity-section{
-  background:#000;padding:5rem 3rem;
-  border-bottom:1px solid var(--rule);
+  padding:2.5rem 2.5rem 3rem;
+  border-top:1px solid var(--rule);
+  margin-top:1rem;
 }
-@media(max-width:768px){.entity-section{padding:3rem 1.5rem;}}
-.entity-heading{
-  font-family:'IBM Plex Mono',monospace;font-weight:700;
-  font-size:clamp(1.5rem,4vw,3rem);
-  color:var(--accent);letter-spacing:.05em;text-transform:uppercase;
-  margin-bottom:.5rem;
+.entity-head{
+  font-family:var(--mono);font-size:.52rem;letter-spacing:.28em;
+  text-transform:uppercase;color:#00D4F0;
+  margin-bottom:.3rem;
+  display:flex;align-items:center;gap:.5rem;
+}
+.entity-head::before{content:'';width:8px;height:8px;background:#00D4F0;display:inline-block;}
+.entity-title{
+  font-family:var(--cond);font-weight:700;
+  font-size:clamp(1.6rem,3.5vw,2.8rem);
+  color:var(--bright);line-height:1;margin-bottom:.4rem;
+  letter-spacing:-.01em;
 }
 .entity-sub{
-  font-family:'IBM Plex Mono',monospace;
-  font-size:.78rem;color:var(--muted);
-  letter-spacing:.1em;text-transform:uppercase;
-  margin-bottom:2.5rem;
+    font-family: var(--mono);
+    font-size: 1.2rem;
+    letter-spacing: .2em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 2rem;
 }
-#entityGrid{display:flex;flex-wrap:wrap;gap:.5rem;}
-.entity-badge{
-  font-family:'IBM Plex Mono',monospace;font-size:.68rem;font-weight:700;
-  letter-spacing:.08em;text-transform:uppercase;
-  padding:.35rem .8rem;
-  border:1px solid rgba(255,255,255,.1);
-  display:inline-block;text-decoration:none;
-  transition:transform .2s,box-shadow .2s;cursor:pointer;
+.entity-tags{display:flex;flex-wrap:wrap;gap:.5rem;}
+.etag{
+    font-family: var(--mono);
+    font-size: 0.86rem;
+    font-weight: 500;
+    letter-spacing: .08em;
+    text-transform: uppercase;
+    padding: .4rem .8rem;
+    border: 1px solid;
+    cursor: pointer;
+    transition: all .18s;
 }
-.entity-badge:hover{
-  transform:scale(1.12) rotate(-2deg);
-  box-shadow:0 4px 18px rgba(0,0,0,.4);
-}
-[data-theme="light"] .entity-section{background:var(--bg1)!important;}
-[data-theme="light"] .entity-heading{text-shadow:none!important;}
-[data-theme="light"] .entity-badge{border-color:var(--rule2)!important;}
+.etag:hover{color:#fff!important;border-color:currentColor!important;}
 
-/* ══════════════════════════════════════════════════════════════
-   ECOSYSTEM DIRECTORY
-══════════════════════════════════════════════════════════════ */
-.eco-links{
-  padding:4rem 3rem;background:var(--bg1);
-  border-bottom:1px solid var(--rule);
-  transition:background .35s,border-color .35s;
+/* ═══ MANIFESTO ═══ */
+.manifesto{
+  padding:3.5rem 2.5rem;
+  border-top:1px solid var(--rule);
+  display:grid;grid-template-columns:1fr 2fr;gap:4rem;
+  align-items:center;
 }
-@media(max-width:768px){.eco-links{padding:3rem 1.5rem;}}
-.eco-links-header{
-  font-family:'IBM Plex Mono',monospace;font-weight:700;
-  font-size:0.78rem;letter-spacing:.3em;text-transform:uppercase;
-  color:var(--accent);margin-bottom:2rem;
+.manifesto-left{}
+.manifesto-series{
+    font-family: var(--mono);
+    font-size: 0.9rem;
+    letter-spacing: .28em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: .6rem;
 }
-.eco-links-grid{
-  display:grid;grid-template-columns:repeat(4,1fr);gap:2.5rem;
+.manifesto-brand{
+  font-family:var(--cond);font-weight:700;
+  font-size:1.5rem;color:var(--bright);line-height:1.1;
+  margin-bottom:.5rem;
 }
-@media(max-width:900px){.eco-links-grid{grid-template-columns:1fr 1fr;}}
-@media(max-width:500px){.eco-links-grid{grid-template-columns:1fr;}}
-.eco-group{}
-.eco-group-label{
-  font-family:'IBM Plex Mono',monospace;
-  font-size:0.66rem;letter-spacing:.22em;text-transform:uppercase;
-  color:var(--muted);margin-bottom:.8rem;padding-bottom:.5rem;
-  border-bottom:1px solid var(--rule);
-  transition:color .35s,border-color .35s;
+.manifesto-since{
+    font-family: var(--mono);
+    font-size: 1rem;
+    letter-spacing: .18em;
+    text-transform: uppercase;
+    color: var(--muted);
 }
-.eco-link{
-  display:block;
-  font-family:'IBM Plex Sans',sans-serif;
-  font-size:0.9rem;color:var(--dim);
-  text-decoration:none;padding:.3rem 0;
-  transition:color .2s;
+.manifesto-quote{
+  font-family:var(--mono);font-weight:300;font-style:italic;
+  font-size:clamp(1rem,1.8vw,1.45rem);
+  line-height:1.7;color:var(--dim);
+  border-left:2px solid var(--rule);padding-left:1.8rem;
 }
-.eco-link:hover{color:var(--accent);}
+.manifesto-quote em{color:var(--bright);font-style:normal;font-weight:600;}
 
-/* ══════════════════════════════════════════════════════════════
-   FOOTER
-══════════════════════════════════════════════════════════════ */
-.footer{
-  padding:4rem 3rem;
-  display:grid;grid-template-columns:1fr 1fr 1fr;gap:2rem;
-  border-top:1px solid var(--rule);background:var(--bg1);
-  transition:background .35s,border-color .35s;
+/* ═══ EMAIL ═══ */
+.email-section{
+  margin:0 2.5rem 4rem;
+  background:var(--bg1);
+  border:1px solid var(--rule);
+  display:flex;align-items:center;gap:3rem;
+  padding:2rem 2.5rem;flex-wrap:wrap;
 }
-@media(max-width:768px){.footer{grid-template-columns:1fr;padding:2.5rem 1.5rem;}}
-.footer-brand{
-  font-family:'IBM Plex Mono',monospace;font-weight:700;
-  font-size:1.3rem;text-transform:uppercase;color:var(--bright);
-  letter-spacing:.06em;transition:color .35s;
+.email-left{flex:1;min-width:200px;}
+.email-head{
+  font-family:var(--cond);font-weight:700;font-size:1.4rem;
+  color:var(--bright);line-height:1;margin-bottom:.3rem;
 }
-.footer-brand span{color:var(--accent);}
-.footer-col-label{
-  font-family:'IBM Plex Mono',monospace;
-  font-size:0.744rem;letter-spacing:.25em;text-transform:uppercase;
-  color:var(--muted);margin-bottom:.8rem;transition:color .35s;
+.email-sub{
+    font-family: var(--mono);
+    font-size: 1rem;
+    letter-spacing: .18em;
+    text-transform: uppercase;
+    color: var(--muted);
 }
-.footer-note{
-  font-family:'IBM Plex Sans',sans-serif;
-  font-size:0.924rem;line-height:1.75;color:var(--muted);transition:color .35s;
+.email-form{display:flex;gap:.5rem;flex-shrink:0;}
+.email-input{
+  background:var(--bg2);border:1px solid var(--rule);
+  color:var(--bright);font-family:var(--mono);font-size:.52rem;
+  letter-spacing:.06em;padding:.65rem 1rem;
+  outline:none;width:240px;transition:border-color .2s;
 }
-.footer-bar{
-  background:var(--bg);border-top:1px solid var(--rule);
-  padding:.9rem 3rem 3rem;display:flex;align-items:center;justify-content:space-between;
-  font-family:'IBM Plex Mono',monospace;
-  font-size:0.744rem;letter-spacing:.16em;text-transform:uppercase;color:var(--muted);
-  flex-wrap:wrap;gap:.5rem;
-  transition:background .35s,border-color .35s,color .35s;
-}
-.footer-share-link{
-  font-family:'IBM Plex Mono',monospace;
-  font-size:0.82rem;letter-spacing:.16em;text-transform:uppercase;
-  color:var(--dim);text-decoration:none;
-  transition:color .2s;
-  padding:.15rem 0;
-  border-bottom:1px solid transparent;
-}
-.footer-share-link:hover{color:var(--accent);border-bottom-color:var(--accent);}
-.footer-bar-links{display:flex;gap:2rem;align-items:center;flex-wrap:wrap;}
-@media(max-width:600px){.footer-bar{padding:.9rem 1.5rem 3rem;flex-direction:column;align-items:center;gap:.5rem;text-align:center;}}
-@media(max-width:600px){.footer-bar-links{justify-content:center;}}
-.footer-accent-bar{display:flex;height:3px;}
-.footer-accent-bar div{flex:1;}
-
-/* ══════════════════════════════════════════════════════════════
-   FADE-IN ANIMATIONS
-══════════════════════════════════════════════════════════════ */
-.fi{opacity:1;transform:translateY(0);}
-.js-ready .fi{opacity:0;transform:translateY(18px);transition:opacity .65s ease,transform .65s ease;}
-.js-ready .fi.visible{opacity:1;transform:translateY(0);}
-
-/* ══════════════════════════════════════════════════════════════
-   TOOLTIP
-══════════════════════════════════════════════════════════════ */
-.tt{
-  position:fixed;background:var(--bg2);color:var(--text);
-  font-family:'IBM Plex Mono',monospace;font-size:0.804rem;
-  padding:.35rem .7rem;border:1px solid var(--rule2);
-  pointer-events:none;z-index:8000;opacity:0;
-  transition:opacity .15s;letter-spacing:.08em;max-width:220px;line-height:1.5;
-}
-
-/* ══════════════════════════════════════════════════════════════
-   SCROLLBAR
-══════════════════════════════════════════════════════════════ */
-/* ══════════════════════════════════════════════════════════════
-   SHARE BUTTON
-══════════════════════════════════════════════════════════════ */
-.action-btns{
-  display:flex;align-items:flex-start;gap:.75rem;margin-top:2.2rem;flex-wrap:wrap;
-}
-.share-wrap{
-  position:relative;display:inline-block;
-}
-.pdf-btn{color:var(--dim)!important;}
-.pdf-btn:hover{color:#07090C!important;}
-[data-theme="light"] .pdf-btn:hover{color:#fff!important;}
-.share-btn{
-  display:inline-flex;align-items:center;gap:.65rem;
-  font-family:'IBM Plex Mono',monospace;font-weight:700;
-  font-size:0.78rem;letter-spacing:.22em;text-transform:uppercase;
-  color:var(--dim);
-  background:transparent;
-  border:1px solid var(--rule2);
-  padding:.7rem 1.4rem;
-  cursor:pointer;
-  transition:color .2s,border-color .2s,background .2s;
-  position:relative;
-  white-space:nowrap;
-}
-/* left accent bar that grows on hover */
-.share-btn::before{
-  content:'';position:absolute;top:0;left:0;bottom:0;width:2px;
-  background:var(--accent);transform:scaleY(0);transform-origin:top;
-  transition:transform .25s ease;
-}
-.share-btn:hover{
-  color:#07090C;
-  border-color:var(--accent);
-  background:var(--accent);
-}
-[data-theme="light"] .share-btn:hover{
-  color:#fff;background:var(--accent);border-color:var(--accent);
-}
-.share-btn:hover::before{transform:scaleY(0);}
-.share-btn svg{
-  width:13px;height:13px;stroke:currentColor;fill:none;
-  stroke-width:2;stroke-linecap:square;stroke-linejoin:miter;
-  flex-shrink:0;transition:stroke .2s;
-}
-
-/* dropdown — shown on .open or when JS unavailable */
-.share-dropdown{
-  position:absolute;top:calc(100% + 4px);left:0;
-  background:var(--bg2);border:1px solid var(--rule2);
-  min-width:100%;z-index:500;
-  display:none;flex-direction:column;
-  transition:border-color .35s,background .35s;
-}
-.share-wrap.open .share-dropdown{display:flex;}
-.share-dropdown a{
-  font-family:'IBM Plex Mono',monospace;font-size:0.72rem;
+.email-input:focus{border-color:var(--muted);}
+.email-input::placeholder{color:var(--muted);}
+.email-btn{
+  font-family:var(--mono);font-size:.52rem;font-weight:700;
   letter-spacing:.16em;text-transform:uppercase;
-  color:var(--dim);padding:.6rem 1rem;
-  border-bottom:1px solid var(--rule);
-  transition:color .15s,background .15s;
-  text-decoration:none;white-space:nowrap;
+  background:var(--bright);color:var(--bg);
+  border:none;padding:.65rem 1.4rem;cursor:pointer;
+  transition:opacity .18s;white-space:nowrap;
 }
-.share-dropdown a:last-child{border-bottom:none;}
-.share-dropdown a:hover{color:var(--accent);background:rgba(0,212,240,.05);}
-[data-theme="light"] .share-dropdown a:hover{background:rgba(0,95,204,.06);}
+.email-btn:hover{opacity:.85;}
 
-::-webkit-scrollbar{width:3px;}
-::-webkit-scrollbar-track{background:var(--sb-track);}
-::-webkit-scrollbar-thumb{background:var(--sb-thumb);}
-::-webkit-scrollbar-thumb:hover{background:var(--accent);}
+/* ═══ FOOTER ═══ */
+.footer-bar{display:flex;height:4px;}
+.footer-bar div{flex:1;}
+footer{
+  padding:1.5rem 2.5rem;
+  display:flex;align-items:center;justify-content:space-between;
+  flex-wrap:wrap;gap:1rem;
+  border-top:1px solid var(--rule);
+}
+.footer-l{
+    font-family: var(--mono);
+    font-size: 1rem;
+    letter-spacing: .16em;
+    text-transform: uppercase;
+    color: var(--muted);
+}
+.footer-r{display:flex;gap:2rem;}
+.footer-r a{font-family:var(--mono);font-size:1rem;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);transition:color .2s;}
+.footer-r a:hover{color:var(--text);}
 
-/* ══════════════════════════════════════════════════════════════
-   SCROLL PROGRESS % (reads from nav)
-══════════════════════════════════════════════════════════════ */
-.nav-pct{
-  font-family:'IBM Plex Mono',monospace;
-  font-size:0.636rem;letter-spacing:.15em;color:var(--muted);
-  min-width:3ch;text-align:right;flex-shrink:0;
-  transition:color .35s;
-}
+/* ═══ FADE IN ═══ */
+.fi{opacity:1;}
+.js-ready .fi{opacity:0;transform:translateY(14px);transition:opacity .5s ease,transform .5s ease;}
+.js-ready .fi.in{opacity:1;transform:translateY(0);}
+.js-ready .fi.d1{transition-delay:.07s;}
+.js-ready .fi.d2{transition-delay:.14s;}
+.js-ready .fi.d3{transition-delay:.22s;}
 
-/* ══════════════════════════════════════════════════════════════
-   PEOPLE SECTION
-══════════════════════════════════════════════════════════════ */
-.people{padding:5rem 3rem;border-bottom:1px solid var(--rule);}
-@media(max-width:768px){.people{padding:3rem 1.5rem;}}
-.people-grid{
-  display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));
-  gap:1px;background:var(--rule);margin-top:2rem;
-}
-.person-card{
-  background:var(--card-bg);padding:0;
-  position:relative;overflow:hidden;
-  transition:background .2s;cursor:default;
-  display:flex;flex-direction:column;
-}
-.person-card:hover{background:var(--card-hover);}
-.person-photo{
-  width:100%;aspect-ratio:1/1;
-  object-fit:cover;object-position:center top;
-  display:block;flex-shrink:0;
-  filter:grayscale(1) contrast(1.1) brightness(.75);
-  transition:filter .4s ease;
-}
-.person-card:hover .person-photo{
-  filter:grayscale(.2) contrast(1.1) brightness(.9);
-}
-.person-card::before{
-  content:'';position:absolute;top:0;left:0;right:0;height:3px;
-  background:var(--p-accent,var(--accent));
-  transform:scaleX(0);transform-origin:left;transition:transform .35s ease;
-  z-index:1;
-}
-.person-card:hover::before{transform:scaleX(1);}
-.person-era,.person-name,.person-role,.person-bio,.person-link{
-  padding-left:1.6rem;padding-right:1.6rem;
-}
-.person-era{padding-top:1.4rem;}
-.person-link{padding-bottom:1.6rem;display:block;}
-.person-era{
-  font-family:'IBM Plex Mono',monospace;font-size:0.588rem;
-  letter-spacing:.2em;text-transform:uppercase;color:var(--muted);
-  margin-bottom:.6rem;transition:color .35s;
-}
-.person-name{
-  font-family:'IBM Plex Sans Condensed',sans-serif;font-weight:700;
-  font-size:clamp(1.1rem,2vw,1.4rem);color:var(--bright);
-  text-transform:uppercase;letter-spacing:.02em;line-height:1;
-  margin-bottom:.3rem;transition:color .35s;
-}
-.person-role{
-  font-family:'IBM Plex Mono',monospace;font-size:0.636rem;
-  letter-spacing:.1em;text-transform:uppercase;
-  color:var(--p-accent,var(--accent));margin-bottom:.9rem;
-  transition:color .35s;
-}
-.person-bio{
-  font-family:'IBM Plex Sans',sans-serif;
-  font-size:1rem;line-height:1.7;color:var(--dim);transition:color .35s;
-}
-.person-link{
-  display:inline-flex;align-items:center;gap:.4rem;
-  margin-top:.9rem;
-  font-family:'IBM Plex Mono',monospace;font-size:0.588rem;
-  letter-spacing:.12em;text-transform:uppercase;
-  color:var(--muted);text-decoration:none;
-  transition:color .2s;
-}
-.person-link:hover{color:var(--accent);}
-.person-link::after{content:'↗';}
-
-/* ══════════════════════════════════════════════════════════════
-   LIGHT MODE — INLINE COLOR OVERRIDES
-   Remaps hardcoded dark-mode cyan (#00D4F0) and neon green
-   (#00E87A) to legible blue/green equivalents on light backgrounds
-══════════════════════════════════════════════════════════════ */
-[data-theme="light"] .card-year[style*="#00D4F0"],
-[data-theme="light"] .card-year[style*="#00E87A"]{
-  color:var(--accent)!important;
-}
-/* card-year that has no inline style but inherits --c-accent set to cyan/green */
-[data-theme="light"] .card[style*="--c-accent:#00D4F0"] .card-year,
-[data-theme="light"] .card[style*="--c-accent:#00E87A"] .card-year{
-  color:var(--accent)!important;
-}
-[data-theme="light"] .card[style*="--c-accent:#00D4F0"]::before,
-[data-theme="light"] .card[style*="--c-accent:#00E87A"]::before{
-  background:var(--accent)!important;
-}
-[data-theme="light"] .card[style*="--c-accent:#00D4F0"] .card-key,
-[data-theme="light"] .card[style*="--c-accent:#00E87A"] .card-key{
-  background:var(--accent)!important;
-}
-/* person cards */
-[data-theme="light"] .person-card[style*="--p-accent:#00D4F0"]::before,
-[data-theme="light"] .person-card[style*="--p-accent:#00E87A"]::before{
-  background:var(--accent)!important;
-}
-[data-theme="light"] .person-card[style*="--p-accent:#00D4F0"] .person-role,
-[data-theme="light"] .person-card[style*="--p-accent:#00E87A"] .person-role{
-  color:var(--accent)!important;
-}
-[data-theme="light"] .person-card[style*="--p-accent:#00D4F0"] .person-photo-wrap::after,
-[data-theme="light"] .person-card[style*="--p-accent:#00E87A"] .person-photo-wrap::after{
-  background:var(--accent)!important;
-}
-[data-theme="light"] .era-period-accent[style*="#00E87A"],
-[data-theme="light"] .era-period-accent[style*="#00D4F0"]{
-  color:var(--accent)!important;
-}
-[data-theme="light"] .card-key[style*="background:#00E87A"],
-[data-theme="light"] .card-key[style*="background:#00D4F0"]{
-  background:var(--accent3)!important;
-  color:#fff!important;
-}
-[data-theme="light"] .era-meter-fill[style*="#00E87A"],
-[data-theme="light"] .era-meter-fill[style*="#00D4F0"]{
-  background:linear-gradient(90deg,var(--accent3),var(--accent))!important;
-}
-[data-theme="light"] .news-live-dot{
-  background:var(--accent)!important;
-}
-[data-theme="light"] .news-label{
-  color:var(--accent)!important;
-}
-/* Era 1 (1940s) gets deep green in light mode for color variety */
-[data-theme="light"] #era1 .era-period-accent{
-  color:var(--accent3)!important;
-}
-
-/* ══════════════════════════════════════════════════════════════
-   PRINT STYLESHEET
-══════════════════════════════════════════════════════════════ */
-@media print{
-  /* force light colors */
-  :root,[data-theme="dark"]{
-    --bg:#fff;--bg1:#f8f8f8;--bg2:#f0f0f0;--bg3:#e8e8e8;
-    --rule:#ddd;--rule2:#ccc;--muted:#888;--dim:#555;
-    --text:#222;--bright:#000;--accent:#005FCC;
-    --accent2:#003D99;--accent3:#007740;--warn:#CC3300;
-    --card-bg:#fff;--band-bg:#f8f8f8;
-  }
-  #progress,#cur,#curRing,.tt,
-  .nav,.sidenav,.mobile-nav,
-  .mode-toggle,.cur,.cur-ring,
-  .band,.ticker,.bracket,
-  .hero-scroll-hint{display:none!important;}
-  .hero{min-height:0;page-break-after:always;}
-  .hero-left{padding:2rem;}
-  .hero-right{padding:2rem;}
-  .page-body{margin-left:0!important;}
-  .era{page-break-inside:avoid;}
-  .card{page-break-inside:avoid;}
-  body{font-size:11pt;}
-  a{color:#000;text-decoration:none;}
-  .hero-title{font-size:3rem!important;}
-  .footer-accent-bar{display:none;}
-  @page{margin:1.5cm;size:A4;}
-}
-
-
-/* ══════════════════════════════════════════════════════════════
-   PRINT / PDF STYLES
-══════════════════════════════════════════════════════════════ */
-@media print {
-  /* Force light mode for clean PDF output */
-  :root,[data-theme="dark"],[data-theme="light"]{
-    --bg:#ffffff;--bg1:#f5f5f5;--bg2:#eeeeee;--bg3:#e5e5e5;
-    --rule:#dddddd;--rule2:#cccccc;--muted:#888888;--dim:#555555;
-    --text:#222222;--bright:#000000;
-    --accent:#0055cc;--accent2:#003d99;--accent3:#007740;--warn:#cc3300;
-    --card-bg:#ffffff;--card-hover:#f5f5f5;--band-bg:#f5f5f5;
-  }
-  body{background:#fff;color:#222;}
-
-  /* Hide interactive / UI chrome */
-  .nav,.sidenav,.mobile-nav,
-  #progress,.cur,.cur-ring,.tt,
-  .action-btns,.share-wrap,.pdf-btn,
-  .hero-scroll-hint,#news-panel,
-  .ticker{display:none!important;}
-
-  /* Reset layout shifts caused by sidenav offset */
-  .page-body{margin-left:0!important;}
-
-  /* Ensure full-width sections */
-  .hero{min-height:auto;page-break-after:avoid;}
-  .hero-left{padding:3rem 2rem 2rem;}
-  .hero-right{padding:2rem;}
-
-  /* Era sections — avoid breaking cards mid-page */
-  .era{page-break-inside:avoid;padding:3rem 2rem;}
-  .card{page-break-inside:avoid;}
-  .card-grid{grid-template-columns:1fr 1fr;}
-
-  /* Bands and photo strips */
-  .band{page-break-inside:avoid;height:auto;padding:2rem;}
-  .photo-strip{page-break-inside:avoid;}
-
-  /* People grid */
-  .people-grid{grid-template-columns:repeat(3,1fr);}
-
-  /* Remove animated/decorative stuff that doesn't print well */
-  .bracket,.hburst,#b1,#b2{display:none;}
-
-  /* Make all links show URL for reference */
-  .tag::after{content:none;}
-
-  /* Ensure content is visible (override fade-in classes) */
-  .fi{opacity:1!important;transform:none!important;}
-  .hero-stat::before{height:100%!important;}
-  .era-meter-fill{max-width:var(--fill,60%)!important;}
-
-  /* Typography adjustments */
-  .hero-title{font-size:5rem;}
-  .era-period{font-size:3rem;}
-
-  /* Page setup */
-  @page{
-    size:A4;
-    margin:15mm 12mm;
-  }
+/* ═══ RESPONSIVE ═══ */
+@media(max-width:768px){
+  .hero-content{padding:0 1.5rem 2.5rem;}
+  .section-head,.entity-section,.email-section,footer{padding-left:1.5rem;padding-right:1.5rem;}
+  .shelf-track{padding-left:1.5rem;}
+  .manifesto{grid-template-columns:1fr;gap:2rem;padding:2.5rem 1.5rem;}
+  nav .nav-links{display:none;}
 }
 </style>
 </head>
 <body>
-
 <div id="progress"></div>
-<div class="cur" id="cur"></div>
-<div class="cur-ring" id="curRing"></div>
-<div class="tt" id="tt"></div>
+<div id="cur"></div>
+<div id="curRing"></div>
 
-<!-- ══════════════════════════════════════════════════════════════
-     LIVE NEWS PANEL — fixed, visible only within hero viewport
-══════════════════════════════════════════════════════════════ -->
-<div id="news-panel" aria-label="Live AI news">
-  <div id="news-panel-header">
-    <span class="news-label"><span class="news-live-dot"></span>AI News — Live</span>
-    <button id="news-refresh-btn" onclick="fetchAINews()" aria-label="Refresh news">↻ Refresh</button>
+<!-- NAV -->
+<nav id="nav">
+  <span class="nav-logo"><em>A (Brief) History of</em> Everything</span>
+  <div class="nav-sep"></div>
+  <div class="nav-links">
+    <span class="nav-link active" onclick="window.scrollTo({top:0,behavior:'smooth'})">Home</span>
+    <span class="nav-link" onclick="document.getElementById('guides').scrollIntoView({behavior:'smooth'})">Guides</span>
+    <span class="nav-link" onclick="document.getElementById('about').scrollIntoView({behavior:'smooth'})">About</span>
   </div>
-  <div id="news-items">
-    <div id="news-loading"><div class="news-spinner"></div>Fetching latest…</div>
-  </div>
-</div>
-
-<!-- ══════════════════════════════════════════════════════════════
-     TOP NAV
-══════════════════════════════════════════════════════════════ -->
-<nav class="nav">
-  <a href="https://abriefhistoryofeverything.com" class="nav-brand"><span class="brand-full">A (BRIEF) HISTORY OF EVERYTHING_</span><span class="brand-short">A (BRIEF) HISTORY OF_</span></a>
-  <span class="nav-topic">AI</span>
-  <div class="nav-era" id="navEra">1940's — Birth of AI</div>
-  <div class="nav-pct" id="navPct">0%</div>
-  <div class="mode-toggle">
-    <span class="mode-icon" id="modeIcon">☀</span>
-    <div class="toggle-switch" id="toggleSwitch" role="button" aria-label="Toggle light/dark mode" tabindex="0"></div>
-    <span class="mode-label" id="modeLabel">Light</span>
+  <div class="nav-right">
+    <div class="nav-badge"><span>5</span> guides</div>
   </div>
 </nav>
 
-<!-- ══════════════════════════════════════════════════════════════
-     SIDE NAV (desktop)
-══════════════════════════════════════════════════════════════ -->
-<nav class="sidenav" aria-label="Section navigation">
-  <a class="sidenav-item" href="#hero"    data-label="Overview"        data-section="hero"><span class="sidenav-num">00</span><div class="sidenav-dot"></div></a>
-  <a class="sidenav-item" href="#era1"    data-label="1940's – Birth"   data-section="era1"><span class="sidenav-num">01</span><div class="sidenav-dot"></div></a>
-  <a class="sidenav-item" href="#era2"    data-label="1970's – Winters" data-section="era2"><span class="sidenav-num">02</span><div class="sidenav-dot"></div></a>
-  <a class="sidenav-item" href="#era3"    data-label="2000's – Deep Learning" data-section="era3"><span class="sidenav-num">03</span><div class="sidenav-dot"></div></a>
-  <a class="sidenav-item" href="#era4"    data-label="2017 – Transformers"   data-section="era4"><span class="sidenav-num">04</span><div class="sidenav-dot"></div></a>
-  <a class="sidenav-item" href="#era5"    data-label="2022 – Explosion" data-section="era5"><span class="sidenav-num">05</span><div class="sidenav-dot"></div></a>
-  <a class="sidenav-item" href="#epilogue" data-label="Epilogue – 2035" data-section="epilogue"><span class="sidenav-num">06</span><div class="sidenav-dot"></div></a>
-  <a class="sidenav-item" href="#people"   data-label="Key People"      data-section="people"><span class="sidenav-num">07</span><div class="sidenav-dot"></div></a>
-  <a class="sidenav-item" href="#ecosystem" data-label="Ecosystem"      data-section="ecosystem"><span class="sidenav-num">↓</span><div class="sidenav-dot"></div></a>
-</nav>
-
-<!-- ══════════════════════════════════════════════════════════════
-     MOBILE NAV (horizontal)
-══════════════════════════════════════════════════════════════ -->
-<div class="mobile-nav" aria-label="Section navigation">
-  <div class="mobile-nav-track">
-    <a class="mobile-nav-item" href="#hero"     data-section="hero">    <span class="mobile-nav-num">00</span><span class="mobile-nav-label">Overview</span></a>
-    <a class="mobile-nav-item" href="#era1"     data-section="era1">    <span class="mobile-nav-num">01</span><span class="mobile-nav-label">Birth of AI</span></a>
-    <a class="mobile-nav-item" href="#era2"     data-section="era2">    <span class="mobile-nav-num">02</span><span class="mobile-nav-label">Winters</span></a>
-    <a class="mobile-nav-item" href="#era3"     data-section="era3">    <span class="mobile-nav-num">03</span><span class="mobile-nav-label">Deep Learning</span></a>
-    <a class="mobile-nav-item" href="#era4"     data-section="era4">    <span class="mobile-nav-num">04</span><span class="mobile-nav-label">Transformers</span></a>
-    <a class="mobile-nav-item" href="#era5"     data-section="era5">    <span class="mobile-nav-num">05</span><span class="mobile-nav-label">Explosion</span></a>
-    <a class="mobile-nav-item" href="#epilogue" data-section="epilogue"><span class="mobile-nav-num">06</span><span class="mobile-nav-label">Epilogue</span></a>
-    <a class="mobile-nav-item" href="#people" data-section="people"><span class="mobile-nav-num">07</span><span class="mobile-nav-label">Key People</span></a>
-    <a class="mobile-nav-item" href="#ecosystem" data-section="ecosystem"><span class="mobile-nav-num">↓</span><span class="mobile-nav-label">Ecosystem</span></a>
+<!-- HERO — AI guide photo as hero backdrop -->
+<section class="hero">
+  <div class="hero-img">
+    <img src="https://images.unsplash.com/photo-1677442135703-1787eea5ce01?w=1600&q=85"
+         alt="Artificial Intelligence — generative era" loading="eager">
   </div>
-</div>
-
-<!-- ══════════════════════════════════════════════════════════════
-     PAGE BODY (offset for sidenav)
-══════════════════════════════════════════════════════════════ -->
-<div class="page-body">
-
-<!-- ─── HERO ──────────────────────────────────────────────────── -->
-<section class="hero" id="hero">
-  <div class="bracket bracket-tl"></div>
-  <div class="bracket bracket-br"></div>
-
-  <div class="hero-left">
-    <div class="hero-overline">Chronological Index 001</div>
-    <h1 class="hero-title">
-      A<br>
-      <em>(Brief)</em><br>
-      History<br>
-      of AI<span class="type-cursor">_</span>
+  <div class="hero-overlay"></div>
+  <div class="hero-content">
+    <h1 class="hero-title fi d1">
+      <span class="a-brief">A (Brief) History of</span>
+      Everything<span class="cursor">_</span>
     </h1>
-    <p class="hero-desc">
-      From Alan Turing's imitation game to autonomous agents —
-      eight decades of machines learning to think, fail,
-      and think again. A structured overview of artificial
-      intelligence's defining moments.
+    <p class="hero-desc fi d2">
+      Curated, interactive timelines for the subjects that shaped our world.
+      Each guide is a deep dive, a structured chronology of key figures and cultural context.
+      Not a list of dates. A story.
     </p>
-    <div class="hero-scroll-hint">
-      <div class="scroll-line"></div>
-      Scroll to navigate
+    <div class="hero-actions fi d2">
+      <a class="btn-primary" href="https://abriefhistoryof-ai.com">▶ Start with AI</a>
+      <a class="btn-ghost" href="#guides" onclick="document.getElementById('guides').scrollIntoView({behavior:'smooth'});return false;">Browse All Guides</a>
     </div>
-
-    <!-- Share + PDF buttons -->
-    <div class="action-btns">
-      <div class="share-wrap" id="shareWrap">
-        <button class="share-btn" id="shareBtn" aria-label="Share this page">
-          <svg viewBox="0 0 16 16" aria-hidden="true"><circle cx="13" cy="3" r="1.5"/><circle cx="13" cy="13" r="1.5"/><circle cx="3" cy="8" r="1.5"/><line x1="4.4" y1="7.2" x2="11.6" y2="4"/><line x1="4.4" y1="8.8" x2="11.6" y2="12"/></svg>
-          Share
-        </button>
-        <div class="share-dropdown" id="shareDropdown" role="menu">
-          <a href="https://twitter.com/intent/tweet?text=A%20(Brief)%20History%20of%20AI%20%E2%80%94%20from%20Turing%20to%20autonomous%20agents&url=https%3A%2F%2Fabriefhistoryof-ai.com" target="_blank" rel="noopener" role="menuitem">Share on X</a>
-          <a href="https://www.linkedin.com/sharing/share-offsite/?url=https%3A%2F%2Fabriefhistoryof-ai.com" target="_blank" rel="noopener" role="menuitem">Share on LinkedIn</a>
-        </div>
-      </div>
-      <!-- PDF BUTTON — uncomment when PDF is ready to distribute
-      <button class="share-btn pdf-btn" id="pdfBtn" aria-label="Download PDF">
-        <svg viewBox="0 0 16 16" aria-hidden="true"><rect x="3" y="1" width="10" height="14" rx="1" stroke-width="1.5" fill="none"/><line x1="6" y1="5" x2="10" y2="5"/><line x1="6" y1="8" x2="10" y2="8"/><line x1="6" y1="11" x2="8" y2="11"/><polyline points="9,10 11,12 9,14" fill="none"/></svg>
-        Download PDF
-      </button>
-      -->
-    </div>
-  </div>
-
-  <div class="hero-right fi" style="--d:.1s">
-    <div class="sec-label">Key Figures</div>
-    <div class="hero-stat-grid">
-      <div class="hero-stat fi" style="--d:.2s" data-tip="The year Alan Turing proposed the Imitation Game">
-        <span class="stat-num">1950</span>
-        <span class="stat-label">Turing Test</span>
-        <span class="stat-sub">Computing Machinery &amp; Intelligence</span>
-      </div>
-      <div class="hero-stat fi" style="--d:.3s" data-tip="'Artificial Intelligence' coined at Dartmouth, 1956">
-        <span class="stat-num">1956</span>
-        <span class="stat-label">AI Named</span>
-        <span class="stat-sub">Dartmouth Summer Workshop</span>
-      </div>
-      <div class="hero-stat fi" style="--d:.4s" data-tip="Two distinct AI funding crises, 1974 and 1993">
-        <span class="stat-num">2×</span>
-        <span class="stat-label">AI Winters</span>
-        <span class="stat-sub">Funding collapses, 1974 &amp; 1993</span>
-      </div>
-      <div class="hero-stat fi" style="--d:.5s" data-tip="ChatGPT reached 100M users in just 2 months">
-        <span class="stat-num">100M</span>
-        <span class="stat-label">Users</span>
-        <span class="stat-sub">ChatGPT · fastest product ever</span>
-      </div>
     </div>
   </div>
 </section>
 
-<!-- ─── STAT BAR ──────────────────────────────────────────────── -->
-<div class="stat-bar">
-  <div class="stat-bar-cell fi"><span class="sbc-n stat-num">80+</span><span class="sbc-l stat-label">Years of Research</span><span class="sbc-d stat-sub">From Turing (1950) to present</span></div>
-  <div class="stat-bar-cell fi" style="--d:.1s"><span class="sbc-n stat-num">175B</span><span class="sbc-l stat-label">GPT-3 Parameters</span><span class="sbc-d stat-sub">Scale inflection point, 2020</span></div>
-  <div class="stat-bar-cell fi" style="--d:.2s"><span class="sbc-n stat-num">$1B</span><span class="sbc-l stat-label">Microsoft → OpenAI</span><span class="sbc-d stat-sub">First major LLM investment</span></div>
-  <div class="stat-bar-cell fi" style="--d:.3s"><span class="sbc-n stat-num">46+</span><span class="sbc-l stat-label">Active AI Labs</span><span class="sbc-d stat-sub">Post-2022 proliferation</span></div>
-</div>
+<!-- GUIDES -->
+<main id="guides">
 
-<!-- ─── TICKER ─────────────────────────────────────────────────── -->
-<div class="ticker">
-  <div class="ticker-track">
-    <span>TURING <span class="sep">◆</span> PERCEPTRON <span class="sep">◆</span> EXPERT SYSTEMS <span class="sep">◆</span> DEEP BLUE <span class="sep">◆</span> IMAGENET <span class="sep">◆</span> ALPHAGO <span class="sep">◆</span> TRANSFORMER <span class="sep">◆</span> GPT-3 <span class="sep">◆</span> DALL·E <span class="sep">◆</span> STABLE DIFFUSION <span class="sep">◆</span> CHATGPT <span class="sep">◆</span> GEMINI <span class="sep">◆</span> CLAUDE <span class="sep">◆</span> LLAMA <span class="sep">◆</span> SORA <span class="sep">◆</span> CURSOR <span class="sep">◆</span> DEEPSEEK <span class="sep">◆</span> MIDJOURNEY <span class="sep">◆</span></span>
-    <span>TURING <span class="sep">◆</span> PERCEPTRON <span class="sep">◆</span> EXPERT SYSTEMS <span class="sep">◆</span> DEEP BLUE <span class="sep">◆</span> IMAGENET <span class="sep">◆</span> ALPHAGO <span class="sep">◆</span> TRANSFORMER <span class="sep">◆</span> GPT-3 <span class="sep">◆</span> DALL·E <span class="sep">◆</span> STABLE DIFFUSION <span class="sep">◆</span> CHATGPT <span class="sep">◆</span> GEMINI <span class="sep">◆</span> CLAUDE <span class="sep">◆</span> LLAMA <span class="sep">◆</span> SORA <span class="sep">◆</span> CURSOR <span class="sep">◆</span> DEEPSEEK <span class="sep">◆</span> MIDJOURNEY <span class="sep">◆</span></span>
-  </div>
-</div>
+  <div class="guides-grid fi">
 
-<!-- ─── ERA 1 ──────────────────────────────────────────────────── -->
-<section class="era" id="era1" data-era="1940's — Birth of AI">
-  <div class="era-sidebar">
-    <div class="era-index">01</div>
-    <div>
-      <div class="sec-label fi">Era One</div>
-      <div class="era-period fi"><span class="era-period-accent">1940's — 60's</span>The Birth<br>of AI</div>
-      <div class="era-title-main fi">Laying the theoretical foundations of machine intelligence</div>
-    </div>
-    <div class="era-meter fi">
-      <div class="era-meter-label">Significance Index</div>
-      <div class="era-meter-bar"><div class="era-meter-fill" style="max-width:65%;"></div></div>
-    </div>
-  </div>
-  <div class="era-main">
-    <div class="card-grid">
-      <div class="card fi" style="--c-accent:#00D4F0;">
-        <div class="card-key">Foundational</div><div class="card-idx">01 / 04</div>
-        <span class="card-year">1950</span><h3>The Turing Test</h3>
-        <p>Alan Turing asks "Can Machines Think?" He proposes the Imitation Game — if a machine can fool a human, perhaps it thinks. The single most influential question in AI history.</p>
-        <div class="card-tags">
-          <a class="tag" href="https://en.wikipedia.org/wiki/Turing_test" target="_blank" rel="noopener">Alan Turing</a>
-          <a class="tag" href="https://www.manchester.ac.uk" target="_blank" rel="noopener">Manchester Uni</a>
-          <a class="tag" href="https://en.wikipedia.org/wiki/Computing_Machinery_and_Intelligence" target="_blank" rel="noopener">Imitation Game</a>
-        </div>
+    <!-- AI — real photo -->
+    <a class="grid-card" href="https://abriefhistoryof-ai.com">
+      <div class="grid-card-inner">
+        <img src="https://images.unsplash.com/photo-1620712943543-bcc4688e7485?w=600&q=80" alt="AI">
       </div>
-      <div class="card fi" style="--c-accent:#0055EE;">
-        <div class="card-idx">02 / 04</div>
-        <span class="card-year">1956</span><h3>Dartmouth Conference</h3>
-        <p>McCarthy, Minsky, Shannon &amp; friends coin "Artificial Intelligence" at a summer workshop. The field is officially named. They estimate they'll crack it in one summer. Reader: they did not.</p>
-        <div class="card-tags">
-          <a class="tag" href="https://home.dartmouth.edu" target="_blank" rel="noopener">Dartmouth</a>
-          <a class="tag" href="https://en.wikipedia.org/wiki/John_McCarthy_(computer_scientist)" target="_blank" rel="noopener">John McCarthy</a>
-          <a class="tag" href="https://en.wikipedia.org/wiki/Marvin_Minsky" target="_blank" rel="noopener">Marvin Minsky</a>
-        </div>
+      <div class="grid-card-dot"></div>
+      <div class="grid-card-issue">001</div>
+      <div class="grid-card-overlay">
+        <span class="grid-card-title">Artificial Intelligence</span>
+        <span class="grid-card-era">1940s — Present</span>
       </div>
-      <div class="card fi" style="--c-accent:#00E87A;">
-        <div class="card-idx">03 / 04</div>
-        <span class="card-year">1958</span><h3>The Perceptron</h3>
-        <p>Frank Rosenblatt builds the first neural network hardware. The New York Times declares it will "walk, talk, see, write, reproduce itself and be conscious." Expectations were calibrated differently then.</p>
-        <div class="card-tags">
-          <a class="tag" href="https://en.wikipedia.org/wiki/Perceptron" target="_blank" rel="noopener">Perceptron</a>
-          <a class="tag" href="https://www.cornell.edu" target="_blank" rel="noopener">Cornell</a>
-          <a class="tag" href="https://en.wikipedia.org/wiki/Frank_Rosenblatt" target="_blank" rel="noopener">Rosenblatt</a>
-        </div>
-      </div>
-      <div class="card fi" style="--c-accent:#FF5C20;">
-        <div class="card-idx">04 / 04</div>
-        <span class="card-year">1966</span><h3>ELIZA — First Chatbot</h3>
-        <p>Weizenbaum creates ELIZA at MIT — a program mimicking a therapist. Users form emotional attachments. Weizenbaum is horrified by their credulity. The AI therapist debate begins 60 years early.</p>
-        <div class="card-tags">
-          <a class="tag" href="https://www.mit.edu" target="_blank" rel="noopener">MIT</a>
-          <a class="tag" href="https://en.wikipedia.org/wiki/ELIZA" target="_blank" rel="noopener">ELIZA</a>
-          <a class="tag" href="https://en.wikipedia.org/wiki/Joseph_Weizenbaum" target="_blank" rel="noopener">Weizenbaum</a>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
+    </a>
 
-<!-- ─── PHOTO STRIP 1 ──────────────────────────────────────────── -->
-<div class="photo-strip">
-  <div class="pc"><img src="https://images.unsplash.com/photo-1518770660439-4636190af475?w=600&q=80" alt="Early computing" loading="lazy"/><div class="pc-cap"><span class="pc-num">01 —</span>Early Machines</div></div>
-  <div class="pc"><img src="https://images.unsplash.com/photo-1461749280684-dccba630e2f6?w=600&q=80" alt="Code" loading="lazy"/><div class="pc-cap"><span class="pc-num">02 —</span>The Code Era</div></div>
-  <div class="pc"><img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=600&q=80" alt="Data" loading="lazy"/><div class="pc-cap"><span class="pc-num">03 —</span>Data &amp; Logic</div></div>
-</div>
-
-<!-- ─── BAND 1 ─────────────────────────────────────────────────── -->
-<div class="band">
-  <div class="band-bg" id="b1">
-    <svg width="2400" height="580" viewBox="0 0 2400 580" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice">
-      <circle cx="400" cy="290" r="230" fill="none" stroke="currentColor" stroke-width=".8" opacity=".18" style="color:var(--rule)"/>
-      <circle cx="400" cy="290" r="160" fill="none" stroke="currentColor" stroke-width=".6" opacity=".25" style="color:var(--rule2)"/>
-      <circle cx="400" cy="290" r="90" fill="none" stroke="currentColor" stroke-width="1" opacity=".4" style="color:var(--accent)"/>
-      <circle cx="400" cy="290" r="10"  fill="currentColor" opacity=".7" style="color:var(--accent)"/>
-      <line x1="0" y1="290" x2="2400" y2="290" stroke="currentColor" stroke-width=".8" opacity=".12" style="color:var(--rule)"/>
-      <line x1="400" y1="0" x2="400" y2="580" stroke="currentColor" stroke-width=".8" opacity=".1" style="color:var(--rule)"/>
-      <line x1="1200" y1="0" x2="1200" y2="580" stroke="currentColor" stroke-width=".8" opacity=".15" style="color:var(--rule)"/>
-      <circle cx="1200" cy="290" r="180" fill="none" stroke="currentColor" stroke-width=".6" opacity=".1" style="color:var(--rule)"/>
-      <circle cx="1200" cy="290" r="8" fill="currentColor" opacity=".5" style="color:var(--accent2)"/>
-      <circle cx="2000" cy="290" r="200" fill="none" stroke="currentColor" stroke-width=".6" opacity=".1" style="color:var(--rule)"/>
-      <circle cx="2000" cy="290" r="8" fill="currentColor" opacity=".4" style="color:var(--accent3)"/>
-      <rect x="1100" y="100" width="200" height="1" fill="currentColor" opacity=".4" style="color:var(--accent)"/>
-      <rect x="1100" y="480" width="200" height="1" fill="currentColor" opacity=".2" style="color:var(--accent)"/>
-    </svg>
-  </div>
-  <div class="band-text">
-    <span class="band-year">1956 — Dartmouth</span>
-    <div class="band-headline">The Field<br>is <em>Named.</em></div>
-  </div>
-</div>
-
-<!-- ─── ERA 2 ──────────────────────────────────────────────────── -->
-<section class="era" id="era2" data-era="1970's — AI Winters">
-  <div class="era-sidebar">
-    <div class="era-index">02</div>
-    <div>
-      <div class="sec-label fi">Era Two</div>
-      <div class="era-period fi"><span class="era-period-accent" style="color:#FF5C20;">1970's — 90's</span>The AI<br>Winters</div>
-      <div class="era-title-main fi">Two cycles of hype, collapse, and institutional retreat</div>
-    </div>
-    <div class="era-meter fi">
-      <div class="era-meter-label">Significance Index</div>
-      <div class="era-meter-bar"><div class="era-meter-fill" style="max-width:45%;background:linear-gradient(90deg,#FF5C20,#CC2200);"></div></div>
-    </div>
-  </div>
-  <div class="era-main">
-    <div class="card-grid">
-      <div class="card fi" style="--c-accent:#FF5C20;">
-        <div class="card-idx">01 / 04</div>
-        <span class="card-year" style="color:#FF5C20;">1969–74</span><h3>First AI Winter</h3>
-        <p>Minsky &amp; Papert demonstrate perceptrons cannot learn XOR. Funding collapses. The UK Lighthill Report calls AI "disappointing." DARPA withdraws. The field enters hibernation.</p>
-        <div class="card-tags">
-          <a class="tag" href="https://en.wikipedia.org/wiki/AI_winter" target="_blank" rel="noopener">AI Winter</a>
-          <a class="tag" href="https://en.wikipedia.org/wiki/Lighthill_report" target="_blank" rel="noopener">Lighthill Report</a>
-          <a class="tag" href="https://www.darpa.mil" target="_blank" rel="noopener">DARPA Cuts</a>
-        </div>
+    <!-- INTERNET -->
+    <a class="grid-card" href="internet.html">
+      <div class="grid-card-inner">
+        <img src="images/poster-internet.jpg" alt="The Internet">
       </div>
-      <div class="card fi" style="--c-accent:#00D4F0;">
-        <div class="card-idx">02 / 04</div>
-        <span class="card-year">1980</span><h3>Expert Systems Boom</h3>
-        <p>AI rebounds via rule-based Expert Systems encoding human domain knowledge. XCON saves DEC $40M per year. Lisp machines proliferate. Then the rules become impossible to maintain at scale.</p>
-        <div class="card-tags">
-          <a class="tag" href="https://en.wikipedia.org/wiki/Expert_system" target="_blank" rel="noopener">Expert Systems</a>
-          <a class="tag" href="https://en.wikipedia.org/wiki/Lisp_machine" target="_blank" rel="noopener">Lisp Machines</a>
-          <a class="tag" href="https://en.wikipedia.org/wiki/R1_(expert_system)" target="_blank" rel="noopener">XCON</a>
-        </div>
+      <div class="grid-card-dot"></div>
+      <div class="grid-card-issue">002</div>
+      <div class="grid-card-overlay">
+        <span class="grid-card-title">The Internet</span>
+        <span class="grid-card-era">1969 — Present</span>
       </div>
-      <div class="card fi" style="--c-accent:#FF5C20;">
-        <div class="card-key" style="background:#FF5C20;">Critical</div>
-        <div class="card-idx">03 / 04</div>
-        <span class="card-year" style="color:#FF5C20;">1987–93</span><h3>Second AI Winter</h3>
-        <p>Expert systems fail to scale. Lisp machine market implodes. DARPA cuts funding again. Neural networks appear dead. The field shrinks to academic enclaves. Second full collapse in 20 years.</p>
-        <div class="card-tags">
-          <a class="tag" href="https://www.darpa.mil" target="_blank" rel="noopener">DARPA</a>
-          <a class="tag" href="https://en.wikipedia.org/wiki/AI_winter" target="_blank" rel="noopener">AI Winter II</a>
-        </div>
-      </div>
-      <div class="card fi" style="--c-accent:#00E87A;">
-        <div class="card-key" style="background:#00E87A;color:#07090C;">Milestone</div>
-        <div class="card-idx">04 / 04</div>
-        <span class="card-year" style="color:#00E87A;">1997</span><h3>Deep Blue Defeats Kasparov</h3>
-        <p>IBM's Deep Blue defeats world chess champion Kasparov 3.5–2.5. Kasparov alleges computational cheating. IBM retires Deep Blue immediately. The optics remain unresolved to this day.</p>
-        <div class="card-tags">
-          <a class="tag" href="https://www.ibm.com" target="_blank" rel="noopener">IBM</a>
-          <a class="tag" href="https://en.wikipedia.org/wiki/Deep_Blue_(chess_computer)" target="_blank" rel="noopener">Deep Blue</a>
-          <a class="tag" href="https://en.wikipedia.org/wiki/Garry_Kasparov" target="_blank" rel="noopener">Kasparov</a>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
+    </a>
 
-<!-- ─── QUOTE ──────────────────────────────────────────────────── -->
-<div class="quote-block quote-band">
-  <div class="quote-bg-num">93</div>
-  <div class="quote-mark fi">&ldquo;</div>
-  <div class="quote-content fi">
-    <blockquote class="pq-text">We are on the edge of change comparable to the <em class="pq-hl">rise of human life</em> on Earth.</blockquote>
-    <div class="quote-cite pq-attr">Vernor Vinge, 1993 · Predicting the Technological Singularity</div>
-  </div>
-</div>
-
-<!-- ─── ERA 3 ──────────────────────────────────────────────────── -->
-<section class="era" id="era3" data-era="2000's — Deep Learning Revolution">
-  <div class="era-sidebar">
-    <div class="era-index">03</div>
-    <div>
-      <div class="sec-label fi">Era Three</div>
-      <div class="era-period fi"><span class="era-period-accent" style="color:#00E87A;">2000's — 2010's</span>Deep<br>Learning</div>
-      <div class="era-title-main fi">GPUs unlock neural networks at scale — the modern era begins</div>
-    </div>
-    <div class="era-meter fi">
-      <div class="era-meter-label">Significance Index</div>
-      <div class="era-meter-bar"><div class="era-meter-fill" style="max-width:80%;background:linear-gradient(90deg,#00E87A,#00D4F0);"></div></div>
-    </div>
-  </div>
-  <div class="era-main">
-    <div class="card-grid">
-      <div class="card fi" style="--c-accent:#00E87A;">
-        <div class="card-idx">01 / 04</div>
-        <span class="card-year" style="color:#00E87A;">2006</span><h3>Hinton's Breakthrough</h3>
-        <p>Geoffrey Hinton publishes "Learning Multiple Layers of Representation." Deep neural networks actually work. The AI community largely ignores it. The slow fuse is lit.</p>
-        <div class="card-tags">
-          <a class="tag" href="https://www.cs.toronto.edu/~hinton/" target="_blank" rel="noopener">Geoffrey Hinton</a>
-          <a class="tag" href="https://www.utoronto.ca" target="_blank" rel="noopener">U of Toronto</a>
-          <a class="tag" href="https://en.wikipedia.org/wiki/Deep_learning" target="_blank" rel="noopener">Deep Learning</a>
-        </div>
+    <!-- CRYPTO -->
+    <a class="grid-card" href="crypto.html">
+      <div class="grid-card-inner">
+        <img src="images/poster-crypto.jpg" alt="Crypto">
       </div>
-      <div class="card fi" style="--c-accent:#00D4F0;">
-        <div class="card-key">Inflection Point</div>
-        <div class="card-idx">02 / 04</div>
-        <span class="card-year">2012</span><h3>AlexNet — ImageNet</h3>
-        <p>AlexNet surpasses ImageNet benchmarks by over 10 points. GPU acceleration meets deep learning. Every major lab pivots overnight. The modern era begins here.</p>
-        <div class="card-tags">
-          <a class="tag" href="https://en.wikipedia.org/wiki/AlexNet" target="_blank" rel="noopener">AlexNet</a>
-          <a class="tag" href="https://www.image-net.org" target="_blank" rel="noopener">ImageNet</a>
-          <a class="tag" href="https://www.nvidia.com" target="_blank" rel="noopener">NVIDIA CUDA</a>
-        </div>
+      <div class="grid-card-dot"></div>
+      <div class="grid-card-issue">007</div>
+      <div class="grid-card-overlay">
+        <span class="grid-card-title">Crypto</span>
+        <span class="grid-card-era">2008 — Present</span>
       </div>
-      <div class="card fi" style="--c-accent:#0055EE;">
-        <div class="card-idx">03 / 04</div>
-        <span class="card-year" style="color:#0055EE;">2014</span><h3>GANs — Generative AI Born</h3>
-        <p>Goodfellow invents GANs at 2am after a debate. Two competing networks fight each other. Generative AI is born. Creative industries begin a long, complicated reckoning.</p>
-        <div class="card-tags">
-          <a class="tag" href="https://en.wikipedia.org/wiki/Generative_adversarial_network" target="_blank" rel="noopener">GANs</a>
-          <a class="tag" href="https://en.wikipedia.org/wiki/Ian_Goodfellow" target="_blank" rel="noopener">Ian Goodfellow</a>
-        </div>
+    </a>
+
+    <!-- OSCARS -->
+    <a class="grid-card" href="https://www.abriefhistoryoftheoscars.com">
+      <div class="grid-card-inner">
+        <img src="images/poster-oscars.jpg" alt="The Oscars">
       </div>
-      <div class="card fi" style="--c-accent:#00E87A;">
-        <div class="card-idx">04 / 04</div>
-        <span class="card-year" style="color:#00E87A;">2016</span><h3>AlphaGo — Go Defeated</h3>
-        <p>DeepMind's AlphaGo defeats Lee Sedol 4-1 at Go — more board states than atoms in the observable universe. Sedol retires in 2019, citing the machine as undefeatable.</p>
-        <div class="card-tags">
-          <a class="tag" href="https://deepmind.google" target="_blank" rel="noopener">DeepMind</a>
-          <a class="tag" href="https://en.wikipedia.org/wiki/AlphaGo" target="_blank" rel="noopener">AlphaGo</a>
-          <a class="tag" href="https://google.com" target="_blank" rel="noopener">Google</a>
-        </div>
+      <div class="grid-card-dot"></div>
+      <div class="grid-card-issue">023</div>
+      <div class="grid-card-overlay">
+        <span class="grid-card-title">The Oscars</span>
+        <span class="grid-card-era">1929 — Present</span>
       </div>
-    </div>
-  </div>
-</section>
+    </a>
 
-<!-- ─── PHOTO STRIP 2 ──────────────────────────────────────────── -->
-<div class="photo-strip">
-  <div class="pc"><img src="https://images.unsplash.com/photo-1531746790731-6c087fecd65a?w=600&q=80" alt="Neural networks" loading="lazy"/><div class="pc-cap"><span class="pc-num">04 —</span>Neural Networks</div></div>
-  <div class="pc"><img src="https://images.unsplash.com/photo-1677442135703-1787eea5ce01?w=600&q=80" alt="AI art" loading="lazy"/><div class="pc-cap"><span class="pc-num">05 —</span>AI Generates Art</div></div>
-  <div class="pc"><img src="https://images.unsplash.com/photo-1620712943543-bcc4688e7485?w=600&q=80" alt="Robot" loading="lazy"/><div class="pc-cap"><span class="pc-num">06 —</span>Thinking Machines</div></div>
-</div>
-
-<!-- ─── BAND 2 ─────────────────────────────────────────────────── -->
-<div class="band">
-  <div class="band-bg" id="b2">
-    <svg width="2400" height="580" viewBox="0 0 2400 580" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice">
-      <text x="60" y="520" font-family="IBM Plex Mono,monospace" font-weight="700" font-size="480" fill="currentColor" opacity=".06" letter-spacing="-20" style="color:var(--bright)">2017</text>
-      <line x1="0" y1="145" x2="2400" y2="145" stroke="currentColor" stroke-width=".8" opacity=".12" style="color:var(--rule)"/>
-      <line x1="0" y1="435" x2="2400" y2="435" stroke="currentColor" stroke-width=".8" opacity=".12" style="color:var(--rule)"/>
-      <line x1="600" y1="0" x2="600" y2="580" stroke="currentColor" stroke-width=".6" opacity=".1" style="color:var(--rule)"/>
-      <line x1="1200" y1="0" x2="1200" y2="580" stroke="currentColor" stroke-width=".6" opacity=".12" style="color:var(--rule)"/>
-      <line x1="1800" y1="0" x2="1800" y2="580" stroke="currentColor" stroke-width=".6" opacity=".1" style="color:var(--rule)"/>
-      <rect x="1280" y="144" width="600" height="1" fill="currentColor" opacity=".45" style="color:var(--accent)"/>
-      <rect x="1280" y="435" width="600" height="1" fill="currentColor" opacity=".2" style="color:var(--accent)"/>
-      <rect x="1280" y="144" width="1" height="292" fill="currentColor" opacity=".3" style="color:var(--accent)"/>
-      <circle cx="600" cy="145" r="3.5" fill="currentColor" opacity=".55" style="color:var(--accent)"/>
-      <circle cx="1200" cy="290" r="3.5" fill="currentColor" opacity=".45" style="color:var(--accent2)"/>
-      <circle cx="1800" cy="145" r="3.5" fill="currentColor" opacity=".45" style="color:var(--accent3)"/>
-    </svg>
-  </div>
-  <div class="band-text">
-    <span class="band-year">Vaswani et al. — Google Brain</span>
-    <div class="band-headline">Attention Is<br><em>All You Need.</em></div>
-  </div>
-</div>
-
-<!-- ─── ERA 4 ──────────────────────────────────────────────────── -->
-<section class="era" id="era4" data-era="2017 — Transformer Era">
-  <div class="era-sidebar">
-    <div class="era-index">04</div>
-    <div>
-      <div class="sec-label fi">Era Four</div>
-      <div class="era-period fi"><span class="era-period-accent" style="color:#0055EE;">2017 — 2022</span>The<br>Transformer</div>
-      <div class="era-title-main fi">One architecture reshapes the entire field — language, vision, reasoning</div>
-    </div>
-    <div class="era-meter fi">
-      <div class="era-meter-label">Significance Index</div>
-      <div class="era-meter-bar"><div class="era-meter-fill" style="max-width:92%;background:linear-gradient(90deg,#0055EE,#00D4F0);"></div></div>
-    </div>
-  </div>
-  <div class="era-main">
-    <div class="card-grid">
-      <div class="card fi" style="--c-accent:#0055EE;">
-        <div class="card-key" style="background:#0055EE;">Architecture</div>
-        <div class="card-idx">01 / 04</div>
-        <span class="card-year" style="color:#0055EE;">2017</span><h3>The Transformer Paper</h3>
-        <p>Google Brain publishes "Attention Is All You Need" — eight authors, one paper. It replaces recurrent networks entirely. Every modern foundation model runs on this architecture.</p>
-        <div class="card-tags">
-          <a class="tag" href="https://arxiv.org/abs/1706.03762" target="_blank" rel="noopener">Paper ↗</a>
-          <a class="tag" href="https://deepmind.google" target="_blank" rel="noopener">Google Brain</a>
-          <a class="tag" href="https://en.wikipedia.org/wiki/Transformer_(machine_learning_model)" target="_blank" rel="noopener">Transformer</a>
-        </div>
+    <!-- WORLD CUP -->
+    <a class="grid-card" href="worldcup.html">
+      <div class="grid-card-inner">
+        <img src="images/poster-worldcup.jpg" alt="The World Cup">
       </div>
-      <div class="card fi" style="--c-accent:#00D4F0;">
-        <div class="card-idx">02 / 04</div>
-        <span class="card-year">2018</span><h3>BERT &amp; GPT-1</h3>
-        <p>Google releases BERT; OpenAI ships GPT-1. Language models demonstrate genuine text comprehension. The scaling arms race begins — every point of compute translates to capability.</p>
-        <div class="card-tags">
-          <a class="tag" href="https://google.com" target="_blank" rel="noopener">Google</a>
-          <a class="tag" href="https://openai.com" target="_blank" rel="noopener">OpenAI</a>
-          <a class="tag" href="https://en.wikipedia.org/wiki/BERT_(language_model)" target="_blank" rel="noopener">BERT</a>
-        </div>
+      <div class="grid-card-dot"></div>
+      <div class="grid-card-issue">027</div>
+      <div class="grid-card-overlay">
+        <span class="grid-card-title">The World Cup</span>
+        <span class="grid-card-era">1930 — Present</span>
       </div>
-      <div class="card fi" style="--c-accent:#00D4F0;">
-        <div class="card-key">Scale Event</div>
-        <div class="card-idx">03 / 04</div>
-        <span class="card-year">2020</span><h3>GPT-3 — 175B Parameters</h3>
-        <p>OpenAI scales to 175 billion parameters. GPT-3 writes essays, passes professional exams, generates working code. API waitlist exceeds one million developers. Microsoft invests $1 billion.</p>
-        <div class="card-tags">
-          <a class="tag" href="https://openai.com" target="_blank" rel="noopener">OpenAI</a>
-          <a class="tag" href="https://microsoft.com" target="_blank" rel="noopener">Microsoft $1B</a>
-          <a class="tag" href="https://en.wikipedia.org/wiki/GPT-3" target="_blank" rel="noopener">GPT-3</a>
-        </div>
-      </div>
-      <div class="card fi" style="--c-accent:#00E87A;">
-        <div class="card-idx">04 / 04</div>
-        <span class="card-year" style="color:#00E87A;">2021–22</span><h3>Image Generation Emerges</h3>
-        <p>DALL·E, Midjourney, and Stable Diffusion make text-to-image accessible at consumer scale. Generative media proliferates. Professional illustrators face an unprecedented market disruption.</p>
-        <div class="card-tags">
-          <a class="tag" href="https://openai.com/dall-e-3" target="_blank" rel="noopener">DALL·E</a>
-          <a class="tag" href="https://www.midjourney.com" target="_blank" rel="noopener">Midjourney</a>
-          <a class="tag" href="https://stability.ai" target="_blank" rel="noopener">Stable Diffusion</a>
-          <a class="tag" href="https://runwayml.com" target="_blank" rel="noopener">Runway</a>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ─── ERA 5 ──────────────────────────────────────────────────── -->
-<section class="era" id="era5" data-era="2022 — The AI Explosion">
-  <div class="era-sidebar">
-    <div class="era-index">05</div>
-    <div>
-      <div class="sec-label fi">Era Five</div>
-      <div class="era-period fi"><span class="era-period-accent" style="color:#FF5C20;">2022 — Now</span>The AI<br>Explosion</div>
-      <div class="era-title-main fi">Consumer adoption, proliferation, and the emergence of autonomous agents</div>
-    </div>
-    <div class="era-meter fi">
-      <div class="era-meter-label">Significance Index</div>
-      <div class="era-meter-bar"><div class="era-meter-fill" style="max-width:100%;background:linear-gradient(90deg,#FF5C20,#CC1100);"></div></div>
-    </div>
-  </div>
-  <div class="era-main">
-    <div class="card-grid">
-      <div class="card fi" style="--c-accent:#FF5C20;">
-        <div class="card-key" style="background:#FF5C20;">Consumer Inflection</div>
-        <div class="card-idx">01 / 04</div>
-        <span class="card-year" style="color:#FF5C20;">Nov 2022</span><h3>ChatGPT — Mass Adoption</h3>
-        <p>OpenAI releases ChatGPT. One million users in five days. One hundred million in two months — the fastest consumer product adoption in recorded history. Google internally declares Code Red.</p>
-        <div class="card-tags">
-          <a class="tag" href="https://chat.openai.com" target="_blank" rel="noopener">ChatGPT</a>
-          <a class="tag" href="https://openai.com" target="_blank" rel="noopener">OpenAI</a>
-        </div>
-      </div>
-      <div class="card fi" style="--c-accent:#00D4F0;">
-        <div class="card-idx">02 / 04</div>
-        <span class="card-year">2023</span><h3>Proliferation</h3>
-        <p>Google launches Bard → Gemini. Meta open-sources LLaMA. Anthropic releases Claude. Mistral emerges from Paris. The landscape fragments rapidly across dozens of competing foundation models.</p>
-        <div class="card-tags">
-          <a class="tag" href="https://gemini.google.com" target="_blank" rel="noopener">Gemini</a>
-          <a class="tag" href="https://claude.ai" target="_blank" rel="noopener">Claude</a>
-          <a class="tag" href="https://ai.meta.com" target="_blank" rel="noopener">LLaMA</a>
-          <a class="tag" href="https://mistral.ai" target="_blank" rel="noopener">Mistral</a>
-          <a class="tag" href="https://perplexity.ai" target="_blank" rel="noopener">Perplexity</a>
-        </div>
-      </div>
-      <div class="card fi" style="--c-accent:#0055EE;">
-        <div class="card-idx">03 / 04</div>
-        <span class="card-year" style="color:#0055EE;">2024</span><h3>Agents &amp; Reasoning</h3>
-        <p>The paradigm shifts from assistants to autonomous agents. Cursor writes code. Devin handles software engineering. OpenAI o1 implements chain-of-thought reasoning. DeepSeek demonstrates efficiency breakthroughs.</p>
-        <div class="card-tags">
-          <a class="tag" href="https://cursor.sh" target="_blank" rel="noopener">Cursor</a>
-          <a class="tag" href="https://cognition.ai" target="_blank" rel="noopener">Devin</a>
-          <a class="tag" href="https://openai.com" target="_blank" rel="noopener">OpenAI o1</a>
-          <a class="tag" href="https://deepseek.com" target="_blank" rel="noopener">DeepSeek</a>
-        </div>
-      </div>
-      <div class="card fi" style="--c-accent:#00E87A;">
-        <div class="card-idx">04 / 04</div>
-        <span class="card-year" style="color:#00E87A;">2025 —</span><h3>Open Horizon</h3>
-        <p>Multimodal. Autonomous agents. Drug discovery. Scientific reasoning. Physical robotics. The AGI debate intensifies. Whether or not general intelligence arrives this decade, the economic transformation is already underway.</p>
-        <div class="card-tags">
-          <span class="tag">AGI Debate</span><span class="tag">Robotics</span><span class="tag">Scientific AI</span>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ─── PHOTO STRIP 3 ──────────────────────────────────────────── -->
-<div class="photo-strip">
-  <div class="pc"><img src="https://images.unsplash.com/photo-1655720828018-edd2daec9349?w=600&q=80" alt="AI interface" loading="lazy"/><div class="pc-cap"><span class="pc-num">07 —</span>ChatGPT Era</div></div>
-  <div class="pc"><img src="https://images.unsplash.com/photo-1485827404703-89b55fcc595e?w=600&q=80" alt="AI future" loading="lazy"/><div class="pc-cap"><span class="pc-num">08 —</span>What's Next</div></div>
-  <div class="pc"><img src="https://images.unsplash.com/photo-1507146153580-69a1fe6d8aa1?w=600&q=80" alt="Robots" loading="lazy"/><div class="pc-cap"><span class="pc-num">09 —</span>Age of Agents</div></div>
-</div>
-
-<!-- ─── EPILOGUE ───────────────────────────────────────────────── -->
-<section class="era" id="epilogue" data-era="Epilogue — Where Do We Go From Here?">
-  <div class="era-sidebar">
-    <div class="era-index">06</div>
-    <div>
-      <div class="sec-label fi" style="color:var(--accent3)">Epilogue</div>
-      <div class="era-period fi"><span class="era-period-accent" style="color:var(--accent3);">2026 — 2035</span>Where Do<br>We Go?</div>
-      <div class="era-title-main fi">Probabilistic forecasts across two time horizons — near-term and decade-out</div>
-    </div>
-    <div class="era-meter fi" style="margin-top:auto;padding-top:2rem;">
-      <div class="era-meter-label">Certainty Index</div>
-      <div class="era-meter-bar"><div class="era-meter-fill" style="max-width:40%;background:linear-gradient(90deg,var(--accent3),var(--accent2));"></div></div>
-      <div style="font-family:'IBM Plex Mono',monospace;font-size:0.6rem;color:var(--muted);margin-top:.6rem;letter-spacing:.08em;">Forecasting is probabilistic,<br>not certain.</div>
-    </div>
-  </div>
-  <div class="era-main" style="padding:0;">
-    <div style="border-bottom:1px solid var(--rule);padding:2.5rem 3rem 0;">
-      <div class="sec-label fi" style="color:var(--accent);">Horizon 01 — Next 5 Years · 2026–2030</div>
-      <div class="fi" style="font-family:'IBM Plex Mono',monospace;font-weight:700;font-size:clamp(1.4rem,3vw,2.2rem);color:var(--bright);text-transform:uppercase;letter-spacing:-.02em;margin-bottom:2rem;line-height:1;">The Agentic Decade Begins</div>
-    </div>
-    <div class="card-grid" style="border-bottom:1px solid var(--rule);">
-      <div class="card fi" style="--c-accent:#00D4F0;">
-        <div class="card-key">~85% Confidence</div><div class="card-idx">H1 / 01</div>
-        <span class="card-year">2026–27</span><h3>Agents Enter the Workforce</h3>
-        <p>AI agents handle entire workflows — legal research, financial analysis, medical imaging, code review. White-collar disruption accelerates faster than policy can respond. The assistant era ends. The colleague era begins.</p>
-        <div class="card-tags"><span class="tag">Agentic AI</span><span class="tag">Workforce Displacement</span><span class="tag">Enterprise</span></div>
-      </div>
-      <div class="card fi" style="--c-accent:#0055EE;">
-        <div class="card-key" style="background:#0055EE;">~80% Confidence</div><div class="card-idx">H1 / 02</div>
-        <span class="card-year" style="color:#0055EE;">2027–28</span><h3>Multimodal Becomes Standard</h3>
-        <p>Text, image, audio, video, and code collapse into unified models. AI that sees, hears, reads, and acts simultaneously becomes the baseline. The word "chatbot" is retired. Good riddance.</p>
-        <div class="card-tags"><span class="tag">Multimodal</span><span class="tag">Foundation Models</span><span class="tag">Unified</span></div>
-      </div>
-      <div class="card fi" style="--c-accent:#00E87A;">
-        <div class="card-idx">H1 / 03</div>
-        <span class="card-year" style="color:#00E87A;">2028–29</span><h3>Scientific Discovery Accelerates</h3>
-        <p>AlphaFold showed the way. The next wave extends into drug design, materials science, climate modelling, and fundamental physics. Discoveries arrive that we weren't specifically looking for.</p>
-        <div class="card-tags"><span class="tag">Drug Discovery</span><span class="tag">Climate AI</span><span class="tag">AlphaFold</span></div>
-      </div>
-      <div class="card fi" style="--c-accent:#FF5C20;">
-        <div class="card-idx">H1 / 04</div>
-        <span class="card-year" style="color:#FF5C20;">2028–30</span><h3>Regulatory Frameworks Emerge</h3>
-        <p>The EU AI Act is a beginning, not an end. Expect global divergence: EU tightens, US fragments by sector, China integrates AI into state infrastructure. An international body is proposed — and disputed.</p>
-        <div class="card-tags"><span class="tag">EU AI Act</span><span class="tag">Regulation</span><span class="tag">Governance</span></div>
-      </div>
-    </div>
-
-    <div style="border-bottom:1px solid var(--rule);padding:2.5rem 3rem 0;">
-      <div class="sec-label fi" style="color:var(--accent3);">Horizon 02 — Next 10 Years · 2026–2035</div>
-      <div class="fi" style="font-family:'IBM Plex Mono',monospace;font-weight:700;font-size:clamp(1.4rem,3vw,2.2rem);color:var(--bright);text-transform:uppercase;letter-spacing:-.02em;margin-bottom:2rem;line-height:1;">The Shape of a New World</div>
-    </div>
-    <div class="card-grid" style="border-bottom:1px solid var(--rule);">
-      <div class="card fi" style="--c-accent:#00E87A;">
-        <div class="card-key" style="background:#00E87A;color:#07090C;">~55% Speculative</div><div class="card-idx">H2 / 01</div>
-        <span class="card-year" style="color:#00E87A;">2030–32</span><h3>Physical AI — Robots in Context</h3>
-        <p>Foundation models extend into physical embodiment. Robots navigate, manipulate, and reason in unstructured environments. Warehouses, hospitals, construction. Physical labour re-prices again.</p>
-        <div class="card-tags"><span class="tag">Robotics</span><span class="tag">Embodied AI</span><span class="tag">Physical Labour</span></div>
-      </div>
-      <div class="card fi" style="--c-accent:#0055EE;">
-        <div class="card-key" style="background:#0055EE;">~50% Speculative</div><div class="card-idx">H2 / 02</div>
-        <span class="card-year" style="color:#0055EE;">2031–33</span><h3>Personalised AI — One Per Human</h3>
-        <p>Every person carries a persistent AI companion trained on their life: communication style, medical history, professional knowledge. Memory and continuity become design challenges more than technical ones.</p>
-        <div class="card-tags"><span class="tag">Personalisation</span><span class="tag">Persistent Memory</span><span class="tag">Identity</span></div>
-      </div>
-      <div class="card fi" style="--c-accent:#00D4F0;">
-        <div class="card-idx">H2 / 03</div>
-        <span class="card-year">2032–35</span><h3>AGI — The Contested Threshold</h3>
-        <p>Whether a system reaches AGI depends entirely on definition. Narrow tasks: already surpassed. Common sense: rapidly closing. Flexible real-world agency at human level: the decade's open question.</p>
-        <div class="card-tags"><span class="tag">AGI</span><span class="tag">Open Question</span><span class="tag">Definition Problem</span></div>
-      </div>
-      <div class="card fi" style="--c-accent:#FF5C20;">
-        <div class="card-idx">H2 / 04</div>
-        <span class="card-year" style="color:#FF5C20;">2033–35</span><h3>The Unknown Unknowns</h3>
-        <p>Every previous forecast missed the thing that actually happened. No one predicted GPT-3's emergent capabilities. No one predicted ChatGPT's adoption curve. The most significant development of the decade is probably not on any roadmap.</p>
-        <div class="card-tags"><span class="tag">Black Swan</span><span class="tag">Emergence</span><span class="tag">Unknown Unknowns</span></div>
-      </div>
-    </div>
-
-    <!-- Confidence key -->
-    <div style="padding:1.5rem 3rem;display:flex;flex-wrap:wrap;gap:2rem;align-items:center;border-bottom:1px solid var(--rule);">
-      <div style="font-family:'IBM Plex Mono',monospace;font-size:0.6rem;letter-spacing:.2em;text-transform:uppercase;color:var(--muted);">Confidence Key</div>
-      <div style="display:flex;flex-wrap:wrap;gap:1.2rem;">
-        <div style="display:flex;align-items:center;gap:.4rem;"><div style="width:7px;height:7px;background:var(--accent);flex-shrink:0;"></div><span style="font-family:'IBM Plex Mono',monospace;font-size:0.648rem;color:var(--dim);letter-spacing:.08em;">80–90% High Confidence</span></div>
-        <div style="display:flex;align-items:center;gap:.4rem;"><div style="width:7px;height:7px;background:var(--accent2);flex-shrink:0;"></div><span style="font-family:'IBM Plex Mono',monospace;font-size:0.648rem;color:var(--dim);letter-spacing:.08em;">60–80% Probable</span></div>
-        <div style="display:flex;align-items:center;gap:.4rem;"><div style="width:7px;height:7px;background:var(--accent3);flex-shrink:0;"></div><span style="font-family:'IBM Plex Mono',monospace;font-size:0.648rem;color:var(--dim);letter-spacing:.08em;">40–60% Speculative</span></div>
-        <div style="display:flex;align-items:center;gap:.4rem;"><div style="width:7px;height:7px;background:var(--warn);flex-shrink:0;"></div><span style="font-family:'IBM Plex Mono',monospace;font-size:0.648rem;color:var(--dim);letter-spacing:.08em;">&lt;40% Highly Uncertain</span></div>
-      </div>
-      <div style="margin-left:auto;font-family:'IBM Plex Mono',monospace;font-size:0.624rem;color:var(--muted);font-style:italic;">Probabilistic estimates only.</div>
-    </div>
-  </div>
-</section>
-
-<!-- ─── KEY PEOPLE ────────────────────────────────────────────── -->
-<section class="people" id="people">
-  <div class="sec-label fi">Personnel Index</div>
-  <div class="eco-header fi">
-    <div>
-      <div class="eco-title">The Architects of AI</div>
-      <div class="eco-sub" style="margin-top:.4rem;">12 figures who shaped the field</div>
-    </div>
-  </div>
-  <div class="people-grid">
-
-    <div class="person-card fi" style="--p-accent:#00D4F0;">
-      <img class="person-photo" src="images/people/01-alan-turing.jpg" alt="Alan Turing portrait" loading="lazy">
-      <div class="person-era">1912 – 1954</div>
-      <div class="person-name">Alan Turing</div>
-      <div class="person-role">Father of Computer Science</div>
-      <p class="person-bio">Proposed the Imitation Game in 1950 — the foundational question of machine intelligence. His theoretical work on computation underpins every AI system ever built.</p>
-      <a class="person-link" href="https://en.wikipedia.org/wiki/Alan_Turing" target="_blank" rel="noopener">Wikipedia</a>
-    </div>
-
-    <div class="person-card fi" style="--p-accent:#0055EE;--d:.05s">
-      <img class="person-photo" src="images/people/02-john-mccarthy.jpg" alt="John McCarthy portrait" loading="lazy">
-      <div class="person-era">1927 – 2011</div>
-      <div class="person-name">John McCarthy</div>
-      <div class="person-role">Coined "Artificial Intelligence"</div>
-      <p class="person-bio">Organised the 1956 Dartmouth Conference and named the field. Invented Lisp — still influential today. Spent 50 years insisting AI was closer than it was.</p>
-      <a class="person-link" href="https://en.wikipedia.org/wiki/John_McCarthy_(computer_scientist)" target="_blank" rel="noopener">Wikipedia</a>
-    </div>
-
-    <div class="person-card fi" style="--p-accent:#00E87A;--d:.1s">
-      <img class="person-photo" src="images/people/03-marvin-minsky.jpg" alt="Marvin Minsky portrait" loading="lazy">
-      <div class="person-era">1927 – 2016</div>
-      <div class="person-name">Marvin Minsky</div>
-      <div class="person-role">Co-founder, MIT AI Lab</div>
-      <p class="person-bio">Co-founded MIT's AI Lab and shaped decades of AI research. Famously helped kill the first wave of neural networks with "Perceptrons" (1969) — and later regretted it.</p>
-      <a class="person-link" href="https://en.wikipedia.org/wiki/Marvin_Minsky" target="_blank" rel="noopener">Wikipedia</a>
-    </div>
-
-    <div class="person-card fi" style="--p-accent:#FF5C20;--d:.15s">
-      <img class="person-photo" src="images/people/04-geoffrey-hinton.jpg" alt="Geoffrey Hinton portrait" loading="lazy">
-      <div class="person-era">b. 1947</div>
-      <div class="person-name">Geoffrey Hinton</div>
-      <div class="person-role">Godfather of Deep Learning</div>
-      <p class="person-bio">Proved deep neural networks work (2006). His student Krizhevsky built AlexNet (2012), triggering the modern AI era. Left Google in 2023 to warn about AI risk. Nobel Prize, 2024.</p>
-      <a class="person-link" href="https://en.wikipedia.org/wiki/Geoffrey_Hinton" target="_blank" rel="noopener">Wikipedia</a>
-    </div>
-
-    <div class="person-card fi" style="--p-accent:#00D4F0;--d:.2s">
-      <img class="person-photo" src="images/people/05-yann-lecun.jpg" alt="Yann LeCun portrait" loading="lazy">
-      <div class="person-era">b. 1960</div>
-      <div class="person-name">Yann LeCun</div>
-      <div class="person-role">Chief AI Scientist, Meta</div>
-      <p class="person-bio">Invented convolutional neural networks in the 1980s — the architecture behind every image recognition system. Chief AI Scientist at Meta. Vocal critic of AGI doom narratives.</p>
-      <a class="person-link" href="https://en.wikipedia.org/wiki/Yann_LeCun" target="_blank" rel="noopener">Wikipedia</a>
-    </div>
-
-    <div class="person-card fi" style="--p-accent:#0055EE;--d:.25s">
-      <img class="person-photo" src="images/people/06-yoshua-bengio.jpg" alt="Yoshua Bengio portrait" loading="lazy">
-      <div class="person-era">b. 1966</div>
-      <div class="person-name">Yoshua Bengio</div>
-      <div class="person-role">Pioneer of Deep Learning</div>
-      <p class="person-bio">Shared the 2018 Turing Award with Hinton and LeCun for deep learning. Leads Mila — the Quebec AI Institute. Now among the most prominent voices for AI safety and regulation.</p>
-      <a class="person-link" href="https://en.wikipedia.org/wiki/Yoshua_Bengio" target="_blank" rel="noopener">Wikipedia</a>
-    </div>
-
-    <div class="person-card fi" style="--p-accent:#00E87A;--d:.3s">
-      <img class="person-photo" src="images/people/07-demis-hassabis.jpg" alt="Demis Hassabis portrait" loading="lazy">
-      <div class="person-era">b. 1986</div>
-      <div class="person-name">Demis Hassabis</div>
-      <div class="person-role">CEO, Google DeepMind</div>
-      <p class="person-bio">Co-founded DeepMind in 2010; sold to Google in 2014. Led AlphaGo, AlphaFold, and Gemini. Nobel Prize in Chemistry 2024 for AlphaFold's protein structure breakthrough. Nobel Prize, 2024.</p>
-      <a class="person-link" href="https://en.wikipedia.org/wiki/Demis_Hassabis" target="_blank" rel="noopener">Wikipedia</a>
-    </div>
-
-    <div class="person-card fi" style="--p-accent:#FF5C20;--d:.35s">
-      <img class="person-photo" src="images/people/08-ilya-sutskever.jpg" alt="Ilya Sutskever portrait" loading="lazy">
-      <div class="person-era">b. 1985</div>
-      <div class="person-name">Ilya Sutskever</div>
-      <div class="person-role">Co-founder, OpenAI / SSI</div>
-      <p class="person-bio">Co-authored AlexNet, then co-founded OpenAI. Chief Scientist during GPT-2, GPT-3, GPT-4, and ChatGPT. Led the November 2023 board revolt against Altman — and lost. Founded Safe Superintelligence in 2024.</p>
-      <a class="person-link" href="https://en.wikipedia.org/wiki/Ilya_Sutskever" target="_blank" rel="noopener">Wikipedia</a>
-    </div>
-
-    <div class="person-card fi" style="--p-accent:#00D4F0;--d:.4s">
-      <img class="person-photo" src="images/people/09-sam-altman.jpg" alt="Sam Altman portrait" loading="lazy">
-      <div class="person-era">b. 1985</div>
-      <div class="person-name">Sam Altman</div>
-      <div class="person-role">CEO, OpenAI</div>
-      <p class="person-bio">Led Y Combinator before joining OpenAI as CEO. Oversaw GPT-3, DALL·E, and ChatGPT's historic launch. Fired and reinstated within five days in 2023. Now navigating OpenAI's transformation into a for-profit.</p>
-      <a class="person-link" href="https://en.wikipedia.org/wiki/Sam_Altman" target="_blank" rel="noopener">Wikipedia</a>
-    </div>
-
-    <div class="person-card fi" style="--p-accent:#0055EE;--d:.45s">
-      <img class="person-photo" src="images/people/10-dario-amodei.jpg" alt="Dario Amodei portrait" loading="lazy">
-      <div class="person-era">b. 1983</div>
-      <div class="person-name">Dario Amodei</div>
-      <div class="person-role">CEO, Anthropic</div>
-      <p class="person-bio">Former VP of Research at OpenAI. Left with his sister Daniela in 2021 to found Anthropic — focused on AI safety and Constitutional AI. Creator of Claude.</p>
-      <a class="person-link" href="https://en.wikipedia.org/wiki/Dario_Amodei" target="_blank" rel="noopener">Wikipedia</a>
-    </div>
-
-    <div class="person-card fi" style="--p-accent:#00E87A;--d:.5s">
-      <img class="person-photo" src="images/people/11-fei-fei-li.jpg" alt="Fei-Fei Li portrait" loading="lazy">
-      <div class="person-era">b. 1971</div>
-      <div class="person-name">Fei-Fei Li</div>
-      <div class="person-role">Creator of ImageNet</div>
-      <p class="person-bio">Built ImageNet — the dataset that made the 2012 deep learning revolution possible. Former Chief Scientist at Google Cloud. Now leads Stanford HAI and World Labs, focused on spatial intelligence.</p>
-      <a class="person-link" href="https://en.wikipedia.org/wiki/Fei-Fei_Li" target="_blank" rel="noopener">Wikipedia</a>
-    </div>
-
-    <div class="person-card fi" style="--p-accent:#FF5C20;--d:.55s">
-      <img class="person-photo" src="images/people/12-andrew-ng.jpg" alt="Andrew Ng portrait" loading="lazy">
-      <div class="person-era">b. 1972</div>
-      <div class="person-name">Andrew Ng</div>
-      <div class="person-role">Co-founder, Coursera / Google Brain</div>
-      <p class="person-bio">Co-founded Google Brain and Coursera. Former Chief Scientist at Baidu. His online courses have trained millions of AI practitioners. Consistently one of the most influential voices on AI's practical future.</p>
-      <a class="person-link" href="https://en.wikipedia.org/wiki/Andrew_Ng" target="_blank" rel="noopener">Wikipedia</a>
-    </div>
+    </a>
 
   </div>
-</section>
 
-<!-- ─── ENTITY GRID ──────────────────────────────────────────── -->
-<section class="entity-section" id="ecosystem">
-  <div class="entity-heading fi">The AI Ecosystem_</div>
-  <div class="entity-sub">Labs · Models · Tools · Platforms · Research</div>
-  <div id="entityGrid"></div>
-</section>
+  <!-- WHAT EVERY GUIDE INCLUDES -->
+  <div class="features-section fi" id="about">
+    <div class="features-head">What every guide includes</div>
+    <div class="features-grid">
 
-<!-- ─── ECOSYSTEM DIRECTORY ──────────────────────────────────── -->
-<div class="eco-links">
-  <div class="eco-links-header">ECOSYSTEM · AI</div>
-  <div class="eco-links-grid">
-    <div class="eco-group">
-      <div class="eco-group-label">Frontier Labs</div>
-      <a href="https://openai.com" class="eco-link" target="_blank" rel="noopener">OpenAI ↗</a>
-      <a href="https://anthropic.com" class="eco-link" target="_blank" rel="noopener">Anthropic ↗</a>
-      <a href="https://deepmind.google" class="eco-link" target="_blank" rel="noopener">Google DeepMind ↗</a>
-      <a href="https://mistral.ai" class="eco-link" target="_blank" rel="noopener">Mistral AI ↗</a>
-      <a href="https://ai.meta.com" class="eco-link" target="_blank" rel="noopener">Meta AI ↗</a>
-    </div>
-    <div class="eco-group">
-      <div class="eco-group-label">Research &amp; Papers</div>
-      <a href="https://arxiv.org/cs.AI" class="eco-link" target="_blank" rel="noopener">arXiv · CS.AI ↗</a>
-      <a href="https://paperswithcode.com" class="eco-link" target="_blank" rel="noopener">Papers With Code ↗</a>
-      <a href="https://huggingface.co/papers" class="eco-link" target="_blank" rel="noopener">HuggingFace Papers ↗</a>
-      <a href="https://scholar.google.com" class="eco-link" target="_blank" rel="noopener">Google Scholar ↗</a>
-    </div>
-    <div class="eco-group">
-      <div class="eco-group-label">News &amp; Analysis</div>
-      <a href="https://techcrunch.com/category/artificial-intelligence/" class="eco-link" target="_blank" rel="noopener">TechCrunch AI ↗</a>
-      <a href="https://venturebeat.com/ai/" class="eco-link" target="_blank" rel="noopener">VentureBeat AI ↗</a>
-      <a href="https://theverge.com/ai" class="eco-link" target="_blank" rel="noopener">The Verge · AI ↗</a>
-      <a href="https://importai.substack.com" class="eco-link" target="_blank" rel="noopener">Import AI ↗</a>
-    </div>
-    <div class="eco-group">
-      <div class="eco-group-label">History &amp; Reference</div>
-      <a href="https://en.wikipedia.org/wiki/History_of_artificial_intelligence" class="eco-link" target="_blank" rel="noopener">Wikipedia · AI History ↗</a>
-      <a href="https://aiindex.stanford.edu" class="eco-link" target="_blank" rel="noopener">Stanford AI Index ↗</a>
-      <a href="https://ourworldindata.org/artificial-intelligence" class="eco-link" target="_blank" rel="noopener">Our World in Data · AI ↗</a>
-      <a href="https://timeline.ai" class="eco-link" target="_blank" rel="noopener">AI Timeline ↗</a>
+      <div class="feature-item">
+        <div class="feat-bar" style="background:#00D4F0;"></div>
+        <div class="feat-name">Structured Chronology</div>
+        <div class="feat-desc">Events organised by era, each with context, significance scores, and connections to what came before and after.</div>
+      </div>
+
+      <div class="feature-item">
+        <div class="feat-bar" style="background:#C9A84C;"></div>
+        <div class="feat-name">Key Figures</div>
+        <div class="feat-desc">The people who made it happen — founders, rebels, visionaries, and villains — with profiles and their place in the story.</div>
+      </div>
+
+      <div class="feature-item">
+        <div class="feat-bar" style="background:#39E07A;"></div>
+        <div class="feat-name">Ecosystem Maps</div>
+        <div class="feat-desc">The companies, organisations, and projects that define each field — linked, tagged by tier, and navigable.</div>
+      </div>
+
+      <div class="feature-item">
+        <div class="feat-bar" style="background:#FF5C20;"></div>
+        <div class="feat-name">Interactive Design</div>
+        <div class="feat-desc">Custom cursors, section navigation, scroll progress, theme toggles, fade-in animations, and keyboard navigation throughout.</div>
+      </div>
+
     </div>
   </div>
-</div>
 
-<!-- ─── FOOTER ─────────────────────────────────────────────────── -->
-<!-- Accent bar: hardcoded series hex — never use CSS vars here (light mode remaps them) -->
-<div class="footer-accent-bar">
+  <!-- ENTITY TAGS — from the AI + Internet guide aesthetic -->
+  <div class="entity-section fi">
+    <div class="entity-head">Entity Index</div>
+    <div class="entity-title">Subjects Covered_</div>
+    <div class="entity-sub">Across all guides · Click to explore</div>
+    <div class="entity-tags">
+      <a class="etag" href="https://abriefhistoryof-ai.com" style="color:#00D4F0;border-color:#00D4F020;">ARTIFICIAL INTELLIGENCE</a>
+      <a class="etag" href="https://abriefhistoryof-ai.com" style="color:#00D4F0;border-color:#00D4F020;">TURING TEST</a>
+      <a class="etag" href="https://abriefhistoryof-ai.com" style="color:#00D4F0;border-color:#00D4F020;">DEEP LEARNING</a>
+      <a class="etag" href="https://abriefhistoryof-ai.com" style="color:#00D4F0;border-color:#00D4F020;">CHATGPT</a>
+      <a class="etag" href="https://abriefhistoryof-ai.com" style="color:#00D4F0;border-color:#00D4F020;">TRANSFORMERS</a>
+      <a class="etag" href="internet.html" style="color:#00CFFF;border-color:#00CFFF20;">ARPANET</a>
+      <a class="etag" href="internet.html" style="color:#00CFFF;border-color:#00CFFF20;">TIM BERNERS-LEE</a>
+      <a class="etag" href="internet.html" style="color:#00CFFF;border-color:#00CFFF20;">DOT-COM BUBBLE</a>
+      <a class="etag" href="internet.html" style="color:#00CFFF;border-color:#00CFFF20;">SOCIAL MEDIA</a>
+      <a class="etag" href="internet.html" style="color:#39FFB0;border-color:#39FFB020;">WEB 2.0</a>
+      <a class="etag" href="crypto.html" style="color:#39FF14;border-color:#39FF1420;">BITCOIN</a>
+      <a class="etag" href="crypto.html" style="color:#39FF14;border-color:#39FF1420;">SATOSHI</a>
+      <a class="etag" href="crypto.html" style="color:#39FF14;border-color:#39FF1420;">BLOCKCHAIN</a>
+      <a class="etag" href="crypto.html" style="color:#39FF14;border-color:#39FF1420;">DEFI</a>
+      <a class="etag" href="crypto.html" style="color:#39FF14;border-color:#39FF1420;">NFTS</a>
+      <a class="etag" href="https://www.abriefhistoryoftheoscars.com" style="color:#C9A84C;border-color:#C9A84C20;">ACADEMY AWARDS</a>
+      <a class="etag" href="https://www.abriefhistoryoftheoscars.com" style="color:#C9A84C;border-color:#C9A84C20;">BEST PICTURE</a>
+      <a class="etag" href="https://www.abriefhistoryoftheoscars.com" style="color:#C9A84C;border-color:#C9A84C20;">OSCARSSOWHITE</a>
+      <a class="etag" href="https://www.abriefhistoryoftheoscars.com" style="color:#C9A84C;border-color:#C9A84C20;">ENVELOPEGATE</a>
+      <a class="etag" href="worldcup.html" style="color:#39E07A;border-color:#39E07A20;">FIFA</a>
+      <a class="etag" href="worldcup.html" style="color:#39E07A;border-color:#39E07A20;">BRAZIL 1970</a>
+      <a class="etag" href="worldcup.html" style="color:#39E07A;border-color:#39E07A20;">HAND OF GOD</a>
+      <a class="etag" href="worldcup.html" style="color:#39E07A;border-color:#39E07A20;">FRANCE 1998</a>
+    </div>
+  </div>
+
+  <!-- MANIFESTO -->
+  <div class="manifesto fi">
+    <div class="manifesto-left">
+      <div class="manifesto-series">The Project</div>
+      <div class="manifesto-brand">A (Brief) History of Everything</div>
+      <div class="manifesto-since">Est. 2026 · abriefhistoryofeverything.com</div>
+    </div>
+    <blockquote class="manifesto-quote">
+      History is not a list of dates.<br>
+      It is a story about <em>why things happened</em>,<br>
+      who made them happen,<br>
+      and what we missed at the time.
+    </blockquote>
+  </div>
+
+  <!-- EMAIL — commented out until ready
+  <div class="email-section fi">
+    <div class="email-left">
+      <div class="email-head">New guides, weekly.</div>
+      <div class="email-sub">No algorithm. No noise. Just history.</div>
+    </div>
+    <form class="email-form" onsubmit="return handleEmail(event)">
+      <input class="email-input" type="email" id="email-in" placeholder="your@email.com" autocomplete="email">
+      <button class="email-btn" type="submit" id="email-btn">Notify Me</button>
+    </form>
+  </div>
+  -->
+
+  <!-- SUGGEST A TOPIC -->
+  <div class="email-section fi">
+    <div class="email-left">
+      <div class="email-head">Suggest a Topic</div>
+      <div class="email-sub">Got a subject that deserves a deep dive? Tell us.</div>
+    </div>
+    <a class="email-btn" href="/cdn-cgi/l/email-protection#583a2a313d3e7630312b2c372a21762b312c3d183f35393134763b3735672b2d3a323d3b2c650c3728313b7d6a680b2d3f3f3d2b2c313736" style="display:inline-flex;align-items:center;text-decoration:none;">Suggest a Topic →</a>
+  </div>
+
+</main>
+
+<!-- FOOTER -->
+<div class="footer-bar">
   <div style="background:#00D4F0;flex:2;"></div>
   <div style="background:#0055EE;flex:1;"></div>
   <div style="background:#39E07A;flex:1;"></div>
   <div style="background:#FF5C20;flex:1;"></div>
-  <div style="background:var(--rule2);flex:5;"></div>
+  <div style="background:var(--rule);flex:5;"></div>
 </div>
-<footer class="footer">
-  <div class="fi">
-    <div class="footer-brand">A <span>I</span> / History</div>
-    <div class="footer-note" style="margin-top:1rem;">A structured chronology of artificial intelligence — from theoretical foundations to the present proliferation of foundation models, autonomous agents, and an open horizon beyond.</div>
-  </div>
-  <div class="fi" style="--d:.1s">
-    <div class="footer-col-label">Part of</div>
-    <div class="footer-note">A (Brief) History of Everything_<br>
-      <a href="https://abriefhistoryofeverything.com" style="color:var(--accent);text-decoration:none;">abriefhistoryofeverything.com ↗</a>
-    </div>
-  </div>
-  <div class="fi" style="--d:.2s">
-    <div class="footer-col-label">Typefaces</div>
-    <div class="footer-note">IBM Plex Mono — Display, Heroes, Data<br>IBM Plex Sans Condensed — Headings, UI<br>IBM Plex Sans — Body copy</div>
+<footer>
+  <span class="footer-l">A (Brief) History of Everything · 2026</span>
+  <div class="footer-r">
+    <a href="#about" onclick="document.getElementById('about').scrollIntoView({behavior:'smooth'});return false;">About</a>
+    <a href="/cdn-cgi/l/email-protection#a1c3d3c8c4c78fc9c8d2d5ced3d88fd2c8d5c4e1c6ccc0c8cd8fc2cecc9ed2d4c3cbc4c2d59cf5ced1c8c2849391f2d4c6c6c4d2d5c8cecf">Suggest a Topic</a>
+    <!-- <a href="#">Newsletter</a> -->
   </div>
 </footer>
-<div class="footer-bar">
-  <span>A (Brief) History of AI_ — Chronological Index · 7 Sections</span>
-  <span class="footer-bar-links">
-    <a href="https://twitter.com/intent/tweet?text=A%20(Brief)%20History%20of%20AI%20%E2%80%94%20from%20Turing%20to%20autonomous%20agents&url=https%3A%2F%2Fabriefhistoryof-ai.com" target="_blank" rel="noopener" class="footer-share-link">Share on X</a>
-    <a href="https://www.linkedin.com/sharing/share-offsite/?url=https%3A%2F%2Fabriefhistoryof-ai.com" target="_blank" rel="noopener" class="footer-share-link">Share on LinkedIn</a>
-  </span>
-</div>
 
-</div><!-- /page-body -->
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+/* cursor */
+const cur=document.getElementById('cur'),ring=document.getElementById('curRing');
+document.addEventListener('mousemove',e=>{
+  cur.style.left=e.clientX+'px';cur.style.top=e.clientY+'px';
+  ring.style.left=e.clientX+'px';ring.style.top=e.clientY+'px';
+});
+document.querySelectorAll('a,button').forEach(el=>{
+  el.addEventListener('mouseenter',()=>cur.classList.add('big'));
+  el.addEventListener('mouseleave',()=>cur.classList.remove('big'));
+});
 
-<script>
-(function(){
+/* progress + nav */
+const prog=document.getElementById('progress');
+window.addEventListener('scroll',()=>{
+  prog.style.width=(window.scrollY/(document.body.scrollHeight-window.innerHeight)*100)+'%';
+  document.getElementById('nav').classList.toggle('solid',window.scrollY>60);
+},{passive:true});
 
-  var isMobile=('ontouchstart' in window)||(navigator.maxTouchPoints>0);
-  var html=document.documentElement;
-  html.classList.add('js-ready');
+/* fade in */
+document.body.classList.add('js-ready');
+new IntersectionObserver(entries=>{
+  entries.forEach(e=>{if(e.isIntersecting)e.target.classList.add('in');});
+},{threshold:.07}).observe&&document.querySelectorAll('.fi').forEach(el=>{
+  new IntersectionObserver(([e])=>{if(e.isIntersecting)el.classList.add('in');},{threshold:.07}).observe(el);
+});
 
-  /* ── THEME TOGGLE ── */
-  var toggle=document.getElementById('toggleSwitch');
-  var modeLabel=document.getElementById('modeLabel');
-  var modeIcon=document.getElementById('modeIcon');
-  var saved=localStorage.getItem('ai-theme')||'dark';
-  html.setAttribute('data-theme',saved);
-  updateToggleUI(saved);
-
-  function updateToggleUI(theme){
-    if(theme==='light'){
-      modeLabel.textContent='Dark';
-      modeIcon.textContent='☾';
-    } else {
-      modeLabel.textContent='Light';
-      modeIcon.textContent='☀';
-    }
-  }
-  function cycleTheme(){
-    var cur=html.getAttribute('data-theme');
-    var next=cur==='dark'?'light':'dark';
-    html.setAttribute('data-theme',next);
-    localStorage.setItem('ai-theme',next);
-    updateToggleUI(next);
-  }
-  if(toggle){
-    toggle.addEventListener('click',cycleTheme);
-    toggle.addEventListener('keydown',function(e){if(e.key==='Enter'||e.key===' '){e.preventDefault();cycleTheme();}});
-  }
-
-  /* ── PDF DOWNLOAD ── */
-  var pdfBtn=document.getElementById('pdfBtn');
-  if(pdfBtn){
-    pdfBtn.addEventListener('click',function(){
-      // Hide news panel during print, restore after
-      var panel=document.getElementById('news-panel');
-      var prevDisplay=panel?panel.style.display:'';
-      if(panel)panel.style.display='none';
-      window.print();
-      // Restore after print dialog closes
-      setTimeout(function(){
-        if(panel)panel.style.display=prevDisplay;
-      },500);
-    });
-  }
-
-  /* ── SHARE BUTTON ── */
-  var shareBtn=document.getElementById('shareBtn');
-  var shareWrap=document.getElementById('shareWrap');
-  if(shareBtn){
-    shareBtn.addEventListener('click',function(e){
-      e.stopPropagation();
-      // Try Web Share API first (works on mobile + some desktop)
-      if(navigator.share){
-        navigator.share({
-          title:'A (Brief) History of AI',
-          text:"From Alan Turing's imitation game to autonomous agents — eight decades of AI history.",
-          url:'https://abriefhistoryof-ai.com'
-        }).catch(function(){});
-      } else {
-        // Desktop fallback: toggle dropdown
-        shareWrap.classList.toggle('open');
-      }
-    });
-    // Close dropdown on outside click
-    document.addEventListener('click',function(){
-      shareWrap.classList.remove('open');
-    });
-    // Keyboard: close on Escape
-    document.addEventListener('keydown',function(e){
-      if(e.key==='Escape') shareWrap.classList.remove('open');
-    });
-  }
-
-  /* ── CURSOR ── */
-  var cur=document.getElementById('cur'),ring=document.getElementById('curRing');
-  if(isMobile){if(cur)cur.style.display='none';if(ring)ring.style.display='none';}
-  else{
-    document.addEventListener('mousemove',function(e){
-      if(cur){cur.style.left=e.clientX+'px';cur.style.top=e.clientY+'px';}
-      if(ring){ring.style.left=e.clientX+'px';ring.style.top=e.clientY+'px';}
-    });
-    document.querySelectorAll('a,button,.card,.stat-bar-cell,.toggle-switch,.sidenav-item,.mobile-nav-item').forEach(function(el){
-      el.addEventListener('mouseenter',function(){if(ring){ring.style.width='42px';ring.style.height='42px';}if(cur)cur.classList.add('active');});
-      el.addEventListener('mouseleave',function(){if(ring){ring.style.width='26px';ring.style.height='26px';}if(cur)cur.classList.remove('active');});
-    });
-  }
-
-  /* ── SCROLL PROGRESS ── */
-  var prog=document.getElementById('progress');
-  var navPct=document.getElementById('navPct');
-  function onScroll(){
-    var h=document.documentElement;
-    var raw=(window.scrollY/(h.scrollHeight-h.clientHeight))*100;
-    var pct=Math.min(100,Math.max(0,raw));
-    if(prog)prog.style.width=pct+'%';
-    if(navPct)navPct.textContent=Math.round(pct)+'%';
-    updateNav();
-  }
-  window.addEventListener('scroll',onScroll,{passive:true});
-
-  /* ── ACTIVE SECTION TRACKING (nav + sidenav + mobile nav) ── */
-  var navEra=document.getElementById('navEra');
-  var sections=[];
-  // gather all anchor targets
-  ['hero','era1','era2','era3','era4','era5','epilogue','people','ecosystem'].forEach(function(id){
-    var el=document.getElementById(id);
-    if(el)sections.push(el);
-  });
-  var sideItems=document.querySelectorAll('.sidenav-item[data-section]');
-  var mobileItems=document.querySelectorAll('.mobile-nav-item[data-section]');
-  // era label map
-  var eraLabels={
-    'hero':'Overview',
-    "era1":"1940's — Birth of AI",
-    "era2":"1970's — AI Winters",
-    "era3":"2000's — Deep Learning",
-    'era4':'2017 — Transformer Era',
-    'era5':'2022 — AI Explosion',
-    'epilogue':'Epilogue — 2026–2035',
-    'people':'Key People',
-    'ecosystem':'Ecosystem'
-  };
-
-  function updateNav(){
-    var current='hero';
-    sections.forEach(function(el){
-      var r=el.getBoundingClientRect();
-      if(r.top<=120)current=el.id;
-    });
-    if(navEra)navEra.textContent=eraLabels[current]||'';
-    // sidenav
-    sideItems.forEach(function(item){
-      item.classList.toggle('active',item.dataset.section===current);
-    });
-    // mobile nav
-    mobileItems.forEach(function(item){
-      item.classList.toggle('active',item.dataset.section===current);
-      if(item.dataset.section===current){
-        item.scrollIntoView({behavior:'smooth',block:'nearest',inline:'center'});
-      }
-    });
-  }
-
-  /* ── TOOLTIP ── */
-  var tt=document.getElementById('tt');
-  if(!isMobile&&tt){
-    document.querySelectorAll('[data-tip]').forEach(function(el){
-      el.addEventListener('mouseenter',function(){tt.textContent=el.dataset.tip;tt.style.opacity='1';});
-      el.addEventListener('mousemove',function(e){tt.style.left=(e.clientX+14)+'px';tt.style.top=(e.clientY-8)+'px';});
-      el.addEventListener('mouseleave',function(){tt.style.opacity='0';});
-    });
-  }
-
-  /* ── INTERSECTION OBSERVER (fade-in + meters) ── */
-  function revealAll(){
-    document.querySelectorAll('.fi,.hero-stat,.era-meter-fill').forEach(function(el){
-      el.classList.add('visible');
-      var fill=el.querySelector('.era-meter-fill');
-      if(fill)fill.classList.add('visible');
-    });
-  }
-  if('IntersectionObserver' in window){
-    var obs=new IntersectionObserver(function(entries){
-      entries.forEach(function(entry){
-        if(entry.isIntersecting){
-          var el=entry.target;
-          var d=parseFloat(el.style.getPropertyValue('--d')||'0')*1000;
-          setTimeout(function(){
-            el.classList.add('visible');
-            var fill=el.querySelector('.era-meter-fill');
-            if(fill)fill.classList.add('visible');
-          },d);
-          obs.unobserve(el);
-        }
-      });
-    },{threshold:0,rootMargin:'200px 0px 200px 0px'});
-    document.querySelectorAll('.fi,.hero-stat,.era-meter-fill').forEach(function(el){obs.observe(el);});
-    /* Multi-stage fallback: reveal hidden content in sandboxed/slow environments */
-    [100,400,1000].forEach(function(ms){
-      setTimeout(function(){
-        var hidden=document.querySelectorAll('.fi:not(.visible)');
-        if(hidden.length>0) revealAll();
-      },ms);
-    });
-  } else {
-    revealAll();
-  }
-
-  /* ── PARALLAX ── */
-  if(!isMobile){
-    var b1=document.getElementById('b1'),b2=document.getElementById('b2'),tk=false;
-    window.addEventListener('scroll',function(){
-      if(!tk){requestAnimationFrame(function(){
-        var sy=window.scrollY;
-        if(b1)b1.style.transform='translateY('+(sy*.07)+'px)';
-        if(b2)b2.style.transform='translateY('+(sy*.04)+'px)';
-        tk=false;
-      });tk=true;}
-    },{passive:true});
-  }
-
-  /* ── ENTITY GRID ── */
-  var entities=[
-    {n:"OpenAI",u:"https://openai.com",c:"#00D4F0",t:"#000"},
-    {n:"Anthropic",u:"https://anthropic.com",c:"#0055EE",t:"#fff"},
-    {n:"Google DeepMind",u:"https://deepmind.google",c:"#00E87A",t:"#000"},
-    {n:"Meta AI",u:"https://ai.meta.com",c:"#FF5C20",t:"#fff"},
-    {n:"Mistral AI",u:"https://mistral.ai",c:"#00D4F0",t:"#000"},
-    {n:"Cohere",u:"https://cohere.com",c:"#0055EE",t:"#fff"},
-    {n:"Hugging Face",u:"https://huggingface.co",c:"#00E87A",t:"#000"},
-    {n:"Stability AI",u:"https://stability.ai",c:"#FF5C20",t:"#fff"},
-    {n:"Midjourney",u:"https://midjourney.com",c:"#00D4F0",t:"#000"},
-    {n:"Runway",u:"https://runwayml.com",c:"#0055EE",t:"#fff"},
-    {n:"ElevenLabs",u:"https://elevenlabs.io",c:"#00E87A",t:"#000"},
-    {n:"Perplexity",u:"https://perplexity.ai",c:"#FF5C20",t:"#fff"},
-    {n:"Character.AI",u:"https://character.ai",c:"#00D4F0",t:"#000"},
-    {n:"Inflection AI",u:"https://inflection.ai",c:"#0055EE",t:"#fff"},
-    {n:"Adept",u:"https://adept.ai",c:"#00E87A",t:"#000"},
-    {n:"Cognition",u:"https://cognition.ai",c:"#FF5C20",t:"#fff"},
-    {n:"Imbue",u:"https://imbue.com",c:"#00D4F0",t:"#000"},
-    {n:"Aleph Alpha",u:"https://aleph-alpha.com",c:"#0055EE",t:"#fff"},
-    {n:"Writer",u:"https://writer.com",c:"#00E87A",t:"#000"},
-    {n:"Jasper",u:"https://jasper.ai",c:"#FF5C20",t:"#fff"},
-    {n:"Copy.AI",u:"https://copy.ai",c:"#00D4F0",t:"#000"},
-    {n:"DeepSeek",u:"https://deepseek.com",c:"#0055EE",t:"#fff"},
-    {n:"01.AI",u:"https://01.ai",c:"#00E87A",t:"#000"},
-    {n:"Moonshot AI",u:"https://moonshot.cn",c:"#FF5C20",t:"#fff"},
-    {n:"Baidu ERNIE",u:"https://yiyan.baidu.com",c:"#00D4F0",t:"#000"},
-    {n:"Scale AI",u:"https://scale.com",c:"#0055EE",t:"#fff"},
-    {n:"Weights & Biases",u:"https://wandb.ai",c:"#00E87A",t:"#000"},
-    {n:"Replicate",u:"https://replicate.com",c:"#FF5C20",t:"#fff"},
-    {n:"Modal",u:"https://modal.com",c:"#00D4F0",t:"#000"},
-    {n:"Together AI",u:"https://together.ai",c:"#0055EE",t:"#fff"},
-    {n:"Fireworks AI",u:"https://fireworks.ai",c:"#00E87A",t:"#000"},
-    {n:"Groq",u:"https://groq.com",c:"#FF5C20",t:"#fff"},
-    {n:"Cerebras",u:"https://cerebras.net",c:"#00D4F0",t:"#000"},
-    {n:"SambaNova",u:"https://sambanova.ai",c:"#0055EE",t:"#fff"},
-    {n:"Pika Labs",u:"https://pika.art",c:"#00E87A",t:"#000"},
-    {n:"Krea AI",u:"https://krea.ai",c:"#FF5C20",t:"#fff"},
-    {n:"Adobe Firefly",u:"https://firefly.adobe.com",c:"#00D4F0",t:"#000"},
-    {n:"Canva AI",u:"https://canva.com",c:"#0055EE",t:"#fff"},
-    {n:"Grammarly AI",u:"https://grammarly.com",c:"#00E87A",t:"#000"},
-    {n:"Notion AI",u:"https://notion.so",c:"#FF5C20",t:"#fff"},
-    {n:"Cursor",u:"https://cursor.sh",c:"#00D4F0",t:"#000"},
-    {n:"GitHub Copilot",u:"https://github.com/features/copilot",c:"#0055EE",t:"#fff"},
-    {n:"Amazon Bedrock",u:"https://aws.amazon.com/bedrock",c:"#00E87A",t:"#000"},
-    {n:"IBM watsonx",u:"https://ibm.com/watsonx",c:"#FF5C20",t:"#fff"},
-    {n:"Salesforce Einstein",u:"https://salesforce.com/products/einstein",c:"#00D4F0",t:"#000"},
-    {n:"Microsoft Copilot",u:"https://copilot.microsoft.com",c:"#0055EE",t:"#fff"}
-  ];
-  var eg=document.getElementById('entityGrid');
-  if(eg){entities.forEach(function(e){
-    var a=document.createElement('a');
-    a.href=e.u;a.target='_blank';a.rel='noopener noreferrer';
-    a.className='entity-badge';
-    a.textContent=e.n;
-    a.style.background=e.c;
-    a.style.color=e.t;
-    a.style.borderColor=e.c;
-    eg.appendChild(a);
-  });}
-
-  /* ── URL HASH UPDATE ON SCROLL ── */
-  var lastHash='';
-  var origUpdateNav=updateNav;
-  updateNav=function(){
-    origUpdateNav();
-    // find current section
-    var current='hero';
-    sections.forEach(function(el){
-      var r=el.getBoundingClientRect();
-      if(r.top<=120)current=el.id;
-    });
-    var newHash='#'+current;
-    if(newHash!==lastHash){
-      lastHash=newHash;
-      if(history.replaceState){
-        try{history.replaceState(null,null,current==='hero'?' ':newHash);}catch(e){}
-      }
-    }
-  };
-
-  /* ── SWIPE GESTURES (mobile era navigation) ── */
-  var sectionIds=['hero','era1','era2','era3','era4','era5','epilogue','people','ecosystem'];
-  var swipeStartY=0,swipeStartX=0;
-  document.addEventListener('touchstart',function(e){
-    swipeStartY=e.touches[0].clientY;
-    swipeStartX=e.touches[0].clientX;
-  },{passive:true});
-  document.addEventListener('touchend',function(e){
-    var dy=swipeStartY-e.changedTouches[0].clientY;
-    var dx=swipeStartX-e.changedTouches[0].clientX;
-    // Only trigger on horizontal swipes > 60px that are more horizontal than vertical
-    if(Math.abs(dx)>60&&Math.abs(dx)>Math.abs(dy)*1.5){
-      var current='hero';
-      sections.forEach(function(el){
-        var r=el.getBoundingClientRect();
-        if(r.top<=120)current=el.id;
-      });
-      var idx=sectionIds.indexOf(current);
-      var next=dx>0?Math.min(idx+1,sectionIds.length-1):Math.max(idx-1,0);
-      var target=document.getElementById(sectionIds[next]);
-      if(target)target.scrollIntoView({behavior:'smooth'});
-    }
-  },{passive:true});
-
-  /* ── HANDLE INCOMING HASH LINKS ── */
-  (function(){
-    var hash=window.location.hash.replace('#','');
-    if(hash){
-      var target=document.getElementById(hash);
-      if(target)setTimeout(function(){target.scrollIntoView();},200);
-    }
-  })();
-
-  /* ── LIVE NEWS PANEL — public RSS, no API key required ── */
-  // RSS feeds — tried in order until one succeeds
-  var _newsFeeds=[
-    'https://techcrunch.com/tag/artificial-intelligence/feed/',
-    'https://venturebeat.com/category/ai/feed/',
-    'https://www.theverge.com/rss/ai-artificial-intelligence/index.xml'
-  ];
-  var _feedIdx=0;
-
-  function _parseRSS(xml){
-    var items=xml.querySelectorAll('item, entry');
-    var results=[];
-    items.forEach(function(item){
-      if(results.length>=3)return;
-      var title=(item.querySelector('title')||{}).textContent||'';
-      var source='',href='';
-
-      // Strategy 1: Atom <link href="..."/>
-      var linkEl=item.querySelector('link');
-      if(linkEl) href=linkEl.getAttribute('href')||'';
-
-      // Strategy 2: RSS 2.0 <link> as text node — use serialization to extract cleanly
-      if(!href&&linkEl){
-        var s=new XMLSerializer().serializeToString(linkEl);
-        // strip tags, leaving just the text content
-        href=s.replace(/<[^>]+>/g,'').trim();
-      }
-
-      // Strategy 3: <guid> as permalink fallback
-      if(!href){
-        var guid=item.querySelector('guid');
-        if(guid&&guid.getAttribute('isPermaLink')!=='false')
-          href=(guid.textContent||'').trim();
-      }
-
-      // Strategy 4: scan raw serialized item for any https URL
-      if(!href){
-        var raw=new XMLSerializer().serializeToString(item);
-        var m=raw.match(/https?:\/\/[^\s"'<>]+/);
-        if(m)href=m[0];
-      }
-
-      href=(href||'').trim();
-      try{source=new URL(href).hostname.replace('www.','');}catch(e){}
-
-      if(title.trim())results.push({headline:title.trim(),source:source,url:href});
-    });
-    return results;
-  }
-
-  function _renderNews(items){
-    var box=document.getElementById('news-items');
-    if(!box)return;
-    box.innerHTML='';
-    var accents=['var(--accent)','var(--accent3)','var(--warn)'];
-    items.forEach(function(item,i){
-      var el=document.createElement(item.url?'a':'div');
-      el.className='news-item';
-      if(item.url){
-        el.href=item.url;
-        el.target='_blank';
-        el.rel='noopener noreferrer';
-      }
-      el.style.setProperty('--item-accent',accents[i%3]);
-      var idx=document.createElement('span');
-      idx.className='news-item-idx';
-      idx.textContent=String(i+1).padStart(2,'0')+' ◆ Latest';
-      el.appendChild(idx);
-      var txt=document.createElement('div');
-      txt.className='news-item-text';
-      txt.textContent=item.headline;
-      el.appendChild(txt);
-      if(item.source){
-        var src=document.createElement('div');
-        src.className='news-item-source';
-        src.textContent='— '+item.source+(item.url?' ↗':'');
-        el.appendChild(src);
-      }
-      box.appendChild(el);
-    });
-  }
-
-  window.fetchAINews=function(){
-    var box=document.getElementById('news-items');
-    if(!box)return;
-    box.innerHTML='<div id="news-loading"><div class="news-spinner"></div>Fetching latest…</div>';
-    _feedIdx=0;
-    _tryFeed();
-  };
-
-  function _tryFeed(){
-    if(_feedIdx>=_newsFeeds.length){
-      var box=document.getElementById('news-items');
-      if(box)box.innerHTML='<div id="news-error">⚠ Could not load news feeds.<br>Check your connection.</div>';
-      return;
-    }
-    // rss2json handles CORS from any origin including local file://
-    var url='https://api.rss2json.com/v1/api.json?rss_url='+encodeURIComponent(_newsFeeds[_feedIdx]);
-    fetch(url)
-      .then(function(r){return r.json();})
-      .then(function(data){
-        if(data.status!=='ok'||!data.items||!data.items.length)throw new Error('empty');
-        var results=data.items.slice(0,3).map(function(item){
-          var source='';
-          try{source=new URL(item.link).hostname.replace('www.','');}catch(e){}
-          return {headline:item.title,source:source,url:item.link};
-        });
-        _renderNews(results);
-      })
-      .catch(function(){
-        _feedIdx++;
-        _tryFeed();
-      });
-  }
-
-  window.addEventListener('load',function(){window.fetchAINews();});
-
-  /* ── NEWS PANEL: hide when hero scrolls out of view ── */
-  (function(){
-    var panel = document.getElementById('news-panel');
-    var hero  = document.getElementById('hero');
-    if(!panel || !hero) return;
-    function updateNewsVisibility(){
-      var heroBottom = hero.getBoundingClientRect().bottom;
-      if(heroBottom < 80){
-        panel.classList.add('news-hidden');
-      } else {
-        panel.classList.remove('news-hidden');
-      }
-    }
-    window.addEventListener('scroll', updateNewsVisibility, {passive:true});
-    updateNewsVisibility();
-  })();
-
-  // initial call
-  updateNav();
-})();
-</script>
-</body>
-</html>
+/* email */
+function 
