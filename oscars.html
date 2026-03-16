@@ -1,0 +1,1585 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>A (Brief) History of the Oscars</title>
+<meta name="description" content="From a Hollywood banquet in 1929 to the world's most watched awards ceremony — a complete visual history of the Academy Awards, updated for the 98th Oscars in 2026.">
+<meta name="keywords" content="Oscars, Academy Awards, Hollywood, film history, Best Picture, AMPAS, cinema, awards ceremony">
+<meta name="theme-color" content="#0A0804">
+<link rel="canonical" href="https://abriefhistoryoftheoscars.com">
+<meta property="og:title" content="A (Brief) History of the Oscars">
+<meta property="og:description" content="From a Hollywood banquet in 1929 to the world's most watched awards ceremony.">
+<meta property="og:image" content="https://abriefhistoryoftheoscars.com/og-oscars.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://abriefhistoryoftheoscars.com/og-oscars.png">
+<meta property="og:url" content="https://abriefhistoryoftheoscars.com">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' fill='%230A0804'/><text x='6' y='24' font-family='monospace' font-size='18' fill='%23C9A84C'>🏆</text></svg>">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400&family=DM+Sans:ital,wght@0,300;0,400;0,500;0,700;1,400&display=swap" rel="stylesheet">
+
+<style>
+/* ===== CSS VARIABLES ===== */
+:root {
+  --gold:        #C9A84C;
+  --gold-light:  #E8C96A;
+  --gold-pale:   #F5E4A8;
+  --gold-dark:   #8B6914;
+  --crimson:     #8B1A2C;
+  --ivory:       #F8F3E8;
+  --charcoal:    #1A1610;
+  --mid:         #2E2820;
+  --muted:       #6B5E4A;
+  --off-white:   #EDE8DC;
+
+  /* Series brand colors */
+  --series-cyan:   #00D4F0;
+  --series-blue:   #0055EE;
+  --series-green:  #39E07A;
+  --series-orange: #FF5C20;
+
+  --bg:          #0A0804;
+  --surface:     #141008;
+  --card-bg:     #1C1610;
+  --text:        #EDE8DC;
+  --text-muted:  #8A7B65;
+  --border:      #3A2E1E;
+  --accent:      var(--gold);
+  --accent2:     var(--crimson);
+
+  /* Font aliases — Social Post Generator reads these */
+  --sans:        'Cormorant Garamond', serif;
+  --body:        'DM Sans', sans-serif;
+}
+
+[data-theme="light"] {
+  --bg:          #F8F3E8;
+  --surface:     #EEEAD8;
+  --card-bg:     #FFFFFF;
+  --text:        #1A1610;
+  --text-muted:  #7A6A50;
+  --border:      #D4C49A;
+  --accent:      var(--gold-dark);
+  --charcoal:    #1A1610;
+}
+
+/* ===== RESET ===== */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body {
+  font-family: 'DM Sans', sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  overflow-x: hidden;
+  cursor: none;
+  transition: background 0.4s, color 0.4s;
+  padding-bottom: env(safe-area-inset-bottom, 0);
+}
+a { color: var(--accent); text-decoration: none; }
+a:hover { text-decoration: underline; }
+img { max-width: 100%; display: block; }
+
+/* ===== GOLD DUST CANVAS ===== */
+#gold-dust {
+  position: fixed; inset: 0;
+  width: 100%; height: 100%;
+  pointer-events: none; z-index: 600;
+  opacity: 0.6;
+}
+[data-theme="light"] #gold-dust { opacity: 0.35; }
+
+/* ===== CUSTOM CURSOR ===== */
+#cursor-dot {
+  position: fixed; width: 10px; height: 10px;
+  background: var(--gold); border-radius: 50%;
+  pointer-events: none; z-index: 9999;
+  transform: translate(-50%,-50%);
+  transition: background 0.2s;
+  mix-blend-mode: screen;
+}
+#cursor-ring {
+  position: fixed; width: 36px; height: 36px;
+  border: 1.5px solid var(--gold); border-radius: 50%;
+  pointer-events: none; z-index: 9998;
+  transform: translate(-50%,-50%);
+  transition: left .08s, top .08s, border-color 0.2s;
+  mix-blend-mode: screen;
+}
+
+/* ===== TOOLTIP ===== */
+#pop-tip {
+  position: fixed; z-index: 9997;
+  background: var(--charcoal); border: 1px solid var(--gold);
+  color: var(--text); font-family: 'DM Sans', sans-serif;
+  font-size: 0.7rem; padding: 6px 10px;
+  max-width: 220px; line-height: 1.4;
+  pointer-events: none; opacity: 0;
+  transition: opacity 0.15s;
+  letter-spacing: 0.03em;
+}
+
+/* ===== NAV ===== */
+.nav {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 800;
+  background: rgba(10,8,4,0.96); backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--border);
+  height: 52px; display: flex; align-items: center;
+  padding: 0 20px; gap: 10px;
+}
+[data-theme="light"] .nav {
+  background: rgba(248,243,232,0.96);
+}
+.nav-brand {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 0.62rem; font-weight: 700; letter-spacing: 0.15em;
+  color: var(--text-muted); text-transform: uppercase;
+  white-space: nowrap; text-decoration: none;
+}
+.nav-brand:hover { color: var(--accent); text-decoration: none; }
+.nav-topic { color: var(--gold); font-style: italic; text-transform: none; letter-spacing: 0.1em; }
+.nav-right {
+  margin-left: auto; display: flex; align-items: center; gap: 14px;
+}
+.theme-btn {
+  background: none; border: 1px solid var(--border);
+  color: var(--text-muted); cursor: pointer;
+  font-family: 'DM Sans', sans-serif; font-size: 0.6rem;
+  letter-spacing: 0.1em; padding: 4px 10px;
+  transition: all 0.2s; text-transform: uppercase;
+}
+.theme-btn:hover { border-color: var(--gold); color: var(--gold); }
+
+/* ===== SERIES BAR — removed ===== */
+
+/* ===== SIDE NAV ===== */
+.side-nav {
+  position: fixed; top: 52px; left: 0; bottom: 0;
+  width: 42px; z-index: 700;
+  display: flex; flex-direction: column;
+  align-items: center; justify-content: center;
+  gap: 0;
+  background: rgba(10,8,4,0.92);
+  border-right: 1px solid var(--border);
+  backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px);
+}
+[data-theme="light"] .side-nav { background: rgba(248,243,232,0.94); }
+@media(max-width: 900px) { .side-nav { display: none; } }
+
+.side-nav-idx {
+  font-family: 'DM Sans', sans-serif; font-size: 0.5rem;
+  color: var(--gold); letter-spacing: 0.1em;
+  writing-mode: vertical-rl; margin-bottom: 12px; opacity: 0.6;
+}
+.side-nav-item {
+  width: 100%; display: flex; flex-direction: column;
+  align-items: center; justify-content: center;
+  padding: 0.85rem 0; cursor: pointer;
+  position: relative; transition: background 0.2s;
+  border-bottom: 1px solid var(--border);
+  font-family: 'DM Sans', sans-serif; font-size: 0.52rem;
+  color: var(--text-muted); letter-spacing: 0.05em; text-align: center;
+}
+.side-nav-item:last-child { border-bottom: none; }
+.side-nav-item:hover { background: rgba(201,168,76,0.06); }
+.side-nav-item:hover, .side-nav-item.active { color: var(--gold); }
+
+/* tooltip on hover */
+.side-nav-item::after {
+  content: attr(data-tip);
+  position: absolute; left: calc(100% + 10px);
+  font-family: 'DM Sans', sans-serif;
+  font-size: 0.6rem; letter-spacing: 0.12em; text-transform: uppercase;
+  color: var(--text); background: var(--card-bg);
+  border: 1px solid var(--border);
+  padding: 4px 8px; white-space: nowrap;
+  opacity: 0; pointer-events: none;
+  transition: opacity 0.2s; z-index: 20;
+}
+.side-nav-item:hover::after { opacity: 1; }
+.side-nav-arrow { display: none; }
+
+/* ===== NOMINEES BUTTON (hero, floating) ===== */
+.nominees-banner {
+  position: absolute;
+  top: 64px; left: 80px;
+  z-index: 2;
+  display: inline-flex; flex-direction: column;
+  align-items: flex-start;
+  background: var(--gold); color: #0A0804;
+  padding: 9px 18px 9px 14px;
+  font-family: 'DM Sans', sans-serif;
+  text-decoration: none;
+  transition: background 0.2s, box-shadow 0.2s;
+  box-shadow: 0 2px 14px rgba(201,168,76,0.3);
+  border-left: 3px solid rgba(0,0,0,0.15);
+}
+.nominees-banner:hover { background: var(--gold-light); text-decoration: none; color: #0A0804; box-shadow: 0 4px 20px rgba(201,168,76,0.45); }
+.nominees-banner-line1 {
+  font-size: 0.56rem; font-weight: 700; letter-spacing: 0.22em;
+  text-transform: uppercase; opacity: 0.7; line-height: 1;
+}
+.nominees-banner-line2 {
+  display: flex; align-items: center; gap: 7px;
+  font-size: 0.72rem; font-weight: 700; letter-spacing: 0.18em;
+  text-transform: uppercase; line-height: 1; margin-top: 4px;
+}
+.nominees-banner-arrow { font-size: 0.85rem; transition: transform 0.2s; }
+.nominees-banner:hover .nominees-banner-arrow { transform: translateX(3px); }
+@media(max-width: 960px) { .nominees-banner { left: 60px; } }
+@media(max-width: 768px) { .nominees-banner { left: 20px; top: 60px; } }
+
+/* ===== HERO ===== */
+.hero {
+  min-height: 100vh; display: flex; flex-direction: column;
+  justify-content: flex-end; padding: 0 60px 80px 80px;
+  position: relative; overflow: hidden;
+  background: var(--bg);
+  padding-top: 120px;
+}
+.hero-bg-layer {
+  position: absolute; inset: 0;
+  background: radial-gradient(ellipse at 70% 30%, rgba(201,168,76,0.12) 0%, transparent 60%),
+              radial-gradient(ellipse at 20% 80%, rgba(139,26,44,0.08) 0%, transparent 50%);
+  pointer-events: none;
+}
+.hero-grid-overlay {
+  position: absolute; inset: 0; pointer-events: none;
+  background-image: linear-gradient(rgba(201,168,76,0.04) 1px, transparent 1px),
+                    linear-gradient(90deg, rgba(201,168,76,0.04) 1px, transparent 1px);
+  background-size: 60px 60px;
+}
+.hero-eyebrow {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 0.65rem; font-weight: 700; letter-spacing: 0.3em;
+  color: var(--gold); text-transform: uppercase;
+  margin-bottom: 16px;
+  position: relative; z-index: 1;
+}
+.hero-title {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(5rem, 12vw, 13rem);
+  font-weight: 300; line-height: 0.88;
+  color: var(--text);
+  letter-spacing: -0.02em;
+  position: relative; z-index: 1;
+}
+.hero-title .accent-word {
+  color: var(--gold);
+  font-style: italic;
+}
+.hero-title .cursor-blink {
+  display: inline-block; width: 8px; height: 0.8em;
+  background: var(--gold); vertical-align: bottom;
+  animation: blink 1.2s step-end infinite;
+  margin-left: 4px;
+}
+@keyframes blink { 0%,100%{opacity:1} 50%{opacity:0} }
+.hero-sub {
+  font-family: 'DM Sans', sans-serif;
+  font-size: clamp(0.95rem, 1.8vw, 1.25rem);
+  color: var(--text-muted); margin-top: 28px;
+  max-width: 560px; line-height: 1.6; font-weight: 300;
+  position: relative; z-index: 1;
+}
+.hero-meta {
+  display: flex; gap: 32px; margin-top: 40px; align-items: center;
+  position: relative; z-index: 1;
+}
+.hero-index {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 0.6rem; font-weight: 700; letter-spacing: 0.2em;
+  color: var(--text-muted); text-transform: uppercase;
+  border: 1px solid var(--border); padding: 6px 12px;
+}
+.hero-stat {
+  font-family: 'DM Sans', sans-serif; font-size: 0.6rem;
+  letter-spacing: 0.15em; color: var(--text-muted);
+}
+.hero-scroll {
+  position: absolute; bottom: 28px; left: 50%;
+  transform: translateX(-50%);
+  font-size: 1.4rem; color: var(--gold);
+  animation: bounce 1.5s ease-in-out infinite;
+}
+@keyframes bounce { 0%,100%{transform:translateX(-50%) translateY(0)} 50%{transform:translateX(-50%) translateY(10px)} }
+
+/* ===== STATS GRID (WARHOL) ===== */
+.stats-grid {
+  display: grid; grid-template-columns: repeat(4, 1fr);
+  border-top: 4px solid var(--charcoal);
+  border-bottom: 4px solid var(--charcoal);
+}
+.stat-cell {
+  aspect-ratio: 1; display: flex; flex-direction: column;
+  justify-content: center; align-items: center; text-align: center;
+  padding: 24px; border-right: 4px solid var(--charcoal);
+  cursor: default; transition: transform 0.2s;
+  position: relative;
+}
+.stat-cell:last-child { border-right: none; }
+.stat-cell:hover { transform: scale(1.04); z-index: 1; }
+.stat-number {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(3.5rem, 7vw, 6rem);
+  font-weight: 700; line-height: 1;
+}
+.stat-label {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 0.62rem; letter-spacing: 0.15em;
+  text-transform: uppercase; margin-top: 10px; font-weight: 500;
+}
+
+/* ===== MARQUEE ===== */
+.marquee-wrap {
+  background: var(--charcoal); overflow: hidden;
+  border-top: 3px solid var(--gold);
+  border-bottom: 3px solid var(--gold);
+  padding: 14px 0;
+}
+.marquee-track {
+  display: flex; white-space: nowrap;
+  animation: marquee 35s linear infinite;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 0.85rem; font-weight: 700;
+  letter-spacing: 0.2em; color: var(--gold);
+  text-transform: uppercase;
+}
+@keyframes marquee { from{transform:translateX(0)} to{transform:translateX(-50%)} }
+.marquee-track span { padding-right: 0; }
+
+/* ===== ERA SECTIONS ===== */
+section.era {
+  padding: 80px 80px 80px 80px;
+  position: relative; overflow: hidden;
+}
+.era-header-card {
+  display: inline-flex; flex-direction: column;
+  margin-bottom: 48px;
+  border: 2px solid currentColor;
+  padding: 20px 32px;
+  position: relative;
+  max-width: 100%;
+  overflow: hidden;
+}
+.era-header-card::before {
+  content: ''; position: absolute; inset: 6px;
+  border: 1px solid currentColor; opacity: 0.3;
+  pointer-events: none;
+}
+.era-year {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(2.8rem, 5.5vw, 5.5rem);
+  font-weight: 700; line-height: 1;
+  letter-spacing: -0.02em;
+  white-space: nowrap;
+}
+.era-title {
+  font-family: 'DM Sans', sans-serif;
+  font-size: clamp(0.6rem, 1.2vw, 0.85rem);
+  font-weight: 700; letter-spacing: 0.25em;
+  text-transform: uppercase; margin-top: 6px;
+  white-space: nowrap;
+}
+
+.events-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 2px;
+}
+.event-card {
+  background: var(--card-bg); border: 1px solid var(--border);
+  padding: 24px; transition: transform 0.2s, border-color 0.2s;
+  opacity: 0; transform: translateY(40px);
+}
+.event-card.visible {
+  animation: fadeUp 0.5s ease forwards;
+}
+@keyframes fadeUp {
+  to { opacity: 1; transform: translateY(0); }
+}
+.event-card:hover { transform: translateY(-3px); border-color: var(--gold); }
+.event-year {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 0.6rem; font-weight: 700; letter-spacing: 0.2em;
+  color: var(--accent); text-transform: uppercase; margin-bottom: 10px;
+}
+.event-card h3 {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.5rem; font-weight: 600; line-height: 1.2;
+  margin-bottom: 10px;
+}
+.event-card p {
+  font-size: 1rem; color: var(--text-muted);
+  line-height: 1.75; font-weight: 300;
+}
+
+/* Haring burst SVG */
+.era-burst {
+  position: absolute; right: 40px; top: 60px;
+  width: 120px; height: 120px; opacity: 0.1;
+  pointer-events: none;
+}
+
+/* ===== QUOTE BANDS ===== */
+.quote-band {
+  min-height: 360px; overflow: hidden; position: relative;
+  display: flex; align-items: center; justify-content: center;
+  border-top: 4px solid var(--charcoal);
+  border-bottom: 4px solid var(--charcoal);
+}
+.quote-band-inner {
+  text-align: center; padding: 40px;
+  max-width: 900px; width: 100%;
+}
+.pq-text {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(1.7rem, 4vw, 3.3rem);
+  font-weight: 300; font-style: italic;
+  line-height: 1.3; max-width: 800px;
+  margin: 0 auto;
+}
+.pq-hl { font-style: normal; font-weight: 700; }
+.pq-attr {
+  font-family: 'DM Sans', sans-serif; font-size: 0.65rem;
+  letter-spacing: 0.2em; text-transform: uppercase;
+  margin-top: 20px; opacity: 0.7;
+}
+.quote-mark {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 7rem; line-height: 0.8;
+  opacity: 0.4; display: block; margin-bottom: -1rem;
+}
+
+/* ===== PHOTO STRIP ===== */
+.photo-strip {
+  display: grid; grid-template-columns: repeat(3, 1fr);
+  border-top: 5px solid var(--charcoal);
+  border-bottom: 5px solid var(--charcoal);
+}
+.photo-cell {
+  aspect-ratio: 4/3; overflow: hidden; position: relative; cursor: pointer;
+}
+.photo-cell img {
+  width: 100%; height: 100%; object-fit: cover;
+  filter: saturate(0.7) contrast(1.1);
+  transition: transform 0.4s, filter 0.4s;
+}
+.photo-cell:hover img { transform: scale(1.07); filter: saturate(1) contrast(1.1); }
+.photo-overlay {
+  position: absolute; inset: 0;
+  opacity: 0.25; pointer-events: none;
+}
+.photo-caption {
+  position: absolute; bottom: 0; left: 0; right: 0;
+  background: var(--charcoal); padding: 8px 12px;
+  font-family: 'DM Sans', sans-serif; font-size: 0.6rem;
+  font-weight: 700; letter-spacing: 0.15em; text-transform: uppercase;
+  color: var(--gold);
+}
+
+/* ===== BOX OFFICE COMPONENT ===== */
+.boxoffice-section {
+  background: var(--surface); padding: 80px;
+  border-top: 2px solid var(--border);
+}
+.boxoffice-section h2 {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(2rem, 4vw, 3.5rem); font-weight: 300;
+  margin-bottom: 8px;
+}
+.boxoffice-eyebrow {
+  font-family: 'DM Sans', sans-serif; font-size: 0.6rem;
+  letter-spacing: 0.25em; color: var(--gold); text-transform: uppercase;
+  margin-bottom: 12px; display: block;
+}
+.boxoffice-grid {
+  margin-top: 40px; display: flex; flex-direction: column; gap: 3px;
+}
+.bo-row {
+  display: grid; grid-template-columns: 40px 1fr auto auto;
+  gap: 16px; align-items: center;
+  padding: 14px 20px; background: var(--card-bg);
+  border: 1px solid var(--border); border-left: 4px solid var(--border);
+  transition: border-left-color 0.2s;
+  font-size: 0.88rem;
+}
+.bo-row:hover { border-left-color: var(--gold); }
+.bo-rank {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.5rem; font-weight: 700; color: var(--gold); line-height: 1;
+}
+.bo-title {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.1rem; font-weight: 600;
+}
+.bo-year { color: var(--text-muted); font-size: 0.75rem; font-weight: 300; }
+.bo-gross {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 0.78rem; font-weight: 700;
+  color: var(--gold-light); letter-spacing: 0.05em;
+  text-align: right;
+}
+.bo-wins {
+  font-family: 'DM Sans', sans-serif; font-size: 0.72rem;
+  color: var(--text-muted); text-align: right;
+  white-space: nowrap;
+}
+
+/* ===== CLOSING SECTION ===== */
+.closing-section {
+  padding: 100px 80px;
+  background: var(--charcoal);
+  position: relative; overflow: hidden;
+}
+.closing-section::before {
+  content: ''; position: absolute; inset: 0;
+  background: radial-gradient(ellipse at 50% 50%, rgba(201,168,76,0.08) 0%, transparent 70%);
+  pointer-events: none;
+}
+.closing-title {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(3rem, 7vw, 7rem); font-weight: 300;
+  font-style: italic; line-height: 0.9; max-width: 700px;
+  margin-bottom: 32px;
+}
+.closing-body {
+  font-size: 0.95rem; color: var(--text-muted);
+  max-width: 560px; line-height: 1.8; font-weight: 300;
+}
+
+/* ===== ENTITY GRID ===== */
+.entity-section {
+  background: #080604; padding: 80px;
+  border-top: 4px solid var(--charcoal);
+}
+.entity-section-header {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 0.65rem; font-weight: 700; letter-spacing: 0.3em;
+  color: var(--gold); text-transform: uppercase; margin-bottom: 32px;
+}
+.entity-grid {
+  display: flex; flex-wrap: wrap; gap: 6px;
+}
+.entity-badge {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 0.68rem; font-weight: 700;
+  padding: 6px 14px; border: 1px solid;
+  letter-spacing: 0.08em; text-transform: uppercase;
+  cursor: pointer; transition: transform 0.2s, box-shadow 0.2s;
+  text-decoration: none;
+  display: inline-block;
+}
+.entity-badge:hover {
+  transform: scale(1.1) rotate(-1.5deg);
+  box-shadow: 0 4px 16px rgba(0,0,0,0.4);
+  text-decoration: none;
+}
+
+/* ===== ECOSYSTEM ===== */
+.ecosystem {
+  padding: 80px; background: var(--surface);
+  border-top: 2px solid var(--border);
+}
+.eco-header {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 0.65rem; font-weight: 700; letter-spacing: 0.3em;
+  color: var(--gold); text-transform: uppercase; margin-bottom: 40px;
+  padding-bottom: 16px; border-bottom: 1px solid var(--border);
+}
+.eco-grid {
+  display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 40px;
+}
+.eco-group-label {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 0.6rem; font-weight: 700; letter-spacing: 0.2em;
+  text-transform: uppercase; color: var(--text-muted);
+  margin-bottom: 12px; padding-bottom: 8px; border-bottom: 1px solid var(--border);
+}
+.eco-link {
+  display: block; font-size: 0.88rem; font-weight: 300;
+  color: var(--text); padding: 5px 0;
+  border-bottom: 1px solid transparent;
+  transition: color 0.15s, border-color 0.15s;
+}
+.eco-link:hover {
+  color: var(--gold); border-bottom-color: var(--gold);
+  text-decoration: none;
+}
+
+/* ===== COLOR STRIP ===== */
+.color-strip {
+  display: flex; height: 20px;
+}
+.color-strip div { flex: 1; border-right: 2px solid var(--charcoal); }
+.color-strip div:last-child { border-right: none; }
+
+/* ===== FOOTER ===== */
+footer {
+  background: #040302; padding: 40px 80px 32px;
+  border-top: 1px solid var(--border);
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 40px;
+}
+@media(max-width: 768px) {
+  footer { grid-template-columns: 1fr; padding: 32px 20px; }
+}
+.footer-brand {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1rem; font-weight: 300; letter-spacing: 0.12em;
+  color: var(--gold); text-transform: uppercase;
+}
+.footer-brand span { color: var(--text-muted); }
+.footer-note {
+  font-size: 0.88rem; color: var(--text-muted);
+  font-weight: 300; line-height: 1.7; margin-top: 6px;
+}
+.footer-note a { color: var(--text-muted); }
+.footer-note a:hover { color: var(--gold); text-decoration: none; }
+.footer-col-label {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 0.6rem; font-weight: 700; letter-spacing: 0.2em;
+  text-transform: uppercase; color: var(--text-muted);
+  margin-bottom: 10px;
+}
+.footer-bar {
+  background: #040302;
+  border-top: 1px solid var(--border);
+  padding: 0.9rem 80px 3rem;
+  display: flex; align-items: center; justify-content: space-between;
+  flex-wrap: wrap; gap: 0.5rem;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 0.6rem; color: var(--text-muted); letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+.footer-bar-links {
+  display: flex; gap: 2rem; align-items: center; flex-wrap: wrap;
+}
+.footer-bar-links a { color: var(--text-muted); }
+.footer-bar-links a:hover { color: var(--gold); text-decoration: none; }
+@media(max-width: 768px) {
+  .footer-bar { padding: 0.9rem 20px 3rem; flex-direction: column; align-items: center; text-align: center; }
+  .footer-bar-links { justify-content: center; }
+}
+/* legacy social styles kept for Bluesky link still in footer */
+.footer-social a {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 0.64rem; font-weight: 700; letter-spacing: 0.15em;
+  text-transform: uppercase; color: var(--text-muted);
+  border: 1px solid var(--border); padding: 7px 14px;
+  transition: color 0.2s, border-color 0.2s; text-decoration: none;
+  display: inline-block; margin-top: 8px;
+}
+.footer-social a:hover { color: var(--gold); border-color: var(--gold); text-decoration: none; }
+
+/* ===== ERA COLORS ===== */
+#era-1 { background: #0A0804; color: #C9A84C; }
+#era-2 { background: #12080C; color: #D4A0A8; }
+#era-3 { background: #08100C; color: #8BC49A; }
+#era-4 { background: #0E0C04; color: #D4C06A; }
+#era-5 { background: #0A0C14; color: #8AA4D4; }
+#era-6 { background: #100808; color: #C48A6A; }
+
+/* ===== LIGHT MODE OVERRIDES ===== */
+[data-theme="light"] #era-1 { background: #F5EED8; color: #8B6914; }
+[data-theme="light"] #era-2 { background: #F8EEF0; color: #8B1A2C; }
+[data-theme="light"] #era-3 { background: #EEF5EF; color: #2A6A3A; }
+[data-theme="light"] #era-4 { background: #F5F0DC; color: #8B7010; }
+[data-theme="light"] #era-5 { background: #EEF0F8; color: #2A3A8B; }
+[data-theme="light"] #era-6 { background: #F5EDEA; color: #8B3A1A; }
+[data-theme="light"] .era-header-card { border-color: currentColor; }
+[data-theme="light"] .event-card { background: #FFFFFF; border-color: var(--border); }
+[data-theme="light"] .closing-section { background: var(--surface); }
+[data-theme="light"] .closing-section .closing-title { color: var(--text); }
+[data-theme="light"] .closing-section .closing-body { color: var(--text-muted); }
+[data-theme="light"] .entity-section { background: var(--surface) !important; }
+[data-theme="light"] .entity-section-header { color: var(--gold-dark); }
+[data-theme="light"] .entity-badge { border-color: var(--border) !important; }
+[data-theme="light"] .marquee-wrap { background: var(--text); }
+[data-theme="light"] .marquee-track { color: var(--ivory); }
+[data-theme="light"] .quote-band .pq-text { color: inherit; }
+[data-theme="light"] .quote-band .pq-attr { color: inherit; opacity: 0.6; }
+[data-theme="light"] .boxoffice-section { border-color: var(--border); }
+[data-theme="light"] .bo-row { background: var(--card-bg); border-color: var(--border); }
+
+/* Hero top row — desktop: statue positioned absolute to .hero, mobile: flex side by side */
+.hero-top-row {
+  position: static;
+  z-index: 1;
+  display: block;
+}
+.hero-text-col {
+  flex: 1;
+}
+.hero-statue {
+  position: absolute; right: 6%; bottom: 0;
+  height: 88%; width: auto;
+  object-fit: contain; object-position: bottom;
+  pointer-events: none; user-select: none;
+  opacity: 0.12; z-index: 0;
+}
+[data-theme="light"] .hero-statue {
+  opacity: 1;
+}
+@media(max-width: 768px) {
+  .hero-top-row {
+    display: flex; align-items: flex-end; gap: 0;
+  }
+  .hero-statue {
+    position: relative; right: auto; bottom: auto;
+    height: 220px; width: auto; flex-shrink: 0;
+    opacity: 1; z-index: 1;
+    align-self: flex-end;
+  }
+  [data-theme="light"] .hero-statue { opacity: 1; }
+}
+
+/* ===== HERO ACTION BUTTONS ===== */
+.hero-actions {
+  display: flex; gap: 12px; margin-top: 36px; flex-wrap: wrap;
+  position: relative; z-index: 1;
+}
+.hero-btn {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 0.62rem; font-weight: 700; letter-spacing: 0.18em;
+  text-transform: uppercase;
+  padding: 10px 22px;
+  border: 1px solid var(--gold);
+  background: transparent;
+  color: var(--gold);
+  cursor: pointer;
+  transition: background 0.2s, color 0.2s, border-color 0.2s;
+  text-decoration: none; display: inline-flex; align-items: center; gap: 8px;
+}
+.hero-btn:hover {
+  background: var(--gold);
+  color: #0A0804;
+  text-decoration: none;
+}
+.hero-btn svg { width: 13px; height: 13px; flex-shrink: 0; }
+
+/* ===== PAGE BODY OFFSET FOR SIDE NAV ===== */
+@media(min-width: 901px) {
+  .hero, section.era, .stats-grid, .marquee-wrap,
+  .quote-band, .photo-strip, .boxoffice-section,
+  .entity-section, .ecosystem, .closing-section, footer, .footer-bar {
+    margin-left: 42px;
+  }
+}
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 960px) {
+  .nav-brand { font-size: 0 }
+  .nav-brand::after { content: 'A (BRIEF) HISTORY OF_'; font-size: 0.55rem; letter-spacing: 0.12em; }
+  section.era, .boxoffice-section, .entity-section, .ecosystem, .closing-section { padding: 60px 24px 60px 60px; }
+  .hero { padding: 0 24px 60px 60px; }
+  footer { padding: 24px 24px 24px 60px; }
+  .footer-bar { padding: 0.9rem 24px 3rem 60px; }
+}
+@media (max-width: 768px) {
+  .events-grid { grid-template-columns: 1fr; }
+  .stats-grid { grid-template-columns: repeat(2, 1fr); }
+  .photo-strip { grid-template-columns: 1fr 1fr; background: transparent; }
+  .photo-cell:nth-child(3) { display: none; }
+  section.era, .boxoffice-section, .entity-section, .ecosystem, .closing-section { padding: 48px 20px; }
+  .hero { padding: 24px 20px 50px; }
+  footer { padding: 24px 20px; grid-template-columns: 1fr; }
+  .footer-bar { padding: 0.9rem 20px 3rem; flex-direction: column; align-items: center; text-align: center; }
+  .footer-bar-links { justify-content: center; }
+  .bo-row { grid-template-columns: 32px 1fr auto; }
+  .bo-wins { display: none; }
+  /* +2px text bump on mobile */
+  .event-card p { font-size: 1.125rem; }
+  .event-card h3 { font-size: 1.65rem; }
+  .hero-sub { font-size: 1.05rem; }
+}
+@media (max-width: 480px) {
+  .side-nav { display: none; }
+  .hero-title { font-size: clamp(3.5rem, 18vw, 7rem); }
+}
+
+/* ===== FADE UP ===== */
+.fade-up { opacity: 0; transform: translateY(40px); transition: opacity 0.6s ease, transform 0.6s ease; }
+.fade-up.visible { opacity: 1; transform: translateY(0); }
+</style>
+</head>
+<body>
+
+<!-- CURSOR -->
+<div id="cursor-dot"></div>
+<div id="cursor-ring"></div>
+
+<!-- GOLD DUST CANVAS -->
+<canvas id="gold-dust" aria-hidden="true"></canvas>
+
+<!-- TOOLTIP -->
+<div id="pop-tip"></div>
+
+<!-- NAV -->
+<nav class="nav">
+  <a href="https://abriefhistoryofeverything.com" class="nav-brand">A (BRIEF) HISTORY OF EVERYTHING_</a><span class="nav-topic">The Oscars</span>
+  <div class="nav-right">
+    <button class="theme-btn" id="theme-btn">☀ LIGHT</button>
+  </div>
+</nav>
+
+<!-- SERIES BAR removed -->
+
+<!-- SIDE NAV -->
+<nav class="side-nav" id="side-nav" aria-label="Section navigation">
+  <div class="side-nav-idx">003</div>
+  <div class="side-nav-item active" data-section="0" onclick="scrollTo({top:0,behavior:'smooth'})" data-tip="Top">00</div>
+  <div class="side-nav-item" data-section="1" onclick="document.getElementById('era-1').scrollIntoView({behavior:'smooth'})" data-tip="Origins">01</div>
+  <div class="side-nav-item" data-section="2" onclick="document.getElementById('era-2').scrollIntoView({behavior:'smooth'})" data-tip="Golden Age">02</div>
+  <div class="side-nav-item" data-section="3" onclick="document.getElementById('era-3').scrollIntoView({behavior:'smooth'})" data-tip="New Hollywood">03</div>
+  <div class="side-nav-item" data-section="4" onclick="document.getElementById('era-4').scrollIntoView({behavior:'smooth'})" data-tip="Blockbuster Era">04</div>
+  <div class="side-nav-item" data-section="5" onclick="document.getElementById('era-5').scrollIntoView({behavior:'smooth'})" data-tip="Diversity Wars">05</div>
+  <div class="side-nav-item" data-section="6" onclick="document.getElementById('era-6').scrollIntoView({behavior:'smooth'})" data-tip="Streaming Age">06</div>
+</nav>
+
+<!-- HERO -->
+<section class="hero" id="hero">
+  <div class="hero-bg-layer"></div>
+  <div class="hero-grid-overlay"></div>
+  <a href="nominees.html" class="nominees-banner">
+    <span class="nominees-banner-line1">★ 98th Academy Awards · March 15, 2026</span>
+    <span class="nominees-banner-line2">See All Nominees &amp; Make Your Picks <span class="nominees-banner-arrow">→</span></span>
+  </a>
+  <div class="hero-top-row">
+    <div class="hero-text-col">
+      <div class="hero-eyebrow">A (Brief) History of</div>
+      <h1 class="hero-title">
+        The<br>
+        <span class="accent-word">Oscars</span><span class="cursor-blink"></span>
+      </h1>
+    </div>
+    <img src="images/oscar-statue.png" alt="" aria-hidden="true" class="hero-statue">
+  </div>
+  <p class="hero-sub">From a private banquet at the Hollywood Roosevelt Hotel in 1929 to the most watched awards ceremony on Earth — nearly a century of cinema's grandest night. The 98th ceremony airs March 15, 2026.</p>
+  <div class="hero-meta">
+    <div class="hero-index" data-tip="This is guide #003 in the A (Brief) History of Everything_ series">CHRONOLOGICAL INDEX 003</div>
+    <div class="hero-stat">1927–2026 · 98 CEREMONIES · 3,160+ STATUETTES</div>
+  </div>
+
+  <div class="hero-actions">
+    <div class="share-wrap" id="shareWrap" style="position:relative;">
+      <button class="hero-btn" id="share-btn">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><line x1="8.59" y1="13.51" x2="15.42" y2="17.49"/><line x1="15.41" y1="6.51" x2="8.59" y2="10.49"/></svg>
+        SHARE THIS GUIDE
+      </button>
+      <div id="shareDropdown" style="display:none;position:absolute;top:calc(100% + 6px);left:0;background:var(--card-bg);border:1px solid var(--border);min-width:180px;z-index:100;">
+        <a href="https://twitter.com/intent/tweet?url=https://abriefhistoryoftheoscars.com&text=A%20(Brief)%20History%20of%20the%20Oscars%20%E2%80%94%20nearly%20a%20century%20of%20cinema%27s%20grandest%20night." target="_blank" style="display:block;padding:10px 16px;font-family:'DM Sans',sans-serif;font-size:0.64rem;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:var(--text-muted);border-bottom:1px solid var(--border);">Share on X</a>
+        <a href="https://bsky.app/intent/compose?text=A%20(Brief)%20History%20of%20the%20Oscars%20%E2%80%94%20nearly%20a%20century%20of%20cinema%27s%20grandest%20night.%20https://abriefhistoryoftheoscars.com" target="_blank" style="display:block;padding:10px 16px;font-family:'DM Sans',sans-serif;font-size:0.64rem;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:var(--text-muted);border-bottom:1px solid var(--border);">Share on Bluesky</a>
+        <a href="https://www.linkedin.com/sharing/share-offsite/?url=https://abriefhistoryoftheoscars.com" target="_blank" style="display:block;padding:10px 16px;font-family:'DM Sans',sans-serif;font-size:0.64rem;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:var(--text-muted);">Share on LinkedIn</a>
+      </div>
+    </div>
+    <!-- PDF DOWNLOAD — uncomment when ready
+    <a class="hero-btn" href="oscars.pdf" download>
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+      DOWNLOAD PDF
+    </a>
+    -->
+  </div>
+  <div class="hero-scroll">↓</div>
+</section>
+
+<!-- STATS GRID -->
+<div class="stats-grid">
+  <div class="stat-cell fade-up" style="background:#C9A84C;color:#0A0804;" data-tip="The Academy of Motion Picture Arts and Sciences was founded in 1927 and held the first ceremony in 1929.">
+    <div class="stat-number stat-num">1927</div>
+    <div class="stat-label">Academy Founded</div>
+    <div class="stat-sub" style="display:none">The Academy of Motion Picture Arts and Sciences was founded in 1927 and held the first ceremony in 1929.</div>
+  </div>
+  <div class="stat-cell fade-up" style="background:#8B1A2C;color:#F5E4A8;" data-tip="Katharine Hepburn holds the record with 4 wins. Meryl Streep has the most nominations with 21.">
+    <div class="stat-number stat-num">21</div>
+    <div class="stat-label">Most Nominations (Streep)</div>
+    <div class="stat-sub" style="display:none">Katharine Hepburn holds the record with 4 wins. Meryl Streep has the most nominations with 21.</div>
+  </div>
+  <div class="stat-cell fade-up" style="background:#1A2820;color:#8BC49A;" data-tip="Ben-Hur (1959), Titanic (1997), and The Lord of the Rings: The Return of the King (2003) each won 11 Oscars.">
+    <div class="stat-number stat-num">11</div>
+    <div class="stat-label">Record Wins (3 films)</div>
+    <div class="stat-sub" style="display:none">Ben-Hur (1959), Titanic (1997), and The Lord of the Rings: The Return of the King (2003) each won 11 Oscars.</div>
+  </div>
+  <div class="stat-cell fade-up" style="background:#1C1A08;color:#D4C06A;" data-tip="The Oscars ceremony is broadcast to approximately 200 countries, with global viewership in the tens of millions.">
+    <div class="stat-number stat-num">200</div>
+    <div class="stat-label">Countries Broadcast</div>
+    <div class="stat-sub" style="display:none">The Oscars ceremony is broadcast to approximately 200 countries, with global viewership in the tens of millions.</div>
+  </div>
+</div>
+
+<!-- MARQUEE -->
+<div class="marquee-wrap">
+  <div class="marquee-track">
+    <span>BEST PICTURE ✦ SUNSET BOULEVARD ✦ CASABLANCA ✦ ALL ABOUT EVE ✦ GONE WITH THE WIND ✦ MARLON BRANDO ✦ KATHARINE HEPBURN ✦ MERYL STREEP ✦ OSCAR STATUETTE ✦ DOLBY THEATRE ✦ TITANIC ✦ PARASITE ✦ MOONLIGHT ✦ SCHINDLER'S LIST ✦ CODA ✦ EVERYTHING EVERYWHERE ✦ OPPENHEIMER ✦ THE GODFATHER ✦ ANORA ✦ SINNERS ✦ JACK NICHOLSON ✦ FAYE DUNAWAY ✦ WARREN BEATTY ✦ ENVELOPEGATE ✦ WILL SMITH ✦ MICHAEL B. JORDAN ✦ SEAN BAKER ✦ </span>
+    <span>BEST PICTURE ✦ SUNSET BOULEVARD ✦ CASABLANCA ✦ ALL ABOUT EVE ✦ GONE WITH THE WIND ✦ MARLON BRANDO ✦ KATHARINE HEPBURN ✦ MERYL STREEP ✦ OSCAR STATUETTE ✦ DOLBY THEATRE ✦ TITANIC ✦ PARASITE ✦ MOONLIGHT ✦ SCHINDLER'S LIST ✦ CODA ✦ EVERYTHING EVERYWHERE ✦ OPPENHEIMER ✦ THE GODFATHER ✦ ANORA ✦ SINNERS ✦ JACK NICHOLSON ✦ FAYE DUNAWAY ✦ WARREN BEATTY ✦ ENVELOPEGATE ✦ WILL SMITH ✦ MICHAEL B. JORDAN ✦ SEAN BAKER ✦ </span>
+  </div>
+</div>
+
+<!-- ERA 1: ORIGINS -->
+<section class="era" id="era-1">
+  <svg class="era-burst" viewBox="0 0 100 100">
+    <circle cx="50" cy="50" r="40" fill="none" stroke="currentColor" stroke-width="2"/>
+    <circle cx="50" cy="50" r="30" fill="none" stroke="currentColor" stroke-width="1"/>
+    <line x1="50" y1="5" x2="50" y2="95" stroke="currentColor" stroke-width="0.5"/>
+    <line x1="5" y1="50" x2="95" y2="50" stroke="currentColor" stroke-width="0.5"/>
+    <line x1="15" y1="15" x2="85" y2="85" stroke="currentColor" stroke-width="0.5"/>
+    <line x1="85" y1="15" x2="15" y2="85" stroke="currentColor" stroke-width="0.5"/>
+  </svg>
+  <div style="display:block;width:100%;margin-bottom:48px;"><div class="era-header-card fade-up" style="margin-bottom:0">
+    <div class="era-year">1927–1944</div>
+    <div class="era-title">Origins & The Golden Age Begins</div>
+  </div></div>
+  <div class="events-grid">
+    <div class="event-card fade-up" data-tip="The first ceremony lasted only 15 minutes and was a private banquet, not a public broadcast.">
+      <div class="event-year card-year">1927 · FOUNDING</div>
+      <h3>The Academy is Born</h3>
+      <p>Louis B. Mayer founds the Academy of Motion Picture Arts and Sciences, initially as an industry labor relations organization. The gold-plated statuette — reportedly nicknamed "Oscar" — is designed by Cedric Gibbons.</p>
+    </div>
+    <div class="event-card fade-up" data-tip="Wings, a World War I air combat film, was the first Best Picture winner. Emil Jannings became the first acting winner.">
+      <div class="event-year card-year">1929 · FIRST CEREMONY</div>
+      <h3>The 1st Academy Awards</h3>
+      <p>Hollywood Roosevelt Hotel hosts 270 guests for dinner. The ceremony takes 15 minutes. Wings wins Best Picture. The winners had been announced three months earlier in the press — no envelope mystery yet.</p>
+    </div>
+    <div class="event-card fade-up" data-tip="The 1930 ceremony was the first to be broadcast on radio, expanding the audience dramatically.">
+      <div class="event-year card-year">1930 · BROADCAST</div>
+      <h3>Radio Comes to Hollywood</h3>
+      <p>The ceremony is broadcast on radio for the first time, transforming the Oscars from an industry dinner into a national cultural event. Public fascination with Hollywood stardom explodes.</p>
+    </div>
+    <div class="event-card fade-up" data-tip="The secret ballot system was introduced in 1940 after Price Waterhouse was brought in to tabulate votes in 1934.">
+      <div class="event-year card-year">1934 · INTEGRITY</div>
+      <h3>Price Waterhouse Takes Over</h3>
+      <p>After newspapers published winners in advance of the ceremony, Price Waterhouse (now PwC) is hired to tabulate ballots in secret. The iconic sealed envelope becomes the ceremony's defining ritual.</p>
+    </div>
+    <div class="event-card fade-up" data-tip="Gone with the Wind won 8 awards including Best Picture. Hattie McDaniel became the first Black Oscar winner.">
+      <div class="event-year card-year">1940 · HISTORY</div>
+      <h3>Gone with the Wind Sweeps</h3>
+      <p>The ceremony becomes a landmark moment: Gone with the Wind wins a then-record 8 Oscars, and Hattie McDaniel becomes the first African American to win an Academy Award, for Best Supporting Actress.</p>
+    </div>
+    <div class="event-card fade-up" data-tip="Casablanca's Best Picture win came despite being in competition with several classics including For Whom the Bell Tolls.">
+      <div class="event-year card-year">1943 · CINEMA</div>
+      <h3>Casablanca Wins Best Picture</h3>
+      <p>The wartime classic defeats the competition in a year considered one of Hollywood's greatest. The studio system is at its height — the ceremony celebrates an industry producing cinematic masterworks by the dozen.</p>
+    </div>
+  </div>
+</section>
+
+<!-- PHOTO STRIP 1 -->
+<div class="photo-strip">
+  <div class="photo-cell">
+    <img src="images/scarlett-ohara.jpg" alt="Gone with the Wind" loading="lazy">
+    <div class="photo-overlay" style="background:var(--gold)"></div>
+    <div class="photo-caption">Gone with the Wind · 1939</div>
+  </div>
+  <div class="photo-cell">
+    <img src="images/hattie-mcdaniel.png" alt="Hattie McDaniel" loading="lazy">
+    <div class="photo-overlay" style="background:var(--crimson)"></div>
+    <div class="photo-caption">Hattie McDaniel · First Black Winner</div>
+  </div>
+  <div class="photo-cell">
+    <img src="images/casablanca.jpg" alt="Casablanca" loading="lazy">
+    <div class="photo-overlay" style="background:#1A3040"></div>
+    <div class="photo-caption">Casablanca · Best Picture 1943</div>
+  </div>
+</div>
+
+<!-- ERA 2: TELEVISION AGE -->
+<section class="era" id="era-2">
+  <div style="display:block;width:100%;margin-bottom:48px;"><div class="era-header-card fade-up" style="margin-bottom:0">
+    <div class="era-year">1953–1967</div>
+    <div class="era-title">Television, Scandal & Spectacle</div>
+  </div></div>
+  <div class="events-grid">
+    <div class="event-card fade-up" data-tip="The 1953 ceremony was the first televised, drawing an estimated 40 million viewers.">
+      <div class="event-year card-year">1953 · TV DEBUT</div>
+      <h3>The Ceremony Goes on TV</h3>
+      <p>For the first time, the Academy Awards are broadcast on television. An estimated 40 million Americans watch — instantly making the Oscars a TV event and permanently altering how Hollywood relates to the public.</p>
+    </div>
+    <div class="event-card fade-up" data-tip="Ben-Hur's 11 Oscar wins in 1960 set a record that stood for 37 years.">
+      <div class="event-year card-year">1960 · RECORD</div>
+      <h3>Ben-Hur's Historic 11 Wins</h3>
+      <p>William Wyler's epic claims 11 Academy Awards from 12 nominations — a record that would stand untouched for nearly four decades, until Titanic matched it in 1998 and The Return of the King in 2004.</p>
+    </div>
+    <div class="event-card fade-up" data-tip="Marlon Brando refused his Best Actor Oscar for The Godfather in 1973, sending activist Sacheen Littlefeather to decline on his behalf.">
+      <div class="event-year card-year">1963 · BOYCOTT</div>
+      <h3>Brando & Poitier Change History</h3>
+      <p>Sidney Poitier becomes the first Black man to win Best Actor for Lilies of the Field — a watershed moment in an industry still defined by segregation. Hollywood's racial reckoning has begun, though it will take decades.</p>
+    </div>
+    <div class="event-card fade-up" data-tip="The 1967 ceremony was briefly considered moving out of Hollywood during a period of civil unrest.">
+      <div class="event-year card-year">1967 · SHIFT</div>
+      <h3>The Studio System Cracks</h3>
+      <p>With television siphoning audiences and counterculture challenging Hollywood norms, the old guard faces extinction. A new generation of filmmakers — Coppola, Scorsese, Altman — waits in the wings.</p>
+    </div>
+  </div>
+</section>
+
+<!-- QUOTE BAND 1 -->
+<div class="quote-band" style="background:#0A0804;color:var(--gold)">
+  <div class="quote-band-inner">
+    <div class="pq-text" style="color:var(--gold)">
+      <span class="quote-mark" style="color:var(--gold)">&ldquo;</span>
+      I have always depended on<br><span class="pq-hl" style="color:var(--gold)">the kindness of strangers.</span><br>
+      <span style="font-size:0.6em;opacity:0.7">— and Hollywood has never been stranger than when it's honest.</span>
+    </div>
+    <div class="pq-attr" style="color:var(--text-muted)">On Cinema · Culture · The Academy</div>
+  </div>
+</div>
+
+<!-- ERA 3: NEW HOLLYWOOD -->
+<section class="era" id="era-3">
+  <div style="display:block;width:100%;margin-bottom:48px;"><div class="era-header-card fade-up" style="margin-bottom:0">
+    <div class="era-year">1968–1979</div>
+    <div class="era-title">New Hollywood Rewrites the Rules</div>
+  </div></div>
+  <div class="events-grid">
+    <div class="event-card fade-up" data-tip="The Godfather won Best Picture in 1973. Marlon Brando famously sent Sacheen Littlefeather to decline his Best Actor award.">
+      <div class="event-year card-year">1973 · PROTEST</div>
+      <h3>Brando Refuses His Oscar</h3>
+      <p>Marlon Brando wins Best Actor for The Godfather but sends Apache activist Sacheen Littlefeather to decline the award in protest of Hollywood's treatment of Native Americans — one of the most electrifying moments in Oscar history.</p>
+    </div>
+    <div class="event-card fade-up" data-tip="The Godfather Part II (1974) became the first sequel to win Best Picture.">
+      <div class="event-year card-year">1974 · SEQUEL</div>
+      <h3>The Godfather Part II Makes History</h3>
+      <p>Francis Ford Coppola's sequel becomes the first follow-up film to win Best Picture — a validation of the New Hollywood auteur model and of cinema as a continuing artistic conversation rather than disposable entertainment.</p>
+    </div>
+    <div class="event-card fade-up" data-tip="Annie Hall (1977) won Best Picture over Star Wars — the beginning of the Academy's complicated relationship with blockbusters.">
+      <div class="event-year card-year">1977 · DEBATE</div>
+      <h3>Annie Hall Beats Star Wars</h3>
+      <p>Woody Allen's intimate comedy defeats the highest-grossing film ever made — establishing the Academy's pattern of favoring prestige drama over populist blockbusters, a tension that still defines Oscar campaigns today.</p>
+    </div>
+    <div class="event-card fade-up" data-tip="The Deer Hunter's 1979 win sparked controversy given the political climate around Vietnam-era films.">
+      <div class="event-year card-year">1979 · POLITICS</div>
+      <h3>Vietnam on the Main Stage</h3>
+      <p>The Deer Hunter wins Best Picture as Hollywood begins reckoning with the Vietnam War. The Oscars increasingly serve as a barometer of where American culture is emotionally processing its recent history.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ERA 4: BLOCKBUSTER ERA -->
+<section class="era" id="era-4">
+  <div style="display:block;width:100%;margin-bottom:48px;"><div class="era-header-card fade-up" style="margin-bottom:0">
+    <div class="era-year">1980–1999</div>
+    <div class="era-title">The Blockbuster Era & Harvey's Hollywood</div>
+  </div></div>
+  <div class="events-grid">
+    <div class="event-card fade-up" data-tip="Rain Man won Best Picture in 1989 after a wide release — a sign of studios' growing interest in Oscars as marketing tools.">
+      <div class="event-year card-year">1984 · STRATEGY</div>
+      <h3>The Oscar Campaign Is Born</h3>
+      <p>Studios begin treating Oscar nominations as marketing strategies, running dedicated awards campaigns. The art of "for your consideration" advertising — full-page trade ads, screener tapes, wining and dining voters — becomes its own industry.</p>
+    </div>
+    <div class="event-card fade-up" data-tip="Schindler's List swept the 1994 Oscars, and Steven Spielberg received his first Best Director win.">
+      <div class="event-year card-year">1994 · PRESTIGE</div>
+      <h3>Schindler's List & Spielberg's First Win</h3>
+      <p>After years of notable snubs, Steven Spielberg finally wins Best Director for his Holocaust masterwork. The ceremony validates that blockbuster directors can make serious art — and that the Academy can recognize it.</p>
+    </div>
+    <div class="event-card fade-up" data-tip="Harvey Weinstein perfected the Oscar campaign at Miramax, winning Best Picture with Shakespeare in Love over Saving Private Ryan in 1999.">
+      <div class="event-year card-year">1999 · MIRAMAX</div>
+      <h3>Shakespeare in Love Stuns</h3>
+      <p>Harvey Weinstein's Miramax perfects the aggressive Oscar campaign, steering Shakespeare in Love to Best Picture over Saving Private Ryan in one of the most controversial upsets in Academy history. The modern Oscar race is born.</p>
+    </div>
+    <div class="event-card fade-up" data-tip="Titanic matched Ben-Hur's record of 11 wins in 1998 and became the highest-grossing film of all time at the time.">
+      <div class="event-year card-year">1998 · RECORD</div>
+      <h3>Titanic Matches the Record</h3>
+      <p>James Cameron's epic claims 11 Oscars, matching Ben-Hur's 38-year-old record. Cameron infamously shouts "I'm king of the world!" at the podium — capturing both the triumph and the hubris of Hollywood at the millennium's edge.</p>
+    </div>
+  </div>
+</section>
+
+<!-- PHOTO STRIP 2 -->
+<div class="photo-strip">
+  <div class="photo-cell">
+    <img src="images/schindlers-list.jpg" alt="Schindler's List" loading="lazy">
+    <div class="photo-overlay" style="background:#102010"></div>
+    <div class="photo-caption">Schindler's List · 1994</div>
+  </div>
+  <div class="photo-cell">
+    <img src="images/goodfellas.jpg" alt="Goodfellas" loading="lazy">
+    <div class="photo-overlay" style="background:#200810"></div>
+    <div class="photo-caption">Goodfellas · The One That Got Away</div>
+  </div>
+  <div class="photo-cell">
+    <img src="images/hollywood-sign.jpg" alt="Hollywood Sign" loading="lazy">
+    <div class="photo-overlay" style="background:var(--gold-dark)"></div>
+    <div class="photo-caption">Hollywood · 1990s Golden Run</div>
+  </div>
+</div>
+
+<!-- ERA 5: DIVERSITY RECKONING -->
+<section class="era" id="era-5">
+  <div style="display:block;width:100%;margin-bottom:48px;"><div class="era-header-card fade-up" style="margin-bottom:0">
+    <div class="era-year">2000–2019</div>
+    <div class="era-title">#OscarsSoWhite & The Reckoning</div>
+  </div></div>
+  <div class="events-grid">
+    <div class="event-card fade-up" data-tip="Halle Berry and Denzel Washington both won acting Oscars on the same night in 2002 — a historic first.">
+      <div class="event-year card-year">2002 · MILESTONE</div>
+      <h3>Berry & Washington Make History</h3>
+      <p>Halle Berry becomes the first Black woman to win Best Actress (for Monster's Ball), and Denzel Washington wins Best Actor the same night (for Training Day). Sidney Poitier receives an honorary Oscar. A night unlike any other.</p>
+    </div>
+    <div class="event-card fade-up" data-tip="The Return of the King won all 11 of its nominations in 2004, completing the Lord of the Rings trilogy's Oscar journey.">
+      <div class="event-year card-year">2004 · SWEEP</div>
+      <h3>Return of the King: 11 from 11</h3>
+      <p>Peter Jackson's finale wins every award it's nominated for — the only time a film has achieved this feat with 11 nominations. Fantasy and genre cinema receives its ultimate Academy validation.</p>
+    </div>
+    <div class="event-card fade-up" data-tip="The #OscarsSoWhite hashtag was coined by April Reign in 2015 after two consecutive years of all-white acting nominees.">
+      <div class="event-year card-year">2016 · RECKONING</div>
+      <h3>#OscarsSoWhite</h3>
+      <p>April Reign's hashtag ignites a global conversation about Hollywood's diversity problem after two consecutive years of all-white acting nominees. The Academy pledges to double its number of women and minority members by 2020.</p>
+    </div>
+    <div class="event-card fade-up" data-tip="Warren Beatty announced the wrong Best Picture winner at the 2017 ceremony, creating the most infamous moment in Oscar history.">
+      <div class="event-year card-year">2017 · CHAOS</div>
+      <h3>Moonlight vs. La La Land: Envelopegate</h3>
+      <p>In the most shocking moment in Oscar history, La La Land is announced as Best Picture winner — then the mistake is discovered. Moonlight is the actual winner. PwC accountants hand over the wrong envelope. The world watches in disbelief.</p>
+    </div>
+    <div class="event-card fade-up" data-tip="Parasite won Best Picture, Best Director, Best International Feature Film, and Best Original Screenplay — the first non-English film to win the top prize.">
+      <div class="event-year card-year">2020 · BARRIER</div>
+      <h3>Parasite: The First Non-English Best Picture</h3>
+      <p>Bong Joon-ho's class-warfare thriller becomes the first non-English language film to win Best Picture, four Oscars in total. "Subtitles are not a barrier," Bong says — and the Academy finally seems to agree.</p>
+    </div>
+  </div>
+</section>
+
+<!-- QUOTE BAND 2 -->
+<div class="quote-band" style="background:#8B1A2C;color:#F5E4A8;">
+  <div class="quote-band-inner">
+    <div class="pq-text" style="color:#F5E4A8;">
+      <span class="quote-mark" style="color:#E8C96A;">&ldquo;</span>
+      Once you overcome the<br><span class="pq-hl" style="color:#E8C96A;">one-inch tall barrier</span> of subtitles,<br>you will be introduced to so many more amazing films.
+    </div>
+    <div class="pq-attr" style="color:rgba(245,228,168,0.6)">— Bong Joon-ho · 2020 Academy Awards</div>
+  </div>
+</div>
+
+<!-- ERA 6: STREAMING AGE -->
+<section class="era" id="era-6">
+  <div style="display:block;width:100%;margin-bottom:48px;"><div class="era-header-card fade-up" style="margin-bottom:0">
+    <div class="era-year">2020–Present</div>
+    <div class="era-title">Streaming, Slaps & the 97th Era</div>
+  </div></div>
+  <div class="events-grid">
+    <div class="event-card fade-up" data-tip="CODA, a film by Apple TV+, became the first streaming service film to win Best Picture at the 94th Oscars.">
+      <div class="event-year card-year">2022 · STREAMING</div>
+      <h3>CODA & the Streaming Revolution</h3>
+      <p>Apple TV+'s CODA wins Best Picture — the first streaming service film to claim cinema's top prize. The theatrical/streaming divide that has defined Hollywood since COVID collapses at the moment that matters most.</p>
+    </div>
+    <div class="event-card fade-up" data-tip="Will Smith slapped presenter Chris Rock at the 94th Academy Awards ceremony in March 2022, then won Best Actor later that evening.">
+      <div class="event-year card-year">2022 · INCIDENT</div>
+      <h3>Will Smith and the Slap Heard Round the World</h3>
+      <p>Will Smith strikes presenter Chris Rock on live television after a joke about Jada Pinkett Smith's alopecia, then proceeds to win Best Actor for King Richard. The Academy eventually banned Smith for 10 years.</p>
+    </div>
+    <div class="event-card fade-up" data-tip="Everything Everywhere All at Once won 7 Oscars in 2023, including Best Picture, Best Director, and acting awards for Michelle Yeoh and Ke Huy Quan.">
+      <div class="event-year card-year">2023 · JOY</div>
+      <h3>Everything Everywhere Wins Everything</h3>
+      <p>The A24 multiverse epic sweeps with 7 Oscars — Michelle Yeoh becomes the first Asian woman to win Best Actress, Ke Huy Quan returns to Hollywood glory, and the Academy embraces maximalist storytelling.</p>
+    </div>
+    <div class="event-card fade-up" data-tip="Oppenheimer won Best Picture at the 96th Academy Awards, and Christopher Nolan won his first Best Director Oscar.">
+      <div class="event-year card-year">2024 · NOLAN</div>
+      <h3>Oppenheimer & Nolan's Long-Awaited Win</h3>
+      <p>Christopher Nolan wins his first Best Director Oscar for his atomic bomb epic, which wins 7 awards total. Cillian Murphy takes Best Actor. The blockbuster-art divide, once again, dissolves under the right circumstances.</p>
+    </div>
+    <div class="event-card fade-up" data-tip="Anora, directed by Sean Baker, swept five awards at the 97th Oscars including Best Picture, Best Director, and Best Actress for Mikey Madison.">
+      <div class="event-year card-year">2025 · 97TH OSCARS</div>
+      <h3>Anora Sweeps — Indie Cinema Wins Again</h3>
+      <p>Sean Baker's low-budget indie Anora dominates the 97th ceremony, winning Best Picture, Best Director, Best Actress for Mikey Madison, and two more. Conan O'Brien hosts to widespread acclaim. A triumph for independent cinema over blockbuster prestige.</p>
+    </div>
+    <div class="event-card fade-up" data-tip="Sinners received a record 16 nominations for the 98th Academy Awards — the most in Oscar history — surpassing the previous record of 14 shared by All About Eve, Titanic, and La La Land.">
+      <div class="event-year card-year">2026 · 98TH OSCARS</div>
+      <h3>Sinners Makes Oscar History</h3>
+      <p>Ryan Coogler's genre-defying vampire horror set in the Jim Crow South earns a record 16 nominations — more than any film in Academy history. Michael B. Jordan receives his first acting nomination. The 98th ceremony airs March 15, with Conan O'Brien returning as host.</p>
+    </div>
+  </div>
+</section>
+
+<!-- BOX OFFICE / RECORD WINNERS COMPONENT -->
+<div class="boxoffice-section fade-up" id="records">
+  <span class="boxoffice-eyebrow">TOPIC-SPECIFIC · RECORD WINS</span>
+  <h2>Films With the Most Oscar Wins</h2>
+  <p style="font-size:0.88rem;color:var(--text-muted);max-width:500px;margin-top:8px;line-height:1.7;font-weight:300;">The films that defined the outer limits of Academy recognition. Three have matched the record of 11 wins — no film has exceeded it.</p>
+  <div class="boxoffice-grid">
+    <div class="bo-row">
+      <div class="bo-rank">1</div>
+      <div><div class="bo-title">Ben-Hur</div><div class="bo-year">1960 · William Wyler</div></div>
+      <div class="bo-gross">11 WINS</div>
+      <div class="bo-wins">12 nominations</div>
+    </div>
+    <div class="bo-row">
+      <div class="bo-rank">1</div>
+      <div><div class="bo-title">Titanic</div><div class="bo-year">1998 · James Cameron</div></div>
+      <div class="bo-gross">11 WINS</div>
+      <div class="bo-wins">14 nominations</div>
+    </div>
+    <div class="bo-row">
+      <div class="bo-rank">1</div>
+      <div><div class="bo-title">The Lord of the Rings: The Return of the King</div><div class="bo-year">2004 · Peter Jackson</div></div>
+      <div class="bo-gross">11 WINS</div>
+      <div class="bo-wins">11 nominations (sweep)</div>
+    </div>
+    <div class="bo-row">
+      <div class="bo-rank">4</div>
+      <div><div class="bo-title">West Side Story</div><div class="bo-year">1962 · Wise & Robbins</div></div>
+      <div class="bo-gross">10 WINS</div>
+      <div class="bo-wins">11 nominations</div>
+    </div>
+    <div class="bo-row">
+      <div class="bo-rank">5</div>
+      <div><div class="bo-title">Everything Everywhere All at Once</div><div class="bo-year">2023 · Daniels</div></div>
+      <div class="bo-gross">7 WINS</div>
+      <div class="bo-wins">11 nominations</div>
+    </div>
+    <div class="bo-row">
+      <div class="bo-rank">5</div>
+      <div><div class="bo-title">Oppenheimer</div><div class="bo-year">2024 · Christopher Nolan</div></div>
+      <div class="bo-gross">7 WINS</div>
+      <div class="bo-wins">13 nominations</div>
+    </div>
+  </div>
+</div>
+
+<!-- CLOSING -->
+<section class="closing-section fade-up">
+  <h2 class="closing-title">What Comes<br>After the<br>Century?</h2>
+  <p class="closing-body">The 100th Academy Awards ceremony — arriving in 2028 — will celebrate an institution that has survived the studio collapse, the television revolution, the home video disruption, the streaming upheaval, and a global pandemic. The 98th ceremony on March 15, 2026 features Sinners with a record 16 nominations, Black cinema at the forefront, and a new Best Casting category. The Oscar statuette, 13.5 inches of gold-plated britannia metal, has stood throughout. What changes is the cinema it crowns — and who gets to hold it.</p>
+</section>
+
+<!-- ENTITY GRID -->
+<div class="entity-section">
+  <div class="entity-section-header">KEY PLAYERS · FILMS · MOMENTS · INSTITUTIONS</div>
+  <div class="entity-grid" id="entity-grid">
+  </div>
+</div>
+
+<!-- ECOSYSTEM -->
+<section class="ecosystem">
+  <div class="eco-header">ECOSYSTEM · THE OSCARS</div>
+  <div class="eco-grid">
+    <div class="eco-group">
+      <div class="eco-group-label">Official</div>
+      <a href="https://www.oscars.org" class="eco-link" target="_blank">oscars.org ↗</a>
+      <a href="https://www.ampas.org" class="eco-link" target="_blank">Academy (AMPAS) ↗</a>
+      <a href="https://www.academymuseum.org" class="eco-link" target="_blank">Academy Museum ↗</a>
+    </div>
+    <div class="eco-group">
+      <div class="eco-group-label">Coverage</div>
+      <a href="https://variety.com/awards" class="eco-link" target="_blank">Variety Awards ↗</a>
+      <a href="https://deadline.com/awards" class="eco-link" target="_blank">Deadline Awards ↗</a>
+      <a href="https://www.hollywoodreporter.com/awards" class="eco-link" target="_blank">THR Awards ↗</a>
+      <a href="https://www.goldderby.com" class="eco-link" target="_blank">Gold Derby ↗</a>
+    </div>
+    <div class="eco-group">
+      <div class="eco-group-label">Data & History</div>
+      <a href="https://www.imdb.com/event/ev0000003" class="eco-link" target="_blank">IMDB Oscars Database ↗</a>
+      <a href="https://en.wikipedia.org/wiki/Academy_Awards" class="eco-link" target="_blank">Wikipedia: Full History ↗</a>
+      <a href="https://www.boxofficemojo.com/awards/oscars" class="eco-link" target="_blank">Box Office Mojo ↗</a>
+    </div>
+    <div class="eco-group">
+      <div class="eco-group-label">Watch & Stream</div>
+      <a href="https://www.hulu.com" class="eco-link" target="_blank">Hulu (US Broadcast) ↗</a>
+      <a href="https://abc.com/oscars" class="eco-link" target="_blank">ABC Oscars ↗</a>
+      <a href="https://www.criterion.com" class="eco-link" target="_blank">Criterion Channel ↗</a>
+    </div>
+    <div class="eco-group">
+      <div class="eco-group-label">Community</div>
+      <a href="https://www.reddit.com/r/Oscars" class="eco-link" target="_blank">r/Oscars ↗</a>
+      <a href="https://letterboxd.com" class="eco-link" target="_blank">Letterboxd ↗</a>
+      <a href="https://awardsdaily.com" class="eco-link" target="_blank">Awards Daily ↗</a>
+    </div>
+  </div>
+</section>
+
+<!-- COLOR STRIP -->
+<div class="color-strip">
+  <div style="background:#C9A84C"></div>
+  <div style="background:#8B1A2C"></div>
+  <div style="background:#E8C96A"></div>
+  <div style="background:#4A3020"></div>
+  <div style="background:#D4A0A8"></div>
+  <div style="background:#1C1610"></div>
+  <div style="background:#F5E4A8"></div>
+  <div style="background:#8B6914"></div>
+</div>
+
+<!-- SERIES COLOR BAR — required immediately above footer -->
+<div style="display:flex;height:3px;">
+  <div style="background:#00D4F0;flex:2;"></div>
+  <div style="background:#0055EE;flex:1;"></div>
+  <div style="background:#39E07A;flex:1;"></div>
+  <div style="background:#FF5C20;flex:1;"></div>
+  <div style="background:var(--border);flex:5;"></div>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <div>
+    <div class="footer-brand">A (Brief) History of The Oscars_ <span>/</span> History</div>
+    <div class="footer-note">From a private banquet in 1929 to the world's most watched awards ceremony — nearly a century of cinema's grandest night.</div>
+  </div>
+  <div>
+    <div class="footer-col-label">Part of</div>
+    <div class="footer-note">A (Brief) History of Everything_<br>
+      <a href="https://abriefhistoryofeverything.com">abriefhistoryofeverything.com ↗</a>
+    </div>
+    <div class="footer-social" style="margin-top:12px;">
+      <a href="https://bsky.app/intent/compose?text=A%20(Brief)%20History%20of%20the%20Oscars%20%E2%80%94%20nearly%20a%20century%20of%20cinema%27s%20grandest%20night.%20https://abriefhistoryoftheoscars.com" target="_blank" rel="noopener">&#9729; Share on Bluesky</a>
+    </div>
+  </div>
+  <div>
+    <div class="footer-col-label">Typefaces</div>
+    <div class="footer-note">Cormorant Garamond — Display, Headlines<br>DM Sans — Body, Labels, UI</div>
+  </div>
+</footer>
+
+<div class="footer-bar">
+  <span>A (Brief) History of The Oscars — Chronological Index · 6 Eras</span>
+  <div class="footer-bar-links">
+    <a href="https://twitter.com/intent/tweet?url=https://abriefhistoryoftheoscars.com&text=A%20(Brief)%20History%20of%20the%20Oscars%20%E2%80%94%20nearly%20a%20century%20of%20cinema%27s%20grandest%20night." target="_blank" rel="noopener">Share on X</a>
+    <a href="https://www.linkedin.com/sharing/share-offsite/?url=https://abriefhistoryoftheoscars.com" target="_blank" rel="noopener">Share on LinkedIn</a>
+  </div>
+</div>
+
+<script>
+(function(){
+  /* THEME */
+  const btn = document.getElementById('theme-btn');
+  // Restore saved theme on load
+  const savedTheme = localStorage.getItem('abh-theme');
+  if(savedTheme){
+    document.documentElement.dataset.theme = savedTheme;
+    btn.textContent = savedTheme === 'light' ? '◑ DARK' : '☀ LIGHT';
+  }
+  btn.addEventListener('click', function(){
+    const d = document.documentElement;
+    if(d.dataset.theme === 'dark'){
+      d.dataset.theme = 'light';
+      btn.textContent = '◑ DARK';
+      localStorage.setItem('abh-theme', 'light');
+    } else {
+      d.dataset.theme = 'dark';
+      btn.textContent = '☀ LIGHT';
+      localStorage.setItem('abh-theme', 'dark');
+    }
+  });
+
+  /* CURSOR */
+  const isTouch = ('ontouchstart' in window) || (navigator.maxTouchPoints > 0);
+  const dot = document.getElementById('cursor-dot');
+  const ring = document.getElementById('cursor-ring');
+  if(isTouch){
+    dot.style.display = 'none';
+    ring.style.display = 'none';
+    document.body.style.cursor = 'auto';
+  } else {
+    const palette = ['#C9A84C','#8B1A2C','#E8C96A','#00D4F0','#FF5C20'];
+    let ci = 0;
+    document.addEventListener('mousemove', function(e){
+      dot.style.left = e.clientX + 'px';
+      dot.style.top = e.clientY + 'px';
+      ring.style.left = e.clientX + 'px';
+      ring.style.top = e.clientY + 'px';
+    });
+    document.addEventListener('click', function(){
+      ci = (ci + 1) % palette.length;
+      dot.style.background = palette[ci];
+      ring.style.borderColor = palette[ci];
+    });
+  }
+
+  /* TOOLTIP */
+  const tip = document.getElementById('pop-tip');
+  document.querySelectorAll('[data-tip]').forEach(function(el){
+    el.addEventListener('mouseenter', function(){
+      tip.textContent = el.dataset.tip;
+      tip.style.opacity = '1';
+    });
+    el.addEventListener('mousemove', function(e){
+      tip.style.left = (e.clientX + 16) + 'px';
+      tip.style.top = (e.clientY - 8) + 'px';
+    });
+    el.addEventListener('mouseleave', function(){
+      tip.style.opacity = '0';
+    });
+  });
+
+  /* FADE UP — IntersectionObserver */
+  const fadeEls = document.querySelectorAll('.fade-up');
+  if('IntersectionObserver' in window){
+    const obs = new IntersectionObserver(function(entries){
+      entries.forEach(function(entry, i){
+        if(entry.isIntersecting){
+          setTimeout(function(){
+            entry.target.classList.add('visible');
+          }, i * 80);
+          obs.unobserve(entry.target);
+        }
+      });
+    }, {threshold: 0.08});
+    fadeEls.forEach(function(el){ obs.observe(el); });
+  } else {
+    fadeEls.forEach(function(el){ el.classList.add('visible'); });
+  }
+
+  /* SHARE DROPDOWN */
+  const shareBtn = document.getElementById('share-btn');
+  const shareDropdown = document.getElementById('shareDropdown');
+  const shareWrap = document.getElementById('shareWrap');
+  if(shareBtn && shareDropdown){
+    shareBtn.addEventListener('click', function(e){
+      e.stopPropagation();
+      const isOpen = shareDropdown.style.display === 'block';
+      shareDropdown.style.display = isOpen ? 'none' : 'block';
+    });
+    document.addEventListener('click', function(e){
+      if(!shareWrap.contains(e.target)){
+        shareDropdown.style.display = 'none';
+      }
+    });
+  }
+
+  /* SIDE NAV ACTIVE */
+  const sections = ['hero','era-1','era-2','era-3','era-4','era-5','era-6'];
+  const navItems = document.querySelectorAll('.side-nav-item');
+  if('IntersectionObserver' in window){
+    const sObs = new IntersectionObserver(function(entries){
+      entries.forEach(function(entry){
+        if(entry.isIntersecting){
+          const idx = sections.indexOf(entry.target.id);
+          navItems.forEach(function(n, i){
+            n.classList.toggle('active', i === idx);
+          });
+        }
+      });
+    }, {threshold: 0.35});
+    sections.forEach(function(id){
+      const el = document.getElementById(id);
+      if(el) sObs.observe(el);
+    });
+  }
+
+  /* ENTITY GRID */
+  const entities = [
+    {label:'Academy of Motion Picture Arts and Sciences', url:'https://www.ampas.org', c:'#C9A84C', bg:'transparent', tc:'#C9A84C'},
+    {label:'Katharine Hepburn (4 wins)', url:'https://en.wikipedia.org/wiki/Katharine_Hepburn', c:'#8B1A2C', bg:'#8B1A2C', tc:'#F5E4A8'},
+    {label:'Meryl Streep (21 noms)', url:'https://en.wikipedia.org/wiki/Meryl_Streep', c:'#8B1A2C', bg:'#8B1A2C', tc:'#F5E4A8'},
+    {label:'Jack Nicholson', url:'https://en.wikipedia.org/wiki/Jack_Nicholson', c:'#C9A84C', bg:'transparent', tc:'#C9A84C'},
+    {label:'Halle Berry', url:'https://en.wikipedia.org/wiki/Halle_Berry', c:'#C9A84C', bg:'transparent', tc:'#C9A84C'},
+    {label:'Denzel Washington', url:'https://en.wikipedia.org/wiki/Denzel_Washington', c:'#C9A84C', bg:'transparent', tc:'#C9A84C'},
+    {label:'Cate Blanchett', url:'https://en.wikipedia.org/wiki/Cate_Blanchett', c:'#8B6914', bg:'#8B6914', tc:'#F5E4A8'},
+    {label:'Ben-Hur (1959)', url:'https://en.wikipedia.org/wiki/Ben-Hur_(1959_film)', c:'#E8C96A', bg:'transparent', tc:'#E8C96A'},
+    {label:'Titanic (1997)', url:'https://en.wikipedia.org/wiki/Titanic_(1997_film)', c:'#4A6080', bg:'#4A6080', tc:'#E0EAF5'},
+    {label:'The Godfather', url:'https://en.wikipedia.org/wiki/The_Godfather', c:'#C9A84C', bg:'transparent', tc:'#C9A84C'},
+    {label:'Schindler\'s List', url:'https://en.wikipedia.org/wiki/Schindler%27s_List', c:'#2A3A2A', bg:'#2A3A2A', tc:'#8BC49A'},
+    {label:'Return of the King', url:'https://en.wikipedia.org/wiki/The_Lord_of_the_Rings:_The_Return_of_the_King', c:'#3A2A10', bg:'#3A2A10', tc:'#E8C96A'},
+    {label:'Moonlight (2016)', url:'https://en.wikipedia.org/wiki/Moonlight_(2016_film)', c:'#4A2060', bg:'#4A2060', tc:'#D0A0F0'},
+    {label:'Parasite (2019)', url:'https://en.wikipedia.org/wiki/Parasite_(2019_film)', c:'#C9A84C', bg:'transparent', tc:'#C9A84C'},
+    {label:'Everything Everywhere', url:'https://en.wikipedia.org/wiki/Everything_Everywhere_All_at_Once', c:'#FF5C20', bg:'#FF5C20', tc:'#FFF'},
+    {label:'Oppenheimer', url:'https://en.wikipedia.org/wiki/Oppenheimer_(film)', c:'#FF8C00', bg:'#FF8C00', tc:'#0A0400'},
+    {label:'Hattie McDaniel', url:'https://en.wikipedia.org/wiki/Hattie_McDaniel', c:'#8B1A2C', bg:'#8B1A2C', tc:'#F5E4A8'},
+    {label:'Sidney Poitier', url:'https://en.wikipedia.org/wiki/Sidney_Poitier', c:'#C9A84C', bg:'transparent', tc:'#C9A84C'},
+    {label:'Steven Spielberg', url:'https://en.wikipedia.org/wiki/Steven_Spielberg', c:'#2A4060', bg:'#2A4060', tc:'#A0C0E8'},
+    {label:'Dolby Theatre', url:'https://en.wikipedia.org/wiki/Dolby_Theatre', c:'#C9A84C', bg:'transparent', tc:'#C9A84C'},
+    {label:'Price Waterhouse', url:'https://en.wikipedia.org/wiki/PricewaterhouseCoopers', c:'#8B6914', bg:'#8B6914', tc:'#F5E4A8'},
+    {label:'Miramax Films', url:'https://en.wikipedia.org/wiki/Miramax', c:'#C9A84C', bg:'transparent', tc:'#C9A84C'},
+    {label:'A24', url:'https://en.wikipedia.org/wiki/A24_(company)', c:'#1A1A1A', bg:'#1A1A1A', tc:'#E8E8E8'},
+    {label:'Apple TV+', url:'https://tv.apple.com', c:'#3A3A3A', bg:'#3A3A3A', tc:'#F0F0F0'},
+    {label:'Envelopegate 2017', url:'https://en.wikipedia.org/wiki/89th_Academy_Awards#Best_Picture_announcement_error', c:'#8B1A2C', bg:'#8B1A2C', tc:'#F5E4A8'},
+    {label:'Michelle Yeoh', url:'https://en.wikipedia.org/wiki/Michelle_Yeoh', c:'#C9A84C', bg:'transparent', tc:'#C9A84C'},
+    {label:'Ke Huy Quan', url:'https://en.wikipedia.org/wiki/Ke_Huy_Quan', c:'#C9A84C', bg:'transparent', tc:'#C9A84C'},
+    {label:'Bong Joon-ho', url:'https://en.wikipedia.org/wiki/Bong_Joon-ho', c:'#2A3A2A', bg:'#2A3A2A', tc:'#8BC49A'},
+    {label:'CODA (2021)', url:'https://en.wikipedia.org/wiki/CODA_(film)', c:'#00A060', bg:'#00A060', tc:'#FFF'},
+    {label:'Cillian Murphy', url:'https://en.wikipedia.org/wiki/Cillian_Murphy', c:'#C9A84C', bg:'transparent', tc:'#C9A84C'},
+    {label:'Anora (2025)', url:'https://en.wikipedia.org/wiki/Anora_(film)', c:'#C9A84C', bg:'transparent', tc:'#C9A84C'},
+    {label:'Sean Baker', url:'https://en.wikipedia.org/wiki/Sean_Baker_(filmmaker)', c:'#C9A84C', bg:'transparent', tc:'#C9A84C'},
+    {label:'Mikey Madison', url:'https://en.wikipedia.org/wiki/Mikey_Madison', c:'#C9A84C', bg:'transparent', tc:'#C9A84C'},
+    {label:'Sinners (2026)', url:'https://en.wikipedia.org/wiki/Sinners_(film)', c:'#8B1A2C', bg:'#8B1A2C', tc:'#F5E4A8'},
+    {label:'Michael B. Jordan', url:'https://en.wikipedia.org/wiki/Michael_B._Jordan', c:'#8B1A2C', bg:'#8B1A2C', tc:'#F5E4A8'},
+    {label:'Ryan Coogler', url:'https://en.wikipedia.org/wiki/Ryan_Coogler', c:'#C9A84C', bg:'transparent', tc:'#C9A84C'},
+  ];
+
+  const grid = document.getElementById('entity-grid');
+  entities.forEach(function(e){
+    const a = document.createElement('a');
+    a.href = e.url; a.target = '_blank'; a.className = 'entity-badge';
+    a.textContent = e.label;
+    a.style.borderColor = e.c;
+    a.style.background = e.bg;
+    a.style.color = e.tc;
+    grid.appendChild(a);
+  });
+
+  /* GOLD DUST */
+  (function(){
+    const canvas = document.getElementById('gold-dust');
+    const ctx = canvas.getContext('2d');
+    let W, H;
+
+    function resize(){
+      W = canvas.width = window.innerWidth;
+      H = canvas.height = window.innerHeight;
+    }
+    resize();
+    window.addEventListener('resize', resize, {passive:true});
+
+    const COUNT = 72;
+    const GOLD_SHADES = ['#C9A84C','#E8C96A','#F5E4A8','#D4A820','#FFD700','#C9A84C'];
+
+    const particles = [];
+    for(let i = 0; i < COUNT; i++){
+      particles.push({
+        x:      Math.random() * window.innerWidth,
+        y:      Math.random() * window.innerHeight,
+        r:      Math.random() * 2.5 + 0.8,      // 0.8 to 3.3px
+        color:  GOLD_SHADES[Math.floor(Math.random() * GOLD_SHADES.length)],
+        speed:  Math.random() * 0.4 + 0.15,     // slow drift
+        drift:  (Math.random() - 0.5) * 0.3,    // gentle horizontal sway
+        wobble: Math.random() * Math.PI * 2,     // phase offset for sine sway
+        wobbleSpeed: Math.random() * 0.008 + 0.003,
+        alpha:  Math.random() * 0.5 + 0.35,     // varied opacity
+        spin:   (Math.random() - 0.5) * 0.04,   // tiny rotation for glint feel
+        angle:  Math.random() * Math.PI * 2,
+      });
+    }
+
+    function draw(){
+      ctx.clearRect(0, 0, W, H);
+
+      particles.forEach(function(p){
+        p.wobble += p.wobbleSpeed;
+        p.angle  += p.spin;
+        p.x += p.drift + Math.sin(p.wobble) * 0.4;
+        p.y += p.speed;
+
+        // Wrap around
+        if(p.y > H + 4)  p.y = -4;
+        if(p.x > W + 4)  p.x = -4;
+        if(p.x < -4)     p.x = W + 4;
+
+        ctx.save();
+        ctx.globalAlpha = p.alpha;
+        ctx.translate(p.x, p.y);
+        ctx.rotate(p.angle);
+
+        // Draw as a small rounded square/diamond for glitter feel
+        const s = p.r;
+        ctx.fillStyle = p.color;
+        ctx.beginPath();
+        ctx.moveTo(0, -s);
+        ctx.lineTo(s * 0.6, 0);
+        ctx.lineTo(0, s);
+        ctx.lineTo(-s * 0.6, 0);
+        ctx.closePath();
+        ctx.fill();
+
+        ctx.restore();
+      });
+
+      requestAnimationFrame(draw);
+    }
+    draw();
+  })();
+
+})();
+</script>
+</body>
+</html>

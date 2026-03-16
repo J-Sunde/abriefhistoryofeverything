@@ -1,0 +1,662 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>98th Oscars Nominees 2026 — Complete List</title>
+<meta name="description" content="The complete list of nominees for the 98th Academy Awards, March 15, 2026. All 24 categories including Best Picture, Best Director, and acting nominees.">
+<meta name="theme-color" content="#0A0804">
+<link rel="canonical" href="https://abriefhistoryoftheoscars.com/nominees">
+<meta property="og:title" content="98th Oscars Nominees 2026 — Complete List">
+<meta property="og:description" content="Every nominee across all 24 categories. The 98th Academy Awards, March 15, 2026.">
+<meta property="og:image" content="https://abriefhistoryoftheoscars.com/og-nominees.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://abriefhistoryoftheoscars.com/og-nominees.png">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' fill='%230A0804'/><text x='6' y='24' font-family='monospace' font-size='18' fill='%23C9A84C'>🏆</text></svg>">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400&family=DM+Sans:ital,wght@0,300;0,400;0,500;0,700;1,400&display=swap" rel="stylesheet">
+<style>
+:root {
+  --gold:       #C9A84C;
+  --gold-light: #E8C96A;
+  --gold-pale:  #F5E4A8;
+  --gold-dark:  #8B6914;
+  --crimson:    #8B1A2C;
+  --charcoal:   #1A1610;
+  --bg:         #0A0804;
+  --surface:    #141008;
+  --card-bg:    #1C1610;
+  --text:       #EDE8DC;
+  --text-muted: #8A7B65;
+  --border:     #3A2E1E;
+  --accent:     #C9A84C;
+}
+[data-theme="light"] {
+  --bg:         #F8F3E8;
+  --surface:    #EEEAD8;
+  --card-bg:    #FFFFFF;
+  --text:       #1A1610;
+  --text-muted: #7A6A50;
+  --border:     #D4C49A;
+  --accent:     #8B6914;
+}
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body {
+  font-family: 'DM Sans', sans-serif;
+  background: var(--bg); color: var(--text);
+  overflow-x: hidden; cursor: none;
+  transition: background 0.4s, color 0.4s;
+}
+a { color: var(--accent); text-decoration: none; }
+a:hover { text-decoration: underline; }
+
+/* CURSOR */
+#cursor-dot {
+  position: fixed; width: 10px; height: 10px;
+  background: var(--gold); border-radius: 50%;
+  pointer-events: none; z-index: 9999;
+  transform: translate(-50%,-50%); mix-blend-mode: screen;
+}
+#cursor-ring {
+  position: fixed; width: 36px; height: 36px;
+  border: 1.5px solid var(--gold); border-radius: 50%;
+  pointer-events: none; z-index: 9998;
+  transform: translate(-50%,-50%);
+  transition: left .08s, top .08s; mix-blend-mode: screen;
+}
+
+/* GOLD DUST */
+#gold-dust {
+  position: fixed; inset: 0; width: 100%; height: 100%;
+  pointer-events: none; z-index: 600; opacity: 0.6;
+}
+[data-theme="light"] #gold-dust { opacity: 0.3; }
+
+/* NAV */
+.nav {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 800;
+  background: rgba(10,8,4,0.96); backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--border);
+  height: 52px; display: flex; align-items: center; padding: 0 24px; gap: 10px;
+}
+[data-theme="light"] .nav { background: rgba(248,243,232,0.96); }
+.nav-brand { font-family: 'DM Sans', sans-serif; font-size: 0.62rem; font-weight: 700; letter-spacing: 0.15em; color: var(--text-muted); text-transform: uppercase; white-space: nowrap; text-decoration: none; }
+.nav-brand:hover { color: var(--accent); text-decoration: none; }
+.nav-topic { color: var(--gold); font-style: italic; text-transform: none; letter-spacing: 0.1em; }
+.nav-right { margin-left: auto; display: flex; align-items: center; gap: 14px; }
+.theme-btn { background: none; border: 1px solid var(--border); color: var(--text-muted); cursor: pointer; font-family: 'DM Sans', sans-serif; font-size: 0.6rem; letter-spacing: 0.1em; padding: 4px 10px; transition: all 0.2s; text-transform: uppercase; }
+.theme-btn:hover { border-color: var(--gold); color: var(--gold); }
+
+/* HERO */
+.hero { min-height: 44vh; display: flex; flex-direction: column; justify-content: flex-end; padding: 80px 80px 60px; position: relative; overflow: hidden; border-bottom: 4px solid var(--charcoal); }
+.hero-bg { position: absolute; inset: 0; background: radial-gradient(ellipse at 70% 40%, rgba(201,168,76,0.1) 0%, transparent 60%), radial-gradient(ellipse at 20% 80%, rgba(139,26,44,0.06) 0%, transparent 50%); pointer-events: none; }
+.hero-grid { position: absolute; inset: 0; pointer-events: none; background-image: linear-gradient(rgba(201,168,76,0.04) 1px, transparent 1px), linear-gradient(90deg, rgba(201,168,76,0.04) 1px, transparent 1px); background-size: 60px 60px; }
+.hero-eyebrow { font-size: 0.65rem; font-weight: 700; letter-spacing: 0.3em; color: var(--gold); text-transform: uppercase; margin-bottom: 16px; }
+.hero-title { font-family: 'Cormorant Garamond', serif; font-size: clamp(3.5rem, 9vw, 9rem); font-weight: 300; line-height: 0.88; letter-spacing: -0.02em; }
+.hero-title em { color: var(--gold); font-style: italic; }
+.hero-meta { display: flex; gap: 24px; margin-top: 32px; flex-wrap: wrap; align-items: center; }
+.hero-pill { font-size: 0.72rem; font-weight: 700; letter-spacing: 0.2em; text-transform: uppercase; border: 1px solid var(--border); padding: 6px 14px; color: var(--text-muted); }
+.hero-pill.gold { border-color: var(--gold); color: var(--gold); }
+.hero-actions { display: flex; gap: 10px; margin-top: 28px; flex-wrap: wrap; }
+.hero-btn { font-family: 'DM Sans', sans-serif; font-size: 0.75rem; font-weight: 700; letter-spacing: 0.18em; text-transform: uppercase; padding: 10px 22px; border: 1px solid var(--gold); background: transparent; color: var(--gold); cursor: pointer; transition: background 0.2s, color 0.2s; text-decoration: none; display: inline-flex; align-items: center; gap: 8px; }
+.hero-btn:hover { background: var(--gold); color: #0A0804; text-decoration: none; }
+.hero-btn svg { width: 13px; height: 13px; flex-shrink: 0; }
+.hero-btn.outline { border-color: var(--border); color: var(--text-muted); }
+.hero-btn.outline:hover { border-color: var(--gold); color: var(--gold); background: transparent; }
+
+/* SINNERS BANNER */
+.record-banner { background: var(--crimson); padding: 14px 80px; display: flex; align-items: center; gap: 16px; border-bottom: 2px solid #6A0F1E; }
+.record-banner-num { font-family: 'Cormorant Garamond', serif; font-size: 2.8rem; font-weight: 700; color: var(--gold-pale); line-height: 1; flex-shrink: 0; }
+.record-banner-text { font-size: 0.9rem; color: rgba(245,228,168,0.85); line-height: 1.6; }
+.record-banner-text strong { color: var(--gold-pale); }
+
+/* PICKS PROGRESS BAR */
+.picks-bar {
+  position: sticky; top: 52px; z-index: 700;
+  background: var(--surface); border-bottom: 1px solid var(--border);
+  padding: 12px 80px; display: flex; align-items: center; gap: 20px;
+  transition: background 0.4s;
+}
+.picks-bar-label { font-size: 0.6rem; font-weight: 700; letter-spacing: 0.2em; text-transform: uppercase; color: var(--text-muted); white-space: nowrap; }
+.picks-bar-track { flex: 1; height: 3px; background: var(--border); position: relative; }
+.picks-bar-fill { height: 100%; background: var(--gold); transition: width 0.4s ease; width: 0%; }
+.picks-bar-count { font-family: 'Cormorant Garamond', serif; font-size: 1.4rem; font-weight: 600; color: var(--gold); white-space: nowrap; min-width: 60px; text-align: right; }
+.picks-bar-share {
+  font-family: 'DM Sans', sans-serif; font-size: 0.6rem; font-weight: 700;
+  letter-spacing: 0.15em; text-transform: uppercase; padding: 7px 16px;
+  border: 1px solid var(--gold); background: transparent; color: var(--gold);
+  cursor: pointer; transition: background 0.2s, color 0.2s; white-space: nowrap;
+}
+.picks-bar-share:hover { background: var(--gold); color: #0A0804; }
+.picks-bar-share:disabled { opacity: 0.35; cursor: default; }
+.picks-bar-share:disabled:hover { background: transparent; color: var(--gold); }
+.picks-bar-clear { font-family: 'DM Sans', sans-serif; font-size: 0.6rem; letter-spacing: 0.1em; text-transform: uppercase; background: none; border: none; color: var(--text-muted); cursor: pointer; padding: 4px; transition: color 0.2s; }
+.picks-bar-clear:hover { color: var(--crimson); }
+
+/* SHARED PICKS BANNER */
+.shared-banner { background: rgba(201,168,76,0.1); border-bottom: 1px solid rgba(201,168,76,0.3); padding: 11px 80px; font-size: 0.7rem; letter-spacing: 0.08em; color: var(--gold); text-align: center; display: none; }
+.shared-banner.visible { display: block; }
+
+/* MAIN GRID */
+.nominees-wrap { max-width: 1400px; margin: 0 auto; padding: 60px 80px 80px; display: grid; grid-template-columns: repeat(auto-fill, minmax(340px, 1fr)); gap: 2px; }
+
+/* CATEGORY CARD */
+.cat-card { background: var(--card-bg); border: 1px solid var(--border); padding: 28px 28px 24px; transition: border-color 0.2s; position: relative; }
+.cat-card::before { content: ''; position: absolute; top: 0; left: 0; width: 3px; height: 0; background: var(--gold); transition: height 0.3s ease; }
+.cat-card:hover::before { height: 100%; }
+.cat-card:hover { border-color: var(--gold); }
+.cat-name { font-family: 'DM Sans', sans-serif; font-size: 0.92rem; font-weight: 700; letter-spacing: 0.25em; text-transform: uppercase; color: var(--gold); margin-bottom: 18px; padding-bottom: 12px; border-bottom: 1px solid var(--border); }
+
+/* NOMINEE ROW — INTERACTIVE */
+.nominee-row {
+  padding: 10px 8px 10px 34px;
+  border-bottom: 1px solid rgba(58,46,30,0.5);
+  display: flex; flex-direction: column; gap: 2px;
+  cursor: pointer; position: relative;
+  transition: background 0.15s; border-radius: 2px; margin: 0 -4px;
+  user-select: none;
+}
+.nominee-row:last-child { border-bottom: none; }
+.nominee-row:hover { background: rgba(201,168,76,0.06); }
+
+/* Radio dot */
+.nominee-row::before {
+  content: ''; position: absolute; left: 9px; top: 50%; transform: translateY(-50%);
+  width: 14px; height: 14px; border: 1.5px solid var(--border); border-radius: 50%;
+  transition: border-color 0.2s, background 0.2s; flex-shrink: 0;
+}
+.nominee-row:hover::before { border-color: var(--gold); }
+
+/* PICKED STATE */
+.nominee-row.picked { background: rgba(201,168,76,0.1); }
+.nominee-row.picked::before { background: var(--gold); border-color: var(--gold); box-shadow: 0 0 8px rgba(201,168,76,0.35); }
+.nominee-row.picked .nominee-name { color: var(--gold); }
+[data-theme="light"] .nominee-row.picked { background: rgba(139,105,20,0.08); }
+
+/* Checkmark inside dot */
+.nominee-row.picked::after {
+  content: ''; position: absolute; left: 14px; top: 50%;
+  width: 4px; height: 7px;
+  border-right: 2px solid #0A0804; border-bottom: 2px solid #0A0804;
+  transform: translateY(-65%) rotate(45deg);
+}
+
+.nominee-name { font-family: 'Cormorant Garamond', serif; font-size: 1.5rem; font-weight: 600; line-height: 1.2; color: var(--text); transition: color 0.2s; }
+.nominee-film { font-size: 1.1rem; color: var(--text-muted); font-weight: 300; font-style: italic; }
+
+/* Best Picture */
+.cat-card.best-picture { grid-column: 1 / -1; background: linear-gradient(135deg, #1C1610 0%, #0A0804 100%); border-color: var(--gold); }
+.cat-card.best-picture .cat-name { color: var(--gold); }
+.cat-card.best-picture .nominee-name { color: #EDE8DC; }
+.cat-card.best-picture .nominee-film { color: #8A7B65; font-style: normal; font-size: 0.79rem; }
+[data-theme="light"] .cat-card.best-picture .nominee-film { color: #A09070; }
+.cat-card.best-picture::before { background: var(--crimson); }
+.cat-card.best-picture .nominee-row { display: grid; grid-template-columns: 1fr 1fr; gap: 0 24px; padding-left: 34px; }
+.cat-card.best-picture .nominee-name { font-size: 1.65rem; }
+.cat-card.best-picture .nominee-row.picked .nominee-name { color: var(--gold); }
+
+/* TOAST */
+.toast {
+  position: fixed; bottom: 32px; left: 50%; transform: translateX(-50%) translateY(16px);
+  background: var(--gold); color: #0A0804;
+  font-family: 'DM Sans', sans-serif; font-size: 0.7rem; font-weight: 700;
+  letter-spacing: 0.15em; text-transform: uppercase; padding: 12px 28px;
+  opacity: 0; transition: opacity 0.3s, transform 0.3s;
+  pointer-events: none; z-index: 9000; white-space: nowrap;
+}
+.toast.show { opacity: 1; transform: translateX(-50%) translateY(0); }
+
+/* FOOTER */
+footer { background: #040302; padding: 32px 80px; border-top: 1px solid var(--border); display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 16px; }
+.footer-left { font-family: 'Cormorant Garamond', serif; font-size: 0.9rem; font-weight: 300; letter-spacing: 0.1em; color: var(--gold); text-transform: uppercase; }
+.footer-right { font-size: 0.75rem; color: var(--text-muted); letter-spacing: 0.1em; }
+.footer-right a { color: var(--text-muted); }
+.footer-right a:hover { color: var(--gold); }
+.color-strip { display: flex; height: 16px; }
+.color-strip div { flex: 1; }
+.fade-up { opacity: 0; transform: translateY(30px); transition: opacity 0.5s ease, transform 0.5s ease; }
+.fade-up.visible { opacity: 1; transform: translateY(0); }
+
+@media(max-width: 768px) {
+  .hero { padding: 80px 24px 48px; }
+  .record-banner { padding: 14px 24px; }
+  .picks-bar { padding: 10px 16px; gap: 10px; }
+  .picks-bar-label { display: none; }
+  .nominees-wrap { padding: 40px 16px; grid-template-columns: 1fr; }
+  footer { padding: 24px; flex-direction: column; }
+  .cat-card.best-picture .nominee-row { grid-template-columns: 1fr; }
+  .shared-banner { padding: 11px 20px; }
+}
+</style>
+</head>
+<body>
+
+<div id="cursor-dot"></div>
+<div id="cursor-ring"></div>
+<canvas id="gold-dust" aria-hidden="true"></canvas>
+<div class="toast" id="toast"></div>
+
+<!-- NAV -->
+<nav class="nav">
+  <a href="index.html" class="nav-brand">A (BRIEF) HISTORY OF EVERYTHING_ <span class="nav-topic">The Oscars</span></a>
+  <div class="nav-right">
+    <button class="theme-btn" id="theme-btn">☀ LIGHT</button>
+  </div>
+</nav>
+
+<!-- SHARED PICKS BANNER -->
+<div class="shared-banner" id="shared-banner">
+  👁 You're viewing someone's picks — click any nominee to make your own
+</div>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-grid"></div>
+  <div class="hero-eyebrow">98th Academy Awards · March 15, 2026</div>
+  <h1 class="hero-title">The<br><em>Nominees</em></h1>
+  <div class="hero-meta">
+    <div class="hero-pill gold">24 Categories</div>
+    <div class="hero-pill">Dolby Theatre · Hollywood</div>
+    <div class="hero-pill">Hosted by Conan O'Brien</div>
+  </div>
+  <div class="hero-actions">
+    <button class="hero-btn" onclick="
+      if(navigator.share){ navigator.share({title:'98th Oscars Nominees 2026',url:window.location.href}); }
+      else { navigator.clipboard.writeText(window.location.href); this.textContent='✓ LINK COPIED'; setTimeout(()=>this.innerHTML='&#8679; SHARE',1800); }
+    ">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><line x1="8.59" y1="13.51" x2="15.42" y2="17.49"/><line x1="15.41" y1="6.51" x2="8.59" y2="10.49"/></svg>
+      SHARE
+    </button>
+    <a class="hero-btn outline" href="index.html">← THE FULL HISTORY</a>
+  </div>
+</section>
+
+<!-- SINNERS RECORD BANNER -->
+<div class="record-banner">
+  <div class="record-banner-num">16</div>
+  <div class="record-banner-text">
+    <strong>Sinners</strong> — a record-breaking 16 nominations, the most in Oscar history. Surpassing the previous record of 14 shared by <em>All About Eve</em> (1950), <em>Titanic</em> (1997), and <em>La La Land</em> (2016). Ryan Coogler's Jim Crow-era vampire epic leads the field.
+  </div>
+</div>
+
+<!-- PICKS PROGRESS BAR -->
+<div class="picks-bar">
+  <span class="picks-bar-label">Your Picks</span>
+  <div class="picks-bar-track"><div class="picks-bar-fill" id="picks-fill"></div></div>
+  <div class="picks-bar-count" id="picks-count">0 / 24</div>
+  <button class="picks-bar-share" id="picks-share-btn" disabled>🔗 Share My Picks</button>
+  <button class="picks-bar-clear" id="picks-clear-btn">✕ Clear</button>
+</div>
+
+<!-- NOMINEES GRID -->
+<div class="nominees-wrap">
+
+  <div class="cat-card best-picture fade-up" data-cat="0">
+    <div class="cat-name">Best Picture</div>
+    <div class="nominee-row" data-idx="0"><div class="nominee-name">Bugonia</div><div class="nominee-film">Ed Guiney, Andrew Lowe, Yorgos Lanthimos, Emma Stone, Lars Knudsen</div></div>
+    <div class="nominee-row" data-idx="1"><div class="nominee-name">F1</div><div class="nominee-film">Chad Oman, Brad Pitt, Dede Gardner, Jeremy Kleiner, Joseph Kosinski, Jerry Bruckheimer</div></div>
+    <div class="nominee-row" data-idx="2"><div class="nominee-name">Frankenstein</div><div class="nominee-film">Guillermo del Toro, J. Miles Dale, Scott Stuber</div></div>
+    <div class="nominee-row" data-idx="3"><div class="nominee-name">Hamnet</div><div class="nominee-film">Liza Marshall, Pippa Harris, Nicolas Gonda, Steven Spielberg, Sam Mendes</div></div>
+    <div class="nominee-row" data-idx="4"><div class="nominee-name">Marty Supreme</div><div class="nominee-film">Eli Bush, Ronald Bronstein, Josh Safdie, Anthony Katagas, Timothée Chalamet</div></div>
+    <div class="nominee-row" data-idx="5"><div class="nominee-name">One Battle after Another</div><div class="nominee-film">Adam Somner, Sara Murphy, Paul Thomas Anderson</div></div>
+    <div class="nominee-row" data-idx="6"><div class="nominee-name">The Secret Agent</div><div class="nominee-film">Emilie Lesclaux</div></div>
+    <div class="nominee-row" data-idx="7"><div class="nominee-name">Sentimental Value</div><div class="nominee-film">Maria Ekerhovd, Andrea Berentsen Ottmar</div></div>
+    <div class="nominee-row" data-idx="8"><div class="nominee-name">Sinners</div><div class="nominee-film">Zinzi Coogler, Sev Ohanian, Ryan Coogler</div></div>
+    <div class="nominee-row" data-idx="9"><div class="nominee-name">Train Dreams</div><div class="nominee-film">Marissa McMahon, Teddy Schwarzman, Will Janowitz, Ashley Schlaifer, Michael Heimler</div></div>
+  </div>
+
+  <div class="cat-card fade-up" data-cat="1">
+    <div class="cat-name">Directing</div>
+    <div class="nominee-row" data-idx="0"><div class="nominee-name">Chloé Zhao</div><div class="nominee-film">Hamnet</div></div>
+    <div class="nominee-row" data-idx="1"><div class="nominee-name">Josh Safdie</div><div class="nominee-film">Marty Supreme</div></div>
+    <div class="nominee-row" data-idx="2"><div class="nominee-name">Paul Thomas Anderson</div><div class="nominee-film">One Battle after Another</div></div>
+    <div class="nominee-row" data-idx="3"><div class="nominee-name">Joachim Trier</div><div class="nominee-film">Sentimental Value</div></div>
+    <div class="nominee-row" data-idx="4"><div class="nominee-name">Ryan Coogler</div><div class="nominee-film">Sinners</div></div>
+  </div>
+
+  <div class="cat-card fade-up" data-cat="2">
+    <div class="cat-name">Actor in a Leading Role</div>
+    <div class="nominee-row" data-idx="0"><div class="nominee-name">Timothée Chalamet</div><div class="nominee-film">Marty Supreme</div></div>
+    <div class="nominee-row" data-idx="1"><div class="nominee-name">Leonardo DiCaprio</div><div class="nominee-film">One Battle after Another</div></div>
+    <div class="nominee-row" data-idx="2"><div class="nominee-name">Ethan Hawke</div><div class="nominee-film">Blue Moon</div></div>
+    <div class="nominee-row" data-idx="3"><div class="nominee-name">Michael B. Jordan</div><div class="nominee-film">Sinners</div></div>
+    <div class="nominee-row" data-idx="4"><div class="nominee-name">Wagner Moura</div><div class="nominee-film">The Secret Agent</div></div>
+  </div>
+
+  <div class="cat-card fade-up" data-cat="3">
+    <div class="cat-name">Actress in a Leading Role</div>
+    <div class="nominee-row" data-idx="0"><div class="nominee-name">Jessie Buckley</div><div class="nominee-film">Hamnet</div></div>
+    <div class="nominee-row" data-idx="1"><div class="nominee-name">Rose Byrne</div><div class="nominee-film">If I Had Legs I'd Kick You</div></div>
+    <div class="nominee-row" data-idx="2"><div class="nominee-name">Kate Hudson</div><div class="nominee-film">Song Sung Blue</div></div>
+    <div class="nominee-row" data-idx="3"><div class="nominee-name">Renate Reinsve</div><div class="nominee-film">Sentimental Value</div></div>
+    <div class="nominee-row" data-idx="4"><div class="nominee-name">Emma Stone</div><div class="nominee-film">Bugonia</div></div>
+  </div>
+
+  <div class="cat-card fade-up" data-cat="4">
+    <div class="cat-name">Actor in a Supporting Role</div>
+    <div class="nominee-row" data-idx="0"><div class="nominee-name">Benicio Del Toro</div><div class="nominee-film">One Battle after Another</div></div>
+    <div class="nominee-row" data-idx="1"><div class="nominee-name">Jacob Elordi</div><div class="nominee-film">Frankenstein</div></div>
+    <div class="nominee-row" data-idx="2"><div class="nominee-name">Delroy Lindo</div><div class="nominee-film">Sinners</div></div>
+    <div class="nominee-row" data-idx="3"><div class="nominee-name">Sean Penn</div><div class="nominee-film">One Battle after Another</div></div>
+    <div class="nominee-row" data-idx="4"><div class="nominee-name">Stellan Skarsgård</div><div class="nominee-film">Sentimental Value</div></div>
+  </div>
+
+  <div class="cat-card fade-up" data-cat="5">
+    <div class="cat-name">Actress in a Supporting Role</div>
+    <div class="nominee-row" data-idx="0"><div class="nominee-name">Elle Fanning</div><div class="nominee-film">Sentimental Value</div></div>
+    <div class="nominee-row" data-idx="1"><div class="nominee-name">Inga Ibsdotter Lilleaas</div><div class="nominee-film">Sentimental Value</div></div>
+    <div class="nominee-row" data-idx="2"><div class="nominee-name">Amy Madigan</div><div class="nominee-film">Weapons</div></div>
+    <div class="nominee-row" data-idx="3"><div class="nominee-name">Wunmi Mosaku</div><div class="nominee-film">Sinners</div></div>
+    <div class="nominee-row" data-idx="4"><div class="nominee-name">Teyana Taylor</div><div class="nominee-film">One Battle after Another</div></div>
+  </div>
+
+  <div class="cat-card fade-up" data-cat="6">
+    <div class="cat-name">Writing — Adapted Screenplay</div>
+    <div class="nominee-row" data-idx="0"><div class="nominee-name">Bugonia</div><div class="nominee-film">Screenplay by Will Tracy</div></div>
+    <div class="nominee-row" data-idx="1"><div class="nominee-name">Frankenstein</div><div class="nominee-film">Written by Guillermo del Toro</div></div>
+    <div class="nominee-row" data-idx="2"><div class="nominee-name">Hamnet</div><div class="nominee-film">Chloé Zhao & Maggie O'Farrell</div></div>
+    <div class="nominee-row" data-idx="3"><div class="nominee-name">One Battle after Another</div><div class="nominee-film">Written by Paul Thomas Anderson</div></div>
+    <div class="nominee-row" data-idx="4"><div class="nominee-name">Train Dreams</div><div class="nominee-film">Clint Bentley & Greg Kwedar</div></div>
+  </div>
+
+  <div class="cat-card fade-up" data-cat="7">
+    <div class="cat-name">Writing — Original Screenplay</div>
+    <div class="nominee-row" data-idx="0"><div class="nominee-name">Blue Moon</div><div class="nominee-film">Written by Robert Kaplow</div></div>
+    <div class="nominee-row" data-idx="1"><div class="nominee-name">It Was Just an Accident</div><div class="nominee-film">Jafar Panahi et al.</div></div>
+    <div class="nominee-row" data-idx="2"><div class="nominee-name">Marty Supreme</div><div class="nominee-film">Ronald Bronstein & Josh Safdie</div></div>
+    <div class="nominee-row" data-idx="3"><div class="nominee-name">Sentimental Value</div><div class="nominee-film">Eskil Vogt, Joachim Trier</div></div>
+    <div class="nominee-row" data-idx="4"><div class="nominee-name">Sinners</div><div class="nominee-film">Written by Ryan Coogler</div></div>
+  </div>
+
+  <div class="cat-card fade-up" data-cat="8">
+    <div class="cat-name">Cinematography</div>
+    <div class="nominee-row" data-idx="0"><div class="nominee-name">Dan Laustsen</div><div class="nominee-film">Frankenstein</div></div>
+    <div class="nominee-row" data-idx="1"><div class="nominee-name">Darius Khondji</div><div class="nominee-film">Marty Supreme</div></div>
+    <div class="nominee-row" data-idx="2"><div class="nominee-name">Michael Bauman</div><div class="nominee-film">One Battle after Another</div></div>
+    <div class="nominee-row" data-idx="3"><div class="nominee-name">Autumn Durald Arkapaw</div><div class="nominee-film">Sinners</div></div>
+    <div class="nominee-row" data-idx="4"><div class="nominee-name">Adolpho Veloso</div><div class="nominee-film">Train Dreams</div></div>
+  </div>
+
+  <div class="cat-card fade-up" data-cat="9">
+    <div class="cat-name">Film Editing</div>
+    <div class="nominee-row" data-idx="0"><div class="nominee-name">Stephen Mirrione</div><div class="nominee-film">F1</div></div>
+    <div class="nominee-row" data-idx="1"><div class="nominee-name">Ronald Bronstein & Josh Safdie</div><div class="nominee-film">Marty Supreme</div></div>
+    <div class="nominee-row" data-idx="2"><div class="nominee-name">Andy Jurgensen</div><div class="nominee-film">One Battle after Another</div></div>
+    <div class="nominee-row" data-idx="3"><div class="nominee-name">Olivier Bugge Coutté</div><div class="nominee-film">Sentimental Value</div></div>
+    <div class="nominee-row" data-idx="4"><div class="nominee-name">Michael P. Shawver</div><div class="nominee-film">Sinners</div></div>
+  </div>
+
+  <div class="cat-card fade-up" data-cat="10">
+    <div class="cat-name">Music — Original Score</div>
+    <div class="nominee-row" data-idx="0"><div class="nominee-name">Jerskin Fendrix</div><div class="nominee-film">Bugonia</div></div>
+    <div class="nominee-row" data-idx="1"><div class="nominee-name">Alexandre Desplat</div><div class="nominee-film">Frankenstein</div></div>
+    <div class="nominee-row" data-idx="2"><div class="nominee-name">Max Richter</div><div class="nominee-film">Hamnet</div></div>
+    <div class="nominee-row" data-idx="3"><div class="nominee-name">Jonny Greenwood</div><div class="nominee-film">One Battle after Another</div></div>
+    <div class="nominee-row" data-idx="4"><div class="nominee-name">Ludwig Göransson</div><div class="nominee-film">Sinners</div></div>
+  </div>
+
+  <div class="cat-card fade-up" data-cat="11">
+    <div class="cat-name">Music — Original Song</div>
+    <div class="nominee-row" data-idx="0"><div class="nominee-name">"Dear Me"</div><div class="nominee-film">Diane Warren: Relentless</div></div>
+    <div class="nominee-row" data-idx="1"><div class="nominee-name">"Golden"</div><div class="nominee-film">KPop Demon Hunters</div></div>
+    <div class="nominee-row" data-idx="2"><div class="nominee-name">"I Lied To You"</div><div class="nominee-film">Sinners</div></div>
+    <div class="nominee-row" data-idx="3"><div class="nominee-name">"Sweet Dreams Of Joy"</div><div class="nominee-film">Viva Verdi!</div></div>
+    <div class="nominee-row" data-idx="4"><div class="nominee-name">"Train Dreams"</div><div class="nominee-film">Nick Cave & Bryce Dessner</div></div>
+  </div>
+
+  <div class="cat-card fade-up" data-cat="12">
+    <div class="cat-name">Production Design</div>
+    <div class="nominee-row" data-idx="0"><div class="nominee-name">Tamara Deverell / Shane Vieau</div><div class="nominee-film">Frankenstein</div></div>
+    <div class="nominee-row" data-idx="1"><div class="nominee-name">Fiona Crombie / Alice Felton</div><div class="nominee-film">Hamnet</div></div>
+    <div class="nominee-row" data-idx="2"><div class="nominee-name">Jack Fisk / Adam Willis</div><div class="nominee-film">Marty Supreme</div></div>
+    <div class="nominee-row" data-idx="3"><div class="nominee-name">Florencia Martin / Anthony Carlino</div><div class="nominee-film">One Battle after Another</div></div>
+    <div class="nominee-row" data-idx="4"><div class="nominee-name">Hannah Beachler / Monique Champagne</div><div class="nominee-film">Sinners</div></div>
+  </div>
+
+  <div class="cat-card fade-up" data-cat="13">
+    <div class="cat-name">Costume Design</div>
+    <div class="nominee-row" data-idx="0"><div class="nominee-name">Deborah L. Scott</div><div class="nominee-film">Avatar: Fire and Ash</div></div>
+    <div class="nominee-row" data-idx="1"><div class="nominee-name">Kate Hawley</div><div class="nominee-film">Frankenstein</div></div>
+    <div class="nominee-row" data-idx="2"><div class="nominee-name">Malgosia Turzanska</div><div class="nominee-film">Hamnet</div></div>
+    <div class="nominee-row" data-idx="3"><div class="nominee-name">Miyako Bellizzi</div><div class="nominee-film">Marty Supreme</div></div>
+    <div class="nominee-row" data-idx="4"><div class="nominee-name">Ruth E. Carter</div><div class="nominee-film">Sinners</div></div>
+  </div>
+
+  <div class="cat-card fade-up" data-cat="14">
+    <div class="cat-name">Makeup and Hairstyling</div>
+    <div class="nominee-row" data-idx="0"><div class="nominee-name">Mike Hill, Jordan Samuel, Cliona Furey</div><div class="nominee-film">Frankenstein</div></div>
+    <div class="nominee-row" data-idx="1"><div class="nominee-name">Kyoko Toyokawa et al.</div><div class="nominee-film">Kokuho</div></div>
+    <div class="nominee-row" data-idx="2"><div class="nominee-name">Ken Diaz, Mike Fontaine, Shunika Terry</div><div class="nominee-film">Sinners</div></div>
+    <div class="nominee-row" data-idx="3"><div class="nominee-name">Kazu Hiro, Glen Griffin, Bjoern Rehbein</div><div class="nominee-film">The Smashing Machine</div></div>
+    <div class="nominee-row" data-idx="4"><div class="nominee-name">Thomas Foldberg, Anne Cathrine Sauerberg</div><div class="nominee-film">The Ugly Stepsister</div></div>
+  </div>
+
+  <div class="cat-card fade-up" data-cat="15">
+    <div class="cat-name">Sound</div>
+    <div class="nominee-row" data-idx="0"><div class="nominee-name">Gareth John et al.</div><div class="nominee-film">F1</div></div>
+    <div class="nominee-row" data-idx="1"><div class="nominee-name">Greg Chapman et al.</div><div class="nominee-film">Frankenstein</div></div>
+    <div class="nominee-row" data-idx="2"><div class="nominee-name">José Antonio García et al.</div><div class="nominee-film">One Battle after Another</div></div>
+    <div class="nominee-row" data-idx="3"><div class="nominee-name">Chris Welcker et al.</div><div class="nominee-film">Sinners</div></div>
+    <div class="nominee-row" data-idx="4"><div class="nominee-name">Amanda Villavieja et al.</div><div class="nominee-film">Sirāt</div></div>
+  </div>
+
+  <div class="cat-card fade-up" data-cat="16">
+    <div class="cat-name">Visual Effects</div>
+    <div class="nominee-row" data-idx="0"><div class="nominee-name">Joe Letteri et al.</div><div class="nominee-film">Avatar: Fire and Ash</div></div>
+    <div class="nominee-row" data-idx="1"><div class="nominee-name">Ryan Tudhope et al.</div><div class="nominee-film">F1</div></div>
+    <div class="nominee-row" data-idx="2"><div class="nominee-name">David Vickery et al.</div><div class="nominee-film">Jurassic World Rebirth</div></div>
+    <div class="nominee-row" data-idx="3"><div class="nominee-name">Charlie Noble et al.</div><div class="nominee-film">The Lost Bus</div></div>
+    <div class="nominee-row" data-idx="4"><div class="nominee-name">Michael Ralla et al.</div><div class="nominee-film">Sinners</div></div>
+  </div>
+
+  <div class="cat-card fade-up" data-cat="17">
+    <div class="cat-name">Animated Feature Film</div>
+    <div class="nominee-row" data-idx="0"><div class="nominee-name">Arco</div><div class="nominee-film">Bienvenu, de Givry, Mas, Portman</div></div>
+    <div class="nominee-row" data-idx="1"><div class="nominee-name">Elio</div><div class="nominee-film">Sharafian, Shi, Molina, Drumm</div></div>
+    <div class="nominee-row" data-idx="2"><div class="nominee-name">KPop Demon Hunters</div><div class="nominee-film">Kang, Appelhans, Wong</div></div>
+    <div class="nominee-row" data-idx="3"><div class="nominee-name">Little Amélie or the Character of Rain</div><div class="nominee-film">Vallade, Han, Santiago, Magalon</div></div>
+    <div class="nominee-row" data-idx="4"><div class="nominee-name">Zootopia 2</div><div class="nominee-film">Bush, Howard, Merino</div></div>
+  </div>
+
+  <div class="cat-card fade-up" data-cat="18">
+    <div class="cat-name">International Feature Film</div>
+    <div class="nominee-row" data-idx="0"><div class="nominee-name">The Secret Agent</div><div class="nominee-film">Brazil</div></div>
+    <div class="nominee-row" data-idx="1"><div class="nominee-name">It Was Just an Accident</div><div class="nominee-film">France</div></div>
+    <div class="nominee-row" data-idx="2"><div class="nominee-name">Sentimental Value</div><div class="nominee-film">Norway</div></div>
+    <div class="nominee-row" data-idx="3"><div class="nominee-name">Sirāt</div><div class="nominee-film">Spain</div></div>
+    <div class="nominee-row" data-idx="4"><div class="nominee-name">The Voice of Hind Rajab</div><div class="nominee-film">Tunisia</div></div>
+  </div>
+
+  <div class="cat-card fade-up" data-cat="19">
+    <div class="cat-name">Documentary Feature Film</div>
+    <div class="nominee-row" data-idx="0"><div class="nominee-name">The Alabama Solution</div><div class="nominee-film">Andrew Jarecki, Charlotte Kaufman</div></div>
+    <div class="nominee-row" data-idx="1"><div class="nominee-name">Come See Me in the Good Light</div><div class="nominee-film">Ryan White, Jessica Hargrave et al.</div></div>
+    <div class="nominee-row" data-idx="2"><div class="nominee-name">Cutting through Rocks</div><div class="nominee-film">Sara Khaki, Mohammadreza Eyni</div></div>
+    <div class="nominee-row" data-idx="3"><div class="nominee-name">Mr. Nobody against Putin</div><div class="nominee-film">David Borenstein et al.</div></div>
+    <div class="nominee-row" data-idx="4"><div class="nominee-name">The Perfect Neighbor</div><div class="nominee-film">Geeta Gandbhir et al.</div></div>
+  </div>
+
+  <div class="cat-card fade-up" data-cat="20">
+    <div class="cat-name">Casting ★ New Category</div>
+    <div class="nominee-row" data-idx="0"><div class="nominee-name">Nina Gold</div><div class="nominee-film">Hamnet</div></div>
+    <div class="nominee-row" data-idx="1"><div class="nominee-name">Jennifer Venditti</div><div class="nominee-film">Marty Supreme</div></div>
+    <div class="nominee-row" data-idx="2"><div class="nominee-name">Cassandra Kulukundis</div><div class="nominee-film">One Battle after Another</div></div>
+    <div class="nominee-row" data-idx="3"><div class="nominee-name">Gabriel Domingues</div><div class="nominee-film">The Secret Agent</div></div>
+    <div class="nominee-row" data-idx="4"><div class="nominee-name">Francine Maisler</div><div class="nominee-film">Sinners</div></div>
+  </div>
+
+  <div class="cat-card fade-up" data-cat="21">
+    <div class="cat-name">Animated Short Film</div>
+    <div class="nominee-row" data-idx="0"><div class="nominee-name">Butterfly</div><div class="nominee-film">Florence Miailhe, Ron Dyens</div></div>
+    <div class="nominee-row" data-idx="1"><div class="nominee-name">Forevergreen</div><div class="nominee-film">Nathan Engelhardt, Jeremy Spears</div></div>
+    <div class="nominee-row" data-idx="2"><div class="nominee-name">The Girl Who Cried Pearls</div><div class="nominee-film">Chris Lavis, Maciek Szczerbowski</div></div>
+    <div class="nominee-row" data-idx="3"><div class="nominee-name">Retirement Plan</div><div class="nominee-film">John Kelly, Andrew Freedman</div></div>
+    <div class="nominee-row" data-idx="4"><div class="nominee-name">The Three Sisters</div><div class="nominee-film">Konstantin Bronzit</div></div>
+  </div>
+
+  <div class="cat-card fade-up" data-cat="22">
+    <div class="cat-name">Live Action Short Film</div>
+    <div class="nominee-row" data-idx="0"><div class="nominee-name">Butcher's Stain</div><div class="nominee-film">Meyer Levinson-Blount, Oron Caspi</div></div>
+    <div class="nominee-row" data-idx="1"><div class="nominee-name">A Friend of Dorothy</div><div class="nominee-film">Lee Knight, James Dean</div></div>
+    <div class="nominee-row" data-idx="2"><div class="nominee-name">Jane Austen's Period Drama</div><div class="nominee-film">Julia Aks, Steve Pinder</div></div>
+    <div class="nominee-row" data-idx="3"><div class="nominee-name">The Singers</div><div class="nominee-film">Sam A. Davis, Jack Piatt</div></div>
+    <div class="nominee-row" data-idx="4"><div class="nominee-name">Two People Exchanging Saliva</div><div class="nominee-film">Alexandre Singh, Natalie Musteata</div></div>
+  </div>
+
+  <div class="cat-card fade-up" data-cat="23">
+    <div class="cat-name">Documentary Short Film</div>
+    <div class="nominee-row" data-idx="0"><div class="nominee-name">All the Empty Rooms</div><div class="nominee-film">Joshua Seftel, Conall Jones</div></div>
+    <div class="nominee-row" data-idx="1"><div class="nominee-name">Armed Only with a Camera</div><div class="nominee-film">Craig Renaud, Juan Arredondo</div></div>
+    <div class="nominee-row" data-idx="2"><div class="nominee-name">Children No More</div><div class="nominee-film">Hilla Medalia, Sheila Nevins</div></div>
+    <div class="nominee-row" data-idx="3"><div class="nominee-name">The Devil Is Busy</div><div class="nominee-film">Christalyn Hampton, Geeta Gandbhir</div></div>
+    <div class="nominee-row" data-idx="4"><div class="nominee-name">Perfectly a Strangeness</div><div class="nominee-film">Alison McAlpine</div></div>
+  </div>
+
+</div>
+
+<!-- COLOR STRIP -->
+<div class="color-strip">
+  <div style="background:#C9A84C"></div><div style="background:#8B1A2C"></div>
+  <div style="background:#E8C96A"></div><div style="background:#4A3020"></div>
+  <div style="background:#D4A0A8"></div><div style="background:#1C1610"></div>
+  <div style="background:#F5E4A8"></div><div style="background:#8B6914"></div>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-left">98th Academy Awards · March 15, 2026</div>
+  <div class="footer-right">
+    <a href="index.html">← A (Brief) History of The Oscars_</a> &nbsp;·&nbsp;
+    <a href="https://abriefhistoryofeverything.com">abriefhistoryofeverything.com</a> &nbsp;·&nbsp;
+    © 2026
+  </div>
+</footer>
+
+<script>
+(function(){
+
+  /* THEME */
+  const themeBtn = document.getElementById('theme-btn');
+  themeBtn.addEventListener('click', function(){
+    const d = document.documentElement;
+    if(d.dataset.theme === 'dark'){ d.dataset.theme = 'light'; themeBtn.textContent = '◑ DARK'; }
+    else { d.dataset.theme = 'dark'; themeBtn.textContent = '☀ LIGHT'; }
+  });
+
+  /* CURSOR */
+  const isTouch = ('ontouchstart' in window)||(navigator.maxTouchPoints > 0);
+  const dot = document.getElementById('cursor-dot');
+  const ring = document.getElementById('cursor-ring');
+  if(isTouch){ dot.style.display='none'; ring.style.display='none'; document.body.style.cursor='auto'; }
+  else { document.addEventListener('mousemove',function(e){ dot.style.left=e.clientX+'px'; dot.style.top=e.clientY+'px'; ring.style.left=e.clientX+'px'; ring.style.top=e.clientY+'px'; }); }
+
+  /* FADE UP */
+  const fadeEls = document.querySelectorAll('.fade-up');
+  if('IntersectionObserver' in window){
+    const obs = new IntersectionObserver(function(entries){
+      entries.forEach(function(entry,i){ if(entry.isIntersecting){ setTimeout(function(){ entry.target.classList.add('visible'); },i*40); obs.unobserve(entry.target); } });
+    },{threshold:0.05});
+    fadeEls.forEach(function(el){ obs.observe(el); });
+  } else { fadeEls.forEach(function(el){ el.classList.add('visible'); }); }
+
+  /* PICKS SYSTEM */
+  const NUM_CATS = 24;
+  const picks = new Array(NUM_CATS).fill(-1);
+  const fillEl = document.getElementById('picks-fill');
+  const countEl = document.getElementById('picks-count');
+  const shareBtn = document.getElementById('picks-share-btn');
+  const clearBtn = document.getElementById('picks-clear-btn');
+  const toast = document.getElementById('toast');
+  const sharedBanner = document.getElementById('shared-banner');
+
+  function showToast(msg){
+    toast.textContent = msg; toast.classList.add('show');
+    setTimeout(function(){ toast.classList.remove('show'); }, 2400);
+  }
+
+  function updateBar(){
+    const count = picks.filter(function(p){ return p !== -1; }).length;
+    fillEl.style.width = (count/NUM_CATS*100)+'%';
+    countEl.textContent = count+' / '+NUM_CATS;
+    shareBtn.disabled = count === 0;
+    shareBtn.textContent = count === NUM_CATS ? '🏆 Share My Picks' : '🔗 Share My Picks';
+  }
+
+  function applyPicksToDOM(){
+    document.querySelectorAll('.cat-card').forEach(function(card){
+      const catIdx = parseInt(card.dataset.cat);
+      card.querySelectorAll('.nominee-row').forEach(function(row){
+        row.classList.toggle('picked', picks[catIdx] === parseInt(row.dataset.idx));
+      });
+    });
+    updateBar();
+  }
+
+  document.querySelectorAll('.nominee-row').forEach(function(row){
+    row.addEventListener('click', function(){
+      const catIdx = parseInt(row.closest('.cat-card').dataset.cat);
+      const nomIdx = parseInt(row.dataset.idx);
+      picks[catIdx] = picks[catIdx] === nomIdx ? -1 : nomIdx;
+      applyPicksToDOM();
+      // Hide shared banner once user starts making their own picks
+      sharedBanner.classList.remove('visible');
+      if(picks.filter(function(p){ return p !== -1; }).length === NUM_CATS){
+        showToast('🏆 All 24 picks locked in!');
+      }
+    });
+  });
+
+  function encodePicks(){ return picks.map(function(p){ return p===-1?'x':String(p); }).join('.'); }
+  function decodePicks(str){
+    const parts = str.split('.');
+    if(parts.length !== NUM_CATS) return false;
+    parts.forEach(function(v,i){ picks[i] = v==='x' ? -1 : parseInt(v); });
+    return true;
+  }
+
+  shareBtn.addEventListener('click', function(){
+    const url = window.location.origin + '/picks.html' + '?picks=' + encodePicks();
+    if(navigator.share){ navigator.share({title:'My 98th Oscars Picks',url:url}); }
+    else { navigator.clipboard.writeText(url).then(function(){ showToast('✓ Picks link copied!'); }); }
+  });
+
+  clearBtn.addEventListener('click', function(){
+    picks.fill(-1); applyPicksToDOM();
+    window.history.replaceState({}, '', window.location.origin + window.location.pathname);
+    showToast('Picks cleared');
+  });
+
+  /* Load from URL */
+  const params = new URLSearchParams(window.location.search);
+  if(params.has('picks') && decodePicks(params.get('picks'))){
+    applyPicksToDOM();
+    sharedBanner.classList.add('visible');
+  } else { updateBar(); }
+
+  /* GOLD DUST */
+  (function(){
+    const canvas = document.getElementById('gold-dust');
+    const ctx = canvas.getContext('2d');
+    let W, H;
+    function resize(){ W=canvas.width=window.innerWidth; H=canvas.height=window.innerHeight; }
+    resize(); window.addEventListener('resize',resize,{passive:true});
+    const SHADES=['#C9A84C','#E8C96A','#F5E4A8','#D4A820','#FFD700'];
+    const particles=[];
+    for(let i=0;i<72;i++) particles.push({x:Math.random()*window.innerWidth,y:Math.random()*window.innerHeight,r:Math.random()*2.5+0.8,color:SHADES[Math.floor(Math.random()*SHADES.length)],speed:Math.random()*0.4+0.15,drift:(Math.random()-0.5)*0.3,wobble:Math.random()*Math.PI*2,wobbleSpeed:Math.random()*0.008+0.003,alpha:Math.random()*0.5+0.35,spin:(Math.random()-0.5)*0.04,angle:Math.random()*Math.PI*2});
+    function draw(){
+      ctx.clearRect(0,0,W,H);
+      particles.forEach(function(p){ p.wobble+=p.wobbleSpeed; p.angle+=p.spin; p.x+=p.drift+Math.sin(p.wobble)*0.4; p.y+=p.speed; if(p.y>H+4)p.y=-4; if(p.x>W+4)p.x=-4; if(p.x<-4)p.x=W+4; ctx.save(); ctx.globalAlpha=p.alpha; ctx.translate(p.x,p.y); ctx.rotate(p.angle); ctx.fillStyle=p.color; ctx.beginPath(); ctx.moveTo(0,-p.r); ctx.lineTo(p.r*0.6,0); ctx.lineTo(0,p.r); ctx.lineTo(-p.r*0.6,0); ctx.closePath(); ctx.fill(); ctx.restore(); });
+      requestAnimationFrame(draw);
+    }
+    draw();
+  })();
+
+})();
+</script>
+</body>
+</html>
