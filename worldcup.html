@@ -64,6 +64,7 @@ body {
   font-family: var(--body);
   overflow-x: hidden;
   line-height: 1.5;
+  padding-top: 76px;
   padding-bottom: env(safe-area-inset-bottom, 0);
 }
 a { color: inherit; text-decoration: none; }
@@ -105,7 +106,7 @@ img { display: block; max-width: 100%; }
 ═══════════════════════════════════════════ */
 .ticker {
   position: fixed; top: 0; left: 0; right: 0; z-index: 900;
-  height: 32px;
+  height: 26px;
   background: var(--green);
   overflow: hidden;
   display: flex; align-items: center;
@@ -136,10 +137,24 @@ img { display: block; max-width: 100%; }
    NAV
 ═══════════════════════════════════════════ */
 .nav {
-  position: sticky; top: 32px; z-index: 850;
+  position: fixed; top: 26px; left: 0; right: 0; z-index: 850;
+  height: 50px;
   background: var(--cream);
   border-bottom: 2px solid var(--green);
   display: flex; align-items: stretch;
+}
+.nav-index-box {
+  width: 52px;
+  min-width: 52px;
+  height: 50px;
+  display: flex; align-items: center; justify-content: center;
+  background: var(--gold);
+  color: #000;
+  font-family: var(--mono, monospace);
+  font-size: 0.78rem;
+  font-weight: 800;
+  letter-spacing: 0.12em;
+  flex-shrink: 0;
 }
 .nav-brand {
   display: flex; align-items: center;
@@ -804,7 +819,7 @@ blockquote em { color: var(--green); font-style: normal; }
   background: var(--green-lt);
   padding: .9rem 3rem 3rem;
   display: flex; align-items: center; justify-content: space-between;
-  font-family: var(--mono); font-size: .78rem;
+  font-family: var(--mono); font-size: 0.82rem;
   letter-spacing: .15em; text-transform: uppercase;
   color: var(--green);
   flex-wrap: wrap; gap: .5rem;
@@ -815,7 +830,7 @@ blockquote em { color: var(--green); font-style: normal; }
 }
 @media (max-width: 600px) { .footer-bar-links { justify-content: center; } }
 .footer-share-link {
-  font-family: var(--mono); font-size: .78rem;
+  font-family: var(--mono); font-size: 0.82rem;
   letter-spacing: .15em; text-transform: uppercase;
   color: var(--dim); text-decoration: none;
   transition: color .2s; padding: .1rem 0;
@@ -969,15 +984,7 @@ blockquote em { color: var(--green); font-style: normal; }
 .share-dropdown a:last-child { border-bottom: none; }
 .share-dropdown a:hover { color: var(--gold-lt); background: rgba(255,255,255,.06); }
 
-/* Chronological index */
-.hero-index {
-  font-family: var(--mono); font-size: .78rem;
-  letter-spacing: .25em; text-transform: uppercase;
-  color: rgba(255,255,255,.35); text-align: left; line-height: 2;
-  position: relative; z-index: 2;
-  margin-bottom: auto;
-}
-.hero-index span { color: var(--gold); font-size: .9rem; font-weight: 700; }
+
 
 </style>
 </head>
@@ -996,6 +1003,7 @@ blockquote em { color: var(--green); font-style: normal; }
 
 <!-- ══ NAV ══ -->
 <nav class="nav" id="mainNav">
+  <div class="nav-index-box">005</div>
   <div class="nav-brand">
     <a href="https://abriefhistoryofeverything.com" class="nav-logo" style="text-decoration:none;">
       <span class="brand-full">A (BRIEF) HISTORY OF EVERYTHING_</span><span class="brand-short">A (BRIEF) HISTORY OF_</span><span>THE WORLD CUP</span>
@@ -1016,7 +1024,6 @@ blockquote em { color: var(--green); font-style: normal; }
 <!-- ══ HERO ══ -->
 <section class="hero" id="era1">
   <div class="hero-left">
-    <div class="hero-index">CHRONOLOGICAL INDEX <span>004</span></div>
     <div class="hero-eyebrow fi">Since 1930 · 22 Editions · 8 Champions</div>
     <h1 class="hero-h1 fi">A (Brief)<br>History<br>of the<br><em>World Cup</em></h1>
     <div class="hero-sub fi">Football's Greatest Stage</div>
@@ -1613,7 +1620,7 @@ blockquote em { color: var(--green); font-style: normal; }
   <div style="background:#0055EE; flex:1;"></div>
   <div style="background:#39E07A; flex:1;"></div>
   <div style="background:#FF5C20; flex:1;"></div>
-  <div style="background:rgba(255,255,255,.15); flex:5;"></div>
+  <div style="background:var(--rule2); flex:5;"></div>
 </div>
 
 <footer class="footer">
