@@ -836,36 +836,12 @@ br.desk-br{display:block;}
     </div>
   </div>
 
-  <!-- ENTITY TAGS — from the AI + Internet guide aesthetic -->
+  <!-- ENTITY TAGS — rendered by JS from GUIDES registry -->
   <div class="entity-section fi">
     <div class="entity-head">Entity Index</div>
     <div class="entity-title">Subjects Covered_</div>
     <div class="entity-sub">Across all guides · Click to explore</div>
-    <div class="entity-tags">
-      <a class="etag" href="ai.html" style="color:#00D4F0;border-color:#00D4F020;">ARTIFICIAL INTELLIGENCE</a>
-      <a class="etag" href="ai.html" style="color:#00D4F0;border-color:#00D4F020;">TURING TEST</a>
-      <a class="etag" href="ai.html" style="color:#00D4F0;border-color:#00D4F020;">DEEP LEARNING</a>
-      <a class="etag" href="ai.html" style="color:#00D4F0;border-color:#00D4F020;">CHATGPT</a>
-      <a class="etag" href="ai.html" style="color:#00D4F0;border-color:#00D4F020;">TRANSFORMERS</a>
-      <a class="etag" href="internet.html" style="color:#00CFFF;border-color:#00CFFF20;">ARPANET</a>
-      <a class="etag" href="internet.html" style="color:#00CFFF;border-color:#00CFFF20;">TIM BERNERS-LEE</a>
-      <a class="etag" href="internet.html" style="color:#00CFFF;border-color:#00CFFF20;">DOT-COM BUBBLE</a>
-      <a class="etag" href="internet.html" style="color:#00CFFF;border-color:#00CFFF20;">SOCIAL MEDIA</a>
-      <a class="etag" href="internet.html" style="color:#39FFB0;border-color:#39FFB020;">WEB 2.0</a>
-      <a class="etag" href="crypto.html" style="color:#39FF14;border-color:#39FF1420;">BITCOIN</a>
-      <a class="etag" href="crypto.html" style="color:#39FF14;border-color:#39FF1420;">SATOSHI</a>
-      <a class="etag" href="crypto.html" style="color:#39FF14;border-color:#39FF1420;">BLOCKCHAIN</a>
-      <a class="etag" href="crypto.html" style="color:#39FF14;border-color:#39FF1420;">DEFI</a>
-      <a class="etag" href="crypto.html" style="color:#39FF14;border-color:#39FF1420;">NFTS</a>
-      <a class="etag" href="https://www.abriefhistoryoftheoscars.com" style="color:#C9A84C;border-color:#C9A84C20;">ACADEMY AWARDS</a>
-      <a class="etag" href="https://www.abriefhistoryoftheoscars.com" style="color:#C9A84C;border-color:#C9A84C20;">BEST PICTURE</a>
-      <a class="etag" href="https://www.abriefhistoryoftheoscars.com" style="color:#C9A84C;border-color:#C9A84C20;">OSCARSSOWHITE</a>
-      <a class="etag" href="https://www.abriefhistoryoftheoscars.com" style="color:#C9A84C;border-color:#C9A84C20;">ENVELOPEGATE</a>
-      <a class="etag" href="worldcup.html" style="color:#39E07A;border-color:#39E07A20;">FIFA</a>
-      <a class="etag" href="worldcup.html" style="color:#39E07A;border-color:#39E07A20;">BRAZIL 1970</a>
-      <a class="etag" href="worldcup.html" style="color:#39E07A;border-color:#39E07A20;">HAND OF GOD</a>
-      <a class="etag" href="worldcup.html" style="color:#39E07A;border-color:#39E07A20;">FRANCE 1998</a>
-    </div>
+    <div class="entity-tags" id="entity-tags"></div>
   </div>
 
   <!-- MANIFESTO -->
@@ -1006,79 +982,157 @@ br.desk-br{display:block;}
 
   /* ── 2. DOM GHOST WORD SYSTEM ── */
   const container = document.getElementById('hero-ghost');
-  // Words drawn from real guide content — each guide has its own vocabulary.
-  // Most recent guide (AI Agents, 008) is weighted 3×.
-  // Each new guide added here will flow into the hero automatically.
-  const GUIDE_WORDS = {
 
-    // 001 — A (Brief) History of AI
-    ai: [
-      'Turing','ELIZA','Transformer','Attention',
-      'Backprop','AlexNet','GPT','BERT',
-      'ChatGPT','Claude','Gemini','Grok',
-      'Midjourney','Diffusion','RLHF','Alignment',
-      'Hallucination','Emergence','Scale','Fine-tuning',
-      'Anthropic','OpenAI','DeepMind','Intelligence',
-    ],
+  /* ═══════════════════════════════════════════════════════
+     GUIDES REGISTRY
+     Single source of truth for every guide on the site.
+     Add a new guide here — hero words + entity tags both update automatically.
 
-    // 002 — A (Brief) History of Crypto
-    crypto: [
-      'Bitcoin','Satoshi','Blockchain','Genesis',
-      'Nakamoto','Ethereum','Solidity','DeFi',
-      'NFT','Wallet','Hash','Proof-of-Work',
-      'Mt. Gox','Vitalik','DAO','Stablecoin',
-      'Halving','Ledger','Fork','Web3',
-    ],
-
-    // 003 — A (Brief) History of the Internet
-    internet: [
-      'ARPANET','Mosaic','Netscape','TCP/IP',
-      'Berners-Lee','Hyperlink','Search','Google',
-      'PageRank','Broadband','Web 2.0','Platform',
-      'Algorithm','Feed','Surveillance','Protocol',
-      'Dot-com','Browser','Social','Stream',
-    ],
-
-    // 004 — A (Brief) History of the World Cup
-    worldcup: [
-      'Pelé','Maradona','Zidane','Ronaldo',
-      'Uruguay','Brazil','Germany','Argentina',
-      'Wembley','Azteca','Jabulani','VAR',
-      'Hand of God','Golden Boot','Jules Rimet','Offside',
-      'Penalty','Extra Time','Group Stage','Final',
-    ],
-
-    // 005 — A (Brief) History of the Oscars
-    oscars: [
-      'Academy','Goldwyn','Selznick','Hitchcock',
-      'Streep','Brando','Davis','Poitier',
-      'Parasite','Moonlight','Envelope','Boycott',
-      '#OscarsSoWhite','Ceremony','Statuette','Nomination',
-      'Best Picture','Director','Score','Screenplay',
-    ],
-
-    // 008 — A (Brief) History of AI Agents (most recent — weighted 3×)
-    aiAgents: [
-      'ChatGPT','Claude','Gemini','Grok',
-      'Midjourney','Transformer','RLHF','Agentic',
-      'Multimodal','Constitutional','Autonomous','Reasoning',
-      'Context','Token','Prompt','Inference',
-      'Vaswani','Hinton','Sutskever','Altman',
-      'ELIZA','AlexNet','GPT-4','Llama',
-      'Diffusion','Alignment','Safety','Emergence',
-    ],
-  };
-
-  // All guides 1×, most recent guide (AI Agents) 2× — variety with a lean
-  const WORDS = [
-    ...GUIDE_WORDS.ai,
-    ...GUIDE_WORDS.crypto,
-    ...GUIDE_WORDS.internet,
-    ...GUIDE_WORDS.worldcup,
-    ...GUIDE_WORDS.oscars,
-    ...GUIDE_WORDS.aiAgents,  // 1× with everyone else
-    ...GUIDE_WORDS.aiAgents,  // 2× — most recent gets the lean
+     To add a new guide:
+     1. Copy any existing entry below
+     2. Fill in: id, title, url, color, tags, words
+     3. Set mostRecent: true on the newest guide (set others to false)
+     That's it. Nothing else to change.
+  ═══════════════════════════════════════════════════════ */
+  const GUIDES = [
+    {
+      id: 'ai',
+      title: 'A (Brief) History of AI',
+      url: 'ai.html',
+      color: '#00D4F0',
+      mostRecent: false,
+      tags: [
+        'Artificial Intelligence','Turing Test','Deep Learning','ChatGPT','Transformers',
+      ],
+      words: [
+        'Turing','ELIZA','Transformer','Attention',
+        'Backprop','AlexNet','GPT','BERT',
+        'ChatGPT','Claude','Gemini','Grok',
+        'Midjourney','Diffusion','RLHF','Alignment',
+        'Hallucination','Emergence','Scale','Fine-tuning',
+        'Anthropic','OpenAI','DeepMind','Intelligence',
+      ],
+    },
+    {
+      id: 'crypto',
+      title: 'A (Brief) History of Crypto',
+      url: 'crypto.html',
+      color: '#39FF14',
+      mostRecent: false,
+      tags: [
+        'Bitcoin','Satoshi','Blockchain','DeFi','NFTs',
+      ],
+      words: [
+        'Bitcoin','Satoshi','Blockchain','Genesis',
+        'Nakamoto','Ethereum','Solidity','DeFi',
+        'NFT','Wallet','Hash','Proof-of-Work',
+        'Mt. Gox','Vitalik','DAO','Stablecoin',
+        'Halving','Ledger','Fork','Web3',
+      ],
+    },
+    {
+      id: 'internet',
+      title: 'A (Brief) History of the Internet',
+      url: 'internet.html',
+      color: '#00CFFF',
+      mostRecent: false,
+      tags: [
+        'ARPANET','Tim Berners-Lee','Dot-com Bubble','Social Media','Web 2.0',
+      ],
+      words: [
+        'ARPANET','Mosaic','Netscape','TCP/IP',
+        'Berners-Lee','Hyperlink','Search','Google',
+        'PageRank','Broadband','Web 2.0','Platform',
+        'Algorithm','Feed','Surveillance','Protocol',
+        'Dot-com','Browser','Social','Stream',
+      ],
+    },
+    {
+      id: 'worldcup',
+      title: 'A (Brief) History of the World Cup',
+      url: 'worldcup.html',
+      color: '#39E07A',
+      mostRecent: false,
+      tags: [
+        'FIFA','Jules Rimet','Hand of God','Brazil 1970','France 1998',
+      ],
+      words: [
+        'Pelé','Maradona','Zidane','Ronaldo',
+        'Uruguay','Brazil','Germany','Argentina',
+        'Wembley','Azteca','Jabulani','VAR',
+        'Hand of God','Golden Boot','Jules Rimet','Offside',
+        'Penalty','Extra Time','Group Stage','Final',
+      ],
+    },
+    {
+      id: 'oscars',
+      title: 'A (Brief) History of the Oscars',
+      url: 'https://www.abriefhistoryoftheoscars.com',
+      color: '#C9A84C',
+      mostRecent: false,
+      tags: [
+        'Academy Awards','Best Picture','#OscarsSoWhite','Envelopegate','Parasite',
+      ],
+      words: [
+        'Academy','Goldwyn','Selznick','Hitchcock',
+        'Streep','Brando','Davis','Poitier',
+        'Parasite','Moonlight','Envelope','Boycott',
+        '#OscarsSoWhite','Ceremony','Statuette','Nomination',
+        'Best Picture','Director','Score','Screenplay',
+      ],
+    },
+    {
+      id: 'aiAgents',
+      title: 'A (Brief) History of AI Agents',
+      url: 'aiagents.html',
+      color: '#BF7FFF',
+      mostRecent: true,  // ← set this to true on the newest guide
+      tags: [
+        'ChatGPT','Claude','Gemini','Agentic AI','Constitutional AI',
+        'Multimodal','RLHF','Transformer','Midjourney','GPT-4',
+      ],
+      words: [
+        'ChatGPT','Claude','Gemini','Grok',
+        'Midjourney','Transformer','RLHF','Agentic',
+        'Multimodal','Constitutional','Autonomous','Reasoning',
+        'Context','Token','Prompt','Inference',
+        'Vaswani','Hinton','Sutskever','Altman',
+        'ELIZA','AlexNet','GPT-4','Llama',
+        'Diffusion','Alignment','Safety','Emergence',
+      ],
+    },
+    // ── ADD NEW GUIDES HERE ──────────────────────────────
+    // {
+    //   id: 'starwars',
+    //   title: 'A (Brief) History of Star Wars',
+    //   url: 'starwars.html',
+    //   color: '#FFD700',
+    //   mostRecent: true,   ← make this true, set previous to false
+    //   tags: ['ILM','George Lucas','The Force','Merchandise','Blockbuster'],
+    //   words: ['Lucas','Skywalker','Empire','Force','ILM','Merchandise',...],
+    // },
   ];
+
+  /* ── Build hero word pool from registry ── */
+  const WORDS = GUIDES.flatMap(g =>
+    g.mostRecent ? [...g.words, ...g.words] : g.words
+  );
+
+  /* ── Render entity tags from registry ── */
+  const tagContainer = document.getElementById('entity-tags');
+  if(tagContainer){
+    GUIDES.forEach(guide => {
+      guide.tags.forEach(tag => {
+        const a = document.createElement('a');
+        a.className = 'etag';
+        a.href = guide.url;
+        a.textContent = tag.toUpperCase();
+        a.style.color = guide.color;
+        a.style.borderColor = guide.color + '20';
+        tagContainer.appendChild(a);
+      });
+    });
+  }
   const WORD_COLORS = [
     'rgba(0,212,240,1)',
     'rgba(242,239,233,1)',
