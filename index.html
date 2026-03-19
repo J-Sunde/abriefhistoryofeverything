@@ -84,40 +84,80 @@ nav.solid{background:rgba(10,10,10,.96);border-bottom:1px solid var(--rule);}
 }
 .nav-badge span{color:#00D4F0;}
 
-/* ═══ HERO ═══ */
+/* ═══ HERO — Ambient Spatial Field ═══ */
 .hero{
   position:relative;
-  height:100vh;min-height:580px;max-height:860px;
+  height:100vh;min-height:580px;max-height:900px;
   display:flex;align-items:flex-end;
   overflow:hidden;
-}
-.hero-img{
-  position:absolute;inset:0;z-index:0;
   background:#07090C;
 }
-.hero-img img{
+
+/* ── Hero canvas layer — JS art engine drives orbs + words ── */
+.hero-field{
+  position:absolute;inset:0;z-index:0;
+  pointer-events:none;
+  overflow:hidden;
+}
+#hero-canvas{
+  position:absolute;inset:0;
   width:100%;height:100%;
-  object-fit:cover;object-position:center 20%;
-  filter:brightness(.55) saturate(.9);
   display:block;
 }
-/* gradient overlay — left text readable, right image visible */
-.hero-overlay{
-  position:absolute;inset:0;z-index:1;
-  background:
-    linear-gradient(to right, rgba(7,9,12,.95) 0%, rgba(7,9,12,.7) 35%, rgba(7,9,12,.15) 65%, transparent 100%),
-    linear-gradient(to top, rgba(7,9,12,.9) 0%, rgba(7,9,12,.3) 30%, transparent 60%);
+/* ── Left vignette — keeps text readable ── */
+.hero-vignette{
+  position:absolute;inset:0;z-index:3;
+  pointer-events:none;
+  background:linear-gradient(to right, rgba(10,10,10,.82) 0%, rgba(10,10,10,.35) 42%, transparent 72%);
 }
+/* ── Ghost type layer — JS-spawned DOM words ── */
+.hero-ghost-text{
+  position:absolute;inset:0;z-index:2;
+  pointer-events:none;
+  overflow:hidden;
+}
+
+/* ── Noise grain ── */
+.hero-noise{
+  position:absolute;inset:0;z-index:1;
+  pointer-events:none;opacity:.055;
+  background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  background-size:180px 180px;
+}
+/* ── Fade-from-bottom ── */
+.hero-fade{
+  position:absolute;bottom:0;left:0;right:0;z-index:4;
+  height:260px;
+  background:linear-gradient(to top, var(--bg) 0%, rgba(10,10,10,.5) 55%, transparent 100%);
+  pointer-events:none;
+}
+
 .hero-content{
-  position:relative;z-index:2;
+  position:relative;z-index:4;
   padding:0 2.5rem 3.5rem;
   max-width:620px;
 }
+/* hero entrance animations */
+@keyframes heroRise{
+  from{opacity:0;transform:translateY(28px);}
+  to  {opacity:1;transform:translateY(0);}
+}
+.hero-content .hero-title{
+  opacity:0;animation:heroRise 1.3s cubic-bezier(.16,1,.3,1) .3s forwards;
+}
+.hero-content .hero-desc{
+  opacity:0;animation:heroRise 1.2s cubic-bezier(.16,1,.3,1) .6s forwards;
+}
+.hero-content .hero-actions{
+  opacity:0;animation:heroRise 1.1s cubic-bezier(.16,1,.3,1) .9s forwards;
+}
+
 .hero-eyebrow{
   font-family:var(--mono);font-size:.52rem;letter-spacing:.3em;
   text-transform:uppercase;color:#00D4F0;
   margin-bottom:.9rem;
   display:flex;align-items:center;gap:.6rem;
+  opacity:0;animation:heroRise 1s cubic-bezier(.16,1,.3,1) .1s forwards;
 }
 .hero-dot{
   width:7px;height:7px;border-radius:50%;
@@ -645,14 +685,26 @@ footer{
   </div>
 </nav>
 
-<!-- HERO — AI guide photo as hero backdrop -->
+<!-- HERO — Conceptual Art Field / Zero images / Zero external sources -->
 <section class="hero">
-  <div class="hero-img">
-    <img src="https://images.unsplash.com/photo-1677442135703-1787eea5ce01?w=1600&q=85"
-         alt="Artificial Intelligence — generative era" loading="eager">
+  <!-- Canvas art engine: drifting+breathing orbs + ghost word system -->
+  <div class="hero-field" aria-hidden="true">
+    <canvas id="hero-canvas"></canvas>
   </div>
-  <div class="hero-overlay"></div>
+  <!-- Ghost words — JS will populate and animate these -->
+  <div class="hero-ghost-text" id="hero-ghost" aria-hidden="true"></div>
+  <!-- Grain -->
+  <div class="hero-noise" aria-hidden="true"></div>
+  <!-- Left vignette -->
+  <div class="hero-vignette" aria-hidden="true"></div>
+  <!-- Bottom fade -->
+  <div class="hero-fade" aria-hidden="true"></div>
+
   <div class="hero-content">
+    <div class="hero-eyebrow">
+      <div class="hero-dot"></div>
+      Brief History Series · Est. 2026
+    </div>
     <h1 class="hero-title fi d1">
       <span class="a-brief">A (Brief) History of</span>
       Everything<span class="cursor">_</span>
@@ -665,7 +717,6 @@ footer{
     <div class="hero-actions fi d2">
       <a class="btn-primary" href="ai.html">▶ Start with AI</a>
       <a class="btn-ghost" href="#guides" onclick="document.getElementById('guides').scrollIntoView({behavior:'smooth'});return false;">Browse All Guides</a>
-    </div>
     </div>
   </div>
 </section>
@@ -861,6 +912,273 @@ footer{
     <!-- <a href="#">Newsletter</a> -->
   </div>
 </footer>
+
+<script>
+/* ═══════════════════════════════════════════════════════
+   HERO ART ENGINE
+   Two systems running simultaneously:
+   1. Canvas orbs — drift across the field AND breathe
+   2. DOM words — spawn, fade in, drift off, die, repeat
+═══════════════════════════════════════════════════════ */
+(function(){
+  /* ── 1. CANVAS ORB SYSTEM ── */
+  const canvas = document.getElementById('hero-canvas');
+  if(!canvas) return;
+  const ctx = canvas.getContext('2d');
+
+  function resize(){
+    canvas.width  = canvas.offsetWidth;
+    canvas.height = canvas.offsetHeight;
+  }
+  resize();
+  window.addEventListener('resize', resize, {passive:true});
+
+  const ORB_COLORS = [
+    [0, 212, 240],    // cyan
+    [57, 224, 122],   // green
+    [0,  85, 238],    // blue
+    [255, 92,  32],   // orange
+    [180, 60, 220],   // violet accent
+  ];
+
+  /* Each orb has an independent drift path (bezier-ish via sin/cos sums)
+     AND a breath cycle that scales radius. */
+  // Soft-blur the canvas so orbs feel like light rather than hard circles
+  canvas.style.filter = 'blur(60px)';
+  canvas.style.transform = 'scale(1.08)'; // prevent blur edge bleed
+
+  const orbs = ORB_COLORS.map((rgb, i) => ({
+    rgb,
+    // base position — spread wide across the full field
+    bx: 0.1 + (i / ORB_COLORS.length) * 0.85 + (Math.random() - 0.5) * 0.15,
+    by: 0.1 + Math.random() * 0.8,
+    // large radii so pools of color fill the space
+    baseR: 320 + Math.random() * 280,
+    // drift via two sine waves — slow, dreamy
+    dx1: 0.055 + Math.random()*0.04,  dy1: 0.04 + Math.random()*0.035,
+    dx2: 0.025 + Math.random()*0.025, dy2: 0.06 + Math.random()*0.03,
+    px1: Math.random()*Math.PI*2,     py1: Math.random()*Math.PI*2,
+    px2: Math.random()*Math.PI*2,     py2: Math.random()*Math.PI*2,
+    // wider amplitude — they actually cross the hero
+    dAmp: 0.32 + Math.random()*0.2,
+    // breath
+    breathFreq: 0.18 + Math.random()*0.22,
+    breathAmp:  0.18 + Math.random()*0.14,
+    breathPhase:Math.random()*Math.PI*2,
+    // opacity — clearly visible, atmospheric
+    baseAlpha: 0.55 + Math.random()*0.2,
+  }));
+
+  function drawOrb(orb, t){
+    const W = canvas.width, H = canvas.height;
+    const driftX = Math.sin(t * orb.dx1 + orb.px1) * orb.dAmp * W * 0.5
+                 + Math.sin(t * orb.dx2 + orb.px2) * orb.dAmp * W * 0.25;
+    const driftY = Math.cos(t * orb.dy1 + orb.py1) * orb.dAmp * H * 0.5
+                 + Math.cos(t * orb.dy2 + orb.py2) * orb.dAmp * H * 0.25;
+    const cx = orb.bx * W + driftX;
+    const cy = orb.by * H + driftY;
+    const breath = 1 + Math.sin(t * orb.breathFreq + orb.breathPhase) * orb.breathAmp;
+    const r = orb.baseR * breath;
+    const grad = ctx.createRadialGradient(cx, cy, 0, cx, cy, r);
+    const [rr,gg,bb] = orb.rgb;
+    grad.addColorStop(0,   `rgba(${rr},${gg},${bb},${orb.baseAlpha})`);
+    grad.addColorStop(0.35,`rgba(${rr},${gg},${bb},${orb.baseAlpha * 0.55})`);
+    grad.addColorStop(0.7, `rgba(${rr},${gg},${bb},${orb.baseAlpha * 0.15})`);
+    grad.addColorStop(1,   `rgba(${rr},${gg},${bb},0)`);
+    ctx.fillStyle = grad;
+    ctx.beginPath();
+    ctx.arc(cx, cy, r, 0, Math.PI*2);
+    ctx.fill();
+  }
+
+  /* ── 2. DOM GHOST WORD SYSTEM ── */
+  const container = document.getElementById('hero-ghost');
+  // Words drawn from real guide content — each guide has its own vocabulary.
+  // Most recent guide (AI Agents, 008) is weighted 3×.
+  // Each new guide added here will flow into the hero automatically.
+  const GUIDE_WORDS = {
+
+    // 001 — A (Brief) History of AI
+    ai: [
+      'Turing','ELIZA','Transformer','Attention',
+      'Backprop','AlexNet','GPT','BERT',
+      'ChatGPT','Claude','Gemini','Grok',
+      'Midjourney','Diffusion','RLHF','Alignment',
+      'Hallucination','Emergence','Scale','Fine-tuning',
+      'Anthropic','OpenAI','DeepMind','Intelligence',
+    ],
+
+    // 002 — A (Brief) History of Crypto
+    crypto: [
+      'Bitcoin','Satoshi','Blockchain','Genesis',
+      'Nakamoto','Ethereum','Solidity','DeFi',
+      'NFT','Wallet','Hash','Proof-of-Work',
+      'Mt. Gox','Vitalik','DAO','Stablecoin',
+      'Halving','Ledger','Fork','Web3',
+    ],
+
+    // 003 — A (Brief) History of the Internet
+    internet: [
+      'ARPANET','Mosaic','Netscape','TCP/IP',
+      'Berners-Lee','Hyperlink','Search','Google',
+      'PageRank','Broadband','Web 2.0','Platform',
+      'Algorithm','Feed','Surveillance','Protocol',
+      'Dot-com','Browser','Social','Stream',
+    ],
+
+    // 004 — A (Brief) History of the World Cup
+    worldcup: [
+      'Pelé','Maradona','Zidane','Ronaldo',
+      'Uruguay','Brazil','Germany','Argentina',
+      'Wembley','Azteca','Jabulani','VAR',
+      'Hand of God','Golden Boot','Jules Rimet','Offside',
+      'Penalty','Extra Time','Group Stage','Final',
+    ],
+
+    // 005 — A (Brief) History of the Oscars
+    oscars: [
+      'Academy','Goldwyn','Selznick','Hitchcock',
+      'Streep','Brando','Davis','Poitier',
+      'Parasite','Moonlight','Envelope','Boycott',
+      '#OscarsSoWhite','Ceremony','Statuette','Nomination',
+      'Best Picture','Director','Score','Screenplay',
+    ],
+
+    // 008 — A (Brief) History of AI Agents (most recent — weighted 3×)
+    aiAgents: [
+      'ChatGPT','Claude','Gemini','Grok',
+      'Midjourney','Transformer','RLHF','Agentic',
+      'Multimodal','Constitutional','Autonomous','Reasoning',
+      'Context','Token','Prompt','Inference',
+      'Vaswani','Hinton','Sutskever','Altman',
+      'ELIZA','AlexNet','GPT-4','Llama',
+      'Diffusion','Alignment','Safety','Emergence',
+    ],
+  };
+
+  // All guides 1×, most recent guide (AI Agents) 2× — variety with a lean
+  const WORDS = [
+    ...GUIDE_WORDS.ai,
+    ...GUIDE_WORDS.crypto,
+    ...GUIDE_WORDS.internet,
+    ...GUIDE_WORDS.worldcup,
+    ...GUIDE_WORDS.oscars,
+    ...GUIDE_WORDS.aiAgents,  // 1× with everyone else
+    ...GUIDE_WORDS.aiAgents,  // 2× — most recent gets the lean
+  ];
+  const WORD_COLORS = [
+    'rgba(0,212,240,1)',
+    'rgba(242,239,233,1)',
+    'rgba(57,224,122,1)',
+    'rgba(255,255,255,1)',
+    'rgba(0,85,238,1)',
+  ];
+  const FONT_SIZES = [
+    'clamp(6rem,14vw,13rem)',
+    'clamp(3rem,7vw,7rem)',
+    'clamp(8rem,18vw,16rem)',
+    'clamp(2rem,5vw,5rem)',
+    'clamp(10rem,22vw,19rem)',
+    'clamp(4rem,9vw,8rem)',
+  ];
+
+  const activeWords = [];
+  let wordPool = [...WORDS];
+
+  function pickWord(){
+    if(wordPool.length===0) wordPool = [...WORDS];
+    const i = Math.floor(Math.random()*wordPool.length);
+    return wordPool.splice(i,1)[0];
+  }
+
+  function spawnWord(){
+    const el = document.createElement('span');
+    el.textContent = pickWord();
+
+    // random position, slightly outside bounds so it drifts fully across
+    const startX = (Math.random() * 110 - 10); // -10% to 100%
+    const startY = (Math.random() * 100);
+
+    // drift direction — slow crawl
+    const angle = Math.random() * Math.PI * 2;
+    const speed = 3 + Math.random() * 5; // vw over the word's life
+    const vx = Math.cos(angle) * speed;
+    const vy = Math.sin(angle) * speed * 0.4; // flatten y movement slightly
+
+    const life = 18000 + Math.random() * 20000; // 18–38s
+    const peakAlpha = 0.04 + Math.random() * 0.045;
+    const color = WORD_COLORS[Math.floor(Math.random()*WORD_COLORS.length)];
+    const size  = FONT_SIZES[Math.floor(Math.random()*FONT_SIZES.length)];
+
+    Object.assign(el.style, {
+      position: 'absolute',
+      left: startX + '%',
+      top:  startY + '%',
+      fontSize: size,
+      fontFamily: "'IBM Plex Sans Condensed', sans-serif",
+      fontWeight: '700',
+      letterSpacing: '-0.03em',
+      lineHeight: '1',
+      color: color,
+      opacity: '0',
+      whiteSpace: 'nowrap',
+      userSelect: 'none',
+      transition: 'none',
+      willChange: 'transform, opacity',
+    });
+
+    container.appendChild(el);
+
+    const born = performance.now();
+    const fadeIn  = life * 0.1;
+    const fadeOut = life * 0.75;
+
+    function tick(now){
+      const elapsed = now - born;
+      if(elapsed >= life){
+        el.remove();
+        return;
+      }
+      // opacity envelope: fade in → hold → fade out
+      let alpha;
+      if(elapsed < fadeIn){
+        alpha = peakAlpha * (elapsed / fadeIn);
+      } else if(elapsed < fadeOut){
+        alpha = peakAlpha;
+      } else {
+        alpha = peakAlpha * (1 - (elapsed - fadeOut)/(life - fadeOut));
+      }
+      // position drift
+      const progress = elapsed / life;
+      const tx = vx * progress * 1; // vw units handled by % parent
+      const ty = vy * progress * 1;
+      el.style.opacity = alpha;
+      el.style.transform = `translate(${tx}vw, ${ty}vh)`;
+      requestAnimationFrame(tick);
+    }
+    requestAnimationFrame(tick);
+  }
+
+  // Stagger initial spawns so it doesn't all pop at once
+  for(let i=0; i<7; i++){
+    setTimeout(spawnWord, i * 2200);
+  }
+  // Then keep cycling — spawn a new word every ~5s
+  setInterval(spawnWord, 5000);
+
+  /* ── 3. RENDER LOOP ── */
+  function render(now){
+    const t = now * 0.001; // seconds
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    // very subtle dark base so canvas isn't fully transparent
+    ctx.fillStyle = 'rgba(7,9,12,0.01)';
+    ctx.fillRect(0,0,canvas.width,canvas.height);
+    for(const orb of orbs) drawOrb(orb, t);
+    requestAnimationFrame(render);
+  }
+  requestAnimationFrame(render);
+})();
+</script>
 
 <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
 /* cursor */
