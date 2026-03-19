@@ -294,17 +294,22 @@ main{padding-bottom:6rem;}
   color:rgba(255,255,255,.5);
   margin-top:.4rem;
 }
-/* issue badge */
+/* issue badge — cycles through brand colors every 6 guides */
 .grid-card-issue{
-  position:absolute;top:.55rem;right:.55rem;z-index:3;
-  font-family:var(--mono);font-size:.36rem;font-weight:600;
-  letter-spacing:.1em;
-  background:rgba(0,0,0,.6);color:rgba(255,255,255,.7);
-  padding:.2rem .45rem;backdrop-filter:blur(4px);
+  position:absolute;top:0;left:0;z-index:3;
+  font-family:var(--mono);font-size:.6rem;font-weight:700;
+  letter-spacing:.12em;
+  width:44px;height:36px;
+  display:flex;align-items:center;justify-content:center;
+  background:#222;
+  color:#00D4F0; /* 001–006: series cyan */
 }
+.grid-card-issue[data-group="2"]{ color:#C9A84C; } /* 007–012: yellow */
+.grid-card-issue[data-group="3"]{ color:#39E07A; } /* 013–018: green  */
+.grid-card-issue[data-group="4"]{ color:#FF5C20; } /* 019–024: orange */
 /* dot indicator */
 .grid-card-dot{
-  position:absolute;top:.6rem;left:.6rem;z-index:3;
+  position:absolute;top:.6rem;right:.6rem;z-index:3;
   width:6px;height:6px;border-radius:50%;
   background:#00D4F0;box-shadow:0 0 8px #00D4F0;
   animation:hdot 2s ease-in-out infinite;
@@ -702,7 +707,7 @@ footer{
         <img src="images/poster-crypto.jpg" alt="Crypto">
       </div>
       <div class="grid-card-dot"></div>
-      <div class="grid-card-issue">007</div>
+      <div class="grid-card-issue">003</div>
       <div class="grid-card-overlay">
         <span class="grid-card-title">Crypto</span>
         <span class="grid-card-era">2008 — Present</span>
@@ -715,7 +720,7 @@ footer{
         <img src="images/poster-oscars.jpg" alt="The Oscars">
       </div>
       <div class="grid-card-dot"></div>
-      <div class="grid-card-issue">023</div>
+      <div class="grid-card-issue">004</div>
       <div class="grid-card-overlay">
         <span class="grid-card-title">The Oscars</span>
         <span class="grid-card-era">1929 — Present</span>
@@ -728,7 +733,7 @@ footer{
         <img src="images/poster-worldcup.jpg" alt="The World Cup">
       </div>
       <div class="grid-card-dot"></div>
-      <div class="grid-card-issue">027</div>
+      <div class="grid-card-issue">005</div>
       <div class="grid-card-overlay">
         <span class="grid-card-title">The World Cup</span>
         <span class="grid-card-era">1930 — Present</span>
