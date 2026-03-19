@@ -129,8 +129,19 @@ img { max-width: 100%; display: block; }
   position: fixed; top: 0; left: 0; right: 0; z-index: 800;
   background: rgba(10,8,4,0.96); backdrop-filter: blur(12px);
   border-bottom: 1px solid var(--border);
-  height: 52px; display: flex; align-items: center;
-  padding: 0 20px; gap: 10px;
+  height: 50px; display: flex; align-items: stretch;
+  padding: 0; gap: 0;
+}
+.nav-index-box {
+  width: 52px; min-width: 52px; height: 50px;
+  display: flex; align-items: center; justify-content: center;
+  background: var(--gold); color: #000;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 0.72rem; font-weight: 700; letter-spacing: 0.12em;
+  flex-shrink: 0;
+}
+.nav-brand-wrap {
+  display: flex; align-items: center; gap: 10px; padding: 0 14px;
 }
 [data-theme="light"] .nav {
   background: rgba(248,243,232,0.96);
@@ -159,7 +170,7 @@ img { max-width: 100%; display: block; }
 
 /* ===== SIDE NAV ===== */
 .side-nav {
-  position: fixed; top: 52px; left: 0; bottom: 0;
+  position: fixed; top: 50px; left: 0; bottom: 0;
   width: 42px; z-index: 700;
   display: flex; flex-direction: column;
   align-items: center; justify-content: center;
@@ -333,6 +344,12 @@ img { max-width: 100%; display: block; }
   font-family: 'DM Sans', sans-serif;
   font-size: 0.62rem; letter-spacing: 0.15em;
   text-transform: uppercase; margin-top: 10px; font-weight: 500;
+}
+.stat-sub {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 0.6rem; letter-spacing: 0.05em;
+  margin-top: 8px; opacity: 0.7; line-height: 1.4;
+  display: none; /* shown on hover via JS if desired */
 }
 
 /* ===== MARQUEE ===== */
@@ -823,7 +840,11 @@ footer {
 
 <!-- NAV -->
 <nav class="nav">
-  <a href="https://abriefhistoryofeverything.com" class="nav-brand">A (BRIEF) HISTORY OF EVERYTHING_</a><span class="nav-topic">The Oscars</span>
+  <div class="nav-index-box">004</div>
+  <div class="nav-brand-wrap">
+    <a href="https://abriefhistoryofeverything.com" class="nav-brand">A (BRIEF) HISTORY OF EVERYTHING<span class="cursor-blink">_</span></a>
+    <span class="nav-topic">The Oscars</span>
+  </div>
   <div class="nav-right">
     <button class="theme-btn" id="theme-btn">☀ LIGHT</button>
   </div>
@@ -833,7 +854,7 @@ footer {
 
 <!-- SIDE NAV -->
 <nav class="side-nav" id="side-nav" aria-label="Section navigation">
-  <div class="side-nav-idx">003</div>
+  <div class="side-nav-idx">004</div>
   <div class="side-nav-item active" data-section="0" onclick="scrollTo({top:0,behavior:'smooth'})" data-tip="Top">00</div>
   <div class="side-nav-item" data-section="1" onclick="document.getElementById('era-1').scrollIntoView({behavior:'smooth'})" data-tip="Origins">01</div>
   <div class="side-nav-item" data-section="2" onclick="document.getElementById('era-2').scrollIntoView({behavior:'smooth'})" data-tip="Golden Age">02</div>
@@ -863,7 +884,6 @@ footer {
   </div>
   <p class="hero-sub">From a private banquet at the Hollywood Roosevelt Hotel in 1929 to the most watched awards ceremony on Earth — nearly a century of cinema's grandest night. The 98th ceremony airs March 15, 2026.</p>
   <div class="hero-meta">
-    <div class="hero-index" data-tip="This is guide #003 in the A (Brief) History of Everything_ series">CHRONOLOGICAL INDEX 003</div>
     <div class="hero-stat">1927–2026 · 98 CEREMONIES · 3,160+ STATUETTES</div>
   </div>
 
@@ -894,22 +914,22 @@ footer {
   <div class="stat-cell fade-up" style="background:#C9A84C;color:#0A0804;" data-tip="The Academy of Motion Picture Arts and Sciences was founded in 1927 and held the first ceremony in 1929.">
     <div class="stat-number stat-num">1927</div>
     <div class="stat-label">Academy Founded</div>
-    <div class="stat-sub" style="display:none">The Academy of Motion Picture Arts and Sciences was founded in 1927 and held the first ceremony in 1929.</div>
+    <div class="stat-sub">The Academy of Motion Picture Arts and Sciences was founded in 1927 and held the first ceremony in 1929.</div>
   </div>
   <div class="stat-cell fade-up" style="background:#8B1A2C;color:#F5E4A8;" data-tip="Katharine Hepburn holds the record with 4 wins. Meryl Streep has the most nominations with 21.">
     <div class="stat-number stat-num">21</div>
     <div class="stat-label">Most Nominations (Streep)</div>
-    <div class="stat-sub" style="display:none">Katharine Hepburn holds the record with 4 wins. Meryl Streep has the most nominations with 21.</div>
+    <div class="stat-sub">Katharine Hepburn holds the record with 4 wins. Meryl Streep has the most nominations with 21.</div>
   </div>
   <div class="stat-cell fade-up" style="background:#1A2820;color:#8BC49A;" data-tip="Ben-Hur (1959), Titanic (1997), and The Lord of the Rings: The Return of the King (2003) each won 11 Oscars.">
     <div class="stat-number stat-num">11</div>
     <div class="stat-label">Record Wins (3 films)</div>
-    <div class="stat-sub" style="display:none">Ben-Hur (1959), Titanic (1997), and The Lord of the Rings: The Return of the King (2003) each won 11 Oscars.</div>
+    <div class="stat-sub">Ben-Hur (1959), Titanic (1997), and The Lord of the Rings: The Return of the King (2003) each won 11 Oscars.</div>
   </div>
   <div class="stat-cell fade-up" style="background:#1C1A08;color:#D4C06A;" data-tip="The Oscars ceremony is broadcast to approximately 200 countries, with global viewership in the tens of millions.">
     <div class="stat-number stat-num">200</div>
     <div class="stat-label">Countries Broadcast</div>
-    <div class="stat-sub" style="display:none">The Oscars ceremony is broadcast to approximately 200 countries, with global viewership in the tens of millions.</div>
+    <div class="stat-sub">The Oscars ceremony is broadcast to approximately 200 countries, with global viewership in the tens of millions.</div>
   </div>
 </div>
 
@@ -1315,7 +1335,7 @@ footer {
 <!-- FOOTER -->
 <footer>
   <div>
-    <div class="footer-brand">A (Brief) History of The Oscars_ <span>/</span> History</div>
+    <div class="footer-brand">The Oscars <span>/</span> History</div>
     <div class="footer-note">From a private banquet in 1929 to the world's most watched awards ceremony — nearly a century of cinema's grandest night.</div>
   </div>
   <div>
