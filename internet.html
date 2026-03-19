@@ -158,6 +158,16 @@ img{display:block;}
 .t-display { font-family:'Orbitron',sans-serif; }
 .t-mono    { font-family:'JetBrains Mono',monospace; }
 
+/* Canonical cursor blink — §0a */
+@keyframes cursorBlink {
+  0%, 100% { opacity: 1; }
+  50%       { opacity: 0; }
+}
+.cursor-blink {
+  animation: cursorBlink 1.1s step-end infinite;
+  display: inline-block;
+}
+
 /* ══════════════════════════════════════════════════════════════
    CURSOR
 ══════════════════════════════════════════════════════════════ */
@@ -194,13 +204,22 @@ img{display:block;}
 .nav{
   position:fixed;top:0;left:0;right:0;z-index:900;
   display:flex;align-items:center;gap:1rem;
-  padding:0 1.5rem 0 4.5rem;height:52px;
+  padding:0 1.5rem 0 0;height:50px;
   background:var(--nav-bg);
   backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);
   border-bottom:1px solid var(--nav-border);
   transition:background .35s,border-color .35s;
 }
-@media(min-width:901px){.nav{padding-left:calc(52px + 1.5rem);}}
+
+/* Nav index box — 52×50px accent block, first element in nav */
+.nav-index-box{
+  width:52px;min-width:52px;height:50px;
+  display:flex;align-items:center;justify-content:center;
+  background:var(--accent);color:#000;
+  font-family:'Orbitron',sans-serif;
+  font-size:0.72rem;font-weight:700;letter-spacing:0.12em;
+  flex-shrink:0;
+}
 
 .nav-brand{
   font-family:'Orbitron',sans-serif;
@@ -1012,9 +1031,10 @@ footer{
 
 <!-- NAV -->
 <nav class="nav">
-  <a href="https://abriefhistoryofeverything.com" class="nav-brand">
-    <span class="nav-brand-full">A (BRIEF) HISTORY OF EVERYTHING_</span>
-    <span class="nav-brand-short">A (BRIEF) HISTORY OF_</span>
+  <div class="nav-index-box">002</div>
+  <a href="https://abriefhistoryofeverything.com" class="nav-brand" style="margin-left:1rem;">
+    <span class="nav-brand-full">A (BRIEF) HISTORY OF EVERYTHING<span class="cursor-blink">_</span></span>
+    <span class="nav-brand-short">A (BRIEF) HISTORY OF<span class="cursor-blink">_</span></span>
   </a>
   <span class="nav-sep" style="display:none;"></span>
   <span class="nav-topic">THE INTERNET</span>
@@ -1028,7 +1048,7 @@ footer{
 
 <!-- SIDE NAV -->
 <nav class="sidenav" aria-label="Section navigation">
-  <div class="sn-idx">003</div>
+  <div class="sn-idx">002</div>
   <div class="sn-item" data-sec="0" onclick="scrollTo(0,'s0')">00</div>
   <div class="sn-item" data-sec="1" onclick="scrollTo(0,'s1')">01</div>
   <div class="sn-item" data-sec="2" onclick="scrollTo(0,'s2')">02</div>
@@ -1049,14 +1069,14 @@ footer{
 <section class="hero" id="s0">
   <canvas class="hero-canvas" id="heroCanvas"></canvas>
 
-  <div class="hero-index" aria-label="Chronological Index 003">
+  <div class="hero-index" aria-label="Chronological Index 002">
     CHRONOLOGICAL INDEX
-    <span>003</span>
+    <span>002</span>
   </div>
 
   <h1 class="hero-title fade-up">
     <span class="of-the">A (BRIEF) HISTORY OF</span>
-    THE INTERNET<span class="cursor">_</span>
+    THE INTERNET<span class="cursor cursor-blink">_</span>
   </h1>
 
   <p class="hero-sub fade-up">
@@ -1155,47 +1175,47 @@ footer{
   </p>
 
   <div class="events-grid">
-    <div class="event-card fade-up" data-tip="Sputnik's launch in 1957 shocked the U.S. into creating DARPA — the Defense Advanced Research Projects Agency — which would fund the foundational internet research.">
+    <div class="event-card card fade-up" data-tip="Sputnik's launch in 1957 shocked the U.S. into creating DARPA — the Defense Advanced Research Projects Agency — which would fund the foundational internet research.">
       <div class="ev-year card-year">1957</div>
       <div class="ev-title">Sputnik Launches DARPA</div>
       <p class="ev-body">The Soviet satellite shocks America into action. President Eisenhower creates DARPA to ensure U.S. technological supremacy. The agency will go on to fund almost every foundational internet technology.</p>
-      <span class="ev-tag">Origin</span>
+      <span class="ev-tag tag">Origin</span>
       <svg class="haring-burst" viewBox="0 0 100 100"><circle cx="50" cy="50" r="48" fill="none" stroke="currentColor" stroke-width="3"/><line x1="50" y1="2" x2="50" y2="98" stroke="currentColor" stroke-width="2"/><line x1="2" y1="50" x2="98" y2="50" stroke="currentColor" stroke-width="2"/><line x1="15" y1="15" x2="85" y2="85" stroke="currentColor" stroke-width="2"/><line x1="85" y1="15" x2="15" y2="85" stroke="currentColor" stroke-width="2"/></svg>
     </div>
 
-    <div class="event-card fade-up" data-tip="Paul Baran at RAND Corporation and Donald Davies at NPL independently develop the concept of breaking messages into blocks — 'packets' — that route around damage in a network.">
+    <div class="event-card card fade-up" data-tip="Paul Baran at RAND Corporation and Donald Davies at NPL independently develop the concept of breaking messages into blocks — 'packets' — that route around damage in a network.">
       <div class="ev-year card-year">1961–62</div>
       <div class="ev-title">Packet Switching Theory</div>
       <p class="ev-body">Leonard Kleinrock, Paul Baran, and Donald Davies independently propose that communication networks could route data in small packets rather than dedicated circuits. The entire internet still works this way.</p>
-      <span class="ev-tag">Theory</span>
+      <span class="ev-tag tag">Theory</span>
     </div>
 
-    <div class="event-card fade-up" data-tip="ARPANET's first message was sent from UCLA's SDS Sigma 7 to the SRI SDS 940. The intended message was 'LOGIN' but the system crashed after 'LO', making the first internet transmission historically poetic.">
+    <div class="event-card card fade-up" data-tip="ARPANET's first message was sent from UCLA's SDS Sigma 7 to the SRI SDS 940. The intended message was 'LOGIN' but the system crashed after 'LO', making the first internet transmission historically poetic.">
       <div class="ev-year card-year">Oct 29, 1969</div>
       <div class="ev-title">First Packet: "LO"</div>
       <p class="ev-body">Charley Kline at UCLA sends the first message across ARPANET to SRI in Menlo Park. The system crashes after two letters. The internet's first message was, accidentally, "LO" — as in, lo and behold.</p>
-      <span class="ev-tag">Milestone</span>
+      <span class="ev-tag tag">Milestone</span>
     </div>
 
-    <div class="event-card fade-up" data-tip="Email was invented as a side project. Ray Tomlinson chose the @ symbol to separate the user name from the host machine — a convention still used by 4 billion email users today.">
+    <div class="event-card card fade-up" data-tip="Email was invented as a side project. Ray Tomlinson chose the @ symbol to separate the user name from the host machine — a convention still used by 4 billion email users today.">
       <div class="ev-year card-year">1971</div>
       <div class="ev-title">Email Invented</div>
       <p class="ev-body">Ray Tomlinson sends the first networked email and chooses the @ symbol to denote user@host addressing. Within two years, 75% of all ARPANET traffic is email — the network's killer app, decades before that phrase existed.</p>
-      <span class="ev-tag">Protocol</span>
+      <span class="ev-tag tag">Protocol</span>
     </div>
 
-    <div class="event-card fade-up" data-tip="TCP/IP replaced ARPANET's NCP protocol on January 1, 1983, a date known as 'Flag Day.' All connected computers had to switch simultaneously — the internet's first major coordinated migration.">
+    <div class="event-card card fade-up" data-tip="TCP/IP replaced ARPANET's NCP protocol on January 1, 1983, a date known as 'Flag Day.' All connected computers had to switch simultaneously — the internet's first major coordinated migration.">
       <div class="ev-year card-year">1974–1983</div>
       <div class="ev-title">TCP/IP: The Universal Language</div>
       <p class="ev-body">Vint Cerf and Bob Kahn publish the TCP specification in 1974. On January 1, 1983, ARPANET switches to TCP/IP. Any computer, anywhere, can now join the same network. The modern internet is born.</p>
-      <span class="ev-tag">Infrastructure</span>
+      <span class="ev-tag tag">Infrastructure</span>
     </div>
 
-    <div class="event-card fade-up" data-tip="DNS was created because the internet's original host list — a single text file called HOSTS.TXT — became impossibly large as the network grew. Paul Mockapetris invented the Domain Name System in 1983.">
+    <div class="event-card card fade-up" data-tip="DNS was created because the internet's original host list — a single text file called HOSTS.TXT — became impossibly large as the network grew. Paul Mockapetris invented the Domain Name System in 1983.">
       <div class="ev-year card-year">1983</div>
       <div class="ev-title">DNS: The Internet's Phone Book</div>
       <p class="ev-body">Paul Mockapetris invents the Domain Name System, translating human-readable names (mit.edu) into IP addresses. DNS becomes one of the most critical — and attacked — pieces of internet infrastructure.</p>
-      <span class="ev-tag">Infrastructure</span>
+      <span class="ev-tag tag">Infrastructure</span>
     </div>
   </div>
 </section>
@@ -1243,46 +1263,46 @@ footer{
   </p>
 
   <div class="events-grid">
-    <div class="event-card fade-up" data-tip="Berners-Lee wrote his original proposal in March 1989. His boss wrote 'Vague but exciting' on the cover. The web went live on August 6, 1991, with the first website at info.cern.ch.">
+    <div class="event-card card fade-up" data-tip="Berners-Lee wrote his original proposal in March 1989. His boss wrote 'Vague but exciting' on the cover. The web went live on August 6, 1991, with the first website at info.cern.ch.">
       <div class="ev-year card-year">1989–1991</div>
       <div class="ev-title">Tim Berners-Lee Invents the Web</div>
       <p class="ev-body">A physicist at CERN proposes a hypertext system for sharing documents. He builds HTML, HTTP, and the URL — and puts them in the public domain. The first website explains what the web is. It is still online.</p>
-      <span class="ev-tag">Foundation</span>
+      <span class="ev-tag tag">Foundation</span>
     </div>
 
-    <div class="event-card fade-up" data-tip="NSFNet, the US academic backbone, formally opens to commercial traffic in 1991, allowing businesses to use the internet for the first time. The commercial internet era begins.">
+    <div class="event-card card fade-up" data-tip="NSFNet, the US academic backbone, formally opens to commercial traffic in 1991, allowing businesses to use the internet for the first time. The commercial internet era begins.">
       <div class="ev-year card-year">1991</div>
       <div class="ev-title">NSFNet Goes Commercial</div>
       <p class="ev-body">The US National Science Foundation lifts restrictions on commercial use of the internet backbone. Suddenly, any company can use the network. Within months, the first commercial ISPs appear.</p>
-      <span class="ev-tag">Policy</span>
+      <span class="ev-tag tag">Policy</span>
     </div>
 
-    <div class="event-card fade-up" data-tip="Mosaic, created by Marc Andreessen and Eric Bina at NCSA, was the first browser to display images inline with text. It made the web visual — and instantly popular with non-technical users.">
+    <div class="event-card card fade-up" data-tip="Mosaic, created by Marc Andreessen and Eric Bina at NCSA, was the first browser to display images inline with text. It made the web visual — and instantly popular with non-technical users.">
       <div class="ev-year card-year">1993</div>
       <div class="ev-title">Mosaic: The First Graphical Browser</div>
       <p class="ev-body">Marc Andreessen and Eric Bina release Mosaic at the University of Illinois. The first browser to show images and text together transforms the web from academic curiosity to consumer phenomenon. Downloads: 2 million in the first year.</p>
-      <span class="ev-tag">Browser</span>
+      <span class="ev-tag tag">Browser</span>
     </div>
 
-    <div class="event-card fade-up" data-tip="AOL's mailing of CDs — eventually 300 million discs — introduced millions of Americans to 'the internet.' You've got mail. The modem screech became a generational sound signature.">
+    <div class="event-card card fade-up" data-tip="AOL's mailing of CDs — eventually 300 million discs — introduced millions of Americans to 'the internet.' You've got mail. The modem screech became a generational sound signature.">
       <div class="ev-year card-year">1993–1996</div>
       <div class="ev-title">AOL Mails the Internet</div>
       <p class="ev-body">America Online floods mailboxes across America with free trial CDs. At peak, AOL was the largest internet company in the world — 30 million subscribers behind walled gardens, buddy lists, and the scream of a 56k modem.</p>
-      <span class="ev-tag">Consumer</span>
+      <span class="ev-tag tag">Consumer</span>
     </div>
 
-    <div class="event-card fade-up" data-tip="Amazon launched in July 1995 as an online bookstore. eBay launched three weeks later. The idea that people would buy things from strangers via a computer was considered wildly optimistic.">
+    <div class="event-card card fade-up" data-tip="Amazon launched in July 1995 as an online bookstore. eBay launched three weeks later. The idea that people would buy things from strangers via a computer was considered wildly optimistic.">
       <div class="ev-year card-year">1994–1995</div>
       <div class="ev-title">E-Commerce Is Born</div>
       <p class="ev-body">Pizza Hut takes the first online order. Amazon launches as 'Earth's Biggest Bookstore.' eBay makes strangers into trading partners. SSL encryption, introduced by Netscape, makes credit cards on the internet feel (somewhat) safe.</p>
-      <span class="ev-tag">Commerce</span>
+      <span class="ev-tag tag">Commerce</span>
     </div>
 
-    <div class="event-card fade-up" data-tip="Between 1995 and 2000, NASDAQ rose 400%. When the bubble burst in March 2000, $5 trillion in market cap evaporated. Pets.com, Webvan, and Kozmo.com became cautionary tales.">
+    <div class="event-card card fade-up" data-tip="Between 1995 and 2000, NASDAQ rose 400%. When the bubble burst in March 2000, $5 trillion in market cap evaporated. Pets.com, Webvan, and Kozmo.com became cautionary tales.">
       <div class="ev-year card-year">1995–2001</div>
       <div class="ev-title">The Dot-Com Bubble</div>
       <p class="ev-body">Venture capital floods the internet. Companies with no revenue go public and achieve billion-dollar valuations. 'Eyeballs' replace earnings as the metric. The NASDAQ crashes 78% from its peak, wiping out trillions — and clearing the field for the companies that survived.</p>
-      <span class="ev-tag">Crash</span>
+      <span class="ev-tag tag">Crash</span>
     </div>
   </div>
 </section>
@@ -1330,46 +1350,46 @@ footer{
   </p>
 
   <div class="events-grid">
-    <div class="event-card fade-up" data-tip="Wikipedia launched on January 15, 2001, as a 'feeder' for Nupedia. By 2004 it had 1 million articles. The idea that anonymous volunteers would create the world's largest encyclopedia seemed absurd — until it worked.">
+    <div class="event-card card fade-up" data-tip="Wikipedia launched on January 15, 2001, as a 'feeder' for Nupedia. By 2004 it had 1 million articles. The idea that anonymous volunteers would create the world's largest encyclopedia seemed absurd — until it worked.">
       <div class="ev-year card-year">2001</div>
       <div class="ev-title">Wikipedia: The Hive Mind</div>
       <p class="ev-body">Jimmy Wales and Larry Sanger launch Wikipedia as an experimental side project. Volunteers write, edit, and police 60 million articles across 320 languages — proving that open collaboration at internet scale could build something magnificent.</p>
-      <span class="ev-tag">Knowledge</span>
+      <span class="ev-tag tag">Knowledge</span>
     </div>
 
-    <div class="event-card fade-up" data-tip="Google launched PageRank in 1998, but its IPO in 2004 — raising $1.67 billion — marked the moment search advertising became the dominant internet business model.">
+    <div class="event-card card fade-up" data-tip="Google launched PageRank in 1998, but its IPO in 2004 — raising $1.67 billion — marked the moment search advertising became the dominant internet business model.">
       <div class="ev-year card-year">2000–2004</div>
       <div class="ev-title">Google Invents Search Advertising</div>
       <p class="ev-body">AdWords launches in 2000 with 350 customers. By 2004, Google's IPO values the company at $23 billion. The core insight: intent signals in a search box are worth more than any other form of advertising.</p>
-      <span class="ev-tag">Revenue</span>
+      <span class="ev-tag tag">Revenue</span>
     </div>
 
-    <div class="event-card fade-up" data-tip="Mark Zuckerberg launched 'Thefacebook' from his Harvard dorm room in February 2004. Within a month, half of Harvard was on it. Within a year, it had spread to hundreds of universities.">
+    <div class="event-card card fade-up" data-tip="Mark Zuckerberg launched 'Thefacebook' from his Harvard dorm room in February 2004. Within a month, half of Harvard was on it. Within a year, it had spread to hundreds of universities.">
       <div class="ev-year card-year">2004</div>
       <div class="ev-title">Facebook: The Social Graph</div>
       <p class="ev-body">A college social directory becomes the largest social network in history. Facebook introduces the News Feed in 2006, the Like button in 2009, and a surveillance capitalism model that vacuums up behavioral data to sell targeted advertising.</p>
-      <span class="ev-tag">Social</span>
+      <span class="ev-tag tag">Social</span>
     </div>
 
-    <div class="event-card fade-up" data-tip="YouTube was acquired by Google for $1.65 billion in October 2006 — just 18 months after founding. Google was criticized for overpaying. Today YouTube generates over $30 billion annually.">
+    <div class="event-card card fade-up" data-tip="YouTube was acquired by Google for $1.65 billion in October 2006 — just 18 months after founding. Google was criticized for overpaying. Today YouTube generates over $30 billion annually.">
       <div class="ev-year card-year">2005–2006</div>
       <div class="ev-title">YouTube: Everyone's a Broadcaster</div>
       <p class="ev-body">Three former PayPal employees build YouTube in a garage. 'Me at the zoo' is the first upload. Within a year, 100 million videos stream daily. Google buys it for $1.65 billion. Broadcast television will never fully recover.</p>
-      <span class="ev-tag">Video</span>
+      <span class="ev-tag tag">Video</span>
     </div>
 
-    <div class="event-card fade-up" data-tip="Amazon Web Services launched its S3 storage service in March 2006 and EC2 compute in August 2006. Cloud computing — renting infrastructure instead of owning it — becomes the default for every internet company that follows.">
+    <div class="event-card card fade-up" data-tip="Amazon Web Services launched its S3 storage service in March 2006 and EC2 compute in August 2006. Cloud computing — renting infrastructure instead of owning it — becomes the default for every internet company that follows.">
       <div class="ev-year card-year">2006</div>
       <div class="ev-title">AWS: The Internet's Backbone</div>
       <p class="ev-body">Amazon launches S3 and EC2, renting computing and storage by the hour. Netflix, Airbnb, and millions of startups will be built on top of it. The cloud means no one needs to own servers anymore — and Amazon quietly becomes the infrastructure of the internet.</p>
-      <span class="ev-tag">Infrastructure</span>
+      <span class="ev-tag tag">Infrastructure</span>
     </div>
 
-    <div class="event-card fade-up" data-tip="Twitter launched at SXSW in March 2007 with 140 characters — the length of an SMS message minus a 20-character username. The constraint shaped a new form of public discourse.">
+    <div class="event-card card fade-up" data-tip="Twitter launched at SXSW in March 2007 with 140 characters — the length of an SMS message minus a 20-character username. The constraint shaped a new form of public discourse.">
       <div class="ev-year card-year">2006</div>
       <div class="ev-title">Twitter: The Public Conversation</div>
       <p class="ev-body">Jack Dorsey, Ev Williams, Biz Stone, and Noah Glass launch a micro-blogging service. 140 characters becomes the unit of public thought. From Arab Spring to presidential announcements, Twitter rewires how news flows.</p>
-      <span class="ev-tag">Social</span>
+      <span class="ev-tag tag">Social</span>
     </div>
   </div>
 </section>
@@ -1398,46 +1418,46 @@ footer{
   </p>
 
   <div class="events-grid">
-    <div class="event-card fade-up" data-tip="Steve Jobs said the iPhone was 'five years ahead of anything else.' He was underestimating. At the 2007 launch, he described it as an iPod, a phone, and an internet communicator. The audience laughed. They didn't understand what was coming.">
+    <div class="event-card card fade-up" data-tip="Steve Jobs said the iPhone was 'five years ahead of anything else.' He was underestimating. At the 2007 launch, he described it as an iPod, a phone, and an internet communicator. The audience laughed. They didn't understand what was coming.">
       <div class="ev-year card-year">Jan 9, 2007</div>
       <div class="ev-title">iPhone: The Internet in Your Pocket</div>
       <p class="ev-body">Steve Jobs introduces a phone with a full web browser, touchscreen, and no keyboard. Safari shows real web pages, not watered-down mobile versions. The mobile internet era begins. Two billion iPhones will be sold over the next 17 years.</p>
-      <span class="ev-tag">Hardware</span>
+      <span class="ev-tag tag">Hardware</span>
     </div>
 
-    <div class="event-card fade-up" data-tip="Google announced Android in November 2007, days after the iPhone SDK was released. Android now runs on over 3 billion active devices worldwide — the most widely used operating system in history.">
+    <div class="event-card card fade-up" data-tip="Google announced Android in November 2007, days after the iPhone SDK was released. Android now runs on over 3 billion active devices worldwide — the most widely used operating system in history.">
       <div class="ev-year card-year">2008</div>
       <div class="ev-title">Android: Open Source Mobile</div>
       <p class="ev-body">Google's open-source mobile OS launches on the HTC Dream. By giving Android away for free, Google ensures search and advertising follow users to mobile. Android now commands 72% of the global smartphone market.</p>
-      <span class="ev-tag">Platform</span>
+      <span class="ev-tag tag">Platform</span>
     </div>
 
-    <div class="event-card fade-up" data-tip="Apple launched the App Store on July 10, 2008, with 500 apps. It was an entirely new distribution model — a curated marketplace where Apple took 30% of every transaction. Today it processes over $1 trillion in annual sales.">
+    <div class="event-card card fade-up" data-tip="Apple launched the App Store on July 10, 2008, with 500 apps. It was an entirely new distribution model — a curated marketplace where Apple took 30% of every transaction. Today it processes over $1 trillion in annual sales.">
       <div class="ev-year card-year">2008</div>
       <div class="ev-title">The App Store Economy</div>
       <p class="ev-body">Apple's App Store and Google Play create new platform economics. The smartphone becomes a portal to millions of applications. By 2024, the App Store alone has processed over $1.7 trillion in developer billings. A new industry emerges: mobile app development.</p>
-      <span class="ev-tag">Marketplace</span>
+      <span class="ev-tag tag">Marketplace</span>
     </div>
 
-    <div class="event-card fade-up" data-tip="Instagram was acquired by Facebook for $1 billion in April 2012 — considered wildly overpriced for a 13-person company with no revenue. Instagram's revenue is now estimated at $30+ billion annually.">
+    <div class="event-card card fade-up" data-tip="Instagram was acquired by Facebook for $1 billion in April 2012 — considered wildly overpriced for a 13-person company with no revenue. Instagram's revenue is now estimated at $30+ billion annually.">
       <div class="ev-year card-year">2010–2012</div>
       <div class="ev-title">Instagram & the Visual Internet</div>
       <p class="ev-body">Instagram launches in October 2010 and reaches 1 million users in two months. Photography becomes a social language. Facebook acquires it for $1 billion — its first major acquisition. The filter becomes a cultural artifact of the era.</p>
-      <span class="ev-tag">Social</span>
+      <span class="ev-tag tag">Social</span>
     </div>
 
-    <div class="event-card fade-up" data-tip="WhatsApp had 450 million monthly users when Facebook acquired it for $19 billion in 2014 — the largest acquisition of a venture-backed company in history at the time. WhatsApp now has over 2 billion users.">
+    <div class="event-card card fade-up" data-tip="WhatsApp had 450 million monthly users when Facebook acquired it for $19 billion in 2014 — the largest acquisition of a venture-backed company in history at the time. WhatsApp now has over 2 billion users.">
       <div class="ev-year card-year">2009–2014</div>
       <div class="ev-title">Messaging Takes Over</div>
       <p class="ev-body">WhatsApp, iMessage, WeChat, and Snapchat fragment communication into private channels. SMS usage peaks and begins its long decline. Facebook buys WhatsApp for $19 billion. The private internet grows larger than the public one.</p>
-      <span class="ev-tag">Messaging</span>
+      <span class="ev-tag tag">Messaging</span>
     </div>
 
-    <div class="event-card fade-up" data-tip="Uber launched in San Francisco in June 2010. Airbnb launched in 2008. The 'sharing economy' was enabled by mobile, GPS, and ubiquitous connectivity — turning every car and spare room into an asset.">
+    <div class="event-card card fade-up" data-tip="Uber launched in San Francisco in June 2010. Airbnb launched in 2008. The 'sharing economy' was enabled by mobile, GPS, and ubiquitous connectivity — turning every car and spare room into an asset.">
       <div class="ev-year card-year">2008–2013</div>
       <div class="ev-title">The Sharing Economy</div>
       <p class="ev-body">Uber, Airbnb, Lyft, and TaskRabbit use mobile connectivity, GPS, and digital payments to unlock idle assets. 'Platform economy' enters the lexicon. Decades-old industries — taxis, hotels — are disrupted by apps with no physical infrastructure.</p>
-      <span class="ev-tag">Economy</span>
+      <span class="ev-tag tag">Economy</span>
     </div>
   </div>
 </section>
@@ -1475,46 +1495,46 @@ footer{
   </p>
 
   <div class="events-grid">
-    <div class="event-card fade-up" data-tip="NSA contractor Edward Snowden revealed in June 2013 that the NSA was collecting bulk phone records and operating PRISM, a program accessing data from Microsoft, Google, Apple, Facebook, and others. The revelations reshaped the privacy debate permanently.">
+    <div class="event-card card fade-up" data-tip="NSA contractor Edward Snowden revealed in June 2013 that the NSA was collecting bulk phone records and operating PRISM, a program accessing data from Microsoft, Google, Apple, Facebook, and others. The revelations reshaped the privacy debate permanently.">
       <div class="ev-year card-year">2013</div>
       <div class="ev-title">Snowden: The Surveillance Internet</div>
       <p class="ev-body">Edward Snowden leaks classified NSA documents revealing mass internet surveillance. PRISM accessed data from all major tech companies. The revelations accelerate encrypted communications adoption and permanently alter trust in internet infrastructure.</p>
-      <span class="ev-tag">Privacy</span>
+      <span class="ev-tag tag">Privacy</span>
     </div>
 
-    <div class="event-card fade-up" data-tip="Netflix began streaming in 2007, but its pivot away from DVD rental and into original content with House of Cards in 2013 marked the beginning of the streaming wars — and the slow collapse of linear television.">
+    <div class="event-card card fade-up" data-tip="Netflix began streaming in 2007, but its pivot away from DVD rental and into original content with House of Cards in 2013 marked the beginning of the streaming wars — and the slow collapse of linear television.">
       <div class="ev-year card-year">2013–2020</div>
       <div class="ev-title">Streaming Kills Broadcast</div>
       <p class="ev-body">Netflix, then Hulu, Disney+, HBO Max, and dozens more replace network television. 'Cord-cutting' accelerates. By 2020, streaming surpasses cable for the first time. Content becomes a platform war. Billions are spent on original programming.</p>
-      <span class="ev-tag">Media</span>
+      <span class="ev-tag tag">Media</span>
     </div>
 
-    <div class="event-card fade-up" data-tip="The EU's General Data Protection Regulation took effect on May 25, 2018, establishing the most comprehensive digital privacy framework in history. It triggered similar laws globally and forced every major internet company to rethink data practices.">
+    <div class="event-card card fade-up" data-tip="The EU's General Data Protection Regulation took effect on May 25, 2018, establishing the most comprehensive digital privacy framework in history. It triggered similar laws globally and forced every major internet company to rethink data practices.">
       <div class="ev-year card-year">2018</div>
       <div class="ev-title">GDPR: The Privacy Reckoning</div>
       <p class="ev-body">Europe's General Data Protection Regulation takes effect, giving users rights over their data and fining companies up to 4% of global revenue for violations. A global cascade of privacy legislation follows. The era of consequence-free data harvesting ends.</p>
-      <span class="ev-tag">Regulation</span>
+      <span class="ev-tag tag">Regulation</span>
     </div>
 
-    <div class="event-card fade-up" data-tip="TikTok's algorithm — recommending content based on behavior rather than social graph — changed what a social network could be. In 2022, the average American teenager spent 91 minutes per day on TikTok.">
+    <div class="event-card card fade-up" data-tip="TikTok's algorithm — recommending content based on behavior rather than social graph — changed what a social network could be. In 2022, the average American teenager spent 91 minutes per day on TikTok.">
       <div class="ev-year card-year">2018–2020</div>
       <div class="ev-title">TikTok: The Algorithm Is the Product</div>
       <p class="ev-body">ByteDance's TikTok reaches 1 billion users faster than any platform in history. Its recommendation algorithm, optimized purely for engagement, renders the social graph irrelevant — you don't need to follow anyone for the feed to know exactly what you want.</p>
-      <span class="ev-tag">Algorithm</span>
+      <span class="ev-tag tag">Algorithm</span>
     </div>
 
-    <div class="event-card fade-up" data-tip="Between 2017 and 2021, the US, EU, and dozens of governments launched antitrust investigations into Google, Apple, Amazon, Facebook, and Microsoft. The era of 'move fast and break things' without regulatory consequence was ending.">
+    <div class="event-card card fade-up" data-tip="Between 2017 and 2021, the US, EU, and dozens of governments launched antitrust investigations into Google, Apple, Amazon, Facebook, and Microsoft. The era of 'move fast and break things' without regulatory consequence was ending.">
       <div class="ev-year card-year">2017–2021</div>
       <div class="ev-title">The Antitrust Era Begins</div>
       <p class="ev-body">Global regulators open investigations into Big Tech. The EU fines Google €8 billion over a decade. The US Congress grills tech CEOs. Australia passes a news bargaining law. The question of who controls the internet shifts from technical to political.</p>
-      <span class="ev-tag">Regulation</span>
+      <span class="ev-tag tag">Regulation</span>
     </div>
 
-    <div class="event-card fade-up" data-tip="COVID-19 lockdowns in 2020 compressed five years of digital adoption into five months. Zoom went from 10 million to 300 million daily meeting participants. E-commerce grew by 40% in a single year.">
+    <div class="event-card card fade-up" data-tip="COVID-19 lockdowns in 2020 compressed five years of digital adoption into five months. Zoom went from 10 million to 300 million daily meeting participants. E-commerce grew by 40% in a single year.">
       <div class="ev-year card-year">2020</div>
       <div class="ev-title">COVID Accelerates Everything</div>
       <p class="ev-body">Global lockdowns move work, school, healthcare, and social life online simultaneously. Zoom becomes the most downloaded app in history. Remote work becomes normalized. The internet proves it can bear the weight of civilization — barely.</p>
-      <span class="ev-tag">Society</span>
+      <span class="ev-tag tag">Society</span>
     </div>
   </div>
 </section>
@@ -1543,46 +1563,46 @@ footer{
   </p>
 
   <div class="events-grid">
-    <div class="event-card fade-up" data-tip="ChatGPT reached 100 million users in two months — the fastest product adoption in history, surpassing TikTok's previous record. Every major internet company immediately pivoted to incorporate LLMs.">
+    <div class="event-card card fade-up" data-tip="ChatGPT reached 100 million users in two months — the fastest product adoption in history, surpassing TikTok's previous record. Every major internet company immediately pivoted to incorporate LLMs.">
       <div class="ev-year card-year">Nov 2022</div>
       <div class="ev-title">ChatGPT Reshapes the Web</div>
       <p class="ev-body">OpenAI releases ChatGPT. 1 million users in five days. 100 million in two months. Every internet company announces an AI strategy. Search, once Google's unchallenged domain, faces its first existential challenger in two decades.</p>
-      <span class="ev-tag">AI</span>
+      <span class="ev-tag tag">AI</span>
     </div>
 
-    <div class="event-card fade-up" data-tip="Generative AI creates a new class of search engine — AI overviews replace ten blue links with synthesized answers. Google, Bing, Perplexity, and others race to define what 'search' means in an LLM era.">
+    <div class="event-card card fade-up" data-tip="Generative AI creates a new class of search engine — AI overviews replace ten blue links with synthesized answers. Google, Bing, Perplexity, and others race to define what 'search' means in an LLM era.">
       <div class="ev-year card-year">2023–2024</div>
       <div class="ev-title">AI Upends Search</div>
       <p class="ev-body">Microsoft integrates GPT-4 into Bing, forcing Google to rush its own AI search features. Perplexity, Anthropic, and others offer AI-first search. The link — the fundamental building block of the web for 30 years — is being bypassed by synthesized answers.</p>
-      <span class="ev-tag">Search</span>
+      <span class="ev-tag tag">Search</span>
     </div>
 
-    <div class="event-card fade-up" data-tip="Elon Musk acquired Twitter for $44 billion in October 2022, rebranding it X and implementing sweeping changes that halved its advertising revenue. The episode accelerated interest in decentralized social networks like Mastodon and Bluesky.">
+    <div class="event-card card fade-up" data-tip="Elon Musk acquired Twitter for $44 billion in October 2022, rebranding it X and implementing sweeping changes that halved its advertising revenue. The episode accelerated interest in decentralized social networks like Mastodon and Bluesky.">
       <div class="ev-year card-year">2022–2024</div>
       <div class="ev-title">Social Media Fractures</div>
       <p class="ev-body">Twitter's acquisition and transformation into X, Meta's Threads, Bluesky, and Mastodon fragment the public square. ActivityPub enables a federated web of interoperable social networks. The dream of a decentralized social internet flickers back to life.</p>
-      <span class="ev-tag">Social</span>
+      <span class="ev-tag tag">Social</span>
     </div>
 
-    <div class="event-card fade-up" data-tip="Starlink has over 6,000 satellites in orbit and 3 million subscribers. For the first time, high-speed internet is available from any point on Earth's surface — including conflict zones, disaster areas, and the ocean.">
+    <div class="event-card card fade-up" data-tip="Starlink has over 6,000 satellites in orbit and 3 million subscribers. For the first time, high-speed internet is available from any point on Earth's surface — including conflict zones, disaster areas, and the ocean.">
       <div class="ev-year card-year">2021–2025</div>
       <div class="ev-title">Starlink: Internet from Space</div>
       <p class="ev-body">SpaceX's Starlink constellation covers the entire globe with low-latency broadband. The last 2.7 billion people without reliable internet access come into reach. The infrastructure layer of the internet moves into orbit.</p>
-      <span class="ev-tag">Infrastructure</span>
+      <span class="ev-tag tag">Infrastructure</span>
     </div>
 
-    <div class="event-card fade-up" data-tip="The EU AI Act, passed in 2024, is the world's first comprehensive AI regulation. It coincides with a global wave of internet governance legislation — from content moderation to algorithm accountability to digital markets.">
+    <div class="event-card card fade-up" data-tip="The EU AI Act, passed in 2024, is the world's first comprehensive AI regulation. It coincides with a global wave of internet governance legislation — from content moderation to algorithm accountability to digital markets.">
       <div class="ev-year card-year">2024–2025</div>
       <div class="ev-title">The Regulation Era</div>
       <p class="ev-body">The EU AI Act passes. Digital Markets Acts reshape app store economics. Countries globally assert sovereignty over data flows. The open global internet fragments into regulatory zones — a 'splinternet' shaped by law, not just technology.</p>
-      <span class="ev-tag">Policy</span>
+      <span class="ev-tag tag">Policy</span>
     </div>
 
-    <div class="event-card fade-up" data-tip="From HTTP/1.1 in 1997 to HTTP/3 over QUIC today — the protocol stack evolves continuously. WebAssembly, edge computing, and post-quantum cryptography are rewriting the internet's foundations even as 5 billion people use it.">
+    <div class="event-card card fade-up" data-tip="From HTTP/1.1 in 1997 to HTTP/3 over QUIC today — the protocol stack evolves continuously. WebAssembly, edge computing, and post-quantum cryptography are rewriting the internet's foundations even as 5 billion people use it.">
       <div class="ev-year card-year">Ongoing</div>
       <div class="ev-title">The Protocol Never Stops</div>
       <p class="ev-body">HTTP/3, WebTransport, QUIC, post-quantum TLS, and decentralized identity standards are being written and deployed right now. The internet is not a finished thing — it is a living protocol stack, continuously rewritten by tens of thousands of engineers working in public.</p>
-      <span class="ev-tag">Protocol</span>
+      <span class="ev-tag tag">Protocol</span>
     </div>
   </div>
 </section>
