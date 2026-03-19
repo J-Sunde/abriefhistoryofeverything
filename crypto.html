@@ -205,18 +205,31 @@ img{display:block;}
 @keyframes tickerScroll{0%{transform:translateX(0);}100%{transform:translateX(-50%);}}
 
 /* ══════════════════════════════════════════════════════════════
+   NAV INDEX BOX (§0c)
+══════════════════════════════════════════════════════════════ */
+.nav-index-box{
+  width:52px;min-width:52px;height:50px;
+  display:flex;align-items:center;justify-content:center;
+  background:var(--accent);color:#0A0D06;
+  font-family:'Space Mono',monospace;
+  font-size:0.72rem;font-weight:700;letter-spacing:.12em;
+  flex-shrink:0;
+}
+[data-theme="light"] .nav-index-box{color:#0C1A00;}
+
+/* ══════════════════════════════════════════════════════════════
    TOP NAV
 ══════════════════════════════════════════════════════════════ */
 .nav{
   position:fixed;top:26px;left:0;right:0;z-index:900;
   display:flex;align-items:center;gap:1.5rem;
-  padding:0 1.5rem 0 4.5rem;height:50px;
+  padding:0 1.5rem 0 0;height:50px;
   background:var(--nav-bg);
   backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);
   border-bottom:1px solid var(--nav-border);
   transition:background .35s,border-color .35s;
 }
-@media(min-width:901px){.nav{padding-left:calc(52px + 1.5rem);}}
+@media(min-width:901px){.nav{padding-left:0;}}
 
 .nav-logo{
   font-family:'Space Mono',monospace;
@@ -428,6 +441,11 @@ img{display:block;}
   animation:blink .9s step-end infinite;
   font-family:'Space Mono',monospace;
   text-shadow:var(--glow-sm);
+}
+@keyframes cursorBlink{0%,100%{opacity:1;}50%{opacity:0;}}
+.cursor-blink{
+  animation:cursorBlink 1.1s step-end infinite;
+  display:inline-block;
 }
 
 .hero-desc{
@@ -728,6 +746,50 @@ img{display:block;}
 }
 
 /* ══════════════════════════════════════════════════════════════
+   WHAT COMES NEXT SECTION
+══════════════════════════════════════════════════════════════ */
+.future{
+  border-bottom:1px solid var(--rule);
+}
+.future-header{
+  display:grid;grid-template-columns:280px 1fr;
+  border-bottom:1px solid var(--rule);
+}
+@media(max-width:900px){.future-header{grid-template-columns:1fr;}}
+.future-header-inner{
+  padding:4rem 2rem;border-right:1px solid var(--rule);
+  background:var(--bg1);
+}
+@media(max-width:900px){.future-header-inner{border-right:none;border-bottom:1px solid var(--rule);padding:2.5rem 1.5rem;}}
+.future-header-right{
+  padding:4rem 3rem;display:flex;align-items:flex-end;
+}
+@media(max-width:900px){.future-header-right{padding:2.5rem 1.5rem;}}
+.future-label{
+  font-family:'Space Mono',monospace;font-size:.6rem;
+  letter-spacing:.25em;text-transform:uppercase;
+  color:var(--accent);margin-bottom:.8rem;text-shadow:var(--glow-sm);
+}
+.future-period{
+  font-family:'Barlow Condensed',sans-serif;font-weight:800;
+  font-size:clamp(2.2rem,4vw,3.2rem);text-transform:uppercase;
+  line-height:.9;letter-spacing:.01em;color:var(--bright);
+}
+.future-period-year{
+  display:block;font-family:'Space Mono',monospace;
+  font-size:clamp(1rem,2vw,1.4rem);color:var(--accent);
+  text-shadow:var(--glow-sm);margin-bottom:.3rem;letter-spacing:.05em;
+}
+.future-intro{
+  font-family:'Barlow',sans-serif;font-size:1.05rem;
+  line-height:1.8;color:var(--dim);max-width:560px;
+  border-left:2px solid var(--accent);padding-left:1.2rem;
+}
+[data-theme="light"] .future-intro{border-left-color:var(--accent);}
+.future-cards{padding:4rem 3rem;}
+@media(max-width:768px){.future-cards{padding:2.5rem 1.5rem;}}
+
+/* ══════════════════════════════════════════════════════════════
    PEOPLE SECTION
 ══════════════════════════════════════════════════════════════ */
 .people{padding:5rem 3rem;border-bottom:1px solid var(--rule);}
@@ -866,14 +928,17 @@ img{display:block;}
 }
 .footer-bar{
   background:var(--bg);border-top:1px solid var(--rule);
-  padding:1rem 3rem;display:flex;align-items:center;justify-content:space-between;
+  padding:.9rem 3rem 3rem;display:flex;align-items:center;justify-content:space-between;
+  flex-wrap:wrap;gap:.5rem;
   font-family:'Space Mono',monospace;
-  font-size:.6rem;letter-spacing:.16em;text-transform:uppercase;color:var(--muted);
-  padding-bottom:calc(1rem + env(safe-area-inset-bottom, 0px));
+  font-size:0.82rem;letter-spacing:.04em;text-transform:uppercase;color:var(--muted);
+  padding-bottom:calc(3rem + env(safe-area-inset-bottom, 0px));
 }
-@media(max-width:600px){.footer-bar{padding:1rem 1.5rem 2.5rem;flex-direction:column;gap:.5rem;text-align:center;}}
+@media(max-width:600px){.footer-bar{padding:.9rem 1.5rem 3rem;flex-direction:column;align-items:center;text-align:center;}}
+.footer-bar-links{display:flex;gap:2rem;align-items:center;flex-wrap:wrap;font-size:0.82rem;}
+@media(max-width:600px){.footer-bar-links{justify-content:center;}}
 .footer-bar span{display:flex;align-items:center;gap:1.5rem;}
-.footer-share-link{color:var(--muted);text-decoration:none;transition:color .2s;}
+.footer-share-link{color:var(--muted);text-decoration:none;transition:color .2s;font-size:0.82rem;}
 .footer-share-link:hover{color:var(--accent);}
 .footer-accent-bar{display:flex;height:3px;}
 .footer-accent-bar div{flex:1;}
@@ -1098,10 +1163,11 @@ img{display:block;}
 
 <!-- ── TOP NAV ───────────────────────────────────────────────── -->
 <nav class="nav">
+  <div class="nav-index-box">003</div>
   <div class="nav-logo">
     <a href="https://abriefhistoryofeverything.com" class="nav-brand" style="color:inherit;text-decoration:none;">
-      <span class="nav-brand-full">A <span style="color:var(--accent);">(BRIEF)</span> HISTORY OF EVERYTHING_</span>
-      <span class="nav-brand-short">A <span style="color:var(--accent);">(BRIEF)</span> HISTORY OF_</span>
+      <span class="nav-brand-full">A <span style="color:var(--accent);">(BRIEF)</span> HISTORY OF EVERYTHING<span class="cursor-blink">_</span></span>
+      <span class="nav-brand-short">A <span style="color:var(--accent);">(BRIEF)</span> HISTORY OF<span class="cursor-blink">_</span></span>
     </a><span class="nav-topic">CRYPTO</span>
   </div>
   <div class="nav-era" id="navEra">Genesis — 2008</div>
@@ -1148,12 +1214,12 @@ img{display:block;}
 <!-- ── HERO ─────────────────────────────────────────────────── -->
 <section class="hero" id="hero">
   <div class="hero-bg-grid"></div>
-  <div class="hero-index">CHRONOLOGICAL INDEX <span>002</span></div>
+  <div class="hero-index">CHRONOLOGICAL INDEX <span>003</span></div>
 
   <div class="hero-left">
     <h1 class="hero-title">
       <span class="hero-title-sub">A <em>(Brief)</em> History of</span><br>
-      Crypto<span class="type-cursor">_</span>
+      Crypto<span class="cursor-blink" style="color:var(--accent);text-shadow:var(--glow);">_</span>
     </h1>
     <p class="hero-desc">
       From a nine-page whitepaper to a trillion-dollar asset class — the story of how trustless money, smart contracts, and decentralised finance rewrote the rules of value on the internet.
@@ -1629,11 +1695,79 @@ img{display:block;}
         <div class="card-tags"><a class="tag" href="https://en.wikipedia.org/wiki/MicroStrategy" target="_blank" rel="noopener">MicroStrategy</a></div>
       </div>
       <div class="card fi" style="--c-accent:#39FF14;">
+        <div class="card-key" style="background:#39FF14;">Reserve Asset</div>
         <div class="card-idx">04 / 04</div>
-        <span class="card-year">2025+</span><h3>What Comes Next</h3>
-        <p>Layer-2 networks scale Ethereum to millions of transactions per second. Central bank digital currencies launch worldwide. Bitcoin becomes a corporate treasury staple. The technology built in garages and forums is now fundamental infrastructure — whether regulators like it or not.</p>
-        <div class="card-tags"><a class="tag" href="https://lightning.network" target="_blank" rel="noopener">Lightning Network</a><a class="tag" href="https://ethereum.org/en/layer-2/" target="_blank" rel="noopener">Ethereum L2</a></div>
+        <span class="card-year">Mar 2025</span><h3>US Strategic Bitcoin Reserve</h3>
+        <p>President Trump signs an executive order establishing a US Strategic Bitcoin Reserve, directing Treasury to hold seized Bitcoin as a long-term national asset. El Salvador, Bhutan, and Abu Dhabi had already moved first. The nation-state accumulation race — long theorised — is underway.</p>
+        <div class="card-tags"><a class="tag" href="https://en.wikipedia.org/wiki/Bitcoin_reserve_currency" target="_blank" rel="noopener">BTC Reserve</a><a class="tag" href="https://en.wikipedia.org/wiki/MicroStrategy" target="_blank" rel="noopener">MicroStrategy</a></div>
       </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── WHAT COMES NEXT ────────────────────────────────────────── -->
+<section class="future" id="future">
+  <div class="future-header">
+    <div class="future-header-inner">
+      <div class="future-label fi">The Road Ahead</div>
+      <div class="future-period fi">
+        <span class="future-period-year">2025 →</span>
+        WHAT COMES<br>NEXT
+      </div>
+    </div>
+    <div class="future-header-right">
+      <p class="future-intro fi">Bitcoin is now a sovereign reserve asset. Ethereum L2s are live at scale. The infrastructure is built — what gets built on top of it will define the next decade of global finance, identity, and the internet.</p>
+    </div>
+  </div>
+  <div class="future-cards">
+    <div class="card-grid">
+
+      <div class="card fi" style="--c-accent:#39FF14;">
+        <div class="card-key" style="background:#39FF14;">Sovereignty</div>
+        <div class="card-idx">01 / 04</div>
+        <span class="card-year">2025–2030</span><h3>Nation-State Reserve Race</h3>
+        <p>The US Strategic Bitcoin Reserve triggered a geopolitical arms race. El Salvador, Bhutan, and Abu Dhabi moved first. Russia, China, and the EU are watching. Nations that accumulated early will have an asymmetric advantage as scarcity compounds. The question is no longer if sovereign Bitcoin adoption happens — it's which nations are first and last.</p>
+        <div class="card-tags">
+          <a class="tag" href="https://en.wikipedia.org/wiki/Bitcoin_reserve_currency" target="_blank" rel="noopener">Sovereign BTC</a>
+          <a class="tag" href="https://en.wikipedia.org/wiki/Bitcoin_in_El_Salvador" target="_blank" rel="noopener">El Salvador</a>
+        </div>
+      </div>
+
+      <div class="card fi" style="--c-accent:#CCFF00;">
+        <div class="card-key" style="background:#CCFF00;">Scaling</div>
+        <div class="card-idx">02 / 04</div>
+        <span class="card-year">2025–2027</span><h3>Layer-2 Goes Mainstream</h3>
+        <p>Base, Arbitrum, Optimism, and zkSync process more transactions than Ethereum mainnet combined. Fees drop to fractions of a cent. Consumer apps — payments, gaming, social — launch on L2 without users knowing they're on a blockchain. The scaling problem that plagued crypto for a decade is functionally solved. The UX problem is next.</p>
+        <div class="card-tags">
+          <a class="tag" href="https://base.org" target="_blank" rel="noopener">Base</a>
+          <a class="tag" href="https://arbitrum.io" target="_blank" rel="noopener">Arbitrum</a>
+          <a class="tag" href="https://optimism.io" target="_blank" rel="noopener">Optimism</a>
+        </div>
+      </div>
+
+      <div class="card fi" style="--c-accent:#00FF88;">
+        <div class="card-key" style="background:#00FF88;">Finance</div>
+        <div class="card-idx">03 / 04</div>
+        <span class="card-year">2026–2030</span><h3>Institutional DeFi &amp; On-Chain Finance</h3>
+        <p>BlackRock's BUIDL fund tokenises treasuries on Ethereum. JPMorgan's Onyx processes trillions in repo settlements on-chain. Compliant DeFi protocols with on-chain KYC emerge. The wall between TradFi and DeFi dissolves from both sides — not through crypto winning, but through Wall Street absorbing the rails. The internet of value arrives wearing a suit.</p>
+        <div class="card-tags">
+          <a class="tag" href="https://defillama.com" target="_blank" rel="noopener">DeFiLlama</a>
+          <a class="tag" href="https://www.blackrock.com" target="_blank" rel="noopener">BlackRock BUIDL</a>
+        </div>
+      </div>
+
+      <div class="card fi" style="--c-accent:#FF6B00;">
+        <div class="card-key" style="background:#FF6B00;">Battleground</div>
+        <div class="card-idx">04 / 04</div>
+        <span class="card-year">THE NEXT DECADE</span><h3>CBDCs vs Crypto: The Privacy War</h3>
+        <p>Over 130 countries are developing Central Bank Digital Currencies — programmable government money with expiry dates, spending restrictions, and full surveillance capability. Bitcoin and privacy-preserving protocols become the ideological opposition: uncensorable, self-sovereign, permissionless. The defining conflict of the next decade isn't crypto vs banks. It's privacy vs the state.</p>
+        <div class="card-tags">
+          <a class="tag" href="https://getmonero.org" target="_blank" rel="noopener">Monero</a>
+          <a class="tag" href="https://z.cash" target="_blank" rel="noopener">Zcash</a>
+          <a class="tag" href="https://lightning.network" target="_blank" rel="noopener">Lightning</a>
+        </div>
+      </div>
+
     </div>
   </div>
 </section>
