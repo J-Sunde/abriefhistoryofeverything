@@ -745,49 +745,6 @@ img{display:block;}
   pointer-events:none;opacity:.15;letter-spacing:-.05em;
 }
 
-/* ══════════════════════════════════════════════════════════════
-   WHAT COMES NEXT SECTION
-══════════════════════════════════════════════════════════════ */
-.future{
-  border-bottom:1px solid var(--rule);
-}
-.future-header{
-  display:grid;grid-template-columns:280px 1fr;
-  border-bottom:1px solid var(--rule);
-}
-@media(max-width:900px){.future-header{grid-template-columns:1fr;}}
-.future-header-inner{
-  padding:4rem 2rem;border-right:1px solid var(--rule);
-  background:var(--bg1);
-}
-@media(max-width:900px){.future-header-inner{border-right:none;border-bottom:1px solid var(--rule);padding:2.5rem 1.5rem;}}
-.future-header-right{
-  padding:4rem 3rem;display:flex;align-items:flex-end;
-}
-@media(max-width:900px){.future-header-right{padding:2.5rem 1.5rem;}}
-.future-label{
-  font-family:'Space Mono',monospace;font-size:.6rem;
-  letter-spacing:.25em;text-transform:uppercase;
-  color:var(--accent);margin-bottom:.8rem;text-shadow:var(--glow-sm);
-}
-.future-period{
-  font-family:'Barlow Condensed',sans-serif;font-weight:800;
-  font-size:clamp(2.2rem,4vw,3.2rem);text-transform:uppercase;
-  line-height:.9;letter-spacing:.01em;color:var(--bright);
-}
-.future-period-year{
-  display:block;font-family:'Space Mono',monospace;
-  font-size:clamp(1rem,2vw,1.4rem);color:var(--accent);
-  text-shadow:var(--glow-sm);margin-bottom:.3rem;letter-spacing:.05em;
-}
-.future-intro{
-  font-family:'Barlow',sans-serif;font-size:1.05rem;
-  line-height:1.8;color:var(--dim);max-width:560px;
-  border-left:2px solid var(--accent);padding-left:1.2rem;
-}
-[data-theme="light"] .future-intro{border-left-color:var(--accent);}
-.future-cards{padding:4rem 3rem;}
-@media(max-width:768px){.future-cards{padding:2.5rem 1.5rem;}}
 
 /* ══════════════════════════════════════════════════════════════
    PEOPLE SECTION
@@ -1706,20 +1663,20 @@ img{display:block;}
 </section>
 
 <!-- ── WHAT COMES NEXT ────────────────────────────────────────── -->
-<section class="future" id="future">
-  <div class="future-header">
-    <div class="future-header-inner">
-      <div class="future-label fi">The Road Ahead</div>
-      <div class="future-period fi">
-        <span class="future-period-year">2025 →</span>
-        WHAT COMES<br>NEXT
-      </div>
+<section class="era" id="future" data-era="What Comes Next">
+  <div class="era-sidebar">
+    <div class="era-index">07</div>
+    <div>
+      <div class="sec-label fi">The Road Ahead</div>
+      <div class="era-period fi"><span class="era-period-accent" style="color:var(--accent);">2025 →</span>What<br>Comes Next</div>
+      <div class="era-title-main fi">Bitcoin is now a sovereign reserve asset. Ethereum L2s are live at scale. The infrastructure is built — what gets built on top of it will define the next decade of global finance, identity, and the internet.</div>
     </div>
-    <div class="future-header-right">
-      <p class="future-intro fi">Bitcoin is now a sovereign reserve asset. Ethereum L2s are live at scale. The infrastructure is built — what gets built on top of it will define the next decade of global finance, identity, and the internet.</p>
+    <div class="era-meter fi">
+      <div class="era-meter-label">Projected Impact</div>
+      <div class="era-meter-bar"><div class="era-meter-fill" style="--fill:100%;background:linear-gradient(90deg,#39FF14,#CCFF00);"></div></div>
     </div>
   </div>
-  <div class="future-cards">
+  <div class="era-main">
     <div class="card-grid">
 
       <div class="card fi" style="--c-accent:#39FF14;">
