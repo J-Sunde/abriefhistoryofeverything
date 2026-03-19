@@ -59,10 +59,10 @@ nav{
 }
 nav.solid{background:rgba(10,10,10,.96);border-bottom:1px solid var(--rule);}
 .nav-logo{
-  font-family:var(--mono);font-weight:700;font-size:1.1rem;
+  font-family:var(--cond);font-weight:700;font-size:1.1rem;
   letter-spacing:.04em;color:var(--bright);white-space:nowrap;
 }
-.nav-logo em{font-style:italic;font-weight:300;color:var(--dim);}
+.nav-logo em{font-style:italic;font-weight:300;color:var(--dim);font-family:var(--cond);}
 .nav-sep{width:1px;height:20px;background:var(--rule);}
 .nav-links{display:flex;gap:1.6rem;}
 .nav-link{
@@ -669,6 +669,7 @@ footer{
   .shelf-track{padding-left:1.5rem;}
   .manifesto{grid-template-columns:1fr;gap:2rem;padding:2.5rem 1.5rem;}
   nav .nav-links{display:none;}
+  nav .nav-sep{display:none;}
 }
 </style>
 </head>
