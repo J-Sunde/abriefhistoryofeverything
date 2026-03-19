@@ -28,7 +28,7 @@
   --bg2:   #181818;
   --bg3:   #222;
   --rule:  #2A2A2A;
-  --muted: #555;
+  --muted: #686868;
   --dim:   #888;
   --text:  #CCC;
   --bright:#F2EFE9;
@@ -467,7 +467,7 @@ main{padding-bottom:6rem;}
 }
 .features-head{
     font-family: var(--mono);
-    font-size: 1.2em;
+    font-size: 0.65rem;
     letter-spacing: .28em;
     text-transform: uppercase;
     color: var(--muted);
@@ -503,7 +503,7 @@ main{padding-bottom:6rem;}
 }
 .feat-desc{
     font-family: var(--mono);
-    font-size: 1rem;
+    font-size: 0.88rem;
     letter-spacing: 0;
     line-height: 1.5;
     color: var(--muted);
@@ -540,7 +540,7 @@ main{padding-bottom:6rem;}
 }
 .entity-sub{
     font-family: var(--mono);
-    font-size: 1.2rem;
+    font-size: 0.65rem;
     letter-spacing: .2em;
     text-transform: uppercase;
     color: var(--muted);
@@ -570,7 +570,7 @@ main{padding-bottom:6rem;}
 .manifesto-left{}
 .manifesto-series{
     font-family: var(--mono);
-    font-size: 0.9rem;
+    font-size: 0.65rem;
     letter-spacing: .28em;
     text-transform: uppercase;
     color: var(--muted);
@@ -583,7 +583,7 @@ main{padding-bottom:6rem;}
 }
 .manifesto-since{
     font-family: var(--mono);
-    font-size: 1rem;
+    font-size: 0.65rem;
     letter-spacing: .18em;
     text-transform: uppercase;
     color: var(--muted);
@@ -592,17 +592,19 @@ main{padding-bottom:6rem;}
   font-family:var(--mono);font-weight:300;font-style:italic;
   font-size:clamp(1rem,1.8vw,1.45rem);
   line-height:1.7;color:var(--dim);
-  border-left:2px solid var(--rule);padding-left:1.8rem;
+  border-left:2px solid var(--dim);padding-left:1.8rem;
 }
 .manifesto-quote em{color:var(--bright);font-style:normal;font-weight:600;}
 
 /* ═══ EMAIL ═══ */
 .email-section{
-  margin:0 2.5rem 4rem;
+  margin:0;
   background:var(--bg1);
   border:1px solid var(--rule);
+  border-left:none;border-right:none;
   display:flex;align-items:center;gap:3rem;
   padding:2rem 2.5rem;flex-wrap:wrap;
+  margin-bottom:4rem;
 }
 .email-left{flex:1;min-width:200px;}
 .email-head{
@@ -611,7 +613,7 @@ main{padding-bottom:6rem;}
 }
 .email-sub{
     font-family: var(--mono);
-    font-size: 1rem;
+    font-size: 0.6rem;
     letter-spacing: .18em;
     text-transform: uppercase;
     color: var(--muted);
@@ -645,16 +647,17 @@ footer{
 }
 .footer-l{
     font-family: var(--mono);
-    font-size: 1rem;
+    font-size: 0.7rem;
     letter-spacing: .16em;
     text-transform: uppercase;
     color: var(--muted);
 }
 .footer-r{display:flex;gap:2rem;}
-.footer-r a{font-family:var(--mono);font-size:1rem;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);transition:color .2s;}
+.footer-r a{font-family:var(--mono);font-size:0.7rem;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);transition:color .2s;}
 .footer-r a:hover{color:var(--text);}
 
-/* ═══ FADE IN ═══ */
+br.desk-br{display:block;}
+@media(max-width:768px){br.desk-br{display:none;}}
 .fi{opacity:1;}
 .js-ready .fi{opacity:0;transform:translateY(14px);transition:opacity .5s ease,transform .5s ease;}
 .js-ready .fi.in{opacity:1;transform:translateY(0);}
@@ -873,9 +876,9 @@ footer{
       <div class="manifesto-since">Est. 2026 · abriefhistoryofeverything.com</div>
     </div>
     <blockquote class="manifesto-quote">
-      History is not a list of dates.<br>
-      It is a story about <em>why things happened</em>,<br>
-      who made them happen,<br>
+      History is not a list of dates.<br class="desk-br">
+      It is a story about <em>why things happened</em>,<br class="desk-br">
+      who made them happen,<br class="desk-br">
       and what we missed at the time.
     </blockquote>
   </div>
