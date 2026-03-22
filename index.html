@@ -63,9 +63,12 @@ nav{
 nav.solid{background:rgba(10,10,10,.96);border-bottom:1px solid var(--rule);}
 .nav-logo{
   font-family:var(--cond);font-weight:700;font-size:1.1rem;
-  letter-spacing:.04em;color:var(--bright);white-space:nowrap;
+  letter-spacing:.08em;color:#fff;white-space:nowrap;
+  text-transform:uppercase;font-style:normal;
 }
-.nav-logo em{font-style:italic;font-weight:300;color:var(--dim);font-family:var(--cond);}
+@media(max-width:768px){
+  .nav-logo{font-size:.72rem;letter-spacing:.04em;}
+}
 .nav-sep{width:1px;height:20px;background:var(--rule);}
 .nav-links{display:flex;gap:1.6rem;}
 .nav-link{
@@ -182,12 +185,12 @@ nav.solid{background:rgba(10,10,10,.96);border-bottom:1px solid var(--rule);}
 .hero-title .a-brief{
   display:block;
   font-family:var(--cond);
-  font-weight:300;
-  font-style:italic;
-  font-size:clamp(1.35rem,2.92vw,2.44rem);
-  letter-spacing:.01em;
-  color:rgba(242,239,233,.55);
-  margin-bottom:.18em;
+  font-weight:700;
+  font-style:normal;
+  font-size:clamp(1.8rem,3.8vw,3.2rem);
+  letter-spacing:-.01em;
+  color:#fff;
+  margin-bottom:.12em;
   white-space:nowrap;
 }
 .hero-title .cursor{
@@ -629,8 +632,13 @@ main{padding-bottom:6rem;}
 }
 .manifesto-brand{
   font-family:var(--cond);font-weight:700;
-  font-size:1.5rem;color:var(--bright);line-height:1.1;
-  margin-bottom:.5rem;
+  font-size:2rem;color:var(--bright);line-height:1.1;
+  margin-bottom:.4rem;
+}
+.manifesto-url{
+  font-family:var(--mono);font-size:.78rem;
+  letter-spacing:.12em;color:var(--dim);
+  margin-bottom:.3rem;
 }
 .manifesto-since{
     font-family: var(--mono);
@@ -725,6 +733,8 @@ br.desk-br{display:block;}
   nav{padding:0 1.5rem;}
   nav .nav-links{display:none;}
   nav .nav-sep{display:none;}
+  footer{flex-direction:column;align-items:center;text-align:center;}
+  .footer-r{justify-content:center;}
 }
 </style>
 </head>
@@ -733,7 +743,7 @@ br.desk-br{display:block;}
 
 <!-- NAV -->
 <nav id="nav">
-  <span class="nav-logo"><em>A (Brief) History of</em> Everything</span>
+  <span class="nav-logo">A (Brief) History of Everything</span>
   <div class="nav-sep"></div>
   <div class="nav-links">
     <span class="nav-link active" onclick="window.scrollTo({top:0,behavior:'smooth'})">Home</span>
@@ -772,7 +782,7 @@ br.desk-br{display:block;}
     <p class="hero-desc fi d2">
       Curated, interactive timelines for the subjects that shaped our world.
       Each guide is a deep dive, a structured chronology of key figures and cultural context.
-      Not a list of dates. A story.
+      <span style="color:#00D4F0;">Not a list of dates. A story.</span>
     </p>
     <div class="hero-actions fi d2">
       <a class="btn-primary" href="ai.html">▶ Start with AI</a>
@@ -967,7 +977,8 @@ br.desk-br{display:block;}
     <div class="manifesto-left">
       <div class="manifesto-series">The Project</div>
       <div class="manifesto-brand">A (Brief) History of Everything</div>
-      <div class="manifesto-since">Est. 2026 · abriefhistoryofeverything.com</div>
+      <div class="manifesto-url">abriefhistoryofeverything.com</div>
+      <div class="manifesto-since">Est. 2026</div>
     </div>
     <blockquote class="manifesto-quote">
       History is not a list of dates.<br class="desk-br">
@@ -996,7 +1007,7 @@ br.desk-br{display:block;}
       <div class="email-head">Suggest a Topic</div>
       <div class="email-sub">Got a subject that deserves a deep dive? Tell us.</div>
     </div>
-    <a class="email-btn" href="/cdn-cgi/l/email-protection#583a2a313d3e7630312b2c372a21762b312c3d183f35393134763b3735672b2d3a323d3b2c650c3728313b7d6a680b2d3f3f3d2b2c313736" style="display:inline-flex;align-items:center;text-decoration:none;">Suggest a Topic →</a>
+    <a class="email-btn" href="mailto:brief.history.site@gmail.com" style="display:inline-flex;align-items:center;text-decoration:none;">Suggest a Topic →</a>
   </div>
 
 </main>
@@ -1010,10 +1021,10 @@ br.desk-br{display:block;}
   <div style="background:var(--rule);flex:5;"></div>
 </div>
 <footer>
-  <span class="footer-l">A (Brief) History of Everything · 2026</span>
+  <span class="footer-l">©2026 A (Brief) History of Everything</span>
   <div class="footer-r">
     <a href="#about" onclick="document.getElementById('about').scrollIntoView({behavior:'smooth'});return false;">About</a>
-    <a href="/cdn-cgi/l/email-protection#a1c3d3c8c4c78fc9c8d2d5ced3d88fd2c8d5c4e1c6ccc0c8cd8fc2cecc9ed2d4c3cbc4c2d59cf5ced1c8c2849391f2d4c6c6c4d2d5c8cecf">Suggest a Topic</a>
+    <a href="mailto:brief.history.site@gmail.com">Suggest a Topic</a>
     <!-- <a href="#">Newsletter</a> -->
   </div>
 </footer>
@@ -1200,23 +1211,20 @@ br.desk-br{display:block;}
       ],
     },
     {
-      id: 'aiAgents',
-      title: 'A (Brief) History of AI Agents',
-      url: 'aiagents.html',
+      id: 'dark-web',
+      title: 'A (Brief) History of the Dark Web',
+      url: 'dark-web.html',
       color: '#BF7FFF',
-      mostRecent: true,  // ← set this to true on the newest guide
+      mostRecent: true,
       tags: [
-        'ChatGPT','Claude','Gemini','Agentic AI','Constitutional AI',
-        'Multimodal','RLHF','Transformer','Midjourney','GPT-4',
+        'Tor','Silk Road','Ross Ulbricht','Dark Markets','Anonymity',
       ],
       words: [
-        'ChatGPT','Claude','Gemini','Grok',
-        'Midjourney','Transformer','RLHF','Agentic',
-        'Multimodal','Constitutional','Autonomous','Reasoning',
-        'Context','Token','Prompt','Inference',
-        'Vaswani','Hinton','Sutskever','Altman',
-        'ELIZA','AlexNet','GPT-4','Llama',
-        'Diffusion','Alignment','Safety','Emergence',
+        'Tor','Onion','Silk Road','Ulbricht',
+        'Darknet','Bitcoin','Anonymity','Encryption',
+        'Hidden','Clearnet','Exit Node','ARPANET',
+        'Contraband','Hacker','NSA','Whistleblower',
+        'Snowden','Hydra','AlphaBay','Cypherpunk',
       ],
     },
     // ── ADD NEW GUIDES HERE ──────────────────────────────
