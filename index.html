@@ -277,10 +277,10 @@ main{padding-bottom:6rem;}
   letter-spacing:.16em;text-transform:uppercase;color:var(--muted);
 }
 
-/* ═══ 3-COL INSTAGRAM-STYLE GRID ═══ */
+/* ═══ 4-COL GRID ═══ */
 .guides-grid{
   display:grid;
-  grid-template-columns:repeat(3,1fr);
+  grid-template-columns:repeat(4,1fr);
   gap:1.5rem;
   padding:0 2.5rem;
 }
@@ -356,6 +356,20 @@ main{padding-bottom:6rem;}
 .grid-card-issue[data-group="2"]{ color:#C9A84C; } /* 007–012: yellow */
 .grid-card-issue[data-group="3"]{ color:#39E07A; } /* 013–018: green  */
 .grid-card-issue[data-group="4"]{ color:#FF5C20; } /* 019–024: orange */
+/* coming soon badge */
+.grid-card-coming-soon{
+  position:absolute;top:0;right:0;z-index:4;
+  font-family:var(--mono);font-size:.52rem;font-weight:700;
+  letter-spacing:.14em;text-transform:uppercase;
+  background:#C9A84C;color:#0A0A0A;
+  padding:.35rem .75rem;
+  pointer-events:none;
+}
+.grid-card.is-coming-soon{cursor:default;}
+.grid-card.is-coming-soon img{filter:brightness(.55) saturate(.35);}
+.grid-card.is-coming-soon:hover .grid-card-inner{transform:none;}
+.grid-card.is-coming-soon:hover img{filter:brightness(.55) saturate(.35);}
+
 /* dot indicator */
 .grid-card-dot{
   position:absolute;top:.6rem;right:.6rem;z-index:3;
@@ -364,6 +378,9 @@ main{padding-bottom:6rem;}
   animation:hdot 2s ease-in-out infinite;
 }
 
+@media(max-width:900px){
+  .guides-grid{grid-template-columns:repeat(2,1fr);}
+}
 @media(max-width:600px){
   .guides-grid{grid-template-columns:1fr;padding:0 1.5rem;gap:1rem;}
   .grid-card{aspect-ratio:16/9;}
@@ -833,6 +850,32 @@ br.desk-br{display:block;}
   </div>
 </a>
     
+    <!-- STOCK MARKET — coming soon -->
+    <div class="grid-card is-coming-soon">
+      <div class="grid-card-inner">
+        <img src="images/poster-stock-market.jpg" alt="The Stock Market">
+      </div>
+      <div class="grid-card-issue" data-group="2">007</div>
+      <div class="grid-card-coming-soon">Coming Soon</div>
+      <div class="grid-card-overlay">
+        <span class="grid-card-title">The Stock Market</span>
+        <span class="grid-card-era">1602 — Present</span>
+      </div>
+    </div>
+
+    <!-- TYPOGRAPHY — coming soon -->
+    <div class="grid-card is-coming-soon">
+      <div class="grid-card-inner">
+        <img src="images/poster-typography.jpg" alt="Typography">
+      </div>
+      <div class="grid-card-issue" data-group="2">008</div>
+      <div class="grid-card-coming-soon">Coming Soon</div>
+      <div class="grid-card-overlay">
+        <span class="grid-card-title">Typography</span>
+        <span class="grid-card-era">1440 — Present</span>
+      </div>
+    </div>
+
     <!--
     ════════════════════════════════════════════════════════
     ADD NEW GUIDE CARDS HERE — copy the block above and paste
