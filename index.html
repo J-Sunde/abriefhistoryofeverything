@@ -356,19 +356,33 @@ main{padding-bottom:6rem;}
 .grid-card-issue[data-group="2"]{ color:#C9A84C; } /* 007–012: yellow */
 .grid-card-issue[data-group="3"]{ color:#39E07A; } /* 013–018: green  */
 .grid-card-issue[data-group="4"]{ color:#FF5C20; } /* 019–024: orange */
-/* coming soon badge */
-.grid-card-coming-soon{
-  position:absolute;top:0;right:0;z-index:4;
-  font-family:var(--mono);font-size:.52rem;font-weight:700;
-  letter-spacing:.14em;text-transform:uppercase;
-  background:#C9A84C;color:#0A0A0A;
-  padding:.35rem .75rem;
+/* ── coming soon — shared base ── */
+.grid-card.is-coming-soon{cursor:default;}
+.grid-card.is-coming-soon img{filter:brightness(.45) saturate(.25);}
+.grid-card.is-coming-soon:hover .grid-card-inner{transform:none;}
+.grid-card.is-coming-soon:hover img{filter:brightness(.45) saturate(.25);}
+
+/* coming soon — centered overlay badge */
+.cs-center{
+  position:absolute;inset:0;z-index:4;
+  display:flex;flex-direction:column;align-items:center;justify-content:center;
+  gap:.6rem;
   pointer-events:none;
 }
-.grid-card.is-coming-soon{cursor:default;}
-.grid-card.is-coming-soon img{filter:brightness(.55) saturate(.35);}
-.grid-card.is-coming-soon:hover .grid-card-inner{transform:none;}
-.grid-card.is-coming-soon:hover img{filter:brightness(.55) saturate(.35);}
+.cs-center-label{
+  font-family:var(--mono);font-size:.52rem;font-weight:600;
+  letter-spacing:.28em;text-transform:uppercase;
+  color:rgba(255,255,255,.45);
+}
+.cs-center-text{
+  font-family:var(--cond);font-weight:700;
+  font-size:clamp(1.4rem,3.2vw,2rem);
+  letter-spacing:.06em;text-transform:uppercase;
+  color:#C9A84C;
+  line-height:1;
+  border:1px solid rgba(201,168,76,.35);
+  padding:.5rem 1.2rem;
+}
 
 /* dot indicator */
 .grid-card-dot{
@@ -856,7 +870,10 @@ br.desk-br{display:block;}
         <img src="images/poster-stock-market.jpg" alt="The Stock Market">
       </div>
       <div class="grid-card-issue" data-group="2">007</div>
-      <div class="grid-card-coming-soon">Coming Soon</div>
+      <div class="cs-center">
+        <span class="cs-center-label">Up Next</span>
+        <span class="cs-center-text">Coming Soon</span>
+      </div>
       <div class="grid-card-overlay">
         <span class="grid-card-title">The Stock Market</span>
         <span class="grid-card-era">1602 — Present</span>
@@ -869,7 +886,10 @@ br.desk-br{display:block;}
         <img src="images/poster-typography.jpg" alt="Typography">
       </div>
       <div class="grid-card-issue" data-group="2">008</div>
-      <div class="grid-card-coming-soon">Coming Soon</div>
+      <div class="cs-center">
+        <span class="cs-center-label">Up Next</span>
+        <span class="cs-center-text">Coming Soon</span>
+      </div>
       <div class="grid-card-overlay">
         <span class="grid-card-title">Typography</span>
         <span class="grid-card-era">1440 — Present</span>
