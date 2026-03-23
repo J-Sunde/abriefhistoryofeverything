@@ -997,50 +997,62 @@ a.news-item:hover .news-item-source{color:var(--accent);}
 /* ══════════════════════════════════════════════════════════════
    FOOTER
 ══════════════════════════════════════════════════════════════ */
+/* Single-row footer: mark+lockup left · copyright center · share right */
 .footer{
-  padding:4rem 3rem;
-  display:grid;grid-template-columns:1fr 1fr 1fr;gap:2rem;
-  border-top:1px solid var(--rule);background:var(--bg1);
+  background:var(--bg);
+  border-top:1px solid var(--rule);
+  padding:0 2.5rem;
+  height:56px;
+  display:flex;
+  align-items:center;
+  gap:0;
+  padding-bottom:env(safe-area-inset-bottom);
   transition:background .35s,border-color .35s;
 }
-@media(max-width:768px){.footer{grid-template-columns:1fr;padding:2.5rem 1.5rem;}}
-.footer-brand{
-  font-family:'IBM Plex Mono',monospace;font-weight:700;
-  font-size:1.3rem;text-transform:uppercase;color:var(--bright);
-  letter-spacing:.06em;transition:color .35s;
+@media(max-width:768px){
+  .footer{height:auto;padding:1rem 1.5rem;flex-wrap:wrap;gap:.5rem;}
+  .footer-copy{order:3;width:100%;text-align:center;}
 }
-.footer-brand span{color:var(--accent);}
-.footer-col-label{
+/* Mark + wordmark lockup — left */
+.footer-lockup{
+  display:flex;align-items:center;gap:12px;flex-shrink:0;
+}
+.footer-lockup svg{
+  display:block;width:32px;height:32px;flex-shrink:0;
+}
+.footer-series{
+  font-family:'IBM Plex Sans Condensed',sans-serif;
+  font-weight:700;font-size:13px;
+  text-transform:uppercase;letter-spacing:.05em;
+  color:var(--bright);line-height:1;white-space:nowrap;
+  transition:color .35s;
+}
+.footer-series em{font-style:normal;color:var(--accent);}
+/* Copyright — center */
+.footer-copy{
+  flex:1;text-align:center;
   font-family:'IBM Plex Mono',monospace;
-  font-size:0.744rem;letter-spacing:.25em;text-transform:uppercase;
-  color:var(--muted);margin-bottom:.8rem;transition:color .35s;
+  font-size:0.72rem;letter-spacing:.14em;
+  text-transform:uppercase;color:var(--muted);
+  transition:color .35s;
 }
-.footer-note{
-  font-family:'IBM Plex Sans',sans-serif;
-  font-size:0.924rem;line-height:1.75;color:var(--muted);transition:color .35s;
-}
-.footer-bar{
-  background:var(--bg);border-top:1px solid var(--rule);
-  padding:.9rem 3rem 3rem;display:flex;align-items:center;justify-content:space-between;
-  font-family:'IBM Plex Mono',monospace;
-  font-size:0.744rem;letter-spacing:.16em;text-transform:uppercase;color:var(--muted);
-  flex-wrap:wrap;gap:.5rem;
-  transition:background .35s,border-color .35s,color .35s;
+/* Share links — right */
+.footer-share{
+  display:flex;align-items:center;gap:1.6rem;flex-shrink:0;
 }
 .footer-share-link{
   font-family:'IBM Plex Mono',monospace;
-  font-size:0.82rem;letter-spacing:.16em;text-transform:uppercase;
-  color:var(--dim);text-decoration:none;
-  transition:color .2s;
-  padding:.15rem 0;
+  font-size:0.72rem;letter-spacing:.16em;text-transform:uppercase;
+  color:var(--muted);text-decoration:none;
   border-bottom:1px solid transparent;
+  padding:.1rem 0;
+  transition:color .2s,border-color .2s;
 }
 .footer-share-link:hover{color:var(--accent);border-bottom-color:var(--accent);}
-.footer-bar-links{display:flex;gap:2rem;align-items:center;flex-wrap:wrap;}
-@media(max-width:600px){.footer-bar{padding:.9rem 1.5rem 3rem;flex-direction:column;align-items:center;gap:.5rem;text-align:center;}}
-@media(max-width:600px){.footer-bar-links{justify-content:center;}}
-.footer-accent-bar{display:flex;height:3px;}
-.footer-accent-bar div{flex:1;}
+/* Mouth blink animation — shared with cursor */
+.footer-mouth{animation:cursorBlink 1.1s step-end infinite;}
+@keyframes cursorBlink{0%,100%{opacity:1}50%{opacity:0}}
+@media(prefers-reduced-motion:reduce){.footer-mouth{animation:none;opacity:1;}}
 
 /* ══════════════════════════════════════════════════════════════
    FADE-IN ANIMATIONS
@@ -1300,7 +1312,7 @@ a.news-item:hover .news-item-source{color:var(--accent);}
   body{font-size:11pt;}
   a{color:#000;text-decoration:none;}
   .hero-title{font-size:3rem!important;}
-  .footer-accent-bar{display:none;}
+  .footer{display:none;}
   @page{margin:1.5cm;size:A4;}
 }
 
@@ -2019,7 +2031,7 @@ a.news-item:hover .news-item-source{color:var(--accent);}
   <div class="people-grid">
 
     <div class="person-card fi" style="--p-accent:#00D4F0;">
-      <img class="person-photo" src="ai/images/people/01-alan-turing.jpg" alt="Alan Turing portrait" loading="lazy">
+      <img class="person-photo" src="images/people/01-alan-turing.jpg" alt="Alan Turing portrait" loading="lazy">
       <div class="person-era">1912 – 1954</div>
       <div class="person-name">Alan Turing</div>
       <div class="person-role">Father of Computer Science</div>
@@ -2028,7 +2040,7 @@ a.news-item:hover .news-item-source{color:var(--accent);}
     </div>
 
     <div class="person-card fi" style="--p-accent:#0055EE;--d:.05s">
-      <img class="person-photo" src="ai/images/people/02-john-mccarthy.jpg" alt="John McCarthy portrait" loading="lazy">
+      <img class="person-photo" src="images/people/02-john-mccarthy.jpg" alt="John McCarthy portrait" loading="lazy">
       <div class="person-era">1927 – 2011</div>
       <div class="person-name">John McCarthy</div>
       <div class="person-role">Coined "Artificial Intelligence"</div>
@@ -2037,7 +2049,7 @@ a.news-item:hover .news-item-source{color:var(--accent);}
     </div>
 
     <div class="person-card fi" style="--p-accent:#00E87A;--d:.1s">
-      <img class="person-photo" src="ai/images/people/03-marvin-minsky.jpg" alt="Marvin Minsky portrait" loading="lazy">
+      <img class="person-photo" src="images/people/03-marvin-minsky.jpg" alt="Marvin Minsky portrait" loading="lazy">
       <div class="person-era">1927 – 2016</div>
       <div class="person-name">Marvin Minsky</div>
       <div class="person-role">Co-founder, MIT AI Lab</div>
@@ -2046,7 +2058,7 @@ a.news-item:hover .news-item-source{color:var(--accent);}
     </div>
 
     <div class="person-card fi" style="--p-accent:#FF5C20;--d:.15s">
-      <img class="person-photo" src="ai/images/people/04-geoffrey-hinton.jpg" alt="Geoffrey Hinton portrait" loading="lazy">
+      <img class="person-photo" src="images/people/04-geoffrey-hinton.jpg" alt="Geoffrey Hinton portrait" loading="lazy">
       <div class="person-era">b. 1947</div>
       <div class="person-name">Geoffrey Hinton</div>
       <div class="person-role">Godfather of Deep Learning</div>
@@ -2055,7 +2067,7 @@ a.news-item:hover .news-item-source{color:var(--accent);}
     </div>
 
     <div class="person-card fi" style="--p-accent:#00D4F0;--d:.2s">
-      <img class="person-photo" src="ai/images/people/05-yann-lecun.jpg" alt="Yann LeCun portrait" loading="lazy">
+      <img class="person-photo" src="images/people/05-yann-lecun.jpg" alt="Yann LeCun portrait" loading="lazy">
       <div class="person-era">b. 1960</div>
       <div class="person-name">Yann LeCun</div>
       <div class="person-role">Chief AI Scientist, Meta</div>
@@ -2064,7 +2076,7 @@ a.news-item:hover .news-item-source{color:var(--accent);}
     </div>
 
     <div class="person-card fi" style="--p-accent:#0055EE;--d:.25s">
-      <img class="person-photo" src="ai/images/people/06-yoshua-bengio.jpg" alt="Yoshua Bengio portrait" loading="lazy">
+      <img class="person-photo" src="images/people/06-yoshua-bengio.jpg" alt="Yoshua Bengio portrait" loading="lazy">
       <div class="person-era">b. 1966</div>
       <div class="person-name">Yoshua Bengio</div>
       <div class="person-role">Pioneer of Deep Learning</div>
@@ -2073,7 +2085,7 @@ a.news-item:hover .news-item-source{color:var(--accent);}
     </div>
 
     <div class="person-card fi" style="--p-accent:#00E87A;--d:.3s">
-      <img class="person-photo" src="ai/images/people/07-demis-hassabis.jpg" alt="Demis Hassabis portrait" loading="lazy">
+      <img class="person-photo" src="images/people/07-demis-hassabis.jpg" alt="Demis Hassabis portrait" loading="lazy">
       <div class="person-era">b. 1986</div>
       <div class="person-name">Demis Hassabis</div>
       <div class="person-role">CEO, Google DeepMind</div>
@@ -2082,7 +2094,7 @@ a.news-item:hover .news-item-source{color:var(--accent);}
     </div>
 
     <div class="person-card fi" style="--p-accent:#FF5C20;--d:.35s">
-      <img class="person-photo" src="ai/images/people/08-ilya-sutskever.jpg" alt="Ilya Sutskever portrait" loading="lazy">
+      <img class="person-photo" src="images/people/08-ilya-sutskever.jpg" alt="Ilya Sutskever portrait" loading="lazy">
       <div class="person-era">b. 1985</div>
       <div class="person-name">Ilya Sutskever</div>
       <div class="person-role">Co-founder, OpenAI / SSI</div>
@@ -2091,7 +2103,7 @@ a.news-item:hover .news-item-source{color:var(--accent);}
     </div>
 
     <div class="person-card fi" style="--p-accent:#00D4F0;--d:.4s">
-      <img class="person-photo" src="ai/images/people/09-sam-altman.jpg" alt="Sam Altman portrait" loading="lazy">
+      <img class="person-photo" src="images/people/09-sam-altman.jpg" alt="Sam Altman portrait" loading="lazy">
       <div class="person-era">b. 1985</div>
       <div class="person-name">Sam Altman</div>
       <div class="person-role">CEO, OpenAI</div>
@@ -2100,7 +2112,7 @@ a.news-item:hover .news-item-source{color:var(--accent);}
     </div>
 
     <div class="person-card fi" style="--p-accent:#0055EE;--d:.45s">
-      <img class="person-photo" src="ai/images/people/10-dario-amodei.jpg" alt="Dario Amodei portrait" loading="lazy">
+      <img class="person-photo" src="images/people/10-dario-amodei.jpg" alt="Dario Amodei portrait" loading="lazy">
       <div class="person-era">b. 1983</div>
       <div class="person-name">Dario Amodei</div>
       <div class="person-role">CEO, Anthropic</div>
@@ -2109,7 +2121,7 @@ a.news-item:hover .news-item-source{color:var(--accent);}
     </div>
 
     <div class="person-card fi" style="--p-accent:#00E87A;--d:.5s">
-      <img class="person-photo" src="ai/images/people/11-fei-fei-li.jpg" alt="Fei-Fei Li portrait" loading="lazy">
+      <img class="person-photo" src="images/people/11-fei-fei-li.jpg" alt="Fei-Fei Li portrait" loading="lazy">
       <div class="person-era">b. 1971</div>
       <div class="person-name">Fei-Fei Li</div>
       <div class="person-role">Creator of ImageNet</div>
@@ -2118,7 +2130,7 @@ a.news-item:hover .news-item-source{color:var(--accent);}
     </div>
 
     <div class="person-card fi" style="--p-accent:#FF5C20;--d:.55s">
-      <img class="person-photo" src="ai/images/people/12-andrew-ng.jpg" alt="Andrew Ng portrait" loading="lazy">
+      <img class="person-photo" src="images/people/12-andrew-ng.jpg" alt="Andrew Ng portrait" loading="lazy">
       <div class="person-era">b. 1972</div>
       <div class="person-name">Andrew Ng</div>
       <div class="person-role">Co-founder, Coursera / Google Brain</div>
@@ -2173,37 +2185,32 @@ a.news-item:hover .news-item-source{color:var(--accent);}
 </div>
 
 <!-- ─── FOOTER ─────────────────────────────────────────────────── -->
-<!-- Accent bar: hardcoded series hex — never use CSS vars here (light mode remaps them) -->
-<div class="footer-accent-bar">
-  <div style="background:#00D4F0;flex:2;"></div>
-  <div style="background:#0055EE;flex:1;"></div>
-  <div style="background:#39E07A;flex:1;"></div>
-  <div style="background:#FF5C20;flex:1;"></div>
-  <div style="background:var(--rule2);flex:5;"></div>
-</div>
 <footer class="footer">
-  <div class="fi">
-    <div class="footer-brand">A <span>I</span> / History</div>
-    <div class="footer-note" style="margin-top:1rem;">A structured chronology of artificial intelligence — from theoretical foundations to the present proliferation of foundation models, autonomous agents, and an open horizon beyond.</div>
-  </div>
-  <div class="fi" style="--d:.1s">
-    <div class="footer-col-label">Part of</div>
-    <div class="footer-note">A (Brief) History of Everything_<br>
-      <a href="https://abriefhistoryofeverything.com" style="color:var(--accent);text-decoration:none;">abriefhistoryofeverything.com ↗</a>
+
+  <!-- Left: mark + wordmark — mouth blinks, _ is static -->
+  <!-- Filled cyan — hardcoded so mark stays cyan in both light and dark mode -->
+  <div class="footer-lockup">
+    <svg width="32" height="32" viewBox="0 0 400 400" xmlns="http://www.w3.org/2000/svg" style="flex-shrink:0;display:block;">
+      <rect width="400" height="400" fill="#00D4F0"/>
+      <rect x="55" y="118" width="46" height="46" fill="#08090C" opacity="0.22"/>
+      <rect x="178" y="118" width="46" height="46" fill="#08090C" opacity="0.22"/>
+      <rect class="footer-mouth" x="55" y="278" width="170" height="36" fill="#08090C"/>
+    </svg>
+    <div class="footer-wordmark">
+      <div class="footer-series">A <em>(Brief)</em> History of Everything_</div>
     </div>
   </div>
-  <div class="fi" style="--d:.2s">
-    <div class="footer-col-label">Typefaces</div>
-    <div class="footer-note">IBM Plex Mono — Display, Heroes, Data<br>IBM Plex Sans Condensed — Headings, UI<br>IBM Plex Sans — Body copy</div>
-  </div>
-</footer>
-<div class="footer-bar">
-  <span>A (Brief) History of AI_ — Chronological Index · 7 Sections</span>
-  <span class="footer-bar-links">
+
+  <!-- Center: copyright -->
+  <div class="footer-copy">© 2026 A (Brief) History of Everything</div>
+
+  <!-- Right: share links -->
+  <div class="footer-share">
     <a href="https://twitter.com/intent/tweet?text=A%20(Brief)%20History%20of%20AI%20%E2%80%94%20from%20Turing%20to%20autonomous%20agents&url=https%3A%2F%2Fabriefhistoryof-ai.com" target="_blank" rel="noopener" class="footer-share-link">Share on X</a>
     <a href="https://www.linkedin.com/sharing/share-offsite/?url=https%3A%2F%2Fabriefhistoryof-ai.com" target="_blank" rel="noopener" class="footer-share-link">Share on LinkedIn</a>
-  </span>
-</div>
+  </div>
+
+</footer>
 
 </div><!-- /page-body -->
 
