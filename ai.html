@@ -46,8 +46,8 @@
   --bg3:       #141921;
   --rule:      #1A2230;
   --rule2:     #22303F;
-  --muted:     #334455;
-  --dim:       #607080;
+  --muted:     #5A7A94;
+  --dim:       #8AAABB;
   --text:      #B8CCD8;
   --bright:    #ECF2F6;
   --accent:    #00D4F0;
@@ -233,7 +233,7 @@ a.news-item:hover .news-item-source{color:var(--accent);}
 }
 .news-item:hover::before{transform:scaleY(1);}
 .news-item-idx{
-  font-size:0.66rem;letter-spacing:.2em;color:var(--muted);
+  font-size:0.66rem;letter-spacing:.2em;color:var(--dim);
   display:block;margin-bottom:.3rem;
   transition:color .35s;
 }
@@ -244,7 +244,7 @@ a.news-item:hover .news-item-source{color:var(--accent);}
 }
 .news-item-source{
   font-family:'IBM Plex Mono',monospace;
-  font-size:0.66rem;color:var(--muted);
+  font-size:0.66rem;color:var(--dim);
   margin-top:.3rem;letter-spacing:.08em;
   transition:color .35s;
 }
@@ -252,7 +252,7 @@ a.news-item:hover .news-item-source{color:var(--accent);}
   padding:1.4rem .75rem;
   display:flex;align-items:center;gap:.7rem;
   font-family:'IBM Plex Mono',monospace;
-  font-size:0.72rem;letter-spacing:.1em;color:var(--muted);
+  font-size:0.72rem;letter-spacing:.1em;color:var(--dim);
   transition:color .35s;
 }
 .news-spinner{
@@ -326,20 +326,19 @@ a.news-item:hover .news-item-source{color:var(--accent);}
   margin-left:-4.5rem;
 }
 @media(min-width:901px){.nav-index-box{margin-left:calc(-52px - 1.5rem);}}
+[data-theme="light"] .nav-index-box{color:#fff;}
 
 
+.nav-brand{
   font-family:'IBM Plex Mono',monospace;
   font-weight:700;font-size:0.78rem;letter-spacing:.12em;
   text-transform:uppercase;color:var(--bright);white-space:nowrap;
   text-decoration:none;flex-shrink:0;
 }
-/* Full text visible on desktop */
-.nav-brand .brand-full{display:inline;}
-.nav-brand .brand-short{display:none;}
-/* Shorten to "A (BRIEF) HISTORY OF_" on mobile < 960px */
-@media(max-width:960px){
-  .nav-brand .brand-full{display:none;}
-  .nav-brand .brand-short{display:inline;}
+/* Desktop only — hide on mobile/tablet */
+@media(max-width:900px){
+  .nav-brand{display:none !important;}
+  .nav-era{display:none;}
 }
 .nav-topic{
   font-family:'IBM Plex Mono',monospace;
@@ -354,7 +353,7 @@ a.news-item:hover .news-item-source{color:var(--accent);}
   color:var(--dim);flex:1;overflow:hidden;
   white-space:nowrap;text-overflow:ellipsis;
 }
-@media(max-width:600px){.nav-era{display:none;}}
+
 
 /* ─── MODE TOGGLE ─── */
 .mode-toggle{
@@ -417,10 +416,10 @@ a.news-item:hover .news-item-source{color:var(--accent);}
 .sidenav-num{
   font-family:'IBM Plex Mono',monospace;
   font-size:0.792rem;font-weight:700;letter-spacing:.05em;
-  color:var(--muted);transition:color .25s;line-height:1;
+  color:var(--dim);transition:color .25s;line-height:1;
 }
 .sidenav-dot{
-  width:4px;height:4px;background:var(--muted);margin-top:.4rem;
+  width:4px;height:4px;background:var(--dim);margin-top:.4rem;
   transition:background .25s,transform .25s;
 }
 
@@ -475,7 +474,7 @@ a.news-item:hover .news-item-source{color:var(--accent);}
 .mobile-nav-num{
   font-family:'IBM Plex Mono',monospace;
   font-size:0.792rem;font-weight:700;letter-spacing:.08em;
-  color:var(--muted);transition:color .25s;
+  color:var(--dim);transition:color .25s;
 }
 .mobile-nav-label{
   font-family:'IBM Plex Sans Condensed',sans-serif;
@@ -553,9 +552,9 @@ a.news-item:hover .news-item-source{color:var(--accent);}
 .hero-scroll-hint{
   margin-top:3rem;display:flex;align-items:center;gap:.8rem;
   font-family:'IBM Plex Mono',monospace;
-  font-size:0.84rem;letter-spacing:.25em;text-transform:uppercase;color:var(--muted);
+  font-size:0.84rem;letter-spacing:.25em;text-transform:uppercase;color:var(--dim);
 }
-.scroll-line{width:36px;height:1px;background:var(--muted);}
+.scroll-line{width:36px;height:1px;background:var(--dim);}
 
 /* Hero right */
 .hero-right{
@@ -591,7 +590,7 @@ a.news-item:hover .news-item-source{color:var(--accent);}
 }
 .stat-sub{
   font-family:'IBM Plex Sans',sans-serif;
-  font-size:0.888rem;color:var(--muted);margin-top:.3rem;line-height:1.4;transition:color .35s;
+  font-size:1.02rem;color:var(--dim);margin-top:.3rem;line-height:1.4;transition:color .35s;
 }
 
 /* hero bg grid */
@@ -650,7 +649,7 @@ a.news-item:hover .news-item-source{color:var(--accent);}
 }
 .sbc-d{
   font-family:'IBM Plex Sans',sans-serif;
-  font-size:0.924rem;color:var(--muted);margin-top:.4rem;line-height:1.4;transition:color .35s;
+  font-size:1.02rem;color:var(--dim);margin-top:.4rem;line-height:1.4;transition:color .35s;
 }
 
 /* ══════════════════════════════════════════════════════════════
@@ -717,7 +716,7 @@ a.news-item:hover .news-item-source{color:var(--accent);}
 .era-meter-label{
   font-family:'IBM Plex Mono',monospace;
   font-size:0.744rem;letter-spacing:.2em;text-transform:uppercase;
-  color:var(--muted);margin-bottom:.5rem;transition:color .35s;
+  color:var(--dim);margin-bottom:.5rem;transition:color .35s;
 }
 .era-meter-bar{height:1px;background:var(--rule2);position:relative;overflow:hidden;}
 .era-meter-fill{
@@ -751,7 +750,7 @@ a.news-item:hover .news-item-source{color:var(--accent);}
 .card-idx{
   position:absolute;top:1.2rem;right:1.5rem;
   font-family:'IBM Plex Mono',monospace;
-  font-size:0.744rem;letter-spacing:.18em;color:var(--muted);
+  font-size:0.744rem;letter-spacing:.18em;color:var(--dim);
 }
 .card-year{
   font-family:'IBM Plex Mono',monospace;font-weight:600;
@@ -772,7 +771,7 @@ a.news-item:hover .news-item-source{color:var(--accent);}
 .card-tags{margin-top:1.5rem;display:flex;flex-wrap:wrap;gap:.4rem;}
 .tag{
   font-family:'IBM Plex Mono',monospace;font-size:0.78rem;letter-spacing:.1em;
-  text-transform:uppercase;color:var(--muted);
+  text-transform:uppercase;color:var(--dim);
   border:1px solid var(--rule2);padding:.3rem .65rem;
   text-decoration:none;display:inline-block;
   transition:color .2s,border-color .2s,background .2s;
@@ -937,7 +936,7 @@ a.news-item:hover .news-item-source{color:var(--accent);}
 }
 .entity-sub{
   font-family:'IBM Plex Mono',monospace;
-  font-size:.78rem;color:var(--muted);
+  font-size:.78rem;color:var(--dim);
   letter-spacing:.1em;text-transform:uppercase;
   margin-bottom:2.5rem;
 }
@@ -981,14 +980,14 @@ a.news-item:hover .news-item-source{color:var(--accent);}
 .eco-group-label{
   font-family:'IBM Plex Mono',monospace;
   font-size:0.66rem;letter-spacing:.22em;text-transform:uppercase;
-  color:var(--muted);margin-bottom:.8rem;padding-bottom:.5rem;
+  color:var(--dim);margin-bottom:.8rem;padding-bottom:.5rem;
   border-bottom:1px solid var(--rule);
   transition:color .35s,border-color .35s;
 }
 .eco-link{
   display:block;
   font-family:'IBM Plex Sans',sans-serif;
-  font-size:0.9rem;color:var(--dim);
+  font-size:1.12rem;color:var(--dim);
   text-decoration:none;padding:.3rem 0;
   transition:color .2s;
 }
@@ -1016,6 +1015,7 @@ a.news-item:hover .news-item-source{color:var(--accent);}
 /* Mark + wordmark lockup — left */
 .footer-lockup{
   display:flex;align-items:center;gap:12px;flex-shrink:0;
+  text-decoration:none;
 }
 .footer-lockup svg{
   display:block;width:32px;height:32px;flex-shrink:0;
@@ -1032,8 +1032,8 @@ a.news-item:hover .news-item-source{color:var(--accent);}
 .footer-copy{
   flex:1;text-align:center;
   font-family:'IBM Plex Mono',monospace;
-  font-size:0.72rem;letter-spacing:.14em;
-  text-transform:uppercase;color:var(--muted);
+  font-size:0.82rem;letter-spacing:.14em;
+  text-transform:uppercase;color:var(--dim);
   transition:color .35s;
 }
 /* Share links — right */
@@ -1042,8 +1042,8 @@ a.news-item:hover .news-item-source{color:var(--accent);}
 }
 .footer-share-link{
   font-family:'IBM Plex Mono',monospace;
-  font-size:0.72rem;letter-spacing:.16em;text-transform:uppercase;
-  color:var(--muted);text-decoration:none;
+  font-size:0.82rem;letter-spacing:.16em;text-transform:uppercase;
+  color:var(--dim);text-decoration:none;
   border-bottom:1px solid transparent;
   padding:.1rem 0;
   transition:color .2s,border-color .2s;
@@ -1147,15 +1147,6 @@ a.news-item:hover .news-item-source{color:var(--accent);}
 ::-webkit-scrollbar-thumb{background:var(--sb-thumb);}
 ::-webkit-scrollbar-thumb:hover{background:var(--accent);}
 
-/* ══════════════════════════════════════════════════════════════
-   SCROLL PROGRESS % (reads from nav)
-══════════════════════════════════════════════════════════════ */
-.nav-pct{
-  font-family:'IBM Plex Mono',monospace;
-  font-size:0.636rem;letter-spacing:.15em;color:var(--muted);
-  min-width:3ch;text-align:right;flex-shrink:0;
-  transition:color .35s;
-}
 
 /* ══════════════════════════════════════════════════════════════
    PEOPLE SECTION
@@ -1197,7 +1188,7 @@ a.news-item:hover .news-item-source{color:var(--accent);}
 .person-link{padding-bottom:1.6rem;display:block;}
 .person-era{
   font-family:'IBM Plex Mono',monospace;font-size:0.588rem;
-  letter-spacing:.2em;text-transform:uppercase;color:var(--muted);
+  letter-spacing:.2em;text-transform:uppercase;color:var(--dim);
   margin-bottom:.6rem;transition:color .35s;
 }
 .person-name{
@@ -1221,7 +1212,7 @@ a.news-item:hover .news-item-source{color:var(--accent);}
   margin-top:.9rem;
   font-family:'IBM Plex Mono',monospace;font-size:0.588rem;
   letter-spacing:.12em;text-transform:uppercase;
-  color:var(--muted);text-decoration:none;
+  color:var(--dim);text-decoration:none;
   transition:color .2s;
 }
 .person-link:hover{color:var(--accent);}
@@ -1406,10 +1397,9 @@ a.news-item:hover .news-item-source{color:var(--accent);}
 ══════════════════════════════════════════════════════════════ -->
 <nav class="nav">
   <div class="nav-index-box">001</div>
-  <a href="https://abriefhistoryofeverything.com" class="nav-brand"><span class="brand-full">A (BRIEF) HISTORY OF EVERYTHING<span class="cursor-blink">_</span></span><span class="brand-short">A (BRIEF) HISTORY OF<span class="cursor-blink">_</span></span></a>
+  <a href="#hero" class="nav-brand">A (BRIEF) HISTORY OF<span class="cursor-blink">_</span></a>
   <span class="nav-topic">AI</span>
   <div class="nav-era" id="navEra">1940's — Birth of AI</div>
-  <div class="nav-pct" id="navPct">0%</div>
   <div class="mode-toggle">
     <span class="mode-icon" id="modeIcon">☀</span>
     <div class="toggle-switch" id="toggleSwitch" role="button" aria-label="Toggle light/dark mode" tabindex="0"></div>
@@ -1939,7 +1929,7 @@ a.news-item:hover .news-item-source{color:var(--accent);}
     <div class="era-meter fi" style="margin-top:auto;padding-top:2rem;">
       <div class="era-meter-label">Certainty Index</div>
       <div class="era-meter-bar"><div class="era-meter-fill" style="max-width:40%;background:linear-gradient(90deg,var(--accent3),var(--accent2));"></div></div>
-      <div style="font-family:'IBM Plex Mono',monospace;font-size:0.6rem;color:var(--muted);margin-top:.6rem;letter-spacing:.08em;">Forecasting is probabilistic,<br>not certain.</div>
+      <div style="font-family:'IBM Plex Mono',monospace;font-size:0.6rem;color:var(--dim);margin-top:.6rem;letter-spacing:.08em;">Forecasting is probabilistic,<br>not certain.</div>
     </div>
   </div>
   <div class="era-main" style="padding:0;">
@@ -2007,14 +1997,14 @@ a.news-item:hover .news-item-source{color:var(--accent);}
 
     <!-- Confidence key -->
     <div style="padding:1.5rem 3rem;display:flex;flex-wrap:wrap;gap:2rem;align-items:center;border-bottom:1px solid var(--rule);">
-      <div style="font-family:'IBM Plex Mono',monospace;font-size:0.6rem;letter-spacing:.2em;text-transform:uppercase;color:var(--muted);">Confidence Key</div>
+      <div style="font-family:'IBM Plex Mono',monospace;font-size:0.72rem;letter-spacing:.2em;text-transform:uppercase;color:var(--text);">Confidence Key</div>
       <div style="display:flex;flex-wrap:wrap;gap:1.2rem;">
-        <div style="display:flex;align-items:center;gap:.4rem;"><div style="width:7px;height:7px;background:var(--accent);flex-shrink:0;"></div><span style="font-family:'IBM Plex Mono',monospace;font-size:0.648rem;color:var(--dim);letter-spacing:.08em;">80–90% High Confidence</span></div>
-        <div style="display:flex;align-items:center;gap:.4rem;"><div style="width:7px;height:7px;background:var(--accent2);flex-shrink:0;"></div><span style="font-family:'IBM Plex Mono',monospace;font-size:0.648rem;color:var(--dim);letter-spacing:.08em;">60–80% Probable</span></div>
-        <div style="display:flex;align-items:center;gap:.4rem;"><div style="width:7px;height:7px;background:var(--accent3);flex-shrink:0;"></div><span style="font-family:'IBM Plex Mono',monospace;font-size:0.648rem;color:var(--dim);letter-spacing:.08em;">40–60% Speculative</span></div>
-        <div style="display:flex;align-items:center;gap:.4rem;"><div style="width:7px;height:7px;background:var(--warn);flex-shrink:0;"></div><span style="font-family:'IBM Plex Mono',monospace;font-size:0.648rem;color:var(--dim);letter-spacing:.08em;">&lt;40% Highly Uncertain</span></div>
+        <div style="display:flex;align-items:center;gap:.4rem;"><div style="width:7px;height:7px;background:var(--accent);flex-shrink:0;"></div><span style="font-family:'IBM Plex Mono',monospace;font-size:0.75rem;color:var(--text);letter-spacing:.08em;">80–90% High Confidence</span></div>
+        <div style="display:flex;align-items:center;gap:.4rem;"><div style="width:7px;height:7px;background:var(--accent2);flex-shrink:0;"></div><span style="font-family:'IBM Plex Mono',monospace;font-size:0.75rem;color:var(--text);letter-spacing:.08em;">60–80% Probable</span></div>
+        <div style="display:flex;align-items:center;gap:.4rem;"><div style="width:7px;height:7px;background:var(--accent3);flex-shrink:0;"></div><span style="font-family:'IBM Plex Mono',monospace;font-size:0.75rem;color:var(--text);letter-spacing:.08em;">40–60% Speculative</span></div>
+        <div style="display:flex;align-items:center;gap:.4rem;"><div style="width:7px;height:7px;background:var(--warn);flex-shrink:0;"></div><span style="font-family:'IBM Plex Mono',monospace;font-size:0.75rem;color:var(--text);letter-spacing:.08em;">&lt;40% Highly Uncertain</span></div>
       </div>
-      <div style="margin-left:auto;font-family:'IBM Plex Mono',monospace;font-size:0.624rem;color:var(--muted);font-style:italic;">Probabilistic estimates only.</div>
+      <div style="margin-left:auto;font-family:'IBM Plex Mono',monospace;font-size:0.72rem;color:var(--dim);font-style:italic;">Probabilistic estimates only.</div>
     </div>
   </div>
 </section>
@@ -2031,7 +2021,7 @@ a.news-item:hover .news-item-source{color:var(--accent);}
   <div class="people-grid">
 
     <div class="person-card fi" style="--p-accent:#00D4F0;">
-      <img class="person-photo" src="ai/images/people/01-alan-turing.jpg" alt="Alan Turing portrait" loading="lazy">
+      <img class="person-photo" src="ai/images/01-alan-turing.jpg" alt="Alan Turing portrait" loading="lazy">
       <div class="person-era">1912 – 1954</div>
       <div class="person-name">Alan Turing</div>
       <div class="person-role">Father of Computer Science</div>
@@ -2040,7 +2030,7 @@ a.news-item:hover .news-item-source{color:var(--accent);}
     </div>
 
     <div class="person-card fi" style="--p-accent:#0055EE;--d:.05s">
-      <img class="person-photo" src="ai/images/people/02-john-mccarthy.jpg" alt="John McCarthy portrait" loading="lazy">
+      <img class="person-photo" src="ai/images/02-john-mccarthy.jpg" alt="John McCarthy portrait" loading="lazy">
       <div class="person-era">1927 – 2011</div>
       <div class="person-name">John McCarthy</div>
       <div class="person-role">Coined "Artificial Intelligence"</div>
@@ -2049,7 +2039,7 @@ a.news-item:hover .news-item-source{color:var(--accent);}
     </div>
 
     <div class="person-card fi" style="--p-accent:#00E87A;--d:.1s">
-      <img class="person-photo" src="ai/images/people/03-marvin-minsky.jpg" alt="Marvin Minsky portrait" loading="lazy">
+      <img class="person-photo" src="ai/images/03-marvin-minsky.jpg" alt="Marvin Minsky portrait" loading="lazy">
       <div class="person-era">1927 – 2016</div>
       <div class="person-name">Marvin Minsky</div>
       <div class="person-role">Co-founder, MIT AI Lab</div>
@@ -2058,7 +2048,7 @@ a.news-item:hover .news-item-source{color:var(--accent);}
     </div>
 
     <div class="person-card fi" style="--p-accent:#FF5C20;--d:.15s">
-      <img class="person-photo" src="ai/images/people/04-geoffrey-hinton.jpg" alt="Geoffrey Hinton portrait" loading="lazy">
+      <img class="person-photo" src="ai/images/04-geoffrey-hinton.jpg" alt="Geoffrey Hinton portrait" loading="lazy">
       <div class="person-era">b. 1947</div>
       <div class="person-name">Geoffrey Hinton</div>
       <div class="person-role">Godfather of Deep Learning</div>
@@ -2067,7 +2057,7 @@ a.news-item:hover .news-item-source{color:var(--accent);}
     </div>
 
     <div class="person-card fi" style="--p-accent:#00D4F0;--d:.2s">
-      <img class="person-photo" src="ai/images/people/05-yann-lecun.jpg" alt="Yann LeCun portrait" loading="lazy">
+      <img class="person-photo" src="ai/images/05-yann-lecun.jpg" alt="Yann LeCun portrait" loading="lazy">
       <div class="person-era">b. 1960</div>
       <div class="person-name">Yann LeCun</div>
       <div class="person-role">Chief AI Scientist, Meta</div>
@@ -2076,7 +2066,7 @@ a.news-item:hover .news-item-source{color:var(--accent);}
     </div>
 
     <div class="person-card fi" style="--p-accent:#0055EE;--d:.25s">
-      <img class="person-photo" src="ai/images/people/06-yoshua-bengio.jpg" alt="Yoshua Bengio portrait" loading="lazy">
+      <img class="person-photo" src="ai/images/06-yoshua-bengio.jpg" alt="Yoshua Bengio portrait" loading="lazy">
       <div class="person-era">b. 1966</div>
       <div class="person-name">Yoshua Bengio</div>
       <div class="person-role">Pioneer of Deep Learning</div>
@@ -2085,7 +2075,7 @@ a.news-item:hover .news-item-source{color:var(--accent);}
     </div>
 
     <div class="person-card fi" style="--p-accent:#00E87A;--d:.3s">
-      <img class="person-photo" src="ai/images/people/07-demis-hassabis.jpg" alt="Demis Hassabis portrait" loading="lazy">
+      <img class="person-photo" src="ai/images/07-demis-hassabis.jpg" alt="Demis Hassabis portrait" loading="lazy">
       <div class="person-era">b. 1986</div>
       <div class="person-name">Demis Hassabis</div>
       <div class="person-role">CEO, Google DeepMind</div>
@@ -2094,7 +2084,7 @@ a.news-item:hover .news-item-source{color:var(--accent);}
     </div>
 
     <div class="person-card fi" style="--p-accent:#FF5C20;--d:.35s">
-      <img class="person-photo" src="ai/images/people/08-ilya-sutskever.jpg" alt="Ilya Sutskever portrait" loading="lazy">
+      <img class="person-photo" src="ai/images/08-ilya-sutskever.jpg" alt="Ilya Sutskever portrait" loading="lazy">
       <div class="person-era">b. 1985</div>
       <div class="person-name">Ilya Sutskever</div>
       <div class="person-role">Co-founder, OpenAI / SSI</div>
@@ -2103,7 +2093,7 @@ a.news-item:hover .news-item-source{color:var(--accent);}
     </div>
 
     <div class="person-card fi" style="--p-accent:#00D4F0;--d:.4s">
-      <img class="person-photo" src="ai/images/people/09-sam-altman.jpg" alt="Sam Altman portrait" loading="lazy">
+      <img class="person-photo" src="ai/images/09-sam-altman.jpg" alt="Sam Altman portrait" loading="lazy">
       <div class="person-era">b. 1985</div>
       <div class="person-name">Sam Altman</div>
       <div class="person-role">CEO, OpenAI</div>
@@ -2112,7 +2102,7 @@ a.news-item:hover .news-item-source{color:var(--accent);}
     </div>
 
     <div class="person-card fi" style="--p-accent:#0055EE;--d:.45s">
-      <img class="person-photo" src="ai/images/people/10-dario-amodei.jpg" alt="Dario Amodei portrait" loading="lazy">
+      <img class="person-photo" src="ai/images/10-dario-amodei.jpg" alt="Dario Amodei portrait" loading="lazy">
       <div class="person-era">b. 1983</div>
       <div class="person-name">Dario Amodei</div>
       <div class="person-role">CEO, Anthropic</div>
@@ -2121,7 +2111,7 @@ a.news-item:hover .news-item-source{color:var(--accent);}
     </div>
 
     <div class="person-card fi" style="--p-accent:#00E87A;--d:.5s">
-      <img class="person-photo" src="ai/images/people/11-fei-fei-li.jpg" alt="Fei-Fei Li portrait" loading="lazy">
+      <img class="person-photo" src="ai/images/11-fei-fei-li.jpg" alt="Fei-Fei Li portrait" loading="lazy">
       <div class="person-era">b. 1971</div>
       <div class="person-name">Fei-Fei Li</div>
       <div class="person-role">Creator of ImageNet</div>
@@ -2130,7 +2120,7 @@ a.news-item:hover .news-item-source{color:var(--accent);}
     </div>
 
     <div class="person-card fi" style="--p-accent:#FF5C20;--d:.55s">
-      <img class="person-photo" src="ai/images/people/12-andrew-ng.jpg" alt="Andrew Ng portrait" loading="lazy">
+      <img class="person-photo" src="ai/images/12-andrew-ng.jpg" alt="Andrew Ng portrait" loading="lazy">
       <div class="person-era">b. 1972</div>
       <div class="person-name">Andrew Ng</div>
       <div class="person-role">Co-founder, Coursera / Google Brain</div>
@@ -2189,7 +2179,7 @@ a.news-item:hover .news-item-source{color:var(--accent);}
 
   <!-- Left: mark + wordmark — mouth blinks, _ is static -->
   <!-- Filled cyan — hardcoded so mark stays cyan in both light and dark mode -->
-  <div class="footer-lockup">
+  <a href="https://abriefhistoryofeverything.com" class="footer-lockup" target="_blank" rel="noopener">
     <svg width="32" height="32" viewBox="0 0 400 400" xmlns="http://www.w3.org/2000/svg" style="flex-shrink:0;display:block;">
       <rect width="400" height="400" fill="#00D4F0"/>
       <rect x="55" y="118" width="46" height="46" fill="#08090C" opacity="0.22"/>
@@ -2199,7 +2189,7 @@ a.news-item:hover .news-item-source{color:var(--accent);}
     <div class="footer-wordmark">
       <div class="footer-series">A <em>(Brief)</em> History of Everything_</div>
     </div>
-  </div>
+  </a>
 
   <!-- Center: copyright -->
   <div class="footer-copy">© 2026 A (Brief) History of Everything</div>
@@ -2310,13 +2300,11 @@ a.news-item:hover .news-item-source{color:var(--accent);}
 
   /* ── SCROLL PROGRESS ── */
   var prog=document.getElementById('progress');
-  var navPct=document.getElementById('navPct');
   function onScroll(){
     var h=document.documentElement;
     var raw=(window.scrollY/(h.scrollHeight-h.clientHeight))*100;
     var pct=Math.min(100,Math.max(0,raw));
     if(prog)prog.style.width=pct+'%';
-    if(navPct)navPct.textContent=Math.round(pct)+'%';
     updateNav();
   }
   window.addEventListener('scroll',onScroll,{passive:true});
