@@ -184,7 +184,7 @@ img{display:block;}
    TICKER (price scrolling banner)
 ══════════════════════════════════════════════════════════════ */
 .ticker{
-  position:fixed;top:0;left:0;right:0;height:26px;z-index:950;
+  position:fixed;top:0;left:0;right:0;height:50px;z-index:950;
   background:var(--accent);overflow:hidden;
   display:flex;align-items:center;
 }
@@ -193,12 +193,12 @@ img{display:block;}
   animation:tickerScroll 40s linear infinite;
 }
 .ticker-item{
-  font-family:'Space Mono',monospace;font-size:.65rem;
+  font-family:'Space Mono',monospace;font-size:.75rem;
   font-weight:700;letter-spacing:.1em;text-transform:uppercase;
   color:#0A0D06;padding:0 2.5rem;
   border-right:1px solid rgba(10,13,6,.25);
   display:flex;align-items:center;gap:.6rem;
-  flex-shrink:0;
+  flex-shrink:0;height:50px;
 }
 .ticker-item .up{color:rgba(10,13,6,.7);}
 [data-theme="light"] .ticker-item{color:#0C1A00;}
@@ -221,7 +221,7 @@ img{display:block;}
    TOP NAV
 ══════════════════════════════════════════════════════════════ */
 .nav{
-  position:fixed;top:26px;left:0;right:0;z-index:900;
+  position:fixed;top:50px;left:0;right:0;z-index:900;
   display:flex;align-items:center;gap:1.5rem;
   padding:0 1.5rem 0 0;height:50px;
   background:var(--nav-bg);
@@ -231,18 +231,18 @@ img{display:block;}
 }
 @media(min-width:901px){.nav{padding-left:0;}}
 
-.nav-logo{
+.nav-brand{
   font-family:'Space Mono',monospace;
   font-weight:700;font-size:1rem;letter-spacing:.08em;
   text-transform:uppercase;color:var(--bright);white-space:nowrap;
-  display:flex;align-items:center;gap:.5rem;
+  text-decoration:none;flex-shrink:0;
 }
-.nav-logo span{color:var(--accent);text-shadow:var(--glow-sm);}
-.nav-brand-short{display:none;}
-.nav-topic{color:var(--dim);font-size:.85rem;}
-@media(max-width:960px){
-  .nav-brand-full{display:none;}
-  .nav-brand-short{display:inline;}
+/* On mobile, show short version — hide full brand text, keep CRYPTO visible */
+.nav-brand .brand-full{display:inline;}
+.nav-brand .brand-short{display:none;}
+@media(max-width:900px){
+  .nav-brand .brand-full{display:none;}
+  .nav-brand .brand-short{display:inline;}
 }
 
 .nav-era{
@@ -289,7 +289,7 @@ img{display:block;}
    SIDE NAV
 ══════════════════════════════════════════════════════════════ */
 .sidenav{
-  position:fixed;top:76px;left:0;bottom:0;
+  position:fixed;top:100px;left:0;bottom:0;
   width:52px;z-index:850;
   display:flex;flex-direction:column;align-items:center;
   justify-content:center;gap:0;
@@ -336,7 +336,7 @@ img{display:block;}
 /* Mobile nav */
 .mobile-nav{
   display:none;
-  position:sticky;top:76px;z-index:800;
+  position:sticky;top:100px;z-index:800;
   overflow-x:auto;
   background:var(--sidenav-bg);
   border-bottom:1px solid var(--nav-border);
@@ -382,9 +382,9 @@ img{display:block;}
   display:grid;grid-template-columns:1fr 1fr;
   position:relative;overflow:hidden;
   border-bottom:1px solid var(--rule);
-  padding-top:76px;
+  padding-top:100px;
 }
-@media(max-width:768px){.hero{grid-template-columns:1fr;padding-top:76px;}}
+@media(max-width:768px){.hero{grid-template-columns:1fr;padding-top:100px;}}
 
 .hero-left{
   display:flex;flex-direction:column;justify-content:flex-end;
@@ -573,7 +573,7 @@ img{display:block;}
 .era-sidebar{
   padding:4rem 2rem;border-right:1px solid var(--rule);
   display:flex;flex-direction:column;gap:2rem;
-  background:var(--bg1);position:sticky;top:76px;
+  background:var(--bg1);position:sticky;top:100px;
   align-self:start;
 }
 @media(max-width:900px){.era-sidebar{position:static;border-right:none;border-bottom:1px solid var(--rule);padding:2.5rem 1.5rem;}}
@@ -861,43 +861,50 @@ img{display:block;}
 /* ══════════════════════════════════════════════════════════════
    FOOTER
 ══════════════════════════════════════════════════════════════ */
-.footer{
-  padding:4rem 3rem;
-  display:grid;grid-template-columns:1fr 1fr 1fr;gap:2rem;
-  border-top:1px solid var(--rule);background:var(--bg1);
+.site-footer{
+  display:flex;align-items:center;
+  height:56px;padding:0 1.5rem;
+  border-top:1px solid var(--rule);
+  gap:1rem;
 }
-@media(max-width:768px){.footer{grid-template-columns:1fr;padding:2.5rem 1.5rem;}}
-.footer-brand{
-  font-family:'Space Mono',monospace;font-weight:700;
-  font-size:1.1rem;text-transform:uppercase;color:var(--bright);
-  letter-spacing:.06em;
+.footer-lockup{
+  display:flex;align-items:center;
+  gap:10px;text-decoration:none;flex-shrink:0;
 }
-.footer-brand span{color:var(--accent);text-shadow:var(--glow-sm);}
-.footer-col-label{
-  font-family:'Space Mono',monospace;
-  font-size:.82rem;letter-spacing:.25em;text-transform:uppercase;
-  color:var(--muted);margin-bottom:.8rem;
+.footer-series{
+  font-size:0.82rem;
+  text-transform:uppercase;letter-spacing:.05em;
+  line-height:1;white-space:nowrap;color:var(--bright);
 }
-.footer-note{
-  font-family:'Barlow',sans-serif;
-  font-size:.9rem;line-height:1.75;color:var(--muted);
+.footer-series em{font-style:normal;color:var(--accent);}
+.footer-copy{
+  flex:1;text-align:center;
+  font-size:0.82rem;letter-spacing:.14em;
+  text-transform:uppercase;color:var(--dim);
 }
-.footer-bar{
-  background:var(--bg);border-top:1px solid var(--rule);
-  padding:.9rem 3rem 3rem;display:flex;align-items:center;justify-content:space-between;
-  flex-wrap:wrap;gap:.5rem;
-  font-family:'Space Mono',monospace;
-  font-size:0.82rem;letter-spacing:.04em;text-transform:uppercase;color:var(--muted);
-  padding-bottom:calc(3rem + env(safe-area-inset-bottom, 0px));
+.footer-share{
+  display:flex;align-items:center;
+  gap:1.4rem;flex-shrink:0;
 }
-@media(max-width:600px){.footer-bar{padding:.9rem 1.5rem 3rem;flex-direction:column;align-items:center;text-align:center;}}
-.footer-bar-links{display:flex;gap:2rem;align-items:center;flex-wrap:wrap;font-size:0.82rem;}
-@media(max-width:600px){.footer-bar-links{justify-content:center;}}
-.footer-bar span{display:flex;align-items:center;gap:1.5rem;}
-.footer-share-link{color:var(--muted);text-decoration:none;transition:color .2s;font-size:0.82rem;}
+.footer-share-link{
+  font-size:0.82rem;letter-spacing:.14em;
+  text-transform:uppercase;color:var(--dim);
+  text-decoration:none;transition:color .2s;
+}
 .footer-share-link:hover{color:var(--accent);}
-.footer-accent-bar{display:flex;height:3px;}
-.footer-accent-bar div{flex:1;}
+.footer-mouth{animation:blink 1.1s step-end infinite;}
+
+@media(max-width:768px){
+  .site-footer{
+    height:auto;flex-wrap:wrap;
+    padding:1rem 1.5rem;gap:.75rem;
+  }
+  .footer-copy{flex:0 0 100%;text-align:center;}
+}
+
+@media print{
+  footer{display:none;}
+}
 
 /* ══════════════════════════════════════════════════════════════
    FADE-IN
@@ -1120,14 +1127,8 @@ img{display:block;}
 <!-- ── TOP NAV ───────────────────────────────────────────────── -->
 <nav class="nav">
   <div class="nav-index-box">003</div>
-  <div class="nav-logo">
-    <a href="https://abriefhistoryofeverything.com" class="nav-brand" style="color:inherit;text-decoration:none;">
-      <span class="nav-brand-full">A <span style="color:var(--accent);">(BRIEF)</span> HISTORY OF EVERYTHING<span class="cursor-blink">_</span></span>
-      <span class="nav-brand-short">A <span style="color:var(--accent);">(BRIEF)</span> HISTORY OF<span class="cursor-blink">_</span></span>
-    </a><span class="nav-topic">CRYPTO</span>
-  </div>
+  <a href="#hero" class="nav-brand"><span class="brand-full">A <span style="color:var(--accent);">(BRIEF)</span> HISTORY OF CRYPTO</span><span class="brand-short"><span style="color:var(--accent);">(BRIEF)</span> CRYPTO</span><span class="cursor-blink">_</span></a>
   <div class="nav-era" id="navEra">Genesis — 2008</div>
-  <div class="nav-pct" id="navPct">0%</div>
   <div class="mode-toggle">
     <span class="mode-icon" id="modeIcon">☀</span>
     <div class="toggle-switch" id="toggleSwitch" role="button" aria-label="Toggle light/dark mode" tabindex="0"></div>
@@ -1874,36 +1875,29 @@ img{display:block;}
 </div>
 
 <!-- ── FOOTER ─────────────────────────────────────────────────── -->
-<div class="footer-accent-bar">
-  <div style="background:#00D4F0;flex:2;"></div>
-  <div style="background:#0055EE;flex:1;"></div>
-  <div style="background:#39E07A;flex:1;"></div>
-  <div style="background:#FF5C20;flex:1;"></div>
-  <div style="background:var(--rule2);flex:5;"></div>
-</div>
-<footer class="footer">
-  <div>
-    <div class="footer-brand">Crypto <span>/</span> History</div>
-    <div class="footer-note" style="margin-top:1rem;">From cypherpunks to trillion-dollar markets. A structured chronology of the decentralised revolution.</div>
+<footer class="site-footer">
+
+  <!-- Left: series mark + wordmark — links to hub -->
+  <a href="https://abriefhistoryofeverything.com" class="footer-lockup" target="_blank" rel="noopener">
+    <svg width="32" height="32" viewBox="0 0 400 400" xmlns="http://www.w3.org/2000/svg" style="display:block;flex-shrink:0;">
+      <rect width="400" height="400" fill="#00D4F0"/>
+      <rect x="55" y="118" width="46" height="46" fill="#08090C" opacity="0.22"/>
+      <rect x="178" y="118" width="46" height="46" fill="#08090C" opacity="0.22"/>
+      <rect class="footer-mouth" x="55" y="278" width="170" height="36" fill="#08090C"/>
+    </svg>
+    <div class="footer-series">A <em>(Brief)</em> History of Everything_</div>
+  </a>
+
+  <!-- Center: copyright -->
+  <div class="footer-copy">© 2026 A (Brief) History of Everything</div>
+
+  <!-- Right: share links -->
+  <div class="footer-share">
+    <a href="https://twitter.com/intent/tweet?text=A+Brief+History+of+Crypto&url=https://abriefhistoryofeverything.com/crypto" target="_blank" rel="noopener" class="footer-share-link">Share on X</a>
+    <a href="https://www.linkedin.com/sharing/share-offsite/?url=https://abriefhistoryofeverything.com/crypto" target="_blank" rel="noopener" class="footer-share-link">Share on LinkedIn</a>
   </div>
-  <div>
-    <div class="footer-col-label">Part of</div>
-    <div class="footer-note">A (Brief) History of Everything_<br>
-      <a href="https://abriefhistoryofeverything.com" style="color:var(--accent);">abriefhistoryofeverything.com ↗</a>
-    </div>
-  </div>
-  <div>
-    <div class="footer-col-label">Typefaces</div>
-    <div class="footer-note">Space Mono — Display, Heroes<br>Barlow Condensed — Era Titles, Labels<br>Barlow — Body, Notes</div>
-  </div>
+
 </footer>
-<div class="footer-bar">
-  <span>A (Brief) History of Crypto — Chronological Index · 7 Sections</span>
-  <span class="footer-bar-links">
-    <a class="footer-share-link" href="https://twitter.com/intent/tweet?text=A+Brief+History+of+Crypto&url=https://abriefhistoryofeverything.com/crypto" target="_blank">Share on X</a>
-    <a class="footer-share-link" href="https://www.linkedin.com/sharing/share-offsite/?url=https://abriefhistoryofeverything.com/crypto" target="_blank">Share on LinkedIn</a>
-  </span>
-</div>
 
 </div><!-- /page-body -->
 
