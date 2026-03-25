@@ -228,9 +228,7 @@ img{display:block;}
   transition:color .2s;
 }
 .nav-brand:hover{color:var(--bright);}
-@media(max-width:960px){.nav-brand::after{content:'';}}
-@media(min-width:961px){.nav-brand-full{display:inline;}  .nav-brand-short{display:none;}}
-@media(max-width:960px){.nav-brand-full{display:none;} .nav-brand-short{display:inline;}}
+@media(max-width:900px){.nav-brand{display:none!important;}}
 
 .nav-sep{color:var(--muted);font-size:.8rem;flex-shrink:0;}
 .nav-topic{
@@ -770,54 +768,41 @@ img{display:block;}
 .eco-link:hover{color:var(--accent);padding-left:.5rem;}
 
 /* ══════════════════════════════════════════════════════════════
-   FOOTER
+   FOOTER — v11 spec
 ══════════════════════════════════════════════════════════════ */
-footer{
-  padding:3rem 3rem 3rem 3rem;
-  display:grid;grid-template-columns:1fr 1fr 1fr;gap:3rem;
-  border-top:1px solid var(--rule);background:var(--bg1);
+.site-footer{
+  display:flex;align-items:center;height:56px;
+  padding:0 1.5rem;border-top:1px solid var(--rule);gap:1rem;
+  background:var(--bg1);
   transition:background .35s,border-color .35s;
 }
-@media(max-width:768px){footer{grid-template-columns:1fr;padding:2.5rem 1.5rem;}}
-
-.footer-brand{
-  font-family:'Orbitron',sans-serif;
-  font-size:1.1rem;font-weight:700;letter-spacing:.08em;
-  text-transform:uppercase;color:var(--bright);
-  transition:color .35s;margin-bottom:.3rem;
+.footer-lockup{
+  display:flex;align-items:center;gap:10px;
+  text-decoration:none;flex-shrink:0;
 }
-.footer-brand span{color:var(--accent);}
-.footer-col-label{
-  font-family:'JetBrains Mono',monospace;
-  font-size:.82rem;letter-spacing:.25em;text-transform:uppercase;
-  color:var(--accent);margin-bottom:.8rem;transition:color .35s;
-  border-bottom:1px solid var(--rule);padding-bottom:.5rem;
+.footer-series{
+  font-size:0.82rem;text-transform:uppercase;letter-spacing:.05em;
+  line-height:1;white-space:nowrap;color:var(--bright);
 }
-.footer-note{
-  font-family:'JetBrains Mono',monospace;
-  font-size:.82rem;line-height:1.8;color:var(--text);transition:color .35s;
+.footer-series em{font-style:normal;color:var(--accent);}
+.footer-copy{
+  flex:1;text-align:center;font-size:0.82rem;
+  letter-spacing:.14em;text-transform:uppercase;color:var(--dim);
 }
-.footer-bar{
-  background:var(--bg);border-top:1px solid var(--rule);
-  padding:.9rem 3rem 3rem;display:flex;align-items:center;justify-content:space-between;
-  font-family:'JetBrains Mono',monospace;
-  font-size:.82rem;letter-spacing:.16em;text-transform:uppercase;color:var(--dim);
-  flex-wrap:wrap;gap:.5rem;
-  transition:background .35s,border-color .35s,color .35s;
+.footer-share{
+  display:flex;align-items:center;gap:1.4rem;flex-shrink:0;
 }
-@media(max-width:600px){.footer-bar{padding:.9rem 1.5rem 3rem;flex-direction:column;align-items:center;text-align:center;}}
 .footer-share-link{
-  font-family:'JetBrains Mono',monospace;
-  font-size:.82rem;letter-spacing:.16em;text-transform:uppercase;
-  color:var(--dim);text-decoration:none;
-  transition:color .2s;padding:.15rem 0;
-  border-bottom:1px solid transparent;
+  font-size:0.82rem;letter-spacing:.14em;text-transform:uppercase;
+  color:var(--dim);text-decoration:none;transition:color .2s;
 }
-.footer-share-link:hover{color:var(--accent);border-bottom-color:var(--accent);}
-.footer-bar-links{display:flex;gap:2rem;align-items:center;flex-wrap:wrap;}
-@media(max-width:600px){.footer-bar-links{justify-content:center;}}
-.footer-accent-bar{display:flex;height:3px;}
-.footer-accent-bar div{flex:1;}
+.footer-share-link:hover{color:var(--accent);}
+.footer-mouth{animation:blink 1.1s step-end infinite;}
+@media(max-width:768px){
+  .site-footer{height:auto;flex-wrap:wrap;padding:1rem 1.5rem;gap:.75rem;}
+  .footer-copy{flex:0 0 100%;text-align:center;}
+}
+@media print{footer{display:none;}}
 /* ══════════════════════════════════════════════════════════════
    ARCHITECTS SECTION
 ══════════════════════════════════════════════════════════════ */
@@ -1094,11 +1079,7 @@ footer{
 <!-- NAV -->
 <nav class="nav">
   <div class="nav-index-box">002</div>
-  <a href="https://abriefhistoryofeverything.com" class="nav-brand" style="margin-left:1rem;">
-    <span class="nav-brand-full">A (BRIEF) HISTORY OF EVERYTHING<span class="cursor-blink">_</span></span>
-    <span class="nav-brand-short">A (BRIEF) HISTORY OF<span class="cursor-blink">_</span></span>
-  </a>
-  <span class="nav-sep" style="display:none;"></span>
+  <a href="#s0" class="nav-brand" style="margin-left:1rem;">A (BRIEF) HISTORY OF <span class="cursor-blink">_</span></a>
   <span class="nav-topic">THE INTERNET</span>
   <span class="nav-era-label" id="navEraLabel">// INITIALIZING</span>
   <div class="mode-toggle">
@@ -1899,39 +1880,30 @@ footer{
   </div>
 </section>
 
-<!-- FOOTER ACCENT BAR (series colors) -->
-<div class="footer-accent-bar">
-  <div style="background:#00D4F0;flex:2;"></div>
-  <div style="background:#0055EE;flex:1;"></div>
-  <div style="background:#39E07A;flex:1;"></div>
-  <div style="background:#FF5C20;flex:1;"></div>
-  <div style="background:var(--rule2);flex:5;"></div>
-</div>
-
 <!-- FOOTER -->
-<footer>
-  <div>
-    <div class="footer-brand">THE <span>INTERNET</span> / History</div>
-    <div class="footer-note" style="margin-top:1rem;">From a four-node military experiment in 1969 to a network connecting 5.4 billion people — the story of packets, protocols, browsers, and the infrastructure that rewired civilization.</div>
-  </div>
-  <div>
-    <div class="footer-col-label">Part of</div>
-    <div class="footer-note">A (Brief) History of Everything_<br><a href="https://abriefhistoryofeverything.com" target="_blank" style="color:var(--accent);">abriefhistoryofeverything.com ↗</a></div>
-  </div>
-  <div>
-    <div class="footer-col-label">Typefaces</div>
-    <div class="footer-note">Orbitron — Display, Heroes, Data<br>JetBrains Mono — Body, Labels, UI</div>
-  </div>
-</footer>
+<footer class="site-footer">
 
-<!-- FOOTER BAR -->
-<div class="footer-bar">
-  <span>A (Brief) History of The Internet — Chronological Index · 7 Sections</span>
-  <span class="footer-bar-links">
+  <!-- Left: series mark + wordmark — links to hub -->
+  <a href="https://abriefhistoryofeverything.com" class="footer-lockup" target="_blank" rel="noopener">
+    <svg width="32" height="32" viewBox="0 0 400 400" xmlns="http://www.w3.org/2000/svg" style="display:block;flex-shrink:0;">
+      <rect width="400" height="400" fill="#00D4F0"/>
+      <rect x="55" y="118" width="46" height="46" fill="#08090C" opacity="0.22"/>
+      <rect x="178" y="118" width="46" height="46" fill="#08090C" opacity="0.22"/>
+      <rect class="footer-mouth" x="55" y="278" width="170" height="36" fill="#08090C"/>
+    </svg>
+    <div class="footer-series">A <em>(Brief)</em> History of Everything_</div>
+  </a>
+
+  <!-- Center: copyright -->
+  <div class="footer-copy">© 2026 A (Brief) History of Everything</div>
+
+  <!-- Right: share links -->
+  <div class="footer-share">
     <a href="https://twitter.com/intent/tweet?text=A%20(Brief)%20History%20of%20the%20Internet%20%E2%80%94%20from%20ARPANET%20to%20the%20AI%20Web&url=https%3A%2F%2Fabriefhistoryofeverything.com%2Finternet" target="_blank" rel="noopener" class="footer-share-link">Share on X</a>
     <a href="https://www.linkedin.com/sharing/share-offsite/?url=https%3A%2F%2Fabriefhistoryofeverything.com%2Finternet" target="_blank" rel="noopener" class="footer-share-link">Share on LinkedIn</a>
-  </span>
-</div>
+  </div>
+
+</footer>
 
 </div><!-- end .page-body -->
 
