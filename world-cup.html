@@ -64,7 +64,7 @@ body {
   font-family: var(--body);
   overflow-x: hidden;
   line-height: 1.5;
-  padding-top: 76px;
+  padding-top: 100px;
   padding-bottom: env(safe-area-inset-bottom, 0);
 }
 a { color: inherit; text-decoration: none; }
@@ -106,7 +106,7 @@ img { display: block; max-width: 100%; }
 ═══════════════════════════════════════════ */
 .ticker {
   position: fixed; top: 0; left: 0; right: 0; z-index: 900;
-  height: 26px;
+  height: 50px;
   background: var(--green);
   overflow: hidden;
   display: flex; align-items: center;
@@ -119,15 +119,15 @@ img { display: block; max-width: 100%; }
 .ticker-track:hover { animation-play-state: paused; }
 .ticker-item {
   display: flex; align-items: center; gap: .5rem;
-  padding: 0 2rem;
-  font-family: var(--mono); font-size: .78rem;
+  padding: 0 2rem; height: 50px;
+  font-family: var(--mono); font-size: .88rem;
   letter-spacing: .12em; text-transform: uppercase;
   color: rgba(255,255,255,.75);
   border-right: 1px solid rgba(255,255,255,.15);
 }
-.ticker-item .yr { color: rgba(255,255,255,.4); font-size: .78rem; }
+.ticker-item .yr { color: rgba(255,255,255,.4); font-size: .88rem; }
 .ticker-item .winner { color: #fff; font-weight: 400; }
-.ticker-item .flag { font-size: .9rem; }
+.ticker-item .flag { font-size: 1rem; }
 @keyframes tickerScroll {
   0%   { transform: translateX(0); }
   100% { transform: translateX(-50%); }
@@ -137,7 +137,7 @@ img { display: block; max-width: 100%; }
    NAV
 ═══════════════════════════════════════════ */
 .nav {
-  position: fixed; top: 26px; left: 0; right: 0; z-index: 850;
+  position: fixed; top: 50px; left: 0; right: 0; z-index: 850;
   height: 50px;
   background: var(--cream);
   border-bottom: 2px solid var(--green);
@@ -158,17 +158,59 @@ img { display: block; max-width: 100%; }
 }
 .nav-brand {
   display: flex; align-items: center;
-  padding: 0 1.5rem;
-  border-right: 1px solid var(--rule2);
+  padding: 0 0 0 1.2rem;
   flex-shrink: 0;
+  text-decoration: none;
+  font-family: var(--mono); font-weight: 700;
+  font-size: .82rem; letter-spacing: .08em;
+  text-transform: uppercase; color: var(--heading);
+  white-space: nowrap;
 }
-.nav-logo {
-  font-family: var(--sans); font-weight: 800;
-  font-size: 1rem; letter-spacing: .06em;
+.nav-topic {
+  display: flex; align-items: center;
+  font-family: var(--sans); font-weight: 700;
+  font-size: .9rem; letter-spacing: .06em;
   text-transform: uppercase; color: var(--green);
-  line-height: 1;
+  white-space: nowrap; flex-shrink: 0;
+  padding: 0 1.2rem 0 .5rem;
+  border-right: 1px solid var(--rule2);
+  height: 100%;
 }
-.nav-logo span { color: var(--gold); display: block; font-size: .78rem; font-weight: 400; letter-spacing: .12em; }
+@media (max-width: 900px) {
+  .nav-brand { display: none !important; }
+  .nav-links { display: none !important; }
+  .nav-share { display: none !important; }
+  /* topic stays visible on mobile — gives identity after index box */
+  .nav-topic {
+    border-right: none;
+    padding-left: 1rem;
+  }
+}
+/* cursor-blink in nav */
+@keyframes cursorBlink { 0%,100%{opacity:1} 50%{opacity:0} }
+.cursor-blink { animation: cursorBlink 1.1s step-end infinite; display: inline-block; }
+/* Pattern B — share button in nav far right */
+.nav-share {
+  margin-left: auto;
+  flex-shrink: 0;
+  display: flex; align-items: center;
+  padding: 0 1rem;
+}
+.nav-share-btn {
+  display: inline-flex; align-items: center; gap: .5rem;
+  font-family: var(--mono); font-size: .75rem;
+  letter-spacing: .15em; text-transform: uppercase;
+  color: var(--muted); background: transparent;
+  border: 1px solid var(--rule2); padding: .4rem .9rem;
+  cursor: pointer; transition: color .2s, border-color .2s;
+  white-space: nowrap;
+}
+.nav-share-btn svg {
+  width: 12px; height: 12px; stroke: currentColor; fill: none;
+  stroke-width: 2; flex-shrink: 0;
+}
+.nav-share-btn:hover { color: var(--green); border-color: var(--green); }
+
 .nav-links {
   display: flex; align-items: stretch;
   overflow-x: auto; flex: 1;
@@ -194,14 +236,6 @@ img { display: block; max-width: 100%; }
 .nav-link:hover { color: var(--heading); }
 .nav-link:hover::after, .nav-link.active::after { transform: scaleX(1); }
 .nav-link.active { color: var(--green); }
-.nav-links { margin-left: auto; }
-/* Nav brand shortens on mobile per brand spec */
-.nav-logo .brand-full { display: inline; }
-.nav-logo .brand-short { display: none; }
-@media (max-width: 960px) {
-  .nav-logo .brand-full { display: none; }
-  .nav-logo .brand-short { display: inline; }
-}
 
 /* ═══════════════════════════════════════════
    HERO
@@ -349,7 +383,7 @@ img { display: block; max-width: 100%; }
   padding: 3rem 2rem;
   border-right: 1px solid var(--rule2);
   display: flex; flex-direction: column; gap: 1.5rem;
-  position: sticky; top: calc(32px + 44px); align-self: start;
+  position: sticky; top: 100px; align-self: start;
 }
 @media (max-width: 900px) {
   .era-sidebar { position: static; border-right: none; border-bottom: 1px solid var(--rule); padding: 2rem 1.5rem; }
@@ -780,63 +814,49 @@ blockquote em { color: var(--green); font-style: normal; }
 /* ═══════════════════════════════════════════
    FOOTER
 ═══════════════════════════════════════════ */
-.footer-accent-bar { display: flex; height: 3px; }
-.footer-accent-bar div { flex: 1; }
-
-.footer {
-  background: var(--green); color: white;
-  padding: 3rem 3rem 2rem;
-  display: grid; grid-template-columns: 1fr 1fr 1fr;
-  gap: 3rem;
+.site-footer {
+  display: flex; align-items: center;
+  height: 56px; padding: 0 1.5rem;
+  border-top: 1px solid var(--rule);
+  gap: 1rem;
 }
-@media (max-width: 768px) { .footer { grid-template-columns: 1fr; padding: 2.5rem 1.5rem; } }
-.footer-brand {
-  font-family: var(--sans); font-weight: 900;
-  font-size: 1.3rem; text-transform: uppercase;
-  letter-spacing: -.01em; color: white; line-height: 1.1;
+.footer-lockup {
+  display: flex; align-items: center;
+  gap: 10px; text-decoration: none; flex-shrink: 0;
 }
-.footer-brand span { color: var(--gold); }
-.footer-col-label {
-  font-family: var(--mono); font-size: .82rem;
-  letter-spacing: .25em; text-transform: uppercase;
-  color: rgba(255,255,255,.5); margin-bottom: .7rem;
-  border-bottom: 1px solid rgba(255,255,255,.12); padding-bottom: .5rem;
+.footer-series {
+  font-size: 0.82rem; text-transform: uppercase;
+  letter-spacing: .05em; line-height: 1;
+  white-space: nowrap; color: var(--heading);
 }
-.footer-note {
-  font-family: var(--body); font-size: .88rem;
-  line-height: 1.8; color: rgba(255,255,255,.6);
+.footer-series em { font-style: normal; color: var(--green); }
+.footer-copy {
+  flex: 1; text-align: center;
+  font-size: 0.82rem; letter-spacing: .14em;
+  text-transform: uppercase; color: var(--muted);
 }
-.footer-note a { color: var(--gold); }
-.footer-note a:hover { text-decoration: underline; }
-.footer-links-col { display: flex; flex-direction: column; gap: .5rem; }
-.footer-links-col a {
-  font-family: var(--mono); font-size: .82rem;
-  letter-spacing: .12em; text-transform: uppercase;
-  color: rgba(255,255,255,.5); transition: color .2s;
+.footer-share {
+  display: flex; align-items: center;
+  gap: 1.4rem; flex-shrink: 0;
 }
-.footer-links-col a:hover { color: var(--gold); }
-.footer-bar {
-  background: var(--green-lt);
-  padding: .9rem 3rem 3rem;
-  display: flex; align-items: center; justify-content: space-between;
-  font-family: var(--mono); font-size: 0.82rem;
-  letter-spacing: .15em; text-transform: uppercase;
-  color: var(--green);
-  flex-wrap: wrap; gap: .5rem;
-}
-@media (max-width: 600px) { .footer-bar { padding: .9rem 1.5rem 3rem; flex-direction: column; align-items: center; text-align: center; } }
-.footer-bar-links {
-  display: flex; gap: 2rem; align-items: center; flex-wrap: wrap;
-}
-@media (max-width: 600px) { .footer-bar-links { justify-content: center; } }
 .footer-share-link {
-  font-family: var(--mono); font-size: 0.82rem;
-  letter-spacing: .15em; text-transform: uppercase;
-  color: var(--dim); text-decoration: none;
-  transition: color .2s; padding: .1rem 0;
-  border-bottom: 1px solid transparent;
+  font-size: 0.82rem; letter-spacing: .14em;
+  text-transform: uppercase; color: var(--muted);
+  text-decoration: none; transition: color .2s;
 }
-.footer-share-link:hover { color: var(--green); border-bottom-color: var(--green); }
+.footer-share-link:hover { color: var(--green); }
+@keyframes footerBlink { 0%,100%{opacity:1} 50%{opacity:0} }
+.footer-mouth { animation: footerBlink 1.1s step-end infinite; }
+
+@media (max-width: 768px) {
+  .site-footer {
+    height: auto; flex-wrap: wrap;
+    padding: 1rem 1.5rem; gap: .75rem;
+  }
+  .footer-copy { flex: 0 0 100%; text-align: center; }
+}
+
+@media print { footer { display: none; } }
 
 /* ═══════════════════════════════════════════
    ENTITY GRID
@@ -1004,11 +1024,8 @@ blockquote em { color: var(--green); font-style: normal; }
 <!-- ══ NAV ══ -->
 <nav class="nav" id="mainNav">
   <div class="nav-index-box">005</div>
-  <div class="nav-brand">
-    <a href="https://abriefhistoryofeverything.com" class="nav-logo" style="text-decoration:none;">
-      <span class="brand-full">A (BRIEF) HISTORY OF EVERYTHING_</span><span class="brand-short">A (BRIEF) HISTORY OF_</span><span>THE WORLD CUP</span>
-    </a>
-  </div>
+  <a href="#era1" class="nav-brand">A (BRIEF) HISTORY OF<span class="cursor-blink">_</span></a>
+  <span class="nav-topic">The World Cup</span>
   <div class="nav-links" id="navLinks">
     <a class="nav-link active" href="#era1"  data-sec="era1">Origins</a>
     <a class="nav-link" href="#era2"  data-sec="era2">Pelé Age</a>
@@ -1018,6 +1035,19 @@ blockquote em { color: var(--green); font-style: normal; }
     <a class="nav-link" href="#legends" data-sec="legends">Legends</a>
     <a class="nav-link" href="#winners" data-sec="winners">All Winners</a>
     <a class="nav-link" href="#wc2026" data-sec="wc2026">2026 ↗</a>
+  </div>
+  <div class="share-wrap nav-share" id="navShareWrap">
+    <button class="share-btn nav-share-btn" id="navShareBtn" aria-label="Share">
+      <svg viewBox="0 0 16 16"><circle cx="13" cy="3" r="1.5"/><circle cx="13" cy="13" r="1.5"/><circle cx="3" cy="8" r="1.5"/><line x1="4.4" y1="7.2" x2="11.6" y2="4"/><line x1="4.4" y1="8.8" x2="11.6" y2="12"/></svg>
+      Share
+    </button>
+    <div class="share-dropdown" id="navShareDropdown">
+      <a href="https://twitter.com/intent/tweet?text=A%20(Brief)%20History%20of%20the%20World%20Cup%20%E2%80%94%20from%201930%20to%202026&url=https%3A%2F%2Fabriefhistoryofeverything.com%2Fworld-cup" target="_blank" rel="noopener">Share on X</a>
+      <a href="https://www.linkedin.com/sharing/share-offsite/?url=https%3A%2F%2Fabriefhistoryofeverything.com%2Fworld-cup" target="_blank" rel="noopener">Share on LinkedIn</a>
+      <!-- PDF BUTTON — uncomment when PDF is ready to distribute
+      <button class="share-btn pdf-btn" id="pdfBtn">↓ Download PDF</button>
+      -->
+    </div>
   </div>
 </nav>
 
@@ -1615,41 +1645,29 @@ blockquote em { color: var(--green); font-style: normal; }
 </div>
 
 <!-- ══ FOOTER ══ -->
-<div class="footer-accent-bar">
-  <div style="background:#00D4F0; flex:2;"></div>
-  <div style="background:#0055EE; flex:1;"></div>
-  <div style="background:#39E07A; flex:1;"></div>
-  <div style="background:#FF5C20; flex:1;"></div>
-  <div style="background:var(--rule2); flex:5;"></div>
-</div>
+<footer class="site-footer">
 
-<footer class="footer">
-  <div>
-    <div class="footer-brand">THE <span>WORLD CUP</span> / History</div>
-    <div class="footer-note" style="margin-top:1rem;">From Uruguay 1930 to North America 2026 — 22 tournaments, 8 champions, and the defining moments of football's greatest stage.</div>
-  </div>
-  <div>
-    <div class="footer-col-label">Part of</div>
-    <div class="footer-note">
-      A (Brief) History of Everything_<br>
-      <a href="https://abriefhistoryofeverything.com" target="_blank">abriefhistoryofeverything.com ↗</a>
-    </div>
-    <div class="footer-col-label" style="margin-top:1.5rem;">Note</div>
-    <div class="footer-note">Not affiliated with FIFA. Made for fans of football and history.</div>
-  </div>
-  <div>
-    <div class="footer-col-label">Typefaces</div>
-    <div class="footer-note">Barlow Condensed — Display, Headers<br>Barlow — Body copy<br>DM Mono — Labels, UI</div>
-  </div>
-</footer>
+  <!-- Left: series mark + wordmark — links to hub -->
+  <a href="https://abriefhistoryofeverything.com" class="footer-lockup" target="_blank" rel="noopener">
+    <svg width="32" height="32" viewBox="0 0 400 400" xmlns="http://www.w3.org/2000/svg" style="display:block;flex-shrink:0;">
+      <rect width="400" height="400" fill="#00D4F0"/>
+      <rect x="55" y="118" width="46" height="46" fill="#08090C" opacity="0.22"/>
+      <rect x="178" y="118" width="46" height="46" fill="#08090C" opacity="0.22"/>
+      <rect class="footer-mouth" x="55" y="278" width="170" height="36" fill="#08090C"/>
+    </svg>
+    <div class="footer-series">A <em>(Brief)</em> History of Everything_</div>
+  </a>
 
-<div class="footer-bar">
-  <span>A (Brief) History of The World Cup — Chronological Index · 5 Eras</span>
-  <span class="footer-bar-links">
+  <!-- Center: copyright -->
+  <div class="footer-copy">© 2026 A (Brief) History of Everything</div>
+
+  <!-- Right: share links -->
+  <div class="footer-share">
     <a href="https://twitter.com/intent/tweet?text=A%20(Brief)%20History%20of%20the%20World%20Cup%20%E2%80%94%20from%201930%20to%202026&url=https%3A%2F%2Fabriefhistoryofeverything.com%2Fworld-cup" target="_blank" rel="noopener" class="footer-share-link">Share on X</a>
     <a href="https://www.linkedin.com/sharing/share-offsite/?url=https%3A%2F%2Fabriefhistoryofeverything.com%2Fworld-cup" target="_blank" rel="noopener" class="footer-share-link">Share on LinkedIn</a>
-  </span>
-</div>
+  </div>
+
+</footer>
 
 <script>
 (function(){
@@ -1770,6 +1788,18 @@ blockquote em { color: var(--green); font-style: normal; }
     });
     document.addEventListener('click', function() {
       shareWrap.classList.remove('open');
+    });
+  }
+  /* ── Nav share button (Pattern B) ── */
+  var navShareBtn = document.getElementById('navShareBtn');
+  var navShareWrap = document.getElementById('navShareWrap');
+  if (navShareBtn && navShareWrap) {
+    navShareBtn.addEventListener('click', function(e) {
+      e.stopPropagation();
+      navShareWrap.classList.toggle('open');
+    });
+    document.addEventListener('click', function() {
+      if(navShareWrap) navShareWrap.classList.remove('open');
     });
   }
 
