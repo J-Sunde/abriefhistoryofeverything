@@ -236,13 +236,27 @@ img{display:block;}
   font-weight:700;font-size:1rem;letter-spacing:.08em;
   text-transform:uppercase;color:var(--bright);white-space:nowrap;
   text-decoration:none;flex-shrink:0;
+  display:flex;align-items:center;
+  padding:0 0 0 1.2rem;
 }
-/* On mobile, show short version — hide full brand text, keep CRYPTO visible */
-.nav-brand .brand-full{display:inline;}
-.nav-brand .brand-short{display:none;}
+.nav-topic{
+  display:flex;align-items:center;
+  font-family:'Space Mono',monospace;font-weight:700;
+  font-size:.9rem;letter-spacing:.08em;
+  text-transform:uppercase;color:var(--accent);
+  white-space:nowrap;flex-shrink:0;
+  padding:0 1.2rem 0 .5rem;
+  border-right:1px solid var(--rule2);
+  height:100%;
+}
+/* Mobile: hide brand + topic label text, keep index box */
 @media(max-width:900px){
-  .nav-brand .brand-full{display:none;}
-  .nav-brand .brand-short{display:inline;}
+  .nav-brand{display:none !important;}
+  .nav-topic{
+    border-right:none;
+    padding-left:1rem;
+    display:flex;
+  }
 }
 
 .nav-era{
@@ -1127,7 +1141,8 @@ img{display:block;}
 <!-- ── TOP NAV ───────────────────────────────────────────────── -->
 <nav class="nav">
   <div class="nav-index-box">003</div>
-  <a href="#hero" class="nav-brand"><span class="brand-full">A <span style="color:var(--accent);">(BRIEF)</span> HISTORY OF CRYPTO</span><span class="brand-short"><span style="color:var(--accent);">(BRIEF)</span> CRYPTO</span><span class="cursor-blink">_</span></a>
+  <a href="#hero" class="nav-brand">A <span style="color:var(--accent);">(BRIEF)</span> HISTORY OF<span class="cursor-blink">_</span></a>
+  <span class="nav-topic">Crypto</span>
   <div class="nav-era" id="navEra">Genesis — 2008</div>
   <div class="mode-toggle">
     <span class="mode-icon" id="modeIcon">☀</span>
