@@ -90,6 +90,109 @@ nav.solid{background:rgba(10,10,10,.96);border-bottom:1px solid var(--rule);}
 }
 .nav-badge span{color:#00D4F0;}
 
+/* ── Guides dropdown ── */
+.nav-guides-btn{
+  position:relative;
+  font-family:var(--mono);font-size:.68rem;letter-spacing:.14em;
+  text-transform:uppercase;
+  background:var(--bg3);border:1px solid var(--rule);
+  color:var(--dim);padding:.4rem 1rem;
+  cursor:pointer;
+  display:flex;align-items:center;gap:.5rem;
+  user-select:none;
+  transition:color .2s,border-color .2s;
+  white-space:nowrap;
+}
+.nav-guides-btn:hover,.nav-guides-btn.open{color:var(--bright);border-color:var(--muted);}
+.nav-guides-btn .btn-arrow{
+  font-size:.5rem;
+  transition:transform .2s;
+  display:inline-block;
+}
+.nav-guides-btn.open .btn-arrow{transform:rotate(180deg);}
+
+.nav-guides-dropdown{
+  position:absolute;top:calc(100% + 8px);right:0;
+  min-width:260px;
+  background:rgba(14,14,14,.97);
+  border:1px solid var(--rule);
+  backdrop-filter:blur(12px);
+  z-index:900;
+  display:none;
+  flex-direction:column;
+  padding:.4rem 0;
+}
+.nav-guides-btn.open .nav-guides-dropdown{display:flex;}
+
+.nav-dropdown-item{
+  font-family:var(--mono);font-size:.64rem;letter-spacing:.1em;
+  text-transform:uppercase;
+  color:var(--dim);
+  padding:.55rem 1.1rem;
+  text-decoration:none;
+  display:flex;align-items:center;gap:.7rem;
+  transition:color .15s,background .15s;
+  white-space:nowrap;
+}
+.nav-dropdown-item:hover{color:var(--bright);background:rgba(255,255,255,.04);}
+.nav-dropdown-dot{
+  width:5px;height:5px;border-radius:50%;flex-shrink:0;
+}
+
+/* ── Hamburger (mobile only) ── */
+.nav-hamburger{
+  display:none;
+  flex-direction:column;justify-content:center;gap:5px;
+  width:32px;height:32px;
+  cursor:pointer;padding:4px;
+  margin-left:auto;
+}
+.nav-hamburger span{
+  display:block;height:1px;background:var(--dim);
+  transition:transform .2s,opacity .2s,background .2s;
+}
+.nav-hamburger.open span:nth-child(1){transform:translateY(6px) rotate(45deg);background:var(--bright);}
+.nav-hamburger.open span:nth-child(2){opacity:0;}
+.nav-hamburger.open span:nth-child(3){transform:translateY(-6px) rotate(-45deg);background:var(--bright);}
+
+/* Mobile menu panel */
+.nav-mobile-menu{
+  display:none;
+  position:fixed;top:72px;left:0;right:0;
+  background:rgba(10,10,10,.98);
+  border-bottom:1px solid var(--rule);
+  backdrop-filter:blur(16px);
+  z-index:799;
+  flex-direction:column;
+  padding:.5rem 0 1rem;
+}
+.nav-mobile-menu.open{display:flex;}
+.nav-mobile-link{
+  font-family:var(--mono);font-size:.72rem;letter-spacing:.14em;
+  text-transform:uppercase;color:var(--muted);
+  padding:.75rem 2rem;cursor:pointer;
+  transition:color .15s;
+  border-bottom:1px solid transparent;
+}
+.nav-mobile-link:hover{color:var(--bright);}
+.nav-mobile-divider{
+  height:1px;background:var(--rule);margin:.4rem 2rem;
+}
+.nav-mobile-guide{
+  font-family:var(--mono);font-size:.64rem;letter-spacing:.1em;
+  text-transform:uppercase;color:var(--dim);
+  padding:.6rem 2rem;
+  text-decoration:none;
+  display:flex;align-items:center;gap:.7rem;
+  transition:color .15s;
+}
+.nav-mobile-guide:hover{color:var(--bright);}
+
+@media(max-width:768px){
+  .nav-guides-btn{display:none;}
+  .nav-hamburger{display:flex;}
+}
+
 /* ═══ HERO — Ambient Spatial Field ═══ */
 .hero{
   position:relative;
@@ -246,7 +349,7 @@ nav.solid{background:rgba(10,10,10,.96);border-bottom:1px solid var(--rule);}
 .hstat-l{font-family:var(--mono);font-size:.42rem;letter-spacing:.2em;text-transform:uppercase;color:var(--muted);}
 
 /* ═══ MAIN ═══ */
-main{padding-bottom:6rem;}
+main{padding-bottom:0;}
 
 /* ═══ SHELF SECTION ═══ */
 .section{padding-top:2.5rem;}
@@ -696,12 +799,9 @@ main{padding-bottom:6rem;}
 .email-btn:hover{opacity:.85;}
 
 /* ═══ FOOTER ═══ */
-.footer-bar{display:flex;height:4px;}
-.footer-bar div{flex:1;}
 footer{
   padding:1.5rem 2.5rem;
-  display:flex;align-items:center;justify-content:space-between;
-  flex-wrap:wrap;gap:1rem;
+  display:flex;align-items:center;justify-content:center;
   border-top:1px solid var(--rule);
 }
 .footer-l{
@@ -711,9 +811,6 @@ footer{
     text-transform: uppercase;
     color: var(--muted);
 }
-.footer-r{display:flex;gap:2rem;}
-.footer-r a{font-family:var(--mono);font-size:0.7rem;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);transition:color .2s;}
-.footer-r a:hover{color:var(--text);}
 
 br.desk-br{display:block;}
 @media(max-width:768px){br.desk-br{display:none;}}
@@ -734,7 +831,53 @@ br.desk-br{display:block;}
   nav .nav-links{display:none;}
   nav .nav-sep{display:none;}
   footer{flex-direction:column;align-items:center;text-align:center;}
-  .footer-r{justify-content:center;}
+}
+
+/* ═══ MASCOT ZONE ═══ */
+.mascot-zone{
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  min-height:120px;
+  overflow:hidden;
+  position:relative;
+}
+.mascot-stage{
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  gap:10px;
+}
+/* Visible mark */
+.mascot-wrap{
+  width:56px;height:56px;
+  position:relative;
+  will-change:transform;
+}
+/* Invisible hit area — absolutely positioned, larger than the mark */
+.mascot-hitarea{
+  position:absolute;
+  top:-28px;left:-28px;
+  width:112px;height:112px;
+  cursor:pointer;
+  z-index:2;
+}
+.mascot-svg{
+  width:56px;height:56px;
+  display:block;
+  pointer-events:none;
+  position:relative;
+  z-index:1;
+}
+.mascot-label{
+  font-family:var(--mono);
+  font-size:.72rem;
+  letter-spacing:.16em;
+  text-transform:uppercase;
+  color:var(--muted);
+  opacity:0;
+  transition:opacity .25s, color .2s;
+  pointer-events:none;
 }
 </style>
 </head>
@@ -751,9 +894,29 @@ br.desk-br{display:block;}
     <span class="nav-link" onclick="document.getElementById('about').scrollIntoView({behavior:'smooth'})">About</span>
   </div>
   <div class="nav-right">
-    <div class="nav-badge"><span>6</span> guides</div>
+    <!-- Guides dropdown (desktop) -->
+    <div class="nav-guides-btn" id="navGuidesBtn">
+      Guides <span class="btn-arrow">▾</span>
+      <div class="nav-guides-dropdown" id="navGuidesDropdown">
+        <!-- populated by JS from GUIDES registry -->
+      </div>
+    </div>
+    <!-- Hamburger (mobile) -->
+    <div class="nav-hamburger" id="navHamburger">
+      <span></span><span></span><span></span>
+    </div>
   </div>
 </nav>
+
+<!-- Mobile menu panel -->
+<div class="nav-mobile-menu" id="navMobileMenu">
+  <span class="nav-mobile-link" onclick="window.scrollTo({top:0,behavior:'smooth'});closeMobileMenu()">Home</span>
+  <span class="nav-mobile-link" onclick="document.getElementById('guides').scrollIntoView({behavior:'smooth'});closeMobileMenu()">Guides</span>
+  <span class="nav-mobile-link" onclick="document.getElementById('about').scrollIntoView({behavior:'smooth'});closeMobileMenu()">About</span>
+  <div class="nav-mobile-divider"></div>
+  <!-- guide links populated by JS -->
+  <div id="navMobileGuides"></div>
+</div>
 
 <!-- HERO — Conceptual Art Field / Zero images / Zero external sources -->
 <section class="hero">
@@ -1007,29 +1170,35 @@ br.desk-br{display:block;}
       <div class="email-head">Suggest a Topic</div>
       <div class="email-sub">Got a subject that deserves a deep dive? Tell us.</div>
     </div>
-    <a class="email-btn" href="mailto:brief.history.site@gmail.com" style="display:inline-flex;align-items:center;text-decoration:none;">Suggest a Topic →</a>
+    <a class="email-btn" href="/cdn-cgi/l/email-protection#85e7f7ece0e3abedecf6f1eaf7fcabf6ecf1e0c5e2e8e4ece9abe6eae8" style="display:inline-flex;align-items:center;text-decoration:none;">Suggest a Topic →</a>
+  </div>
+
+  <!-- MASCOT ZONE -->
+  <div class="mascot-zone" id="mascotZone">
+    <div class="mascot-stage" id="mascotStage">
+      <div class="mascot-wrap" id="mascotWrap">
+        <div class="mascot-hitarea" id="mascotHit"></div>
+        <svg class="mascot-svg" id="mascotSvg" viewBox="0 0 400 400" xmlns="http://www.w3.org/2000/svg" width="56" height="56">
+          <rect width="400" height="400" fill="#00D4F0"/>
+          <rect id="mEyeL" x="55"  y="118" width="46" height="46" fill="#08090C" opacity=".22"/>
+          <rect id="mEyeR" x="178" y="118" width="46" height="46" fill="#08090C" opacity=".22"/>
+          <rect id="mBrowL" x="30"  y="82" width="90" height="30" fill="#08090C" opacity="0" transform="rotate(20 75 97)"/>
+          <rect id="mBrowR" x="160" y="82" width="90" height="30" fill="#08090C" opacity="0" transform="rotate(-20 205 97)"/>
+          <rect id="mMouth" x="55" y="278" width="170" height="36" fill="#08090C"/>
+        </svg>
+      </div>
+      <div class="mascot-label" id="mascotLabel">watching.</div>
+    </div>
   </div>
 
 </main>
 
 <!-- FOOTER -->
-<div class="footer-bar">
-  <div style="background:#00D4F0;flex:2;"></div>
-  <div style="background:#0055EE;flex:1;"></div>
-  <div style="background:#39E07A;flex:1;"></div>
-  <div style="background:#FF5C20;flex:1;"></div>
-  <div style="background:var(--rule);flex:5;"></div>
-</div>
 <footer>
   <span class="footer-l">©2026 A (Brief) History of Everything</span>
-  <div class="footer-r">
-    <a href="#about" onclick="document.getElementById('about').scrollIntoView({behavior:'smooth'});return false;">About</a>
-    <a href="mailto:brief.history.site@gmail.com">Suggest a Topic</a>
-    <!-- <a href="#">Newsletter</a> -->
-  </div>
 </footer>
 
-<script>
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
 /* ═══════════════════════════════════════════════════════
    HERO ART ENGINE
    Two systems running simultaneously:
@@ -1259,6 +1428,60 @@ br.desk-br{display:block;}
       });
     });
   }
+
+  /* ── Build nav dropdown + mobile menu from registry ── */
+  const navDropdown   = document.getElementById('navGuidesDropdown');
+  const navMobileGuides = document.getElementById('navMobileGuides');
+  GUIDES.forEach(g => {
+    const shortTitle = g.title.replace('A (Brief) History of the ','').replace('A (Brief) History of ','');
+    // Desktop dropdown item
+    if(navDropdown){
+      const a = document.createElement('a');
+      a.className = 'nav-dropdown-item';
+      a.href = g.url;
+      a.innerHTML = `<span class="nav-dropdown-dot" style="background:${g.color}"></span>${shortTitle}`;
+      if(g.mostRecent){
+        const badge = document.createElement('span');
+        badge.style.cssText = `margin-left:auto;font-size:.52rem;letter-spacing:.1em;color:${g.color};opacity:.8;padding-left:1rem;`;
+        badge.textContent = 'NEW';
+        a.appendChild(badge);
+      }
+      navDropdown.appendChild(a);
+    }
+    // Mobile menu item
+    if(navMobileGuides){
+      const a = document.createElement('a');
+      a.className = 'nav-mobile-guide';
+      a.href = g.url;
+      a.innerHTML = `<span style="display:inline-block;width:5px;height:5px;border-radius:50%;background:${g.color};flex-shrink:0;"></span>${shortTitle}`;
+      a.onclick = () => window.closeMobileMenu && window.closeMobileMenu();
+      navMobileGuides.appendChild(a);
+    }
+  });
+  // Wire up dropdown toggle now that DOM items exist
+  const navBtn = document.getElementById('navGuidesBtn');
+  if(navBtn){
+    navBtn.addEventListener('click', e => { e.stopPropagation(); navBtn.classList.toggle('open'); });
+    document.addEventListener('click', () => navBtn.classList.remove('open'));
+  }
+  // Hamburger
+  const hamburger   = document.getElementById('navHamburger');
+  const mobileMenu  = document.getElementById('navMobileMenu');
+  if(hamburger && mobileMenu){
+    hamburger.addEventListener('click', e => {
+      e.stopPropagation();
+      hamburger.classList.toggle('open');
+      mobileMenu.classList.toggle('open');
+    });
+    window.closeMobileMenu = () => {
+      hamburger.classList.remove('open');
+      mobileMenu.classList.remove('open');
+    };
+    document.addEventListener('click', e => {
+      if(mobileMenu.classList.contains('open') && !mobileMenu.contains(e.target) && e.target !== hamburger)
+        window.closeMobileMenu();
+    });
+  }
   const WORD_COLORS = [
     'rgba(0,212,240,1)',
     'rgba(242,239,233,1)',
@@ -1461,11 +1684,149 @@ window.addEventListener('scroll',()=>{
 
 /* fade in */
 document.body.classList.add('js-ready');
-new IntersectionObserver(entries=>{
+const _fiObs = new IntersectionObserver(entries=>{
   entries.forEach(e=>{if(e.isIntersecting)e.target.classList.add('in');});
-},{threshold:.07}).observe&&document.querySelectorAll('.fi').forEach(el=>{
-  new IntersectionObserver(([e])=>{if(e.isIntersecting)el.classList.add('in');},{threshold:.07}).observe(el);
-});
+},{threshold:.15});
+document.querySelectorAll('.fi').forEach(el=>_fiObs.observe(el));
+</script>
 
-/* email */
-function 
+<script>
+/* ══════════════════════════════════════════════
+   MASCOT ENGINE
+   Sits centered between Suggest a Topic and footer.
+   On hover: scoots sideways then flips to mad face.
+   After 2s: scoots back, returns to neutral.
+   Idle: occasional blinks.
+══════════════════════════════════════════════ */
+(function(){
+  const wrap  = document.getElementById('mascotWrap');
+  const hit   = document.getElementById('mascotHit');
+  const svg   = document.getElementById('mascotSvg');
+  const mouth = document.getElementById('mMouth');
+  const browL = document.getElementById('mBrowL');
+  const browR = document.getElementById('mBrowR');
+  const eyeL  = document.getElementById('mEyeL');
+  const eyeR  = document.getElementById('mEyeR');
+  const label = document.getElementById('mascotLabel');
+  const zone  = document.getElementById('mascotZone');
+  if(!wrap) return;
+
+  let state = 'idle'; // idle | scooting | mad | returning
+  let blinkTimer, madTimer, returnTimer;
+
+  /* ── Helpers ── */
+  function applyNeutralFace(){
+    mouth.setAttribute('y','278'); mouth.setAttribute('height','36');
+    mouth.setAttribute('x','55');  mouth.setAttribute('width','170');
+    browL.setAttribute('opacity','0');
+    browR.setAttribute('opacity','0');
+    eyeL.setAttribute('y','118'); eyeL.setAttribute('height','46');
+    eyeR.setAttribute('y','118'); eyeR.setAttribute('height','46');
+    label.textContent = 'watching.';
+    label.style.opacity = '0';
+    label.style.color = '';
+  }
+
+  function applyMadFace(){
+    mouth.setAttribute('y','295'); mouth.setAttribute('height','30');
+    mouth.setAttribute('x','55');  mouth.setAttribute('width','170');
+    browL.setAttribute('opacity','1');
+    browR.setAttribute('opacity','1');
+    eyeL.setAttribute('y','130'); eyeL.setAttribute('height','46');
+    eyeR.setAttribute('y','130'); eyeR.setAttribute('height','46');
+    label.textContent = 'rude.';
+    label.style.opacity = '1';
+    label.style.color = '#00D4F0';
+  }
+
+  function blink(){
+    if(state !== 'idle') return;
+    eyeL.setAttribute('height','4'); eyeL.setAttribute('y','140');
+    eyeR.setAttribute('height','4'); eyeR.setAttribute('y','140');
+    setTimeout(()=>{
+      eyeL.setAttribute('height','46'); eyeL.setAttribute('y','118');
+      eyeR.setAttribute('height','46'); eyeR.setAttribute('y','118');
+      scheduleBlink();
+    }, 110);
+  }
+
+  function scheduleBlink(){
+    clearTimeout(blinkTimer);
+    blinkTimer = setTimeout(blink, 2800 + Math.random()*3200);
+  }
+
+  /* ── Scoot amount: how far it runs (px), pick a random direction ── */
+  function scootDir(){
+    // Find zone width to clamp travel
+    const zw = zone.offsetWidth;
+    const maxTravel = Math.min(zw * 0.32, 180);
+    const dist = 60 + Math.random() * (maxTravel - 60);
+    return Math.random() < 0.5 ? dist : -dist;
+  }
+
+  /* ── Main hover trigger ── */
+  function onHoverIn(){
+    if(state !== 'idle') return;
+    state = 'scooting';
+    clearTimeout(blinkTimer);
+    clearTimeout(madTimer);
+    clearTimeout(returnTimer);
+
+    const dist = scootDir();
+    const flipped = dist > 0; // running right → face left (flipped)
+
+    // 1. Scoot away
+    wrap.style.transition = 'transform .22s cubic-bezier(.4,0,.2,1)';
+    svg.style.transition   = 'transform .14s ease';
+    wrap.style.transform   = `translateX(${dist}px)`;
+    svg.style.transform    = flipped ? 'scaleX(-1)' : 'scaleX(1)';
+
+    // 2. After scoot settles, flip face to mad
+    madTimer = setTimeout(()=>{
+      applyMadFace();
+      state = 'mad';
+
+      // 3. After a beat, scoot back and calm down
+      returnTimer = setTimeout(()=>{
+        state = 'returning';
+        wrap.style.transition = 'transform .32s cubic-bezier(.16,1,.3,1)';
+        svg.style.transition   = 'transform .2s ease';
+        wrap.style.transform   = 'translateX(0)';
+        svg.style.transform    = 'scaleX(1)';
+
+        // 4. Face returns to neutral once back home
+        setTimeout(()=>{
+          applyNeutralFace();
+          state = 'idle';
+          scheduleBlink();
+        }, 340);
+
+      }, 2000 + Math.random()*600);
+
+    }, 200);
+  }
+
+  /* ── Bind — desktop: invisible hitarea; mobile: scroll into view ── */
+  if(hit) hit.addEventListener('mouseenter', onHoverIn);
+
+  /* ── Mobile: triggers when zone scrolls into view ── */
+  const isTouchDevice = () => window.matchMedia('(hover:none)').matches;
+  if(isTouchDevice() && zone){
+    const mobileObs = new IntersectionObserver((entries) => {
+      entries.forEach(e => {
+        if(e.isIntersecting && state === 'idle'){
+          // Short delay — he notices you arrived, then reacts
+          setTimeout(onHoverIn, 620);
+        }
+      });
+    }, { threshold: 0.6 });
+    mobileObs.observe(zone);
+  }
+
+  /* ── Boot ── */
+  applyNeutralFace();
+  scheduleBlink();
+})();
+</script>
+</body>
+</html>
