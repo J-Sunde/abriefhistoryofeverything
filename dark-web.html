@@ -162,34 +162,42 @@ body {
   -webkit-backdrop-filter: blur(20px);
 }
 
+.nav-tag {
+  display: flex;
+  align-items: stretch;
+  text-decoration: none;
+  flex-shrink: 0;
+  border-right: 1px solid var(--border);
+}
+.nav-tag:hover .nav-topic { color: var(--bright); }
+
 .nav-index-box {
-  width: 52px; height: 50px;
+  width: 52px; min-width: 52px; height: 50px;
   background: var(--green);
   display: flex; align-items: center; justify-content: center;
   flex-shrink: 0;
-}
-.nav-index-box span {
-  font-family: var(--f-display);
-  font-size: 1.4rem;
+  font-family: var(--f-mono);
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
   color: var(--void);
-  letter-spacing: 0;
-  line-height: 1;
 }
 
-.nav-wordmark {
-  display: flex; align-items: center;
-  padding: 0 1.2rem;
+.nav-topic {
+  display: flex;
+  align-items: center;
+  padding: 0 20px 0 16px;
   font-family: var(--f-mono);
-  font-size: 0.63rem;
-  letter-spacing: 0.2em;
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.16em;
   text-transform: uppercase;
   color: var(--smoke);
-  border-right: 1px solid var(--border);
-  text-decoration: none;
   white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  transition: color 0.15s;
 }
-.nav-wordmark .wm-accent { color: var(--green); }
-.nav-wordmark .cursor-blink { color: var(--green); }
 
 .nav-links {
   display: flex; align-items: center;
@@ -199,7 +207,7 @@ body {
 }
 .nav-link {
   font-family: var(--f-mono);
-  font-size: 0.683rem;
+  font-size: 0.78rem;
   letter-spacing: 0.18em;
   text-transform: uppercase;
   color: var(--ash);
@@ -215,7 +223,7 @@ body {
   content: '//';
   margin-right: 0.4em;
   color: var(--dim);
-  font-size: 0.525rem;
+  font-size: 0.65rem;
 }
 .nav-link:hover { color: var(--green); background: var(--green-pulse); }
 
@@ -257,6 +265,16 @@ body {
 .cursor-blink {
   animation: cursorBlink 1.1s step-end infinite;
   display: inline-block;
+}
+
+/* Footer mark mouth blink — mouth blinks, wordmark _ is static */
+@keyframes mouthBlink {
+  0%, 92%, 100% { transform: scaleY(1); }
+  95%           { transform: scaleY(0); }
+}
+.footer-mouth {
+  animation: mouthBlink 1.1s step-end infinite;
+  transform-origin: center 296px;
 }
 
 /* ═══════════════════════════════════
@@ -338,7 +356,7 @@ body {
 
 .hero-terminal-bar {
   font-family: var(--f-mono);
-  font-size: 0.63rem;
+  font-size: 0.65rem;
   letter-spacing: 0.2em;
   color: var(--ash);
   margin-bottom: 3rem;
@@ -426,7 +444,7 @@ body {
 }
 .hero-stat .hs-label {
   font-family: var(--f-mono);
-  font-size: 0.525rem;
+  font-size: 0.792rem;
   letter-spacing: 0.2em;
   text-transform: uppercase;
   color: var(--ash);
@@ -438,7 +456,7 @@ body {
 .hero-scroll-hint {
   position: absolute; bottom: 2rem; left: 6vw;
   font-family: var(--f-mono);
-  font-size: 0.525rem;
+  font-size: 0.65rem;
   letter-spacing: 0.25em;
   text-transform: uppercase;
   color: var(--dim);
@@ -458,7 +476,7 @@ body {
   position: absolute; right: 6vw; bottom: 2rem;
   text-align: right;
   font-family: var(--f-mono);
-  font-size: 0.525rem;
+  font-size: 0.65rem;
   letter-spacing: 0.15em;
   color: var(--dim);
   line-height: 2;
@@ -485,7 +503,7 @@ body {
 .section-break::before {
   content: attr(data-label);
   font-family: var(--f-mono);
-  font-size: 0.525rem;
+  font-size: 0.65rem;
   letter-spacing: 0.3em;
   text-transform: uppercase;
   color: var(--green);
@@ -599,7 +617,7 @@ body {
 .layer-size {
   margin-left: auto;
   font-family: var(--f-mono);
-  font-size: 0.525rem;
+  font-size: 0.65rem;
   letter-spacing: 0.1em;
   color: var(--dim);
   flex-shrink: 0;
@@ -1004,7 +1022,7 @@ a.entity {
 .ticker-term::before {
   content: '//';
   color: var(--green);
-  font-size: 0.525rem;
+  font-size: 0.65rem;
 }
 
 /* ═══════════════════════════════════
@@ -1058,16 +1076,71 @@ a.entity {
   line-height: 1.7;
 }
 
-/* ═══════════════════════════════════
-   FOOTER — series bar + standard
-═══════════════════════════════════ */
-.footer-accent-bar {
-  display: flex;
-  height: 3px;
+/* ── COLOPHON ── */
+.colophon {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 3rem;
+  padding: 3.5rem 6vw;
+  border-top: 1px solid var(--border);
+  background: var(--panel);
   position: relative; z-index: 10;
 }
-.footer-accent-bar div { flex: 1; }
+@media (max-width: 768px) {
+  .colophon { grid-template-columns: 1fr; padding: 2.5rem 1.5rem; gap: 2rem; }
+}
+.colophon-label {
+  font-family: var(--f-mono);
+  font-size: 0.72rem;
+  font-weight: 700; letter-spacing: 0.22em; text-transform: uppercase;
+  color: var(--green);
+  margin-bottom: 0.65rem;
+}
+.colophon-blurb {
+  font-family: var(--f-body);
+  font-size: 1rem;
+  color: var(--ash); line-height: 1.6;
+  max-width: 42ch; margin: 0;
+}
+.colophon-meta-label {
+  font-family: var(--f-mono);
+  font-size: 0.72rem;
+  font-weight: 700; letter-spacing: 0.22em; text-transform: uppercase;
+  color: var(--smoke);
+  margin-bottom: 0.55rem;
+}
+.colophon-series {
+  font-family: var(--f-mono);
+  font-size: 1.05rem; font-weight: 700;
+  text-transform: uppercase; letter-spacing: 0.04em;
+  color: var(--bright); margin-bottom: 0.35rem;
+}
+.colophon-series em { font-style: normal; color: var(--green); }
+.colophon-url {
+  display: block;
+  font-family: var(--f-mono);
+  font-size: 0.82rem;
+  color: var(--green); text-decoration: none;
+  border-bottom: 1px solid transparent;
+  margin-bottom: 1.1rem;
+  transition: border-color 0.15s;
+}
+.colophon-url:hover { border-bottom-color: var(--green); }
+.colophon-share { display: flex; gap: 0.6rem; flex-wrap: wrap; }
+.colophon-share-link {
+  font-family: var(--f-mono);
+  font-size: 0.78rem;
+  font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase;
+  color: var(--green); text-decoration: none;
+  border: 1px solid rgba(57,255,20,0.4);
+  padding: 0.25rem 0.65rem;
+  transition: background 0.15s, color 0.15s;
+}
+.colophon-share-link:hover { background: var(--green); color: var(--void); }
 
+/* ═══════════════════════════════════
+   FOOTER — series standard
+═══════════════════════════════════ */
 footer {
   padding: 2.5rem 6vw;
   border-top: none;
@@ -1079,14 +1152,18 @@ footer {
   gap: 2rem;
 }
 .footer-brand {
+  display: flex; align-items: center; gap: 0.75rem;
+  text-decoration: none;
+}
+.footer-wordmark {
   font-family: var(--f-mono);
   font-size: 0.82rem;
   letter-spacing: 0.15em;
   text-transform: uppercase;
   color: var(--smoke);
+  transition: color 0.15s;
 }
-.footer-brand a { color: var(--smoke); text-decoration: none; }
-.footer-brand a:hover { color: var(--green); }
+.footer-brand:hover .footer-wordmark { color: var(--bright); }
 .footer-copy {
   font-family: var(--f-mono);
   font-size: 0.82rem;
@@ -1110,6 +1187,8 @@ footer {
 }
 .footer-links a:hover { color: var(--green); border-bottom-color: var(--green); }
 
+@media print { footer { display: none; } .colophon { display: none; } }
+
 /* ═══════════════════════════════════
    RESPONSIVE
 ═══════════════════════════════════ */
@@ -1132,10 +1211,9 @@ footer {
     position: fixed; top: 0; left: 0; right: 0; z-index: 900;
   }
   .nav-index-box { height: 50px; flex-shrink: 0; }
-  .nav-wordmark {
+  .nav-topic {
     flex: 1;
     height: 50px;
-    border-right: none;
   }
   .nav-actions {
     display: contents; /* let children participate in nav flex row */
@@ -1357,7 +1435,7 @@ footer {
   left: 0; right: 0;
   text-align: center;
   font-family: 'Share Tech Mono', monospace;
-  font-size: 0.6rem;
+  font-size: 0.65rem;
   letter-spacing: 0.2em;
   text-transform: uppercase;
   color: #ff0000;
@@ -1368,13 +1446,12 @@ footer {
 #attempt-failed.show { opacity: 1; }
 .sp1-pw-row { position: relative; }
 
-
 /* ── ATTEMPT FAILED ── */
 #attempt-failed {
   position: absolute; bottom: -1.6rem; left: 0; right: 0;
   text-align: center;
   font-family: 'Share Tech Mono', monospace;
-  font-size: 0.58rem; letter-spacing: 0.2em; text-transform: uppercase;
+  font-size: 0.65rem; letter-spacing: 0.2em; text-transform: uppercase;
   color: #ff4400; opacity: 0; transition: opacity 0.1s; pointer-events: none;
 }
 #attempt-failed.show { opacity: 1; }
@@ -1407,9 +1484,9 @@ footer {
 
 <!-- ═══ NAV ═══ -->
 <nav class="nav">
-  <div class="nav-index-box"><span>006</span></div>
-  <a href="https://abriefhistoryofeverything.com" class="nav-wordmark">
-    A (Brief) History of Everything<span class="cursor-blink">_</span>
+  <a href="#hero" class="nav-tag">
+    <div class="nav-index-box">006</div>
+    <span class="nav-topic">Dark Web<span class="cursor-blink" style="color:var(--green);">_</span></span>
   </a>
   <div class="nav-links">
     <a href="#origins" class="nav-link">Origins</a>
@@ -1944,24 +2021,36 @@ footer {
   </div>
 </div>
 
-<!-- ═══ FOOTER ═══ -->
-<div class="footer-accent-bar">
-  <div style="background:#00D4F0; flex:2;"></div>
-  <div style="background:#0055EE; flex:1;"></div>
-  <div style="background:#39E07A; flex:1;"></div>
-  <div style="background:#FF5C20; flex:1;"></div>
-  <div style="background:#1e1e1e; flex:5;"></div>
+<!-- COLOPHON — always after .eco-links, always before <footer> -->
+<div class="colophon">
+  <div class="colophon-desc">
+    <div class="colophon-label">DARK WEB / HISTORY</div>
+    <p class="colophon-blurb">From classified U.S. Navy research in the 1990s to Silk Road's billion-dollar black market to the modern surveillance battleground — the full arc of the internet's hidden layer.</p>
+  </div>
+  <div class="colophon-meta">
+    <div class="colophon-meta-label">PART OF</div>
+    <div class="colophon-series">A <em>(Brief)</em> History of Everything<span class="cursor-blink" style="color:var(--green);">_</span></div>
+    <a href="https://abriefhistoryofeverything.com" class="colophon-url" target="_blank" rel="noopener">abriefhistoryofeverything.com ↗</a>
+    <div class="colophon-share">
+      <a href="https://twitter.com/intent/tweet?text=A%20(Brief)%20History%20of%20the%20Dark%20Web%20%E2%80%94%20from%20military%20origins%20to%20Silk%20Road%20to%20today.&url=https%3A%2F%2Fabriefhistoryofeverything.com%2Fdark-web" class="colophon-share-link" target="_blank" rel="noopener">Share on X</a>
+      <a href="https://www.linkedin.com/sharing/share-offsite/?url=https%3A%2F%2Fabriefhistoryofeverything.com%2Fdark-web" class="colophon-share-link" target="_blank" rel="noopener">Share on LinkedIn</a>
+    </div>
+  </div>
 </div>
+
+<!-- ═══ FOOTER ═══ -->
 <footer>
   <div class="footer-inner">
-    <div class="footer-brand">
-      <a href="https://abriefhistoryofeverything.com">abriefhistoryofeverything.com</a>
-    </div>
+    <a href="https://abriefhistoryofeverything.com" class="footer-brand">
+      <svg width="36" height="36" viewBox="0 0 400 400" xmlns="http://www.w3.org/2000/svg" style="flex-shrink:0;">
+        <rect width="400" height="400" fill="#00D4F0"/>
+        <rect x="55" y="118" width="46" height="46" fill="#08090C" opacity="0.22"/>
+        <rect x="178" y="118" width="46" height="46" fill="#08090C" opacity="0.22"/>
+        <rect class="footer-mouth" x="55" y="278" width="170" height="36" fill="#08090C"/>
+      </svg>
+      <span class="footer-wordmark">A (Brief) History of Everything_</span>
+    </a>
     <div class="footer-copy">© 2026 A (Brief) History of Everything</div>
-    <div class="footer-links">
-      <a href="https://twitter.com/intent/tweet?text=A%20(Brief)%20History%20of%20the%20Dark%20Web%20%E2%80%94%20from%20military%20origins%20to%20Silk%20Road%20to%20today.&url=https%3A%2F%2Fabriefhistoryofeverything.com%2Fdark-web" target="_blank" rel="noopener">Share on X ↗</a>
-      <a href="https://www.linkedin.com/sharing/share-offsite/?url=https%3A%2F%2Fabriefhistoryofeverything.com%2Fdark-web" target="_blank" rel="noopener">Share on LinkedIn ↗</a>
-    </div>
   </div>
 </footer>
 
