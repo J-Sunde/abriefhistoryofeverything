@@ -222,47 +222,39 @@ img{display:block;}
 ══════════════════════════════════════════════════════════════ */
 .nav{
   position:fixed;top:50px;left:0;right:0;z-index:900;
-  display:flex;align-items:center;gap:1.5rem;
-  padding:0 1.5rem 0 0;height:50px;
+  display:flex;align-items:stretch;gap:0;
+  padding:0;height:50px;
   background:var(--nav-bg);
   backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);
   border-bottom:1px solid var(--nav-border);
   transition:background .35s,border-color .35s;
 }
-@media(min-width:901px){.nav{padding-left:0;}}
 
-.nav-brand{
-  font-family:'Space Mono',monospace;
-  font-weight:700;font-size:1rem;letter-spacing:.08em;
-  text-transform:uppercase;color:var(--bright);white-space:nowrap;
+/* Wayfinding tag */
+.nav-tag{
+  display:flex;align-items:stretch;
   text-decoration:none;flex-shrink:0;
-  display:flex;align-items:center;
-  padding:0 0 0 1.2rem;
+  border-right:1px solid var(--nav-border);
 }
+.nav-tag:hover .nav-topic{opacity:.8;}
+
+/* .nav-brand removed — wayfinding tag used instead */
 .nav-topic{
   display:flex;align-items:center;
   font-family:'Space Mono',monospace;font-weight:700;
-  font-size:.9rem;letter-spacing:.08em;
-  text-transform:uppercase;color:var(--accent);
+  font-size:.72rem;letter-spacing:.14em;
+  text-transform:uppercase;color:var(--nav-text,#ECF2F6);
   white-space:nowrap;flex-shrink:0;
-  padding:0 1.2rem 0 .5rem;
-  border-right:1px solid var(--rule2);
-  height:100%;
-}
-/* Mobile: hide brand + topic label text, keep index box */
-@media(max-width:900px){
-  .nav-brand{display:none !important;}
-  .nav-topic{
-    border-right:none;
-    padding-left:1rem;
-    display:flex;
-  }
+  padding:0 20px 0 16px;
+  overflow:hidden;text-overflow:ellipsis;
+  transition:color .15s;
 }
 
 .nav-era{
   font-family:'Space Mono',monospace;
   font-size:0.72rem;letter-spacing:.18em;text-transform:uppercase;
   color:var(--dim);flex:1;overflow:hidden;
+  padding-left:1.5rem;display:flex;align-items:center;
   white-space:nowrap;text-overflow:ellipsis;
 }
 @media(max-width:600px){.nav-era{display:none;}}
@@ -270,7 +262,7 @@ img{display:block;}
 /* ─── MODE TOGGLE ─── */
 .mode-toggle{
   display:flex;align-items:center;gap:.6rem;
-  margin-left:auto;flex-shrink:0;
+  margin-left:auto;flex-shrink:0;padding-right:1.5rem;
 }
 .mode-label{
   font-family:'Space Mono',monospace;
@@ -288,6 +280,7 @@ img{display:block;}
   width:12px;height:12px;background:var(--toggle-knob);
   transition:transform .3s,background .3s;
 }
+[data-theme="light"] .nav-topic{color:#0A0D06;}
 [data-theme="light"] .toggle-switch::after{transform:translateX(18px);}
 .mode-icon{
   font-size:1rem;color:var(--dim);line-height:1;
@@ -892,20 +885,11 @@ img{display:block;}
 }
 .footer-series em{font-style:normal;color:var(--accent);}
 .footer-copy{
-  flex:1;text-align:center;
+  margin-left:auto;
   font-size:0.82rem;letter-spacing:.14em;
   text-transform:uppercase;color:var(--dim);
 }
-.footer-share{
-  display:flex;align-items:center;
-  gap:1.4rem;flex-shrink:0;
-}
-.footer-share-link{
-  font-size:0.82rem;letter-spacing:.14em;
-  text-transform:uppercase;color:var(--dim);
-  text-decoration:none;transition:color .2s;
-}
-.footer-share-link:hover{color:var(--accent);}
+/* footer share links removed — moved to colophon */
 .footer-mouth{animation:blink 1.1s step-end infinite;}
 
 @media(max-width:768px){
@@ -918,6 +902,7 @@ img{display:block;}
 
 @media print{
   footer{display:none;}
+  .colophon{display:none;}
 }
 
 /* ══════════════════════════════════════════════════════════════
@@ -1140,9 +1125,10 @@ img{display:block;}
 
 <!-- ── TOP NAV ───────────────────────────────────────────────── -->
 <nav class="nav">
-  <div class="nav-index-box">003</div>
-  <a href="#hero" class="nav-brand">A <span style="color:var(--accent);">(BRIEF)</span> HISTORY OF<span class="cursor-blink">_</span></a>
-  <span class="nav-topic">Crypto</span>
+  <a href="#hero" class="nav-tag">
+    <div class="nav-index-box">003</div>
+    <span class="nav-topic">CRYPTO<span class="cursor-blink" style="color:var(--accent);">_</span></span>
+  </a>
   <div class="nav-era" id="navEra">Genesis — 2008</div>
   <div class="mode-toggle">
     <span class="mode-icon" id="modeIcon">☀</span>
@@ -1889,10 +1875,25 @@ img{display:block;}
   </div>
 </div>
 
+<!-- COLOPHON -->
+<div class="colophon">
+  <div class="colophon-desc">
+    <div class="colophon-label">CRYPTO / HISTORY</div>
+    <p class="colophon-blurb">From Satoshi's white paper to DeFi and beyond — the complete story of digital money, trustless networks, and the blockchain revolution.</p>
+  </div>
+  <div class="colophon-meta">
+    <div class="colophon-meta-label">PART OF</div>
+    <div class="colophon-series">A <em>(Brief)</em> History of Everything<span class="cursor-blink">_</span></div>
+    <a href="https://abriefhistoryofeverything.com" class="colophon-url" target="_blank" rel="noopener">abriefhistoryofeverything.com ↗</a>
+    <div class="colophon-share">
+      <a href="https://twitter.com/intent/tweet?text=A%20(Brief)%20History%20of%20Crypto%20%E2%80%94%20from%20Satoshi%20to%20DeFi&url=https%3A%2F%2Fabriefhistoryofeverything.com%2Fcrypto" class="colophon-share-link" target="_blank" rel="noopener">Share on X</a>
+      <a href="https://www.linkedin.com/sharing/share-offsite/?url=https%3A%2F%2Fabriefhistoryofeverything.com%2Fcrypto" class="colophon-share-link" target="_blank" rel="noopener">Share on LinkedIn</a>
+    </div>
+  </div>
+</div>
+
 <!-- ── FOOTER ─────────────────────────────────────────────────── -->
 <footer class="site-footer">
-
-  <!-- Left: series mark + wordmark — links to hub -->
   <a href="https://abriefhistoryofeverything.com" class="footer-lockup" target="_blank" rel="noopener">
     <svg width="32" height="32" viewBox="0 0 400 400" xmlns="http://www.w3.org/2000/svg" style="display:block;flex-shrink:0;">
       <rect width="400" height="400" fill="#00D4F0"/>
@@ -1902,16 +1903,7 @@ img{display:block;}
     </svg>
     <div class="footer-series">A <em>(Brief)</em> History of Everything_</div>
   </a>
-
-  <!-- Center: copyright -->
   <div class="footer-copy">© 2026 A (Brief) History of Everything</div>
-
-  <!-- Right: share links -->
-  <div class="footer-share">
-    <a href="https://twitter.com/intent/tweet?text=A+Brief+History+of+Crypto&url=https://abriefhistoryofeverything.com/crypto" target="_blank" rel="noopener" class="footer-share-link">Share on X</a>
-    <a href="https://www.linkedin.com/sharing/share-offsite/?url=https://abriefhistoryofeverything.com/crypto" target="_blank" rel="noopener" class="footer-share-link">Share on LinkedIn</a>
-  </div>
-
 </footer>
 
 </div><!-- /page-body -->
