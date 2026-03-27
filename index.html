@@ -191,6 +191,8 @@ nav.solid{background:rgba(10,10,10,.96);border-bottom:1px solid var(--rule);}
 @media(max-width:768px){
   .nav-guides-btn{display:none;}
   .nav-hamburger{display:flex;}
+  .nav-logo{display:none;}
+  .nav-sep{display:none;}
 }
 
 /* ═══ HERO — Ambient Spatial Field ═══ */
@@ -917,7 +919,7 @@ br.desk-br{display:block;}
 
 <!-- NAV -->
 <nav id="nav">
-  <span class="nav-logo">A (Brief) History of Everything</span>
+  <a class="nav-logo" href="#" onclick="window.scrollTo({top:0,behavior:'smooth'});return false;">A (Brief) History of Everything</a>
   <div class="nav-sep"></div>
   <div class="nav-links">
     <span class="nav-link active" onclick="window.scrollTo({top:0,behavior:'smooth'})">Home</span>
