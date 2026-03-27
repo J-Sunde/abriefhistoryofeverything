@@ -250,6 +250,33 @@ nav.solid{background:rgba(10,10,10,.96);border-bottom:1px solid var(--rule);}
   .hero{align-items:center;}
   .hero-content{padding:4rem 1.5rem 1.5rem;margin-top:10vh;}
 }
+
+/* ── Mobile scroll hint ── */
+.hero-scroll-hint{display:none;}
+@media(max-width:768px){
+  .hero-scroll-hint{
+    display:flex;
+    position:absolute;bottom:2rem;left:50%;transform:translateX(-50%);
+    z-index:10;
+    flex-direction:column;align-items:center;
+    opacity:1;
+    transition:opacity .4s ease;
+    pointer-events:none;
+  }
+  .hero-scroll-hint.hidden{opacity:0;}
+  .hero-scroll-chevron{
+    font-family:var(--mono);
+    font-size:.9rem;
+    color:#00D4F0;
+    opacity:.7;
+    animation:scrollBounce 1.8s ease-in-out infinite;
+    letter-spacing:.1em;
+  }
+  @keyframes scrollBounce{
+    0%,100%{transform:translateY(0);}
+    50%{transform:translateY(5px);}
+  }
+}
 /* hero entrance animations */
 @keyframes heroRise{
   from{opacity:0;transform:translateY(28px);}
@@ -961,6 +988,10 @@ br.desk-br{display:block;}
       <a class="btn-ghost" href="#guides" onclick="document.getElementById('guides').scrollIntoView({behavior:'smooth'});return false;">Browse All Guides</a>
     </div>
     -->
+  </div>
+
+  <div class="hero-scroll-hint" id="heroScrollHint" aria-hidden="true">
+    <span class="hero-scroll-chevron">∨</span>
   </div>
 </section>
 
@@ -1687,9 +1718,11 @@ br.desk-br{display:block;}
 
 /* progress + nav */
 const prog=document.getElementById('progress');
+const _scrollHint=document.getElementById('heroScrollHint');
 window.addEventListener('scroll',()=>{
   prog.style.width=(window.scrollY/(document.body.scrollHeight-window.innerHeight)*100)+'%';
   document.getElementById('nav').classList.toggle('solid',window.scrollY>60);
+  if(_scrollHint && window.scrollY>40) _scrollHint.classList.add('hidden');
 },{passive:true});
 
 /* fade in */
