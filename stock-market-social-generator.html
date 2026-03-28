@@ -80,6 +80,11 @@ body{background:var(--bg);color:var(--text);font-family:'Geist',sans-serif;font-
 .bg3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:4px;margin-bottom:10px;}
 .bgsw{padding:7px 4px;border:2px solid var(--rule2);border-radius:2px;cursor:pointer;text-align:center;font-family:'Geist Mono',monospace;font-size:8px;letter-spacing:.06em;text-transform:uppercase;transition:all .12s;color:var(--dim);}
 .bgsw:hover{border-color:var(--dim);}.bgsw.active{border-color:var(--accent);}
+.size-row{display:flex;align-items:center;gap:8px;margin-bottom:10px;}
+.size-slider{flex:1;-webkit-appearance:none;appearance:none;height:2px;background:var(--rule2);border-radius:2px;outline:none;cursor:pointer;}
+.size-slider::-webkit-slider-thumb{-webkit-appearance:none;width:12px;height:12px;border-radius:50%;background:var(--accent);cursor:pointer;}
+.size-slider::-moz-range-thumb{width:12px;height:12px;border-radius:50%;background:var(--accent);border:none;cursor:pointer;}
+.size-val{font-family:'Geist Mono',monospace;font-size:9px;color:var(--accent);width:28px;text-align:right;flex-shrink:0;}
 </style>
 </head>
 <body>
@@ -205,6 +210,11 @@ body{background:var(--bg);color:var(--text);font-family:'Geist',sans-serif;font-
       <div class="bgsw" data-ogbg="accent" onclick="selOGBg(this)" style="background:#B4FF3C;color:#000;">Lime</div>
       <div class="bgsw" data-ogbg="white" onclick="selOGBg(this)" style="background:#fff;color:#000;">White</div>
     </div>
+    <div class="sbl">Title Size</div>
+    <div class="size-row">
+      <input class="size-slider" id="og-size" type="range" min="28" max="88" value="52" oninput="S.ogTitleSize=parseInt(this.value);document.getElementById('og-size-val').textContent=this.value+'px';updateAll();">
+      <span class="size-val" id="og-size-val">52px</span>
+    </div>
     <div class="sbl">Subtitle</div>
     <textarea class="ogsub" id="og-sub" rows="3" oninput="updateAll()">From Amsterdam's first IPO to trillion-dollar indices.</textarea>
     <div class="sbl" style="margin-top:12px;">Color Panel</div>
@@ -294,7 +304,7 @@ const CH={og:315,tw:338,sq:540,vt:540};
 const FMTS=["og","tw","sq","vt"];
 const FNAMES={og:"og",tw:"twitter",sq:"ig-square",vt:"ig-vertical"};
 const SCALES={og:2,tw:2,sq:2,vt:2.5};
-let S={type:"quote",idx:0,style:"boldtype",pal:"dark",hl:"accent",hlWord:"voting machine",img:"none",panelColor:"#B4FF3C",sgPal:"dark",layout:"text|image",ogLayout:"text|image",ogImg:"none",ogColor:"#B4FF3C",ogTitleCase:false,ogBg:"dark"};
+let S={type:"quote",idx:0,style:"boldtype",pal:"dark",hl:"accent",hlWord:"voting machine",img:"none",panelColor:"#B4FF3C",sgPal:"dark",layout:"text|image",ogLayout:"text|image",ogImg:"none",ogColor:"#B4FF3C",ogTitleCase:false,ogBg:"dark",ogTitleSize:52};
 
 function fitText(el,aw,ah,min,max){let lo=min,hi=max;el.style.fontSize=hi+"px";while(lo<hi-1){const mid=Math.floor((lo+hi)/2);el.style.fontSize=mid+"px";if(el.scrollWidth<=aw&&el.scrollHeight<=ah)lo=mid;else hi=mid;}el.style.fontSize=lo+"px";}
 function applyHL(text,word,style,accent,bg){if(!word||style==="none")return esc(text);const h=esc(text),w=esc(word).replace(/[.*+?^${}()|[\]\\]/g,"\\$&"),re=new RegExp(`(${w})`,"gi");if(style==="accent")return h.replace(re,`<span style="color:${accent}">$1</span>`);if(style==="reverse")return h.replace(re,`<span style="background:${accent};color:${bg};padding:0 .04em;">$1</span>`);if(style==="outline")return h.replace(re,`<span style="-webkit-text-stroke:2px currentColor;color:transparent;">$1</span>`);return h;}
@@ -326,7 +336,7 @@ function renderOG(el){
   else{panelBg="#050505";labelCol="#ffffff";titleCol="#ffffff";subCol="rgba(255,255,255,.7)";accentCol="#B4FF3C";}
   const tc=S.ogTitleCase;
   const titleHTML=tc?`The <span style="color:${accentCol};">Stock</span> Market`:`THE <span style="color:${accentCol};">STOCK</span> MARKET`;
-  const titleStyle=tc?"font-size:52px;line-height:.9;letter-spacing:-.03em;":"font-size:52px;line-height:.9;letter-spacing:-.03em;text-transform:uppercase;";
+  const titleStyle=tc?`font-size:${S.ogTitleSize}px;line-height:.9;letter-spacing:-.03em;`:`font-size:${S.ogTitleSize}px;line-height:.9;letter-spacing:-.03em;text-transform:uppercase;`;
   const tp=`<div style="flex:1;background:${panelBg};display:flex;flex-direction:column;justify-content:center;padding:9% 8%;position:relative;overflow:hidden;"><div style="font-family:'Geist Mono',monospace;font-size:11px;letter-spacing:.15em;text-transform:uppercase;color:${labelCol};margin-bottom:10px;">A (Brief) History of</div><div style="font-family:'Fraunces',serif;font-weight:700;${titleStyle}color:${titleCol};padding-bottom:14px;">${titleHTML}<span style="color:${accentCol};">_</span></div><div style="font-family:'Geist Mono',monospace;font-size:11px;color:${subCol};line-height:1.5;max-width:90%;letter-spacing:.02em;">${esc(sub)}</div></div>`;
   const sp=useImg?`<div style="flex:1;position:relative;overflow:hidden;background-image:url('${S.ogImg}');background-size:cover;background-position:center;"><div style="position:absolute;inset:0;background:#B4FF3C;opacity:.18;mix-blend-mode:multiply;"></div></div>`:`<div style="flex:1;position:relative;overflow:hidden;background:${S.ogColor};"><div style="position:absolute;inset:0;background-image:radial-gradient(circle,${dot} 1px,transparent 1px);background-size:18px 18px;"></div></div>`;
   const panels=(S.ogLayout==="text|image"||S.ogLayout==="text|color")?tp+sp:sp+tp;
