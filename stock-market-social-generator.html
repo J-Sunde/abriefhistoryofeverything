@@ -514,7 +514,7 @@ window.selFigLayout=function(layout){S.figLayout=layout;document.getElementById(
 window.selFigPal=function(el){document.querySelectorAll("[data-figpal]").forEach(s=>s.classList.remove("active"));el.classList.add("active");S.figPal=el.dataset.figpal;updateAll();};
 window.setFigPos=function(v){S.figPos=parseInt(v);document.getElementById("fig-pos-val").textContent=v+"%";updateAll();};
 window.selCarouselBg=function(el){document.querySelectorAll("[data-cbg]").forEach(b=>b.classList.remove("active"));el.classList.add("active");S.carouselBg=el.dataset.cbg;updateAll();};
-window.setCarouselCount=function(v){S.carouselCount=parseInt(v);document.getElementById("carousel-count-val").textContent=v;};
+window.setCarouselCount=function(v){S.carouselCount=parseInt(v);document.getElementById("carousel-count-val").textContent=v;updateAll();};
 
 document.getElementById("hl-input").addEventListener("input",e=>{S.hlWord=e.target.value;updateAll();});
 
@@ -595,10 +595,15 @@ function renderOutroCard(el,fmt){
   const isV=fmt==="vt";
   const text=document.getElementById("carousel-outro").value||"abriefhistoryofeverything.com\nRead the full guide →";
   const lines=text.split("\n");
+  const count=S.carouselCount;
+  const mascotSVG=`<svg viewBox="0 0 400 400" xmlns="http://www.w3.org/2000/svg" style="width:72px;height:72px;display:block;"><rect width="400" height="400" fill="#00D4F0"/><rect x="55" y="118" width="46" height="46" fill="#08090C" opacity=".22"/><rect x="178" y="118" width="46" height="46" fill="#08090C" opacity=".22"/><rect x="55" y="278" width="170" height="36" fill="#08090C"/></svg>`;
   el.innerHTML=`<div style="width:100%;height:100%;background:#050505;display:flex;flex-direction:column;justify-content:center;align-items:center;padding:10%;position:relative;overflow:hidden;text-align:center;">
-    <div style="font-family:'Fraunces',serif;font-weight:700;font-size:${isV?"28":"22"}px;line-height:1;letter-spacing:-.02em;color:#ffffff;margin-bottom:${isV?"20":"16"}px;font-style:italic;">${esc(lines[0]||"")}</div>
-    ${lines[1]?`<div style="font-family:'Geist Mono',monospace;font-size:${isV?"12":"10"}px;letter-spacing:.12em;text-transform:uppercase;color:#B4FF3C;">${esc(lines[1])}</div>`:""}
-    <div style="position:absolute;bottom:0;left:0;right:0;height:3px;background:linear-gradient(90deg,#00D4F0 25%,#0055EE 25% 50%,#39E07A 50% 75%,#FF5C20 75%);"></div>
+    <div style="position:absolute;bottom:-30px;right:-20px;font-family:'Fraunces',serif;font-weight:700;font-size:${isV?"320":"260"}px;color:#ffffff;opacity:.04;line-height:1;pointer-events:none;user-select:none;">${count}</div>
+    <div style="position:relative;z-index:1;display:flex;flex-direction:column;align-items:center;gap:${isV?"20":"14"}px;">
+      ${mascotSVG}
+      <div style="font-family:'Fraunces',serif;font-weight:700;font-size:${isV?"26":"20"}px;line-height:1.1;letter-spacing:-.02em;color:#ffffff;font-style:italic;">${esc(lines[0]||"")}</div>
+      ${lines[1]?`<div style="font-family:'Geist Mono',monospace;font-size:${isV?"11":"9"}px;letter-spacing:.14em;text-transform:uppercase;color:#B4FF3C;">${esc(lines[1])}</div>`:""}
+    </div>
   </div>`;
 }
 
