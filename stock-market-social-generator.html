@@ -93,6 +93,11 @@ body{background:var(--bg);color:var(--text);font-family:'Geist',sans-serif;font-
 .fig-info strong{display:block;font-family:'Geist',sans-serif;font-size:11px;font-weight:600;color:var(--text);line-height:1.2;}
 .fig-info span{font-family:'Geist Mono',monospace;font-size:9px;color:var(--muted);}
 .fig-layout{display:grid;grid-template-columns:1fr 1fr;gap:4px;margin-bottom:10px;}
+.pos-row{display:flex;align-items:center;gap:8px;margin-bottom:10px;}
+.pos-slider{flex:1;-webkit-appearance:none;appearance:none;height:2px;background:var(--rule2);border-radius:2px;outline:none;cursor:pointer;}
+.pos-slider::-webkit-slider-thumb{-webkit-appearance:none;width:12px;height:12px;border-radius:50%;background:var(--accent);cursor:pointer;}
+.pos-slider::-moz-range-thumb{width:12px;height:12px;border-radius:50%;background:var(--accent);border:none;cursor:pointer;}
+.pos-val{font-family:'Geist Mono',monospace;font-size:9px;color:var(--accent);width:28px;text-align:right;flex-shrink:0;}
 </style>
 </head>
 <body>
@@ -266,7 +271,11 @@ body{background:var(--bg);color:var(--text);font-family:'Geist',sans-serif;font-
     </div>
     <div class="sbl">Figure</div>
     <div class="fig-grid" id="fig-list"></div>
-  </div>
+    <div class="sbl" style="margin-top:12px;">Image Position</div>
+    <div class="pos-row">
+      <input class="pos-slider" id="fig-pos" type="range" min="0" max="100" value="20" oninput="setFigPos(this.value)">
+      <span class="pos-val" id="fig-pos-val">20%</span>
+    </div>
 </div>
 
 <!-- CANVAS AREA -->
@@ -361,7 +370,7 @@ let S={
   type:"quote",idx:0,style:"boldtype",pal:"dark",hl:"accent",hlWord:"voting machine",
   img:"none",panelColor:"#B4FF3C",sgPal:"dark",layout:"text|image",
   ogLayout:"text|image",ogImg:"none",ogColor:"#B4FF3C",ogTitleCase:false,ogBg:"dark",ogTitleSize:52,
-  figureIdx:0,figLayout:"image|text",figPal:"dark"
+  figureIdx:0,figLayout:"image|text",figPal:"dark",figPos:20
 };
 
 // ─── HELPERS ─────────────────────────────────────────────────────────────────
@@ -418,6 +427,7 @@ window.setOGSize=function(v){S.ogTitleSize=parseInt(v);document.getElementById("
 window.selFigure=function(idx){S.figureIdx=idx;document.querySelectorAll(".fig-card").forEach((c,i)=>c.classList.toggle("active",i===idx));updateAll();};
 window.selFigLayout=function(layout){S.figLayout=layout;document.getElementById("fig-layout-left").classList.toggle("active",layout==="image|text");document.getElementById("fig-layout-right").classList.toggle("active",layout==="text|image");updateAll();};
 window.selFigPal=function(el){document.querySelectorAll("[data-figpal]").forEach(s=>s.classList.remove("active"));el.classList.add("active");S.figPal=el.dataset.figpal;updateAll();};
+window.setFigPos=function(v){S.figPos=parseInt(v);document.getElementById("fig-pos-val").textContent=v+"%";updateAll();};
 
 document.getElementById("hl-input").addEventListener("input",e=>{S.hlWord=e.target.value;updateAll();});
 
@@ -468,7 +478,8 @@ function renderFigure(el,fmt){
     <div style="font-family:'Geist',sans-serif;font-weight:400;font-size:${isV?"17":"15"}px;line-height:1.55;color:${muted};">${esc(f.bio)}</div>
     <div style="position:absolute;bottom:5%;${imageLeft?"right":"left"}:6%;font-family:'Geist Mono',monospace;font-size:7px;letter-spacing:.14em;text-transform:uppercase;color:${watermark};">A (Brief) History of the Stock Market</div>
   </div>`;
-  const ip=`<div style="flex:${isV?"1.4":"1"};position:relative;overflow:hidden;background-image:url('${f.img}');background-size:cover;background-position:center top;">
+  const imgPos=isV?`center ${S.figPos}%`:"center top";
+  const ip=`<div style="flex:${isV?"1.4":"1"};position:relative;overflow:hidden;background-image:url('${f.img}');background-size:cover;background-position:${imgPos};">
     <div style="position:absolute;inset:0;background:${f.accent};opacity:.1;mix-blend-mode:multiply;"></div>
   </div>`;
   const panels=imageLeft?(ip+tp):(tp+ip);
