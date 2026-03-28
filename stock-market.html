@@ -1,0 +1,1634 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>A (Brief) History of the Stock Market</title>
+<meta name="description" content="From the Dutch East India Company to algorithmic trading — a chronological guide to the world's financial markets.">
+<meta property="og:title" content="A (Brief) History of the Stock Market">
+<meta property="og:description" content="From the Dutch East India Company to algorithmic trading — a chronological guide to the world's financial markets.">
+<meta property="og:type" content="website">
+<meta property="og:image" content="https://abriefhistoryofeverything.com/og-stockmarket.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="A (Brief) History of the Stock Market">
+<meta name="twitter:image" content="https://abriefhistoryofeverything.com/og-stockmarket.png">
+<link rel="canonical" href="https://abriefhistoryofeverything.com/stockmarket">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;1,9..144,200;1,9..144,300;1,9..144,400&family=Geist:wght@200;300;400;500;600&family=Geist+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' fill='%23B4FF3C'/><text x='50%' y='72%' text-anchor='middle' font-family='monospace' font-weight='900' font-size='14' fill='%23000'>SM</text></svg>">
+<style>
+/* ============================================================
+   TOKENS
+   ============================================================ */
+:root {
+  --accent:    #B4FF3C;
+  --accent-dim: rgba(180,255,60,.12);
+  --accent2:   #FF5533;
+  --accent3:   #3B82F6;
+  --accent4:   #F59E0B;
+  --bull:      #B4FF3C;
+  --bear:      #FF5533;
+
+  --bg:        #050505;
+  --bg1:       #080808;
+  --bg2:       #0D0D0D;
+  --surface:   #0C0C0C;
+  --surface2:  #111111;
+  --panel-light: #F7F7F5;
+
+  --text:      #E8EDF5;
+  --bright:    #FFFFFF;
+  --dim:       rgba(232,237,245,.55);
+  --muted:     rgba(232,237,245,.3);
+  --rule:      rgba(255,255,255,.06);
+  --rule2:     rgba(255,255,255,.03);
+
+  --nav-bg:    rgba(5,5,5,.95);
+  --nav-border: rgba(255,255,255,.07);
+  --sidenav-bg: #050505;
+  --card-bg:   #050505;
+  --card-hover: #0a0a0a;
+
+  --ticker-bg: #000;
+  --ticker-text: #B4FF3C;
+
+  /* Fonts */
+  --serif:  'Fraunces', serif;
+  --sans:   'Geist', sans-serif;
+  --mono:   'Geist Mono', monospace;
+  --body:   'Geist', sans-serif;
+
+  /* Social post generator compat */
+  --cream:    #F7F7F5;
+  --dark-bg:  #050505;
+
+  /* Series */
+  --series-cyan:   #00D4F0;
+  --series-blue:   #0055EE;
+  --series-green:  #39E07A;
+  --series-orange: #FF5C20;
+}
+
+[data-theme="light"] {
+  --bg:        #F7F7F5;
+  --bg1:       #F0F0EE;
+  --bg2:       #E8E8E6;
+  --surface:   #FFFFFF;
+  --surface2:  #F4F4F2;
+  --text:      #0D0D0D;
+  --bright:    #000000;
+  --dim:       #4A4A4A;
+  --muted:     #888888;
+  --rule:      rgba(0,0,0,.08);
+  --rule2:     rgba(0,0,0,.04);
+  --nav-bg:    rgba(247,247,245,.95);
+  --nav-border: rgba(0,0,0,.1);
+  --nav-text:  rgba(0,0,0,.75);
+  --sidenav-bg: #FFFFFF;
+  --card-bg:   #FFFFFF;
+  --card-hover: #F9F9F7;
+  --ticker-bg: #000;
+  --ticker-text: #B4FF3C;
+}
+
+/* ============================================================
+   RESET
+   ============================================================ */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body {
+  font-family: var(--sans);
+  background: var(--bg);
+  color: var(--text);
+  line-height: 1.6;
+  overflow-x: hidden;
+  transition: background .3s, color .3s;
+  padding-bottom: env(safe-area-inset-bottom, 0);
+}
+a { color: inherit; text-decoration: none; }
+img { display: block; width: 100%; height: 100%; object-fit: cover; }
+
+/* ============================================================
+   JS READY + FADE IN
+   ============================================================ */
+.fi { opacity: 0; transform: translateY(16px); transition: opacity .6s ease, transform .6s ease; }
+.js-ready .fi { opacity: 0; transform: translateY(16px); }
+.js-ready .fi.visible { opacity: 1; transform: none; }
+
+/* ============================================================
+   CURSOR BLINK
+   ============================================================ */
+@keyframes cursorBlink { 0%,100%{opacity:1} 50%{opacity:0} }
+.cursor-blink { animation: cursorBlink 1.1s step-end infinite; display: inline-block; }
+
+/* ============================================================
+   SCROLL PROGRESS
+   ============================================================ */
+#progress {
+  position: fixed; top: 0; left: 0; height: 2px; width: 0%;
+  background: var(--accent); z-index: 9999; transition: width .1s linear;
+}
+
+/* ============================================================
+   CUSTOM CURSOR
+   ============================================================ */
+.cursor {
+  width: 6px; height: 6px; border-radius: 50%;
+  background: var(--accent); position: fixed;
+  pointer-events: none; z-index: 10000;
+  transform: translate(-50%,-50%);
+}
+.cursor-ring {
+  width: 24px; height: 24px; border-radius: 50%;
+  border: 1px solid rgba(180,255,60,.4); position: fixed;
+  pointer-events: none; z-index: 9999;
+  transform: translate(-50%,-50%);
+  transition: transform .22s ease, width .2s, height .2s;
+}
+
+/* ============================================================
+   TICKER
+   ============================================================ */
+.ticker {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 950;
+  height: 50px; overflow: hidden;
+  background: var(--ticker-bg);
+  border-bottom: 1px solid rgba(180,255,60,.15);
+}
+.ticker-track {
+  display: flex; white-space: nowrap;
+  animation: tickerScroll 60s linear infinite;
+  height: 100%; align-items: center;
+}
+.ticker-track span.ticker-group { display: flex; align-items: center; }
+.ticker-item {
+  font-family: var(--mono); font-size: .82rem; font-weight: 500;
+  letter-spacing: .05em; color: rgba(180,255,60,.6);
+  padding: 0 1.4rem; display: flex; align-items: center; gap: .3rem;
+  border-right: 1px solid rgba(180,255,60,.1);
+}
+.ticker-item .ti-sym { font-weight: 600; color: rgba(180,255,60,.85); }
+.ti-up .ti-chg { color: #B4FF3C; }
+.ti-dn .ti-chg { color: #FF5533; }
+@keyframes tickerScroll { 0%{transform:translateX(0)} 100%{transform:translateX(-50%)} }
+@media print { .ticker { display: none !important; } }
+
+/* ============================================================
+   NAV — 50px locked
+   ============================================================ */
+.nav {
+  height: 50px; position: fixed; top: 50px; left: 0; right: 0; z-index: 900;
+  display: flex; align-items: stretch;
+  background: var(--nav-bg);
+  backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px);
+  border-bottom: 1px solid var(--nav-border);
+}
+.nav-index-box {
+  width: 52px; min-width: 52px; height: 50px;
+  display: flex; align-items: center; justify-content: center;
+  background: var(--accent); color: #000;
+  font-family: var(--mono); font-size: .7rem; font-weight: 700;
+  letter-spacing: .1em; flex-shrink: 0;
+}
+.nav-tag {
+  display: flex; align-items: stretch;
+  text-decoration: none; flex-shrink: 0;
+  border-right: 1px solid var(--nav-border);
+}
+.nav-tag:hover .nav-topic { color: var(--text); }
+.nav-topic {
+  font-family: var(--mono); font-size: 0.72rem; font-weight: 700;
+  letter-spacing: 0.16em; text-transform: uppercase;
+  color: var(--nav-text, rgba(255,255,255,.75));
+  padding: 0 20px 0 16px;
+  display: flex; align-items: center;
+  white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+  transition: color 0.15s;
+}
+.nav-right { margin-left: auto; display: flex; align-items: stretch; }
+.nav-theme-btn {
+  font-family: var(--mono); font-size: .58rem; font-weight: 500;
+  letter-spacing: .1em; text-transform: uppercase;
+  color: var(--muted); background: none; border: none;
+  border-left: 1px solid var(--nav-border);
+  padding: 0 1.2rem; cursor: pointer;
+  display: flex; align-items: center; gap: .4rem;
+  transition: color .2s;
+}
+.nav-theme-btn:hover { color: var(--text); }
+@media print { .nav { display: none !important; } }
+
+/* ============================================================
+   SIDENAV
+   ============================================================ */
+.sidenav {
+  position: fixed; top: 100px; left: 0; bottom: 0; width: 52px;
+  z-index: 850; background: var(--sidenav-bg);
+  border-right: 1px solid var(--nav-border);
+  display: flex; flex-direction: column; align-items: center;
+  padding: 1.2rem 0 2rem; gap: .2rem;
+}
+.sn-item {
+  width: 36px; height: 36px; display: flex; align-items: center;
+  justify-content: center; font-family: var(--mono); font-size: .56rem;
+  font-weight: 600; letter-spacing: .05em; color: var(--muted);
+  cursor: pointer; border-radius: 2px; transition: color .2s, background .2s; position: relative;
+}
+.sn-item:hover, .sn-item.active { color: var(--accent); background: var(--accent-dim); }
+.sn-arrow { margin-top: auto; color: var(--muted); font-size: .7rem; animation: snArrow 2s ease-in-out infinite; }
+@keyframes snArrow { 0%,100%{transform:translateY(0)} 50%{transform:translateY(4px)} }
+.sn-tip {
+  position: absolute; left: 46px; top: 50%; transform: translateY(-50%);
+  background: var(--surface); color: var(--text);
+  font-family: var(--mono); font-size: .56rem; font-weight: 500;
+  letter-spacing: .08em; text-transform: uppercase;
+  padding: .3rem .7rem; white-space: nowrap;
+  border: 1px solid var(--nav-border);
+  pointer-events: none; opacity: 0; transition: opacity .15s; z-index: 999;
+}
+.sn-item:hover .sn-tip { opacity: 1; }
+@media (max-width: 900px) { .sidenav { display: none; } }
+
+/* ============================================================
+   MOBILE NAV
+   ============================================================ */
+.mobile-nav {
+  display: none; position: fixed; top: 76px; left: 0; right: 0; z-index: 848;
+  background: var(--surface); border-bottom: 1px solid var(--nav-border);
+  padding: .5rem 1rem; overflow-x: auto; gap: .4rem; -webkit-overflow-scrolling: touch;
+}
+.mobile-nav::-webkit-scrollbar { display: none; }
+.mn-item {
+  font-family: var(--mono); font-size: .56rem; font-weight: 600;
+  letter-spacing: .08em; text-transform: uppercase; white-space: nowrap;
+  color: var(--muted); padding: .3rem .7rem;
+  border: 1px solid var(--rule); border-radius: 2px; cursor: pointer;
+  transition: color .2s, border-color .2s;
+}
+.mn-item:hover, .mn-item.active { color: var(--accent); border-color: var(--accent); }
+@media (max-width: 900px) { .mobile-nav { display: flex; } }
+
+/* ============================================================
+   PAGE BODY
+   ============================================================ */
+.page-body { margin-left: 0; }
+@media (min-width: 901px) { .page-body { margin-left: 52px; } }
+.page-body-top { padding-top: 76px; }
+@media (max-width: 900px) { .page-body-top { padding-top: 110px; } }
+
+/* ============================================================
+   HERO
+   ============================================================ */
+.hero {
+  position: relative; min-height: 100vh;
+  display: flex; align-items: flex-end;
+  background: #020202; overflow: hidden;
+}
+.hero-bull {
+  position: absolute; inset: 0;
+  background-image: url('stock-market/images/hero-bull.jpg');
+  background-size: cover;
+  background-position: center 30%;
+  filter: grayscale(100%) contrast(1.1);
+  opacity: 0; transition: opacity 1.2s ease;
+  z-index: 0;
+}
+.hero-bull.loaded { opacity: .32; }
+/* Hero always dark regardless of theme */
+[data-theme="light"] .hero { background: #020202; }
+[data-theme="light"] .hero-eyebrow { color: rgba(232,237,245,.55); }
+[data-theme="light"] .hero-title { color: #FFFFFF; }
+[data-theme="light"] .hero-sub { color: rgba(232,237,245,.7); border-left-color: var(--accent); }
+[data-theme="light"] .hero-stats-strip { border-color: rgba(255,255,255,.06); }
+[data-theme="light"] .hero .share-dropdown { background: #111; border-color: rgba(255,255,255,.1); }
+[data-theme="light"] .hero .share-dropdown a { color: rgba(255,255,255,.7); }
+[data-theme="light"] .hero .share-dropdown a:hover { background: #1a1a1a; color: #fff; }
+[data-theme="light"] .ht-bar { color: #3a7a00; border-bottom-color: rgba(0,0,0,.08); }
+[data-theme="light"] .ht-row { color: #6A6A68; border-bottom-color: rgba(0,0,0,.05); }
+[data-theme="light"] .ht-sym { color: rgba(0,0,0,.7); }
+[data-theme="light"] .ht-up { color: #3a7a00; }
+[data-theme="light"] .hss-item { border-bottom-color: rgba(0,0,0,.07); }
+[data-theme="light"] .hss-num { color: #B4FF3C; }
+/* Dot grid */
+.hero-dot-grid {
+  position: absolute; inset: 0;
+  background-image: radial-gradient(circle, rgba(255,255,255,.055) 1px, transparent 1px);
+  background-size: 24px 24px;
+}
+/* Diagonal wick lines — candlestick background texture */
+.hero-wicks {
+  position: absolute; inset: 0; overflow: hidden; pointer-events: none;
+}
+.hero-wicks::before {
+  content: '';
+  position: absolute; inset: -100%;
+  background-image: repeating-linear-gradient(
+    75deg,
+    transparent 0px,
+    transparent 34px,
+    rgba(255,255,255,.028) 34px,
+    rgba(255,255,255,.028) 35px
+  );
+}
+.hero-vignette {
+  position: absolute; inset: 0;
+  background:
+    radial-gradient(ellipse at 20% 60%, rgba(180,255,60,.04) 0%, transparent 50%),
+    linear-gradient(to bottom, transparent 30%, #020202 100%);
+}
+/* Terminal panel */
+.hero-terminal {
+  position: absolute; top: 8%; right: 0; width: 340px;
+  background: rgba(5,5,5,.9);
+  border-left: 1px solid rgba(180,255,60,.12);
+  border-bottom: 1px solid rgba(180,255,60,.12);
+  z-index: 2; overflow: hidden;
+}
+.ht-bar {
+  font-family: var(--mono); font-size: .56rem; font-weight: 600;
+  letter-spacing: .18em; text-transform: uppercase;
+  color: var(--accent); padding: .6rem 1rem;
+  border-bottom: 1px solid rgba(180,255,60,.1);
+  display: flex; justify-content: space-between; align-items: center;
+}
+.ht-pulse { width: 5px; height: 5px; border-radius: 50%; background: var(--accent); animation: pulse 2s ease-in-out infinite; }
+@keyframes pulse { 0%,100%{opacity:1;box-shadow:0 0 0 0 rgba(180,255,60,.4)} 50%{opacity:.4;box-shadow:0 0 8px 3px rgba(180,255,60,.15)} }
+.ht-row {
+  font-family: var(--mono); font-size: .6rem; padding: .3rem 1rem;
+  border-bottom: 1px solid rgba(255,255,255,.03);
+  display: flex; justify-content: space-between; align-items: center;
+  color: var(--dim);
+}
+.ht-sym { color: rgba(255,255,255,.6); font-weight: 600; }
+.ht-up  { color: #B4FF3C; font-weight: 600; }
+.ht-dn  { color: #FF5533; font-weight: 600; }
+.ht-chart { height: 64px; padding: .5rem 1rem; }
+@media (max-width: 900px) { .hero-terminal { display: none; } }
+
+.hero-chart-bg {
+  position: absolute; bottom: 0; left: 0; right: 0;
+  height: 50%; opacity: .22; pointer-events: none;
+}
+.hero-inner {
+  position: relative; z-index: 3; width: 100%;
+  padding: 4rem 3rem 4.5rem;
+  display: grid; grid-template-columns: 1fr 260px; gap: 3rem; align-items: end;
+}
+@media (max-width: 900px) { .hero-inner { grid-template-columns: 1fr; padding: 3rem 1.5rem 3rem; } }
+
+.hero-eyebrow {
+  font-family: var(--mono); font-size: .68rem; font-weight: 500;
+  letter-spacing: .22em; text-transform: uppercase;
+  color: var(--accent); margin-bottom: .6rem;
+}
+.hero-title {
+  font-family: var(--serif); font-weight: 300;
+  font-size: clamp(3.8rem, 10vw, 9rem);
+  line-height: .9; color: #FFFFFF; letter-spacing: -.02em;
+  margin-bottom: 1.6rem;
+}
+.hero-title em { font-style: italic; color: var(--accent); }
+.hero-sub {
+  font-family: var(--sans); font-weight: 300;
+  font-size: 1.128rem; line-height: 1.85; color: var(--dim);
+  max-width: 520px; border-left: 2px solid var(--accent);
+  padding-left: 1.2rem; margin-bottom: 2rem;
+}
+.action-btns { display: flex; gap: .8rem; flex-wrap: wrap; }
+.share-wrap { position: relative; }
+.share-btn {
+  font-family: var(--mono); font-size: .6rem; font-weight: 600;
+  letter-spacing: .12em; text-transform: uppercase;
+  background: var(--accent); color: #000;
+  border: none; padding: .65rem 1.5rem; cursor: pointer;
+  border-radius: 2px; transition: opacity .2s;
+}
+.share-btn:hover { opacity: .85; }
+.share-dropdown {
+  display: none; position: absolute; top: calc(100% + 6px); left: 0;
+  background: var(--surface2); border: 1px solid var(--nav-border);
+  min-width: 180px; z-index: 100; border-radius: 4px; overflow: hidden;
+}
+.share-dropdown.open { display: block; }
+.share-dropdown a {
+  display: block; font-family: var(--mono); font-size: .6rem;
+  font-weight: 500; letter-spacing: .1em; text-transform: uppercase;
+  color: var(--dim); padding: .7rem 1rem;
+  border-bottom: 1px solid var(--rule); transition: color .2s, background .2s;
+}
+.share-dropdown a:hover { color: var(--accent); background: var(--accent-dim); }
+
+.hero-stats-strip {
+  display: flex; flex-direction: column; gap: 0;
+  border-left: 1px solid rgba(255,255,255,.08); padding-left: 2rem;
+}
+.hss-item { padding: .9rem 0; border-bottom: 1px solid rgba(255,255,255,.05); }
+.hss-num {
+  font-family: var(--mono); font-weight: 600;
+  font-size: clamp(1.3rem, 2.2vw, 1.9rem);
+  color: var(--accent); line-height: 1; letter-spacing: -.01em;
+}
+.hss-label {
+  font-family: var(--mono); font-size: .56rem; letter-spacing: .18em;
+  text-transform: uppercase; color: var(--muted); margin-top: .2rem;
+}
+@media (max-width: 900px) {
+  .hero-stats-strip { flex-direction: row; flex-wrap: wrap; border-left: none;
+    padding-left: 0; border-top: 1px solid rgba(255,255,255,.08); padding-top: 1.5rem; }
+}
+
+/* ============================================================
+   STATS GRID
+   ============================================================ */
+.stats-section {
+  display: grid; grid-template-columns: repeat(4, 1fr);
+  border-bottom: 1px solid var(--rule);
+}
+@media (max-width: 700px) { .stats-section { grid-template-columns: repeat(2, 1fr); } }
+.h-stat {
+  padding: 2.2rem 1.8rem; aspect-ratio: 1;
+  display: flex; flex-direction: column; justify-content: center;
+  position: relative; overflow: hidden; cursor: default; transition: transform .2s;
+}
+.h-stat:hover { transform: scale(1.02); z-index: 2; }
+.h-stat::after {
+  content: ''; position: absolute; inset: 0;
+  background: radial-gradient(ellipse at 30% 30%, rgba(255,255,255,.04) 0%, transparent 60%);
+  pointer-events: none;
+}
+.h-stat:nth-child(1) { background: var(--accent); border: 3px solid var(--accent); }
+.h-stat:nth-child(2) { background: var(--accent3); border: 3px solid var(--accent3); }
+.h-stat:nth-child(3) { background: var(--accent4); border: 3px solid var(--accent4); }
+.h-stat:nth-child(1) .stat-num { color: #000; }
+.h-stat:nth-child(2) .stat-num { color: #000; }
+.h-stat:nth-child(3) .stat-num { color: #000; }
+.h-stat:nth-child(4) { background: #0a0a0a; border: 3px solid rgba(255,255,255,.08); }
+.h-stat:nth-child(4) .stat-num { color: var(--accent); }
+.h-stat:nth-child(4) .stat-label { color: rgba(255,255,255,.35); }
+.h-stat:nth-child(4) .stat-sub { color: rgba(255,255,255,.28); }
+.stat-emoji { display: none; }
+.stat-num {
+  font-family: var(--mono); font-weight: 700;
+  font-size: clamp(2.2rem, 4.5vw, 3.5rem); line-height: 1;
+  color: var(--accent); letter-spacing: -.02em;
+}
+.stat-label {
+  font-family: var(--mono); font-size: 0.792rem; font-weight: 600;
+  letter-spacing: .18em; text-transform: uppercase;
+  color: rgba(0,0,0,.55); margin-top: .4rem;
+}
+.stat-sub {
+  font-family: var(--sans); font-weight: 300; font-size: 0.888rem;
+  line-height: 1.4; color: rgba(0,0,0,.48); margin-top: .3rem;
+}
+[data-theme="light"] .h-stat:nth-child(4) { background: #0a0a0a; border-color: rgba(0,0,0,.2) !important; }
+
+/* ============================================================
+   ERA SECTIONS — edge-to-edge, no inner box
+   ============================================================ */
+.era {
+  display: grid; grid-template-columns: 260px 1fr;
+  border-bottom: 1px solid var(--rule);
+  position: relative;
+}
+@media (max-width: 900px) { .era { grid-template-columns: 1fr; } }
+
+/* Dark era */
+.era-dark {
+  background: var(--bg);
+}
+/* Dot-grid texture on dark eras */
+.era-dark::before {
+  content: ''; position: absolute; inset: 0;
+  background-image: radial-gradient(circle, rgba(255,255,255,.032) 1px, transparent 1px);
+  background-size: 20px 20px;
+  pointer-events: none; z-index: 0;
+}
+
+/* Light era */
+.era-light {
+  background: var(--panel-light);
+}
+.era-light .era-desc { color: #4A4A48; }
+.era-light .era-period { color: #0D0D0B; }
+.era-light .era-index { color: rgba(0,0,0,.04); }
+.era-light .era-meter-bar { background: rgba(0,0,0,.08); }
+.era-light .era-meter-label { color: rgba(0,0,0,.4); }
+.era-light .era-sidebar { border-right-color: rgba(0,0,0,.07); }
+/* Cards on light bg */
+.era-light .card { background: #fff; }
+.era-light .card:hover { background: #F9F9F7; }
+.era-light .card h3 { color: #0D0D0B; }
+.era-light .card p  { color: #4A4A48; }
+.era-light .card-year { }
+.era-light .tag { color: #888; border-color: rgba(0,0,0,.1); }
+.era-light .events-grid { background: rgba(0,0,0,.05); border-color: rgba(0,0,0,.06); }
+/* Remap neons to legible on light */
+.era-light .card[style*="--c-accent:#B4FF3C"] { --c-accent: #3a7a00; }
+.era-light .card[style*="--c-accent:#F59E0B"] { --c-accent: #8a5e00; }
+[data-theme="light"] .card[style*="--c-accent:#B4FF3C"] { --c-accent: #3a7a00; }
+[data-theme="light"] .card[style*="--c-accent:#F59E0B"] { --c-accent: #8a5e00; }
+
+/* ERA SIDEBAR */
+.era-sidebar {
+  padding: 4rem 2.5rem; border-right: 1px solid var(--rule);
+  position: relative; display: flex; flex-direction: column;
+  justify-content: space-between; overflow: hidden; z-index: 1;
+}
+@media (max-width: 900px) {
+  .era-sidebar { border-right: none; border-bottom: 1px solid var(--rule); padding: 2.5rem 1.5rem; }
+}
+.era-index {
+  font-family: var(--mono); font-weight: 700;
+  font-size: clamp(4.5rem, 9vw, 7.5rem); line-height: 1;
+  color: rgba(255,255,255,.04); position: absolute; top: 1.5rem; right: 1rem;
+  pointer-events: none; letter-spacing: -.04em;
+}
+.era-period {
+  font-family: var(--serif); font-weight: 300;
+  font-size: clamp(1.5rem, 2.8vw, 2.2rem);
+  color: var(--bright); line-height: 1.05; letter-spacing: -.01em;
+}
+.era-period em { font-style: italic; }
+.era-period-accent {
+  display: block; font-family: var(--mono); font-size: .65em;
+  font-weight: 600; letter-spacing: .18em; margin-bottom: .4rem;
+  font-style: normal;
+}
+.era-bull .era-period-accent { color: var(--bull); }
+.era-bear .era-period-accent { color: var(--bear); }
+.era-mixed .era-period-accent { color: var(--accent4); }
+.era-light.era-bull .era-period-accent { color: #3a7a00; }
+.era-light.era-mixed .era-period-accent { color: #8a5e00; }
+
+.era-desc {
+  font-family: var(--sans); font-weight: 300;
+  font-size: 1.092rem; line-height: 1.7; color: var(--dim); margin-top: .9rem;
+}
+
+/* SENTIMENT ORB + METER */
+.era-sentiment { margin-top: 2rem; padding-top: 0; }
+.orb-row {
+  display: flex; align-items: center; gap: .7rem;
+  font-family: var(--mono); font-size: 0.744rem;
+  letter-spacing: .16em; text-transform: uppercase;
+  margin-bottom: .6rem;
+}
+.orb {
+  width: 10px; height: 10px; border-radius: 50%; flex-shrink: 0;
+}
+.orb-bull {
+  background: var(--bull);
+  box-shadow: 0 0 10px 3px rgba(180,255,60,.35), 0 0 22px 6px rgba(180,255,60,.12);
+}
+.orb-bear {
+  background: var(--bear);
+  box-shadow: 0 0 10px 3px rgba(255,85,51,.35), 0 0 22px 6px rgba(255,85,51,.12);
+}
+.orb-mixed {
+  background: var(--accent4);
+  box-shadow: 0 0 10px 3px rgba(245,158,11,.35), 0 0 22px 6px rgba(245,158,11,.12);
+}
+.era-bull .orb-label { color: var(--bull); }
+.era-bear .orb-label { color: var(--bear); }
+.era-mixed .orb-label { color: var(--accent4); }
+
+/* Candlestick cluster */
+.ohlc-chart { display: flex; align-items: flex-end; gap: 5px; height: 40px; margin-top: .8rem; margin-bottom: 1rem; }
+.ohlc-bar { display: flex; flex-direction: column; align-items: center; flex: 1; justify-content: flex-end; }
+.ohlc-wick-top { width: 1px; }
+.ohlc-body { width: 7px; min-height: 3px; border-radius: 1px; }
+.ohlc-wick-bot { width: 1px; }
+.ohlc-bar.up .ohlc-wick-top,
+.ohlc-bar.up .ohlc-wick-bot { background: rgba(180,255,60,.4); }
+.ohlc-bar.up .ohlc-body { background: var(--bull); }
+.ohlc-bar.dn .ohlc-wick-top,
+.ohlc-bar.dn .ohlc-wick-bot { background: rgba(255,85,51,.4); }
+.ohlc-bar.dn .ohlc-body { background: var(--bear); }
+
+.era-meter-bar { height: 1px; background: var(--rule2); position: relative; overflow: hidden; }
+.era-meter-fill {
+  position: absolute; inset: 0;
+  transform: scaleX(0); transform-origin: left;
+  transition: transform 1.2s cubic-bezier(.16,1,.3,1) .3s;
+}
+.era-meter-fill.visible { transform: scaleX(1); }
+.era-bull .era-meter-fill  { background: linear-gradient(90deg, var(--bull), rgba(180,255,60,.4)); }
+.era-bear .era-meter-fill  { background: linear-gradient(90deg, var(--bear), rgba(255,85,51,.4)); }
+.era-mixed .era-meter-fill { background: linear-gradient(90deg, var(--accent4), rgba(245,158,11,.4)); }
+.era-meter-val {
+  font-family: var(--mono); font-size: 0.744rem; font-weight: 600;
+  margin-top: .4rem; letter-spacing: .08em; text-transform: uppercase;
+}
+.era-bull  .era-meter-val { color: var(--bull); }
+.era-bear  .era-meter-val { color: var(--bear); }
+.era-mixed .era-meter-val { color: var(--accent4); }
+.era-light .era-bull  .era-meter-val,
+.era-light.era-bull   .era-meter-val { color: #3a7a00; }
+
+/* ============================================================
+   ERA MAIN + CARDS — EDGE TO EDGE, NO INNER BOX
+   ============================================================ */
+.era-main { padding: 0; position: relative; z-index: 1; }
+
+.events-grid {
+  display: grid; grid-template-columns: repeat(2, 1fr);
+  height: 100%;
+  gap: 0;
+}
+@media (max-width: 640px) { .events-grid { grid-template-columns: 1fr; } }
+
+/* Cards bleed edge to edge — separated only by 1px rules */
+.card {
+  background: var(--card-bg);
+  padding: 2.8rem 2.4rem 2.4rem;
+  position: relative; overflow: hidden;
+  transition: background .2s;
+  border-right: 1px solid var(--rule);
+  border-bottom: 1px solid var(--rule);
+}
+.card:nth-child(even) { border-right: none; }
+.card:nth-child(n+3) { border-bottom: none; }
+.card:hover { background: var(--card-hover); }
+
+/* Top accent stripe — full width, slides in on hover */
+.card::before {
+  content: ''; position: absolute; top: 0; left: 0; right: 0; height: 2px;
+  background: var(--c-accent, var(--accent));
+  transform: scaleX(0); transform-origin: left; transition: transform .35s ease;
+}
+.card:hover::before { transform: scaleX(1); }
+
+/* Subtle radial on each card */
+.card::after {
+  content: ''; position: absolute; top: -40px; right: -40px;
+  width: 180px; height: 180px;
+  background: radial-gradient(circle, var(--c-accent, rgba(180,255,60,.0)) 0%, transparent 70%);
+  opacity: .06; pointer-events: none;
+}
+
+/* Crash badge */
+.card-crash::before { background: var(--bear) !important; }
+.crash-badge {
+  display: inline-flex; align-items: center; gap: .3rem;
+  font-family: var(--mono); font-size: .52rem; font-weight: 600;
+  letter-spacing: .14em; text-transform: uppercase;
+  color: var(--bear); border: 1px solid rgba(255,85,51,.25);
+  padding: .2rem .55rem; border-radius: 2px; margin-bottom: .8rem;
+}
+.crash-badge::before { content: '▼'; font-size: .45rem; }
+
+.card-year {
+  font-family: var(--mono); font-size: 1.368rem; font-weight: 600;
+  letter-spacing: .04em;
+  color: var(--c-accent, var(--accent)); margin-bottom: .5rem; display: block; margin-top: 1.4rem;
+}
+.card h3 {
+  font-family: var(--sans); font-weight: 500;
+  font-size: clamp(1.1rem, 2.3vw, 1.5rem);
+  text-transform: uppercase; letter-spacing: .03em;
+  color: var(--bright); margin-bottom: 1rem; line-height: 1.1;
+}
+.card p { font-family: var(--sans); font-weight: 300; font-size: 1.032rem; line-height: 1.8; color: var(--dim); }
+.card-tags { margin-top: 1.5rem; display: flex; flex-wrap: wrap; gap: .4rem; }
+.tag {
+  font-family: var(--mono); font-size: 0.78rem; letter-spacing: .08em; text-transform: uppercase;
+  color: var(--muted); border: 1px solid var(--rule2); padding: .28rem .6rem; border-radius: 2px;
+  transition: color .2s, border-color .2s;
+}
+.tag:hover { color: var(--accent); border-color: rgba(180,255,60,.3); }
+
+/* Light card overrides */
+.era-light .card { background: #fafaf8; border-color: rgba(0,0,0,.06); }
+.era-light .card:hover { background: #fff; }
+
+/* ============================================================
+   QUOTE BANDS
+   ============================================================ */
+.quote-band {
+  min-height: 320px; padding: 4.5rem 2rem;
+  display: flex; align-items: center; justify-content: center;
+  border-bottom: 1px solid var(--rule);
+  position: relative; overflow: hidden;
+}
+.qb-terminal { background: #020202; }
+.qb-dark     { background: #020202; }
+
+/* Subtle background for quote bands */
+.quote-band::before {
+  content: ''; position: absolute; inset: 0;
+  background-image: radial-gradient(circle, rgba(255,255,255,.03) 1px, transparent 1px);
+  background-size: 24px 24px; pointer-events: none;
+}
+.quote-band::after {
+  content: ''; position: absolute;
+  top: 50%; left: 50%; transform: translate(-50%,-50%);
+  width: 600px; height: 300px;
+  background: radial-gradient(ellipse, rgba(180,255,60,.04) 0%, transparent 65%);
+  pointer-events: none;
+}
+
+.quote-band-inner { max-width: 900px; text-align: center; width: 100%; position: relative; z-index: 1; }
+.quote-mark {
+  font-family: var(--serif); font-size: 5rem; font-weight: 300;
+  color: var(--accent); opacity: .25; line-height: .6;
+  margin-bottom: .5rem; display: block;
+}
+.pq-text {
+  font-family: var(--serif); font-weight: 300; font-style: italic;
+  font-size: clamp(1.6rem, 4vw, 3rem);
+  line-height: 1.3; color: #fff; letter-spacing: -.01em;
+}
+.pq-hl { color: var(--accent); font-style: italic; }
+.pq-attr {
+  font-family: var(--mono); font-size: 0.84rem; font-weight: 500;
+  letter-spacing: .2em; text-transform: uppercase;
+  color: var(--muted); margin-top: 1.4rem; display: block;
+  border-top: 1px solid rgba(255,255,255,.07); padding-top: 1rem;
+}
+
+/* ============================================================
+   PHOTO STRIPS
+   ============================================================ */
+.img-strip {
+  display: grid; grid-template-columns: repeat(3, 1fr);
+  gap: 1px; background: var(--rule);
+  border-top: 1px solid var(--rule); border-bottom: 1px solid var(--rule);
+  height: 220px;
+}
+@media (max-width: 600px) {
+  .img-strip { grid-template-columns: 1fr 1fr; }
+  .img-strip-item:nth-child(3) { display: none; }
+}
+.img-strip-item { position: relative; overflow: hidden; background: var(--surface2); cursor: pointer; }
+.img-strip-item img { filter: grayscale(100%); transition: filter .35s, transform .35s; }
+.img-strip-item:hover img { filter: grayscale(0%); transform: scale(1.07); }
+.img-overlay { position: absolute; inset: 0; mix-blend-mode: color; pointer-events: none; }
+.img-caption {
+  position: absolute; bottom: 0; left: 0; right: 0;
+  background: rgba(0,0,0,.85); padding: .35rem .7rem;
+  font-family: var(--mono); font-size: .52rem; font-weight: 600;
+  letter-spacing: .12em; text-transform: uppercase; color: var(--accent);
+}
+
+/* ============================================================
+   KEY FIGURES
+   ============================================================ */
+.figures-section {
+  padding: 5rem 3rem; border-bottom: 1px solid var(--rule);
+  position: relative; overflow: hidden;
+}
+.figures-section::before {
+  content: ''; position: absolute; inset: 0;
+  background-image: radial-gradient(circle, rgba(255,255,255,.025) 1px, transparent 1px);
+  background-size: 20px 20px; pointer-events: none;
+}
+.figures-light { background: #fff; }
+.figures-light::before { background-image: radial-gradient(circle, rgba(0,0,0,.04) 1px, transparent 1px); }
+.figures-light .section-header { color: #0D0D0B; }
+.figures-light .section-sub { color: #888; }
+.figures-light .figure-card { background: #fff; }
+.figures-light .figure-card:hover { background: #F9F9F7; }
+.figures-light .figure-name { color: #0D0D0B; }
+.figures-light .figure-bio { color: #4A4A48; }
+.figures-light .figure-era { color: #999; }
+
+.section-header {
+  font-family: var(--serif); font-weight: 300;
+  font-size: clamp(1.8rem, 4vw, 3.2rem);
+  letter-spacing: -.01em; color: var(--bright);
+  margin-bottom: .4rem; position: relative; z-index: 1;
+}
+.section-header em { font-style: italic; color: var(--accent); }
+.section-sub {
+  font-family: var(--mono); font-size: 0.84rem; font-weight: 500;
+  letter-spacing: .18em; text-transform: uppercase; color: var(--muted);
+  margin-bottom: 3rem; position: relative; z-index: 1;
+}
+.figures-grid {
+  display: grid; grid-template-columns: repeat(5, 1fr);
+  gap: 0; margin-top: 2rem; position: relative; z-index: 1;
+  align-items: start;
+}
+@media (max-width: 1024px) { .figures-grid { grid-template-columns: repeat(2, 1fr); } }
+@media (max-width: 480px)  { .figures-grid { grid-template-columns: 1fr; } }
+.figure-card {
+  background: var(--card-bg); padding: 0;
+  position: relative; overflow: visible;
+  transition: background .2s; cursor: default;
+  display: flex; flex-direction: column;
+  align-self: start;
+  border-right: 1px solid var(--rule);
+  border-bottom: 1px solid var(--rule);
+}
+.figure-card:nth-child(5n) { border-right: none; }
+@media (max-width: 1024px) {
+  .figure-card:nth-child(5n) { border-right: 1px solid var(--rule); }
+  .figure-card:nth-child(2n) { border-right: none; }
+}
+@media (max-width: 480px) { .figure-card { border-right: none; } }
+.figure-card:hover { background: var(--card-hover); }
+.figure-card::before {
+  content: ''; position: absolute; top: 0; left: 0; right: 0; height: 2px;
+  background: var(--p-accent, var(--accent));
+  transform: scaleX(0); transform-origin: left; transition: transform .35s ease; z-index: 1;
+}
+.figure-card:hover::before { transform: scaleX(1); }
+.figure-photo {
+  width: 100%; aspect-ratio: 1/1; object-fit: cover; object-position: center 15%;
+  display: block; flex-shrink: 0;
+  filter: grayscale(1) contrast(1.05) brightness(.7);
+  transition: filter .4s ease;
+}
+.figure-card:hover .figure-photo { filter: grayscale(.2) contrast(1.05) brightness(.85); }
+.figure-placeholder {
+  width: 100%; aspect-ratio: 1/1; flex-shrink: 0;
+  display: flex; align-items: center; justify-content: center;
+  font-family: var(--serif); font-weight: 300; font-style: italic;
+  font-size: clamp(3rem, 8vw, 5rem);
+  color: var(--p-accent, var(--accent));
+  background: color-mix(in srgb, var(--p-accent, var(--accent)) 8%, var(--card-bg));
+}
+.figure-era, .figure-name, .figure-role, .figure-bio, .figure-link {
+  padding-left: 1.4rem; padding-right: 1.4rem;
+}
+.figure-era { padding-top: 1.2rem; }
+.figure-link { padding-bottom: 1.4rem; display: block; }
+.figure-era {
+  font-family: var(--mono); font-size: 0.588rem;
+  letter-spacing: .18em; text-transform: uppercase; color: var(--muted); margin-bottom: .5rem;
+}
+.figure-name {
+  font-family: var(--sans); font-weight: 500;
+  font-size: clamp(1rem, 2vw, 1.3rem); color: var(--bright);
+  text-transform: uppercase; letter-spacing: .03em; line-height: 1; margin-bottom: .3rem;
+}
+.figure-role {
+  font-family: var(--mono); font-size: 0.588rem; letter-spacing: .1em;
+  text-transform: uppercase; color: var(--p-accent, var(--accent)); margin-bottom: .8rem;
+}
+.figure-bio {
+  font-family: var(--sans); font-weight: 300;
+  font-size: .95rem; line-height: 1.7; color: var(--dim);
+}
+.figure-link {
+  display: inline-flex; align-items: center; gap: .4rem; margin-top: .8rem;
+  font-family: var(--mono); font-size: 0.564rem; letter-spacing: .12em;
+  text-transform: uppercase; color: var(--muted); transition: color .2s;
+}
+.figure-link:hover { color: var(--accent); }
+.figure-link::after { content: '↗'; }
+
+/* ============================================================
+   ENTITY GRID
+   ============================================================ */
+.entity-section {
+  background: #000; padding: 5rem 2rem; border-bottom: 1px solid var(--rule);
+  position: relative; overflow: hidden;
+}
+.entity-section::before {
+  content: ''; position: absolute; inset: 0;
+  background-image: radial-gradient(circle, rgba(255,255,255,.03) 1px, transparent 1px);
+  background-size: 20px 20px; pointer-events: none;
+}
+.entity-heading {
+  font-family: var(--serif); font-weight: 300;
+  font-size: clamp(1.5rem, 4vw, 3rem); letter-spacing: -.01em;
+  color: var(--accent); margin-bottom: .5rem; position: relative; z-index: 1;
+}
+.entity-heading em { font-style: italic; }
+.entity-sub {
+  font-family: var(--mono); font-size: 0.78rem; color: rgba(107,122,153,.7);
+  letter-spacing: .1em; text-transform: uppercase; margin-bottom: 2.5rem; position: relative; z-index: 1;
+}
+.entity-grid { display: flex; flex-wrap: wrap; gap: .5rem; position: relative; z-index: 1; }
+.entity-badge {
+  font-family: var(--mono); font-size: .64rem; font-weight: 600;
+  letter-spacing: .08em; text-transform: uppercase;
+  padding: .32rem .8rem; border: 1px solid rgba(255,255,255,.1);
+  border-radius: 2px; display: inline-block; text-decoration: none;
+  transition: transform .2s, box-shadow .2s;
+}
+.entity-badge:hover { transform: scale(1.1) rotate(-1.5deg); box-shadow: 0 4px 18px rgba(0,0,0,.4); }
+
+/* ============================================================
+   ECO LINKS
+   ============================================================ */
+.eco-links { padding: 5rem 3rem; background: var(--bg1); border-top: 1px solid var(--rule); }
+@media (max-width: 900px) { .eco-links { padding: 4rem 1.5rem; } }
+.eco-header {
+  font-family: var(--mono); font-size: .58rem; font-weight: 600;
+  letter-spacing: .3em; color: var(--accent); text-transform: uppercase;
+  margin-bottom: 2.5rem; padding-bottom: 1rem; border-bottom: 1px solid var(--rule2);
+}
+.eco-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 3rem; }
+.eco-group-label {
+  font-family: var(--mono); font-size: 0.66rem; font-weight: 600;
+  letter-spacing: .22em; text-transform: uppercase; color: var(--muted);
+  margin-bottom: .8rem; padding-bottom: .5rem; border-bottom: 1px solid var(--rule);
+}
+.eco-link {
+  display: block; font-family: var(--sans); font-weight: 300; font-size: 0.9rem;
+  color: var(--text); padding: .35rem 0; border-bottom: 1px solid transparent;
+  transition: color .2s, border-color .2s;
+}
+.eco-link:hover { color: var(--accent); border-bottom-color: rgba(180,255,60,.3); }
+
+/* ============================================================
+   FOOTER
+   ============================================================ */
+.colophon {
+  display: grid; grid-template-columns: 1fr 1fr;
+  gap: 3rem; padding: 3.5rem 3rem 3.5rem calc(52px + 3rem);
+  border-top: 1px solid var(--rule);
+  background: var(--bg1);
+  transition: background .35s, border-color .35s;
+}
+@media (max-width: 768px) { .colophon { grid-template-columns: 1fr; padding: 2.5rem 1.5rem; gap: 2rem; } }
+.colophon-label {
+  font-family: var(--mono); font-size: 0.72rem; font-weight: 700;
+  letter-spacing: 0.22em; text-transform: uppercase;
+  color: var(--accent); margin-bottom: 0.65rem;
+}
+.colophon-blurb {
+  font-family: var(--sans); font-size: 1rem;
+  color: var(--muted); line-height: 1.6; max-width: 42ch; margin: 0;
+}
+.colophon-meta-label {
+  font-family: var(--mono); font-size: 0.72rem; font-weight: 700;
+  letter-spacing: 0.22em; text-transform: uppercase;
+  color: var(--muted); margin-bottom: 0.55rem;
+}
+.colophon-series {
+  font-family: var(--sans); font-size: 1.05rem; font-weight: 700;
+  text-transform: uppercase; letter-spacing: 0.04em;
+  color: var(--bright); margin-bottom: 0.35rem; transition: color .35s;
+}
+.colophon-series em { font-style: normal; color: var(--accent); }
+.colophon-url {
+  display: block; font-family: var(--mono); font-size: 0.82rem;
+  color: var(--accent); text-decoration: none;
+  border-bottom: 1px solid transparent; margin-bottom: 1.1rem;
+  transition: border-color 0.15s;
+}
+.colophon-url:hover { border-bottom-color: var(--accent); }
+.colophon-share { display: flex; gap: 0.6rem; flex-wrap: wrap; }
+.colophon-share-link {
+  font-family: var(--mono); font-size: 0.78rem; font-weight: 700;
+  letter-spacing: 0.12em; text-transform: uppercase;
+  color: var(--accent); text-decoration: none;
+  border: 1px solid rgba(180,255,60,0.35); padding: 0.25rem 0.65rem;
+  transition: background 0.15s, color 0.15s;
+}
+.colophon-share-link:hover { background: var(--accent); color: #000; }
+.footer {
+  background: var(--bg); border-top: 1px solid var(--rule);
+  padding: 0 2.5rem; height: 56px;
+  display: flex; align-items: center; justify-content: space-between;
+  transition: background .35s, border-color .35s;
+}
+@media (max-width: 768px) {
+  .footer { height: auto; padding: 1.2rem 1.5rem; flex-wrap: wrap; gap: .6rem; justify-content: center; }
+  .footer-copy { width: 100%; text-align: center; }
+}
+.footer-lockup {
+  display: flex; align-items: center; gap: 12px; flex-shrink: 0;
+  text-decoration: none;
+}
+.footer-lockup svg { display: block; width: 32px; height: 32px; flex-shrink: 0; }
+.footer-series {
+  font-family: var(--sans); font-weight: 700; font-size: 13px;
+  text-transform: uppercase; letter-spacing: .05em;
+  color: var(--bright); line-height: 1; white-space: nowrap;
+  transition: color .35s;
+}
+.footer-series em { font-style: normal; color: var(--accent); }
+.footer-copy {
+  font-family: var(--mono); font-size: 0.82rem;
+  letter-spacing: .14em; text-transform: uppercase;
+  color: var(--muted); transition: color .35s;
+}
+.footer-mouth { animation: cursorBlink 1.1s step-end infinite; }
+
+/* ============================================================
+   TOOLTIP
+   ============================================================ */
+.pop-tip {
+  position: fixed; z-index: 9000; pointer-events: none;
+  background: var(--bright); color: var(--bg);
+  font-family: var(--mono); font-size: .58rem; font-weight: 600;
+  letter-spacing: .08em; text-transform: uppercase;
+  padding: .4rem .8rem; max-width: 220px; border-radius: 2px;
+  opacity: 0; transition: opacity .15s;
+}
+.pop-tip.show { opacity: 1; }
+
+/* ============================================================
+   PRINT
+   ============================================================ */
+@media print {
+  .ticker,.nav,.sidenav,.mobile-nav,.cursor,.cursor-ring,#progress { display: none !important; }
+  body { background: #fff; color: #000; }
+}
+/* ── LIGHT MODE — remap neon green to dark green on text ── */
+/* pq-hl in dark quote bands always stays neon — no override needed */
+/* Only remap if a light quote band class exists in future */
+[data-theme="light"] .colophon-label { color: #2a6800; }
+[data-theme="light"] .colophon-url { color: #2a6800; }
+[data-theme="light"] .colophon-share-link { color: #2a6800; border-color: rgba(42,104,0,.35); }
+[data-theme="light"] .colophon-share-link:hover { background: #2a6800; color: #fff; }
+[data-theme="light"] .colophon-series em { color: #2a6800; }
+[data-theme="light"] .hss-num { color: #2a6800; }
+[data-theme="light"] .stat-num { color: #000; }
+[data-theme="light"] .h-stat:nth-child(4) .stat-num { color: var(--accent); }
+[data-theme="light"] .era-bull .era-period-accent { color: #2a6800; }
+[data-theme="light"] .era-bull .orb-label { color: #2a6800; }
+[data-theme="light"] .era-bull .era-meter-val { color: #2a6800; }
+[data-theme="light"] .era-bull .era-meter-fill { background: linear-gradient(90deg, #3a7a00, rgba(58,122,0,.4)); }
+[data-theme="light"] .orb-bull { background: #3a7a00; box-shadow: 0 0 10px 3px rgba(58,122,0,.3); }
+[data-theme="light"] .era-light.era-bull .era-meter-val { color: #2a6800; }
+[data-theme="light"] .card-year { color: #2a6800; }
+[data-theme="light"] .crash-badge { color: #B82200; border-color: rgba(184,34,0,.3); }
+[data-theme="light"] .eco-header { color: #2a6800; }
+[data-theme="light"] .eco-link:hover { color: #2a6800; }
+[data-theme="light"] .figure-role { color: #2a6800; }
+[data-theme="light"] .figure-link { color: #2a6800; }
+[data-theme="light"] .share-btn { border-color: rgba(42,104,0,.4); color: #2a6800; }
+[data-theme="light"] .share-btn:hover { background: #2a6800; color: #fff; }
+[data-theme="light"] .footer-series em { color: #2a6800; }
+[data-theme="light"] .footer-copy { color: #666; }
+[data-theme="light"] .section-header em { color: #2a6800; }
+[data-theme="light"] .era-mixed .orb-label { color: #8a5e00; }
+[data-theme="light"] .era-mixed .era-period-accent { color: #8a5e00; }
+[data-theme="light"] .era-mixed .era-meter-val { color: #8a5e00; }
+[data-theme="light"] .nav-topic { color: rgba(255,255,255,.85); }
+[data-theme="light"] .figures-light .section-header em { color: #2a6800; }
+[data-theme="light"] .figures-light .figure-role { color: #2a6800; }
+[data-theme="light"] .figures-light .figure-link { color: #2a6800; border-bottom-color: rgba(42,104,0,.25); }
+</style>
+</head>
+<body>
+
+<div id="progress"></div>
+<div id="cur" class="cursor"></div>
+<div id="curRing" class="cursor-ring"></div>
+<div class="pop-tip" id="tt"></div>
+
+<!-- TICKER -->
+<div class="ticker" id="ticker">
+  <div class="ticker-track" id="tickerTrack"></div>
+</div>
+
+<!-- NAV -->
+<nav class="nav">
+  <a href="#hero" class="nav-tag">
+    <div class="nav-index-box">006</div>
+    <span class="nav-topic">Stock Market<span class="cursor-blink" style="color:var(--accent);">_</span></span>
+  </a>
+  <div class="nav-right">
+    <button class="nav-theme-btn" id="themeBtn" aria-label="Toggle theme">◑ THEME</button>
+  </div>
+</nav>
+
+<!-- SIDENAV -->
+<nav class="sidenav" id="sidenav">
+  <div class="sn-item" data-sec="stats">00<span class="sn-tip">STATS</span></div>
+  <div class="sn-item" data-sec="era1">01<span class="sn-tip">1600s–1700s</span></div>
+  <div class="sn-item" data-sec="era2">02<span class="sn-tip">1800s</span></div>
+  <div class="sn-item" data-sec="era3">03<span class="sn-tip">1900–1945</span></div>
+  <div class="sn-item" data-sec="era4">04<span class="sn-tip">1946–1979</span></div>
+  <div class="sn-item" data-sec="era5">05<span class="sn-tip">1980–1999</span></div>
+  <div class="sn-item" data-sec="era6">06<span class="sn-tip">2000–Now</span></div>
+  <div class="sn-item" data-sec="figures">KF<span class="sn-tip">KEY FIGURES</span></div>
+  <div class="sn-item" data-sec="future">→<span class="sn-tip">FUTURE</span></div>
+  <div class="sn-item" data-sec="entities">⊞<span class="sn-tip">KEY PLAYERS</span></div>
+  <div class="sn-arrow">↓</div>
+</nav>
+
+<!-- MOBILE NAV -->
+<div class="mobile-nav" id="mobileNav">
+  <div class="mn-item" data-sec="stats">Stats</div>
+  <div class="mn-item" data-sec="era1">1600s</div>
+  <div class="mn-item" data-sec="era2">1800s</div>
+  <div class="mn-item" data-sec="era3">1900–45</div>
+  <div class="mn-item" data-sec="era4">Post-War</div>
+  <div class="mn-item" data-sec="era5">Bull Run</div>
+  <div class="mn-item" data-sec="era6">Digital</div>
+  <div class="mn-item" data-sec="figures">Figures</div>
+  <div class="mn-item" data-sec="future">Future</div>
+  <div class="mn-item" data-sec="entities">Players</div>
+</div>
+
+<!-- PAGE BODY -->
+<div class="page-body">
+  <div class="page-body-top"></div>
+
+  <!-- HERO -->
+  <section class="hero" id="hero">
+    <div class="hero-bull" id="heroBull"></div>
+    <div class="hero-dot-grid"></div>
+    <div class="hero-wicks"></div>
+    <div class="hero-vignette"></div>
+    <div class="hero-terminal">
+      <div class="ht-bar"><span>MKT · LIVE FEED</span><span class="ht-pulse"></span></div>
+      <div class="ht-row"><span class="ht-sym">S&amp;P 500</span><span>5,782.14</span><span class="ht-up">▲ +1.24%</span></div>
+      <div class="ht-row"><span class="ht-sym">DJIA</span><span>42,313.00</span><span class="ht-up">▲ +0.88%</span></div>
+      <div class="ht-row"><span class="ht-sym">NASDAQ</span><span>18,547.42</span><span class="ht-up">▲ +1.61%</span></div>
+      <div class="ht-row"><span class="ht-sym">VIX</span><span>14.32</span><span class="ht-dn">▼ −3.21%</span></div>
+      <div class="ht-row"><span class="ht-sym">NVDA</span><span>$875.40</span><span class="ht-up">▲ +3.12%</span></div>
+      <div class="ht-row"><span class="ht-sym">TSLA</span><span>$175.30</span><span class="ht-dn">▼ −2.18%</span></div>
+      <div class="ht-row"><span class="ht-sym">BRK.B</span><span>$410.00</span><span class="ht-up">▲ +0.32%</span></div>
+      <div class="ht-chart"><canvas id="miniChart" style="width:100%;height:100%;"></canvas></div>
+    </div>
+    <canvas class="hero-chart-bg" id="heroChart"></canvas>
+    <div class="hero-inner">
+      <div class="hero-left">
+        <div class="hero-eyebrow">A (BRIEF) HISTORY OF</div>
+        <h1 class="hero-title">The<br><em>Stock</em><br>Market<span class="cursor-blink">_</span></h1>
+        <p class="hero-sub">From the Dutch East India Company's first share offering in 1602 to algorithmic trading executing millions of orders per second — four centuries of capital, crisis, and compounding returns.</p>
+        <div class="action-btns">
+          <div class="share-wrap">
+            <button class="share-btn" id="shareBtn">⟳ Share</button>
+            <div class="share-dropdown" id="shareDropdown">
+              <a href="https://twitter.com/intent/tweet?text=A+%28Brief%29+History+of+the+Stock+Market&url=https%3A%2F%2Fabriefhistoryofeverything.com%2Fstockmarket" target="_blank">Share on X</a>
+              <a href="https://www.linkedin.com/sharing/share-offsite/?url=https%3A%2F%2Fabriefhistoryofeverything.com%2Fstockmarket" target="_blank">Share on LinkedIn</a>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="hero-stats-strip">
+        <div class="hss-item"><div class="hss-num">$120T+</div><div class="hss-label">Global Equity Cap</div></div>
+        <div class="hss-item"><div class="hss-num">1602</div><div class="hss-label">First Public Company</div></div>
+        <div class="hss-item"><div class="hss-num">500</div><div class="hss-label">S&amp;P 500 Companies</div></div>
+        <div class="hss-item"><div class="hss-num">+33,000%</div><div class="hss-label">Dow Since 1900</div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- STATS GRID -->
+  <div class="stats-section" id="stats">
+    <div class="h-stat fi" data-tip="Combined value of all publicly traded companies globally as of 2024.">
+      <div class="stat-num">$120T+</div><div class="stat-label">Global Market Cap</div>
+      <div class="stat-sub">Total value of all publicly traded equities worldwide.</div>
+    </div>
+    <div class="h-stat fi" data-tip="NYSE founded following the Buttonwood Agreement, May 17, 1792.">
+      <div class="stat-num">1792</div><div class="stat-label">NYSE Founded</div>
+      <div class="stat-sub">The Buttonwood Agreement established America's first stock exchange.</div>
+    </div>
+    <div class="h-stat fi" data-tip="The S&P 500 tracks 500 of the largest US-listed companies by market cap.">
+      <div class="stat-num">500</div><div class="stat-label">S&amp;P 500 Companies</div>
+      <div class="stat-sub">Representing ~80% of US equity market cap.</div>
+    </div>
+    <div class="h-stat fi" data-tip="The Dow has grown from roughly 40 points in 1896 to over 42,000 today.">
+      <div class="stat-num">+33,000%</div><div class="stat-label">Dow Since 1900</div>
+      <div class="stat-sub">Total return of the DJIA over 125 years.</div>
+    </div>
+  </div>
+
+  <!-- ERA 1 — dark, bull -->
+  <section class="era era-dark era-bull" id="era1">
+    <div class="era-sidebar">
+      <div class="era-index">01</div>
+      <div>
+        <div class="era-period">
+          <span class="era-period-accent">1600 — 1799</span>
+          <em>The First Markets</em>
+        </div>
+        <p class="era-desc">The concept of publicly traded shares was born in Amsterdam. The Dutch East India Company issued the world's first IPO, and the Amsterdam Stock Exchange became the blueprint for modern capital markets.</p>
+      </div>
+      <div class="era-sentiment">
+        <div class="ohlc-chart" id="ohlc1"></div>
+        <div class="era-meter"><div class="era-meter-bar"><div class="era-meter-fill" style="max-width:70%"></div></div>
+        <div class="era-meter-val">Foundational · 70%
+        <div class="orb-row"><span class="orb orb-bull"></span><span class="orb-label era-meter-val">Bullish era</span></div></div></div>
+      </div>
+    </div>
+    <div class="era-main">
+      <div class="events-grid">
+        <div class="card fi" style="--c-accent:#B4FF3C;">
+          <span class="card-year">1602</span><h3>The World's First IPO</h3>
+          <p>The Dutch East India Company (VOC) issued shares to the public in Amsterdam, raising capital from ordinary citizens to fund spice trade voyages. The world's first publicly traded corporation was born.</p>
+          <div class="card-tags"><span class="tag">IPO</span><span class="tag">Amsterdam</span><span class="tag">VOC</span></div>
+        </div>
+        <div class="card fi" style="--c-accent:#FF5533;">
+          <span class="card-year">1611</span><h3>Amsterdam Stock Exchange</h3>
+          <p>The Amsterdam Beurs opened as the world's first formal stock exchange — providing a marketplace for secondary trading of VOC shares and government bonds. It introduced continuous trading, short selling, and options.</p>
+          <div class="card-tags"><span class="tag">Exchange</span><span class="tag">Netherlands</span></div>
+        </div>
+        <div class="card fi card-crash" style="--c-accent:#3B82F6;">
+          <div class="crash-badge">Crash Event</div>
+          <span class="card-year">1637</span><h3>Tulip Mania — First Bubble</h3>
+          <p>Dutch tulip bulb contracts reached extraordinary prices before collapsing in February 1637. History's first speculative bubble demonstrated the power of market psychology and herd behavior.</p>
+          <div class="card-tags"><span class="tag">Bubble</span><span class="tag">Speculation</span><span class="tag">Crash</span></div>
+        </div>
+        <div class="card fi card-crash" style="--c-accent:#F59E0B;">
+          <div class="crash-badge">Crash Event</div>
+          <span class="card-year">1720</span><h3>South Sea Bubble</h3>
+          <p>The South Sea Company's stock soared on promises of monopoly trade, then collapsed — wiping out fortunes across Britain. Parliament passed the Bubble Act, restricting joint-stock companies for over a century.</p>
+          <div class="card-tags"><span class="tag">UK</span><span class="tag">Bubble</span><span class="tag">Regulation</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="img-strip">
+    <div class="img-strip-item"><img src="stock-market/images/strip-amsterdam.jpg" alt="Amsterdam Stock Exchange"><div class="img-overlay" style="background:rgba(180,255,60,.25)"></div><div class="img-caption">Amsterdam Beurs, 1611</div></div>
+    <div class="img-strip-item"><img src="stock-market/images/strip-voc.jpg" alt="VOC Share Certificate"><div class="img-overlay" style="background:rgba(59,130,246,.3)"></div><div class="img-caption">VOC Share Certificate</div></div>
+    <div class="img-strip-item"><img src="stock-market/images/strip-buttonwood.jpg" alt="Buttonwood Agreement"><div class="img-overlay" style="background:rgba(245,158,11,.25)"></div><div class="img-caption">Buttonwood Agreement, 1792</div></div>
+  </div>
+
+  <!-- ERA 2 — light, bull -->
+  <section class="era era-light era-bull" id="era2">
+    <div class="era-sidebar">
+      <div class="era-index">02</div>
+      <div>
+        <div class="era-period">
+          <span class="era-period-accent">1800 — 1899</span>
+          <em>Wall Street Rises</em>
+        </div>
+        <p class="era-desc">Industrialization created insatiable demand for capital. Railroads, canals, and telegraphs needed mass financing. Wall Street emerged as America's financial nerve center, and the Dow Jones was born.</p>
+      </div>
+      <div class="era-sentiment">
+        <div class="ohlc-chart" id="ohlc2"></div>
+        <div class="era-meter"><div class="era-meter-bar"><div class="era-meter-fill" style="max-width:62%"></div></div>
+        <div class="era-meter-val" style="color:#3a7a00;">Industrial Growth · 62%
+        <div class="orb-row"><span class="orb orb-bull"></span><span class="orb-label" style="color:#3a7a00;font-family:var(--mono);font-size:.744rem;letter-spacing:.16em;text-transform:uppercase;">Bullish era</span></div></div></div>
+      </div>
+    </div>
+    <div class="era-main">
+      <div class="events-grid">
+        <div class="card fi" style="--c-accent:#3a7a00;"><span class="card-year">1792</span><h3>The Buttonwood Agreement</h3><p>Twenty-four brokers signed the Buttonwood Agreement beneath a buttonwood tree on Wall Street, establishing rules for trading securities. This informal pact became the foundation of the NYSE.</p><div class="card-tags"><span class="tag">NYSE</span><span class="tag">New York</span><span class="tag">Founding</span></div></div>
+        <div class="card fi" style="--c-accent:#FF5533;"><span class="card-year">1817</span><h3>NYSE Formally Organized</h3><p>The New York Stock &amp; Exchange Board was formally constituted. It moved into its first permanent home at 40 Wall Street, solidifying New York's position as America's financial capital.</p><div class="card-tags"><span class="tag">NYSE</span><span class="tag">Regulation</span></div></div>
+        <div class="card fi card-crash" style="--c-accent:#3B82F6;"><div class="crash-badge">Crash Event</div><span class="card-year">1869</span><h3>Black Friday Gold Panic</h3><p>Jay Gould and James Fisk attempted to corner the US gold market, triggering a financial panic on September 24. Thousands of investors were ruined in hours when the government flooded the market with gold.</p><div class="card-tags"><span class="tag">Panic</span><span class="tag">Gold</span><span class="tag">Manipulation</span></div></div>
+        <div class="card fi" style="--c-accent:#8a5e00;"><span class="card-year">1896</span><h3>Dow Jones Industrial Average</h3><p>Charles Dow and Edward Jones launched their Industrial Average tracking 12 stocks, starting at 40.94 points. It became the world's most-watched financial index — a daily barometer of economic health that persists today.</p><div class="card-tags"><span class="tag">Dow Jones</span><span class="tag">Index</span><span class="tag">Charles Dow</span></div></div>
+      </div>
+    </div>
+  </section>
+
+  <div class="quote-band qb-terminal">
+    <div class="quote-band-inner">
+      <span class="quote-mark">&ldquo;</span>
+      <div class="pq-text fi">In the short run, the market is a <span class="pq-hl">voting machine.</span> In the long run, it is a <span class="pq-hl">weighing machine.</span></div>
+      <span class="pq-attr">— Benjamin Graham · The Intelligent Investor · 1949</span>
+    </div>
+  </div>
+
+  <!-- ERA 3 — dark, bear -->
+  <section class="era era-dark era-bear" id="era3">
+    <div class="era-sidebar">
+      <div class="era-index">03</div>
+      <div>
+        <div class="era-period"><span class="era-period-accent">1900 — 1945</span><em>Boom, Crash &amp; War</em></div>
+        <p class="era-desc">The Roaring Twenties brought mass participation in equities. Then came the Great Crash of 1929 — the most devastating stock market collapse in history — followed by the Great Depression and global war.</p>
+      </div>
+      <div class="era-sentiment">
+        <div class="ohlc-chart" id="ohlc3"></div>
+        <div class="era-meter"><div class="era-meter-bar"><div class="era-meter-fill" style="max-width:95%"></div></div><div class="era-meter-val">Defining Crisis · 95%
+        <div class="orb-row"><span class="orb orb-bear"></span><span class="orb-label era-meter-val">Bear era</span></div></div></div>
+      </div>
+    </div>
+    <div class="era-main">
+      <div class="events-grid">
+        <div class="card fi" style="--c-accent:#B4FF3C;"><span class="card-year">1913</span><h3>Federal Reserve Created</h3><p>The Federal Reserve Act established a central bank to manage US monetary policy. The Fed's dual mandate — price stability and maximum employment — would shape markets for the next century.</p><div class="card-tags"><span class="tag">Fed</span><span class="tag">Monetary Policy</span><span class="tag">Banking</span></div></div>
+        <div class="card fi card-crash" style="--c-accent:#FF5533;"><div class="crash-badge">Crash Event</div><span class="card-year">1929</span><h3>The Great Crash</h3><p>Black Thursday and Black Tuesday saw the Dow collapse 25% in two days. By 1932, the market had lost 89% of its value. The crash triggered the Great Depression and fundamentally changed financial regulation.</p><div class="card-tags"><span class="tag">Crash</span><span class="tag">Depression</span><span class="tag">Black Tuesday</span></div></div>
+        <div class="card fi" style="--c-accent:#3B82F6;"><span class="card-year">1933</span><h3>Glass-Steagall &amp; The SEC</h3><p>The Banking Act separated commercial and investment banking. The Securities Acts of 1933–34 created the SEC, requiring disclosure and honest dealing in securities markets.</p><div class="card-tags"><span class="tag">Regulation</span><span class="tag">SEC</span><span class="tag">Reform</span></div></div>
+        <div class="card fi" style="--c-accent:#F59E0B;"><span class="card-year">1941</span><h3>War Bonds &amp; Recovery</h3><p>WWII transformed capital markets. War bond drives brought millions of ordinary Americans into financial markets for the first time. The Dow began a decade-long recovery as wartime production boomed.</p><div class="card-tags"><span class="tag">WWII</span><span class="tag">Recovery</span><span class="tag">Retail Investors</span></div></div>
+      </div>
+    </div>
+  </section>
+
+  <div class="img-strip">
+    <div class="img-strip-item"><img src="stock-market/images/strip-crash1929.jpg" alt="1929 Crash"><div class="img-overlay" style="background:rgba(255,85,51,.3)"></div><div class="img-caption">Black Tuesday, 1929</div></div>
+    <div class="img-strip-item"><img src="stock-market/images/strip-wallstreet-1920s.jpg" alt="Wall Street 1920s"><div class="img-overlay" style="background:rgba(180,255,60,.2)"></div><div class="img-caption">Wall Street, 1920s</div></div>
+    <div class="img-strip-item"><img src="stock-market/images/strip-sec.jpg" alt="Federal Reserve"><div class="img-overlay" style="background:rgba(59,130,246,.3)"></div><div class="img-caption">Federal Reserve Created</div></div>
+  </div>
+
+  <!-- ERA 4 — light, bull -->
+  <section class="era era-light era-bull" id="era4">
+    <div class="era-sidebar">
+      <div class="era-index">04</div>
+      <div>
+        <div class="era-period"><span class="era-period-accent">1946 — 1979</span><em>The Post-War Bull</em></div>
+        <p class="era-desc">Post-WWII prosperity unleashed a generational bull market. Mutual funds democratized investing, pension funds became dominant players, and the Nifty Fifty defined an era of growth-stock worship.</p>
+      </div>
+      <div class="era-sentiment">
+        <div class="ohlc-chart" id="ohlc4"></div>
+        <div class="era-meter"><div class="era-meter-bar"><div class="era-meter-fill" style="max-width:68%"></div></div><div class="era-meter-val" style="color:#3a7a00;">Democratization · 68%
+        <div class="orb-row"><span class="orb orb-bull"></span><span class="orb-label" style="color:#3a7a00;font-family:var(--mono);font-size:.744rem;letter-spacing:.16em;text-transform:uppercase;">Bullish era</span></div></div></div>
+      </div>
+    </div>
+    <div class="era-main">
+      <div class="events-grid">
+        <div class="card fi" style="--c-accent:#3a7a00;"><span class="card-year">1949</span><h3>The Intelligent Investor</h3><p>Benjamin Graham published the definitive text on value investing. His "margin of safety" framework became the intellectual foundation for an entire generation of investors including Warren Buffett.</p><div class="card-tags"><span class="tag">Value Investing</span><span class="tag">Graham</span><span class="tag">Books</span></div></div>
+        <div class="card fi" style="--c-accent:#FF5533;"><span class="card-year">1957</span><h3>S&amp;P 500 Launched</h3><p>Standard &amp; Poor's expanded its market index to 500 companies, creating the benchmark that would define US equity performance for decades — and the foundation for trillions in index funds.</p><div class="card-tags"><span class="tag">S&P 500</span><span class="tag">Index</span><span class="tag">Benchmark</span></div></div>
+        <div class="card fi" style="--c-accent:#3B82F6;"><span class="card-year">1971</span><h3>NASDAQ Opens</h3><p>The world's first electronic stock market launched. Initially dismissed as second-tier, it would eventually host the most valuable companies on Earth — Apple, Microsoft, Amazon, Google, NVIDIA.</p><div class="card-tags"><span class="tag">NASDAQ</span><span class="tag">Electronic</span><span class="tag">Technology</span></div></div>
+        <div class="card fi" style="--c-accent:#8a5e00;"><span class="card-year">1973</span><h3>Black-Scholes Model</h3><p>Fischer Black and Myron Scholes published their options pricing formula, giving traders a mathematical framework for derivatives. It earned a Nobel Prize in 1997 and spawned a multi-trillion dollar industry.</p><div class="card-tags"><span class="tag">Derivatives</span><span class="tag">Options</span><span class="tag">Math</span></div></div>
+      </div>
+    </div>
+  </section>
+
+  <div class="quote-band qb-dark">
+    <div class="quote-band-inner">
+      <span class="quote-mark">&ldquo;</span>
+      <div class="pq-text fi">The stock market is a device for <span class="pq-hl">transferring money</span> from the impatient to the <span class="pq-hl">patient.</span></div>
+      <span class="pq-attr">— Warren Buffett · Berkshire Hathaway Annual Letter · 1989</span>
+    </div>
+  </div>
+
+  <!-- ERA 5 — dark, bull -->
+  <section class="era era-dark era-bull" id="era5">
+    <div class="era-sidebar">
+      <div class="era-index">05</div>
+      <div>
+        <div class="era-period"><span class="era-period-accent">1980 — 1999</span><em>The Great Bull Run</em></div>
+        <p class="era-desc">Reagan-era deregulation, the invention of the 401(k), the PC revolution, and the dot-com boom combined to create the longest peacetime bull market in history. By 1999, everyone was a trader.</p>
+      </div>
+      <div class="era-sentiment">
+        <div class="ohlc-chart" id="ohlc5"></div>
+        <div class="era-meter"><div class="era-meter-bar"><div class="era-meter-fill" style="max-width:88%"></div></div><div class="era-meter-val">Explosive Growth · 88%
+        <div class="orb-row"><span class="orb orb-bull"></span><span class="orb-label era-meter-val">Bullish era</span></div></div></div>
+      </div>
+    </div>
+    <div class="era-main">
+      <div class="events-grid">
+        <div class="card fi card-crash" style="--c-accent:#B4FF3C;"><div class="crash-badge">Crash Event</div><span class="card-year">1987</span><h3>Black Monday</h3><p>On October 19, 1987, the Dow Jones fell 22.6% in a single day — the largest one-day percentage drop in history. Circuit breakers were introduced afterward to halt trading during extreme volatility.</p><div class="card-tags"><span class="tag">Crash</span><span class="tag">Program Trading</span><span class="tag">Black Monday</span></div></div>
+        <div class="card fi" style="--c-accent:#FF5533;"><span class="card-year">1993</span><h3>Birth of the ETF</h3><p>The SPDR S&amp;P 500 ETF (SPY) launched — the first US-listed exchange-traded fund. It democratized index investing, allowing any investor to buy the entire S&amp;P 500 in a single trade. SPY is now the world's most traded security.</p><div class="card-tags"><span class="tag">ETF</span><span class="tag">Index Funds</span><span class="tag">SPY</span></div></div>
+        <div class="card fi" style="--c-accent:#3B82F6;"><span class="card-year">1995</span><h3>The Internet Bull Market</h3><p>Netscape's IPO ignited the dot-com boom. The NASDAQ rose 400% between 1995 and its peak in March 2000. Companies with no revenue commanded billion-dollar valuations. Greenspan warned of "irrational exuberance" — and was ignored.</p><div class="card-tags"><span class="tag">Dot-com</span><span class="tag">NASDAQ</span><span class="tag">Tech Boom</span></div></div>
+        <div class="card fi card-crash" style="--c-accent:#F59E0B;"><div class="crash-badge">Crash Event</div><span class="card-year">1998</span><h3>LTCM Collapse</h3><p>Long-Term Capital Management — a hedge fund run by Nobel laureates — lost $4.6 billion and required a Fed-orchestrated bailout. It demonstrated that mathematical models cannot capture all market risks. A lesson forgotten by 2008.</p><div class="card-tags"><span class="tag">Hedge Fund</span><span class="tag">Crisis</span><span class="tag">LTCM</span></div></div>
+      </div>
+    </div>
+  </section>
+
+  <div class="img-strip">
+    <div class="img-strip-item"><img src="stock-market/images/stock-floor.jpg" alt="NYSE Trading Floor"><div class="img-overlay" style="background:rgba(180,255,60,.25)"></div><div class="img-caption">NYSE Floor</div></div>
+    <div class="img-strip-item"><img src="stock-market/images/strip-dotcom.jpg" alt="Black-Scholes Model"><div class="img-overlay" style="background:rgba(245,158,11,.25)"></div><div class="img-caption">Black–Scholes model</div></div>
+    <div class="img-strip-item"><img src="stock-market/images/event-occupy-wall-street.jpg" alt="Occupy Wall Street"><div class="img-overlay" style="background:rgba(59,130,246,.3)"></div><div class="img-caption">Occupy Wall Street</div></div>
+  </div>
+
+  <!-- ERA 6 — light, mixed -->
+  <section class="era era-light era-mixed" id="era6">
+    <div class="era-sidebar">
+      <div class="era-index">06</div>
+      <div>
+        <div class="era-period"><span class="era-period-accent">2000 — PRESENT</span><em>Digital Age Markets</em></div>
+        <p class="era-desc">Three historic crises in 22 years — dot-com bust, the 2008 financial crisis, and COVID-19 — alongside the rise of passive investing, zero-commission trading, meme stocks, and AI-driven markets.</p>
+      </div>
+      <div class="era-sentiment">
+        <div class="ohlc-chart" id="ohlc6"></div>
+        <div class="era-meter"><div class="era-meter-bar"><div class="era-meter-fill" style="max-width:100%"></div></div><div class="era-meter-val" style="color:#8a5e00;">Ongoing Disruption · Max
+        <div class="orb-row"><span class="orb orb-mixed"></span><span class="orb-label" style="color:#8a5e00;font-family:var(--mono);font-size:.744rem;letter-spacing:.16em;text-transform:uppercase;">Mixed era</span></div></div></div>
+      </div>
+    </div>
+    <div class="era-main">
+      <div class="events-grid">
+        <div class="card fi card-crash" style="--c-accent:#3a7a00;"><div class="crash-badge">Crash Event</div><span class="card-year">2008</span><h3>The Global Financial Crisis</h3><p>The collapse of Lehman Brothers on September 15, 2008 triggered the worst financial crisis since 1929. The S&amp;P 500 lost 57% from peak to trough. Central banks cut rates to zero — fundamentally altering the market landscape.</p><div class="card-tags"><span class="tag">GFC</span><span class="tag">Lehman</span><span class="tag">Crisis</span></div></div>
+        <div class="card fi card-crash" style="--c-accent:#FF5533;"><div class="crash-badge">Crash Event</div><span class="card-year">2010</span><h3>The Flash Crash</h3><p>On May 6, 2010, the Dow plunged nearly 1,000 points in minutes before recovering — all triggered by algorithmic trading. The Flash Crash exposed the fragility of electronic markets and led to new circuit-breaker rules.</p><div class="card-tags"><span class="tag">HFT</span><span class="tag">Algorithms</span><span class="tag">Flash Crash</span></div></div>
+        <div class="card fi" style="--c-accent:#3B82F6;"><span class="card-year">2020</span><h3>COVID Crash &amp; Meme Stocks</h3><p>COVID-19 triggered the fastest bear market in history (35% drop in 33 days) followed by a stunning recovery. Zero-commission apps brought millions of new retail investors, culminating in the GameStop short squeeze of January 2021.</p><div class="card-tags"><span class="tag">COVID</span><span class="tag">Retail</span><span class="tag">GameStop</span></div></div>
+        <div class="card fi" style="--c-accent:#8a5e00;"><span class="card-year">2023</span><h3>The AI Market Surge</h3><p>ChatGPT's viral launch ignited an AI investment frenzy. NVIDIA's market cap surpassed $3 trillion by 2024. The "Magnificent Seven" drove the majority of S&amp;P 500 returns, concentrating the index to historic levels.</p><div class="card-tags"><span class="tag">AI</span><span class="tag">NVIDIA</span><span class="tag">Concentration</span></div></div>
+      </div>
+    </div>
+  </section>
+
+  <div class="quote-band qb-terminal">
+    <div class="quote-band-inner">
+      <span class="quote-mark">&ldquo;</span>
+      <div class="pq-text fi">The four most dangerous words in investing are: <span class="pq-hl">&ldquo;This time it&rsquo;s different.&rdquo;</span></div>
+      <span class="pq-attr">— Sir John Templeton · Investment Wisdom · 1994</span>
+    </div>
+  </div>
+
+  <!-- KEY FIGURES — light panel -->
+  <section class="figures-section figures-light" id="figures">
+    <div class="section-header fi"><em>Key</em> Figures<span class="cursor-blink">_</span></div>
+    <div class="section-sub fi">Architects · Disruptors · Legends · Theorists</div>
+    <div class="figures-grid" id="figuresGrid"></div>
+  </section>
+
+  <!-- WHAT COMES NEXT -->
+  <section class="era era-dark era-bull" id="future">
+    <div class="era-sidebar">
+      <div class="era-index">→</div>
+      <div>
+        <div class="era-period"><span class="era-period-accent">2025 →</span><em>The Future of Markets</em></div>
+        <p class="era-desc">Emerging trends reshaping capital markets. AI, tokenization, passive dominance, and retail power are rewriting the rules simultaneously.</p>
+      </div>
+      <div class="era-sentiment">
+        <div class="ohlc-chart" id="ohlcFuture"></div>
+        <div class="era-meter"><div class="era-meter-bar"><div class="era-meter-fill" style="max-width:100%"></div></div><div class="era-meter-val">Ongoing Disruption · Max
+        <div class="orb-row"><span class="orb orb-bull"></span><span class="orb-label era-meter-val">Outlook: uncertain</span></div></div></div>
+      </div>
+    </div>
+    <div class="era-main">
+      <div class="events-grid">
+        <div class="card fi" style="--c-accent:#B4FF3C;"><span class="card-year">2025 →</span><h3>AI-Driven Trading</h3><p>Machine learning models now analyze earnings calls, satellite imagery, and social sentiment in milliseconds. As AI systems trade against each other, new forms of volatility and flash events will challenge regulators and human traders alike.</p><div class="card-tags"><span class="tag">AI</span><span class="tag">Algorithms</span><span class="tag">HFT</span></div></div>
+        <div class="card fi" style="--c-accent:#FF5533;"><span class="card-year">2025 →</span><h3>Tokenized Equities</h3><p>Blockchain-based tokenization is enabling fractional ownership of real-world assets on 24/7 markets. BlackRock, Fidelity, and Goldman Sachs are building tokenized asset platforms, blurring TradFi and DeFi.</p><div class="card-tags"><span class="tag">Blockchain</span><span class="tag">Tokenization</span><span class="tag">DeFi</span></div></div>
+        <div class="card fi" style="--c-accent:#3B82F6;"><span class="card-year">2025 →</span><h3>The Passive Tipping Point</h3><p>Index funds and ETFs now hold over 50% of all US equity assets. As passive investing reaches dominance, questions mount: who sets prices? Who monitors corporate governance? Systemic risks may be invisible to standard models.</p><div class="card-tags"><span class="tag">ETF</span><span class="tag">Passive</span><span class="tag">Systemic Risk</span></div></div>
+        <div class="card fi" style="--c-accent:#F59E0B;"><span class="card-year">2025 →</span><h3>Retail Investor Power</h3><p>The GameStop era showed coordinated retail investors can move markets and destroy hedge funds. Commission-free trading, social media, and AI-powered research tools are permanently elevating retail's market power.</p><div class="card-tags"><span class="tag">Retail</span><span class="tag">Social Media</span><span class="tag">Regulation</span></div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ENTITY GRID -->
+  <section class="entity-section" id="entities">
+    <div class="entity-heading fi"><em>Key</em> Players<span class="cursor-blink">_</span></div>
+    <div class="entity-sub">Exchanges · Indices · Firms · People · Moments · Instruments</div>
+    <div class="entity-grid" id="entityGrid"></div>
+  </section>
+
+  <!-- ECOSYSTEM -->
+  <div class="eco-links">
+    <div class="eco-header">ECOSYSTEM · STOCK MARKET</div>
+    <div class="eco-grid">
+      <div class="eco-group"><div class="eco-group-label">Exchanges</div><a href="https://www.nyse.com" class="eco-link" target="_blank" rel="noopener">NYSE ↗</a><a href="https://www.nasdaq.com" class="eco-link" target="_blank" rel="noopener">NASDAQ ↗</a><a href="https://www.londonstockexchange.com" class="eco-link" target="_blank" rel="noopener">London Stock Exchange ↗</a><a href="https://www.jpx.co.jp/english/" class="eco-link" target="_blank" rel="noopener">Tokyo Stock Exchange ↗</a><a href="https://www.euronext.com" class="eco-link" target="_blank" rel="noopener">Euronext ↗</a></div>
+      <div class="eco-group"><div class="eco-group-label">Data &amp; Research</div><a href="https://finance.yahoo.com" class="eco-link" target="_blank" rel="noopener">Yahoo Finance ↗</a><a href="https://www.bloomberg.com/markets" class="eco-link" target="_blank" rel="noopener">Bloomberg Markets ↗</a><a href="https://www.macrotrends.net" class="eco-link" target="_blank" rel="noopener">Macrotrends ↗</a><a href="https://fred.stlouisfed.org" class="eco-link" target="_blank" rel="noopener">FRED (St. Louis Fed) ↗</a><a href="https://www.multpl.com" class="eco-link" target="_blank" rel="noopener">Multpl (S&amp;P 500 Data) ↗</a></div>
+      <div class="eco-group"><div class="eco-group-label">News</div><a href="https://www.wsj.com" class="eco-link" target="_blank" rel="noopener">Wall Street Journal ↗</a><a href="https://www.ft.com" class="eco-link" target="_blank" rel="noopener">Financial Times ↗</a><a href="https://www.barrons.com" class="eco-link" target="_blank" rel="noopener">Barron's ↗</a><a href="https://markets.businessinsider.com" class="eco-link" target="_blank" rel="noopener">Business Insider Markets ↗</a></div>
+      <div class="eco-group"><div class="eco-group-label">Brokers &amp; Platforms</div><a href="https://www.fidelity.com" class="eco-link" target="_blank" rel="noopener">Fidelity ↗</a><a href="https://www.schwab.com" class="eco-link" target="_blank" rel="noopener">Charles Schwab ↗</a><a href="https://robinhood.com" class="eco-link" target="_blank" rel="noopener">Robinhood ↗</a><a href="https://www.interactivebrokers.com" class="eco-link" target="_blank" rel="noopener">Interactive Brokers ↗</a><a href="https://www.vanguard.com" class="eco-link" target="_blank" rel="noopener">Vanguard ↗</a></div>
+      <div class="eco-group"><div class="eco-group-label">History &amp; Reference</div><a href="https://www.sec.gov/about/history" class="eco-link" target="_blank" rel="noopener">SEC History ↗</a><a href="https://www.federalreservehistory.org" class="eco-link" target="_blank" rel="noopener">Federal Reserve History ↗</a><a href="https://www.nyse.com/history" class="eco-link" target="_blank" rel="noopener">NYSE History ↗</a><a href="https://irrationalexuberance.com" class="eco-link" target="_blank" rel="noopener">Irrational Exuberance ↗</a></div>
+    </div>
+  </div>
+
+  <!-- COLOPHON -->
+  <div class="colophon">
+    <div class="colophon-desc">
+      <div class="colophon-label">STOCK MARKET / HISTORY</div>
+      <p class="colophon-blurb">From the Dutch East India Company's first share offering in 1602 to algorithmic trading executing millions of orders per second — four centuries of capital, crisis, and compounding returns.</p>
+    </div>
+    <div class="colophon-meta">
+      <div class="colophon-meta-label">PART OF</div>
+      <div class="colophon-series">A <em>(Brief)</em> History of Everything<span class="cursor-blink">_</span></div>
+      <a href="https://abriefhistoryofeverything.com" class="colophon-url" target="_blank" rel="noopener">abriefhistoryofeverything.com ↗</a>
+      <div class="colophon-share">
+        <a href="https://twitter.com/intent/tweet?text=A+%28Brief%29+History+of+the+Stock+Market&url=https%3A%2F%2Fabriefhistoryofeverything.com%2Fstockmarket" class="colophon-share-link" target="_blank" rel="noopener">Share on X</a>
+        <a href="https://www.linkedin.com/sharing/share-offsite/?url=https%3A%2F%2Fabriefhistoryofeverything.com%2Fstockmarket" class="colophon-share-link" target="_blank" rel="noopener">Share on LinkedIn</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <a href="https://abriefhistoryofeverything.com" class="footer-lockup" target="_blank" rel="noopener">
+      <svg width="32" height="32" viewBox="0 0 400 400" xmlns="http://www.w3.org/2000/svg" style="display:block;flex-shrink:0;">
+        <rect width="400" height="400" fill="#00D4F0"/>
+        <rect x="55" y="118" width="46" height="46" fill="#08090C" opacity="0.22"/>
+        <rect x="178" y="118" width="46" height="46" fill="#08090C" opacity="0.22"/>
+        <rect class="footer-mouth" x="55" y="278" width="170" height="36" fill="#08090C"/>
+      </svg>
+      <div class="footer-series">A <em>(Brief)</em> History of Everything_</div>
+    </a>
+    <div class="footer-copy">© 2026 A (Brief) History of Everything</div>
+  </footer>
+
+</div>
+
+<script>
+(function(){
+  'use strict';
+  document.documentElement.classList.add('js-ready');
+
+  var tickers=[{sym:'AAPL',val:'$211.45',chg:'+1.24%',up:true},{sym:'MSFT',val:'$418.80',chg:'+0.87%',up:true},{sym:'NVDA',val:'$875.40',chg:'+3.12%',up:true},{sym:'GOOGL',val:'$172.30',chg:'+0.55%',up:true},{sym:'AMZN',val:'$192.60',chg:'+1.08%',up:true},{sym:'META',val:'$508.20',chg:'+2.41%',up:true},{sym:'TSLA',val:'$175.30',chg:'-2.18%',up:false},{sym:'BRK.B',val:'$410.00',chg:'+0.32%',up:true},{sym:'SPY',val:'$516.20',chg:'+0.61%',up:true},{sym:'QQQ',val:'$442.10',chg:'+0.94%',up:true},{sym:'JPM',val:'$201.40',chg:'+0.77%',up:true},{sym:'GS',val:'$482.30',chg:'+0.43%',up:true},{sym:'DJI',val:'42,313',chg:'+0.41%',up:true},{sym:'S&P',val:'5,782',chg:'+0.58%',up:true},{sym:'VIX',val:'14.32',chg:'-3.21%',up:false},{sym:'XOM',val:'$111.40',chg:'-0.62%',up:false}];
+  (function(){
+    var t=document.getElementById('tickerTrack'); if(!t)return;
+    var h='';
+    for(var p=0;p<2;p++){h+='<span class="ticker-group">';tickers.forEach(function(t){var c=t.up?'ti-up':'ti-dn',r=t.up?'▲':'▼';h+='<span class="ticker-item '+c+'"><span class="ti-sym">'+t.sym+'</span><span class="ti-val">'+t.val+'</span><span class="ti-chg">'+r+t.chg+'</span></span>';});h+='</span>';}
+    t.innerHTML=h;
+  })();
+
+  var ohlcData={
+    ohlc1:[{u:true,h:60,b:40,l:20},{u:true,h:55,b:30,l:10},{u:false,h:65,b:35,l:8},{u:false,h:45,b:20,l:5},{u:true,h:50,b:28,l:10},{u:true,h:55,b:35,l:12}],
+    ohlc2:[{u:true,h:50,b:35,l:15},{u:true,h:60,b:40,l:18},{u:true,h:55,b:38,l:20},{u:true,h:65,b:45,l:22},{u:false,h:60,b:30,l:12},{u:true,h:70,b:50,l:25}],
+    ohlc3:[{u:true,h:65,b:45,l:20},{u:true,h:70,b:50,l:25},{u:false,h:68,b:10,l:2},{u:false,h:40,b:5,l:1},{u:true,h:30,b:18,l:8},{u:true,h:42,b:28,l:12}],
+    ohlc4:[{u:true,h:35,b:22,l:10},{u:true,h:45,b:30,l:15},{u:true,h:50,b:35,l:18},{u:true,h:55,b:40,l:20},{u:true,h:58,b:42,l:22},{u:true,h:62,b:45,l:25}],
+    ohlc5:[{u:true,h:45,b:30,l:12},{u:true,h:60,b:42,l:20},{u:false,h:58,b:20,l:5},{u:true,h:50,b:35,l:18},{u:true,h:70,b:52,l:28},{u:true,h:80,b:60,l:35}],
+    ohlc6:[{u:false,h:75,b:10,l:2},{u:true,h:55,b:38,l:18},{u:false,h:65,b:15,l:3},{u:true,h:60,b:42,l:20},{u:false,h:70,b:20,l:5},{u:true,h:85,b:65,l:40}],
+    ohlcFuture:[{u:true,h:60,b:40,l:18},{u:false,h:65,b:30,l:10},{u:true,h:70,b:50,l:25},{u:true,h:75,b:55,l:30},{u:false,h:72,b:35,l:12},{u:true,h:80,b:62,l:38}]
+  };
+  Object.keys(ohlcData).forEach(function(id){
+    var el=document.getElementById(id); if(!el)return;
+    var H=40;
+    ohlcData[id].forEach(function(b){
+      var bar=document.createElement('div'); bar.className='ohlc-bar '+(b.u?'up':'dn');
+      var wt=document.createElement('div'); wt.className='ohlc-wick-top'; wt.style.height=Math.max(1,Math.round((H-b.h)/H*H))+'px';
+      var bd=document.createElement('div'); bd.className='ohlc-body'; bd.style.height=Math.max(3,Math.round((b.h-b.l)/H*H))+'px';
+      var wb=document.createElement('div'); wb.className='ohlc-wick-bot'; wb.style.height=Math.max(1,Math.round(b.l/H*H))+'px';
+      bar.appendChild(wt); bar.appendChild(bd); bar.appendChild(wb); el.appendChild(bar);
+    });
+  });
+
+  var spData=[[1900,6],[1905,9],[1910,10],[1915,8],[1920,8],[1925,12],[1929,26],[1932,5],[1935,10],[1940,11],[1945,15],[1950,20],[1955,40],[1960,56],[1965,88],[1970,90],[1975,90],[1980,135],[1985,210],[1987,247],[1988,277],[1990,330],[1995,615],[1999,1468],[2000,1320],[2003,900],[2007,1550],[2009,676],[2013,1848],[2015,2043],[2017,2674],[2019,3231],[2020,3756],[2021,4766],[2022,3840],[2023,4769],[2024,5782]];
+
+  function drawChart(id,data,accent){
+    var c=document.getElementById(id); if(!c)return;
+    var W=c.offsetWidth,H=c.offsetHeight; if(!W||!H)return;
+    c.width=W*devicePixelRatio; c.height=H*devicePixelRatio;
+    var ctx=c.getContext('2d'); ctx.scale(devicePixelRatio,devicePixelRatio);
+    var vals=data.map(function(d){return d[1]||d;}),mn=0,mx=Math.max.apply(null,vals),n=vals.length;
+    var pad={l:20,r:20,t:10,b:id==='heroChart'?20:5},cW=W-pad.l-pad.r,cH=H-pad.t-pad.b;
+    function xp(i){return pad.l+(i/(n-1))*cW;}
+    function yp(v){return pad.t+cH-((v-mn)/(mx-mn))*cH;}
+    var g=ctx.createLinearGradient(0,pad.t,0,H);
+    g.addColorStop(0,'rgba(180,255,60,0.5)'); g.addColorStop(1,'rgba(180,255,60,0)');
+    ctx.beginPath(); ctx.moveTo(xp(0),yp(vals[0]));
+    for(var i=1;i<n;i++){var cp=(xp(i-1)+xp(i))/2;ctx.bezierCurveTo(cp,yp(vals[i-1]),cp,yp(vals[i]),xp(i),yp(vals[i]));}
+    ctx.lineTo(xp(n-1),H); ctx.lineTo(0,H); ctx.closePath(); ctx.fillStyle=g; ctx.fill();
+    ctx.beginPath(); ctx.moveTo(xp(0),yp(vals[0]));
+    for(var j=1;j<n;j++){var lcp=(xp(j-1)+xp(j))/2;ctx.bezierCurveTo(lcp,yp(vals[j-1]),lcp,yp(vals[j]),xp(j),yp(vals[j]));}
+    ctx.strokeStyle='rgba(180,255,60,0.85)'; ctx.lineWidth=1.8; ctx.stroke();
+    if(id==='heroChart'){
+      [{y:1929,l:'1929'},{y:1987,l:'1987'},{y:2009,l:'2009'},{y:2020,l:'2020'}].forEach(function(c2){
+        var idx=spData.findIndex(function(d){return d[0]===c2.y;}); if(idx<0)return;
+        var cx=xp(idx);
+        ctx.beginPath();ctx.moveTo(cx,pad.t);ctx.lineTo(cx,H-pad.b);
+        ctx.strokeStyle='rgba(255,85,51,0.35)';ctx.lineWidth=1;ctx.setLineDash([3,4]);ctx.stroke();ctx.setLineDash([]);
+        ctx.fillStyle='rgba(255,85,51,0.8)';ctx.font='500 9px Geist Mono,monospace';ctx.fillText(c2.l,cx+3,pad.t+13);
+      });
+      [1900,1920,1940,1960,1980,2000,2020].forEach(function(yr){
+        var idx=spData.findIndex(function(d){return d[0]===yr;}); if(idx<0)return;
+        ctx.fillStyle='rgba(180,255,60,0.3)';ctx.font='400 8px Geist Mono,monospace';ctx.fillText(yr,xp(idx)-10,H-6);
+      });
+    }
+  }
+
+  var miniPts=[42,45,44,47,50,48,52,55,53,58,62,60,65,68,66,70,72,75,73,78];
+  function drawMini(){
+    var c=document.getElementById('miniChart'); if(!c)return;
+    var W=c.offsetWidth,H=c.offsetHeight; if(!W||!H)return;
+    c.width=W*devicePixelRatio; c.height=H*devicePixelRatio;
+    var ctx=c.getContext('2d'); ctx.scale(devicePixelRatio,devicePixelRatio);
+    var mn=Math.min.apply(null,miniPts),mx=Math.max.apply(null,miniPts),n=miniPts.length;
+    function xp(i){return(i/(n-1))*W;} function yp(v){return H-2-((v-mn)/(mx-mn))*(H-4);}
+    var g=ctx.createLinearGradient(0,0,0,H);g.addColorStop(0,'rgba(180,255,60,.35)');g.addColorStop(1,'rgba(180,255,60,0)');
+    ctx.beginPath();ctx.moveTo(xp(0),yp(miniPts[0]));
+    for(var i=1;i<n;i++){var cp=(xp(i-1)+xp(i))/2;ctx.bezierCurveTo(cp,yp(miniPts[i-1]),cp,yp(miniPts[i]),xp(i),yp(miniPts[i]));}
+    ctx.lineTo(xp(n-1),H);ctx.lineTo(0,H);ctx.closePath();ctx.fillStyle=g;ctx.fill();
+    ctx.beginPath();ctx.moveTo(xp(0),yp(miniPts[0]));
+    for(var j=1;j<n;j++){var lcp=(xp(j-1)+xp(j))/2;ctx.bezierCurveTo(lcp,yp(miniPts[j-1]),lcp,yp(miniPts[j]),xp(j),yp(miniPts[j]));}
+    ctx.strokeStyle='rgba(180,255,60,.85)';ctx.lineWidth=1.5;ctx.stroke();
+  }
+
+  window.addEventListener('load',function(){setTimeout(function(){drawChart('heroChart',spData);drawMini();},100);});
+  window.addEventListener('resize',function(){drawChart('heroChart',spData);drawMini();});
+
+  var saved=localStorage.getItem('bhsm-theme')||'dark';
+  document.documentElement.setAttribute('data-theme',saved);
+  var themeBtn=document.getElementById('themeBtn');
+  if(themeBtn)themeBtn.addEventListener('click',function(){var n=document.documentElement.getAttribute('data-theme')==='dark'?'light':'dark';document.documentElement.setAttribute('data-theme',n);localStorage.setItem('bhsm-theme',n);});
+
+  var prog=document.getElementById('progress');
+  window.addEventListener('scroll',function(){var s=window.scrollY/(document.body.scrollHeight-window.innerHeight),p=Math.round(s*100);if(prog)prog.style.width=p+'%';},{passive:true});
+
+  var obs=new IntersectionObserver(function(entries){entries.forEach(function(e){if(e.isIntersecting){e.target.classList.add('visible');obs.unobserve(e.target);}});},{threshold:0.08});
+  function revealAll(){document.querySelectorAll('.fi:not(.visible)').forEach(function(el){el.classList.add('visible');});}
+  document.querySelectorAll('.fi').forEach(function(el){obs.observe(el);});
+  [100,400,1000].forEach(function(ms){setTimeout(function(){if(document.querySelectorAll('.fi:not(.visible)').length)revealAll();},ms);});
+
+  var mObs=new IntersectionObserver(function(entries){entries.forEach(function(e){if(e.isIntersecting){e.target.classList.add('visible');mObs.unobserve(e.target);}});},{threshold:0.3});
+  document.querySelectorAll('.era-meter-fill').forEach(function(el){mObs.observe(el);});
+
+  var secs=['stats','era1','era2','era3','era4','era5','era6','figures','future','entities'];
+  var snI=document.querySelectorAll('.sn-item'),mnI=document.querySelectorAll('.mn-item');
+  function setActive(id){snI.forEach(function(el){el.classList.toggle('active',el.getAttribute('data-sec')===id);});mnI.forEach(function(el){el.classList.toggle('active',el.getAttribute('data-sec')===id);});}
+  var sObs=new IntersectionObserver(function(entries){entries.forEach(function(e){if(e.isIntersecting)setActive(e.target.id);});},{threshold:0.25});
+  secs.forEach(function(id){var el=document.getElementById(id);if(el)sObs.observe(el);});
+  function scrollTo(id){var el=document.getElementById(id);if(el)el.scrollIntoView({behavior:'smooth',block:'start'});}
+  snI.forEach(function(el){el.addEventListener('click',function(){scrollTo(el.getAttribute('data-sec'));});});
+  mnI.forEach(function(el){el.addEventListener('click',function(){scrollTo(el.getAttribute('data-sec'));});});
+
+  var sBtn=document.getElementById('shareBtn'),sDrop=document.getElementById('shareDropdown');
+  if(sBtn&&sDrop){sBtn.addEventListener('click',function(e){e.stopPropagation();if(navigator.share){navigator.share({title:'A (Brief) History of the Stock Market',url:'https://abriefhistoryofeverything.com/stockmarket'}).catch(function(){});return;}sDrop.classList.toggle('open');});document.addEventListener('click',function(){sDrop.classList.remove('open');});}
+
+  var isMobile=('ontouchstart' in window)||navigator.maxTouchPoints>0;
+  var tip=document.getElementById('tt');
+  if(!isMobile){
+    document.querySelectorAll('[data-tip]').forEach(function(el){el.addEventListener('mouseenter',function(){tip.textContent=el.getAttribute('data-tip');tip.classList.add('show');});el.addEventListener('mousemove',function(e){tip.style.left=(e.clientX+14)+'px';tip.style.top=(e.clientY-28)+'px';});el.addEventListener('mouseleave',function(){tip.classList.remove('show');});});
+    var cur=document.getElementById('cur'),ring=document.getElementById('curRing'),mx=0,my=0,rx=0,ry=0;
+    document.addEventListener('mousemove',function(e){mx=e.clientX;my=e.clientY;});
+    (function a(){rx+=(mx-rx)*.12;ry+=(my-ry)*.12;if(cur){cur.style.left=mx+'px';cur.style.top=my+'px';}if(ring){ring.style.left=rx+'px';ring.style.top=ry+'px';}requestAnimationFrame(a);})();
+  } else {var c=document.getElementById('cur'),r=document.getElementById('curRing');if(c)c.style.display='none';if(r)r.style.display='none';}
+
+  var figures=[
+    {name:'Charles Dow',era:'1851–1902',role:'Co-founder, Dow Jones',accent:'#B4FF3C',bio:"Co-founded Dow Jones & Company and invented the Dow Jones Industrial Average. His 'Dow Theory' of market movements remains foundational to technical analysis.",img:'stock-market/images/figure-charles-dow.jpg',wiki:'https://en.wikipedia.org/wiki/Charles_Dow'},
+    {name:'Benjamin Graham',era:'1894–1976',role:'Father of Value Investing',accent:'#3B82F6',bio:"Author of Security Analysis (1934) and The Intelligent Investor (1949). Developed value investing methodology and mentored Warren Buffett. His concept of 'margin of safety' defines rational investing.",img:'stock-market/images/figure-benjamin-graham.jpg',wiki:'https://en.wikipedia.org/wiki/Benjamin_Graham'},
+    {name:'Warren Buffett',era:'1930–present',role:'Chairman, Berkshire Hathaway',accent:'#FF5533',bio:"Known as the 'Oracle of Omaha,' Buffett grew $100 into a $900B+ conglomerate through disciplined value investing. His annual letters are required reading for investors worldwide.",img:'stock-market/images/figure-warren-buffett.jpg',wiki:'https://en.wikipedia.org/wiki/Warren_Buffett'},
+    {name:'John Bogle',era:'1929–2019',role:'Founder, Vanguard Group',accent:'#F59E0B',bio:'Founded Vanguard and created the first index fund available to retail investors in 1976. His low-cost, passive investing philosophy has saved individual investors trillions in fees.',img:'stock-market/images/figure-john-bogle.jpg',wiki:'https://en.wikipedia.org/wiki/John_C._Bogle'},
+    {name:'Jesse Livermore',era:'1877–1940',role:'Legendary Speculator',accent:'#B4FF3C',bio:'Made and lost multiple fortunes trading stocks and commodities. Famously shorted the 1929 crash, making $100 million in a single day. His book Reminiscences of a Stock Operator remains a trading classic.',img:'stock-market/images/figure-jesse-livermore.jpg',wiki:'https://en.wikipedia.org/wiki/Jesse_Lauriston_Livermore'},
+    {name:'George Soros',era:'1930–present',role:'Founder, Soros Fund Management',accent:'#3B82F6',bio:"Broke the Bank of England in 1992 by shorting the British pound for $1B profit. His theory of reflexivity — that market participants affect the very fundamentals they analyze — reshaped macro investing.",img:'stock-market/images/figure-george-soros.jpg',wiki:'https://en.wikipedia.org/wiki/George_Soros'},
+    {name:'Peter Lynch',era:'1944–present',role:'Former Manager, Magellan Fund',accent:'#FF5533',bio:"Managed Fidelity's Magellan Fund from 1977–1990, averaging 29% annual returns — the best record of any mutual fund in history. His 'invest in what you know' philosophy democratized stock picking.",img:'stock-market/images/figure-peter-lynch.jpg',wiki:'https://en.wikipedia.org/wiki/Peter_Lynch'},
+    {name:'Michael Milken',era:'1946–present',role:'Pioneer of Junk Bonds',accent:'#F59E0B',bio:"The 'Junk Bond King' at Drexel Burnham Lambert revolutionized corporate finance by making high-yield debt accessible. His work financed MCI, Turner Broadcasting, and countless LBOs that reshaped American industry.",img:'stock-market/images/figure-michael-milken.jpg',wiki:'https://en.wikipedia.org/wiki/Michael_Milken'},
+    {name:'Janet Yellen',era:'1946–present',role:'Former Fed Chair / Treasury Sec.',accent:'#B4FF3C',bio:'First woman to chair the Federal Reserve (2014–2018) and serve as US Treasury Secretary (2021–present). Her stewardship of monetary policy through the post-2008 recovery directly shaped equity markets worldwide.',img:'stock-market/images/figure-janet-yellen.jpg',wiki:'https://en.wikipedia.org/wiki/Janet_Yellen'},
+    {name:'Fischer Black',era:'1938–1995',role:'Co-creator, Black-Scholes Model',accent:'#3B82F6',bio:'Co-developed the Black-Scholes options pricing model with Myron Scholes in 1973. The model earned the Nobel Prize in Economics in 1997 and spawned a multi-trillion dollar derivatives industry.',img:'stock-market/images/figure-fischer-black.jpg',wiki:'https://en.wikipedia.org/wiki/Fischer_Black'}
+  ];
+  var grid=document.getElementById('figuresGrid');
+  if(grid){figures.forEach(function(f,i){var card=document.createElement('div');card.className='figure-card fi';card.style.cssText='--p-accent:'+f.accent+';--d:'+(i*.05)+'s';card.innerHTML='<img class="figure-photo" src="'+f.img+'" alt="'+f.name+'" onerror="this.style.display=\'none\';this.nextElementSibling.style.display=\'flex\'">'+'<div class="figure-placeholder" style="display:none">'+f.name.charAt(0)+'</div>'+'<div class="figure-era">'+f.era+'</div>'+'<div class="figure-name">'+f.name+'</div>'+'<div class="figure-role">'+f.role+'</div>'+'<p class="figure-bio">'+f.bio+'</p>'+'<a href="'+f.wiki+'" class="figure-link" target="_blank" rel="noopener">Wikipedia</a>';grid.appendChild(card);});grid.querySelectorAll('.fi').forEach(function(el){obs.observe(el);});}
+
+  var entities=[{name:'NYSE',url:'https://www.nyse.com',c:'#B4FF3C',t:'#000'},{name:'NASDAQ',url:'https://www.nasdaq.com',c:'#3B82F6',t:'#fff'},{name:'S&P 500',url:'https://www.spglobal.com',c:'#B4FF3C',t:'#000'},{name:'Dow Jones',url:'https://www.wsj.com',c:'#F59E0B',t:'#000'},{name:'Berkshire Hathaway',url:'https://www.berkshirehathaway.com',c:'#111',t:'#B4FF3C'},{name:'Goldman Sachs',url:'https://www.goldmansachs.com',c:'#3B82F6',t:'#fff'},{name:'BlackRock',url:'https://www.blackrock.com',c:'#FF5533',t:'#fff'},{name:'Vanguard',url:'https://www.vanguard.com',c:'#B4FF3C',t:'#000'},{name:'Fidelity',url:'https://www.fidelity.com',c:'#F59E0B',t:'#000'},{name:'JP Morgan',url:'https://www.jpmorgan.com',c:'#111',t:'#3B82F6'},{name:'Warren Buffett',url:'https://en.wikipedia.org/wiki/Warren_Buffett',c:'#3B82F6',t:'#fff'},{name:'Ben Graham',url:'https://en.wikipedia.org/wiki/Benjamin_Graham',c:'#B4FF3C',t:'#000'},{name:'John Bogle',url:'https://en.wikipedia.org/wiki/John_C._Bogle',c:'#FF5533',t:'#fff'},{name:'George Soros',url:'https://en.wikipedia.org/wiki/George_Soros',c:'#F59E0B',t:'#000'},{name:'Federal Reserve',url:'https://www.federalreserve.gov',c:'#3B82F6',t:'#fff'},{name:'SEC',url:'https://www.sec.gov',c:'#B4FF3C',t:'#000'},{name:'Black Monday 1987',url:'https://en.wikipedia.org/wiki/Black_Monday_(1987)',c:'#FF5533',t:'#fff'},{name:'1929 Crash',url:'https://en.wikipedia.org/wiki/Wall_Street_Crash_of_1929',c:'#FF5533',t:'#fff'},{name:'2008 Financial Crisis',url:'https://en.wikipedia.org/wiki/Financial_crisis_of_2007%E2%80%932008',c:'#FF5533',t:'#fff'},{name:'Dutch East India Co',url:'https://en.wikipedia.org/wiki/Dutch_East_India_Company',c:'#F59E0B',t:'#000'},{name:'Black-Scholes',url:'https://en.wikipedia.org/wiki/Black%E2%80%93Scholes_model',c:'#111',t:'#3B82F6'},{name:'Flash Crash 2010',url:'https://en.wikipedia.org/wiki/2010_Flash_Crash',c:'#FF5533',t:'#fff'},{name:'Robinhood',url:'https://robinhood.com',c:'#B4FF3C',t:'#000'},{name:'GameStop Short Squeeze',url:'https://en.wikipedia.org/wiki/GameStop_short_squeeze',c:'#F59E0B',t:'#000'},{name:'NVIDIA',url:'https://www.nvidia.com',c:'#B4FF3C',t:'#000'},{name:'Index Funds',url:'https://en.wikipedia.org/wiki/Index_fund',c:'#B4FF3C',t:'#000'},{name:'Options',url:'https://en.wikipedia.org/wiki/Option_(finance)',c:'#F59E0B',t:'#000'},{name:'Short Selling',url:'https://en.wikipedia.org/wiki/Short_(finance)',c:'#FF5533',t:'#fff'},{name:'401(k)',url:'https://en.wikipedia.org/wiki/401(k)',c:'#3B82F6',t:'#fff'},{name:'Tulip Mania',url:'https://en.wikipedia.org/wiki/Tulip_mania',c:'#F59E0B',t:'#000'},{name:'Dot-com Bubble',url:'https://en.wikipedia.org/wiki/Dot-com_bubble',c:'#F59E0B',t:'#000'},{name:'LTCM Collapse',url:'https://en.wikipedia.org/wiki/Long-Term_Capital_Management',c:'#FF5533',t:'#fff'},{name:'High-Frequency Trading',url:'https://en.wikipedia.org/wiki/High-frequency_trading',c:'#3B82F6',t:'#fff'},{name:'ETFs',url:'https://en.wikipedia.org/wiki/Exchange-traded_fund',c:'#B4FF3C',t:'#000'},{name:'Glass-Steagall',url:'https://en.wikipedia.org/wiki/Glass%E2%80%93Steagall_legislation',c:'#111',t:'#B4FF3C'}];
+  var eg=document.getElementById('entityGrid');
+  if(eg){entities.forEach(function(e){var a=document.createElement('a');a.href=e.url;a.target='_blank';a.rel='noopener';a.className='entity-badge';a.textContent=e.name;a.style.background=e.c;a.style.color=e.t;a.style.borderColor=e.c;eg.appendChild(a);});}
+
+  document.querySelectorAll('.fi:not(.visible)').forEach(function(el){obs.observe(el);});
+})();
+</script>
+</body>
+</html>
