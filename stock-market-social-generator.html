@@ -105,7 +105,7 @@ body{background:var(--bg);color:var(--text);font-family:'Geist',sans-serif;font-
 <div class="top-bar">
   <div class="top-bar-title">Social Post Generator — <span>A (Brief) History of the Stock Market</span></div>
   <div class="tbbtns">
-    <button class="tbdl sec" id="btn-set" onclick="downloadSet()">↓ This Set (4)</button>
+    <button class="tbdl sec" id="btn-set" onclick="downloadSet()">↓ This Set (3)</button>
     <button class="tbdl" id="btn-all" onclick="downloadAll()">↓ Download All</button>
   </div>
 </div>
@@ -280,14 +280,20 @@ body{background:var(--bg);color:var(--text);font-family:'Geist',sans-serif;font-
 </div><!-- end .sb -->
 
 <!-- CANVAS AREA -->
-<div class="ca">
-  <div class="cgrid">
-    <div class="cw"><div class="cm"><span class="cn">OG / Twitter</span><span class="cd">1200×630</span><button class="dlb" onclick="dlC('og')">↓ PNG</button></div><div class="cf og" id="canvas-og"></div></div>
-    <div class="cw"><div class="cm"><span class="cn">Twitter / X</span><span class="cd">1200×675</span><button class="dlb" onclick="dlC('tw')">↓ PNG</button></div><div class="cf tw" id="canvas-tw"></div></div>
-    <div class="cw"><div class="cm"><span class="cn">IG Square</span><span class="cd">1080×1080</span><button class="dlb" onclick="dlC('sq')">↓ PNG</button></div><div class="cf sq" id="canvas-sq"></div></div>
-    <div class="cw"><div class="cm"><span class="cn">IG Vertical</span><span class="cd">1080×1350</span><button class="dlb" onclick="dlC('vt')">↓ PNG</button></div><div class="cf vt" id="canvas-vt"></div></div>
+  <!-- OG canvas — shown only in OG Image mode -->
+  <div id="og-canvas-wrap" style="display:none;flex:1;overflow-y:auto;padding:20px;background:var(--bg);">
+    <div style="max-width:660px;margin:0 auto;">
+      <div class="cw"><div class="cm"><span class="cn">OG / Twitter</span><span class="cd">1200×630</span><button class="dlb" onclick="dlC('og')">↓ PNG</button></div><div class="cf og" id="canvas-og"></div></div>
+    </div>
   </div>
-</div>
+  <!-- Social canvases — shown for all other styles -->
+  <div id="social-canvas-wrap" class="ca">
+    <div class="cgrid">
+      <div class="cw"><div class="cm"><span class="cn">Twitter / X</span><span class="cd">1200×675</span><button class="dlb" onclick="dlC('tw')">↓ PNG</button></div><div class="cf tw" id="canvas-tw"></div></div>
+      <div class="cw"><div class="cm"><span class="cn">IG Square</span><span class="cd">1080×1080</span><button class="dlb" onclick="dlC('sq')">↓ PNG</button></div><div class="cf sq" id="canvas-sq"></div></div>
+      <div class="cw"><div class="cm"><span class="cn">IG Vertical</span><span class="cd">1080×1350</span><button class="dlb" onclick="dlC('vt')">↓ PNG</button></div><div class="cf vt" id="canvas-vt"></div></div>
+    </div>
+  </div>
 
 <!-- RIGHT SIDEBAR -->
 <div class="rsb">
@@ -362,7 +368,9 @@ const SGPALS={
 const MASCOT=(a)=>`<svg width="20" height="20" viewBox="0 0 400 400" xmlns="http://www.w3.org/2000/svg" style="opacity:.6;position:absolute;bottom:6%;right:7%;"><rect width="400" height="400" fill="#08090C"/><rect x="6" y="6" width="388" height="388" fill="none" stroke="${a}" stroke-width="12"/><rect x="55" y="118" width="46" height="46" fill="${a}" opacity=".3"/><rect x="178" y="118" width="46" height="46" fill="${a}" opacity=".3"/><rect x="55" y="278" width="170" height="36" fill="${a}"/></svg>`;
 const CW={og:600,tw:600,sq:540,vt:432};
 const CH={og:315,tw:338,sq:540,vt:540};
-const FMTS=["og","tw","sq","vt"];
+const SOCIAL_FMTS=["tw","sq","vt"];
+const OG_FMT=["og"];
+const FMTS=[...OG_FMT,...SOCIAL_FMTS];
 const FNAMES={og:"og",tw:"twitter",sq:"ig-square",vt:"ig-vertical"};
 const SCALES={og:2,tw:2,sq:2,vt:2.5};
 
@@ -400,10 +408,8 @@ window.selStyle=function(el){
   document.getElementById("sb-image").style.display=isSplit?"":"none";
   document.getElementById("sb-og").style.display=isOG?"":"none";
   document.getElementById("sb-figure").style.display=isFig?"":"none";
-  ["tw","sq","vt"].forEach(f=>{
-    const w=document.getElementById("canvas-"+f).closest(".cw");
-    w.style.opacity=isOG?".25":"1";w.style.pointerEvents=isOG?"none":"";
-  });
+  document.getElementById("og-canvas-wrap").style.display=isOG?"":"none";
+  document.getElementById("social-canvas-wrap").style.display=isOG?"none":"";
   document.getElementById("btn-set").style.display=isOG?"none":"";
   document.getElementById("btn-all").textContent=isOG?"↓ og-stock-market.png":"↓ Download All";
   updateAll();
@@ -489,12 +495,14 @@ function renderFigure(el,fmt){
 
 // ─── UPDATE ──────────────────────────────────────────────────────────────────
 function updateAll(){
-  FMTS.forEach(fmt=>{
+  const fmts=S.style==="ogimage"?OG_FMT:SOCIAL_FMTS;
+  fmts.forEach(fmt=>{
     const el=document.getElementById("canvas-"+fmt);
+    if(!el)return;
     if(S.style==="boldtype")renderBT(el,fmt,false);
     else if(S.style==="branded")renderBT(el,fmt,true);
     else if(S.style==="splitgrid")renderSG(el,fmt);
-    else if(S.style==="ogimage"&&fmt==="og")renderOG(el);
+    else if(S.style==="ogimage")renderOG(el);
     else if(S.style==="figure")renderFigure(el,fmt);
   });
 }
@@ -519,8 +527,8 @@ function c2b(fmt){return new Promise((res,rej)=>{const el=document.getElementByI
 function trig(blob,name){const url=URL.createObjectURL(blob),a=document.createElement("a");a.href=url;a.download=name;document.body.appendChild(a);a.click();document.body.removeChild(a);setTimeout(()=>URL.revokeObjectURL(url),2000);}
 function bn(){return`bhoe-stock-market-${S.type}${S.idx}-${S.style}`;}
 window.dlC=function(fmt){if(S.style==="ogimage"){c2b("og").then(b=>trig(b,"og-stock-market.png")).catch(e=>alert("Export failed. Serve over HTTP."));return;}c2b(fmt).then(b=>trig(b,`${bn()}-${FNAMES[fmt]}.png`)).catch(e=>alert("Export failed. Serve over HTTP."));};
-window.downloadSet=function(){if(S.style==="ogimage"){window.dlC("og");return;}const btn=document.getElementById("btn-set");btn.disabled=true;btn.textContent="Rendering…";Promise.all(FMTS.map(f=>c2b(f).then(b=>({b,f})))).then(rs=>{const zip=new JSZip();rs.forEach(({b,f})=>zip.file(`${bn()}-${FNAMES[f]}.png`,b));zip.generateAsync({type:"blob"}).then(z=>{trig(z,`${bn()}.zip`);btn.disabled=false;btn.textContent="↓ This Set (4)";});}).catch(e=>{btn.disabled=false;btn.textContent="↓ This Set (4)";alert("Export failed. Serve over HTTP.");});};
-window.downloadAll=function(){if(S.style==="ogimage"){window.dlC("og");return;}const btn=document.getElementById("btn-all");btn.disabled=true;const saved={...S};const styles=["boldtype","splitgrid","branded","figure"];const items=[...CONTENT.quote.map((_,i)=>({type:"quote",idx:i})),...CONTENT.fact.map((_,i)=>({type:"fact",idx:i})),...CONTENT.stat.map((_,i)=>({type:"stat",idx:i}))];const zip=new JSZip();const queue=[];styles.forEach(st=>items.forEach(({type,idx})=>FMTS.forEach(f=>queue.push({st,type,idx,f}))));let i=0;function next(){if(i>=queue.length){zip.generateAsync({type:"blob"}).then(z=>{Object.assign(S,saved);updateAll();trig(z,"bhoe-stock-market-all-posts.zip");btn.disabled=false;btn.textContent="↓ Download All";});return;}const{st,type,idx,f}=queue[i++];S.style=st;S.type=type;S.idx=idx;updateAll();btn.textContent=`Building… ${i}/${queue.length}`;setTimeout(()=>{c2b(f).then(b=>{zip.file(`bhoe-stock-market-${type}${idx}-${st}-${FNAMES[f]}.png`,b);next();}).catch(()=>next());},80);}next();};
+window.downloadSet=function(){if(S.style==="ogimage"){window.dlC("og");return;}const btn=document.getElementById("btn-set");btn.disabled=true;btn.textContent="Rendering…";Promise.all(SOCIAL_FMTS.map(f=>c2b(f).then(b=>({b,f})))).then(rs=>{const zip=new JSZip();rs.forEach(({b,f})=>zip.file(`${bn()}-${FNAMES[f]}.png`,b));zip.generateAsync({type:"blob"}).then(z=>{trig(z,`${bn()}.zip`);btn.disabled=false;btn.textContent="↓ This Set (3)";});}).catch(e=>{btn.disabled=false;btn.textContent="↓ This Set (3)";alert("Export failed. Serve over HTTP.");});};
+window.downloadAll=function(){if(S.style==="ogimage"){window.dlC("og");return;}const btn=document.getElementById("btn-all");btn.disabled=true;const saved={...S};const styles=["boldtype","splitgrid","branded","figure"];const items=[...CONTENT.quote.map((_,i)=>({type:"quote",idx:i})),...CONTENT.fact.map((_,i)=>({type:"fact",idx:i})),...CONTENT.stat.map((_,i)=>({type:"stat",idx:i}))];const zip=new JSZip();const queue=[];styles.forEach(st=>items.forEach(({type,idx})=>SOCIAL_FMTS.forEach(f=>queue.push({st,type,idx,f}))));let i=0;function next(){if(i>=queue.length){zip.generateAsync({type:"blob"}).then(z=>{Object.assign(S,saved);updateAll();trig(z,"bhoe-stock-market-all-posts.zip");btn.disabled=false;btn.textContent="↓ Download All";});return;}const{st,type,idx,f}=queue[i++];S.style=st;S.type=type;S.idx=idx;updateAll();btn.textContent=`Building… ${i}/${queue.length}`;setTimeout(()=>{c2b(f).then(b=>{zip.file(`bhoe-stock-market-${type}${idx}-${st}-${FNAMES[f]}.png`,b);next();}).catch(()=>next());},80);}next();};
 
 updateAll();
 })();
