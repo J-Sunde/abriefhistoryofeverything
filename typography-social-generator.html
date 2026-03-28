@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Social Post Generator — A (Brief) History of Typography</title>
+<link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Archivo:wght@400;500;600;700;900&family=IBM+Plex+Mono:wght@300;400;500;700&display=swap" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js"></script>
+<style>
+:root {
+  --bg:     #000000;
+  --bg1:    #0a0a0a;
+  --bg2:    #111111;
+  --rule:   #1e1e1e;
+  --rule2:  #141414;
+  --muted:  rgba(255,255,255,.25);
+  --dim:    #666666;
+  --text:   #cccccc;
+  --bright: #ffffff;
+  --accent: #E30613;
+  --lbg:    #FAFAFA;
+  --ltxt:   #000000;
+  --lacc:   #CC0011;
+  --a2bg:   #ffffff;
+  --a2txt:  #000000;
+  --display:'Archivo Black';
+  --body:   'Archivo';
+  --mono:   'IBM Plex Mono';
+}
+*{margin:0;padding:0;box-sizing:border-box;}
+html,body{height:100%;overflow:hidden;}
+body{background:var(--bg);color:var(--text);font-family:'Archivo',sans-serif;font-size:14px;display:flex;flex-direction:column;}
+.series-bar{height:3px;background:linear-gradient(90deg,#00D4F0 25%,#0055EE 25% 50%,#39E07A 50% 75%,#FF5C20 75%);flex-shrink:0;}
+.top-bar{height:44px;background:var(--bg1);border-bottom:1px solid var(--rule);display:flex;align-items:center;padding:0 20px;gap:10px;flex-shrink:0;}
+.top-bar-title{font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:.15em;text-transform:uppercase;color:var(--dim);}
+.top-bar-title span{color:var(--accent);}
+.tbbtns{margin-left:auto;display:flex;gap:8px;}
+.tbdl{background:var(--accent);color:var(--bg);font-family:'IBM Plex Mono',monospace;font-size:10px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;border:none;padding:6px 14px;cursor:pointer;transition:opacity .15s;white-space:nowrap;}
+.tbdl:hover{opacity:.8;}
+.tbdl.sec{background:transparent;color:var(--accent);border:1px solid rgba(227,6,19,.4);}
+.tbdl.sec:hover{background:rgba(227,6,19,.08);opacity:1;}
+.tbdl:disabled{opacity:.4;cursor:default;}
+.app{flex:1;display:flex;overflow:hidden;}
+.sb{width:240px;background:var(--bg1);border-right:1px solid var(--rule);display:flex;flex-direction:column;overflow-y:auto;flex-shrink:0;}
+.sb::-webkit-scrollbar{width:4px;}
+.sb::-webkit-scrollbar-thumb{background:var(--rule2);}
+.sbs{padding:14px;border-bottom:1px solid var(--rule);}
+.sbl{font-family:'IBM Plex Mono',monospace;font-size:9px;letter-spacing:.2em;text-transform:uppercase;color:var(--muted);margin-bottom:10px;}
+.cg+.cg{margin-top:10px;}
+.cgl{font-family:'IBM Plex Mono',monospace;font-size:8px;letter-spacing:.15em;text-transform:uppercase;color:var(--muted);opacity:.6;margin-bottom:5px;}
+.ci{padding:6px 8px;cursor:pointer;border:1px solid transparent;font-size:11px;line-height:1.3;color:var(--dim);transition:all .12s;border-radius:2px;}
+.ci:hover{color:var(--text);background:var(--bg2);}
+.ci.active{color:var(--accent);border-color:rgba(227,6,19,.3);background:rgba(227,6,19,.05);}
+.ci strong{display:block;font-family:'Archivo Black',sans-serif;font-size:11px;font-weight:700;margin-bottom:2px;}
+.ci span{font-size:10px;color:var(--muted);}
+.stbtns{display:flex;flex-direction:column;gap:5px;}
+.stbtn{padding:8px 10px;border:1px solid var(--rule2);background:transparent;color:var(--dim);font-family:'Archivo Black',sans-serif;font-size:12px;font-weight:700;letter-spacing:.05em;text-transform:uppercase;cursor:pointer;text-align:left;transition:all .12s;border-radius:2px;}
+.stbtn:hover{border-color:var(--dim);color:var(--text);}
+.stbtn.active{border-color:var(--accent);color:var(--accent);background:rgba(227,6,19,.06);}
+.stbtn small{display:block;font-family:'Archivo',sans-serif;font-size:9px;font-weight:400;text-transform:none;letter-spacing:0;color:var(--muted);margin-top:2px;}
+.swatches{display:grid;grid-template-columns:1fr 1fr;gap:5px;}
+.sw{padding:8px 6px;cursor:pointer;border:2px solid transparent;border-radius:2px;text-align:center;transition:all .12s;}
+.sw:hover{transform:scale(1.04);}
+.sw.active{border-color:white;box-shadow:0 0 0 1px rgba(255,255,255,.2);}
+.sw-dot{height:22px;border-radius:1px;margin-bottom:4px;}
+.sw-lbl{font-family:'IBM Plex Mono',monospace;font-size:8px;letter-spacing:.1em;text-transform:uppercase;}
+.hlps{display:flex;flex-wrap:wrap;gap:4px;}
+.hlp{padding:4px 9px;border:1px solid var(--rule2);background:transparent;color:var(--dim);font-family:'IBM Plex Mono',monospace;font-size:9px;letter-spacing:.1em;text-transform:uppercase;cursor:pointer;border-radius:20px;transition:all .12s;}
+.hlp:hover{border-color:var(--dim);color:var(--text);}
+.hlp.active{border-color:var(--accent);color:var(--accent);background:rgba(227,6,19,.08);}
+.igrid{display:grid;grid-template-columns:repeat(3,1fr);gap:4px;}
+.img-thumb{cursor:pointer;border:2px solid transparent;border-radius:2px;overflow:hidden;aspect-ratio:1;background:var(--bg2);transition:all .12s;display:flex;align-items:center;justify-content:center;}
+.img-thumb:hover{border-color:var(--dim);}
+.img-thumb.active{border-color:var(--accent);}
+.img-thumb img{width:100%;height:100%;object-fit:cover;filter:grayscale(.5);}
+.fb{font-family:'IBM Plex Mono',monospace;font-size:7px;color:var(--muted);text-align:center;padding:3px;line-height:1.3;}
+.lbtns{display:grid;grid-template-columns:1fr 1fr;gap:4px;}
+.lbtn{padding:5px;border:1px solid var(--rule2);background:transparent;color:var(--dim);font-family:'IBM Plex Mono',monospace;font-size:8px;cursor:pointer;text-align:center;transition:all .12s;border-radius:2px;}
+.lbtn:hover{border-color:var(--dim);color:var(--text);}
+.lbtn.active{border-color:var(--accent);color:var(--accent);}
+.og-lbtns{display:grid;grid-template-columns:1fr;gap:4px;}
+.ca{flex:1;overflow-y:auto;padding:20px;background:var(--bg);}
+.ca::-webkit-scrollbar{width:5px;}
+.ca::-webkit-scrollbar-thumb{background:var(--rule2);}
+.cgrid{display:grid;grid-template-columns:1fr 1fr;gap:18px;max-width:1340px;margin:0 auto;}
+.cw{display:flex;flex-direction:column;gap:7px;}
+.cm{display:flex;align-items:center;gap:8px;}
+.cn{font-family:'IBM Plex Mono',monospace;font-size:9px;letter-spacing:.15em;text-transform:uppercase;color:var(--muted);}
+.cd{font-family:'IBM Plex Mono',monospace;font-size:9px;color:var(--rule2);margin-left:auto;}
+.dlb{background:transparent;border:1px solid var(--rule2);color:var(--dim);font-family:'IBM Plex Mono',monospace;font-size:9px;letter-spacing:.1em;padding:3px 9px;cursor:pointer;transition:all .12s;text-transform:uppercase;border-radius:2px;}
+.dlb:hover{border-color:var(--accent);color:var(--accent);}
+.cf{background:var(--bg2);border:1px solid var(--rule);overflow:hidden;position:relative;flex-shrink:0;}
+.cf.og{width:600px;height:315px;}
+.cf.tw{width:600px;height:338px;}
+.cf.sq{width:540px;height:540px;}
+.cf.vt{width:432px;height:540px;}
+.rsb{width:210px;background:var(--bg1);border-left:1px solid var(--rule);display:flex;flex-direction:column;overflow-y:auto;flex-shrink:0;}
+.rsb::-webkit-scrollbar{width:4px;}
+.rsb::-webkit-scrollbar-thumb{background:var(--rule2);}
+.rsbs{padding:14px;border-bottom:1px solid var(--rule);}
+.rsbl{font-family:'IBM Plex Mono',monospace;font-size:9px;letter-spacing:.2em;text-transform:uppercase;color:var(--muted);margin-bottom:8px;}
+.rsbtext{font-family:'Archivo Black',sans-serif;font-size:12px;color:var(--text);line-height:1.5;}
+.rsbattr{font-family:'IBM Plex Mono',monospace;font-size:9px;color:var(--muted);margin-top:5px;}
+.hlinput{width:100%;background:var(--bg2);border:1px solid var(--rule2);color:var(--accent);font-family:'IBM Plex Mono',monospace;font-size:11px;padding:5px 7px;outline:none;margin-top:4px;border-radius:2px;}
+.hlinput:focus{border-color:var(--accent);}
+.rsw{display:flex;flex-direction:column;gap:5px;}
+.rswr{display:flex;align-items:center;gap:7px;}
+.rsdot{width:14px;height:14px;border-radius:2px;flex-shrink:0;}
+.rssn{font-family:'IBM Plex Mono',monospace;font-size:9px;color:var(--dim);text-transform:uppercase;letter-spacing:.1em;}
+.rsh{font-family:'IBM Plex Mono',monospace;font-size:9px;color:var(--muted);}
+.rsfont{font-size:10px;color:var(--dim);}
+.rsfont span{font-family:'IBM Plex Mono',monospace;font-size:9px;color:var(--muted);display:block;}
+.ogsub{width:100%;background:var(--bg2);border:1px solid var(--rule2);color:var(--text);font-family:'IBM Plex Mono',monospace;font-size:10px;padding:6px 8px;resize:none;outline:none;line-height:1.5;border-radius:2px;margin-top:4px;}
+.ogsub:focus{border-color:var(--accent);}
+</style>
+</head>
+<body>
+<div class="series-bar"></div>
+<div class="top-bar">
+  <div class="top-bar-title">Social Post Generator — <span>A (Brief) History of Typography</span></div>
+  <div class="tbbtns">
+    <button class="tbdl sec" id="btn-set" onclick="downloadSet()">↓ This Set (4)</button>
+    <button class="tbdl" id="btn-all" onclick="downloadAll()">↓ Download All</button>
+  </div>
+</div>
+<div class="app">
+<!-- LEFT SIDEBAR -->
+<div class="sb">
+  <div class="sbs" id="sb-content">
+    <div class="sbl">Content</div>
+    <div class="cg">
+      <div class="cgl">Quotes</div>
+      <div class="ci active" data-type="quote" data-idx="0" onclick="selContent(this)"><strong>Unique Object</strong><span>On the Gutenberg Revolution</span></div>
+<div class="ci " data-type="quote" data-idx="1" onclick="selContent(this)"><strong>Durable Visual Form</strong><span>Robert Bringhurst, The Element</span></div>
+<div class="ci " data-type="quote" data-idx="2" onclick="selContent(this)"><strong>Jeans of Typography</strong><span>Common Observation, Design Cul</span></div>
+    </div>
+    <div class="cg" style="margin-top:10px">
+      <div class="cgl">Factoids</div>
+      <div class="ci " data-type="fact" data-idx="0" onclick="selContent(this)"><strong>Gutenberg Invents Movable Type</strong><span>c.1440</span></div>
+<div class="ci " data-type="fact" data-idx="1" onclick="selContent(this)"><strong>Futura — Geometry Made Type</strong><span>1927</span></div>
+<div class="ci " data-type="fact" data-idx="2" onclick="selContent(this)"><strong>Helvetica — The World's Typeface</strong><span>1957</span></div>
+<div class="ci " data-type="fact" data-idx="3" onclick="selContent(this)"><strong>The Mac Gives Computers a Voice</strong><span>1984</span></div>
+<div class="ci " data-type="fact" data-idx="4" onclick="selContent(this)"><strong>Variable Fonts</strong><span>2016</span></div>
+    </div>
+    <div class="cg" style="margin-top:10px">
+      <div class="cgl">Stats</div>
+      <div class="ci " data-type="stat" data-idx="0" onclick="selContent(this)"><strong>1455 Gutenberg's Bible</strong><span>Year of the first great printed boo</span></div>
+<div class="ci " data-type="stat" data-idx="1" onclick="selContent(this)"><strong>500K+ Typeface Families</strong><span>Estimated total in existence today</span></div>
+<div class="ci " data-type="stat" data-idx="2" onclick="selContent(this)"><strong>15T Daily Google Font Views</strong><span>Per day across the web</span></div>
+    </div>
+  </div>
+  <div class="sbs">
+    <div class="sbl">Style</div>
+    <div class="stbtns">
+      <button class="stbtn active" data-style="boldtype" onclick="selStyle(this)">Bold Type<small>Text as design. Pure typographic weight.</small></button>
+      <button class="stbtn" data-style="splitgrid" onclick="selStyle(this)">Split Grid<small>Text panel + image or color block.</small></button>
+      <button class="stbtn" data-style="branded" onclick="selStyle(this)">Branded<small>Bold Type + mascot mark.</small></button>
+      <button class="stbtn" data-style="ogimage" onclick="selStyle(this)">OG Image<small>Title card · og-typography.png</small></button>
+    </div>
+  </div>
+  <div class="sbs" id="sb-bg">
+    <div class="sbl">Background</div>
+    <div class="swatches">
+      <div class="sw active" data-pal="light" onclick="selPal(this)"><div class="sw-dot" style="background:#FAFAFA;border:1px solid #ccc;"></div><div class="sw-lbl" style="color:rgba(255,255,255,.25);">Light</div></div>
+      <div class="sw" data-pal="dark" onclick="selPal(this)"><div class="sw-dot" style="background:#000000;"></div><div class="sw-lbl" style="color:rgba(255,255,255,.25);">Dark</div></div>
+      <div class="sw" data-pal="accent" onclick="selPal(this)"><div class="sw-dot" style="background:#E30613;"></div><div class="sw-lbl" style="color:#E30613;">Accent</div></div>
+      <div class="sw" data-pal="accent2" onclick="selPal(this)"><div class="sw-dot" style="background:#ffffff;"></div><div class="sw-lbl" style="color:#ffffff;">Accent 2</div></div>
+    </div>
+  </div>
+  <div class="sbs" id="sb-hl">
+    <div class="sbl">Highlight</div>
+    <div class="hlps">
+      <button class="hlp active" data-hl="accent" onclick="selHL(this)">Accent</button>
+      <button class="hlp" data-hl="reverse" onclick="selHL(this)">Reverse</button>
+      <button class="hlp" data-hl="outline" onclick="selHL(this)">Outline</button>
+      <button class="hlp" data-hl="none" onclick="selHL(this)">None</button>
+    </div>
+  </div>
+  <div class="sbs" id="sb-image" style="display:none;">
+    <div class="sbl">Layout</div>
+    <div class="lbtns" style="margin-bottom:10px;">
+      <button class="lbtn active" data-layout="text|image" onclick="selLayout(this)">Text | Image</button>
+      <button class="lbtn" data-layout="image|text" onclick="selLayout(this)">Image | Text</button>
+      <button class="lbtn" data-layout="text|color" onclick="selLayout(this)">Text | Color</button>
+      <button class="lbtn" data-layout="color|text" onclick="selLayout(this)">Color | Text</button>
+    </div>
+    <div class="sbl">Panel BG</div>
+    <div class="swatches" style="margin-bottom:10px;">
+      <div class="sw active" data-sgpal="dark" onclick="selSGPal(this)"><div class="sw-dot" style="background:#000000;"></div><div class="sw-lbl" style="color:rgba(255,255,255,.25);">Dark</div></div>
+      <div class="sw" data-sgpal="light" onclick="selSGPal(this)"><div class="sw-dot" style="background:#FAFAFA;border:1px solid #ccc;"></div><div class="sw-lbl" style="color:rgba(255,255,255,.25);">Light</div></div>
+    </div>
+    <div class="sbl">Color Panel</div>
+    <div class="igrid" style="margin-bottom:10px;">
+      <div class="img-thumb active" data-img="none" data-color="#E30613" onclick="selImg(this)" style="background:#E30613;display:flex;align-items:center;justify-content:center;"><div class="fb" style="color:#fff;font-weight:700;font-size:7px;font-family:var(--mono);">RED</div></div>
+<div class="img-thumb " data-img="none" data-color="#000000" onclick="selImg(this)" style="background:#000000;display:flex;align-items:center;justify-content:center;"><div class="fb" style="color:#666;font-weight:700;font-size:7px;font-family:var(--mono);">BLACK</div></div>
+<div class="img-thumb " data-img="none" data-color="#ffffff" onclick="selImg(this)" style="background:#ffffff;display:flex;align-items:center;justify-content:center;"><div class="fb" style="color:#000;font-weight:700;font-size:7px;font-family:var(--mono);">WHITE</div></div>
+<div class="img-thumb " data-img="none" data-color="#FAFAFA" onclick="selImg(this)" style="background:#FAFAFA;display:flex;align-items:center;justify-content:center;"><div class="fb" style="color:#000;font-weight:700;font-size:7px;font-family:var(--mono);">PAPER</div></div>
+<div class="img-thumb " data-img="none" data-color="#333333" onclick="selImg(this)" style="background:#333333;display:flex;align-items:center;justify-content:center;"><div class="fb" style="color:#ccc;font-weight:700;font-size:7px;font-family:var(--mono);">LEAD</div></div>
+<div class="img-thumb " data-img="none" data-color="#F5E6CC" onclick="selImg(this)" style="background:#F5E6CC;display:flex;align-items:center;justify-content:center;"><div class="fb" style="color:#000;font-weight:700;font-size:7px;font-family:var(--mono);">VELLUM</div></div>
+    </div>
+    <div class="sbl">Era Images</div><div class="igrid" style="margin-bottom:10px;"><div class="img-thumb " data-img="typography/images/gutenberg-bible.jpg" onclick="selImg(this)"><img src="typography/images/gutenberg-bible.jpg" alt="" onerror="this.parentElement.innerHTML='<div class=fb>Gutenberg Bible</div>'"></div>
+<div class="img-thumb " data-img="typography/images/garamond-specimen.jpg" onclick="selImg(this)"><img src="typography/images/garamond-specimen.jpg" alt="" onerror="this.parentElement.innerHTML='<div class=fb>Garamond</div>'"></div>
+<div class="img-thumb " data-img="typography/images/printing-press.jpg" onclick="selImg(this)"><img src="typography/images/printing-press.jpg" alt="" onerror="this.parentElement.innerHTML='<div class=fb>Printing Press</div>'"></div></div>
+    <div class="sbl">People</div><div class="igrid"><div class="img-thumb " data-img="typography/images/gutenberg-portrait.jpg" onclick="selImg(this)"><img src="typography/images/gutenberg-portrait.jpg" alt="" onerror="this.parentElement.innerHTML='<div class=fb>Gutenberg</div>'"></div>
+<div class="img-thumb " data-img="typography/images/claude-garamond.jpg" onclick="selImg(this)"><img src="typography/images/claude-garamond.jpg" alt="" onerror="this.parentElement.innerHTML='<div class=fb>Garamond</div>'"></div>
+<div class="img-thumb " data-img="typography/images/giambattista-bodoni.jpg" onclick="selImg(this)"><img src="typography/images/giambattista-bodoni.jpg" alt="" onerror="this.parentElement.innerHTML='<div class=fb>Bodoni</div>'"></div>
+<div class="img-thumb " data-img="typography/images/paul-renner.jpg" onclick="selImg(this)"><img src="typography/images/paul-renner.jpg" alt="" onerror="this.parentElement.innerHTML='<div class=fb>Renner</div>'"></div>
+<div class="img-thumb " data-img="typography/images/jan-tschichold.jpg" onclick="selImg(this)"><img src="typography/images/jan-tschichold.jpg" alt="" onerror="this.parentElement.innerHTML='<div class=fb>Tschichold</div>'"></div>
+<div class="img-thumb " data-img="typography/images/max-miedinger.jpg" onclick="selImg(this)"><img src="typography/images/max-miedinger.jpg" alt="" onerror="this.parentElement.innerHTML='<div class=fb>Miedinger</div>'"></div>
+<div class="img-thumb " data-img="typography/images/adrian-frutiger.jpg" onclick="selImg(this)"><img src="typography/images/adrian-frutiger.jpg" alt="" onerror="this.parentElement.innerHTML='<div class=fb>Frutiger</div>'"></div>
+<div class="img-thumb " data-img="typography/images/massimo-vignelli.jpg" onclick="selImg(this)"><img src="typography/images/massimo-vignelli.jpg" alt="" onerror="this.parentElement.innerHTML='<div class=fb>Vignelli</div>'"></div>
+<div class="img-thumb " data-img="typography/images/susan-kare.jpg" onclick="selImg(this)"><img src="typography/images/susan-kare.jpg" alt="" onerror="this.parentElement.innerHTML='<div class=fb>Susan Kare</div>'"></div></div>
+  </div>
+  <div class="sbs" id="sb-og" style="display:none;">
+    <div class="sbl">Layout</div>
+    <div class="og-lbtns" style="margin-bottom:10px;">
+      <button class="lbtn active" data-oglayout="text|image" onclick="selOGLayout(this)">Title | Image</button>
+      <button class="lbtn" data-oglayout="image|text" onclick="selOGLayout(this)">Image | Title</button>
+      <button class="lbtn" data-oglayout="text|color" onclick="selOGLayout(this)">Title | Color</button>
+    </div>
+    <div class="sbl">Subtitle</div>
+    <textarea class="ogsub" id="og-sub" rows="3" oninput="updateAll()">From Gutenberg's press to variable fonts and beyond.</textarea>
+    <div class="sbl" style="margin-top:12px;">Color Panel</div>
+    <div class="igrid" style="margin-bottom:10px;">
+      <div class="img-thumb og-opt active" data-img="none" data-color="#E30613" onclick="selOGImg(this)" style="background:#E30613;display:flex;align-items:center;justify-content:center;"><div class="fb" style="color:#fff;font-weight:700;font-size:7px;font-family:var(--mono);">RED</div></div>
+<div class="img-thumb og-opt" data-img="none" data-color="#000000" onclick="selOGImg(this)" style="background:#000000;display:flex;align-items:center;justify-content:center;"><div class="fb" style="color:#666;font-weight:700;font-size:7px;font-family:var(--mono);">BLACK</div></div>
+<div class="img-thumb og-opt" data-img="none" data-color="#ffffff" onclick="selOGImg(this)" style="background:#ffffff;display:flex;align-items:center;justify-content:center;"><div class="fb" style="color:#000;font-weight:700;font-size:7px;font-family:var(--mono);">WHITE</div></div>
+<div class="img-thumb og-opt" data-img="none" data-color="#FAFAFA" onclick="selOGImg(this)" style="background:#FAFAFA;display:flex;align-items:center;justify-content:center;"><div class="fb" style="color:#000;font-weight:700;font-size:7px;font-family:var(--mono);">PAPER</div></div>
+<div class="img-thumb og-opt" data-img="none" data-color="#333333" onclick="selOGImg(this)" style="background:#333333;display:flex;align-items:center;justify-content:center;"><div class="fb" style="color:#ccc;font-weight:700;font-size:7px;font-family:var(--mono);">LEAD</div></div>
+<div class="img-thumb og-opt" data-img="none" data-color="#F5E6CC" onclick="selOGImg(this)" style="background:#F5E6CC;display:flex;align-items:center;justify-content:center;"><div class="fb" style="color:#000;font-weight:700;font-size:7px;font-family:var(--mono);">VELLUM</div></div>
+    </div>
+    <div class="sbl">Era Images</div><div class="igrid"><div class="img-thumb og-opt" data-img="typography/images/gutenberg-bible.jpg" onclick="selOGImg(this)"><img src="typography/images/gutenberg-bible.jpg" alt="" onerror="this.parentElement.innerHTML='<div class=fb>Gutenberg Bible</div>'"></div>
+<div class="img-thumb og-opt" data-img="typography/images/garamond-specimen.jpg" onclick="selOGImg(this)"><img src="typography/images/garamond-specimen.jpg" alt="" onerror="this.parentElement.innerHTML='<div class=fb>Garamond</div>'"></div>
+<div class="img-thumb og-opt" data-img="typography/images/printing-press.jpg" onclick="selOGImg(this)"><img src="typography/images/printing-press.jpg" alt="" onerror="this.parentElement.innerHTML='<div class=fb>Printing Press</div>'"></div></div>
+  </div>
+</div>
+<!-- CANVAS AREA -->
+<div class="ca">
+  <div class="cgrid">
+    <div class="cw"><div class="cm"><span class="cn">OG / Twitter</span><span class="cd">1200×630</span><button class="dlb" onclick="dlC('og')">↓ PNG</button></div><div class="cf og" id="canvas-og"></div></div>
+    <div class="cw"><div class="cm"><span class="cn">Twitter / X</span><span class="cd">1200×675</span><button class="dlb" onclick="dlC('tw')">↓ PNG</button></div><div class="cf tw" id="canvas-tw"></div></div>
+    <div class="cw"><div class="cm"><span class="cn">IG Square</span><span class="cd">1080×1080</span><button class="dlb" onclick="dlC('sq')">↓ PNG</button></div><div class="cf sq" id="canvas-sq"></div></div>
+    <div class="cw"><div class="cm"><span class="cn">IG Vertical</span><span class="cd">1080×1350</span><button class="dlb" onclick="dlC('vt')">↓ PNG</button></div><div class="cf vt" id="canvas-vt"></div></div>
+  </div>
+</div>
+<!-- RIGHT SIDEBAR -->
+<div class="rsb">
+  <div class="rsbs"><div class="rsbl">Active Content</div><div class="rsbtext" id="rsb-text">Before printing, every book was a unique object. After Gutenberg, every book was</div><div class="rsbattr" id="rsb-attr">On the Gutenberg Revolution</div></div>
+  <div class="rsbs"><div class="rsbl">Highlight Word</div><input class="hlinput" id="hl-input" type="text" value="every book was a unique object" oninput="updateAll()"></div>
+  <div class="rsbs">
+    <div class="rsbl">Palette</div>
+    <div class="rsw">
+      <div class="rswr"><div class="rsdot" style="background:#E30613;"></div><div><div class="rssn">Accent</div><div class="rsh">#E30613</div></div></div>
+      <div class="rswr"><div class="rsdot" style="background:#ffffff;"></div><div><div class="rssn">Accent 2</div><div class="rsh">#ffffff</div></div></div>
+      <div class="rswr"><div class="rsdot" style="background:#000000;border:1px solid #1e1e1e;"></div><div><div class="rssn">Dark BG</div><div class="rsh">#000000</div></div></div>
+      <div class="rswr"><div class="rsdot" style="background:#FAFAFA;border:1px solid #ccc;"></div><div><div class="rssn">Light BG</div><div class="rsh">#FAFAFA</div></div></div>
+    </div>
+  </div>
+  <div class="rsbs">
+    <div class="rsbl">Fonts</div>
+    <div>
+      <div class="rsfont" style="font-family:'Archivo Black',sans-serif;font-weight:700;">Archivo Black<span>Display</span></div>
+      <div class="rsfont" style="font-family:'Archivo',sans-serif;margin-top:5px;">Archivo<span>Body</span></div>
+      <div class="rsfont" style="font-family:'IBM Plex Mono',monospace;margin-top:5px;">IBM Plex Mono<span>Mono</span></div>
+    </div>
+  </div>
+</div>
+</div>
+<script>
+(function(){
+const CONTENT={
+  quote:[{text:"Before printing, {every book was a unique object.} After Gutenberg, every book was the same.",attr:"On the Gutenberg Revolution",hl:"every book was a unique object",bgNum:"1455"},
+    {text:"Typography is the craft of {endowing human language with a durable visual form.}",attr:"Robert Bringhurst, The Elements of Typographic Style",hl:"endowing human language with a durable visual form",bgNum:"92"},
+    {text:"Helvetica is the jeans of typography. {Everybody wears it, nobody thinks about it.}",attr:"Common Observation, Design Culture",hl:"Everybody wears it, nobody thinks about it",bgNum:"57"}],
+  fact:[{year:"c.1440",title:"Gutenberg Invents Movable Type",body:"A goldsmith in Mainz synthesises the screw press, movable metal type, and oil-based ink. The first practical printing system in the West. The Renaissance follows.",hl:"movable type",bgNum:"1440"},
+    {year:"1927",title:"Futura — Geometry Made Type",body:"Paul Renner applies Bauhaus geometry to a typeface family. Circles, triangles, absolute rationalism. Used everywhere from Volkswagen to the Apollo Moon plaques.",hl:"geometry",bgNum:"27"},
+    {year:"1957",title:"Helvetica — The World's Typeface",body:"Max Miedinger creates Neue Haas Grotesk. A typeface of such precise neutrality it becomes the default voice of corporate modernity. Renamed Helvetica.",hl:"neutrality",bgNum:"57"},
+    {year:"1984",title:"The Mac Gives Computers a Voice",body:"Susan Kare creates Chicago, Geneva, Monaco — the original Mac fonts on a 32×32 pixel grid. Computers suddenly had a human face. Warmth from constraints.",hl:"human face",bgNum:"84"},
+    {year:"2016",title:"Variable Fonts",body:"A single font file containing infinite variations along any design axis — weight, width, optical size, slant. Typography ceases to be discrete. It becomes continuous.",hl:"infinite variations",bgNum:"16"}],
+  stat:[{num:"1455",label:"Gutenberg's Bible",sub:"Year of the first great printed book",hl:"1455",bgNum:"1455"},
+    {num:"500K+",label:"Typeface Families",sub:"Estimated total in existence today",hl:"500K+",bgNum:"500"},
+    {num:"15T",label:"Daily Google Font Views",sub:"Per day across the web",hl:"15T",bgNum:"15"}]
+};
+const PALS={
+  light:{bg:"#FAFAFA",text:"#000000",accent:"#CC0011",muted:"rgba(0,0,0,.35)"},
+  dark: {bg:"#000000",text:"#ffffff",accent:"#E30613",muted:"rgba(255,255,255,.25)"},
+  accent: {bg:"#E30613",text:"#000000",accent:"#ffffff",muted:"rgba(0,0,0,.4)"},
+  accent2:{bg:"#ffffff",text:"#000000",accent:"#E30613",muted:"rgba(0,0,0,.4)"}
+};
+const SGPALS={
+  dark: {bg:"#000000",text:"#ffffff",accent:"#E30613",muted:"rgba(255,255,255,.25)"},
+  light:{bg:"#FAFAFA",text:"#000000",accent:"#CC0011",muted:"rgba(0,0,0,.35)"}
+};
+const MASCOT=(a)=>`<svg width="20" height="20" viewBox="0 0 400 400" xmlns="http://www.w3.org/2000/svg" style="opacity:.6;position:absolute;bottom:6%;right:7%;"><rect width="400" height="400" fill="#08090C"/><rect x="6" y="6" width="388" height="388" fill="none" stroke="${a}" stroke-width="12"/><rect x="55" y="118" width="46" height="46" fill="${a}" opacity=".3"/><rect x="178" y="118" width="46" height="46" fill="${a}" opacity=".3"/><rect x="55" y="278" width="170" height="36" fill="${a}"/></svg>`;
+const CW={og:600,tw:600,sq:540,vt:432};
+const CH={og:315,tw:338,sq:540,vt:540};
+const FMTS=["og","tw","sq","vt"];
+const FNAMES={og:"og",tw:"twitter",sq:"ig-square",vt:"ig-vertical"};
+const SCALES={og:2,tw:2,sq:2,vt:2.5};
+let S={type:"quote",idx:0,style:"boldtype",pal:"light",hl:"accent",hlWord:"every book was a unique object",img:"none",panelColor:"#E30613",sgPal:"dark",layout:"text|image",ogLayout:"text|image",ogImg:"none",ogColor:"#E30613"};
+function fitText(el,aw,ah,min,max){let lo=min,hi=max;el.style.fontSize=hi+"px";while(lo<hi-1){const mid=Math.floor((lo+hi)/2);el.style.fontSize=mid+"px";if(el.scrollWidth<=aw&&el.scrollHeight<=ah)lo=mid;else hi=mid;}el.style.fontSize=lo+"px";}
+function applyHL(text,word,style,accent,bg){if(!word||style==="none")return esc(text);const h=esc(text),w=esc(word).replace(/[.*+?^${}()|[\]\\]/g,"\\$&"),re=new RegExp(`(${w})`,"gi");if(style==="accent")return h.replace(re,`<span style="color:${accent}">$1</span>`);if(style==="reverse")return h.replace(re,`<span style="background:${accent};color:${bg};padding:0 .04em;">$1</span>`);if(style==="outline")return h.replace(re,`<span style="-webkit-text-stroke:2px currentColor;color:transparent;">$1</span>`);return h;}
+function esc(s){return String(s).replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;");}
+function getC(){const it=CONTENT[S.type][S.idx];let d="",y="",a="",bn=it.bgNum||"";if(S.type==="quote"){d=it.text.replace(/[{}]/g,"");a=it.attr;}else if(S.type==="fact"){d=it.title;y=it.year;}else{d=it.num;y=it.label;a=it.sub;}return{d,y,a,bn};}
+window.selContent=function(el){document.querySelectorAll(".ci").forEach(i=>i.classList.remove("active"));el.classList.add("active");S.type=el.dataset.type;S.idx=parseInt(el.dataset.idx);const it=CONTENT[S.type][S.idx];S.hlWord=it.hl||"";document.getElementById("hl-input").value=S.hlWord;document.getElementById("rsb-text").textContent=it.text?it.text.replace(/[{}]/g,""):it.num+" "+it.label;document.getElementById("rsb-attr").textContent=it.attr||it.sub||"";updateAll();};
+window.selStyle=function(el){document.querySelectorAll(".stbtn").forEach(b=>b.classList.remove("active"));el.classList.add("active");S.style=el.dataset.style;const isOG=S.style==="ogimage",isSplit=S.style==="splitgrid";document.getElementById("sb-content").style.display=isOG?"none":"";document.getElementById("sb-bg").style.display=(isSplit||isOG)?"none":"";document.getElementById("sb-hl").style.display=isOG?"none":"";document.getElementById("sb-image").style.display=isSplit?"":"none";document.getElementById("sb-og").style.display=isOG?"":"none";["tw","sq","vt"].forEach(f=>{const w=document.getElementById("canvas-"+f).closest(".cw");w.style.opacity=isOG?".25":"1";w.style.pointerEvents=isOG?"none":"";});document.getElementById("btn-set").style.display=isOG?"none":"";document.getElementById("btn-all").textContent=isOG?"↓ og-typography.png":"↓ Download All";updateAll();};
+window.selPal=function(el){document.querySelectorAll("[data-pal]").forEach(s=>s.classList.remove("active"));el.classList.add("active");S.pal=el.dataset.pal;updateAll();};
+window.selSGPal=function(el){document.querySelectorAll("[data-sgpal]").forEach(s=>s.classList.remove("active"));el.classList.add("active");S.sgPal=el.dataset.sgpal;updateAll();};
+window.selHL=function(el){document.querySelectorAll(".hlp").forEach(p=>p.classList.remove("active"));el.classList.add("active");S.hl=el.dataset.hl;updateAll();};
+window.selImg=function(el){document.querySelectorAll("#sb-image .img-thumb").forEach(i=>i.classList.remove("active"));el.classList.add("active");S.img=el.dataset.img;S.panelColor=el.dataset.color||"#E30613";const hi=S.img&&S.img!=="none";if(hi&&(S.layout==="text|color"||S.layout==="color|text")){S.layout=S.layout==="color|text"?"image|text":"text|image";document.querySelectorAll(".lbtn[data-layout]").forEach(b=>b.classList.toggle("active",b.dataset.layout===S.layout));}else if(!hi&&(S.layout==="text|image"||S.layout==="image|text")){S.layout=S.layout==="image|text"?"color|text":"text|color";document.querySelectorAll(".lbtn[data-layout]").forEach(b=>b.classList.toggle("active",b.dataset.layout===S.layout));}updateAll();};
+window.selLayout=function(el){document.querySelectorAll(".lbtn[data-layout]").forEach(b=>b.classList.remove("active"));el.classList.add("active");S.layout=el.dataset.layout;updateAll();};
+window.selOGLayout=function(el){document.querySelectorAll("[data-oglayout]").forEach(b=>b.classList.remove("active"));el.classList.add("active");S.ogLayout=el.dataset.oglayout;updateAll();};
+window.selOGImg=function(el){document.querySelectorAll(".og-opt").forEach(i=>i.classList.remove("active"));el.classList.add("active");S.ogImg=el.dataset.img;S.ogColor=el.dataset.color||"#E30613";updateAll();};
+document.getElementById("hl-input").addEventListener("input",e=>{S.hlWord=e.target.value;updateAll();});
+function renderBT(el,fmt,mascot){const p=PALS[S.pal],{d,y,a,bn}=getC(),hl=document.getElementById("hl-input").value||S.hlWord,aw=CW[fmt]*0.86,ah=CH[fmt]*0.72,max=Math.round(CW[fmt]*0.18),min=14,h=applyHL(d,hl,S.hl,p.accent,p.bg);el.innerHTML=`<div style="width:100%;height:100%;position:relative;overflow:hidden;display:flex;flex-direction:column;justify-content:center;align-items:flex-start;padding:7%;background:${p.bg};color:${p.text};">${bn?`<div style="position:absolute;bottom:-10px;right:-5px;font-family:'Archivo Black',sans-serif;font-weight:700;font-size:220px;color:${p.accent};opacity:.04;line-height:1;pointer-events:none;user-select:none;">${bn}</div>`:""}<div style="position:relative;z-index:1;max-width:100%;">${y?`<div style="font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:${p.accent};opacity:.8;margin-bottom:8px;">${esc(y)}</div>`:""} <div class="btf-${fmt}" style="font-family:'Archivo Black',sans-serif;font-weight:700;text-transform:uppercase;line-height:.92;letter-spacing:-.025em;font-size:${max}px;">${h}</div></div>${a?`<div style="position:absolute;bottom:6%;left:7%;right:${mascot?"14%":"7%"};font-family:'IBM Plex Mono',monospace;font-size:9px;color:${p.muted};letter-spacing:.04em;line-height:1.4;z-index:1;">${esc(a)}</div>`:""}</div>${mascot?MASCOT(p.accent):""}</div>`;const fe=el.querySelector(`.btf-${fmt}`);if(fe)requestAnimationFrame(()=>fitText(fe,aw,ah,min,max));}
+function renderSG(el,fmt){const p=SGPALS[S.sgPal],{d,y,a}=getC(),hl=document.getElementById("hl-input").value||S.hlWord,isV=fmt==="vt",pw=isV?CW[fmt]*0.86:CW[fmt]*0.44,ph=isV?CH[fmt]*0.50:CH[fmt]*0.72,max=Math.round(pw*0.22),min=13,h=applyHL(d,hl,S.hl,p.accent,p.bg),bright=["#39FF14","#00FF88","#CCFF00","#F4F9EC","#F2EFE9","#FAFAF5","#F8F3E8","#F7F7F5","#FAFAFA","#EDF5F0","#F0F6FF","#E8F4C0","#B4FF3C","#C8962A"],dot=bright.some(c=>S.panelColor.toUpperCase()===c.toUpperCase())?"rgba(0,0,0,.12)":"rgba(255,255,255,.12)",useImg=S.img&&S.img!=="none"&&(S.layout==="text|image"||S.layout==="image|text");const tp=`<div style="flex:1;display:flex;flex-direction:column;justify-content:center;padding:9% 8%;position:relative;overflow:hidden;background:${p.bg};color:${p.text};"><div style="position:relative;z-index:1;max-width:100%;">${y?`<div style="font-family:'IBM Plex Mono',monospace;font-size:8px;letter-spacing:.2em;text-transform:uppercase;color:${p.accent};opacity:.8;margin-bottom:8px;">${esc(y)}</div>`:""} <div class="sgf-${fmt}" style="font-family:'Archivo Black',sans-serif;font-weight:700;text-transform:uppercase;line-height:.92;letter-spacing:-.025em;font-size:${max}px;">${h}</div></div>${a?`<div style="margin-top:auto;padding-top:10px;font-family:'IBM Plex Mono',monospace;font-size:8px;color:${p.muted};letter-spacing:.04em;line-height:1.4;">${esc(a)}</div>`:""}</div>`;const sp=useImg?`<div style="flex:1;position:relative;overflow:hidden;"><img src="${S.img}" style="width:100%;height:100%;object-fit:cover;display:block;"><div style="position:absolute;inset:0;background:${S.panelColor};opacity:.18;mix-blend-mode:multiply;"></div></div>`:`<div style="flex:1;position:relative;overflow:hidden;background:${S.panelColor};"><div style="position:absolute;inset:0;background-image:radial-gradient(circle,${dot} 1px,transparent 1px);background-size:18px 18px;"></div></div>`;const panels=(S.layout==="text|image"||S.layout==="text|color")?tp+sp:sp+tp;el.innerHTML=`<div style="width:100%;height:100%;display:flex;flex-direction:${isV?"column":"row"};overflow:hidden;">${panels}</div>`;const fe=el.querySelector(`.sgf-${fmt}`);if(fe)requestAnimationFrame(()=>fitText(fe,pw,ph,min,max));}
+function renderOG(el){const sub=(document.getElementById("og-sub")||{}).value||"From Gutenberg's press to variable fonts and beyond.",bright=["#39FF14","#00FF88","#CCFF00","#F4F9EC","#F2EFE9","#FAFAF5","#F8F3E8","#F7F7F5","#FAFAFA","#EDF5F0","#F0F6FF","#E8F4C0","#B4FF3C","#C8962A"],dot=bright.some(c=>S.ogColor.toUpperCase()===c.toUpperCase())?"rgba(0,0,0,.1)":"rgba(255,255,255,.1)",useImg=S.ogImg&&S.ogImg!=="none"&&(S.ogLayout==="text|image"||S.ogLayout==="image|text");const tp=`<div style="flex:1;background:#000000;display:flex;flex-direction:column;justify-content:center;padding:9% 8%;position:relative;overflow:hidden;"><div style="font-family:'IBM Plex Mono',monospace;font-size:13px;letter-spacing:.15em;text-transform:uppercase;color:rgba(255,255,255,.25);margin-bottom:6px;">A (Brief) History of</div><div style="font-family:'Archivo Black',sans-serif;font-weight:700;font-size:72px;line-height:.88;letter-spacing:-.03em;text-transform:uppercase;color:#ffffff;padding-bottom:16px;">TYPOGRAPHY<span style="color:#E30613;">_</span></div><div style="font-family:'IBM Plex Mono',monospace;font-size:13px;color:rgba(255,255,255,.5);line-height:1.5;max-width:85%;letter-spacing:.02em;">${esc(sub)}</div></div>`;const sp=useImg?`<div style="flex:1;position:relative;overflow:hidden;"><img src="${S.ogImg}" style="width:100%;height:100%;object-fit:cover;display:block;"><div style="position:absolute;inset:0;background:#E30613;opacity:.18;mix-blend-mode:multiply;"></div></div>`:`<div style="flex:1;position:relative;overflow:hidden;background:${S.ogColor};"><div style="position:absolute;inset:0;background-image:radial-gradient(circle,${dot} 1px,transparent 1px);background-size:18px 18px;"></div></div>`;const panels=(S.ogLayout==="text|image"||S.ogLayout==="text|color")?tp+sp:sp+tp;el.innerHTML=`<div style="width:100%;height:100%;display:flex;flex-direction:row;overflow:hidden;">${panels}</div>`;}
+function updateAll(){const fmts=["og","tw","sq","vt"];fmts.forEach(fmt=>{const el=document.getElementById("canvas-"+fmt);if(S.style==="boldtype")renderBT(el,fmt,false);else if(S.style==="branded")renderBT(el,fmt,true);else if(S.style==="splitgrid")renderSG(el,fmt);else if(S.style==="ogimage"&&fmt==="og")renderOG(el);});}
+window.updateAll=updateAll;
+function d2b(d){const a=d.split(","),m=a[0].match(/:(.*?);/)[1],b=atob(a[1]);let n=b.length;const u=new Uint8Array(n);while(n--)u[n]=b.charCodeAt(n);return new Blob([u],{type:m});}
+function c2b(fmt){return new Promise((res,rej)=>{const el=document.getElementById("canvas-"+fmt);html2canvas(el,{scale:SCALES[fmt],useCORS:true,allowTaint:true,backgroundColor:"#000000",logging:false}).then(c=>{if(c.toBlob)c.toBlob(b=>res(b||d2b(c.toDataURL("image/png"))),"image/png");else res(d2b(c.toDataURL("image/png")));}).catch(rej);});}
+function trig(blob,name){const url=URL.createObjectURL(blob),a=document.createElement("a");a.href=url;a.download=name;document.body.appendChild(a);a.click();document.body.removeChild(a);setTimeout(()=>URL.revokeObjectURL(url),2000);}
+function bn(){return`bhoe-typography-${S.type}${S.idx}-${S.style}`;}
+window.dlC=function(fmt){if(S.style==="ogimage"){c2b("og").then(b=>trig(b,"og-typography.png")).catch(e=>alert("Export failed. Serve over HTTP."));return;}c2b(fmt).then(b=>trig(b,`${bn()}-${FNAMES[fmt]}.png`)).catch(e=>alert("Export failed. Serve over HTTP."));};
+window.downloadSet=function(){if(S.style==="ogimage"){window.dlC("og");return;}const btn=document.getElementById("btn-set");btn.disabled=true;btn.textContent="Rendering…";Promise.all(FMTS.map(f=>c2b(f).then(b=>{return{b,f}}))).then(rs=>{const zip=new JSZip();rs.forEach(({b,f})=>zip.file(`${bn()}-${FNAMES[f]}.png`,b));zip.generateAsync({type:"blob"}).then(z=>{trig(z,`${bn()}.zip`);btn.disabled=false;btn.textContent="↓ This Set (4)";});}).catch(e=>{btn.disabled=false;btn.textContent="↓ This Set (4)";alert("Export failed. Serve over HTTP.");});};
+window.downloadAll=function(){if(S.style==="ogimage"){window.dlC("og");return;}const btn=document.getElementById("btn-all");btn.disabled=true;const saved={...S};const styles=["boldtype","splitgrid","branded"];const items=[...CONTENT.quote.map((_,i)=>{return{type:"quote",idx:i}}),...CONTENT.fact.map((_,i)=>{return{type:"fact",idx:i}}),...CONTENT.stat.map((_,i)=>{return{type:"stat",idx:i}})];const zip=new JSZip();const queue=[];styles.forEach(st=>items.forEach(({type,idx})=>FMTS.forEach(f=>queue.push({st,type,idx,f}))));let i=0;function next(){if(i>=queue.length){zip.generateAsync({type:"blob"}).then(z=>{Object.assign(S,saved);updateAll();trig(z,"bhoe-typography-all-posts.zip");btn.disabled=false;btn.textContent="↓ Download All";});return;}const {st,type,idx,f}=queue[i++];S.style=st;S.type=type;S.idx=idx;updateAll();btn.textContent=`Building… ${i}/${queue.length}`;setTimeout(()=>{c2b(f).then(b=>{zip.file(`bhoe-typography-${type}${idx}-${st}-${FNAMES[f]}.png`,b);next();}).catch(()=>next());},80);}next();};
+updateAll();
+})();
+</script>
+</body>
+</html>
