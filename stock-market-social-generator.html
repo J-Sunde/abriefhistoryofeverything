@@ -4,30 +4,11 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Social Post Generator — A (Brief) History of the Stock Market</title>
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;1,9..144,200;1,9..144,300;1,9..144,400&family=Geist:wght@200;300;400;500;600&family=Geist+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,700;1,9..144,200;1,9..144,300&family=Geist:wght@200;300;400;500;600&family=Geist+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js"></script>
 <style>
-:root {
-  --bg:     #050505;
-  --bg1:    #080808;
-  --bg2:    #0D0D0D;
-  --rule:   rgba(255,255,255,.06);
-  --rule2:  rgba(255,255,255,.03);
-  --muted:  rgba(232,237,245,.3);
-  --dim:    rgba(232,237,245,.45);
-  --text:   #E8EDF5;
-  --bright: #FFFFFF;
-  --accent: #B4FF3C;
-  --lbg:    #F7F7F5;
-  --ltxt:   #000000;
-  --lacc:   #3a7a00;
-  --a2bg:   #FF5533;
-  --a2txt:  #fff;
-  --display:'Fraunces';
-  --body:   'Geist';
-  --mono:   'Geist Mono';
-}
+:root{--bg:#050505;--bg1:#080808;--bg2:#0D0D0D;--rule:rgba(255,255,255,.06);--rule2:rgba(255,255,255,.03);--muted:rgba(232,237,245,.3);--dim:rgba(232,237,245,.55);--text:#E8EDF5;--bright:#FFFFFF;--accent:#B4FF3C;--lbg:#F7F7F5;--ltxt:#000000;--lacc:#3a7a00;--a2bg:#FF5533;--a2txt:#fff;}
 *{margin:0;padding:0;box-sizing:border-box;}
 html,body{height:100%;overflow:hidden;}
 body{background:var(--bg);color:var(--text);font-family:'Geist',sans-serif;font-size:14px;display:flex;flex-direction:column;}
@@ -37,82 +18,68 @@ body{background:var(--bg);color:var(--text);font-family:'Geist',sans-serif;font-
 .top-bar-title span{color:var(--accent);}
 .tbbtns{margin-left:auto;display:flex;gap:8px;}
 .tbdl{background:var(--accent);color:var(--bg);font-family:'Geist Mono',monospace;font-size:10px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;border:none;padding:6px 14px;cursor:pointer;transition:opacity .15s;white-space:nowrap;}
-.tbdl:hover{opacity:.8;}
-.tbdl.sec{background:transparent;color:var(--accent);border:1px solid rgba(180,255,60,.4);}
-.tbdl.sec:hover{background:rgba(180,255,60,.08);opacity:1;}
-.tbdl:disabled{opacity:.4;cursor:default;}
+.tbdl:hover{opacity:.8;}.tbdl.sec{background:transparent;color:var(--accent);border:1px solid rgba(180,255,60,.4);}.tbdl.sec:hover{background:rgba(180,255,60,.08);opacity:1;}.tbdl:disabled{opacity:.4;cursor:default;}
 .app{flex:1;display:flex;overflow:hidden;}
 .sb{width:240px;background:var(--bg1);border-right:1px solid var(--rule);display:flex;flex-direction:column;overflow-y:auto;flex-shrink:0;}
-.sb::-webkit-scrollbar{width:4px;}
-.sb::-webkit-scrollbar-thumb{background:var(--rule2);}
+.sb::-webkit-scrollbar{width:4px;}.sb::-webkit-scrollbar-thumb{background:var(--rule2);}
 .sbs{padding:14px;border-bottom:1px solid var(--rule);}
 .sbl{font-family:'Geist Mono',monospace;font-size:9px;letter-spacing:.2em;text-transform:uppercase;color:var(--muted);margin-bottom:10px;}
 .cg+.cg{margin-top:10px;}
 .cgl{font-family:'Geist Mono',monospace;font-size:8px;letter-spacing:.15em;text-transform:uppercase;color:var(--muted);opacity:.6;margin-bottom:5px;}
 .ci{padding:6px 8px;cursor:pointer;border:1px solid transparent;font-size:11px;line-height:1.3;color:var(--dim);transition:all .12s;border-radius:2px;}
-.ci:hover{color:var(--text);background:var(--bg2);}
-.ci.active{color:var(--accent);border-color:rgba(180,255,60,.3);background:rgba(180,255,60,.05);}
-.ci strong{display:block;font-family:'Fraunces',sans-serif;font-size:11px;font-weight:700;margin-bottom:2px;}
-.ci span{font-size:10px;color:var(--muted);}
+.ci:hover{color:var(--text);background:var(--bg2);}.ci.active{color:var(--accent);border-color:rgba(180,255,60,.3);background:rgba(180,255,60,.05);}
+.ci strong{display:block;font-family:'Geist',sans-serif;font-size:11px;font-weight:600;margin-bottom:2px;}.ci span{font-size:10px;color:var(--muted);}
 .stbtns{display:flex;flex-direction:column;gap:5px;}
-.stbtn{padding:8px 10px;border:1px solid var(--rule2);background:transparent;color:var(--dim);font-family:'Fraunces',sans-serif;font-size:12px;font-weight:700;letter-spacing:.05em;text-transform:uppercase;cursor:pointer;text-align:left;transition:all .12s;border-radius:2px;}
-.stbtn:hover{border-color:var(--dim);color:var(--text);}
-.stbtn.active{border-color:var(--accent);color:var(--accent);background:rgba(180,255,60,.06);}
-.stbtn small{display:block;font-family:'Geist',sans-serif;font-size:9px;font-weight:400;text-transform:none;letter-spacing:0;color:var(--muted);margin-top:2px;}
+.stbtn{padding:8px 10px;border:1px solid var(--rule2);background:transparent;color:var(--dim);font-family:'Geist',sans-serif;font-size:12px;font-weight:600;cursor:pointer;text-align:left;transition:all .12s;border-radius:2px;}
+.stbtn:hover{border-color:var(--dim);color:var(--text);}.stbtn.active{border-color:var(--accent);color:var(--accent);background:rgba(180,255,60,.06);}
+.stbtn small{display:block;font-family:'Geist',sans-serif;font-size:9px;font-weight:400;color:var(--muted);margin-top:2px;}
 .swatches{display:grid;grid-template-columns:1fr 1fr;gap:5px;}
 .sw{padding:8px 6px;cursor:pointer;border:2px solid transparent;border-radius:2px;text-align:center;transition:all .12s;}
-.sw:hover{transform:scale(1.04);}
-.sw.active{border-color:white;box-shadow:0 0 0 1px rgba(255,255,255,.2);}
-.sw-dot{height:22px;border-radius:1px;margin-bottom:4px;}
-.sw-lbl{font-family:'Geist Mono',monospace;font-size:8px;letter-spacing:.1em;text-transform:uppercase;}
+.sw:hover{transform:scale(1.04);}.sw.active{border-color:white;box-shadow:0 0 0 1px rgba(255,255,255,.2);}
+.sw-dot{height:22px;border-radius:1px;margin-bottom:4px;}.sw-lbl{font-family:'Geist Mono',monospace;font-size:8px;letter-spacing:.1em;text-transform:uppercase;}
 .hlps{display:flex;flex-wrap:wrap;gap:4px;}
 .hlp{padding:4px 9px;border:1px solid var(--rule2);background:transparent;color:var(--dim);font-family:'Geist Mono',monospace;font-size:9px;letter-spacing:.1em;text-transform:uppercase;cursor:pointer;border-radius:20px;transition:all .12s;}
-.hlp:hover{border-color:var(--dim);color:var(--text);}
-.hlp.active{border-color:var(--accent);color:var(--accent);background:rgba(180,255,60,.08);}
+.hlp:hover{border-color:var(--dim);color:var(--text);}.hlp.active{border-color:var(--accent);color:var(--accent);background:rgba(180,255,60,.08);}
 .igrid{display:grid;grid-template-columns:repeat(3,1fr);gap:4px;}
 .img-thumb{cursor:pointer;border:2px solid transparent;border-radius:2px;overflow:hidden;aspect-ratio:1;background:var(--bg2);transition:all .12s;display:flex;align-items:center;justify-content:center;}
-.img-thumb:hover{border-color:var(--dim);}
-.img-thumb.active{border-color:var(--accent);}
+.img-thumb:hover{border-color:var(--dim);}.img-thumb.active{border-color:var(--accent);}
 .img-thumb img{width:100%;height:100%;object-fit:cover;filter:grayscale(.5);}
 .fb{font-family:'Geist Mono',monospace;font-size:7px;color:var(--muted);text-align:center;padding:3px;line-height:1.3;}
 .lbtns{display:grid;grid-template-columns:1fr 1fr;gap:4px;}
 .lbtn{padding:5px;border:1px solid var(--rule2);background:transparent;color:var(--dim);font-family:'Geist Mono',monospace;font-size:8px;cursor:pointer;text-align:center;transition:all .12s;border-radius:2px;}
-.lbtn:hover{border-color:var(--dim);color:var(--text);}
-.lbtn.active{border-color:var(--accent);color:var(--accent);}
+.lbtn:hover{border-color:var(--dim);color:var(--text);}.lbtn.active{border-color:var(--accent);color:var(--accent);}
 .og-lbtns{display:grid;grid-template-columns:1fr;gap:4px;}
 .ca{flex:1;overflow-y:auto;padding:20px;background:var(--bg);}
-.ca::-webkit-scrollbar{width:5px;}
-.ca::-webkit-scrollbar-thumb{background:var(--rule2);}
+.ca::-webkit-scrollbar{width:5px;}.ca::-webkit-scrollbar-thumb{background:var(--rule2);}
 .cgrid{display:grid;grid-template-columns:1fr 1fr;gap:18px;max-width:1340px;margin:0 auto;}
-.cw{display:flex;flex-direction:column;gap:7px;}
-.cm{display:flex;align-items:center;gap:8px;}
+.cw{display:flex;flex-direction:column;gap:7px;}.cm{display:flex;align-items:center;gap:8px;}
 .cn{font-family:'Geist Mono',monospace;font-size:9px;letter-spacing:.15em;text-transform:uppercase;color:var(--muted);}
 .cd{font-family:'Geist Mono',monospace;font-size:9px;color:var(--rule2);margin-left:auto;}
 .dlb{background:transparent;border:1px solid var(--rule2);color:var(--dim);font-family:'Geist Mono',monospace;font-size:9px;letter-spacing:.1em;padding:3px 9px;cursor:pointer;transition:all .12s;text-transform:uppercase;border-radius:2px;}
 .dlb:hover{border-color:var(--accent);color:var(--accent);}
 .cf{background:var(--bg2);border:1px solid var(--rule);overflow:hidden;position:relative;flex-shrink:0;}
-.cf.og{width:600px;height:315px;}
-.cf.tw{width:600px;height:338px;}
-.cf.sq{width:540px;height:540px;}
-.cf.vt{width:432px;height:540px;}
+.cf.og{width:600px;height:315px;}.cf.tw{width:600px;height:338px;}.cf.sq{width:540px;height:540px;}.cf.vt{width:432px;height:540px;}
 .rsb{width:210px;background:var(--bg1);border-left:1px solid var(--rule);display:flex;flex-direction:column;overflow-y:auto;flex-shrink:0;}
-.rsb::-webkit-scrollbar{width:4px;}
-.rsb::-webkit-scrollbar-thumb{background:var(--rule2);}
+.rsb::-webkit-scrollbar{width:4px;}.rsb::-webkit-scrollbar-thumb{background:var(--rule2);}
 .rsbs{padding:14px;border-bottom:1px solid var(--rule);}
 .rsbl{font-family:'Geist Mono',monospace;font-size:9px;letter-spacing:.2em;text-transform:uppercase;color:var(--muted);margin-bottom:8px;}
-.rsbtext{font-family:'Fraunces',sans-serif;font-size:12px;color:var(--text);line-height:1.5;}
+.rsbtext{font-family:'Geist',sans-serif;font-size:12px;color:var(--text);line-height:1.5;}
 .rsbattr{font-family:'Geist Mono',monospace;font-size:9px;color:var(--muted);margin-top:5px;}
 .hlinput{width:100%;background:var(--bg2);border:1px solid var(--rule2);color:var(--accent);font-family:'Geist Mono',monospace;font-size:11px;padding:5px 7px;outline:none;margin-top:4px;border-radius:2px;}
 .hlinput:focus{border-color:var(--accent);}
-.rsw{display:flex;flex-direction:column;gap:5px;}
-.rswr{display:flex;align-items:center;gap:7px;}
+.rsw{display:flex;flex-direction:column;gap:5px;}.rswr{display:flex;align-items:center;gap:7px;}
 .rsdot{width:14px;height:14px;border-radius:2px;flex-shrink:0;}
 .rssn{font-family:'Geist Mono',monospace;font-size:9px;color:var(--dim);text-transform:uppercase;letter-spacing:.1em;}
 .rsh{font-family:'Geist Mono',monospace;font-size:9px;color:var(--muted);}
-.rsfont{font-size:10px;color:var(--dim);}
-.rsfont span{font-family:'Geist Mono',monospace;font-size:9px;color:var(--muted);display:block;}
+.rsfont{font-size:10px;color:var(--dim);}.rsfont span{font-family:'Geist Mono',monospace;font-size:9px;color:var(--muted);display:block;}
 .ogsub{width:100%;background:var(--bg2);border:1px solid var(--rule2);color:var(--text);font-family:'Geist Mono',monospace;font-size:10px;padding:6px 8px;resize:none;outline:none;line-height:1.5;border-radius:2px;margin-top:4px;}
 .ogsub:focus{border-color:var(--accent);}
+.tgl-row{display:grid;grid-template-columns:1fr 1fr;gap:4px;margin-bottom:10px;}
+.tgl{padding:5px 4px;border:1px solid var(--rule2);background:transparent;color:var(--dim);font-family:'Geist Mono',monospace;font-size:8px;letter-spacing:.06em;text-transform:uppercase;cursor:pointer;text-align:center;transition:all .12s;border-radius:2px;}
+.tgl:hover{border-color:var(--dim);color:var(--text);}.tgl.active{border-color:var(--accent);color:var(--accent);background:rgba(180,255,60,.08);}
+.bg3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:4px;margin-bottom:10px;}
+.bgsw{padding:7px 4px;border:2px solid var(--rule2);border-radius:2px;cursor:pointer;text-align:center;font-family:'Geist Mono',monospace;font-size:8px;letter-spacing:.06em;text-transform:uppercase;transition:all .12s;color:var(--dim);}
+.bgsw:hover{border-color:var(--dim);}.bgsw.active{border-color:var(--accent);}
 </style>
 </head>
 <body>
@@ -125,47 +92,46 @@ body{background:var(--bg);color:var(--text);font-family:'Geist',sans-serif;font-
   </div>
 </div>
 <div class="app">
-<!-- LEFT SIDEBAR -->
 <div class="sb">
   <div class="sbs" id="sb-content">
     <div class="sbl">Content</div>
     <div class="cg">
       <div class="cgl">Quotes</div>
-      <div class="ci active" data-type="quote" data-idx="0" onclick="selContent(this)"><strong>Voting Machine</strong><span>Benjamin Graham</span></div>
-<div class="ci " data-type="quote" data-idx="1" onclick="selContent(this)"><strong>Transferring Money</strong><span>Warren Buffett</span></div>
-<div class="ci " data-type="quote" data-idx="2" onclick="selContent(this)"><strong>This Time It's Different</strong><span>Sir John Templeton</span></div>
+      <div class="ci active" data-type="quote" data-idx="0" onclick="selContent(this)"><strong>Voting Machine</strong><span>Benjamin Graham, 1949</span></div>
+      <div class="ci" data-type="quote" data-idx="1" onclick="selContent(this)"><strong>Transferring Money</strong><span>Warren Buffett, 1989</span></div>
+      <div class="ci" data-type="quote" data-idx="2" onclick="selContent(this)"><strong>This Time It's Different</strong><span>Sir John Templeton, 1994</span></div>
     </div>
-    <div class="cg" style="margin-top:10px">
+    <div class="cg">
       <div class="cgl">Factoids</div>
-      <div class="ci " data-type="fact" data-idx="0" onclick="selContent(this)"><strong>The World's First IPO</strong><span>1602</span></div>
-<div class="ci " data-type="fact" data-idx="1" onclick="selContent(this)"><strong>The Buttonwood Agreement</strong><span>1792</span></div>
-<div class="ci " data-type="fact" data-idx="2" onclick="selContent(this)"><strong>The Great Crash</strong><span>1929</span></div>
-<div class="ci " data-type="fact" data-idx="3" onclick="selContent(this)"><strong>NASDAQ Opens</strong><span>1971</span></div>
-<div class="ci " data-type="fact" data-idx="4" onclick="selContent(this)"><strong>The Dot-Com Bubble</strong><span>1999–2001</span></div>
+      <div class="ci" data-type="fact" data-idx="0" onclick="selContent(this)"><strong>The World's First IPO</strong><span>1602 · VOC</span></div>
+      <div class="ci" data-type="fact" data-idx="1" onclick="selContent(this)"><strong>The Great Crash</strong><span>1929 · Black Tuesday</span></div>
+      <div class="ci" data-type="fact" data-idx="2" onclick="selContent(this)"><strong>Birth of the ETF</strong><span>1993 · SPY Launches</span></div>
+      <div class="ci" data-type="fact" data-idx="3" onclick="selContent(this)"><strong>The Flash Crash</strong><span>2010 · Algorithmic Trading</span></div>
+      <div class="ci" data-type="fact" data-idx="4" onclick="selContent(this)"><strong>The AI Market Surge</strong><span>2023 · NVIDIA &amp; Mag 7</span></div>
     </div>
-    <div class="cg" style="margin-top:10px">
+    <div class="cg">
       <div class="cgl">Stats</div>
-      <div class="ci " data-type="stat" data-idx="0" onclick="selContent(this)"><strong>$120T+ Global Market Cap</strong><span>Total value of all publicly traded </span></div>
-<div class="ci " data-type="stat" data-idx="1" onclick="selContent(this)"><strong>+33,000% Dow Since 1900</strong><span>The long arc of market returns</span></div>
-<div class="ci " data-type="stat" data-idx="2" onclick="selContent(this)"><strong>500 S&P Companies</strong><span>Representing ~80% of US equity mark</span></div>
+      <div class="ci" data-type="stat" data-idx="0" onclick="selContent(this)"><strong>$120T+</strong><span>Global Market Cap</span></div>
+      <div class="ci" data-type="stat" data-idx="1" onclick="selContent(this)"><strong>1792</strong><span>NYSE Founded</span></div>
+      <div class="ci" data-type="stat" data-idx="2" onclick="selContent(this)"><strong>+33,000%</strong><span>Dow Since 1900</span></div>
     </div>
   </div>
   <div class="sbs">
     <div class="sbl">Style</div>
     <div class="stbtns">
-      <button class="stbtn active" data-style="boldtype" onclick="selStyle(this)">Bold Type<small>Text as design. Pure typographic weight.</small></button>
-      <button class="stbtn" data-style="splitgrid" onclick="selStyle(this)">Split Grid<small>Text panel + image or color block.</small></button>
-      <button class="stbtn" data-style="branded" onclick="selStyle(this)">Branded<small>Bold Type + mascot mark.</small></button>
-      <button class="stbtn" data-style="ogimage" onclick="selStyle(this)">OG Image<small>Title card · og-stock-market.png</small></button>
+      <button class="stbtn active" data-style="boldtype" onclick="selStyle(this)">Bold Type<small>Quote as the design</small></button>
+      <button class="stbtn" data-style="splitgrid" onclick="selStyle(this)">Split Grid<small>Text + image/color panel</small></button>
+      <button class="stbtn" data-style="branded" onclick="selStyle(this)">Branded<small>Bold Type + mascot mark</small></button>
+      <button class="stbtn" data-style="ogimage" onclick="selStyle(this)">OG Image<small>Title card for the guide</small></button>
     </div>
   </div>
   <div class="sbs" id="sb-bg">
     <div class="sbl">Background</div>
     <div class="swatches">
-      <div class="sw active" data-pal="light" onclick="selPal(this)"><div class="sw-dot" style="background:#F7F7F5;border:1px solid #ccc;"></div><div class="sw-lbl" style="color:rgba(232,237,245,.3);">Light</div></div>
-      <div class="sw" data-pal="dark" onclick="selPal(this)"><div class="sw-dot" style="background:#050505;"></div><div class="sw-lbl" style="color:rgba(232,237,245,.3);">Dark</div></div>
-      <div class="sw" data-pal="accent" onclick="selPal(this)"><div class="sw-dot" style="background:#B4FF3C;"></div><div class="sw-lbl" style="color:#B4FF3C;">Accent</div></div>
-      <div class="sw" data-pal="accent2" onclick="selPal(this)"><div class="sw-dot" style="background:#FF5533;"></div><div class="sw-lbl" style="color:#FF5533;">Accent 2</div></div>
+      <div class="sw active" data-pal="dark" onclick="selPal(this)"><div class="sw-dot" style="background:#050505;"></div><div class="sw-lbl" style="color:var(--muted);">Dark</div></div>
+      <div class="sw" data-pal="light" onclick="selPal(this)"><div class="sw-dot" style="background:#F7F7F5;border:1px solid #ccc;"></div><div class="sw-lbl" style="color:var(--muted);">Light</div></div>
+      <div class="sw" data-pal="accent" onclick="selPal(this)"><div class="sw-dot" style="background:#B4FF3C;"></div><div class="sw-lbl" style="color:var(--muted);">Lime</div></div>
+      <div class="sw" data-pal="accent2" onclick="selPal(this)"><div class="sw-dot" style="background:#FF5533;"></div><div class="sw-lbl" style="color:var(--muted);">Red</div></div>
     </div>
   </div>
   <div class="sbs" id="sb-hl">
@@ -187,28 +153,39 @@ body{background:var(--bg);color:var(--text);font-family:'Geist',sans-serif;font-
     </div>
     <div class="sbl">Panel BG</div>
     <div class="swatches" style="margin-bottom:10px;">
-      <div class="sw active" data-sgpal="dark" onclick="selSGPal(this)"><div class="sw-dot" style="background:#050505;"></div><div class="sw-lbl" style="color:rgba(232,237,245,.3);">Dark</div></div>
-      <div class="sw" data-sgpal="light" onclick="selSGPal(this)"><div class="sw-dot" style="background:#F7F7F5;border:1px solid #ccc;"></div><div class="sw-lbl" style="color:rgba(232,237,245,.3);">Light</div></div>
+      <div class="sw active" data-sgpal="dark" onclick="selSGPal(this)"><div class="sw-dot" style="background:#050505;"></div><div class="sw-lbl" style="color:var(--muted);">Dark</div></div>
+      <div class="sw" data-sgpal="light" onclick="selSGPal(this)"><div class="sw-dot" style="background:#F7F7F5;border:1px solid #ccc;"></div><div class="sw-lbl" style="color:var(--muted);">Light</div></div>
     </div>
     <div class="sbl">Color Panel</div>
     <div class="igrid" style="margin-bottom:10px;">
-      <div class="img-thumb active" data-img="none" data-color="#B4FF3C" onclick="selImg(this)" style="background:#B4FF3C;display:flex;align-items:center;justify-content:center;"><div class="fb" style="color:#050505;font-weight:700;font-size:7px;font-family:var(--mono);">LIME</div></div>
-<div class="img-thumb " data-img="none" data-color="#FF5533" onclick="selImg(this)" style="background:#FF5533;display:flex;align-items:center;justify-content:center;"><div class="fb" style="color:#fff;font-weight:700;font-size:7px;font-family:var(--mono);">RED</div></div>
-<div class="img-thumb " data-img="none" data-color="#3B82F6" onclick="selImg(this)" style="background:#3B82F6;display:flex;align-items:center;justify-content:center;"><div class="fb" style="color:#fff;font-weight:700;font-size:7px;font-family:var(--mono);">BLUE</div></div>
-<div class="img-thumb " data-img="none" data-color="#F59E0B" onclick="selImg(this)" style="background:#F59E0B;display:flex;align-items:center;justify-content:center;"><div class="fb" style="color:#050505;font-weight:700;font-size:7px;font-family:var(--mono);">AMBER</div></div>
-<div class="img-thumb " data-img="none" data-color="#050505" onclick="selImg(this)" style="background:#050505;display:flex;align-items:center;justify-content:center;"><div class="fb" style="color:#555;font-weight:700;font-size:7px;font-family:var(--mono);">BLACK</div></div>
-<div class="img-thumb " data-img="none" data-color="#F7F7F5" onclick="selImg(this)" style="background:#F7F7F5;display:flex;align-items:center;justify-content:center;"><div class="fb" style="color:#050505;font-weight:700;font-size:7px;font-family:var(--mono);">WHITE</div></div>
+      <div class="img-thumb active" data-img="none" data-color="#B4FF3C" onclick="selImg(this)" style="background:#B4FF3C;"><div class="fb" style="color:#050505;font-weight:700;">LIME</div></div>
+      <div class="img-thumb" data-img="none" data-color="#FF5533" onclick="selImg(this)" style="background:#FF5533;"><div class="fb" style="color:#fff;font-weight:700;">RED</div></div>
+      <div class="img-thumb" data-img="none" data-color="#3B82F6" onclick="selImg(this)" style="background:#3B82F6;"><div class="fb" style="color:#fff;font-weight:700;">BLUE</div></div>
+      <div class="img-thumb" data-img="none" data-color="#F59E0B" onclick="selImg(this)" style="background:#F59E0B;"><div class="fb" style="color:#050505;font-weight:700;">AMBER</div></div>
+      <div class="img-thumb" data-img="none" data-color="#050505" onclick="selImg(this)" style="background:#050505;border:1px solid #222;"><div class="fb" style="color:#555;font-weight:700;">BLACK</div></div>
+      <div class="img-thumb" data-img="none" data-color="#F7F7F5" onclick="selImg(this)" style="background:#F7F7F5;"><div class="fb" style="color:#050505;font-weight:700;">PAPER</div></div>
     </div>
-    <div class="sbl">Era Images</div><div class="igrid" style="margin-bottom:10px;"><div class="img-thumb " data-img="stock-market/images/strip-amsterdam.jpg" onclick="selImg(this)"><img src="stock-market/images/strip-amsterdam.jpg" alt="" onerror="this.parentElement.innerHTML='<div class=fb>Amsterdam</div>'"></div>
-<div class="img-thumb " data-img="stock-market/images/strip-voc.jpg" onclick="selImg(this)"><img src="stock-market/images/strip-voc.jpg" alt="" onerror="this.parentElement.innerHTML='<div class=fb>VOC</div>'"></div>
-<div class="img-thumb " data-img="stock-market/images/strip-buttonwood.jpg" onclick="selImg(this)"><img src="stock-market/images/strip-buttonwood.jpg" alt="" onerror="this.parentElement.innerHTML='<div class=fb>Buttonwood</div>'"></div>
-<div class="img-thumb " data-img="stock-market/images/strip-crash1929.jpg" onclick="selImg(this)"><img src="stock-market/images/strip-crash1929.jpg" alt="" onerror="this.parentElement.innerHTML='<div class=fb>Crash 1929</div>'"></div>
-<div class="img-thumb " data-img="stock-market/images/strip-wallstreet-1920s.jpg" onclick="selImg(this)"><img src="stock-market/images/strip-wallstreet-1920s.jpg" alt="" onerror="this.parentElement.innerHTML='<div class=fb>Wall St 1920s</div>'"></div>
-<div class="img-thumb " data-img="stock-market/images/strip-sec.jpg" onclick="selImg(this)"><img src="stock-market/images/strip-sec.jpg" alt="" onerror="this.parentElement.innerHTML='<div class=fb>SEC</div>'"></div>
-<div class="img-thumb " data-img="stock-market/images/stock-floor.jpg" onclick="selImg(this)"><img src="stock-market/images/stock-floor.jpg" alt="" onerror="this.parentElement.innerHTML='<div class=fb>Trading Floor</div>'"></div>
-<div class="img-thumb " data-img="stock-market/images/strip-dotcom.jpg" onclick="selImg(this)"><img src="stock-market/images/strip-dotcom.jpg" alt="" onerror="this.parentElement.innerHTML='<div class=fb>Dot-com</div>'"></div>
-<div class="img-thumb " data-img="stock-market/images/event-occupy-wall-street.jpg" onclick="selImg(this)"><img src="stock-market/images/event-occupy-wall-street.jpg" alt="" onerror="this.parentElement.innerHTML='<div class=fb>Occupy</div>'"></div></div>
-    
+    <div class="sbl">Era Images</div>
+    <div class="igrid" style="margin-bottom:10px;">
+      <div class="img-thumb" data-img="stock-market/images/strip-amsterdam.jpg" onclick="selImg(this)"><img src="stock-market/images/strip-amsterdam.jpg" alt="" onerror="this.parentElement.innerHTML='<div class=fb>Amsterdam</div>'"></div>
+      <div class="img-thumb" data-img="stock-market/images/strip-voc.jpg" onclick="selImg(this)"><img src="stock-market/images/strip-voc.jpg" alt="" onerror="this.parentElement.innerHTML='<div class=fb>VOC</div>'"></div>
+      <div class="img-thumb" data-img="stock-market/images/strip-buttonwood.jpg" onclick="selImg(this)"><img src="stock-market/images/strip-buttonwood.jpg" alt="" onerror="this.parentElement.innerHTML='<div class=fb>Buttonwood</div>'"></div>
+      <div class="img-thumb" data-img="stock-market/images/strip-crash1929.jpg" onclick="selImg(this)"><img src="stock-market/images/strip-crash1929.jpg" alt="" onerror="this.parentElement.innerHTML='<div class=fb>1929 Crash</div>'"></div>
+      <div class="img-thumb" data-img="stock-market/images/strip-wallstreet-1920s.jpg" onclick="selImg(this)"><img src="stock-market/images/strip-wallstreet-1920s.jpg" alt="" onerror="this.parentElement.innerHTML='<div class=fb>Wall St 1920s</div>'"></div>
+      <div class="img-thumb" data-img="stock-market/images/strip-sec.jpg" onclick="selImg(this)"><img src="stock-market/images/strip-sec.jpg" alt="" onerror="this.parentElement.innerHTML='<div class=fb>Fed Reserve</div>'"></div>
+      <div class="img-thumb" data-img="stock-market/images/stock-floor.jpg" onclick="selImg(this)"><img src="stock-market/images/stock-floor.jpg" alt="" onerror="this.parentElement.innerHTML='<div class=fb>NYSE Floor</div>'"></div>
+      <div class="img-thumb" data-img="stock-market/images/strip-dotcom.jpg" onclick="selImg(this)"><img src="stock-market/images/strip-dotcom.jpg" alt="" onerror="this.parentElement.innerHTML='<div class=fb>Dot-com</div>'"></div>
+      <div class="img-thumb" data-img="stock-market/images/event-occupy-wall-street.jpg" onclick="selImg(this)"><img src="stock-market/images/event-occupy-wall-street.jpg" alt="" onerror="this.parentElement.innerHTML='<div class=fb>Occupy Wall St</div>'"></div>
+    </div>
+    <div class="sbl">Key Figures</div>
+    <div class="igrid">
+      <div class="img-thumb" data-img="stock-market/images/figure-warren-buffett.jpg" onclick="selImg(this)"><img src="stock-market/images/figure-warren-buffett.jpg" alt="" onerror="this.parentElement.innerHTML='<div class=fb>Buffett</div>'"></div>
+      <div class="img-thumb" data-img="stock-market/images/figure-benjamin-graham.jpg" onclick="selImg(this)"><img src="stock-market/images/figure-benjamin-graham.jpg" alt="" onerror="this.parentElement.innerHTML='<div class=fb>Graham</div>'"></div>
+      <div class="img-thumb" data-img="stock-market/images/figure-john-bogle.jpg" onclick="selImg(this)"><img src="stock-market/images/figure-john-bogle.jpg" alt="" onerror="this.parentElement.innerHTML='<div class=fb>Bogle</div>'"></div>
+      <div class="img-thumb" data-img="stock-market/images/figure-charles-dow.jpg" onclick="selImg(this)"><img src="stock-market/images/figure-charles-dow.jpg" alt="" onerror="this.parentElement.innerHTML='<div class=fb>Charles Dow</div>'"></div>
+      <div class="img-thumb" data-img="stock-market/images/figure-jesse-livermore.jpg" onclick="selImg(this)"><img src="stock-market/images/figure-jesse-livermore.jpg" alt="" onerror="this.parentElement.innerHTML='<div class=fb>Livermore</div>'"></div>
+      <div class="img-thumb" data-img="stock-market/images/figure-george-soros.jpg" onclick="selImg(this)"><img src="stock-market/images/figure-george-soros.jpg" alt="" onerror="this.parentElement.innerHTML='<div class=fb>Soros</div>'"></div>
+    </div>
   </div>
   <div class="sbs" id="sb-og" style="display:none;">
     <div class="sbl">Layout</div>
@@ -217,29 +194,39 @@ body{background:var(--bg);color:var(--text);font-family:'Geist',sans-serif;font-
       <button class="lbtn" data-oglayout="image|text" onclick="selOGLayout(this)">Image | Title</button>
       <button class="lbtn" data-oglayout="text|color" onclick="selOGLayout(this)">Title | Color</button>
     </div>
+    <div class="sbl">Title Case</div>
+    <div class="tgl-row">
+      <button class="tgl active" id="tgl-caps" onclick="selTitleCase(false)">ALL CAPS</button>
+      <button class="tgl" id="tgl-tc" onclick="selTitleCase(true)">Title Case</button>
+    </div>
+    <div class="sbl">Title BG</div>
+    <div class="bg3">
+      <div class="bgsw active" data-ogbg="dark" onclick="selOGBg(this)" style="background:#050505;color:#B4FF3C;">Dark</div>
+      <div class="bgsw" data-ogbg="accent" onclick="selOGBg(this)" style="background:#B4FF3C;color:#000;">Lime</div>
+      <div class="bgsw" data-ogbg="white" onclick="selOGBg(this)" style="background:#fff;color:#000;">White</div>
+    </div>
     <div class="sbl">Subtitle</div>
     <textarea class="ogsub" id="og-sub" rows="3" oninput="updateAll()">From Amsterdam's first IPO to trillion-dollar indices.</textarea>
     <div class="sbl" style="margin-top:12px;">Color Panel</div>
     <div class="igrid" style="margin-bottom:10px;">
-      <div class="img-thumb og-opt active" data-img="none" data-color="#B4FF3C" onclick="selOGImg(this)" style="background:#B4FF3C;display:flex;align-items:center;justify-content:center;"><div class="fb" style="color:#050505;font-weight:700;font-size:7px;font-family:var(--mono);">LIME</div></div>
-<div class="img-thumb og-opt" data-img="none" data-color="#FF5533" onclick="selOGImg(this)" style="background:#FF5533;display:flex;align-items:center;justify-content:center;"><div class="fb" style="color:#fff;font-weight:700;font-size:7px;font-family:var(--mono);">RED</div></div>
-<div class="img-thumb og-opt" data-img="none" data-color="#3B82F6" onclick="selOGImg(this)" style="background:#3B82F6;display:flex;align-items:center;justify-content:center;"><div class="fb" style="color:#fff;font-weight:700;font-size:7px;font-family:var(--mono);">BLUE</div></div>
-<div class="img-thumb og-opt" data-img="none" data-color="#F59E0B" onclick="selOGImg(this)" style="background:#F59E0B;display:flex;align-items:center;justify-content:center;"><div class="fb" style="color:#050505;font-weight:700;font-size:7px;font-family:var(--mono);">AMBER</div></div>
-<div class="img-thumb og-opt" data-img="none" data-color="#050505" onclick="selOGImg(this)" style="background:#050505;display:flex;align-items:center;justify-content:center;"><div class="fb" style="color:#555;font-weight:700;font-size:7px;font-family:var(--mono);">BLACK</div></div>
-<div class="img-thumb og-opt" data-img="none" data-color="#F7F7F5" onclick="selOGImg(this)" style="background:#F7F7F5;display:flex;align-items:center;justify-content:center;"><div class="fb" style="color:#050505;font-weight:700;font-size:7px;font-family:var(--mono);">WHITE</div></div>
+      <div class="img-thumb og-opt active" data-img="none" data-color="#B4FF3C" onclick="selOGImg(this)" style="background:#B4FF3C;"><div class="fb" style="color:#050505;font-weight:700;">LIME</div></div>
+      <div class="img-thumb og-opt" data-img="none" data-color="#FF5533" onclick="selOGImg(this)" style="background:#FF5533;"><div class="fb" style="color:#fff;font-weight:700;">RED</div></div>
+      <div class="img-thumb og-opt" data-img="none" data-color="#3B82F6" onclick="selOGImg(this)" style="background:#3B82F6;"><div class="fb" style="color:#fff;font-weight:700;">BLUE</div></div>
+      <div class="img-thumb og-opt" data-img="none" data-color="#F59E0B" onclick="selOGImg(this)" style="background:#F59E0B;"><div class="fb" style="color:#050505;font-weight:700;">AMBER</div></div>
+      <div class="img-thumb og-opt" data-img="none" data-color="#050505" onclick="selOGImg(this)" style="background:#050505;border:1px solid #222;"><div class="fb" style="color:#555;font-weight:700;">BLACK</div></div>
+      <div class="img-thumb og-opt" data-img="none" data-color="#F7F7F5" onclick="selOGImg(this)" style="background:#F7F7F5;"><div class="fb" style="color:#050505;font-weight:700;">PAPER</div></div>
     </div>
-    <div class="sbl">Era Images</div><div class="igrid"><div class="img-thumb og-opt" data-img="stock-market/images/strip-amsterdam.jpg" onclick="selOGImg(this)"><img src="stock-market/images/strip-amsterdam.jpg" alt="" onerror="this.parentElement.innerHTML='<div class=fb>Amsterdam</div>'"></div>
-<div class="img-thumb og-opt" data-img="stock-market/images/strip-voc.jpg" onclick="selOGImg(this)"><img src="stock-market/images/strip-voc.jpg" alt="" onerror="this.parentElement.innerHTML='<div class=fb>VOC</div>'"></div>
-<div class="img-thumb og-opt" data-img="stock-market/images/strip-buttonwood.jpg" onclick="selOGImg(this)"><img src="stock-market/images/strip-buttonwood.jpg" alt="" onerror="this.parentElement.innerHTML='<div class=fb>Buttonwood</div>'"></div>
-<div class="img-thumb og-opt" data-img="stock-market/images/strip-crash1929.jpg" onclick="selOGImg(this)"><img src="stock-market/images/strip-crash1929.jpg" alt="" onerror="this.parentElement.innerHTML='<div class=fb>Crash 1929</div>'"></div>
-<div class="img-thumb og-opt" data-img="stock-market/images/strip-wallstreet-1920s.jpg" onclick="selOGImg(this)"><img src="stock-market/images/strip-wallstreet-1920s.jpg" alt="" onerror="this.parentElement.innerHTML='<div class=fb>Wall St 1920s</div>'"></div>
-<div class="img-thumb og-opt" data-img="stock-market/images/strip-sec.jpg" onclick="selOGImg(this)"><img src="stock-market/images/strip-sec.jpg" alt="" onerror="this.parentElement.innerHTML='<div class=fb>SEC</div>'"></div>
-<div class="img-thumb og-opt" data-img="stock-market/images/stock-floor.jpg" onclick="selOGImg(this)"><img src="stock-market/images/stock-floor.jpg" alt="" onerror="this.parentElement.innerHTML='<div class=fb>Trading Floor</div>'"></div>
-<div class="img-thumb og-opt" data-img="stock-market/images/strip-dotcom.jpg" onclick="selOGImg(this)"><img src="stock-market/images/strip-dotcom.jpg" alt="" onerror="this.parentElement.innerHTML='<div class=fb>Dot-com</div>'"></div>
-<div class="img-thumb og-opt" data-img="stock-market/images/event-occupy-wall-street.jpg" onclick="selOGImg(this)"><img src="stock-market/images/event-occupy-wall-street.jpg" alt="" onerror="this.parentElement.innerHTML='<div class=fb>Occupy</div>'"></div></div>
+    <div class="sbl">Era Images</div>
+    <div class="igrid">
+      <div class="img-thumb og-opt" data-img="stock-market/images/strip-amsterdam.jpg" onclick="selOGImg(this)"><img src="stock-market/images/strip-amsterdam.jpg" alt="" onerror="this.parentElement.innerHTML='<div class=fb>Amsterdam</div>'"></div>
+      <div class="img-thumb og-opt" data-img="stock-market/images/strip-voc.jpg" onclick="selOGImg(this)"><img src="stock-market/images/strip-voc.jpg" alt="" onerror="this.parentElement.innerHTML='<div class=fb>VOC</div>'"></div>
+      <div class="img-thumb og-opt" data-img="stock-market/images/strip-buttonwood.jpg" onclick="selOGImg(this)"><img src="stock-market/images/strip-buttonwood.jpg" alt="" onerror="this.parentElement.innerHTML='<div class=fb>Buttonwood</div>'"></div>
+      <div class="img-thumb og-opt" data-img="stock-market/images/strip-crash1929.jpg" onclick="selOGImg(this)"><img src="stock-market/images/strip-crash1929.jpg" alt="" onerror="this.parentElement.innerHTML='<div class=fb>1929 Crash</div>'"></div>
+      <div class="img-thumb og-opt" data-img="stock-market/images/stock-floor.jpg" onclick="selOGImg(this)"><img src="stock-market/images/stock-floor.jpg" alt="" onerror="this.parentElement.innerHTML='<div class=fb>NYSE Floor</div>'"></div>
+      <div class="img-thumb og-opt" data-img="stock-market/images/strip-dotcom.jpg" onclick="selOGImg(this)"><img src="stock-market/images/strip-dotcom.jpg" alt="" onerror="this.parentElement.innerHTML='<div class=fb>Dot-com</div>'"></div>
+    </div>
   </div>
 </div>
-<!-- CANVAS AREA -->
 <div class="ca">
   <div class="cgrid">
     <div class="cw"><div class="cm"><span class="cn">OG / Twitter</span><span class="cd">1200×630</span><button class="dlb" onclick="dlC('og')">↓ PNG</button></div><div class="cf og" id="canvas-og"></div></div>
@@ -248,23 +235,22 @@ body{background:var(--bg);color:var(--text);font-family:'Geist',sans-serif;font-
     <div class="cw"><div class="cm"><span class="cn">IG Vertical</span><span class="cd">1080×1350</span><button class="dlb" onclick="dlC('vt')">↓ PNG</button></div><div class="cf vt" id="canvas-vt"></div></div>
   </div>
 </div>
-<!-- RIGHT SIDEBAR -->
 <div class="rsb">
-  <div class="rsbs"><div class="rsbl">Active Content</div><div class="rsbtext" id="rsb-text">In the short run, the market is a voting machine. In the long run, it is a weigh</div><div class="rsbattr" id="rsb-attr">Benjamin Graham · The Intelligent Investor · 1949</div></div>
+  <div class="rsbs"><div class="rsbl">Active Content</div><div class="rsbtext" id="rsb-text">In the short run, the market is a voting machine. In the long run, it is a weighing machine.</div><div class="rsbattr" id="rsb-attr">Benjamin Graham · The Intelligent Investor · 1949</div></div>
   <div class="rsbs"><div class="rsbl">Highlight Word</div><input class="hlinput" id="hl-input" type="text" value="voting machine" oninput="updateAll()"></div>
   <div class="rsbs">
     <div class="rsbl">Palette</div>
     <div class="rsw">
       <div class="rswr"><div class="rsdot" style="background:#B4FF3C;"></div><div><div class="rssn">Accent</div><div class="rsh">#B4FF3C</div></div></div>
       <div class="rswr"><div class="rsdot" style="background:#FF5533;"></div><div><div class="rssn">Accent 2</div><div class="rsh">#FF5533</div></div></div>
-      <div class="rswr"><div class="rsdot" style="background:#050505;border:1px solid rgba(255,255,255,.06);"></div><div><div class="rssn">Dark BG</div><div class="rsh">#050505</div></div></div>
+      <div class="rswr"><div class="rsdot" style="background:#050505;border:1px solid #1e1e1e;"></div><div><div class="rssn">Dark BG</div><div class="rsh">#050505</div></div></div>
       <div class="rswr"><div class="rsdot" style="background:#F7F7F5;border:1px solid #ccc;"></div><div><div class="rssn">Light BG</div><div class="rsh">#F7F7F5</div></div></div>
     </div>
   </div>
   <div class="rsbs">
     <div class="rsbl">Fonts</div>
     <div>
-      <div class="rsfont" style="font-family:'Fraunces',sans-serif;font-weight:700;">Fraunces<span>Display</span></div>
+      <div class="rsfont" style="font-family:'Fraunces',serif;font-weight:700;">Fraunces<span>Display</span></div>
       <div class="rsfont" style="font-family:'Geist',sans-serif;margin-top:5px;">Geist<span>Body</span></div>
       <div class="rsfont" style="font-family:'Geist Mono',monospace;margin-top:5px;">Geist Mono<span>Mono</span></div>
     </div>
@@ -274,26 +260,32 @@ body{background:var(--bg);color:var(--text);font-family:'Geist',sans-serif;font-
 <script>
 (function(){
 const CONTENT={
-  quote:[{text:"In the short run, the market is a {voting machine.} In the long run, it is a {weighing machine.}",attr:"Benjamin Graham · The Intelligent Investor · 1949",hl:"voting machine",bgNum:"49"},
-    {text:"The stock market is a device for {transferring money} from the impatient to the patient.",attr:"Warren Buffett · Berkshire Hathaway Annual Letter · 1989",hl:"transferring money",bgNum:"89"},
-    {text:"The four most dangerous words in investing are: {This time it's different.}",attr:"Sir John Templeton · Investment Wisdom · 1994",hl:"This time it's different",bgNum:"94"}],
-  fact:[{year:"1602",title:"The World's First IPO",body:"The Dutch East India Company (VOC) issues shares to the public in Amsterdam — the first time a company raises capital from ordinary investors. The joint-stock company is born.",hl:"first IPO",bgNum:"1602"},
-    {year:"1792",title:"The Buttonwood Agreement",body:"Twenty-four brokers sign the Buttonwood Agreement beneath a buttonwood tree on Wall Street. This informal pact becomes the foundation of the NYSE.",hl:"Buttonwood",bgNum:"92"},
-    {year:"1929",title:"The Great Crash",body:"Black Thursday and Black Tuesday. The Dow collapses 25% in two days. By 1932, the market had lost 89% of its value. The crash triggers the Great Depression.",hl:"89%",bgNum:"29"},
-    {year:"1971",title:"NASDAQ Opens",body:"The world's first electronic stock market launches. Initially dismissed as second-tier, it would eventually host the most valuable companies on Earth.",hl:"electronic",bgNum:"71"},
-    {year:"1999–2001",title:"The Dot-Com Bubble",body:"$5 trillion in market value is created — then destroyed. The NASDAQ falls 78%. The companies that survived become the most powerful corporations in history.",hl:"$5 trillion",bgNum:"99"}],
-  stat:[{num:"$120T+",label:"Global Market Cap",sub:"Total value of all publicly traded equities",hl:"$120T+",bgNum:"120"},
-    {num:"+33,000%",label:"Dow Since 1900",sub:"The long arc of market returns",hl:"+33,000%",bgNum:"33"},
-    {num:"500",label:"S&P Companies",sub:"Representing ~80% of US equity market cap",hl:"500",bgNum:"500"}]
+  quote:[
+    {text:"In the short run, the market is a voting machine. In the long run, it is a weighing machine.",attr:"Benjamin Graham · The Intelligent Investor · 1949",hl:"voting machine",bgNum:"1949"},
+    {text:"The stock market is a device for transferring money from the impatient to the patient.",attr:"Warren Buffett · Berkshire Hathaway Annual Letter · 1989",hl:"transferring money",bgNum:"1989"},
+    {text:'The four most dangerous words in investing are: "This time it\'s different."',attr:"Sir John Templeton · Investment Wisdom · 1994",hl:"This time it's different",bgNum:"1994"}
+  ],
+  fact:[
+    {year:"1602",title:"The World's First IPO",body:"The Dutch East India Company issued the first publicly traded shares, inventing the stock market as we know it. Investors could buy in, sell out, and trade their stakes — financial innovation that changed civilisation.",hl:"First IPO",bgNum:"1602"},
+    {year:"1929",title:"The Great Crash",body:"Black Thursday and Black Tuesday saw the Dow collapse 25% in two days. By 1932, the market had lost 89% of its value. The crash triggered the Great Depression and fundamentally changed financial regulation.",hl:"89%",bgNum:"1929"},
+    {year:"1993",title:"Birth of the ETF",body:"The SPDR S&P 500 ETF (SPY) launched — the first US-listed exchange-traded fund. It democratised index investing, allowing any investor to buy the entire S&P 500 in a single trade. SPY is now the world's most traded security.",hl:"ETF",bgNum:"1993"},
+    {year:"2010",title:"The Flash Crash",body:"On May 6, 2010, the Dow plunged nearly 1,000 points in minutes before recovering — all triggered by algorithmic trading. The Flash Crash exposed the fragility of electronic markets.",hl:"Flash Crash",bgNum:"2010"},
+    {year:"2023",title:"The AI Market Surge",body:"ChatGPT's viral launch ignited an AI investment frenzy. NVIDIA's market cap surpassed $3 trillion by 2024. The Magnificent Seven drove the majority of S&P 500 returns.",hl:"AI",bgNum:"2023"}
+  ],
+  stat:[
+    {num:"$120T+",label:"Global Market Cap",sub:"Total value of all publicly traded equities worldwide.",hl:"$120T+",bgNum:"120"},
+    {num:"1792",label:"NYSE Founded",sub:"The Buttonwood Agreement established America's first stock exchange.",hl:"1792",bgNum:"1792"},
+    {num:"+33,000%",label:"Dow Since 1900",sub:"Total return of the DJIA over 125 years.",hl:"+33,000%",bgNum:"33"}
+  ]
 };
 const PALS={
   light:{bg:"#F7F7F5",text:"#000000",accent:"#3a7a00",muted:"rgba(0,0,0,.35)"},
-  dark: {bg:"#050505",text:"#FFFFFF",accent:"#B4FF3C",muted:"rgba(232,237,245,.3)"},
-  accent: {bg:"#B4FF3C",text:"#fff",accent:"#FF5533",muted:"rgba(0,0,0,.4)"},
-  accent2:{bg:"#FF5533",text:"#050505",accent:"#B4FF3C",muted:"rgba(0,0,0,.4)"}
+  dark:{bg:"#050505",text:"#ffffff",accent:"#B4FF3C",muted:"rgba(232,237,245,.25)"},
+  accent:{bg:"#B4FF3C",text:"#000000",accent:"#050505",muted:"rgba(0,0,0,.4)"},
+  accent2:{bg:"#FF5533",text:"#ffffff",accent:"#B4FF3C",muted:"rgba(255,255,255,.4)"}
 };
 const SGPALS={
-  dark: {bg:"#050505",text:"#FFFFFF",accent:"#B4FF3C",muted:"rgba(232,237,245,.3)"},
+  dark:{bg:"#050505",text:"#ffffff",accent:"#B4FF3C",muted:"rgba(232,237,245,.25)"},
   light:{bg:"#F7F7F5",text:"#000000",accent:"#3a7a00",muted:"rgba(0,0,0,.35)"}
 };
 const MASCOT=(a)=>`<svg width="20" height="20" viewBox="0 0 400 400" xmlns="http://www.w3.org/2000/svg" style="opacity:.6;position:absolute;bottom:6%;right:7%;"><rect width="400" height="400" fill="#08090C"/><rect x="6" y="6" width="388" height="388" fill="none" stroke="${a}" stroke-width="12"/><rect x="55" y="118" width="46" height="46" fill="${a}" opacity=".3"/><rect x="178" y="118" width="46" height="46" fill="${a}" opacity=".3"/><rect x="55" y="278" width="170" height="36" fill="${a}"/></svg>`;
@@ -302,12 +294,14 @@ const CH={og:315,tw:338,sq:540,vt:540};
 const FMTS=["og","tw","sq","vt"];
 const FNAMES={og:"og",tw:"twitter",sq:"ig-square",vt:"ig-vertical"};
 const SCALES={og:2,tw:2,sq:2,vt:2.5};
-let S={type:"quote",idx:0,style:"boldtype",pal:"light",hl:"accent",hlWord:"voting machine",img:"none",panelColor:"#B4FF3C",sgPal:"dark",layout:"text|image",ogLayout:"text|image",ogImg:"none",ogColor:"#B4FF3C"};
+let S={type:"quote",idx:0,style:"boldtype",pal:"dark",hl:"accent",hlWord:"voting machine",img:"none",panelColor:"#B4FF3C",sgPal:"dark",layout:"text|image",ogLayout:"text|image",ogImg:"none",ogColor:"#B4FF3C",ogTitleCase:false,ogBg:"dark"};
+
 function fitText(el,aw,ah,min,max){let lo=min,hi=max;el.style.fontSize=hi+"px";while(lo<hi-1){const mid=Math.floor((lo+hi)/2);el.style.fontSize=mid+"px";if(el.scrollWidth<=aw&&el.scrollHeight<=ah)lo=mid;else hi=mid;}el.style.fontSize=lo+"px";}
 function applyHL(text,word,style,accent,bg){if(!word||style==="none")return esc(text);const h=esc(text),w=esc(word).replace(/[.*+?^${}()|[\]\\]/g,"\\$&"),re=new RegExp(`(${w})`,"gi");if(style==="accent")return h.replace(re,`<span style="color:${accent}">$1</span>`);if(style==="reverse")return h.replace(re,`<span style="background:${accent};color:${bg};padding:0 .04em;">$1</span>`);if(style==="outline")return h.replace(re,`<span style="-webkit-text-stroke:2px currentColor;color:transparent;">$1</span>`);return h;}
 function esc(s){return String(s).replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;");}
-function getC(){const it=CONTENT[S.type][S.idx];let d="",y="",a="",bn=it.bgNum||"";if(S.type==="quote"){d=it.text.replace(/[{}]/g,"");a=it.attr;}else if(S.type==="fact"){d=it.title;y=it.year;}else{d=it.num;y=it.label;a=it.sub;}return{d,y,a,bn};}
-window.selContent=function(el){document.querySelectorAll(".ci").forEach(i=>i.classList.remove("active"));el.classList.add("active");S.type=el.dataset.type;S.idx=parseInt(el.dataset.idx);const it=CONTENT[S.type][S.idx];S.hlWord=it.hl||"";document.getElementById("hl-input").value=S.hlWord;document.getElementById("rsb-text").textContent=it.text?it.text.replace(/[{}]/g,""):it.num+" "+it.label;document.getElementById("rsb-attr").textContent=it.attr||it.sub||"";updateAll();};
+function getC(){const it=CONTENT[S.type][S.idx];let d="",y="",a="",bn=it.bgNum||"";if(S.type==="quote"){d=it.text;a=it.attr;}else if(S.type==="fact"){d=it.title;y=it.year;}else{d=it.num;y=it.label;a=it.sub;}return{d,y,a,bn};}
+
+window.selContent=function(el){document.querySelectorAll(".ci").forEach(i=>i.classList.remove("active"));el.classList.add("active");S.type=el.dataset.type;S.idx=parseInt(el.dataset.idx);const it=CONTENT[S.type][S.idx];S.hlWord=it.hl||"";document.getElementById("hl-input").value=S.hlWord;document.getElementById("rsb-text").textContent=it.text||it.num+" "+it.label;document.getElementById("rsb-attr").textContent=it.attr||it.sub||"";updateAll();};
 window.selStyle=function(el){document.querySelectorAll(".stbtn").forEach(b=>b.classList.remove("active"));el.classList.add("active");S.style=el.dataset.style;const isOG=S.style==="ogimage",isSplit=S.style==="splitgrid";document.getElementById("sb-content").style.display=isOG?"none":"";document.getElementById("sb-bg").style.display=(isSplit||isOG)?"none":"";document.getElementById("sb-hl").style.display=isOG?"none":"";document.getElementById("sb-image").style.display=isSplit?"":"none";document.getElementById("sb-og").style.display=isOG?"":"none";["tw","sq","vt"].forEach(f=>{const w=document.getElementById("canvas-"+f).closest(".cw");w.style.opacity=isOG?".25":"1";w.style.pointerEvents=isOG?"none":"";});document.getElementById("btn-set").style.display=isOG?"none":"";document.getElementById("btn-all").textContent=isOG?"↓ og-stock-market.png":"↓ Download All";updateAll();};
 window.selPal=function(el){document.querySelectorAll("[data-pal]").forEach(s=>s.classList.remove("active"));el.classList.add("active");S.pal=el.dataset.pal;updateAll();};
 window.selSGPal=function(el){document.querySelectorAll("[data-sgpal]").forEach(s=>s.classList.remove("active"));el.classList.add("active");S.sgPal=el.dataset.sgpal;updateAll();};
@@ -316,19 +310,38 @@ window.selImg=function(el){document.querySelectorAll("#sb-image .img-thumb").for
 window.selLayout=function(el){document.querySelectorAll(".lbtn[data-layout]").forEach(b=>b.classList.remove("active"));el.classList.add("active");S.layout=el.dataset.layout;updateAll();};
 window.selOGLayout=function(el){document.querySelectorAll("[data-oglayout]").forEach(b=>b.classList.remove("active"));el.classList.add("active");S.ogLayout=el.dataset.oglayout;updateAll();};
 window.selOGImg=function(el){document.querySelectorAll(".og-opt").forEach(i=>i.classList.remove("active"));el.classList.add("active");S.ogImg=el.dataset.img;S.ogColor=el.dataset.color||"#B4FF3C";updateAll();};
+window.selTitleCase=function(tc){S.ogTitleCase=tc;document.getElementById("tgl-caps").classList.toggle("active",!tc);document.getElementById("tgl-tc").classList.toggle("active",tc);updateAll();};
+window.selOGBg=function(el){document.querySelectorAll("[data-ogbg]").forEach(b=>b.classList.remove("active"));el.classList.add("active");S.ogBg=el.dataset.ogbg;updateAll();};
 document.getElementById("hl-input").addEventListener("input",e=>{S.hlWord=e.target.value;updateAll();});
-function renderBT(el,fmt,mascot){const p=PALS[S.pal],{d,y,a,bn}=getC(),hl=document.getElementById("hl-input").value||S.hlWord,aw=CW[fmt]*0.86,ah=CH[fmt]*0.72,max=Math.round(CW[fmt]*0.18),min=14,h=applyHL(d,hl,S.hl,p.accent,p.bg);el.innerHTML=`<div style="width:100%;height:100%;position:relative;overflow:hidden;display:flex;flex-direction:column;justify-content:center;align-items:flex-start;padding:7%;background:${p.bg};color:${p.text};">${bn?`<div style="position:absolute;bottom:-10px;right:-5px;font-family:'Fraunces',sans-serif;font-weight:700;font-size:220px;color:${p.accent};opacity:.04;line-height:1;pointer-events:none;user-select:none;">${bn}</div>`:""}<div style="position:relative;z-index:1;max-width:100%;">${y?`<div style="font-family:'Geist Mono',monospace;font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:${p.accent};opacity:.8;margin-bottom:8px;">${esc(y)}</div>`:""} <div class="btf-${fmt}" style="font-family:'Fraunces',sans-serif;font-weight:700;line-height:.92;letter-spacing:-.025em;font-size:${max}px;">${h}</div></div>${a?`<div style="position:absolute;bottom:6%;left:7%;right:${mascot?"14%":"7%"};font-family:'Geist Mono',monospace;font-size:9px;color:${p.muted};letter-spacing:.04em;line-height:1.4;z-index:1;">${esc(a)}</div>`:""}</div>${mascot?MASCOT(p.accent):""}</div>`;const fe=el.querySelector(`.btf-${fmt}`);if(fe)requestAnimationFrame(()=>fitText(fe,aw,ah,min,max));}
-function renderSG(el,fmt){const p=SGPALS[S.sgPal],{d,y,a}=getC(),hl=document.getElementById("hl-input").value||S.hlWord,isV=fmt==="vt",pw=isV?CW[fmt]*0.86:CW[fmt]*0.44,ph=isV?CH[fmt]*0.50:CH[fmt]*0.72,max=Math.round(pw*0.22),min=13,h=applyHL(d,hl,S.hl,p.accent,p.bg),bright=["#39FF14","#00FF88","#CCFF00","#F4F9EC","#F2EFE9","#FAFAF5","#F8F3E8","#F7F7F5","#FAFAFA","#EDF5F0","#F0F6FF","#E8F4C0","#B4FF3C","#C8962A"],dot=bright.some(c=>S.panelColor.toUpperCase()===c.toUpperCase())?"rgba(0,0,0,.12)":"rgba(255,255,255,.12)",useImg=S.img&&S.img!=="none"&&(S.layout==="text|image"||S.layout==="image|text");const tp=`<div style="flex:1;display:flex;flex-direction:column;justify-content:center;padding:9% 8%;position:relative;overflow:hidden;background:${p.bg};color:${p.text};"><div style="position:relative;z-index:1;max-width:100%;">${y?`<div style="font-family:'Geist Mono',monospace;font-size:8px;letter-spacing:.2em;text-transform:uppercase;color:${p.accent};opacity:.8;margin-bottom:8px;">${esc(y)}</div>`:""} <div class="sgf-${fmt}" style="font-family:'Fraunces',sans-serif;font-weight:700;line-height:.92;letter-spacing:-.025em;font-size:${max}px;">${h}</div></div>${a?`<div style="margin-top:auto;padding-top:10px;font-family:'Geist Mono',monospace;font-size:8px;color:${p.muted};letter-spacing:.04em;line-height:1.4;">${esc(a)}</div>`:""}</div>`;const sp=useImg?`<div style="flex:1;position:relative;overflow:hidden;"><img src="${S.img}" style="width:100%;height:100%;object-fit:cover;display:block;"><div style="position:absolute;inset:0;background:${S.panelColor};opacity:.18;mix-blend-mode:multiply;"></div></div>`:`<div style="flex:1;position:relative;overflow:hidden;background:${S.panelColor};"><div style="position:absolute;inset:0;background-image:radial-gradient(circle,${dot} 1px,transparent 1px);background-size:18px 18px;"></div></div>`;const panels=(S.layout==="text|image"||S.layout==="text|color")?tp+sp:sp+tp;el.innerHTML=`<div style="width:100%;height:100%;display:flex;flex-direction:${isV?"column":"row"};overflow:hidden;">${panels}</div>`;const fe=el.querySelector(`.sgf-${fmt}`);if(fe)requestAnimationFrame(()=>fitText(fe,pw,ph,min,max));}
-function renderOG(el){const sub=(document.getElementById("og-sub")||{}).value||"From Amsterdam's first IPO to trillion-dollar indices.",bright=["#39FF14","#00FF88","#CCFF00","#F4F9EC","#F2EFE9","#FAFAF5","#F8F3E8","#F7F7F5","#FAFAFA","#EDF5F0","#F0F6FF","#E8F4C0","#B4FF3C","#C8962A"],dot=bright.some(c=>S.ogColor.toUpperCase()===c.toUpperCase())?"rgba(0,0,0,.1)":"rgba(255,255,255,.1)",useImg=S.ogImg&&S.ogImg!=="none"&&(S.ogLayout==="text|image"||S.ogLayout==="image|text");const tp=`<div style="flex:1;background:#050505;display:flex;flex-direction:column;justify-content:center;padding:9% 8%;position:relative;overflow:hidden;"><div style="font-family:'Geist Mono',monospace;font-size:11px;letter-spacing:.15em;text-transform:uppercase;color:#ffffff;margin-bottom:10px;">A (Brief) History of</div><div style="font-family:'Fraunces',sans-serif;font-weight:700;font-size:52px;line-height:.9;letter-spacing:-.03em;color:#FFFFFF;padding-bottom:14px;">The<br><span style="color:#B4FF3C;">Stock</span><br>Market<span style="color:#B4FF3C;">_</span></div><div style="font-family:'Geist Mono',monospace;font-size:11px;color:rgba(255,255,255,.7);line-height:1.5;max-width:90%;letter-spacing:.02em;">${esc(sub)}</div></div>`;const sp=useImg?`<div style="flex:1;position:relative;overflow:hidden;background-image:url('${S.ogImg}');background-size:cover;background-position:center;"><div style="position:absolute;inset:0;background:#B4FF3C;opacity:.18;mix-blend-mode:multiply;"></div></div>`:`<div style="flex:1;position:relative;overflow:hidden;background:${S.ogColor};"><div style="position:absolute;inset:0;background-image:radial-gradient(circle,${dot} 1px,transparent 1px);background-size:18px 18px;"></div></div>`;const panels=(S.ogLayout==="text|image"||S.ogLayout==="text|color")?tp+sp:sp+tp;el.innerHTML=`<div style="width:100%;height:100%;display:flex;flex-direction:row;overflow:hidden;">${panels}</div>`;}
-function updateAll(){const fmts=["og","tw","sq","vt"];fmts.forEach(fmt=>{const el=document.getElementById("canvas-"+fmt);if(S.style==="boldtype")renderBT(el,fmt,false);else if(S.style==="branded")renderBT(el,fmt,true);else if(S.style==="splitgrid")renderSG(el,fmt);else if(S.style==="ogimage"&&fmt==="og")renderOG(el);});}
+
+function renderBT(el,fmt,mascot){const p=PALS[S.pal],{d,y,a,bn}=getC(),hl=document.getElementById("hl-input").value||S.hlWord,aw=CW[fmt]*0.86,ah=CH[fmt]*0.72,max=Math.round(CW[fmt]*0.18),min=14,h=applyHL(d,hl,S.hl,p.accent,p.bg);el.innerHTML=`<div style="width:100%;height:100%;position:relative;overflow:hidden;display:flex;flex-direction:column;justify-content:center;align-items:flex-start;padding:7%;background:${p.bg};color:${p.text};">${bn?`<div style="position:absolute;bottom:-10px;right:-5px;font-family:'Fraunces',serif;font-size:220px;color:${p.accent};opacity:.04;line-height:1;pointer-events:none;user-select:none;">${bn}</div>`:""}<div style="position:relative;z-index:1;max-width:100%;">${y?`<div style="font-family:'Geist Mono',monospace;font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:${p.accent};opacity:.8;margin-bottom:8px;">${esc(y)}</div>`:""}<div class="btf-${fmt}" style="font-family:'Fraunces',serif;font-weight:700;line-height:.92;letter-spacing:-.025em;font-size:${max}px;">${h}</div></div>${a?`<div style="position:absolute;bottom:6%;left:7%;right:${mascot?"14%":"7%"};font-family:'Geist Mono',monospace;font-size:9px;color:${p.muted};letter-spacing:.04em;line-height:1.4;z-index:1;">${esc(a)}</div>`:""}</div>${mascot?MASCOT(p.accent):""}`;const fe=el.querySelector(`.btf-${fmt}`);if(fe)requestAnimationFrame(()=>fitText(fe,aw,ah,min,max));}
+
+function renderSG(el,fmt){const p=SGPALS[S.sgPal],{d,y,a}=getC(),hl=document.getElementById("hl-input").value||S.hlWord,isV=fmt==="vt",pw=isV?CW[fmt]*0.86:CW[fmt]*0.44,ph=isV?CH[fmt]*0.50:CH[fmt]*0.72,max=Math.round(pw*0.22),min=13,h=applyHL(d,hl,S.hl,p.accent,p.bg),bright=["#39FF14","#00FF88","#CCFF00","#F4F9EC","#F2EFE9","#FAFAF5","#F8F3E8","#F7F7F5","#FAFAFA","#EDF5F0","#F0F6FF","#E8F4C0","#B4FF3C","#C8962A"],dot=bright.some(c=>S.panelColor.toUpperCase()===c.toUpperCase())?"rgba(0,0,0,.12)":"rgba(255,255,255,.12)",useImg=S.img&&S.img!=="none"&&(S.layout==="text|image"||S.layout==="image|text");const tp=`<div style="flex:1;display:flex;flex-direction:column;justify-content:center;padding:9% 8%;position:relative;overflow:hidden;background:${p.bg};color:${p.text};"><div style="position:relative;z-index:1;max-width:100%;">${y?`<div style="font-family:'Geist Mono',monospace;font-size:8px;letter-spacing:.2em;text-transform:uppercase;color:${p.accent};opacity:.8;margin-bottom:8px;">${esc(y)}</div>`:""}<div class="sgf-${fmt}" style="font-family:'Fraunces',serif;font-weight:700;line-height:.92;letter-spacing:-.025em;font-size:${max}px;">${h}</div></div>${a?`<div style="margin-top:auto;padding-top:10px;font-family:'Geist Mono',monospace;font-size:8px;color:${p.muted};letter-spacing:.04em;line-height:1.4;">${esc(a)}</div>`:""}</div>`;const sp=useImg?`<div style="flex:1;position:relative;overflow:hidden;background-image:url('${S.img}');background-size:cover;background-position:center;"><div style="position:absolute;inset:0;background:${S.panelColor};opacity:.18;mix-blend-mode:multiply;"></div></div>`:`<div style="flex:1;position:relative;overflow:hidden;background:${S.panelColor};"><div style="position:absolute;inset:0;background-image:radial-gradient(circle,${dot} 1px,transparent 1px);background-size:18px 18px;"></div></div>`;const panels=(S.layout==="text|image"||S.layout==="text|color")?tp+sp:sp+tp;el.innerHTML=`<div style="width:100%;height:100%;display:flex;flex-direction:${isV?"column":"row"};overflow:hidden;">${panels}</div>`;const fe=el.querySelector(`.sgf-${fmt}`);if(fe)requestAnimationFrame(()=>fitText(fe,pw,ph,min,max));}
+
+function renderOG(el){
+  const sub=(document.getElementById("og-sub")||{}).value||"From Amsterdam's first IPO to trillion-dollar indices.",bright=["#39FF14","#00FF88","#CCFF00","#F4F9EC","#F2EFE9","#FAFAF5","#F8F3E8","#F7F7F5","#FAFAFA","#EDF5F0","#F0F6FF","#E8F4C0","#B4FF3C","#C8962A"],dot=bright.some(c=>S.ogColor.toUpperCase()===c.toUpperCase())?"rgba(0,0,0,.1)":"rgba(255,255,255,.1)",useImg=S.ogImg&&S.ogImg!=="none"&&(S.ogLayout==="text|image"||S.ogLayout==="image|text");
+  let panelBg,labelCol,titleCol,subCol,accentCol;
+  if(S.ogBg==="accent"){panelBg="#B4FF3C";labelCol="#000000";titleCol="#000000";subCol="rgba(0,0,0,.6)";accentCol="#050505";}
+  else if(S.ogBg==="white"){panelBg="#ffffff";labelCol="#000000";titleCol="#000000";subCol="rgba(0,0,0,.6)";accentCol="#B4FF3C";}
+  else{panelBg="#050505";labelCol="#ffffff";titleCol="#ffffff";subCol="rgba(255,255,255,.7)";accentCol="#B4FF3C";}
+  const tc=S.ogTitleCase;
+  const titleHTML=tc?`The <span style="color:${accentCol};">Stock</span> Market`:`THE <span style="color:${accentCol};">STOCK</span> MARKET`;
+  const titleStyle=tc?"font-size:52px;line-height:.9;letter-spacing:-.03em;":"font-size:52px;line-height:.9;letter-spacing:-.03em;text-transform:uppercase;";
+  const tp=`<div style="flex:1;background:${panelBg};display:flex;flex-direction:column;justify-content:center;padding:9% 8%;position:relative;overflow:hidden;"><div style="font-family:'Geist Mono',monospace;font-size:11px;letter-spacing:.15em;text-transform:uppercase;color:${labelCol};margin-bottom:10px;">A (Brief) History of</div><div style="font-family:'Fraunces',serif;font-weight:700;${titleStyle}color:${titleCol};padding-bottom:14px;">${titleHTML}<span style="color:${accentCol};">_</span></div><div style="font-family:'Geist Mono',monospace;font-size:11px;color:${subCol};line-height:1.5;max-width:90%;letter-spacing:.02em;">${esc(sub)}</div></div>`;
+  const sp=useImg?`<div style="flex:1;position:relative;overflow:hidden;background-image:url('${S.ogImg}');background-size:cover;background-position:center;"><div style="position:absolute;inset:0;background:#B4FF3C;opacity:.18;mix-blend-mode:multiply;"></div></div>`:`<div style="flex:1;position:relative;overflow:hidden;background:${S.ogColor};"><div style="position:absolute;inset:0;background-image:radial-gradient(circle,${dot} 1px,transparent 1px);background-size:18px 18px;"></div></div>`;
+  const panels=(S.ogLayout==="text|image"||S.ogLayout==="text|color")?tp+sp:sp+tp;
+  el.innerHTML=`<div style="width:100%;height:100%;display:flex;flex-direction:row;overflow:hidden;">${panels}</div>`;
+}
+
+function updateAll(){FMTS.forEach(fmt=>{const el=document.getElementById("canvas-"+fmt);if(S.style==="boldtype")renderBT(el,fmt,false);else if(S.style==="branded")renderBT(el,fmt,true);else if(S.style==="splitgrid")renderSG(el,fmt);else if(S.style==="ogimage"&&fmt==="og")renderOG(el);});}
 window.updateAll=updateAll;
 function d2b(d){const a=d.split(","),m=a[0].match(/:(.*?);/)[1],b=atob(a[1]);let n=b.length;const u=new Uint8Array(n);while(n--)u[n]=b.charCodeAt(n);return new Blob([u],{type:m});}
 function c2b(fmt){return new Promise((res,rej)=>{const el=document.getElementById("canvas-"+fmt);html2canvas(el,{scale:SCALES[fmt],useCORS:true,allowTaint:true,backgroundColor:"#050505",logging:false}).then(c=>{if(c.toBlob)c.toBlob(b=>res(b||d2b(c.toDataURL("image/png"))),"image/png");else res(d2b(c.toDataURL("image/png")));}).catch(rej);});}
 function trig(blob,name){const url=URL.createObjectURL(blob),a=document.createElement("a");a.href=url;a.download=name;document.body.appendChild(a);a.click();document.body.removeChild(a);setTimeout(()=>URL.revokeObjectURL(url),2000);}
 function bn(){return`bhoe-stock-market-${S.type}${S.idx}-${S.style}`;}
 window.dlC=function(fmt){if(S.style==="ogimage"){c2b("og").then(b=>trig(b,"og-stock-market.png")).catch(e=>alert("Export failed. Serve over HTTP."));return;}c2b(fmt).then(b=>trig(b,`${bn()}-${FNAMES[fmt]}.png`)).catch(e=>alert("Export failed. Serve over HTTP."));};
-window.downloadSet=function(){if(S.style==="ogimage"){window.dlC("og");return;}const btn=document.getElementById("btn-set");btn.disabled=true;btn.textContent="Rendering…";Promise.all(FMTS.map(f=>c2b(f).then(b=>{return{b,f}}))).then(rs=>{const zip=new JSZip();rs.forEach(({b,f})=>zip.file(`${bn()}-${FNAMES[f]}.png`,b));zip.generateAsync({type:"blob"}).then(z=>{trig(z,`${bn()}.zip`);btn.disabled=false;btn.textContent="↓ This Set (4)";});}).catch(e=>{btn.disabled=false;btn.textContent="↓ This Set (4)";alert("Export failed. Serve over HTTP.");});};
-window.downloadAll=function(){if(S.style==="ogimage"){window.dlC("og");return;}const btn=document.getElementById("btn-all");btn.disabled=true;const saved={...S};const styles=["boldtype","splitgrid","branded"];const items=[...CONTENT.quote.map((_,i)=>{return{type:"quote",idx:i}}),...CONTENT.fact.map((_,i)=>{return{type:"fact",idx:i}}),...CONTENT.stat.map((_,i)=>{return{type:"stat",idx:i}})];const zip=new JSZip();const queue=[];styles.forEach(st=>items.forEach(({type,idx})=>FMTS.forEach(f=>queue.push({st,type,idx,f}))));let i=0;function next(){if(i>=queue.length){zip.generateAsync({type:"blob"}).then(z=>{Object.assign(S,saved);updateAll();trig(z,"bhoe-stock-market-all-posts.zip");btn.disabled=false;btn.textContent="↓ Download All";});return;}const {st,type,idx,f}=queue[i++];S.style=st;S.type=type;S.idx=idx;updateAll();btn.textContent=`Building… ${i}/${queue.length}`;setTimeout(()=>{c2b(f).then(b=>{zip.file(`bhoe-stock-market-${type}${idx}-${st}-${FNAMES[f]}.png`,b);next();}).catch(()=>next());},80);}next();};
+window.downloadSet=function(){if(S.style==="ogimage"){window.dlC("og");return;}const btn=document.getElementById("btn-set");btn.disabled=true;btn.textContent="Rendering…";Promise.all(FMTS.map(f=>c2b(f).then(b=>({b,f})))).then(rs=>{const zip=new JSZip();rs.forEach(({b,f})=>zip.file(`${bn()}-${FNAMES[f]}.png`,b));zip.generateAsync({type:"blob"}).then(z=>{trig(z,`${bn()}.zip`);btn.disabled=false;btn.textContent="↓ This Set (4)";});}).catch(e=>{btn.disabled=false;btn.textContent="↓ This Set (4)";alert("Export failed. Serve over HTTP.");});};
+window.downloadAll=function(){if(S.style==="ogimage"){window.dlC("og");return;}const btn=document.getElementById("btn-all");btn.disabled=true;const saved={...S};const styles=["boldtype","splitgrid","branded"];const items=[...CONTENT.quote.map((_,i)=>({type:"quote",idx:i})),...CONTENT.fact.map((_,i)=>({type:"fact",idx:i})),...CONTENT.stat.map((_,i)=>({type:"stat",idx:i}))];const zip=new JSZip();const queue=[];styles.forEach(st=>items.forEach(({type,idx})=>FMTS.forEach(f=>queue.push({st,type,idx,f}))));let i=0;function next(){if(i>=queue.length){zip.generateAsync({type:"blob"}).then(z=>{Object.assign(S,saved);updateAll();trig(z,"bhoe-stock-market-all-posts.zip");btn.disabled=false;btn.textContent="↓ Download All";});return;}const{st,type,idx,f}=queue[i++];S.style=st;S.type=type;S.idx=idx;updateAll();btn.textContent=`Building… ${i}/${queue.length}`;setTimeout(()=>{c2b(f).then(b=>{zip.file(`bhoe-stock-market-${type}${idx}-${st}-${FNAMES[f]}.png`,b);next();}).catch(()=>next());},80);}next();};
 updateAll();
 })();
 </script>
