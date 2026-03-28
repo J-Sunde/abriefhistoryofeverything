@@ -1,0 +1,655 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Social Post Generator — A (Brief) History of AI</title>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400&family=IBM+Plex+Sans+Condensed:ital,wght@0,300;0,400;0,600;0,700;1,300&family=IBM+Plex+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js"></script>
+<style>
+:root{--bg:#07090C;--bg1:#0C0F14;--bg2:#10141A;--rule:rgba(255,255,255,.06);--rule2:rgba(255,255,255,.03);--muted:rgba(184,204,216,.3);--dim:rgba(184,204,216,.55);--text:#B8CCD8;--bright:#FFFFFF;--accent:#00D4F0;--accent2:#0055EE;--accent3:#00E87A;--lbg:#F2EFE9;--ltxt:#07090C;--lacc:#005FCC;}
+*{margin:0;padding:0;box-sizing:border-box;}
+html,body{height:100%;overflow:hidden;}
+body{background:var(--bg);color:var(--text);font-family:'IBM Plex Sans',sans-serif;font-size:14px;display:flex;flex-direction:column;}
+.series-bar{height:3px;background:linear-gradient(90deg,#00D4F0 25%,#0055EE 25% 50%,#39E07A 50% 75%,#FF5C20 75%);flex-shrink:0;}
+.top-bar{height:44px;background:var(--bg1);border-bottom:1px solid var(--rule);display:flex;align-items:center;padding:0 20px;gap:10px;flex-shrink:0;}
+.top-bar-title{font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:.15em;text-transform:uppercase;color:var(--dim);}
+.top-bar-title span{color:var(--accent);}
+.tbbtns{margin-left:auto;display:flex;gap:8px;}
+.tbdl{background:var(--accent);color:#07090C;font-family:'IBM Plex Mono',monospace;font-size:10px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;border:none;padding:6px 14px;cursor:pointer;transition:opacity .15s;white-space:nowrap;}
+.tbdl:hover{opacity:.8;}.tbdl.sec{background:transparent;color:var(--accent);border:1px solid rgba(0,212,240,.4);}.tbdl.sec:hover{background:rgba(0,212,240,.08);opacity:1;}.tbdl:disabled{opacity:.4;cursor:default;}
+.fav-bar{display:none;align-items:center;gap:8px;padding:0 20px;height:36px;background:rgba(245,197,24,.07);border-bottom:1px solid rgba(245,197,24,.18);flex-shrink:0;}
+.fav-bar.visible{display:flex;}
+.fav-count{font-family:'IBM Plex Mono',monospace;font-size:9px;color:#f5c518;letter-spacing:.08em;}
+.fav-dl{background:transparent;border:1px solid rgba(245,197,24,.5);color:#f5c518;font-family:'IBM Plex Mono',monospace;font-size:9px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;padding:4px 12px;cursor:pointer;border-radius:2px;transition:all .12s;white-space:nowrap;}
+.fav-dl:hover{background:rgba(245,197,24,.12);}.fav-dl:disabled{opacity:.4;cursor:default;}
+.fav-clear{background:none;border:none;color:rgba(245,197,24,.45);font-family:'IBM Plex Mono',monospace;font-size:9px;cursor:pointer;padding:3px 6px;transition:color .12s;}
+.fav-clear:hover{color:#f5c518;}
+.app{flex:1;display:flex;overflow:hidden;}
+.sb{width:240px;background:var(--bg1);border-right:1px solid var(--rule);display:flex;flex-direction:column;overflow-y:auto;flex-shrink:0;}
+.sb::-webkit-scrollbar{width:4px;}.sb::-webkit-scrollbar-thumb{background:var(--rule2);}
+.sbs{padding:14px;border-bottom:1px solid var(--rule);}
+.sbl{font-family:'IBM Plex Mono',monospace;font-size:9px;letter-spacing:.2em;text-transform:uppercase;color:var(--muted);margin-bottom:10px;}
+.cg+.cg{margin-top:10px;}
+.cgl{font-family:'IBM Plex Mono',monospace;font-size:8px;letter-spacing:.15em;text-transform:uppercase;color:var(--muted);opacity:.6;margin-bottom:5px;}
+.ci{padding:6px 8px;cursor:pointer;border:1px solid transparent;font-size:11px;line-height:1.3;color:var(--dim);transition:all .12s;border-radius:2px;}
+.ci:hover{color:var(--text);background:var(--bg2);}.ci.active{color:var(--accent);border-color:rgba(0,212,240,.3);background:rgba(0,212,240,.05);}
+.ci strong{display:block;font-family:'IBM Plex Sans',sans-serif;font-size:11px;font-weight:600;margin-bottom:2px;}.ci span{font-size:10px;color:var(--muted);}
+.stbtns{display:flex;flex-direction:column;gap:5px;}
+.stbtn{padding:8px 10px;border:1px solid var(--rule2);background:transparent;color:var(--dim);font-family:'IBM Plex Sans',sans-serif;font-size:12px;font-weight:600;cursor:pointer;text-align:left;transition:all .12s;border-radius:2px;}
+.stbtn:hover{border-color:var(--dim);color:var(--text);}.stbtn.active{border-color:var(--accent);color:var(--accent);background:rgba(0,212,240,.06);}
+.stbtn small{display:block;font-family:'IBM Plex Sans',sans-serif;font-size:9px;font-weight:400;color:var(--muted);margin-top:2px;}
+.swatches{display:grid;grid-template-columns:1fr 1fr;gap:5px;}
+.sw{padding:8px 6px;cursor:pointer;border:2px solid transparent;border-radius:2px;text-align:center;transition:all .12s;}
+.sw:hover{transform:scale(1.04);}.sw.active{border-color:white;box-shadow:0 0 0 1px rgba(255,255,255,.2);}
+.sw-dot{height:22px;border-radius:1px;margin-bottom:4px;}.sw-lbl{font-family:'IBM Plex Mono',monospace;font-size:8px;letter-spacing:.1em;text-transform:uppercase;}
+.hlps{display:flex;flex-wrap:wrap;gap:4px;}
+.hlp{padding:4px 9px;border:1px solid var(--rule2);background:transparent;color:var(--dim);font-family:'IBM Plex Mono',monospace;font-size:9px;letter-spacing:.1em;text-transform:uppercase;cursor:pointer;border-radius:20px;transition:all .12s;}
+.hlp:hover{border-color:var(--dim);color:var(--text);}.hlp.active{border-color:var(--accent);color:var(--accent);background:rgba(0,212,240,.08);}
+.igrid{display:grid;grid-template-columns:repeat(3,1fr);gap:4px;}
+.img-thumb{cursor:pointer;border:2px solid transparent;border-radius:2px;overflow:hidden;aspect-ratio:1;background:var(--bg2);transition:all .12s;display:flex;align-items:center;justify-content:center;}
+.img-thumb:hover{border-color:var(--dim);}.img-thumb.active{border-color:var(--accent);}
+.img-thumb img{width:100%;height:100%;object-fit:cover;filter:grayscale(.5);}
+.fb{font-family:'IBM Plex Mono',monospace;font-size:7px;color:var(--muted);text-align:center;padding:3px;line-height:1.3;}
+.lbtns{display:grid;grid-template-columns:1fr 1fr;gap:4px;}
+.lbtn{padding:5px;border:1px solid var(--rule2);background:transparent;color:var(--dim);font-family:'IBM Plex Mono',monospace;font-size:8px;cursor:pointer;text-align:center;transition:all .12s;border-radius:2px;}
+.lbtn:hover{border-color:var(--dim);color:var(--text);}.lbtn.active{border-color:var(--accent);color:var(--accent);}
+.og-lbtns{display:grid;grid-template-columns:1fr;gap:4px;}
+.ca{flex:1;overflow-y:auto;padding:20px;background:var(--bg);}
+.ca::-webkit-scrollbar{width:5px;}.ca::-webkit-scrollbar-thumb{background:var(--rule2);}
+.cgrid{display:grid;grid-template-columns:1fr 1fr;gap:18px;max-width:1340px;margin:0 auto;}
+.cw{display:flex;flex-direction:column;gap:7px;}.cm{display:flex;align-items:center;gap:8px;}
+.cn{font-family:'IBM Plex Mono',monospace;font-size:9px;letter-spacing:.15em;text-transform:uppercase;color:var(--muted);}
+.cd{font-family:'IBM Plex Mono',monospace;font-size:9px;color:var(--rule2);margin-left:auto;}
+.dlb{background:transparent;border:1px solid var(--rule2);color:var(--dim);font-family:'IBM Plex Mono',monospace;font-size:9px;letter-spacing:.1em;padding:3px 9px;cursor:pointer;transition:all .12s;text-transform:uppercase;border-radius:2px;}
+.dlb:hover{border-color:var(--accent);color:var(--accent);}
+.cf{background:var(--bg2);border:1px solid var(--rule);overflow:hidden;position:relative;flex-shrink:0;}
+.cf.og{width:600px;height:315px;}.cf.tw{width:600px;height:338px;}.cf.sq{width:540px;height:540px;}.cf.vt{width:432px;height:540px;}
+.rsb{width:210px;background:var(--bg1);border-left:1px solid var(--rule);display:flex;flex-direction:column;overflow-y:auto;flex-shrink:0;}
+.rsb::-webkit-scrollbar{width:4px;}.rsb::-webkit-scrollbar-thumb{background:var(--rule2);}
+.rsbs{padding:14px;border-bottom:1px solid var(--rule);}
+.rsbl{font-family:'IBM Plex Mono',monospace;font-size:9px;letter-spacing:.2em;text-transform:uppercase;color:var(--muted);margin-bottom:8px;}
+.rsbtext{font-family:'IBM Plex Sans',sans-serif;font-size:12px;color:var(--text);line-height:1.5;}
+.rsbattr{font-family:'IBM Plex Mono',monospace;font-size:9px;color:var(--muted);margin-top:5px;}
+.hlinput{width:100%;background:var(--bg2);border:1px solid var(--rule2);color:var(--accent);font-family:'IBM Plex Mono',monospace;font-size:11px;padding:5px 7px;outline:none;margin-top:4px;border-radius:2px;}
+.hlinput:focus{border-color:var(--accent);}
+.rsw{display:flex;flex-direction:column;gap:5px;}.rswr{display:flex;align-items:center;gap:7px;}
+.rsdot{width:14px;height:14px;border-radius:2px;flex-shrink:0;}
+.rssn{font-family:'IBM Plex Mono',monospace;font-size:9px;color:var(--dim);text-transform:uppercase;letter-spacing:.1em;}
+.rsh{font-family:'IBM Plex Mono',monospace;font-size:9px;color:var(--muted);}
+.rsfont{font-size:10px;color:var(--dim);}.rsfont span{font-family:'IBM Plex Mono',monospace;font-size:9px;color:var(--muted);display:block;}
+.ogsub{width:100%;background:var(--bg2);border:1px solid var(--rule2);color:var(--text);font-family:'IBM Plex Mono',monospace;font-size:10px;padding:6px 8px;resize:none;outline:none;line-height:1.5;border-radius:2px;margin-top:4px;}
+.ogsub:focus{border-color:var(--accent);}
+.tgl-row{display:grid;grid-template-columns:1fr 1fr;gap:4px;margin-bottom:10px;}
+.tgl{padding:5px 4px;border:1px solid var(--rule2);background:transparent;color:var(--dim);font-family:'IBM Plex Mono',monospace;font-size:8px;letter-spacing:.06em;text-transform:uppercase;cursor:pointer;text-align:center;transition:all .12s;border-radius:2px;}
+.tgl:hover{border-color:var(--dim);color:var(--text);}.tgl.active{border-color:var(--accent);color:var(--accent);background:rgba(0,212,240,.08);}
+.bg3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:4px;margin-bottom:10px;}
+.bgsw{padding:7px 4px;border:2px solid var(--rule2);border-radius:2px;cursor:pointer;text-align:center;font-family:'IBM Plex Mono',monospace;font-size:8px;letter-spacing:.06em;text-transform:uppercase;transition:all .12s;color:var(--dim);}
+.bgsw:hover{border-color:var(--dim);}.bgsw.active{border-color:var(--accent);}
+.size-row{display:flex;align-items:center;gap:8px;margin-bottom:10px;}
+.size-slider{flex:1;-webkit-appearance:none;appearance:none;height:2px;background:var(--rule2);border-radius:2px;outline:none;cursor:pointer;}
+.size-slider::-webkit-slider-thumb{-webkit-appearance:none;width:12px;height:12px;border-radius:50%;background:var(--accent);cursor:pointer;}
+.size-slider::-moz-range-thumb{width:12px;height:12px;border-radius:50%;background:var(--accent);border:none;cursor:pointer;}
+.size-val{font-family:'IBM Plex Mono',monospace;font-size:9px;color:var(--accent);width:28px;text-align:right;flex-shrink:0;}
+.fig-grid{display:flex;flex-direction:column;gap:4px;}
+.fig-card{cursor:pointer;border:1px solid var(--rule2);border-radius:2px;padding:7px 8px;display:flex;align-items:center;gap:8px;transition:all .12s;position:relative;}
+.fig-card:hover{background:var(--bg2);border-color:var(--dim);}.fig-card.active{border-color:var(--accent);background:rgba(0,212,240,.05);}
+.fig-thumb{width:32px;height:32px;border-radius:2px;overflow:hidden;flex-shrink:0;background:var(--bg2);}
+.fig-thumb img{width:100%;height:100%;object-fit:cover;filter:grayscale(.4);}
+.fig-info{flex:1;min-width:0;}
+.fig-info strong{display:block;font-family:'IBM Plex Sans',sans-serif;font-size:11px;font-weight:600;color:var(--text);line-height:1.2;}
+.fig-info span{font-family:'IBM Plex Mono',monospace;font-size:9px;color:var(--muted);}
+.fig-star{background:none;border:none;cursor:pointer;font-size:13px;line-height:1;color:var(--muted);padding:2px;transition:color .12s;flex-shrink:0;}
+.fig-star:hover{color:#f5c518;}.fig-star.starred{color:#f5c518;}
+.fig-dl-all{width:100%;margin-top:10px;padding:7px;background:transparent;border:1px solid rgba(0,212,240,.3);color:var(--accent);font-family:'IBM Plex Mono',monospace;font-size:9px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;cursor:pointer;border-radius:2px;transition:all .12s;text-align:center;display:block;}
+.fig-dl-all:hover{background:rgba(0,212,240,.08);}.fig-dl-all:disabled{opacity:.4;cursor:default;}
+.fig-layout{display:grid;grid-template-columns:1fr 1fr;gap:4px;margin-bottom:10px;}
+.pos-row{display:flex;align-items:center;gap:8px;margin-bottom:10px;}
+.pos-slider{flex:1;-webkit-appearance:none;appearance:none;height:2px;background:var(--rule2);border-radius:2px;outline:none;cursor:pointer;}
+.pos-slider::-webkit-slider-thumb{-webkit-appearance:none;width:12px;height:12px;border-radius:50%;background:var(--accent);cursor:pointer;}
+.pos-slider::-moz-range-thumb{width:12px;height:12px;border-radius:50%;background:var(--accent);border:none;cursor:pointer;}
+.pos-val{font-family:'IBM Plex Mono',monospace;font-size:9px;color:var(--accent);width:28px;text-align:right;flex-shrink:0;}
+.carousel-section{border-top:1px solid var(--rule);padding:14px;}
+.carousel-title{font-family:'IBM Plex Mono',monospace;font-size:9px;letter-spacing:.2em;text-transform:uppercase;color:var(--accent);margin-bottom:10px;display:flex;align-items:center;gap:6px;}
+.carousel-title::before{content:'▶';font-size:7px;}
+.cinput{width:100%;background:var(--bg2);border:1px solid var(--rule2);color:var(--text);font-family:'IBM Plex Mono',monospace;font-size:10px;padding:5px 7px;outline:none;border-radius:2px;margin-top:4px;resize:none;line-height:1.4;}
+.cinput:focus{border-color:var(--accent);}
+.count-row{display:flex;align-items:center;gap:8px;margin-top:4px;}
+.count-slider{flex:1;-webkit-appearance:none;appearance:none;height:2px;background:var(--rule2);border-radius:2px;outline:none;cursor:pointer;}
+.count-slider::-webkit-slider-thumb{-webkit-appearance:none;width:12px;height:12px;border-radius:50%;background:var(--accent);cursor:pointer;}
+.count-slider::-moz-range-thumb{width:12px;height:12px;border-radius:50%;background:var(--accent);border:none;cursor:pointer;}
+.count-val{font-family:'IBM Plex Mono',monospace;font-size:9px;color:var(--accent);width:24px;text-align:right;flex-shrink:0;}
+.toggle-check{display:flex;align-items:center;gap:7px;margin:8px 0 6px;cursor:pointer;}
+.toggle-check input{accent-color:var(--accent);width:13px;height:13px;cursor:pointer;}
+.toggle-check span{font-family:'IBM Plex Mono',monospace;font-size:9px;color:var(--dim);text-transform:uppercase;letter-spacing:.1em;}
+.carousel-dl{width:100%;margin-top:10px;padding:9px;background:var(--accent);color:#07090C;font-family:'IBM Plex Mono',monospace;font-size:9px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;cursor:pointer;border:none;border-radius:2px;transition:opacity .15s;text-align:center;}
+.carousel-dl:hover{opacity:.85;}.carousel-dl:disabled{opacity:.4;cursor:default;}
+.bg3c{display:grid;grid-template-columns:1fr 1fr 1fr;gap:4px;margin-top:4px;margin-bottom:10px;}
+</style>
+</head>
+<body>
+<div class="series-bar"></div>
+<div class="top-bar">
+  <div class="top-bar-title">Social Post Generator — <span>A (Brief) History of AI</span></div>
+  <div class="tbbtns">
+    <button class="tbdl sec" id="btn-set" onclick="downloadSet()">↓ This Set (3)</button>
+    <button class="tbdl" id="btn-all" onclick="downloadAll()">↓ Download All</button>
+  </div>
+</div>
+<div class="fav-bar" id="fav-bar">
+  <span class="fav-count" id="fav-count">0 starred</span>
+  <button class="fav-dl" id="fav-dl-btn" onclick="downloadStarred()">↓ Download Starred</button>
+  <button class="fav-clear" onclick="clearStarred()">✕ Clear</button>
+</div>
+<div class="app">
+
+<!-- LEFT SIDEBAR -->
+<div class="sb">
+  <div class="sbs" id="sb-content">
+    <div class="sbl">Content</div>
+    <div class="cg">
+      <div class="cgl">Quotes</div>
+      <div class="ci active" data-type="quote" data-idx="0" onclick="selContent(this)"><strong>Rise of Human Life</strong><span>Vernor Vinge, 1993</span></div>
+      <div class="ci" data-type="quote" data-idx="1" onclick="selContent(this)"><strong>Voting Machine</strong><span>The market in the long run</span></div>
+      <div class="ci" data-type="quote" data-idx="2" onclick="selContent(this)"><strong>Code Red</strong><span>Google's internal response</span></div>
+    </div>
+    <div class="cg">
+      <div class="cgl">Factoids</div>
+      <div class="ci" data-type="fact" data-idx="0" onclick="selContent(this)"><strong>The Turing Test</strong><span>1950 · Can Machines Think?</span></div>
+      <div class="ci" data-type="fact" data-idx="1" onclick="selContent(this)"><strong>Dartmouth Conference</strong><span>1956 · AI is Named</span></div>
+      <div class="ci" data-type="fact" data-idx="2" onclick="selContent(this)"><strong>The Transformer Paper</strong><span>2017 · Attention Is All You Need</span></div>
+      <div class="ci" data-type="fact" data-idx="3" onclick="selContent(this)"><strong>ChatGPT — Mass Adoption</strong><span>Nov 2022 · 100M in 60 days</span></div>
+      <div class="ci" data-type="fact" data-idx="4" onclick="selContent(this)"><strong>Agents &amp; Reasoning</strong><span>2024 · The Paradigm Shifts</span></div>
+    </div>
+    <div class="cg">
+      <div class="cgl">Stats</div>
+      <div class="ci" data-type="stat" data-idx="0" onclick="selContent(this)"><strong>100M</strong><span>ChatGPT users</span></div>
+      <div class="ci" data-type="stat" data-idx="1" onclick="selContent(this)"><strong>175B</strong><span>GPT-3 Parameters</span></div>
+      <div class="ci" data-type="stat" data-idx="2" onclick="selContent(this)"><strong>80+</strong><span>Years of Research</span></div>
+      <div class="ci" data-type="stat" data-idx="3" onclick="selContent(this)"><strong>2×</strong><span>AI Winters</span></div>
+    </div>
+  </div>
+
+  <div class="sbs">
+    <div class="sbl">Style</div>
+    <div class="stbtns">
+      <button class="stbtn active" data-style="boldtype" onclick="selStyle(this)">Bold Type<small>Quote as the design</small></button>
+      <button class="stbtn" data-style="splitgrid" onclick="selStyle(this)">Split Grid<small>Text + image/color panel</small></button>
+      <button class="stbtn" data-style="branded" onclick="selStyle(this)">Branded<small>Bold Type + mascot mark</small></button>
+      <button class="stbtn" data-style="ogimage" onclick="selStyle(this)">OG Image<small>Title card for the guide</small></button>
+      <button class="stbtn" data-style="figure" onclick="selStyle(this)">Figure Bio<small>Full-bleed portrait + bio</small></button>
+    </div>
+  </div>
+
+  <div class="sbs" id="sb-bg">
+    <div class="sbl">Background</div>
+    <div class="swatches">
+      <div class="sw active" data-pal="dark" onclick="selPal(this)"><div class="sw-dot" style="background:#07090C;"></div><div class="sw-lbl" style="color:var(--muted);">Dark</div></div>
+      <div class="sw" data-pal="light" onclick="selPal(this)"><div class="sw-dot" style="background:#F2EFE9;border:1px solid #ccc;"></div><div class="sw-lbl" style="color:var(--muted);">Light</div></div>
+      <div class="sw" data-pal="accent" onclick="selPal(this)"><div class="sw-dot" style="background:#00D4F0;"></div><div class="sw-lbl" style="color:var(--muted);">Cyan</div></div>
+      <div class="sw" data-pal="accent2" onclick="selPal(this)"><div class="sw-dot" style="background:#0055EE;"></div><div class="sw-lbl" style="color:var(--muted);">Blue</div></div>
+    </div>
+  </div>
+
+  <div class="sbs" id="sb-hl">
+    <div class="sbl">Highlight</div>
+    <div class="hlps">
+      <button class="hlp active" data-hl="accent" onclick="selHL(this)">Accent</button>
+      <button class="hlp" data-hl="reverse" onclick="selHL(this)">Reverse</button>
+      <button class="hlp" data-hl="outline" onclick="selHL(this)">Outline</button>
+      <button class="hlp" data-hl="none" onclick="selHL(this)">None</button>
+    </div>
+  </div>
+
+  <div class="sbs" id="sb-image" style="display:none;">
+    <div class="sbl">Layout</div>
+    <div class="lbtns" style="margin-bottom:10px;">
+      <button class="lbtn active" data-layout="text|image" onclick="selLayout(this)">Text | Image</button>
+      <button class="lbtn" data-layout="image|text" onclick="selLayout(this)">Image | Text</button>
+      <button class="lbtn" data-layout="text|color" onclick="selLayout(this)">Text | Color</button>
+      <button class="lbtn" data-layout="color|text" onclick="selLayout(this)">Color | Text</button>
+    </div>
+    <div class="sbl">Panel BG</div>
+    <div class="swatches" style="margin-bottom:10px;">
+      <div class="sw active" data-sgpal="dark" onclick="selSGPal(this)"><div class="sw-dot" style="background:#07090C;"></div><div class="sw-lbl" style="color:var(--muted);">Dark</div></div>
+      <div class="sw" data-sgpal="light" onclick="selSGPal(this)"><div class="sw-dot" style="background:#F2EFE9;border:1px solid #ccc;"></div><div class="sw-lbl" style="color:var(--muted);">Light</div></div>
+    </div>
+    <div class="sbl">Color Panel</div>
+    <div class="igrid" style="margin-bottom:10px;">
+      <div class="img-thumb active" data-img="none" data-color="#00D4F0" onclick="selImg(this)" style="background:#00D4F0;"><div class="fb" style="color:#07090C;font-weight:700;">CYAN</div></div>
+      <div class="img-thumb" data-img="none" data-color="#0055EE" onclick="selImg(this)" style="background:#0055EE;"><div class="fb" style="color:#fff;font-weight:700;">BLUE</div></div>
+      <div class="img-thumb" data-img="none" data-color="#00E87A" onclick="selImg(this)" style="background:#00E87A;"><div class="fb" style="color:#07090C;font-weight:700;">GREEN</div></div>
+      <div class="img-thumb" data-img="none" data-color="#FF5C20" onclick="selImg(this)" style="background:#FF5C20;"><div class="fb" style="color:#fff;font-weight:700;">ORANGE</div></div>
+      <div class="img-thumb" data-img="none" data-color="#07090C" onclick="selImg(this)" style="background:#07090C;border:1px solid #222;"><div class="fb" style="color:#555;font-weight:700;">BLACK</div></div>
+      <div class="img-thumb" data-img="none" data-color="#F2EFE9" onclick="selImg(this)" style="background:#F2EFE9;"><div class="fb" style="color:#07090C;font-weight:700;">CREAM</div></div>
+    </div>
+    <div class="sbl">Era Images</div>
+    <div class="igrid">
+      <div class="img-thumb" data-img="https://images.unsplash.com/photo-1518770660439-4636190af475?w=600&q=80" onclick="selImg(this)"><img src="https://images.unsplash.com/photo-1518770660439-4636190af475?w=200&q=60" alt="" onerror="this.parentElement.innerHTML='<div class=fb>Early Machines</div>'"></div>
+      <div class="img-thumb" data-img="https://images.unsplash.com/photo-1461749280684-dccba630e2f6?w=600&q=80" onclick="selImg(this)"><img src="https://images.unsplash.com/photo-1461749280684-dccba630e2f6?w=200&q=60" alt="" onerror="this.parentElement.innerHTML='<div class=fb>Code Era</div>'"></div>
+      <div class="img-thumb" data-img="https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=600&q=80" onclick="selImg(this)"><img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=200&q=60" alt="" onerror="this.parentElement.innerHTML='<div class=fb>Data</div>'"></div>
+      <div class="img-thumb" data-img="https://images.unsplash.com/photo-1677442135703-1787eea5ce01?w=600&q=80" onclick="selImg(this)"><img src="https://images.unsplash.com/photo-1677442135703-1787eea5ce01?w=200&q=60" alt="" onerror="this.parentElement.innerHTML='<div class=fb>Neural Nets</div>'"></div>
+      <div class="img-thumb" data-img="https://images.unsplash.com/photo-1620712943543-bcc4688e7485?w=600&q=80" onclick="selImg(this)"><img src="https://images.unsplash.com/photo-1620712943543-bcc4688e7485?w=200&q=60" alt="" onerror="this.parentElement.innerHTML='<div class=fb>AI Art</div>'"></div>
+      <div class="img-thumb" data-img="https://images.unsplash.com/photo-1526378800651-c32d170fe6f8?w=600&q=80" onclick="selImg(this)"><img src="https://images.unsplash.com/photo-1526378800651-c32d170fe6f8?w=200&q=60" alt="" onerror="this.parentElement.innerHTML='<div class=fb>Robot</div>'"></div>
+    </div>
+    <div class="sbl" style="margin-top:8px;">Key Figures</div>
+    <div class="igrid">
+      <div class="img-thumb" data-img="ai/images/people/01-alan-turing.jpg" onclick="selImg(this)"><img src="ai/images/people/01-alan-turing.jpg" alt="" onerror="this.parentElement.innerHTML='<div class=fb>Turing</div>'"></div>
+      <div class="img-thumb" data-img="ai/images/people/04-geoffrey-hinton.jpg" onclick="selImg(this)"><img src="ai/images/people/04-geoffrey-hinton.jpg" alt="" onerror="this.parentElement.innerHTML='<div class=fb>Hinton</div>'"></div>
+      <div class="img-thumb" data-img="ai/images/people/09-sam-altman.jpg" onclick="selImg(this)"><img src="ai/images/people/09-sam-altman.jpg" alt="" onerror="this.parentElement.innerHTML='<div class=fb>Altman</div>'"></div>
+      <div class="img-thumb" data-img="ai/images/people/10-dario-amodei.jpg" onclick="selImg(this)"><img src="ai/images/people/10-dario-amodei.jpg" alt="" onerror="this.parentElement.innerHTML='<div class=fb>Amodei</div>'"></div>
+      <div class="img-thumb" data-img="ai/images/people/07-demis-hassabis.jpg" onclick="selImg(this)"><img src="ai/images/people/07-demis-hassabis.jpg" alt="" onerror="this.parentElement.innerHTML='<div class=fb>Hassabis</div>'"></div>
+      <div class="img-thumb" data-img="ai/images/people/05-yann-lecun.jpg" onclick="selImg(this)"><img src="ai/images/people/05-yann-lecun.jpg" alt="" onerror="this.parentElement.innerHTML='<div class=fb>LeCun</div>'"></div>
+    </div>
+  </div>
+
+  <div class="sbs" id="sb-og" style="display:none;">
+    <div class="sbl">Layout</div>
+    <div class="og-lbtns" style="margin-bottom:10px;">
+      <button class="lbtn active" data-oglayout="text|image" onclick="selOGLayout(this)">Title | Image</button>
+      <button class="lbtn" data-oglayout="image|text" onclick="selOGLayout(this)">Image | Title</button>
+      <button class="lbtn" data-oglayout="text|color" onclick="selOGLayout(this)">Title | Color</button>
+    </div>
+    <div class="sbl">Title Case</div>
+    <div class="tgl-row">
+      <button class="tgl active" id="tgl-caps" onclick="selTitleCase(false)">ALL CAPS</button>
+      <button class="tgl" id="tgl-tc" onclick="selTitleCase(true)">Title Case</button>
+    </div>
+    <div class="sbl">Title BG</div>
+    <div class="bg3">
+      <div class="bgsw active" data-ogbg="dark" onclick="selOGBg(this)" style="background:#07090C;color:#00D4F0;">Dark</div>
+      <div class="bgsw" data-ogbg="accent" onclick="selOGBg(this)" style="background:#00D4F0;color:#07090C;">Cyan</div>
+      <div class="bgsw" data-ogbg="white" onclick="selOGBg(this)" style="background:#fff;color:#000;">White</div>
+    </div>
+    <div class="sbl">Title Size</div>
+    <div class="size-row">
+      <input class="size-slider" id="og-size" type="range" min="28" max="88" value="52" oninput="setOGSize(this.value)">
+      <span class="size-val" id="og-size-val">52px</span>
+    </div>
+    <div class="sbl">Subtitle</div>
+    <textarea class="ogsub" id="og-sub" rows="3" oninput="updateAll()">Eight decades of machines learning to think.</textarea>
+    <div class="sbl" style="margin-top:12px;">Color Panel</div>
+    <div class="igrid" style="margin-bottom:10px;">
+      <div class="img-thumb og-opt active" data-img="none" data-color="#00D4F0" onclick="selOGImg(this)" style="background:#00D4F0;"><div class="fb" style="color:#07090C;font-weight:700;">CYAN</div></div>
+      <div class="img-thumb og-opt" data-img="none" data-color="#0055EE" onclick="selOGImg(this)" style="background:#0055EE;"><div class="fb" style="color:#fff;font-weight:700;">BLUE</div></div>
+      <div class="img-thumb og-opt" data-img="none" data-color="#00E87A" onclick="selOGImg(this)" style="background:#00E87A;"><div class="fb" style="color:#07090C;font-weight:700;">GREEN</div></div>
+      <div class="img-thumb og-opt" data-img="none" data-color="#FF5C20" onclick="selOGImg(this)" style="background:#FF5C20;"><div class="fb" style="color:#fff;font-weight:700;">ORANGE</div></div>
+      <div class="img-thumb og-opt" data-img="none" data-color="#07090C" onclick="selOGImg(this)" style="background:#07090C;border:1px solid #222;"><div class="fb" style="color:#555;font-weight:700;">BLACK</div></div>
+      <div class="img-thumb og-opt" data-img="none" data-color="#F2EFE9" onclick="selOGImg(this)" style="background:#F2EFE9;"><div class="fb" style="color:#07090C;font-weight:700;">CREAM</div></div>
+    </div>
+    <div class="sbl">Era Images</div>
+    <div class="igrid">
+      <div class="img-thumb og-opt" data-img="https://images.unsplash.com/photo-1518770660439-4636190af475?w=600&q=80" onclick="selOGImg(this)"><img src="https://images.unsplash.com/photo-1518770660439-4636190af475?w=200&q=60" alt="" onerror="this.parentElement.innerHTML='<div class=fb>Early Machines</div>'"></div>
+      <div class="img-thumb og-opt" data-img="https://images.unsplash.com/photo-1677442135703-1787eea5ce01?w=600&q=80" onclick="selOGImg(this)"><img src="https://images.unsplash.com/photo-1677442135703-1787eea5ce01?w=200&q=60" alt="" onerror="this.parentElement.innerHTML='<div class=fb>Neural Nets</div>'"></div>
+      <div class="img-thumb og-opt" data-img="https://images.unsplash.com/photo-1620712943543-bcc4688e7485?w=600&q=80" onclick="selOGImg(this)"><img src="https://images.unsplash.com/photo-1620712943543-bcc4688e7485?w=200&q=60" alt="" onerror="this.parentElement.innerHTML='<div class=fb>AI Art</div>'"></div>
+      <div class="img-thumb og-opt" data-img="https://images.unsplash.com/photo-1526378800651-c32d170fe6f8?w=600&q=80" onclick="selOGImg(this)"><img src="https://images.unsplash.com/photo-1526378800651-c32d170fe6f8?w=200&q=60" alt="" onerror="this.parentElement.innerHTML='<div class=fb>Robot</div>'"></div>
+    </div>
+  </div>
+
+  <div class="sbs" id="sb-figure" style="display:none;">
+    <div class="sbl">Layout</div>
+    <div class="fig-layout">
+      <button class="lbtn active" id="fig-layout-left" onclick="selFigLayout('image|text')">Image | Text</button>
+      <button class="lbtn" id="fig-layout-right" onclick="selFigLayout('text|image')">Text | Image</button>
+    </div>
+    <div class="sbl" style="margin-top:10px;">BG</div>
+    <div class="swatches" style="margin-bottom:10px;">
+      <div class="sw active" data-figpal="dark" onclick="selFigPal(this)"><div class="sw-dot" style="background:#07090C;"></div><div class="sw-lbl" style="color:var(--muted);">Dark</div></div>
+      <div class="sw" data-figpal="light" onclick="selFigPal(this)"><div class="sw-dot" style="background:#F2EFE9;border:1px solid #ccc;"></div><div class="sw-lbl" style="color:var(--muted);">Light</div></div>
+    </div>
+    <div class="sbl">Figure</div>
+    <div class="fig-grid" id="fig-list"></div>
+    <div class="sbl" style="margin-top:12px;">Image Position</div>
+    <div class="pos-row">
+      <input class="pos-slider" id="fig-pos" type="range" min="0" max="100" value="20" oninput="setFigPos(this.value)">
+      <span class="pos-val" id="fig-pos-val">20%</span>
+    </div>
+    <button class="fig-dl-all" id="fig-dl-all-btn" onclick="downloadAllFigures()">↓ All Figures (×3 formats)</button>
+  </div>
+
+  <div class="carousel-section" id="sb-carousel" style="display:none;">
+    <div class="carousel-title">Carousel Export</div>
+    <div class="sbl">Card BG</div>
+    <div class="bg3c">
+      <div class="bgsw active" data-cbg="dark" onclick="selCarouselBg(this)" style="background:#07090C;color:#00D4F0;">Dark</div>
+      <div class="bgsw" data-cbg="accent" onclick="selCarouselBg(this)" style="background:#00D4F0;color:#07090C;">Cyan</div>
+      <div class="bgsw" data-cbg="white" onclick="selCarouselBg(this)" style="background:#fff;color:#000;">White</div>
+    </div>
+    <div class="sbl">Intro Title</div>
+    <input class="cinput" id="carousel-title" type="text" value="Key Figures in AI History" oninput="updateAll()">
+    <div class="sbl" style="margin-top:10px;">Subtitle</div>
+    <input class="cinput" id="carousel-sub" type="text" value="A (Brief) History of AI" oninput="updateAll()">
+    <div class="sbl" style="margin-top:10px;">Figure Count</div>
+    <div class="count-row">
+      <input class="count-slider" id="carousel-count" type="range" min="3" max="12" value="12" oninput="setCarouselCount(this.value)">
+      <span class="count-val" id="carousel-count-val">12</span>
+    </div>
+    <div class="toggle-check">
+      <input type="checkbox" id="carousel-outro-toggle" checked onchange="updateAll()">
+      <span>Include closing card</span>
+    </div>
+    <textarea class="cinput" id="carousel-outro" rows="2" oninput="updateAll()">abriefhistoryofeverything.com
+Read the full guide →</textarea>
+    <button class="carousel-dl" id="carousel-dl-btn" onclick="downloadCarousel()">↓ Export Carousel</button>
+  </div>
+</div>
+
+<!-- CANVAS AREA -->
+<div id="og-canvas-wrap" style="display:none;flex:1;overflow-y:auto;padding:20px;background:var(--bg);">
+  <div style="max-width:660px;margin:0 auto;">
+    <div class="cw"><div class="cm"><span class="cn">OG / Twitter</span><span class="cd">1200×630</span><button class="dlb" onclick="dlC('og')">↓ PNG</button></div><div class="cf og" id="canvas-og"></div></div>
+  </div>
+</div>
+<div id="social-canvas-wrap" class="ca">
+  <div class="cgrid">
+    <div class="cw"><div class="cm"><span class="cn">Twitter / X</span><span class="cd">1200×675</span><button class="dlb" onclick="dlC('tw')">↓ PNG</button></div><div class="cf tw" id="canvas-tw"></div></div>
+    <div class="cw"><div class="cm"><span class="cn">IG Square</span><span class="cd">1080×1080</span><button class="dlb" onclick="dlC('sq')">↓ PNG</button></div><div class="cf sq" id="canvas-sq"></div></div>
+    <div class="cw"><div class="cm"><span class="cn">IG Vertical</span><span class="cd">1080×1350</span><button class="dlb" onclick="dlC('vt')">↓ PNG</button></div><div class="cf vt" id="canvas-vt"></div></div>
+  </div>
+  <div id="carousel-preview" style="display:none;border-top:1px solid var(--rule);margin-top:18px;padding-top:18px;">
+    <div class="cgrid" style="grid-template-columns:1fr 1fr 1fr;">
+      <div class="cw"><div class="cm"><span class="cn">Intro Card</span><span class="cd">Square</span></div><div class="cf sq" id="preview-intro"></div></div>
+      <div class="cw"><div class="cm"><span class="cn">Figure Preview</span><span class="cd">Square</span></div><div class="cf sq" id="preview-fig"></div></div>
+      <div class="cw" id="preview-outro-wrap"><div class="cm"><span class="cn">Closing Card</span><span class="cd">Square</span></div><div class="cf sq" id="preview-outro"></div></div>
+    </div>
+  </div>
+</div>
+
+<!-- RIGHT SIDEBAR -->
+<div class="rsb">
+  <div class="rsbs"><div class="rsbl">Active Content</div><div class="rsbtext" id="rsb-text">We are on the edge of change comparable to the rise of human life on Earth.</div><div class="rsbattr" id="rsb-attr">Vernor Vinge, 1993</div></div>
+  <div class="rsbs"><div class="rsbl">Highlight Word</div><input class="hlinput" id="hl-input" type="text" value="rise of human life" oninput="updateAll()"></div>
+  <div class="rsbs">
+    <div class="rsbl">Palette</div>
+    <div class="rsw">
+      <div class="rswr"><div class="rsdot" style="background:#00D4F0;"></div><div><div class="rssn">Accent</div><div class="rsh">#00D4F0</div></div></div>
+      <div class="rswr"><div class="rsdot" style="background:#0055EE;"></div><div><div class="rssn">Accent 2</div><div class="rsh">#0055EE</div></div></div>
+      <div class="rswr"><div class="rsdot" style="background:#00E87A;"></div><div><div class="rssn">Accent 3</div><div class="rsh">#00E87A</div></div></div>
+      <div class="rswr"><div class="rsdot" style="background:#07090C;border:1px solid #1e1e1e;"></div><div><div class="rssn">Dark BG</div><div class="rsh">#07090C</div></div></div>
+    </div>
+  </div>
+  <div class="rsbs">
+    <div class="rsbl">Fonts</div>
+    <div>
+      <div class="rsfont" style="font-family:'IBM Plex Mono',monospace;font-weight:600;">IBM Plex Mono<span>Display</span></div>
+      <div class="rsfont" style="font-family:'IBM Plex Sans Condensed',sans-serif;margin-top:5px;font-weight:600;">IBM Plex Sans Cond.<span>Headings</span></div>
+      <div class="rsfont" style="font-family:'IBM Plex Sans',sans-serif;margin-top:5px;">IBM Plex Sans<span>Body</span></div>
+    </div>
+  </div>
+</div>
+
+</div><!-- end .app -->
+<script>
+(function(){
+
+// ─── DATA ────────────────────────────────────────────────────────────────────
+const CONTENT={
+  quote:[
+    {text:"We are on the edge of change comparable to the rise of human life on Earth.",attr:"Vernor Vinge, 1993 · Predicting the Technological Singularity",hl:"rise of human life",bgNum:"1993"},
+    {text:"Any sufficiently advanced technology is indistinguishable from magic.",attr:"Arthur C. Clarke · Profiles of the Future, 1962",hl:"indistinguishable from magic",bgNum:"1962"},
+    {text:"The question is not whether machines can think, but whether men do.",attr:"B.F. Skinner · Contingencies of Reinforcement, 1969",hl:"whether men do",bgNum:"1969"}
+  ],
+  fact:[
+    {year:"1950",title:"The Turing Test",body:"Alan Turing asks 'Can Machines Think?' He proposes the Imitation Game — if a machine can fool a human, perhaps it thinks. The single most influential question in AI history.",hl:"Can Machines Think",bgNum:"1950"},
+    {year:"1956",title:"Dartmouth Conference",body:"McCarthy, Minsky, Shannon & friends coin 'Artificial Intelligence' at a summer workshop. The field is officially named. They estimate they'll crack it in one summer. Reader: they did not.",hl:"Artificial Intelligence",bgNum:"1956"},
+    {year:"2017",title:"The Transformer Paper",body:"Google Brain publishes 'Attention Is All You Need' — eight authors, one paper. It replaces recurrent networks entirely. Every modern foundation model runs on this architecture.",hl:"Attention Is All You Need",bgNum:"2017"},
+    {year:"Nov 2022",title:"ChatGPT — Mass Adoption",body:"OpenAI releases ChatGPT. One million users in five days. One hundred million in two months — the fastest consumer product adoption in recorded history. Google internally declares Code Red.",hl:"one hundred million",bgNum:"2022"},
+    {year:"2024",title:"Agents & Reasoning",body:"The paradigm shifts from assistants to autonomous agents. Cursor writes code. Devin handles software engineering. OpenAI o1 implements chain-of-thought reasoning.",hl:"autonomous agents",bgNum:"2024"}
+  ],
+  stat:[
+    {num:"100M",label:"Users in 60 Days",sub:"ChatGPT · fastest product adoption ever",hl:"100M",bgNum:"100"},
+    {num:"175B",label:"GPT-3 Parameters",sub:"Scale inflection point, 2020",hl:"175B",bgNum:"175"},
+    {num:"80+",label:"Years of Research",sub:"From Turing (1950) to present",hl:"80+",bgNum:"80"},
+    {num:"2×",label:"AI Winters",sub:"Funding collapses, 1974 & 1993",hl:"2×",bgNum:"2"}
+  ]
+};
+
+const FIGURES=[
+  {name:"Alan Turing",era:"1912–1954",role:"Father of Computer Science",accent:"#00D4F0",bio:"Proposed the Imitation Game in 1950 — the foundational question of machine intelligence. His theoretical work on computation underpins every AI system ever built.",img:"ai/images/people/01-alan-turing.jpg"},
+  {name:"John McCarthy",era:"1927–2011",role:"Coined 'Artificial Intelligence'",accent:"#0055EE",bio:"Organised the 1956 Dartmouth Conference and named the field. Invented Lisp — still influential today. Spent 50 years insisting AI was closer than it was.",img:"ai/images/people/02-john-mccarthy.jpg"},
+  {name:"Marvin Minsky",era:"1927–2016",role:"Co-founder, MIT AI Lab",accent:"#00E87A",bio:"Co-founded MIT's AI Lab and shaped decades of AI research. Famously helped kill the first wave of neural networks with 'Perceptrons' (1969) — and later regretted it.",img:"ai/images/people/03-marvin-minsky.jpg"},
+  {name:"Geoffrey Hinton",era:"b. 1947",role:"Godfather of Deep Learning",accent:"#FF5C20",bio:"Proved deep neural networks work (2006). His student built AlexNet (2012), triggering the modern AI era. Left Google in 2023 to warn about AI risk. Nobel Prize, 2024.",img:"ai/images/people/04-geoffrey-hinton.jpg"},
+  {name:"Yann LeCun",era:"b. 1960",role:"Chief AI Scientist, Meta",accent:"#00D4F0",bio:"Invented convolutional neural networks in the 1980s — the architecture behind every image recognition system. Vocal critic of AGI doom narratives.",img:"ai/images/people/05-yann-lecun.jpg"},
+  {name:"Yoshua Bengio",era:"b. 1966",role:"Pioneer of Deep Learning",accent:"#0055EE",bio:"Shared the 2018 Turing Award with Hinton and LeCun for deep learning. Now among the most prominent voices for AI safety and regulation.",img:"ai/images/people/06-yoshua-bengio.jpg"},
+  {name:"Demis Hassabis",era:"b. 1986",role:"CEO, Google DeepMind",accent:"#00E87A",bio:"Co-founded DeepMind in 2010. Led AlphaGo, AlphaFold, and Gemini. Nobel Prize in Chemistry 2024 for AlphaFold's protein structure breakthrough.",img:"ai/images/people/07-demis-hassabis.jpg"},
+  {name:"Ilya Sutskever",era:"b. 1985",role:"Co-founder, OpenAI / SSI",accent:"#FF5C20",bio:"Co-authored AlexNet, then co-founded OpenAI. Chief Scientist during GPT-2 through ChatGPT. Led the 2023 board revolt against Altman. Founded Safe Superintelligence in 2024.",img:"ai/images/people/08-ilya-sutskever.jpg"},
+  {name:"Sam Altman",era:"b. 1985",role:"CEO, OpenAI",accent:"#00D4F0",bio:"Led Y Combinator before joining OpenAI as CEO. Oversaw GPT-3, DALL·E, and ChatGPT's historic launch. Fired and reinstated within five days in 2023.",img:"ai/images/people/09-sam-altman.jpg"},
+  {name:"Dario Amodei",era:"b. 1983",role:"CEO, Anthropic",accent:"#0055EE",bio:"Former VP of Research at OpenAI. Left with his sister Daniela in 2021 to found Anthropic — focused on AI safety and Constitutional AI. Creator of Claude.",img:"ai/images/people/10-dario-amodei.jpg"},
+  {name:"Fei-Fei Li",era:"b. 1971",role:"Creator of ImageNet",accent:"#00E87A",bio:"Built ImageNet — the dataset that made the 2012 deep learning revolution possible. Former Chief Scientist at Google Cloud. Now leads Stanford HAI and World Labs.",img:"ai/images/people/11-fei-fei-li.jpg"},
+  {name:"Andrew Ng",era:"b. 1972",role:"Co-founder, Coursera / Google Brain",accent:"#FF5C20",bio:"Co-founded Google Brain and Coursera. His online courses have trained millions of AI practitioners. One of the most influential voices on AI's practical future.",img:"ai/images/people/12-andrew-ng.jpg"}
+];
+
+const PALS={
+  light:{bg:"#F2EFE9",text:"#07090C",accent:"#005FCC",muted:"rgba(0,0,0,.35)"},
+  dark:{bg:"#07090C",text:"#ffffff",accent:"#00D4F0",muted:"rgba(184,204,216,.25)"},
+  accent:{bg:"#00D4F0",text:"#07090C",accent:"#07090C",muted:"rgba(0,0,0,.4)"},
+  accent2:{bg:"#0055EE",text:"#ffffff",accent:"#00D4F0",muted:"rgba(255,255,255,.4)"}
+};
+const SGPALS={
+  dark:{bg:"#07090C",text:"#ffffff",accent:"#00D4F0",muted:"rgba(184,204,216,.25)"},
+  light:{bg:"#F2EFE9",text:"#07090C",accent:"#005FCC",muted:"rgba(0,0,0,.35)"}
+};
+const MASCOT=(a)=>`<svg width="20" height="20" viewBox="0 0 400 400" xmlns="http://www.w3.org/2000/svg" style="opacity:.6;position:absolute;bottom:6%;right:7%;"><rect width="400" height="400" fill="#08090C"/><rect x="6" y="6" width="388" height="388" fill="none" stroke="${a}" stroke-width="12"/><rect x="55" y="118" width="46" height="46" fill="${a}" opacity=".3"/><rect x="178" y="118" width="46" height="46" fill="${a}" opacity=".3"/><rect x="55" y="278" width="170" height="36" fill="${a}"/></svg>`;
+const BRAND_MASCOT=`<svg viewBox="0 0 400 400" xmlns="http://www.w3.org/2000/svg" style="width:72px;height:72px;display:block;"><rect width="400" height="400" fill="#00D4F0"/><rect x="55" y="118" width="46" height="46" fill="#08090C" opacity=".22"/><rect x="178" y="118" width="46" height="46" fill="#08090C" opacity=".22"/><rect x="55" y="278" width="170" height="36" fill="#08090C"/></svg>`;
+
+const SOCIAL_FMTS=["tw","sq","vt"];
+const OG_FMT=["og"];
+const FMTS=[...OG_FMT,...SOCIAL_FMTS];
+const FNAMES={og:"og",tw:"twitter",sq:"ig-square",vt:"ig-vertical"};
+const SCALES={og:2,tw:2,sq:2,vt:2.5};
+const CW={og:600,tw:600,sq:540,vt:432};
+const CH={og:315,tw:338,sq:540,vt:540};
+
+let S={
+  type:"quote",idx:0,style:"boldtype",pal:"dark",hl:"accent",hlWord:"rise of human life",
+  img:"none",panelColor:"#00D4F0",sgPal:"dark",layout:"text|image",
+  ogLayout:"text|image",ogImg:"none",ogColor:"#00D4F0",ogTitleCase:false,ogBg:"dark",ogTitleSize:52,
+  figureIdx:0,figLayout:"image|text",figPal:"dark",figPos:20,
+  carouselBg:"dark",carouselCount:12
+};
+let STARRED=new Set();
+
+// ─── HELPERS ─────────────────────────────────────────────────────────────────
+function esc(s){return String(s).replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;");}
+function fitText(el,aw,ah,min,max){let lo=min,hi=max;el.style.fontSize=hi+"px";while(lo<hi-1){const mid=Math.floor((lo+hi)/2);el.style.fontSize=mid+"px";if(el.scrollWidth<=aw&&el.scrollHeight<=ah)lo=mid;else hi=mid;}el.style.fontSize=lo+"px";}
+function applyHL(text,word,style,accent,bg){if(!word||style==="none")return esc(text);const h=esc(text),w=esc(word).replace(/[.*+?^${}()|[\]\\]/g,"\\$&"),re=new RegExp(`(${w})`,"gi");if(style==="accent")return h.replace(re,`<span style="color:${accent}">$1</span>`);if(style==="reverse")return h.replace(re,`<span style="background:${accent};color:${bg};padding:0 .04em;">$1</span>`);if(style==="outline")return h.replace(re,`<span style="-webkit-text-stroke:2px currentColor;color:transparent;">$1</span>`);return h;}
+function getC(){const it=CONTENT[S.type][S.idx];let d="",y="",a="",bn=it.bgNum||"";if(S.type==="quote"){d=it.text;a=it.attr;}else if(S.type==="fact"){d=it.title;y=it.year;}else{d=it.num;y=it.label;a=it.sub;}return{d,y,a,bn};}
+
+// ─── SELECTORS ───────────────────────────────────────────────────────────────
+window.selContent=function(el){document.querySelectorAll(".ci").forEach(i=>i.classList.remove("active"));el.classList.add("active");S.type=el.dataset.type;S.idx=parseInt(el.dataset.idx);const it=CONTENT[S.type][S.idx];S.hlWord=it.hl||"";document.getElementById("hl-input").value=S.hlWord;document.getElementById("rsb-text").textContent=it.text||it.num+" "+it.label;document.getElementById("rsb-attr").textContent=it.attr||it.sub||"";updateAll();};
+window.selStyle=function(el){
+  document.querySelectorAll(".stbtn").forEach(b=>b.classList.remove("active"));
+  el.classList.add("active");S.style=el.dataset.style;
+  const isOG=S.style==="ogimage",isSplit=S.style==="splitgrid",isFig=S.style==="figure";
+  document.getElementById("sb-content").style.display=(isOG||isFig)?"none":"";
+  document.getElementById("sb-bg").style.display=(isSplit||isOG||isFig)?"none":"";
+  document.getElementById("sb-hl").style.display=(isOG||isFig)?"none":"";
+  document.getElementById("sb-image").style.display=isSplit?"":"none";
+  document.getElementById("sb-og").style.display=isOG?"":"none";
+  document.getElementById("sb-figure").style.display=isFig?"":"none";
+  document.getElementById("sb-carousel").style.display=isFig?"":"none";
+  document.getElementById("og-canvas-wrap").style.display=isOG?"":"none";
+  document.getElementById("social-canvas-wrap").style.display=isOG?"none":"";
+  document.getElementById("carousel-preview").style.display=isFig?"":"none";
+  document.getElementById("btn-set").style.display=isOG?"none":"";
+  document.getElementById("btn-all").textContent=isOG?"↓ og-ai.png":"↓ Download All";
+  updateAll();
+};
+window.selPal=function(el){document.querySelectorAll("[data-pal]").forEach(s=>s.classList.remove("active"));el.classList.add("active");S.pal=el.dataset.pal;updateAll();};
+window.selSGPal=function(el){document.querySelectorAll("[data-sgpal]").forEach(s=>s.classList.remove("active"));el.classList.add("active");S.sgPal=el.dataset.sgpal;updateAll();};
+window.selHL=function(el){document.querySelectorAll(".hlp").forEach(p=>p.classList.remove("active"));el.classList.add("active");S.hl=el.dataset.hl;updateAll();};
+window.selImg=function(el){document.querySelectorAll("#sb-image .img-thumb").forEach(i=>i.classList.remove("active"));el.classList.add("active");S.img=el.dataset.img;S.panelColor=el.dataset.color||"#00D4F0";const hi=S.img&&S.img!=="none";if(hi&&(S.layout==="text|color"||S.layout==="color|text")){S.layout=S.layout==="color|text"?"image|text":"text|image";document.querySelectorAll(".lbtn[data-layout]").forEach(b=>b.classList.toggle("active",b.dataset.layout===S.layout));}else if(!hi&&(S.layout==="text|image"||S.layout==="image|text")){S.layout=S.layout==="image|text"?"color|text":"text|color";document.querySelectorAll(".lbtn[data-layout]").forEach(b=>b.classList.toggle("active",b.dataset.layout===S.layout));}updateAll();};
+window.selLayout=function(el){document.querySelectorAll(".lbtn[data-layout]").forEach(b=>b.classList.remove("active"));el.classList.add("active");S.layout=el.dataset.layout;updateAll();};
+window.selOGLayout=function(el){document.querySelectorAll("[data-oglayout]").forEach(b=>b.classList.remove("active"));el.classList.add("active");S.ogLayout=el.dataset.oglayout;updateAll();};
+window.selOGImg=function(el){document.querySelectorAll(".og-opt").forEach(i=>i.classList.remove("active"));el.classList.add("active");S.ogImg=el.dataset.img;S.ogColor=el.dataset.color||"#00D4F0";updateAll();};
+window.selTitleCase=function(tc){S.ogTitleCase=tc;document.getElementById("tgl-caps").classList.toggle("active",!tc);document.getElementById("tgl-tc").classList.toggle("active",tc);updateAll();};
+window.selOGBg=function(el){document.querySelectorAll("[data-ogbg]").forEach(b=>b.classList.remove("active"));el.classList.add("active");S.ogBg=el.dataset.ogbg;updateAll();};
+window.setOGSize=function(v){S.ogTitleSize=parseInt(v);document.getElementById("og-size-val").textContent=v+"px";updateAll();};
+window.selFigure=function(idx){S.figureIdx=idx;document.querySelectorAll(".fig-card").forEach((c,i)=>c.classList.toggle("active",i===idx));updateAll();};
+window.selFigLayout=function(layout){S.figLayout=layout;document.getElementById("fig-layout-left").classList.toggle("active",layout==="image|text");document.getElementById("fig-layout-right").classList.toggle("active",layout==="text|image");updateAll();};
+window.selFigPal=function(el){document.querySelectorAll("[data-figpal]").forEach(s=>s.classList.remove("active"));el.classList.add("active");S.figPal=el.dataset.figpal;updateAll();};
+window.setFigPos=function(v){S.figPos=parseInt(v);document.getElementById("fig-pos-val").textContent=v+"%";updateAll();};
+window.selCarouselBg=function(el){document.querySelectorAll("[data-cbg]").forEach(b=>b.classList.remove("active"));el.classList.add("active");S.carouselBg=el.dataset.cbg;updateAll();};
+window.setCarouselCount=function(v){S.carouselCount=parseInt(v);document.getElementById("carousel-count-val").textContent=v;updateAll();};
+document.getElementById("hl-input").addEventListener("input",e=>{S.hlWord=e.target.value;updateAll();});
+
+// ─── FAVORITES ───────────────────────────────────────────────────────────────
+function starKey(fi,layout,pal){return`figure-${fi}-${layout}-${pal}`;}
+function updateFavBar(){const n=STARRED.size;document.getElementById("fav-count").textContent=n===1?"1 starred":`${n} starred`;document.getElementById("fav-bar").classList.toggle("visible",n>0);}
+window.toggleStar=function(btn,fi){const key=starKey(fi,S.figLayout,S.figPal);if(STARRED.has(key)){STARRED.delete(key);btn.classList.remove("starred");btn.title="Add to starred";}else{STARRED.add(key);btn.classList.add("starred");btn.title="Remove from starred";}updateFavBar();};
+window.clearStarred=function(){STARRED.clear();document.querySelectorAll(".fig-star").forEach(b=>b.classList.remove("starred"));updateFavBar();};
+
+// ─── RENDERERS ───────────────────────────────────────────────────────────────
+function renderBT(el,fmt,mascot){
+  const p=PALS[S.pal],{d,y,a,bn}=getC(),hl=document.getElementById("hl-input").value||S.hlWord,aw=CW[fmt]*0.86,ah=CH[fmt]*0.72,max=Math.round(CW[fmt]*0.18),min=14,h=applyHL(d,hl,S.hl,p.accent,p.bg);
+  el.innerHTML=`<div style="width:100%;height:100%;position:relative;overflow:hidden;display:flex;flex-direction:column;justify-content:center;align-items:flex-start;padding:7%;background:${p.bg};color:${p.text};">${bn?`<div style="position:absolute;bottom:-10px;right:-5px;font-family:'IBM Plex Mono',monospace;font-weight:700;font-size:220px;color:${p.accent};opacity:.04;line-height:1;pointer-events:none;user-select:none;">${bn}</div>`:""}<div style="position:relative;z-index:1;max-width:100%;">${y?`<div style="font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:${p.accent};opacity:.8;margin-bottom:8px;">${esc(y)}</div>`:""}<div class="btf-${fmt}" style="font-family:'IBM Plex Mono',monospace;font-weight:700;line-height:.92;letter-spacing:-.02em;font-size:${max}px;">${h}</div></div>${a?`<div style="position:absolute;bottom:6%;left:7%;right:${mascot?"14%":"7%"};font-family:'IBM Plex Mono',monospace;font-size:9px;color:${p.muted};letter-spacing:.04em;line-height:1.4;z-index:1;">${esc(a)}</div>`:""}</div>${mascot?MASCOT(p.accent):""}`;
+  const fe=el.querySelector(`.btf-${fmt}`);if(fe)requestAnimationFrame(()=>fitText(fe,aw*0.86,ah*0.72,min,max));
+}
+
+function renderSG(el,fmt){
+  const p=SGPALS[S.sgPal],{d,y,a}=getC(),hl=document.getElementById("hl-input").value||S.hlWord,isV=fmt==="vt",pw=isV?CW[fmt]*0.86:CW[fmt]*0.44,ph=isV?CH[fmt]*0.50:CH[fmt]*0.72,max=Math.round(pw*0.22),min=13,h=applyHL(d,hl,S.hl,p.accent,p.bg),bright=["#39FF14","#00FF88","#CCFF00","#F4F9EC","#F2EFE9","#FAFAF5","#00D4F0","#00E87A"],dot=bright.some(c=>S.panelColor.toUpperCase()===c.toUpperCase())?"rgba(0,0,0,.12)":"rgba(255,255,255,.12)",useImg=S.img&&S.img!=="none"&&(S.layout==="text|image"||S.layout==="image|text");
+  const tp=`<div style="flex:1;display:flex;flex-direction:column;justify-content:center;padding:9% 8%;position:relative;overflow:hidden;background:${p.bg};color:${p.text};"><div style="position:relative;z-index:1;max-width:100%;">${y?`<div style="font-family:'IBM Plex Mono',monospace;font-size:8px;letter-spacing:.2em;text-transform:uppercase;color:${p.accent};opacity:.8;margin-bottom:8px;">${esc(y)}</div>`:""}<div class="sgf-${fmt}" style="font-family:'IBM Plex Mono',monospace;font-weight:700;line-height:.92;letter-spacing:-.02em;font-size:${max}px;">${h}</div></div>${a?`<div style="margin-top:auto;padding-top:10px;font-family:'IBM Plex Mono',monospace;font-size:8px;color:${p.muted};letter-spacing:.04em;line-height:1.4;">${esc(a)}</div>`:""}</div>`;
+  const sp=useImg?`<div style="flex:1;position:relative;overflow:hidden;background-image:url('${S.img}');background-size:cover;background-position:center;"><div style="position:absolute;inset:0;background:${S.panelColor};opacity:.18;mix-blend-mode:multiply;"></div></div>`:`<div style="flex:1;position:relative;overflow:hidden;background:${S.panelColor};"><div style="position:absolute;inset:0;background-image:radial-gradient(circle,${dot} 1px,transparent 1px);background-size:18px 18px;"></div></div>`;
+  const panels=(S.layout==="text|image"||S.layout==="text|color")?tp+sp:sp+tp;
+  el.innerHTML=`<div style="width:100%;height:100%;display:flex;flex-direction:${isV?"column":"row"};overflow:hidden;">${panels}</div>`;
+  const fe=el.querySelector(`.sgf-${fmt}`);if(fe)requestAnimationFrame(()=>fitText(fe,pw,ph,min,max));
+}
+
+function renderOG(el){
+  const sub=(document.getElementById("og-sub")||{}).value||"Eight decades of machines learning to think.",bright=["#00D4F0","#00E87A","#39FF14","#F2EFE9","#FAFAF5"],dot=bright.some(c=>S.ogColor.toUpperCase()===c.toUpperCase())?"rgba(0,0,0,.1)":"rgba(255,255,255,.1)",useImg=S.ogImg&&S.ogImg!=="none"&&(S.ogLayout==="text|image"||S.ogLayout==="image|text");
+  let panelBg,labelCol,titleCol,subCol,accentCol;
+  if(S.ogBg==="accent"){panelBg="#00D4F0";labelCol="#07090C";titleCol="#07090C";subCol="rgba(0,0,0,.6)";accentCol="#07090C";}
+  else if(S.ogBg==="white"){panelBg="#ffffff";labelCol="#07090C";titleCol="#07090C";subCol="rgba(0,0,0,.6)";accentCol="#00D4F0";}
+  else{panelBg="#07090C";labelCol="#ffffff";titleCol="#ffffff";subCol="rgba(255,255,255,.7)";accentCol="#00D4F0";}
+  const tc=S.ogTitleCase;
+  const titleHTML=tc?`A.I.<span style="color:${accentCol};">_</span>`:`AI<span style="color:${accentCol};">_</span>`;
+  const titleStyle=`font-size:${S.ogTitleSize}px;line-height:.9;letter-spacing:-.03em;${tc?"":"text-transform:uppercase;"}`;
+  const tp=`<div style="flex:1;background:${panelBg};display:flex;flex-direction:column;justify-content:center;padding:9% 8%;position:relative;overflow:hidden;"><div style="font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.15em;text-transform:uppercase;color:${labelCol};margin-bottom:10px;">A (Brief) History of</div><div style="font-family:'IBM Plex Mono',monospace;font-weight:700;${titleStyle}color:${titleCol};padding-bottom:14px;">${titleHTML}</div><div style="font-family:'IBM Plex Mono',monospace;font-size:11px;color:${subCol};line-height:1.5;max-width:90%;letter-spacing:.02em;">${esc(sub)}</div></div>`;
+  const sp=useImg?`<div style="flex:1;position:relative;overflow:hidden;background-image:url('${S.ogImg}');background-size:cover;background-position:center;"><div style="position:absolute;inset:0;background:#00D4F0;opacity:.18;mix-blend-mode:multiply;"></div></div>`:`<div style="flex:1;position:relative;overflow:hidden;background:${S.ogColor};"><div style="position:absolute;inset:0;background-image:radial-gradient(circle,${dot} 1px,transparent 1px);background-size:18px 18px;"></div></div>`;
+  const panels=(S.ogLayout==="text|image"||S.ogLayout==="text|color")?tp+sp:sp+tp;
+  el.innerHTML=`<div style="width:100%;height:100%;display:flex;flex-direction:row;overflow:hidden;">${panels}</div>`;
+}
+
+function renderFigure(el,fmt){
+  const f=FIGURES[S.figureIdx];
+  const isV=fmt==="vt";
+  const dark=S.figPal==="dark";
+  const bg=dark?"#07090C":"#F2EFE9";
+  const txt=dark?"#ffffff":"#07090C";
+  const muted=dark?"rgba(184,204,216,.55)":"rgba(0,0,0,.5)";
+  const watermark=dark?"rgba(255,255,255,.08)":"rgba(0,0,0,.1)";
+  const imageLeft=S.figLayout==="image|text";
+  const imgPos=isV?`center ${S.figPos}%`:"center top";
+  const tp=`<div style="flex:1;background:${bg};display:flex;flex-direction:column;justify-content:center;padding:${isV?"8% 7%":"9% 8%"};position:relative;overflow:hidden;">
+    <div style="font-family:'IBM Plex Mono',monospace;font-size:${isV?"9":"8"}px;letter-spacing:.18em;text-transform:uppercase;color:${f.accent};margin-bottom:${isV?"8":"6"}px;">${esc(f.era)}</div>
+    <div style="font-family:'IBM Plex Sans Condensed',sans-serif;font-weight:700;font-size:${isV?"36":"26"}px;line-height:.95;letter-spacing:-.01em;color:${txt};margin-bottom:${isV?"5":"4"}px;">${esc(f.name)}</div>
+    <div style="font-family:'IBM Plex Mono',monospace;font-size:${isV?"9":"8"}px;letter-spacing:.08em;text-transform:uppercase;color:${f.accent};margin-bottom:${isV?"14":"10"}px;">${esc(f.role)}</div>
+    <div style="font-family:'IBM Plex Sans',sans-serif;font-weight:400;font-size:${isV?"17":"15"}px;line-height:1.55;color:${muted};">${esc(f.bio)}</div>
+    <div style="position:absolute;bottom:5%;${imageLeft?"right":"left"}:6%;font-family:'IBM Plex Mono',monospace;font-size:7px;letter-spacing:.14em;text-transform:uppercase;color:${watermark};">A (Brief) History of AI</div>
+  </div>`;
+  const ip=`<div style="flex:${isV?"1.4":"1"};position:relative;overflow:hidden;background-image:url('${f.img}');background-size:cover;background-position:${imgPos};"><div style="position:absolute;inset:0;background:${f.accent};opacity:.1;mix-blend-mode:multiply;"></div></div>`;
+  const panels=imageLeft?(ip+tp):(tp+ip);
+  el.innerHTML=`<div style="width:100%;height:100%;display:flex;flex-direction:${isV?"column":"row"};overflow:hidden;">${panels}</div>`;
+}
+
+function renderIntroCard(el,fmt){
+  const isV=fmt==="vt";
+  const title=document.getElementById("carousel-title").value||"Key Figures in AI History";
+  const sub=document.getElementById("carousel-sub").value||"A (Brief) History of AI";
+  const count=S.carouselCount;
+  let bg,txt,accent,muted;
+  if(S.carouselBg==="accent"){bg="#00D4F0";txt="#07090C";accent="#07090C";muted="rgba(0,0,0,.5)";}
+  else if(S.carouselBg==="white"){bg="#ffffff";txt="#07090C";accent="#00D4F0";muted="rgba(0,0,0,.4)";}
+  else{bg="#07090C";txt="#ffffff";accent="#00D4F0";muted="rgba(184,204,216,.45)";}
+  const ghostColor=S.carouselBg==="dark"?"#ffffff":"#07090C";
+  el.innerHTML=`<div style="width:100%;height:100%;background:${bg};display:flex;flex-direction:column;justify-content:flex-end;padding:${isV?"10% 9%":"9% 8%"};position:relative;overflow:hidden;">
+    <div style="position:absolute;bottom:-30px;right:-10px;font-family:'IBM Plex Mono',monospace;font-weight:700;font-size:${isV?"320":"260"}px;color:${ghostColor};opacity:.05;line-height:1;pointer-events:none;user-select:none;">${count}</div>
+    <div style="position:relative;z-index:1;">
+      <div style="font-family:'IBM Plex Mono',monospace;font-weight:700;font-size:${isV?"140":"110"}px;line-height:.85;letter-spacing:-.04em;color:${accent};margin-bottom:${isV?"12":"8"}px;">${count}</div>
+      <div style="font-family:'IBM Plex Sans Condensed',sans-serif;font-weight:700;font-size:${isV?"52":"42"}px;line-height:.92;letter-spacing:-.01em;color:${txt};margin-bottom:${isV?"14":"10"}px;">${esc(title)}<span style="color:${accent};">_</span></div>
+      <div style="font-family:'IBM Plex Mono',monospace;font-size:${isV?"11":"10"}px;color:${muted};letter-spacing:.04em;">${esc(sub)}</div>
+    </div>
+  </div>`;
+}
+
+function renderOutroCard(el,fmt){
+  const isV=fmt==="vt";
+  const text=document.getElementById("carousel-outro").value||"abriefhistoryofeverything.com\nRead the full guide →";
+  const lines=text.split("\n");
+  const count=S.carouselCount;
+  let bg,txt,accent;
+  if(S.carouselBg==="accent"){bg="#00D4F0";txt="#07090C";accent="#07090C";}
+  else if(S.carouselBg==="white"){bg="#ffffff";txt="#07090C";accent="#00D4F0";}
+  else{bg="#07090C";txt="#ffffff";accent="#00D4F0";}
+  const ghostColor=S.carouselBg==="dark"?"#ffffff":"#07090C";
+  el.innerHTML=`<div style="width:100%;height:100%;background:${bg};display:flex;flex-direction:column;justify-content:center;align-items:center;padding:10%;position:relative;overflow:hidden;text-align:center;">
+    <div style="position:absolute;bottom:-30px;right:-20px;font-family:'IBM Plex Mono',monospace;font-weight:700;font-size:${isV?"320":"260"}px;color:${ghostColor};opacity:.05;line-height:1;pointer-events:none;user-select:none;">${count}</div>
+    <div style="position:relative;z-index:1;display:flex;flex-direction:column;align-items:center;gap:${isV?"20":"14"}px;">
+      ${BRAND_MASCOT}
+      <div style="font-family:'IBM Plex Sans Condensed',sans-serif;font-weight:700;font-size:${isV?"26":"20"}px;line-height:1.1;letter-spacing:-.01em;color:${txt};">${esc(lines[0]||"")}</div>
+      ${lines[1]?`<div style="font-family:'IBM Plex Mono',monospace;font-size:${isV?"11":"9"}px;letter-spacing:.14em;text-transform:uppercase;color:${accent};">${esc(lines[1])}</div>`:""}
+    </div>
+  </div>`;
+}
+
+// ─── UPDATE ──────────────────────────────────────────────────────────────────
+function updateAll(){
+  const fmts=S.style==="ogimage"?OG_FMT:SOCIAL_FMTS;
+  fmts.forEach(fmt=>{
+    const el=document.getElementById("canvas-"+fmt);
+    if(!el)return;
+    if(S.style==="boldtype")renderBT(el,fmt,false);
+    else if(S.style==="branded")renderBT(el,fmt,true);
+    else if(S.style==="splitgrid")renderSG(el,fmt);
+    else if(S.style==="ogimage")renderOG(el);
+    else if(S.style==="figure")renderFigure(el,fmt);
+  });
+  if(S.style==="figure"){
+    const pi=document.getElementById("preview-intro");
+    const pf=document.getElementById("preview-fig");
+    const po=document.getElementById("preview-outro");
+    const pow=document.getElementById("preview-outro-wrap");
+    const includeOutro=document.getElementById("carousel-outro-toggle").checked;
+    if(pi)renderIntroCard(pi,"sq");
+    if(pf)renderFigure(pf,"sq");
+    if(po)renderOutroCard(po,"sq");
+    if(pow)pow.style.display=includeOutro?"":"none";
+  }
+}
+window.updateAll=updateAll;
+
+// ─── BUILD FIGURE LIST ───────────────────────────────────────────────────────
+(function(){
+  const list=document.getElementById("fig-list");
+  if(!list)return;
+  FIGURES.forEach((f,i)=>{
+    const div=document.createElement("div");
+    div.className="fig-card"+(i===0?" active":"");
+    div.onclick=(e)=>{if(!e.target.closest(".fig-star"))window.selFigure(i);};
+    div.innerHTML=`<div class="fig-thumb"><img src="${f.img}" alt="" onerror="this.style.display='none'"></div><div class="fig-info"><strong>${f.name}</strong><span>${f.role}</span></div><button class="fig-star" title="Add to starred" onclick="toggleStar(this,${i})">☆</button>`;
+    list.appendChild(div);
+  });
+})();
+
+// ─── EXPORT ──────────────────────────────────────────────────────────────────
+function d2b(d){const a=d.split(","),m=a[0].match(/:(.*?);/)[1],b=atob(a[1]);let n=b.length;const u=new Uint8Array(n);while(n--)u[n]=b.charCodeAt(n);return new Blob([u],{type:m});}
+function c2b(fmt){return new Promise((res,rej)=>{const el=document.getElementById("canvas-"+fmt);html2canvas(el,{scale:SCALES[fmt],useCORS:true,allowTaint:true,backgroundColor:"#07090C",logging:false}).then(c=>{if(c.toBlob)c.toBlob(b=>res(b||d2b(c.toDataURL("image/png"))),"image/png");else res(d2b(c.toDataURL("image/png")));}).catch(rej);});}
+function trig(blob,name){const url=URL.createObjectURL(blob),a=document.createElement("a");a.href=url;a.download=name;document.body.appendChild(a);a.click();document.body.removeChild(a);setTimeout(()=>URL.revokeObjectURL(url),2000);}
+function bn(){return`bhoe-ai-${S.type}${S.idx}-${S.style}`;}
+
+window.dlC=function(fmt){if(S.style==="ogimage"){c2b("og").then(b=>trig(b,"og-ai.png")).catch(e=>alert("Export failed. Serve over HTTP."));return;}c2b(fmt).then(b=>trig(b,`${bn()}-${FNAMES[fmt]}.png`)).catch(e=>alert("Export failed. Serve over HTTP."));};
+window.downloadSet=function(){if(S.style==="ogimage"){window.dlC("og");return;}const btn=document.getElementById("btn-set");btn.disabled=true;btn.textContent="Rendering…";Promise.all(SOCIAL_FMTS.map(f=>c2b(f).then(b=>({b,f})))).then(rs=>{const zip=new JSZip();rs.forEach(({b,f})=>zip.file(`${bn()}-${FNAMES[f]}.png`,b));zip.generateAsync({type:"blob"}).then(z=>{trig(z,`${bn()}.zip`);btn.disabled=false;btn.textContent="↓ This Set (3)";});}).catch(e=>{btn.disabled=false;btn.textContent="↓ This Set (3)";alert("Export failed. Serve over HTTP.");});};
+window.downloadAll=function(){if(S.style==="ogimage"){window.dlC("og");return;}const btn=document.getElementById("btn-all");btn.disabled=true;const saved={...S};const styles=["boldtype","splitgrid","branded","figure"];const items=[...CONTENT.quote.map((_,i)=>({type:"quote",idx:i})),...CONTENT.fact.map((_,i)=>({type:"fact",idx:i})),...CONTENT.stat.map((_,i)=>({type:"stat",idx:i}))];const zip=new JSZip();const queue=[];styles.forEach(st=>items.forEach(({type,idx})=>SOCIAL_FMTS.forEach(f=>queue.push({st,type,idx,f}))));let i=0;function next(){if(i>=queue.length){zip.generateAsync({type:"blob"}).then(z=>{Object.assign(S,saved);updateAll();trig(z,"bhoe-ai-all-posts.zip");btn.disabled=false;btn.textContent="↓ Download All";});return;}const{st,type,idx,f}=queue[i++];S.style=st;S.type=type;S.idx=idx;updateAll();btn.textContent=`Building… ${i}/${queue.length}`;setTimeout(()=>{c2b(f).then(b=>{zip.file(`bhoe-ai-${type}${idx}-${st}-${FNAMES[f]}.png`,b);next();}).catch(()=>next());},80);}next();};
+
+window.downloadStarred=function(){if(!STARRED.size)return;const btn=document.getElementById("fav-dl-btn");btn.disabled=true;btn.textContent="Rendering…";const saved={...S};const savedStyle=S.style;S.style="figure";const keys=[...STARRED];const queue=[];keys.forEach(key=>{const m=key.match(/^figure-(\d+)-(.+?)-(dark|light)$/);if(!m)return;const[,fi,layout,pal]=m;SOCIAL_FMTS.forEach(fmt=>queue.push({figIdx:parseInt(fi),layout,pal,fmt}));});const zip=new JSZip();let i=0;function next(){if(i>=queue.length){zip.generateAsync({type:"blob"}).then(z=>{Object.assign(S,saved);S.style=savedStyle;updateAll();trig(z,"bhoe-ai-starred.zip");btn.disabled=false;btn.textContent="↓ Download Starred";});return;}const{figIdx,layout,pal,fmt}=queue[i++];S.figureIdx=figIdx;S.figLayout=layout;S.figPal=pal;const el=document.getElementById("canvas-"+fmt);renderFigure(el,fmt);btn.textContent=`Rendering… ${i}/${queue.length}`;setTimeout(()=>{c2b(fmt).then(b=>{const name=FIGURES[figIdx].name.replace(/\s+/g,"-").toLowerCase();zip.file(`bhoe-figure-${name}-${layout.replace("|","-")}-${pal}-${FNAMES[fmt]}.png`,b);next();}).catch(()=>next());},80);}next();};
+
+window.downloadAllFigures=function(){const btn=document.getElementById("fig-dl-all-btn");btn.disabled=true;const saved={...S};const savedStyle=S.style;S.style="figure";const queue=[];FIGURES.forEach((_,fi)=>SOCIAL_FMTS.forEach(fmt=>queue.push({fi,fmt})));const zip=new JSZip();let i=0;function next(){if(i>=queue.length){zip.generateAsync({type:"blob"}).then(z=>{Object.assign(S,saved);S.style=savedStyle;updateAll();trig(z,"bhoe-ai-all-figures.zip");btn.disabled=false;btn.textContent="↓ All Figures (×3 formats)";});return;}const{fi,fmt}=queue[i++];S.figureIdx=fi;const el=document.getElementById("canvas-"+fmt);renderFigure(el,fmt);btn.textContent=`Rendering… ${i}/${queue.length}`;setTimeout(()=>{c2b(fmt).then(b=>{const name=FIGURES[fi].name.replace(/\s+/g,"-").toLowerCase();zip.file(`bhoe-figure-${name}-${S.figLayout.replace("|","-")}-${S.figPal}-${FNAMES[fmt]}.png`,b);next();}).catch(()=>next());},80);}next();};
+
+window.downloadCarousel=function(){const btn=document.getElementById("carousel-dl-btn");btn.disabled=true;btn.textContent="Building…";const saved={...S};const savedStyle=S.style;S.style="figure";const count=S.carouselCount;const includeOutro=document.getElementById("carousel-outro-toggle").checked;const fmts=["sq","vt"];const zip=new JSZip();const queue=[];fmts.forEach(fmt=>{queue.push({type:"intro",fmt});for(let fi=0;fi<count;fi++)queue.push({type:"figure",fi,fmt});if(includeOutro)queue.push({type:"outro",fmt});});let i=0;function next(){if(i>=queue.length){zip.generateAsync({type:"blob"}).then(z=>{Object.assign(S,saved);S.style=savedStyle;updateAll();trig(z,"bhoe-ai-carousel.zip");btn.disabled=false;btn.textContent="↓ Export Carousel";});return;}const item=queue[i++];const el=document.getElementById("canvas-"+item.fmt);let filename;if(item.type==="intro"){renderIntroCard(el,item.fmt);filename=`00-intro-${item.fmt}.png`;}else if(item.type==="outro"){renderOutroCard(el,item.fmt);filename=`99-outro-${item.fmt}.png`;}else{S.figureIdx=item.fi;renderFigure(el,item.fmt);const name=FIGURES[item.fi].name.replace(/\s+/g,"-").toLowerCase();filename=`${String(item.fi+1).padStart(2,"0")}-${name}-${item.fmt}.png`;}btn.textContent=`Building… ${i}/${queue.length}`;setTimeout(()=>{c2b(item.fmt).then(b=>{zip.file(filename,b);next();}).catch(()=>next());},80);}next();};
+
+updateAll();
+})();
+</script>
+</body>
+</html>
