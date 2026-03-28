@@ -10,7 +10,7 @@
 <style>
 :root{--bg:#FAFAF5;--bg1:#F2F2EC;--bg2:#E8E8E1;--rule:rgba(58,56,48,.08);--rule2:rgba(58,56,48,.04);--muted:rgba(58,56,48,.45);--dim:rgba(58,56,48,.6);--text:#3A3830;--bright:#1A1810;--accent:#005C2E;--gold:#C8962A;--red:#C0392B;}
 *{margin:0;padding:0;box-sizing:border-box;}html,body{height:100%;overflow:hidden;}
-body{background:var(--bg);color:var(--text);font-family:'Barlow',sans-serif;font-size:14px;display:flex;flex-direction:column;}
+body{background:#FAFAF5;color:#3A3830;font-family:'Barlow',sans-serif;font-size:14px;display:flex;flex-direction:column;}
 .series-bar{height:3px;background:linear-gradient(90deg,#005C2E 33%,#C8962A 33% 66%,#C0392B 66%);flex-shrink:0;}
 .top-bar{height:44px;background:var(--bg1);border-bottom:1px solid var(--rule);display:flex;align-items:center;padding:0 20px;gap:10px;flex-shrink:0;}
 .top-bar-title{font-family:'DM Mono',monospace;font-size:10px;letter-spacing:.15em;text-transform:uppercase;color:var(--dim);}
@@ -116,40 +116,85 @@ body{background:var(--bg);color:var(--text);font-family:'Barlow',sans-serif;font
 .carousel-dl{width:100%;margin-top:10px;padding:9px;background:var(--accent);color:#FAFAF5;font-family:'DM Mono',monospace;font-size:9px;letter-spacing:.12em;text-transform:uppercase;cursor:pointer;border:none;border-radius:2px;transition:opacity .15s;text-align:center;}
 .carousel-dl:hover{opacity:.85;}.carousel-dl:disabled{opacity:.4;cursor:default;}
 .bg3c{display:grid;grid-template-columns:1fr 1fr 1fr;gap:4px;margin-top:4px;margin-bottom:10px;}
+
+/* ── MOBILE LAYOUT ──────────────────────────────────────────────────────── */
+@media (max-width: 768px) {
+  body{overflow:auto;}
+  .top-bar{height:auto;min-height:44px;flex-wrap:wrap;padding:8px 14px;gap:6px;}
+  .top-bar-title{font-size:8px;line-height:1.4;max-width:calc(100% - 80px);}
+  .tbbtns{flex-shrink:0;}
+  .tbdl{font-size:9px;padding:5px 10px;}
+  .fav-bar{padding:0 14px;}
+  .app{flex-direction:column;overflow:visible;}
+  .sb{width:100%;border-right:none;border-bottom:1px solid var(--rule);overflow:visible;max-height:none;flex-shrink:0;}
+  .sbs{padding:10px 14px;}
+  /* Horizontal scroll for style buttons on mobile */
+  .stbtns{flex-direction:row;overflow-x:auto;gap:6px;padding-bottom:4px;}
+  .stbtn{flex-shrink:0;min-width:100px;font-size:11px;padding:6px 8px;}
+  .stbtn small{display:none;}
+  /* Swatches 4-up on mobile */
+  .swatches{grid-template-columns:repeat(4,1fr);}
+  /* Canvas area */
+  .ca{padding:14px;overflow:visible;}
+  .cgrid{grid-template-columns:1fr;gap:14px;}
+  /* Scale canvases to fit mobile width */
+  .cf.tw{width:100%;height:auto;aspect-ratio:600/338;}
+  .cf.sq{width:100%;height:auto;aspect-ratio:1;}
+  .cf.vt{width:80%;height:auto;aspect-ratio:432/540;margin:0 auto;}
+  .cf.og{width:100%;height:auto;aspect-ratio:600/315;}
+  /* Canvas inner content scales via transform */
+  .cf > div{transform-origin:top left;}
+  /* Right sidebar becomes bottom bar on mobile */
+  .rsb{width:100%;border-left:none;border-top:1px solid var(--rule);flex-direction:row;flex-wrap:wrap;overflow:visible;}
+  .rsbs{flex:1;min-width:160px;padding:10px 14px;}
+  /* Figure grid 2-col on mobile */
+  .fig-grid{display:grid;grid-template-columns:1fr 1fr;gap:4px;}
+  /* Image grid 4-col on mobile */
+  .igrid{grid-template-columns:repeat(4,1fr);}
+  /* Carousel preview 1-col on mobile */
+  #carousel-preview .cgrid{grid-template-columns:1fr;}
+  /* OG canvas wrap */
+  #og-canvas-wrap{padding:14px;}
+}
+@media (max-width: 480px) {
+  .swatches{grid-template-columns:repeat(2,1fr);}
+  .igrid{grid-template-columns:repeat(3,1fr);}
+  .rsb{flex-direction:column;}
+  .cf.vt{width:100%;}
+}
 </style></head>
 <body>
-<div class="series-bar"></div>
 <div class="top-bar">
-  <div class="top-bar-title">Social Post Generator \u2014 <span>A (Brief) History of the World Cup</span></div>
+  <div class="top-bar-title">Social Post Generator — <span>A (Brief) History of the World Cup</span></div>
   <div class="tbbtns">
-    <button class="tbdl sec" id="btn-set" onclick="downloadSet()">\u2193 This Set (3)</button>
-    <button class="tbdl" id="btn-all" onclick="downloadAll()">\u2193 Download All</button>
+    <button class="tbdl sec" id="btn-set" onclick="downloadSet()">↓ This Set (3)</button>
+    <button class="tbdl" id="btn-all" onclick="downloadAll()">↓ Download All</button>
   </div>
 </div>
 <div class="fav-bar" id="fav-bar">
   <span class="fav-count" id="fav-count">0 starred</span>
-  <button class="fav-dl" id="fav-dl-btn" onclick="downloadStarred()">\u2193 Download Starred</button>
-  <button class="fav-clear" onclick="clearStarred()">\u2715 Clear</button>
+  <button class="fav-dl" id="fav-dl-btn" onclick="downloadStarred()">↓ Download Starred</button>
+  <button class="fav-clear" onclick="clearStarred()">✕ Clear</button>
 </div>
 <div class="app">
 <div class="sb">
   <div class="sbs" id="sb-content">
     <div class="sbl">Content</div>
     <div class="cg"><div class="cgl">Quotes</div>
-      <div class="ci active" data-type="quote" data-idx="0" onclick="selContent(this)"><strong>Skin and Bones</strong><span>Burgnich on marking Pel\u00e9 \u00b7 1970</span></div>
+      <div class="ci active" data-type="quote" data-idx="0" onclick="selContent(this)"><strong>Skin and Bones</strong><span>Burgnich on marking Pelé · 1970</span></div>
       <div class="ci" data-type="quote" data-idx="1" onclick="selContent(this)"><strong>God Ever Created</strong><span>Diego Maradona, 1986</span></div>
     </div>
     <div class="cg"><div class="cgl">Factoids</div>
-      <div class="ci" data-type="fact" data-idx="0" onclick="selContent(this)"><strong>The First World Cup</strong><span>1930 \u00b7 Uruguay</span></div>
-      <div class="ci" data-type="fact" data-idx="1" onclick="selContent(this)"><strong>Maradona\u2019s Two Goals</strong><span>1986 \u00b7 Hand of God</span></div>
-      <div class="ci" data-type="fact" data-idx="2" onclick="selContent(this)"><strong>The Mineirazo</strong><span>2014 \u00b7 Brazil 1\u20137 Germany</span></div>
-      <div class="ci" data-type="fact" data-idx="3" onclick="selContent(this)"><strong>Messi Finally Wins</strong><span>2022 \u00b7 Greatest Final Ever</span></div>
-      <div class="ci" data-type="fact" data-idx="4" onclick="selContent(this)"><strong>The Maracanazo</strong><span>1950 \u00b7 Brazil\u2019s National Trauma</span></div>
+      <div class="ci" data-type="fact" data-idx="0" onclick="selContent(this)"><strong>The First World Cup</strong><span>1930 · Uruguay</span></div>
+      <div class="ci" data-type="fact" data-idx="1" onclick="selContent(this)"><strong>Maradona’s Two Goals</strong><span>1986 · Hand of God</span></div>
+      <div class="ci" data-type="fact" data-idx="2" onclick="selContent(this)"><strong>The Mineirazo</strong><span>2014 · Brazil 1–7 Germany</span></div>
+      <div class="ci" data-type="fact" data-idx="3" onclick="selContent(this)"><strong>Messi Finally Wins</strong><span>2022 · Greatest Final Ever</span></div>
+      <div class="ci" data-type="fact" data-idx="4" onclick="selContent(this)"><strong>The Maracanazo</strong><span>1950 · Brazil’s National Trauma</span></div>
     </div>
     <div class="cg"><div class="cgl">Stats</div>
       <div class="ci" data-type="stat" data-idx="0" onclick="selContent(this)"><strong>1.5B</strong><span>2022 Final Viewers</span></div>
-      <div class="ci" data-type="stat" data-idx="1" onclick="selContent(this)"><strong>5\u00d7</strong><span>Brazil \u2014 Most Titles</span></div>
-      <div class="ci" data-type="stat" data-idx="2" onclick="selContent(this)"><strong>22</strong><span>Tournaments 1930\u20132022</span></div>
+      <div class="ci" data-type="stat" data-idx="1" onclick="selContent(this)"><strong>5×</strong><span>Brazil — Most Titles</span></div>
+      <div class="ci" data-type="stat" data-idx="2" onclick="selContent(this)"><strong>22</strong><span>Tournaments 1930–2022</span></div>
       <div class="ci" data-type="stat" data-idx="3" onclick="selContent(this)"><strong>8</strong><span>Different Champions</span></div>
     </div>
   </div>
@@ -197,20 +242,20 @@ body{background:var(--bg);color:var(--text);font-family:'Barlow',sans-serif;font
     <div class="sbl">Match Images</div>
     <div class="igrid" style="margin-bottom:10px;">
       <div class="img-thumb" data-img="world-cup/images/trophy-hero-worldcup.jpg" onclick="selImg(this)"><img src="world-cup/images/trophy-hero-worldcup.jpg" alt="" onerror="this.parentElement.innerHTML='<div class=fb>Trophy</div>'"></div>
-      <div class="img-thumb" data-img="world-cup/images/maracana-1950.jpg" onclick="selImg(this)"><img src="world-cup/images/maracana-1950.jpg" alt="" onerror="this.parentElement.innerHTML='<div class=fb>Maracan\u00e3</div>'"></div>
+      <div class="img-thumb" data-img="world-cup/images/maracana-1950.jpg" onclick="selImg(this)"><img src="world-cup/images/maracana-1950.jpg" alt="" onerror="this.parentElement.innerHTML='<div class=fb>Maracanã</div>'"></div>
       <div class="img-thumb" data-img="world-cup/images/maradona-celebration.jpg" onclick="selImg(this)"><img src="world-cup/images/maradona-celebration.jpg" alt="" onerror="this.parentElement.innerHTML='<div class=fb>Maradona</div>'"></div>
       <div class="img-thumb" data-img="world-cup/images/gascoigne-1990.png" onclick="selImg(this)"><img src="world-cup/images/gascoigne-1990.png" alt="" onerror="this.parentElement.innerHTML='<div class=fb>Gazza 1990</div>'"></div>
       <div class="img-thumb" data-img="world-cup/images/messi-wc2022.jpg" onclick="selImg(this)"><img src="world-cup/images/messi-wc2022.jpg" alt="" onerror="this.parentElement.innerHTML='<div class=fb>Messi 2022</div>'"></div>
-      <div class="img-thumb" data-img="world-cup/images/mbappe-action.jpg" onclick="selImg(this)"><img src="world-cup/images/mbappe-action.jpg" alt="" onerror="this.parentElement.innerHTML='<div class=fb>Mbapp\u00e9</div>'"></div>
+      <div class="img-thumb" data-img="world-cup/images/mbappe-action.jpg" onclick="selImg(this)"><img src="world-cup/images/mbappe-action.jpg" alt="" onerror="this.parentElement.innerHTML='<div class=fb>Mbappé</div>'"></div>
     </div>
     <div class="sbl">Portraits</div>
     <div class="igrid">
-      <div class="img-thumb" data-img="world-cup/images/pele-portrait.jpg" onclick="selImg(this)"><img src="world-cup/images/pele-portrait.jpg" alt="" onerror="this.parentElement.innerHTML='<div class=fb>Pel\u00e9</div>'"></div>
+      <div class="img-thumb" data-img="world-cup/images/pele-portrait.jpg" onclick="selImg(this)"><img src="world-cup/images/pele-portrait.jpg" alt="" onerror="this.parentElement.innerHTML='<div class=fb>Pelé</div>'"></div>
       <div class="img-thumb" data-img="world-cup/images/maradona-portrait.jpg" onclick="selImg(this)"><img src="world-cup/images/maradona-portrait.jpg" alt="" onerror="this.parentElement.innerHTML='<div class=fb>Maradona</div>'"></div>
       <div class="img-thumb" data-img="world-cup/images/messi-portrait.jpg" onclick="selImg(this)"><img src="world-cup/images/messi-portrait.jpg" alt="" onerror="this.parentElement.innerHTML='<div class=fb>Messi</div>'"></div>
       <div class="img-thumb" data-img="world-cup/images/zidane-portrait.jpg" onclick="selImg(this)"><img src="world-cup/images/zidane-portrait.jpg" alt="" onerror="this.parentElement.innerHTML='<div class=fb>Zidane</div>'"></div>
       <div class="img-thumb" data-img="world-cup/images/ronaldo-portrait.jpg" onclick="selImg(this)"><img src="world-cup/images/ronaldo-portrait.jpg" alt="" onerror="this.parentElement.innerHTML='<div class=fb>Ronaldo R9</div>'"></div>
-      <div class="img-thumb" data-img="world-cup/images/mbappe-portrait.jpg" onclick="selImg(this)"><img src="world-cup/images/mbappe-portrait.jpg" alt="" onerror="this.parentElement.innerHTML='<div class=fb>Mbapp\u00e9</div>'"></div>
+      <div class="img-thumb" data-img="world-cup/images/mbappe-portrait.jpg" onclick="selImg(this)"><img src="world-cup/images/mbappe-portrait.jpg" alt="" onerror="this.parentElement.innerHTML='<div class=fb>Mbappé</div>'"></div>
     </div>
   </div>
   <div class="sbs" id="sb-og" style="display:none;">
@@ -250,7 +295,7 @@ body{background:var(--bg);color:var(--text);font-family:'Barlow',sans-serif;font
       <div class="img-thumb og-opt" data-img="world-cup/images/trophy-hero-worldcup.jpg" onclick="selOGImg(this)"><img src="world-cup/images/trophy-hero-worldcup.jpg" alt="" onerror="this.parentElement.innerHTML='<div class=fb>Trophy</div>'"></div>
       <div class="img-thumb og-opt" data-img="world-cup/images/maradona-celebration.jpg" onclick="selOGImg(this)"><img src="world-cup/images/maradona-celebration.jpg" alt="" onerror="this.parentElement.innerHTML='<div class=fb>Maradona</div>'"></div>
       <div class="img-thumb og-opt" data-img="world-cup/images/messi-wc2022.jpg" onclick="selOGImg(this)"><img src="world-cup/images/messi-wc2022.jpg" alt="" onerror="this.parentElement.innerHTML='<div class=fb>Messi 2022</div>'"></div>
-      <div class="img-thumb og-opt" data-img="world-cup/images/maracana-1950.jpg" onclick="selOGImg(this)"><img src="world-cup/images/maracana-1950.jpg" alt="" onerror="this.parentElement.innerHTML='<div class=fb>Maracan\u00e3</div>'"></div>
+      <div class="img-thumb og-opt" data-img="world-cup/images/maracana-1950.jpg" onclick="selOGImg(this)"><img src="world-cup/images/maracana-1950.jpg" alt="" onerror="this.parentElement.innerHTML='<div class=fb>Maracanã</div>'"></div>
     </div>
   </div>
   <div class="sbs" id="sb-figure" style="display:none;">
@@ -271,7 +316,7 @@ body{background:var(--bg);color:var(--text);font-family:'Barlow',sans-serif;font
       <input class="pos-slider" id="fig-pos" type="range" min="0" max="100" value="20" oninput="setFigPos(this.value)">
       <span class="pos-val" id="fig-pos-val">20%</span>
     </div>
-    <button class="fig-dl-all" id="fig-dl-all-btn" onclick="downloadAllFigures()">\u2193 All Figures (\u00d73 formats)</button>
+    <button class="fig-dl-all" id="fig-dl-all-btn" onclick="downloadAllFigures()">↓ All Figures (×3 formats)</button>
   </div>
   <div class="carousel-section" id="sb-carousel" style="display:none;">
     <div class="carousel-title">Carousel Export</div>
@@ -295,20 +340,20 @@ body{background:var(--bg);color:var(--text);font-family:'Barlow',sans-serif;font
       <span>Include closing card</span>
     </div>
     <textarea class="cinput" id="carousel-outro" rows="2" oninput="updateAll()">abriefhistoryofeverything.com
-Read the full guide \u2192</textarea>
-    <button class="carousel-dl" id="carousel-dl-btn" onclick="downloadCarousel()">\u2193 Export Carousel</button>
+Read the full guide →</textarea>
+    <button class="carousel-dl" id="carousel-dl-btn" onclick="downloadCarousel()">↓ Export Carousel</button>
   </div>
 </div>
 <div id="og-canvas-wrap" style="display:none;flex:1;overflow-y:auto;padding:20px;background:var(--bg);">
   <div style="max-width:660px;margin:0 auto;">
-    <div class="cw"><div class="cm"><span class="cn">OG / Twitter</span><span class="cd">1200\u00d7630</span><button class="dlb" onclick="dlC('og')">\u2193 PNG</button></div><div class="cf og" id="canvas-og"></div></div>
+    <div class="cw"><div class="cm"><span class="cn">OG / Twitter</span><span class="cd">1200×630</span><button class="dlb" onclick="dlC('og')">↓ PNG</button></div><div class="cf og" id="canvas-og"></div></div>
   </div>
 </div>
 <div id="social-canvas-wrap" class="ca">
   <div class="cgrid">
-    <div class="cw"><div class="cm"><span class="cn">Twitter / X</span><span class="cd">1200\u00d7675</span><button class="dlb" onclick="dlC('tw')">\u2193 PNG</button></div><div class="cf tw" id="canvas-tw"></div></div>
-    <div class="cw"><div class="cm"><span class="cn">IG Square</span><span class="cd">1080\u00d71080</span><button class="dlb" onclick="dlC('sq')">\u2193 PNG</button></div><div class="cf sq" id="canvas-sq"></div></div>
-    <div class="cw"><div class="cm"><span class="cn">IG Vertical</span><span class="cd">1080\u00d71350</span><button class="dlb" onclick="dlC('vt')">\u2193 PNG</button></div><div class="cf vt" id="canvas-vt"></div></div>
+    <div class="cw"><div class="cm"><span class="cn">Twitter / X</span><span class="cd">1200×675</span><button class="dlb" onclick="dlC('tw')">↓ PNG</button></div><div class="cf tw" id="canvas-tw"></div></div>
+    <div class="cw"><div class="cm"><span class="cn">IG Square</span><span class="cd">1080×1080</span><button class="dlb" onclick="dlC('sq')">↓ PNG</button></div><div class="cf sq" id="canvas-sq"></div></div>
+    <div class="cw"><div class="cm"><span class="cn">IG Vertical</span><span class="cd">1080×1350</span><button class="dlb" onclick="dlC('vt')">↓ PNG</button></div><div class="cf vt" id="canvas-vt"></div></div>
   </div>
   <div id="carousel-preview" style="display:none;border-top:1px solid var(--rule);margin-top:18px;padding-top:18px;">
     <div class="cgrid" style="grid-template-columns:1fr 1fr 1fr;">
@@ -319,7 +364,7 @@ Read the full guide \u2192</textarea>
   </div>
 </div>
 <div class="rsb">
-  <div class="rsbs"><div class="rsbl">Active Content</div><div class="rsbtext" id="rsb-text">I told myself before the game \u2014 he\u2019s made of skin and bones just like everyone else. But I was wrong.</div><div class="rsbattr" id="rsb-attr">Tarc\u00edsio Burgnich on marking Pel\u00e9 \u00b7 1970</div></div>
+  <div class="rsbs"><div class="rsbl">Active Content</div><div class="rsbtext" id="rsb-text">I told myself before the game — he’s made of skin and bones just like everyone else. But I was wrong.</div><div class="rsbattr" id="rsb-attr">Tarcísio Burgnich on marking Pelé · 1970</div></div>
   <div class="rsbs"><div class="rsbl">Highlight Word</div><input class="hlinput" id="hl-input" type="text" value="skin and bones" oninput="updateAll()"></div>
   <div class="rsbs"><div class="rsbl">Palette</div><div class="rsw">
     <div class="rswr"><div class="rsdot" style="background:#005C2E;"></div><div><div class="rssn">Green</div><div class="rsh">#005C2E</div></div></div>
@@ -338,32 +383,32 @@ Read the full guide \u2192</textarea>
 (function(){
 const CONTENT={
   quote:[
-    {text:"I told myself before the game \u2014 he\u2019s made of skin and bones just like everyone else. But I was wrong.",attr:"Tarc\u00edsio Burgnich, Italy defender, on marking Pel\u00e9 \u00b7 1970 World Cup final",hl:"skin and bones",bgNum:"1970"},
-    {text:"Football is the most beautiful thing God ever created.",attr:"Diego Maradona \u2014 1986 World Cup winner, Argentina",hl:"God ever created",bgNum:"1986"}
+    {text:"I told myself before the game — he’s made of skin and bones just like everyone else. But I was wrong.",attr:"Tarcísio Burgnich, Italy defender, on marking Pelé · 1970 World Cup final",hl:"skin and bones",bgNum:"1970"},
+    {text:"Football is the most beautiful thing God ever created.",attr:"Diego Maradona — 1986 World Cup winner, Argentina",hl:"God ever created",bgNum:"1986"}
   ],
   fact:[
-    {year:"1930",title:"The First World Cup, Uruguay",body:"FIFA president Jules Rimet convinces the football world to host a global tournament. Only 13 nations make the trip to Montevideo. Uruguay win on home soil, beating Argentina 4\u20132 in the final before 93,000 fans.",hl:"13 nations",bgNum:"1930"},
-    {year:"1986",title:"Maradona\u2019s Two Goals Against England",body:"In five minutes, Maradona scores the most controversial goal in history \u2014 the Hand of God \u2014 and then the greatest: a 60-yard dribble past five defenders. He wins the tournament almost single-handed. Argentina beat West Germany in the final.",hl:"Hand of God",bgNum:"1986"},
-    {year:"2014",title:"The Mineirazo \u2014 Brazil Humiliated",body:"Germany score 7 goals in the semi-final on Brazilian soil. Brazil concede 5 in 18 minutes. Players weep on the pitch. Germany beat Argentina 1\u20130 in the final. Brazil\u2019s second national trauma after 1950.",hl:"7 goals",bgNum:"2014"},
-    {year:"2022",title:"Messi Finally Wins \u2014 Greatest Final Ever",body:"Argentina lead 2\u20130. Mbapp\u00e9 scores twice to level. Messi scores in extra time. Mbapp\u00e9 completes his hat-trick. Argentina win on penalties. 1.5 billion people watch. The GOAT debate ends.",hl:"1.5 billion",bgNum:"2022"},
-    {year:"1950",title:"The Maracanazo \u2014 Brazil\u2019s National Trauma",body:"Brazil build the Maracan\u00e3 \u2014 200,000 capacity \u2014 expecting to win. A 1\u20130 loss to Uruguay shatters the nation. Playwright Nelson Rodrigues calls it \u2018our Hiroshima.\u2019 The wound never fully healed.",hl:"our Hiroshima",bgNum:"1950"}
+    {year:"1930",title:"The First World Cup, Uruguay",body:"FIFA president Jules Rimet convinces the football world to host a global tournament. Only 13 nations make the trip to Montevideo. Uruguay win on home soil, beating Argentina 4–2 in the final before 93,000 fans.",hl:"13 nations",bgNum:"1930"},
+    {year:"1986",title:"Maradona’s Two Goals Against England",body:"In five minutes, Maradona scores the most controversial goal in history — the Hand of God — and then the greatest: a 60-yard dribble past five defenders. He wins the tournament almost single-handed. Argentina beat West Germany in the final.",hl:"Hand of God",bgNum:"1986"},
+    {year:"2014",title:"The Mineirazo — Brazil Humiliated",body:"Germany score 7 goals in the semi-final on Brazilian soil. Brazil concede 5 in 18 minutes. Players weep on the pitch. Germany beat Argentina 1–0 in the final. Brazil’s second national trauma after 1950.",hl:"7 goals",bgNum:"2014"},
+    {year:"2022",title:"Messi Finally Wins — Greatest Final Ever",body:"Argentina lead 2–0. Mbappé scores twice to level. Messi scores in extra time. Mbappé completes his hat-trick. Argentina win on penalties. 1.5 billion people watch. The GOAT debate ends.",hl:"1.5 billion",bgNum:"2022"},
+    {year:"1950",title:"The Maracanazo — Brazil’s National Trauma",body:"Brazil build the Maracanã — 200,000 capacity — expecting to win. A 1–0 loss to Uruguay shatters the nation. Playwright Nelson Rodrigues calls it ‘our Hiroshima.’ The wound never fully healed.",hl:"our Hiroshima",bgNum:"1950"}
   ],
   stat:[
     {num:"1.5B",label:"2022 Final Viewers",sub:"Most-watched sporting event in history",hl:"1.5B",bgNum:"1.5"},
-    {num:"5\u00d7",label:"Brazil \u2014 Most Titles",sub:"Leads all nations across 1958\u20132002",hl:"5\u00d7",bgNum:"5"},
+    {num:"5×",label:"Brazil — Most Titles",sub:"Leads all nations across 1958–2002",hl:"5×",bgNum:"5"},
     {num:"22",label:"Tournaments",sub:"1930 to 2022, spanning 92 years",hl:"22",bgNum:"22"},
     {num:"8",label:"Different Champions",sub:"Only 8 nations have ever lifted the trophy",hl:"8",bgNum:"8"}
   ]
 };
 const FIGURES=[
-  {name:"Pel\u00e9",era:"1958 \u2013 1970",role:"3\u00d7 World Cup Winner \u00b7 12 Goals",accent:"#C8962A",bio:"The original king. Scored in four World Cups across 12 years. Won three titles. Cried on the pitch at 17 after Brazil\u2019s first final victory. His 1970 performances remain the pinnacle of the game.",img:"world-cup/images/pele-portrait.jpg"},
-  {name:"Maradona",era:"1982 \u2013 1994",role:"1986 World Cup Winner \u00b7 Golden Ball",accent:"#C0392B",bio:"Two goals in one quarter-final against England \u2014 the most infamous and the most brilliant in the same match. Carried Argentina to the 1986 title almost entirely alone. GOAT status debated until Messi lifted 2022.",img:"world-cup/images/maradona-portrait.jpg"},
-  {name:"Lionel Messi",era:"2006 \u2013 2022",role:"2022 World Cup Winner \u00b7 26 Appearances",accent:"#005C2E",bio:"The greatest player alive, defined by 16 years of World Cup near-misses before Qatar 2022. Scored in the final. Won the Golden Ball. The tournament that silenced every remaining debate.",img:"world-cup/images/messi-portrait.jpg"},
-  {name:"Miroslav Klose",era:"2002 \u2013 2014",role:"All-time Top Scorer \u00b7 16 Goals",accent:"#005C2E",bio:"The most prolific World Cup scorer in history \u2014 16 goals across four tournaments. Scored during Brazil\u2019s 7\u20131 humiliation to overtake Ronaldo. The most efficient forward the tournament has ever seen.",img:"world-cup/images/klose-portrait.jpg"},
-  {name:"Zinedine Zidane",era:"1998 \u2013 2006",role:"1998 World Cup Winner \u00b7 2006 Golden Ball",accent:"#C8962A",bio:"His two headers won France the 1998 title. His headbutt in the 2006 final \u2014 his last professional touch \u2014 is the most dramatic ending to a career in football history. He still won the Golden Ball.",img:"world-cup/images/zidane-portrait.jpg"},
-  {name:"Ronaldo",era:"1994 \u2013 2006",role:"2\u00d7 World Cup Winner \u00b7 15 Goals",accent:"#005C2E",bio:"The original R9. A mystery illness before the 1998 final haunts his legacy, but he returned in 2002 to score twice in the final and win the Golden Boot. The 2002 haircut alone deserves its own chapter.",img:"world-cup/images/ronaldo-portrait.jpg"},
-  {name:"Kylian Mbapp\u00e9",era:"2018 \u2013",role:"2018 Winner \u00b7 2022 Hat-trick Finalist",accent:"#C8962A",bio:"Scored in the 2018 final at 19. Scored a hat-trick in the 2022 final in a comeback that nearly won it. The player most likely to define the next decade of the World Cup.",img:"world-cup/images/mbappe-portrait.jpg"},
-  {name:"Johan Cruyff",era:"1974",role:"1974 Runner-Up \u00b7 Total Football",accent:"#005C2E",bio:"Never won the World Cup. It doesn\u2019t matter. His 1974 Netherlands redefined how football is played. The Cruyff Turn, Total Football, the 4-3-3 \u2014 all traced to one tournament, one genius, one summer.",img:"world-cup/images/cruyff-1974.jpg"}
+  {name:"Pelé",era:"1958 – 1970",role:"3× World Cup Winner · 12 Goals",accent:"#C8962A",bio:"The original king. Scored in four World Cups across 12 years. Won three titles. Cried on the pitch at 17 after Brazil’s first final victory. His 1970 performances remain the pinnacle of the game.",img:"world-cup/images/pele-portrait.jpg"},
+  {name:"Maradona",era:"1982 – 1994",role:"1986 World Cup Winner · Golden Ball",accent:"#C0392B",bio:"Two goals in one quarter-final against England — the most infamous and the most brilliant in the same match. Carried Argentina to the 1986 title almost entirely alone. GOAT status debated until Messi lifted 2022.",img:"world-cup/images/maradona-portrait.jpg"},
+  {name:"Lionel Messi",era:"2006 – 2022",role:"2022 World Cup Winner · 26 Appearances",accent:"#005C2E",bio:"The greatest player alive, defined by 16 years of World Cup near-misses before Qatar 2022. Scored in the final. Won the Golden Ball. The tournament that silenced every remaining debate.",img:"world-cup/images/messi-portrait.jpg"},
+  {name:"Miroslav Klose",era:"2002 – 2014",role:"All-time Top Scorer · 16 Goals",accent:"#005C2E",bio:"The most prolific World Cup scorer in history — 16 goals across four tournaments. Scored during Brazil’s 7–1 humiliation to overtake Ronaldo. The most efficient forward the tournament has ever seen.",img:"world-cup/images/klose-portrait.jpg"},
+  {name:"Zinedine Zidane",era:"1998 – 2006",role:"1998 World Cup Winner · 2006 Golden Ball",accent:"#C8962A",bio:"His two headers won France the 1998 title. His headbutt in the 2006 final — his last professional touch — is the most dramatic ending to a career in football history. He still won the Golden Ball.",img:"world-cup/images/zidane-portrait.jpg"},
+  {name:"Ronaldo",era:"1994 – 2006",role:"2× World Cup Winner · 15 Goals",accent:"#005C2E",bio:"The original R9. A mystery illness before the 1998 final haunts his legacy, but he returned in 2002 to score twice in the final and win the Golden Boot. The 2002 haircut alone deserves its own chapter.",img:"world-cup/images/ronaldo-portrait.jpg"},
+  {name:"Kylian Mbappé",era:"2018 –",role:"2018 Winner · 2022 Hat-trick Finalist",accent:"#C8962A",bio:"Scored in the 2018 final at 19. Scored a hat-trick in the 2022 final in a comeback that nearly won it. The player most likely to define the next decade of the World Cup.",img:"world-cup/images/mbappe-portrait.jpg"},
+  {name:"Johan Cruyff",era:"1974",role:"1974 Runner-Up · Total Football",accent:"#005C2E",bio:"Never won the World Cup. It doesn’t matter. His 1974 Netherlands redefined how football is played. The Cruyff Turn, Total Football, the 4-3-3 — all traced to one tournament, one genius, one summer.",img:"world-cup/images/cruyff-1974.jpg"}
 ];
 const PALS={
   cream:{bg:"#FAFAF5",text:"#1A1810",accent:"#005C2E",muted:"rgba(58,56,48,.5)"},
@@ -382,7 +427,7 @@ function fitText(el,aw,ah,min,max){let lo=min,hi=max;el.style.fontSize=hi+"px";w
 function applyHL(text,word,style,accent,bg){if(!word||style==="none")return esc(text);const h=esc(text),w=esc(word).replace(/[.*+?^${}()|[\]\\]/g,"\\$&"),re=new RegExp(`(${w})`,"gi");if(style==="accent")return h.replace(re,`<span style="color:${accent}">$1</span>`);if(style==="reverse")return h.replace(re,`<span style="background:${accent};color:${bg};padding:0 .04em;">$1</span>`);if(style==="outline")return h.replace(re,`<span style="-webkit-text-stroke:2px currentColor;color:transparent;">$1</span>`);return h;}
 function getC(){const it=CONTENT[S.type][S.idx];let d="",y="",a="",bn=it.bgNum||"",body="";if(S.type==="quote"){d=it.text;a=it.attr;}else if(S.type==="fact"){d=it.title;y=it.year;body=it.body||"";}else{d=it.num;y=it.label;a=it.sub;}return{d,y,a,bn,body};}
 window.selContent=function(el){document.querySelectorAll(".ci").forEach(i=>i.classList.remove("active"));el.classList.add("active");S.type=el.dataset.type;S.idx=parseInt(el.dataset.idx);const it=CONTENT[S.type][S.idx];S.hlWord=it.hl||"";document.getElementById("hl-input").value=S.hlWord;document.getElementById("rsb-text").textContent=it.text||it.num+" "+it.label;document.getElementById("rsb-attr").textContent=it.attr||it.sub||"";updateAll();};
-window.selStyle=function(el){document.querySelectorAll(".stbtn").forEach(b=>b.classList.remove("active"));el.classList.add("active");S.style=el.dataset.style;const isOG=S.style==="ogimage",isSplit=S.style==="splitgrid",isFig=S.style==="figure";document.getElementById("sb-content").style.display=(isOG||isFig)?"none":"";document.getElementById("sb-bg").style.display=(isSplit||isOG||isFig)?"none":"";document.getElementById("sb-hl").style.display=(isOG||isFig)?"none":"";document.getElementById("sb-image").style.display=isSplit?"":"none";document.getElementById("sb-og").style.display=isOG?"":"none";document.getElementById("sb-figure").style.display=isFig?"":"none";document.getElementById("sb-carousel").style.display=isFig?"":"none";document.getElementById("og-canvas-wrap").style.display=isOG?"":"none";document.getElementById("social-canvas-wrap").style.display=isOG?"none":"";document.getElementById("carousel-preview").style.display=isFig?"":"none";document.getElementById("btn-set").style.display=isOG?"none":"";document.getElementById("btn-all").textContent=isOG?"\u2193 og-world-cup.png":"\u2193 Download All";updateAll();};
+window.selStyle=function(el){document.querySelectorAll(".stbtn").forEach(b=>b.classList.remove("active"));el.classList.add("active");S.style=el.dataset.style;const isOG=S.style==="ogimage",isSplit=S.style==="splitgrid",isFig=S.style==="figure";document.getElementById("sb-content").style.display=(isOG||isFig)?"none":"";document.getElementById("sb-bg").style.display=(isSplit||isOG||isFig)?"none":"";document.getElementById("sb-hl").style.display=(isOG||isFig)?"none":"";document.getElementById("sb-image").style.display=isSplit?"":"none";document.getElementById("sb-og").style.display=isOG?"":"none";document.getElementById("sb-figure").style.display=isFig?"":"none";document.getElementById("sb-carousel").style.display=isFig?"":"none";document.getElementById("og-canvas-wrap").style.display=isOG?"":"none";document.getElementById("social-canvas-wrap").style.display=isOG?"none":"";document.getElementById("carousel-preview").style.display=isFig?"":"none";document.getElementById("btn-set").style.display=isOG?"none":"";document.getElementById("btn-all").textContent=isOG?"↓ og-world-cup.png":"↓ Download All";updateAll();};
 window.selPal=function(el){document.querySelectorAll("[data-pal]").forEach(s=>s.classList.remove("active"));el.classList.add("active");S.pal=el.dataset.pal;updateAll();};
 window.selSGPal=function(el){document.querySelectorAll("[data-sgpal]").forEach(s=>s.classList.remove("active"));el.classList.add("active");S.sgPal=el.dataset.sgpal;updateAll();};
 window.selHL=function(el){document.querySelectorAll(".hlp").forEach(p=>p.classList.remove("active"));el.classList.add("active");S.hl=el.dataset.hl;updateAll();};
@@ -446,7 +491,7 @@ function renderIntroCard(el,fmt){
   el.innerHTML=`<div style="width:100%;height:100%;background:${c.bg};display:flex;flex-direction:column;justify-content:flex-end;padding:${isV?"10% 9%":"9% 8%"};position:relative;overflow:hidden;"><div style="position:absolute;bottom:-30px;right:-10px;font-family:'Barlow Condensed',sans-serif;font-weight:900;font-size:${isV?"320":"260"}px;color:${c.ghost};opacity:.05;line-height:1;pointer-events:none;user-select:none;">${count}</div><div style="position:relative;z-index:1;"><div style="font-family:'Barlow Condensed',sans-serif;font-weight:900;font-size:${isV?"140":"110"}px;line-height:.85;letter-spacing:-.02em;color:${c.accent};margin-bottom:${isV?"12":"8"}px;">${count}</div><div style="font-family:'Barlow Condensed',sans-serif;font-weight:800;font-size:${isV?"52":"42"}px;line-height:.9;letter-spacing:-.01em;text-transform:uppercase;color:${c.txt};margin-bottom:${isV?"14":"10"}px;">${esc(title)}<span style="color:${c.accent};">_</span></div><div style="font-family:'DM Mono',monospace;font-size:${isV?"11":"10"}px;color:${c.muted};letter-spacing:.04em;">${esc(sub)}</div></div></div>`;
 }
 function renderOutroCard(el,fmt){
-  const isV=fmt==="vt",text=document.getElementById("carousel-outro").value||"abriefhistoryofeverything.com\nRead the full guide \u2192",lines=text.split("\n"),count=S.carouselCount,c=getCc();
+  const isV=fmt==="vt",text=document.getElementById("carousel-outro").value||"abriefhistoryofeverything.com\nRead the full guide →",lines=text.split("\n"),count=S.carouselCount,c=getCc();
   el.innerHTML=`<div style="width:100%;height:100%;background:${c.bg};display:flex;flex-direction:column;justify-content:center;align-items:center;padding:10%;position:relative;overflow:hidden;text-align:center;"><div style="position:absolute;bottom:-30px;right:-20px;font-family:'Barlow Condensed',sans-serif;font-weight:900;font-size:${isV?"320":"260"}px;color:${c.ghost};opacity:.05;line-height:1;pointer-events:none;user-select:none;">${count}</div><div style="position:relative;z-index:1;display:flex;flex-direction:column;align-items:center;gap:${isV?"20":"14"}px;">${BRAND_MASCOT}<div style="font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:${isV?"26":"20"}px;line-height:1.05;letter-spacing:-.01em;text-transform:uppercase;color:${c.txt};">${esc(lines[0]||"")}</div>${lines[1]?`<div style="font-family:'DM Mono',monospace;font-size:${isV?"11":"9"}px;letter-spacing:.14em;text-transform:uppercase;color:${c.accent};">${esc(lines[1])}</div>`:""}</div></div>`;
 }
 function updateAll(){
@@ -455,18 +500,44 @@ function updateAll(){
   if(S.style==="figure"){const pi=document.getElementById("preview-intro"),pf=document.getElementById("preview-fig"),po=document.getElementById("preview-outro"),pow=document.getElementById("preview-outro-wrap"),io=document.getElementById("carousel-outro-toggle").checked;if(pi)renderIntroCard(pi,"sq");if(pf)renderFigure(pf,"sq");if(po)renderOutroCard(po,"sq");if(pow)pow.style.display=io?"":"none";}
 }
 window.updateAll=updateAll;
-(function(){const list=document.getElementById("fig-list");if(!list)return;FIGURES.forEach((f,i)=>{const div=document.createElement("div");div.className="fig-card"+(i===0?" active":"");div.onclick=(e)=>{if(!e.target.closest(".fig-star"))window.selFigure(i);};div.innerHTML=`<div class="fig-thumb"><img src="${f.img}" alt="" onerror="this.style.display='none'"></div><div class="fig-info"><strong>${f.name}</strong><span>${f.era}</span></div><button class="fig-star" title="Add to starred" onclick="toggleStar(this,${i})">\u2606</button>`;list.appendChild(div);});})();
+(function(){const list=document.getElementById("fig-list");if(!list)return;FIGURES.forEach((f,i)=>{const div=document.createElement("div");div.className="fig-card"+(i===0?" active":"");div.onclick=(e)=>{if(!e.target.closest(".fig-star"))window.selFigure(i);};div.innerHTML=`<div class="fig-thumb"><img src="${f.img}" alt="" onerror="this.style.display='none'"></div><div class="fig-info"><strong>${f.name}</strong><span>${f.era}</span></div><button class="fig-star" title="Add to starred" onclick="toggleStar(this,${i})">☆</button>`;list.appendChild(div);});})();
 function d2b(d){const a=d.split(","),m=a[0].match(/:(.*?);/)[1],b=atob(a[1]);let n=b.length;const u=new Uint8Array(n);while(n--)u[n]=b.charCodeAt(n);return new Blob([u],{type:m});}
 function c2b(fmt){return new Promise((res,rej)=>{const el=document.getElementById("canvas-"+fmt);html2canvas(el,{scale:SCALES[fmt],useCORS:true,allowTaint:true,backgroundColor:"#FAFAF5",logging:false}).then(c=>{if(c.toBlob)c.toBlob(b=>res(b||d2b(c.toDataURL("image/png"))),"image/png");else res(d2b(c.toDataURL("image/png")));}).catch(rej);});}
 function trig(blob,name){const url=URL.createObjectURL(blob),a=document.createElement("a");a.href=url;a.download=name;document.body.appendChild(a);a.click();document.body.removeChild(a);setTimeout(()=>URL.revokeObjectURL(url),2000);}
 function bn(){return`bhoe-world-cup-${S.type}${S.idx}-${S.style}`;}
 window.dlC=function(fmt){if(S.style==="ogimage"){c2b("og").then(b=>trig(b,"og-world-cup.png")).catch(()=>alert("Export failed. Serve over HTTP."));return;}c2b(fmt).then(b=>trig(b,`${bn()}-${FNAMES[fmt]}.png`)).catch(()=>alert("Export failed. Serve over HTTP."));};
-window.downloadSet=function(){if(S.style==="ogimage"){window.dlC("og");return;}const btn=document.getElementById("btn-set");btn.disabled=true;btn.textContent="Rendering\u2026";Promise.all(SOCIAL_FMTS.map(f=>c2b(f).then(b=>({b,f})))).then(rs=>{const zip=new JSZip();rs.forEach(({b,f})=>zip.file(`${bn()}-${FNAMES[f]}.png`,b));zip.generateAsync({type:"blob"}).then(z=>{trig(z,`${bn()}.zip`);btn.disabled=false;btn.textContent="\u2193 This Set (3)";});}).catch(()=>{document.getElementById("btn-set").disabled=false;document.getElementById("btn-set").textContent="\u2193 This Set (3)";});};
-window.downloadAll=function(){if(S.style==="ogimage"){window.dlC("og");return;}const btn=document.getElementById("btn-all");btn.disabled=true;const saved={...S};const styles=["boldtype","splitgrid","branded","figure"];const items=[...CONTENT.quote.map((_,i)=>({type:"quote",idx:i})),...CONTENT.fact.map((_,i)=>({type:"fact",idx:i})),...CONTENT.stat.map((_,i)=>({type:"stat",idx:i}))];const zip=new JSZip();const queue=[];styles.forEach(st=>items.forEach(({type,idx})=>SOCIAL_FMTS.forEach(f=>queue.push({st,type,idx,f}))));let i=0;function next(){if(i>=queue.length){zip.generateAsync({type:"blob"}).then(z=>{Object.assign(S,saved);updateAll();trig(z,"bhoe-world-cup-all-posts.zip");btn.disabled=false;btn.textContent="\u2193 Download All";});return;}const{st,type,idx,f}=queue[i++];S.style=st;S.type=type;S.idx=idx;updateAll();btn.textContent=`Building\u2026 ${i}/${queue.length}`;setTimeout(()=>{c2b(f).then(b=>{zip.file(`bhoe-world-cup-${type}${idx}-${st}-${FNAMES[f]}.png`,b);next();}).catch(()=>next());},80);}next();};
-window.downloadStarred=function(){if(!STARRED.size)return;const btn=document.getElementById("fav-dl-btn");btn.disabled=true;btn.textContent="Rendering\u2026";const saved={...S};const savedStyle=S.style;S.style="figure";const keys=[...STARRED];const queue=[];keys.forEach(key=>{const m=key.match(/^figure-(\d+)-(.+?)-(cream|dark)$/);if(!m)return;const[,fi,layout,pal]=m;SOCIAL_FMTS.forEach(fmt=>queue.push({figIdx:parseInt(fi),layout,pal,fmt}));});const zip=new JSZip();let i=0;function next(){if(i>=queue.length){zip.generateAsync({type:"blob"}).then(z=>{Object.assign(S,saved);S.style=savedStyle;updateAll();trig(z,"bhoe-world-cup-starred.zip");btn.disabled=false;btn.textContent="\u2193 Download Starred";});return;}const{figIdx,layout,pal,fmt}=queue[i++];S.figureIdx=figIdx;S.figLayout=layout;S.figPal=pal;const el=document.getElementById("canvas-"+fmt);renderFigure(el,fmt);btn.textContent=`Rendering\u2026 ${i}/${queue.length}`;setTimeout(()=>{c2b(fmt).then(b=>{const name=FIGURES[figIdx].name.replace(/\s+/g,"-").toLowerCase().replace(/[^a-z0-9-]/g,"");zip.file(`bhoe-figure-${name}-${layout.replace("|","-")}-${pal}-${FNAMES[fmt]}.png`,b);next();}).catch(()=>next());},80);}next();};
-window.downloadAllFigures=function(){const btn=document.getElementById("fig-dl-all-btn");btn.disabled=true;const saved={...S};const savedStyle=S.style;S.style="figure";const queue=[];FIGURES.forEach((_,fi)=>SOCIAL_FMTS.forEach(fmt=>queue.push({fi,fmt})));const zip=new JSZip();let i=0;function next(){if(i>=queue.length){zip.generateAsync({type:"blob"}).then(z=>{Object.assign(S,saved);S.style=savedStyle;updateAll();trig(z,"bhoe-world-cup-all-figures.zip");btn.disabled=false;btn.textContent="\u2193 All Figures (\u00d73 formats)";});return;}const{fi,fmt}=queue[i++];S.figureIdx=fi;const el=document.getElementById("canvas-"+fmt);renderFigure(el,fmt);btn.textContent=`Rendering\u2026 ${i}/${queue.length}`;setTimeout(()=>{c2b(fmt).then(b=>{const name=FIGURES[fi].name.replace(/\s+/g,"-").toLowerCase().replace(/[^a-z0-9-]/g,"");zip.file(`bhoe-figure-${name}-${S.figLayout.replace("|","-")}-${S.figPal}-${FNAMES[fmt]}.png`,b);next();}).catch(()=>next());},80);}next();};
-window.downloadCarousel=function(){const btn=document.getElementById("carousel-dl-btn");btn.disabled=true;btn.textContent="Building\u2026";const saved={...S};const savedStyle=S.style;S.style="figure";const count=S.carouselCount,includeOutro=document.getElementById("carousel-outro-toggle").checked,fmts=["sq","vt"],zip=new JSZip(),queue=[];fmts.forEach(fmt=>{queue.push({type:"intro",fmt});for(let fi=0;fi<count;fi++)queue.push({type:"figure",fi,fmt});if(includeOutro)queue.push({type:"outro",fmt});});let i=0;function next(){if(i>=queue.length){zip.generateAsync({type:"blob"}).then(z=>{Object.assign(S,saved);S.style=savedStyle;updateAll();trig(z,"bhoe-world-cup-carousel.zip");btn.disabled=false;btn.textContent="\u2193 Export Carousel";});return;}const item=queue[i++];const el=document.getElementById("canvas-"+item.fmt);let filename;if(item.type==="intro"){renderIntroCard(el,item.fmt);filename=`00-intro-${item.fmt}.png`;}else if(item.type==="outro"){renderOutroCard(el,item.fmt);filename=`99-outro-${item.fmt}.png`;}else{S.figureIdx=item.fi;renderFigure(el,item.fmt);const name=FIGURES[item.fi].name.replace(/\s+/g,"-").toLowerCase().replace(/[^a-z0-9-]/g,"");filename=`${String(item.fi+1).padStart(2,"0")}-${name}-${item.fmt}.png`;}btn.textContent=`Building\u2026 ${i}/${queue.length}`;setTimeout(()=>{c2b(item.fmt).then(b=>{zip.file(filename,b);next();}).catch(()=>next());},80);}next();};
+window.downloadSet=function(){if(S.style==="ogimage"){window.dlC("og");return;}const btn=document.getElementById("btn-set");btn.disabled=true;btn.textContent="Rendering…";Promise.all(SOCIAL_FMTS.map(f=>c2b(f).then(b=>({b,f})))).then(rs=>{const zip=new JSZip();rs.forEach(({b,f})=>zip.file(`${bn()}-${FNAMES[f]}.png`,b));zip.generateAsync({type:"blob"}).then(z=>{trig(z,`${bn()}.zip`);btn.disabled=false;btn.textContent="↓ This Set (3)";});}).catch(()=>{document.getElementById("btn-set").disabled=false;document.getElementById("btn-set").textContent="↓ This Set (3)";});};
+window.downloadAll=function(){if(S.style==="ogimage"){window.dlC("og");return;}const btn=document.getElementById("btn-all");btn.disabled=true;const saved={...S};const styles=["boldtype","splitgrid","branded","figure"];const items=[...CONTENT.quote.map((_,i)=>({type:"quote",idx:i})),...CONTENT.fact.map((_,i)=>({type:"fact",idx:i})),...CONTENT.stat.map((_,i)=>({type:"stat",idx:i}))];const zip=new JSZip();const queue=[];styles.forEach(st=>items.forEach(({type,idx})=>SOCIAL_FMTS.forEach(f=>queue.push({st,type,idx,f}))));let i=0;function next(){if(i>=queue.length){zip.generateAsync({type:"blob"}).then(z=>{Object.assign(S,saved);updateAll();trig(z,"bhoe-world-cup-all-posts.zip");btn.disabled=false;btn.textContent="↓ Download All";});return;}const{st,type,idx,f}=queue[i++];S.style=st;S.type=type;S.idx=idx;updateAll();btn.textContent=`Building… ${i}/${queue.length}`;setTimeout(()=>{c2b(f).then(b=>{zip.file(`bhoe-world-cup-${type}${idx}-${st}-${FNAMES[f]}.png`,b);next();}).catch(()=>next());},80);}next();};
+window.downloadStarred=function(){if(!STARRED.size)return;const btn=document.getElementById("fav-dl-btn");btn.disabled=true;btn.textContent="Rendering…";const saved={...S};const savedStyle=S.style;S.style="figure";const keys=[...STARRED];const queue=[];keys.forEach(key=>{const m=key.match(/^figure-(\d+)-(.+?)-(cream|dark)$/);if(!m)return;const[,fi,layout,pal]=m;SOCIAL_FMTS.forEach(fmt=>queue.push({figIdx:parseInt(fi),layout,pal,fmt}));});const zip=new JSZip();let i=0;function next(){if(i>=queue.length){zip.generateAsync({type:"blob"}).then(z=>{Object.assign(S,saved);S.style=savedStyle;updateAll();trig(z,"bhoe-world-cup-starred.zip");btn.disabled=false;btn.textContent="↓ Download Starred";});return;}const{figIdx,layout,pal,fmt}=queue[i++];S.figureIdx=figIdx;S.figLayout=layout;S.figPal=pal;const el=document.getElementById("canvas-"+fmt);renderFigure(el,fmt);btn.textContent=`Rendering… ${i}/${queue.length}`;setTimeout(()=>{c2b(fmt).then(b=>{const name=FIGURES[figIdx].name.replace(/\s+/g,"-").toLowerCase().replace(/[^a-z0-9-]/g,"");zip.file(`bhoe-figure-${name}-${layout.replace("|","-")}-${pal}-${FNAMES[fmt]}.png`,b);next();}).catch(()=>next());},80);}next();};
+window.downloadAllFigures=function(){const btn=document.getElementById("fig-dl-all-btn");btn.disabled=true;const saved={...S};const savedStyle=S.style;S.style="figure";const queue=[];FIGURES.forEach((_,fi)=>SOCIAL_FMTS.forEach(fmt=>queue.push({fi,fmt})));const zip=new JSZip();let i=0;function next(){if(i>=queue.length){zip.generateAsync({type:"blob"}).then(z=>{Object.assign(S,saved);S.style=savedStyle;updateAll();trig(z,"bhoe-world-cup-all-figures.zip");btn.disabled=false;btn.textContent="↓ All Figures (×3 formats)";});return;}const{fi,fmt}=queue[i++];S.figureIdx=fi;const el=document.getElementById("canvas-"+fmt);renderFigure(el,fmt);btn.textContent=`Rendering… ${i}/${queue.length}`;setTimeout(()=>{c2b(fmt).then(b=>{const name=FIGURES[fi].name.replace(/\s+/g,"-").toLowerCase().replace(/[^a-z0-9-]/g,"");zip.file(`bhoe-figure-${name}-${S.figLayout.replace("|","-")}-${S.figPal}-${FNAMES[fmt]}.png`,b);next();}).catch(()=>next());},80);}next();};
+window.downloadCarousel=function(){const btn=document.getElementById("carousel-dl-btn");btn.disabled=true;btn.textContent="Building…";const saved={...S};const savedStyle=S.style;S.style="figure";const count=S.carouselCount,includeOutro=document.getElementById("carousel-outro-toggle").checked,fmts=["sq","vt"],zip=new JSZip(),queue=[];fmts.forEach(fmt=>{queue.push({type:"intro",fmt});for(let fi=0;fi<count;fi++)queue.push({type:"figure",fi,fmt});if(includeOutro)queue.push({type:"outro",fmt});});let i=0;function next(){if(i>=queue.length){zip.generateAsync({type:"blob"}).then(z=>{Object.assign(S,saved);S.style=savedStyle;updateAll();trig(z,"bhoe-world-cup-carousel.zip");btn.disabled=false;btn.textContent="↓ Export Carousel";});return;}const item=queue[i++];const el=document.getElementById("canvas-"+item.fmt);let filename;if(item.type==="intro"){renderIntroCard(el,item.fmt);filename=`00-intro-${item.fmt}.png`;}else if(item.type==="outro"){renderOutroCard(el,item.fmt);filename=`99-outro-${item.fmt}.png`;}else{S.figureIdx=item.fi;renderFigure(el,item.fmt);const name=FIGURES[item.fi].name.replace(/\s+/g,"-").toLowerCase().replace(/[^a-z0-9-]/g,"");filename=`${String(item.fi+1).padStart(2,"0")}-${name}-${item.fmt}.png`;}btn.textContent=`Building… ${i}/${queue.length}`;setTimeout(()=>{c2b(item.fmt).then(b=>{zip.file(filename,b);next();}).catch(()=>next());},80);}next();};
 updateAll();
+
+// Mobile canvas scaling — scales inner div to fit CSS width
+function scaleCanvases() {
+  const isMobile = window.innerWidth <= 768;
+  if (!isMobile) return;
+  document.querySelectorAll('.cf').forEach(cf => {
+    const inner = cf.firstElementChild;
+    if (!inner) return;
+    const cfW = cf.offsetWidth;
+    let nativeW = 600;
+    if (cf.classList.contains('sq')) nativeW = 540;
+    if (cf.classList.contains('vt')) nativeW = 432;
+    if (cf.classList.contains('og')) nativeW = 600;
+    const scale = cfW / nativeW;
+    inner.style.transform = `scale(${scale})`;
+    inner.style.transformOrigin = 'top left';
+    inner.style.width = nativeW + 'px';
+    cf.style.height = (inner.offsetHeight * scale) + 'px';
+  });
+}
+window.addEventListener('resize', scaleCanvases);
+// Run after each updateAll
+const _origUpdateAll = window.updateAll;
+window.updateAll = function() { _origUpdateAll(); requestAnimationFrame(scaleCanvases); };
+scaleCanvases();
+
 })();
 </script>
 </body>
