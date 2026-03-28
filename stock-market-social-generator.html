@@ -86,18 +86,30 @@ body{background:var(--bg);color:var(--text);font-family:'Geist',sans-serif;font-
 .size-slider::-moz-range-thumb{width:12px;height:12px;border-radius:50%;background:var(--accent);border:none;cursor:pointer;}
 .size-val{font-family:'Geist Mono',monospace;font-size:9px;color:var(--accent);width:28px;text-align:right;flex-shrink:0;}
 .fig-grid{display:flex;flex-direction:column;gap:4px;}
-.fig-card{cursor:pointer;border:1px solid var(--rule2);border-radius:2px;padding:7px 8px;display:flex;align-items:center;gap:8px;transition:all .12s;}
+.fig-card{cursor:pointer;border:1px solid var(--rule2);border-radius:2px;padding:7px 8px;display:flex;align-items:center;gap:8px;transition:all .12s;position:relative;}
 .fig-card:hover{background:var(--bg2);border-color:var(--dim);}.fig-card.active{border-color:var(--accent);background:rgba(180,255,60,.05);}
 .fig-thumb{width:32px;height:32px;border-radius:2px;overflow:hidden;flex-shrink:0;background:var(--bg2);}
 .fig-thumb img{width:100%;height:100%;object-fit:cover;filter:grayscale(.4);}
+.fig-info{flex:1;min-width:0;}
 .fig-info strong{display:block;font-family:'Geist',sans-serif;font-size:11px;font-weight:600;color:var(--text);line-height:1.2;}
 .fig-info span{font-family:'Geist Mono',monospace;font-size:9px;color:var(--muted);}
+.fig-star{background:none;border:none;cursor:pointer;font-size:13px;line-height:1;color:var(--muted);padding:2px;transition:color .12s;flex-shrink:0;}
+.fig-star:hover{color:#f5c518;}.fig-star.starred{color:#f5c518;}
+.fig-dl-all{width:100%;margin-top:10px;padding:7px;background:transparent;border:1px solid rgba(180,255,60,.3);color:var(--accent);font-family:'Geist Mono',monospace;font-size:9px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;cursor:pointer;border-radius:2px;transition:all .12s;text-align:center;display:block;}
+.fig-dl-all:hover{background:rgba(180,255,60,.08);}.fig-dl-all:disabled{opacity:.4;cursor:default;}
 .fig-layout{display:grid;grid-template-columns:1fr 1fr;gap:4px;margin-bottom:10px;}
 .pos-row{display:flex;align-items:center;gap:8px;margin-bottom:10px;}
 .pos-slider{flex:1;-webkit-appearance:none;appearance:none;height:2px;background:var(--rule2);border-radius:2px;outline:none;cursor:pointer;}
 .pos-slider::-webkit-slider-thumb{-webkit-appearance:none;width:12px;height:12px;border-radius:50%;background:var(--accent);cursor:pointer;}
 .pos-slider::-moz-range-thumb{width:12px;height:12px;border-radius:50%;background:var(--accent);border:none;cursor:pointer;}
 .pos-val{font-family:'Geist Mono',monospace;font-size:9px;color:var(--accent);width:28px;text-align:right;flex-shrink:0;}
+.fav-bar{display:none;align-items:center;gap:8px;padding:0 20px;height:36px;background:rgba(245,197,24,.07);border-bottom:1px solid rgba(245,197,24,.18);flex-shrink:0;}
+.fav-bar.visible{display:flex;}
+.fav-count{font-family:'Geist Mono',monospace;font-size:9px;color:#f5c518;letter-spacing:.08em;}
+.fav-dl{background:transparent;border:1px solid rgba(245,197,24,.5);color:#f5c518;font-family:'Geist Mono',monospace;font-size:9px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;padding:4px 12px;cursor:pointer;border-radius:2px;transition:all .12s;white-space:nowrap;}
+.fav-dl:hover{background:rgba(245,197,24,.12);}.fav-dl:disabled{opacity:.4;cursor:default;}
+.fav-clear{background:none;border:none;color:rgba(245,197,24,.45);font-family:'Geist Mono',monospace;font-size:9px;cursor:pointer;padding:3px 6px;transition:color .12s;}
+.fav-clear:hover{color:#f5c518;}
 </style>
 </head>
 <body>
@@ -108,6 +120,11 @@ body{background:var(--bg);color:var(--text);font-family:'Geist',sans-serif;font-
     <button class="tbdl sec" id="btn-set" onclick="downloadSet()">↓ This Set (3)</button>
     <button class="tbdl" id="btn-all" onclick="downloadAll()">↓ Download All</button>
   </div>
+</div>
+<div class="fav-bar" id="fav-bar">
+  <span class="fav-count" id="fav-count">0 starred</span>
+  <button class="fav-dl" id="fav-dl-btn" onclick="downloadStarred()">↓ Download Starred</button>
+  <button class="fav-clear" onclick="clearStarred()">✕ Clear</button>
 </div>
 <div class="app">
 
@@ -276,6 +293,7 @@ body{background:var(--bg);color:var(--text);font-family:'Geist',sans-serif;font-
       <input class="pos-slider" id="fig-pos" type="range" min="0" max="100" value="20" oninput="setFigPos(this.value)">
       <span class="pos-val" id="fig-pos-val">20%</span>
     </div>
+    <button class="fig-dl-all" id="fig-dl-all-btn" onclick="downloadAllFigures()">↓ All Figures (×3 formats)</button>
   </div><!-- end sb-figure -->
 </div><!-- end .sb -->
 
@@ -508,6 +526,115 @@ function updateAll(){
 }
 window.updateAll=updateAll;
 
+// ─── FAVORITES ───────────────────────────────────────────────────────────────
+let STARRED=new Set(); // each entry is a string key like "figure-2-image|text-dark"
+
+function starKey(figIdx,layout,pal){return`figure-${figIdx}-${layout}-${pal}`;}
+
+function updateFavBar(){
+  const n=STARRED.size;
+  document.getElementById("fav-count").textContent=n===1?"1 starred":`${n} starred`;
+  const bar=document.getElementById("fav-bar");
+  bar.classList.toggle("visible",n>0);
+}
+
+window.toggleStar=function(btn,figIdx){
+  // Star current layout+pal combination for this figure
+  const key=starKey(figIdx,S.figLayout,S.figPal);
+  if(STARRED.has(key)){
+    STARRED.delete(key);
+    btn.classList.remove("starred");
+    btn.title="Add to starred";
+  }else{
+    STARRED.add(key);
+    btn.classList.add("starred");
+    btn.title="Remove from starred";
+  }
+  updateFavBar();
+};
+
+window.clearStarred=function(){
+  STARRED.clear();
+  document.querySelectorAll(".fig-star").forEach(b=>b.classList.remove("starred"));
+  updateFavBar();
+};
+
+window.downloadStarred=function(){
+  if(!STARRED.size)return;
+  const btn=document.getElementById("fav-dl-btn");
+  btn.disabled=true;btn.textContent="Rendering…";
+  const saved={...S};
+  const savedStyle=S.style;
+  S.style="figure";
+  const keys=[...STARRED];
+  const queue=[];
+  keys.forEach(key=>{
+    const [,fi,layout,pal]=key.match(/^figure-(\d+)-(.+?)-(dark|light)$/)||[];
+    if(fi===undefined)return;
+    SOCIAL_FMTS.forEach(fmt=>queue.push({figIdx:parseInt(fi),layout,pal,fmt}));
+  });
+  const zip=new JSZip();
+  let i=0;
+  function next(){
+    if(i>=queue.length){
+      zip.generateAsync({type:"blob"}).then(z=>{
+        Object.assign(S,saved);S.style=savedStyle;updateAll();
+        trig(z,"bhoe-stock-market-starred.zip");
+        btn.disabled=false;btn.textContent="↓ Download Starred";
+      });return;
+    }
+    const{figIdx,layout,pal,fmt}=queue[i++];
+    S.figureIdx=figIdx;S.figLayout=layout;S.figPal=pal;
+    const el=document.getElementById("canvas-"+fmt);
+    renderFigure(el,fmt);
+    btn.textContent=`Rendering… ${i}/${queue.length}`;
+    setTimeout(()=>{
+      c2b(fmt).then(b=>{
+        const f=FIGURES[figIdx];
+        const name=f.name.replace(/\s+/g,"-").toLowerCase();
+        zip.file(`bhoe-figure-${name}-${layout.replace("|","-")}-${pal}-${FNAMES[fmt]}.png`,b);
+        next();
+      }).catch(()=>next());
+    },80);
+  }
+  next();
+};
+
+window.downloadAllFigures=function(){
+  const btn=document.getElementById("fig-dl-all-btn");
+  btn.disabled=true;
+  const saved={...S};
+  const savedStyle=S.style;
+  S.style="figure";
+  const queue=[];
+  FIGURES.forEach((_,fi)=>SOCIAL_FMTS.forEach(fmt=>queue.push({fi,fmt})));
+  const zip=new JSZip();
+  let i=0;
+  function next(){
+    if(i>=queue.length){
+      zip.generateAsync({type:"blob"}).then(z=>{
+        Object.assign(S,saved);S.style=savedStyle;updateAll();
+        trig(z,"bhoe-stock-market-all-figures.zip");
+        btn.disabled=false;btn.textContent="↓ All Figures (×3 formats)";
+      });return;
+    }
+    const{fi,fmt}=queue[i++];
+    S.figureIdx=fi;
+    const el=document.getElementById("canvas-"+fmt);
+    renderFigure(el,fmt);
+    btn.textContent=`Rendering… ${i}/${queue.length}`;
+    setTimeout(()=>{
+      c2b(fmt).then(b=>{
+        const f=FIGURES[fi];
+        const name=f.name.replace(/\s+/g,"-").toLowerCase();
+        zip.file(`bhoe-figure-${name}-${S.figLayout.replace("|","-")}-${S.figPal}-${FNAMES[fmt]}.png`,b);
+        next();
+      }).catch(()=>next());
+    },80);
+  }
+  next();
+};
+
 // ─── BUILD FIGURE LIST ───────────────────────────────────────────────────────
 (function(){
   const list=document.getElementById("fig-list");
@@ -515,8 +642,8 @@ window.updateAll=updateAll;
   FIGURES.forEach((f,i)=>{
     const div=document.createElement("div");
     div.className="fig-card"+(i===0?" active":"");
-    div.onclick=()=>window.selFigure(i);
-    div.innerHTML=`<div class="fig-thumb"><img src="${f.img}" alt="" onerror="this.style.display='none'"></div><div class="fig-info"><strong>${f.name}</strong><span>${f.role}</span></div>`;
+    div.onclick=(e)=>{if(!e.target.closest(".fig-star"))window.selFigure(i);};
+    div.innerHTML=`<div class="fig-thumb"><img src="${f.img}" alt="" onerror="this.style.display='none'"></div><div class="fig-info"><strong>${f.name}</strong><span>${f.role}</span></div><button class="fig-star" title="Add to starred" onclick="toggleStar(this,${i})">☆</button>`;
     list.appendChild(div);
   });
 })();
