@@ -360,6 +360,14 @@ Read the full guide →</textarea>
       <div class="cw"><div class="cm"><span class="cn">IG Square</span><span class="cd">1080×1080</span><button class="dlb" onclick="dlC('sq')">↓ PNG</button></div><div class="cf sq" id="canvas-sq"></div></div>
       <div class="cw"><div class="cm"><span class="cn">IG Vertical</span><span class="cd">1080×1350</span><button class="dlb" onclick="dlC('vt')">↓ PNG</button></div><div class="cf vt" id="canvas-vt"></div></div>
     </div>
+    <!-- Carousel preview — shown only in Figure Bio mode -->
+    <div id="carousel-preview" style="display:none;border-top:1px solid var(--rule);margin-top:18px;padding-top:18px;">
+      <div class="cgrid" style="grid-template-columns:1fr 1fr 1fr;">
+        <div class="cw"><div class="cm"><span class="cn">Intro Card</span><span class="cd">Square</span></div><div class="cf sq" id="preview-intro"></div></div>
+        <div class="cw"><div class="cm"><span class="cn">Figure Preview</span><span class="cd">Square</span></div><div class="cf sq" id="preview-fig"></div></div>
+        <div class="cw" id="preview-outro-wrap"><div class="cm"><span class="cn">Closing Card</span><span class="cd">Square</span></div><div class="cf sq" id="preview-outro"></div></div>
+      </div>
+    </div>
   </div>
 
 <!-- RIGHT SIDEBAR -->
@@ -479,6 +487,7 @@ window.selStyle=function(el){
   document.getElementById("sb-carousel").style.display=isFig?"":"none";
   document.getElementById("og-canvas-wrap").style.display=isOG?"":"none";
   document.getElementById("social-canvas-wrap").style.display=isOG?"none":"";
+  document.getElementById("carousel-preview").style.display=isFig?"":"none";
   document.getElementById("btn-set").style.display=isOG?"none":"";
   document.getElementById("btn-all").textContent=isOG?"↓ og-stock-market.png":"↓ Download All";
   updateAll();
@@ -504,7 +513,7 @@ window.selFigure=function(idx){S.figureIdx=idx;document.querySelectorAll(".fig-c
 window.selFigLayout=function(layout){S.figLayout=layout;document.getElementById("fig-layout-left").classList.toggle("active",layout==="image|text");document.getElementById("fig-layout-right").classList.toggle("active",layout==="text|image");updateAll();};
 window.selFigPal=function(el){document.querySelectorAll("[data-figpal]").forEach(s=>s.classList.remove("active"));el.classList.add("active");S.figPal=el.dataset.figpal;updateAll();};
 window.setFigPos=function(v){S.figPos=parseInt(v);document.getElementById("fig-pos-val").textContent=v+"%";updateAll();};
-window.selCarouselBg=function(el){document.querySelectorAll("[data-cbg]").forEach(b=>b.classList.remove("active"));el.classList.add("active");S.carouselBg=el.dataset.cbg;};
+window.selCarouselBg=function(el){document.querySelectorAll("[data-cbg]").forEach(b=>b.classList.remove("active"));el.classList.add("active");S.carouselBg=el.dataset.cbg;updateAll();};
 window.setCarouselCount=function(v){S.carouselCount=parseInt(v);document.getElementById("carousel-count-val").textContent=v;};
 
 document.getElementById("hl-input").addEventListener("input",e=>{S.hlWord=e.target.value;updateAll();});
@@ -654,6 +663,18 @@ function updateAll(){
     else if(S.style==="ogimage")renderOG(el);
     else if(S.style==="figure")renderFigure(el,fmt);
   });
+  // Update carousel previews when in figure mode
+  if(S.style==="figure"){
+    const pi=document.getElementById("preview-intro");
+    const pf=document.getElementById("preview-fig");
+    const po=document.getElementById("preview-outro");
+    const pow=document.getElementById("preview-outro-wrap");
+    const includeOutro=document.getElementById("carousel-outro-toggle").checked;
+    if(pi)renderIntroCard(pi,"sq");
+    if(pf)renderFigure(pf,"sq");
+    if(po)renderOutroCard(po,"sq");
+    if(pow)pow.style.display=includeOutro?"":"none";
+  }
 }
 window.updateAll=updateAll;
 
