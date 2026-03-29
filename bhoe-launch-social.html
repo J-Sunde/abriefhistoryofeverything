@@ -208,11 +208,36 @@ body{background:var(--ui-bg);color:var(--ui-text);font-family:var(--sans);}
 
 /* ── A: DARK LAUNCH — orb field, full bleed ── */
 .dark-launch{background:var(--bg);display:flex;flex-direction:column;justify-content:center;}
-.dl-content{padding:7% 8%;position:relative;z-index:2;}
+.dl-content{
+    padding-top: 7%;
+    padding-right: 10%;
+    padding-left: 8%;
+    padding-bottom: 7%;
+    position: relative;
+    z-index: 2;
+}
 .dl-eyebrow{font-family:var(--mono);font-size:.6em;letter-spacing:.28em;text-transform:uppercase;color:rgba(0,212,240,.68);margin-bottom:.7em;}
-.dl-title{font-family:var(--cond);font-weight:700;font-size:3.4em;line-height:.88;letter-spacing:-.01em;text-transform:uppercase;color:var(--bright);margin-bottom:.45em;}
+.dl-title{
+    font-family: var(--cond);
+    font-weight: 700;
+    font-size: 3.4em;
+    line-height: .88;
+    letter-spacing: -.01em;
+    text-transform: uppercase;
+    color: var(--bright);
+    margin-bottom: .45em;
+}
 .dl-title em{font-style:normal;color:var(--cyan);}
-.dl-sub{font-family:var(--mono);font-size:.6em;letter-spacing:.04em;color:var(--text);line-height:1.68;max-width:38em;margin-bottom:1em;}
+.dl-sub{
+    font-family: var(--mono);
+    font-size: 0.8em;
+    letter-spacing: .04em;
+    color: var(--text);
+    line-height: 1.68;
+    max-width: 38em;
+    margin-bottom: 1em;
+    padding-right: 10px;
+}
 .dl-sub b{color:var(--cyan);font-weight:400;}
 .dl-url{font-family:var(--mono);font-size:.54em;letter-spacing:.2em;text-transform:uppercase;color:var(--muted);}
 .dl-mark-br{position:absolute;bottom:7%;right:7%;z-index:3;opacity:.4;}
@@ -353,14 +378,11 @@ body{background:var(--ui-bg);color:var(--ui-text);font-family:var(--sans);}
           <div class="dl-content">
             <div class="dl-eyebrow">Est. 2026 · Series Launch</div>
             <div class="dl-title">A <em>(Brief)</em><br>History of<br>Everything<span class="cur">_</span></div>
-            <div class="dl-sub">Curated, interactive timelines for the subjects that shaped our world.<br><b>Not a list of dates. A story.</b></div>
-            <div class="dl-url">abriefhistoryofeverything.com</div>
+            <div class="dl-sub">Curated, interactive timelines for the subjects that shaped our world.<b> Not a list of dates. A story.</b></div>
           </div>
           <div class="dl-mark-br">
             <svg width="44" height="44" viewBox="0 0 400 400" xmlns="http://www.w3.org/2000/svg"><rect width="400" height="400" fill="#00D4F0"/><rect x="55" y="118" width="46" height="46" fill="#08090C" opacity=".22"/><rect x="178" y="118" width="46" height="46" fill="#08090C" opacity=".22"/><rect x="55" y="278" width="170" height="36" fill="#08090C"/></svg>
-          </div>
-          <div class="colorbar"></div>
-        </div>
+          </div></div>
       </div>
       <button class="dl-btn" onclick="dl('a1tw','A1-drop-dark-tw.png',1200,628)">↓ 1200×628</button>
     </div>
@@ -376,15 +398,12 @@ body{background:var(--ui-bg);color:var(--ui-text);font-family:var(--sans);}
           <div class="dl-ghost" style="font-size:10em;right:-5%;bottom:-8%;">BH</div>
           <div class="dl-content">
             <div class="dl-eyebrow">Est. 2026 · Series Launch</div>
-            <div class="dl-title" style="font-size:3.6em;">A <em>(Brief)</em><br>History of<br>Everything<span class="cur">_</span></div>
-            <div class="dl-sub" style="margin-top:.6em;">Curated, interactive timelines for the subjects that shaped our world.<br><br><b>Not a list of dates. A story.</b></div>
-            <div class="dl-url" style="margin-top:1.4em;">abriefhistoryofeverything.com</div>
+            <div class="dl-title" style="font-size:2.9em;">A <em>(Brief)</em><br>History of<br>Everything<span class="cur">_</span></div>
+            <div class="dl-sub" style="margin-top:.9em;">Curated, interactive timelines for the subjects that shaped our world.<br><br><b>Not a list of dates. A story.</b></div>
           </div>
           <div class="dl-mark-br">
             <svg width="40" height="40" viewBox="0 0 400 400" xmlns="http://www.w3.org/2000/svg"><rect width="400" height="400" fill="#00D4F0"/><rect x="55" y="118" width="46" height="46" fill="#08090C" opacity=".22"/><rect x="178" y="118" width="46" height="46" fill="#08090C" opacity=".22"/><rect x="55" y="278" width="170" height="36" fill="#08090C"/></svg>
-          </div>
-          <div class="colorbar"></div>
-        </div>
+          </div></div>
       </div>
       <button class="dl-btn" onclick="dl('a1vt','A1-drop-dark-vt.png',1080,1350)">↓ 1080×1350</button>
     </div>
@@ -402,8 +421,7 @@ body{background:var(--ui-bg);color:var(--ui-text);font-family:var(--sans);}
           <div style="padding:7% 8%;position:relative;z-index:2;">
             <div style="font-family:var(--mono);font-size:.58em;letter-spacing:.28em;text-transform:uppercase;color:rgba(8,9,12,.45);margin-bottom:.6em;">April 1, 2026 · Series Launch</div>
             <div style="font-family:var(--cond);font-weight:700;font-size:3.2em;line-height:.88;letter-spacing:-.01em;text-transform:uppercase;color:#08090C;margin-bottom:.45em;">We're live.<br>Go read<br>something.</div>
-            <div style="font-family:var(--mono);font-size:.6em;letter-spacing:.04em;color:rgba(8,9,12,.58);line-height:1.68;max-width:36em;">6 interactive history guides. Each one a deep dive. None of them Wikipedia.</div>
-            <div style="font-family:var(--mono);font-size:.54em;letter-spacing:.2em;text-transform:uppercase;color:rgba(8,9,12,.38);margin-top:1em;">abriefhistoryofeverything.com</div>
+            <div style="font-family:var(--mono);font-size:1em;letter-spacing:.04em;color:rgba(8,9,12,.58);line-height:1.68;max-width:36em;">Start anywhere.</div>
           </div>
           <div style="position:absolute;bottom:7%;right:7%;z-index:3;">
             <svg width="38" height="38" viewBox="0 0 400 400" xmlns="http://www.w3.org/2000/svg"><rect width="400" height="400" fill="#08090C"/><rect x="6" y="6" width="388" height="388" fill="none" stroke="#08090C" stroke-width="12"/><rect x="55" y="118" width="46" height="46" fill="#08090C" opacity=".22"/><rect x="178" y="118" width="46" height="46" fill="#08090C" opacity=".22"/><rect x="55" y="278" width="170" height="36" fill="#08090C"/></svg>
@@ -422,10 +440,10 @@ body{background:var(--ui-bg);color:var(--ui-text);font-family:var(--sans);}
           <div style="position:absolute;font-family:var(--cond);font-weight:700;font-size:10em;text-transform:uppercase;color:rgba(8,9,12,.045);letter-spacing:-.04em;right:-5%;bottom:-8%;line-height:1;user-select:none;pointer-events:none;">BH</div>
           <div style="padding:8%;position:relative;z-index:2;">
             <div style="font-family:var(--mono);font-size:.58em;letter-spacing:.28em;text-transform:uppercase;color:rgba(8,9,12,.45);margin-bottom:.6em;">April 1, 2026 · Series Launch</div>
-            <div style="font-family:var(--cond);font-weight:700;font-size:3.6em;line-height:.88;letter-spacing:-.01em;text-transform:uppercase;color:#08090C;margin-bottom:.5em;">We're live.<br>Go read<br>something.</div>
+            <div style="font-family:var(--cond);font-weight:700;font-size:3.4em;line-height:.88;letter-spacing:-.01em;text-transform:uppercase;color:#08090C;margin-bottom:.5em;">We're live.<br>Go read<br>something.</div>
             <div style="width:36px;height:2px;background:rgba(8,9,12,.2);margin:1em 0;"></div>
-            <div style="font-family:var(--mono);font-size:.6em;letter-spacing:.04em;color:rgba(8,9,12,.58);line-height:1.72;">6 interactive history guides.<br>AI · Crypto · The Internet<br>The Oscars · The World Cup<br>The Dark Web.<br><br>Each one a deep dive.<br>None of them Wikipedia.</div>
-            <div style="font-family:var(--mono);font-size:.54em;letter-spacing:.2em;text-transform:uppercase;color:rgba(8,9,12,.38);margin-top:1.4em;">abriefhistoryofeverything.com</div>
+            <div style="font-family:var(--mono);font-size:1.2em;letter-spacing:.04em;color:rgba(8,9,12,.58);line-height:1.52;"><strong>Start anywhere.</strong></div>
+            <div style="font-family:var(--mono);font-size:.54em;letter-spacing:.2em;text-transform:uppercase;color:rgba(8,9,12,.38);margin-top:1.4em;"></div>
           </div>
           <div style="position:absolute;bottom:10px;right:7%;z-index:3;">
             <svg width="34" height="34" viewBox="0 0 400 400" xmlns="http://www.w3.org/2000/svg"><rect width="400" height="400" fill="#08090C"/><rect x="55" y="118" width="46" height="46" fill="#08090C" opacity=".22"/><rect x="178" y="118" width="46" height="46" fill="#08090C" opacity=".22"/><rect x="55" y="278" width="170" height="36" fill="#08090C"/></svg>
@@ -458,15 +476,13 @@ body{background:var(--ui-bg);color:var(--ui-text);font-family:var(--sans);}
           <div class="wbc-content">
             <div class="wbc-kicker" style="font-size:.58em;margin-bottom:.6em;">The premise</div>
             <div class="wbc-tagline" style="font-size:2.85em;">Wikipedia<br>but <em>Cooler.</em></div>
-            <div style="width:38px;height:2px;background:var(--rule);margin:.8em 0 .9em;"></div>
-            <div class="wbc-sub" style="font-size:.6em;max-width:38em;">The history of AI. Crypto. The Internet. The Oscars. The World Cup. The Dark Web. Structured chronologies, key figures, and the context that actually explains why things happened.</div>
-            <div class="wbc-url" style="font-size:.54em;margin-top:1em;">abriefhistoryofeverything.com</div>
+            <div style="width:38px;height:2px;background:var(--rule);margin:.2em 0 .9em;"></div>
+            <div class="wbc-sub" style="font-size:.9em;max-width:28em; line-height: 1.5em;">Structured chronologies, key figures, and the context that actually explains why things happened.</div>
+            <div class="wbc-url" style="font-size:.54em;margin-top:1em;"></div>
           </div>
           <div class="wbc-mark-br">
             <svg width="42" height="42" viewBox="0 0 400 400" xmlns="http://www.w3.org/2000/svg"><rect width="400" height="400" fill="#00D4F0"/><rect x="55" y="118" width="46" height="46" fill="#08090C" opacity=".22"/><rect x="178" y="118" width="46" height="46" fill="#08090C" opacity=".22"/><rect x="55" y="278" width="170" height="36" fill="#08090C"/></svg>
-          </div>
-          <div class="colorbar"></div>
-        </div>
+          </div></div>
       </div>
       <button class="dl-btn" onclick="dl('b1tw','B1-wbc-dark-tw.png',1200,628)">↓ 1200×628</button>
     </div>
@@ -481,15 +497,13 @@ body{background:var(--ui-bg);color:var(--ui-text);font-family:var(--sans);}
           <div class="wbc-content">
             <div class="wbc-kicker" style="font-size:.58em;margin-bottom:.6em;">The premise</div>
             <div class="wbc-tagline" style="font-size:3.4em;">Wikipedia<br>but<br><em>Cooler.</em></div>
-            <div style="width:36px;height:2px;background:var(--rule);margin:.9em 0 1em;"></div>
-            <div class="wbc-sub" style="font-size:.62em;">The history of AI. Crypto. The Internet. The Oscars. The World Cup. The Dark Web.<br><br>Structured chronologies, key figures, and the context that actually explains why things happened.</div>
-            <div class="wbc-url" style="font-size:.54em;margin-top:1.4em;">abriefhistoryofeverything.com</div>
+            <div style="width:36px;height:2px;background:var(--rule);margin:.05em 0 1em;"></div>
+            <div class="wbc-sub" style="font-size:.9em; line-height: 1.4em"><br><br>Structured chronologies, key figures, and the context that actually explains why things happened.</div>
+            <div class="wbc-url" style="font-size:.54em;margin-top:1.4em;"></div>
           </div>
           <div class="wbc-mark-br" style="bottom:10px;">
             <svg width="36" height="36" viewBox="0 0 400 400" xmlns="http://www.w3.org/2000/svg"><rect width="400" height="400" fill="#00D4F0"/><rect x="55" y="118" width="46" height="46" fill="#08090C" opacity=".22"/><rect x="178" y="118" width="46" height="46" fill="#08090C" opacity=".22"/><rect x="55" y="278" width="170" height="36" fill="#08090C"/></svg>
-          </div>
-          <div class="colorbar"></div>
-        </div>
+          </div></div>
       </div>
       <button class="dl-btn" onclick="dl('b1vt','B1-wbc-dark-vt.png',1080,1350)">↓ 1080×1350</button>
     </div>
@@ -505,11 +519,11 @@ body{background:var(--ui-bg);color:var(--ui-text);font-family:var(--sans);}
           <div class="noise"></div>
           <div class="wbc-ghost-cyan" style="font-size:5.5em;right:-2%;bottom:-20%;">COOLER</div>
           <div class="wbc-content">
-            <div class="wbc-kicker" style="font-size:.58em;margin-bottom:.6em;">abriefhistoryofeverything.com</div>
+            <div class="wbc-kicker" style="font-size:.58em;margin-bottom:.6em;"></div>
             <div class="wbc-tagline" style="font-size:2.85em;">Wikipedia<br>but <em>Cooler.</em></div>
             <div style="width:38px;height:2px;background:rgba(8,9,12,.15);margin:.8em 0 .9em;"></div>
-            <div class="wbc-sub" style="font-size:.6em;max-width:38em;">6 subjects. 6 deep dives. Structured chronologies, key figures, and the context that makes history make sense.</div>
-            <div class="wbc-url" style="font-size:.54em;margin-top:1em;">abriefhistoryofeverything.com</div>
+            <div class="wbc-sub" style="font-size:.9em;max-width:38em;">Structured chronologies, key figures, and the context that makes history make sense.</div>
+            <div class="wbc-url" style="font-size:.54em;margin-top:1em;"></div>
           </div>
           <div class="wbc-mark-br">
             <svg width="40" height="40" viewBox="0 0 400 400" xmlns="http://www.w3.org/2000/svg"><rect width="400" height="400" fill="#08090C"/><rect x="6" y="6" width="388" height="388" fill="none" stroke="#08090C" stroke-width="12"/><rect x="55" y="118" width="46" height="46" fill="#08090C" opacity=".22"/><rect x="178" y="118" width="46" height="46" fill="#08090C" opacity=".22"/><rect x="55" y="278" width="170" height="36" fill="#08090C"/></svg>
@@ -527,11 +541,11 @@ body{background:var(--ui-bg);color:var(--ui-text);font-family:var(--sans);}
           <div class="noise"></div>
           <div class="wbc-ghost-cyan" style="font-size:3.8em;right:-3%;bottom:-5%;">COOLER</div>
           <div class="wbc-content">
-            <div class="wbc-kicker" style="font-size:.58em;margin-bottom:.6em;">abriefhistoryofeverything.com</div>
+            <div class="wbc-kicker" style="font-size:.58em;margin-bottom:.6em;"></div>
             <div class="wbc-tagline" style="font-size:3.4em;">Wikipedia<br>but<br><em>Cooler.</em></div>
             <div style="width:36px;height:2px;background:rgba(8,9,12,.15);margin:.9em 0 1em;"></div>
-            <div class="wbc-sub" style="font-size:.62em;">6 subjects. 6 deep dives.<br><br>AI · Crypto · The Internet<br>The Oscars · The World Cup<br>The Dark Web.</div>
-            <div class="wbc-url" style="font-size:.54em;margin-top:1.4em;">abriefhistoryofeverything.com</div>
+            <div class="wbc-sub" style="font-size:.62em;"><br><br>.</div>
+            <div class="wbc-url" style="font-size:.54em;margin-top:1.4em;"></div>
           </div>
           <div class="wbc-mark-br" style="bottom:10px;">
             <svg width="34" height="34" viewBox="0 0 400 400" xmlns="http://www.w3.org/2000/svg"><rect width="400" height="400" fill="#08090C"/><rect x="55" y="118" width="46" height="46" fill="#08090C" opacity=".22"/><rect x="178" y="118" width="46" height="46" fill="#08090C" opacity=".22"/><rect x="55" y="278" width="170" height="36" fill="#08090C"/></svg>
@@ -556,14 +570,12 @@ body{background:var(--ui-bg);color:var(--ui-text);font-family:var(--sans);}
             <div class="wbc-kicker" style="font-size:.58em;margin-bottom:.6em;">The premise</div>
             <div class="wbc-tagline" style="font-size:2.85em;">Wikipedia<br>but <em>Cooler.</em></div>
             <div style="width:38px;height:2px;background:rgba(0,0,0,.12);margin:.8em 0 .9em;"></div>
-            <div class="wbc-sub" style="font-size:.6em;max-width:38em;">History the way it actually happened — with the key people, the turning points, and the parts that got left out of the headline.</div>
-            <div class="wbc-url" style="font-size:.54em;margin-top:1em;">abriefhistoryofeverything.com</div>
+            <div class="wbc-sub" style="font-size:1em;max-width:38em; line-height: 1.3em;">History the way it actually happened — with the key people, the turning points, and the parts that got left out of the headline.</div>
+            <div class="wbc-url" style="font-size:.54em;margin-top:1em;"></div>
           </div>
           <div class="wbc-mark-br">
             <svg width="38" height="38" viewBox="0 0 400 400" xmlns="http://www.w3.org/2000/svg"><rect width="400" height="400" fill="#F2EFE9"/><rect x="6" y="6" width="388" height="388" fill="none" stroke="#0A0A0A" stroke-width="12"/><rect x="55" y="118" width="46" height="46" fill="#0A0A0A" opacity=".22"/><rect x="178" y="118" width="46" height="46" fill="#0A0A0A" opacity=".22"/><rect x="55" y="278" width="170" height="36" fill="#0A0A0A"/></svg>
-          </div>
-          <div class="colorbar"></div>
-        </div>
+          </div></div>
       </div>
       <button class="dl-btn" onclick="dl('b3tw','B3-wbc-light-tw.png',1200,628)">↓ 1200×628</button>
     </div>
@@ -578,14 +590,12 @@ body{background:var(--ui-bg);color:var(--ui-text);font-family:var(--sans);}
             <div class="wbc-kicker" style="font-size:.58em;margin-bottom:.6em;">The premise</div>
             <div class="wbc-tagline" style="font-size:3.4em;">Wikipedia<br>but<br><em>Cooler.</em></div>
             <div style="width:36px;height:2px;background:rgba(0,0,0,.12);margin:.9em 0 1em;"></div>
-            <div class="wbc-sub" style="font-size:.62em;">History the way it actually happened — with the key people, the turning points, and the parts that got left out of the headline.</div>
-            <div class="wbc-url" style="font-size:.54em;margin-top:1.4em;">abriefhistoryofeverything.com</div>
+            <div class="wbc-sub" style="font-size:1em; line-height: 1.3em;">History the way it actually happened — with the key people, the turning points, and the parts that got left out of the headline.</div>
+            <div class="wbc-url" style="font-size:.54em;margin-top:1.4em;"></div>
           </div>
           <div class="wbc-mark-br" style="bottom:10px;">
             <svg width="32" height="32" viewBox="0 0 400 400" xmlns="http://www.w3.org/2000/svg"><rect width="400" height="400" fill="#F2EFE9"/><rect x="6" y="6" width="388" height="388" fill="none" stroke="#0A0A0A" stroke-width="12"/><rect x="55" y="118" width="46" height="46" fill="#0A0A0A" opacity=".22"/><rect x="178" y="118" width="46" height="46" fill="#0A0A0A" opacity=".22"/><rect x="55" y="278" width="170" height="36" fill="#0A0A0A"/></svg>
-          </div>
-          <div class="colorbar"></div>
-        </div>
+          </div></div>
       </div>
       <button class="dl-btn" onclick="dl('b3vt','B3-wbc-light-vt.png',1080,1350)">↓ 1080×1350</button>
     </div>
@@ -617,10 +627,8 @@ body{background:var(--ui-bg);color:var(--ui-text);font-family:var(--sans);}
           <div class="post-footer">
             <svg width="20" height="20" viewBox="0 0 400 400" xmlns="http://www.w3.org/2000/svg"><rect width="400" height="400" fill="#00D4F0"/><rect x="55" y="118" width="46" height="46" fill="#08090C" opacity=".22"/><rect x="178" y="118" width="46" height="46" fill="#08090C" opacity=".22"/><rect x="55" y="278" width="170" height="36" fill="#08090C"/></svg>
             <div class="pf-wm">A <em>(Brief)</em> History of Everything_</div>
-            <div class="pf-url">abriefhistoryofeverything.com</div>
-          </div>
-          <div class="colorbar"></div>
-        </div>
+            <div class="pf-url"></div>
+          </div></div>
       </div>
       <button class="dl-btn" onclick="dl('c1tw','C1-guide-grid-tw.png',1200,628)">↓ 1200×628</button>
     </div>
@@ -640,10 +648,8 @@ body{background:var(--ui-bg);color:var(--ui-text);font-family:var(--sans);}
           <div class="post-footer">
             <svg width="18" height="18" viewBox="0 0 400 400" xmlns="http://www.w3.org/2000/svg"><rect width="400" height="400" fill="#00D4F0"/><rect x="55" y="118" width="46" height="46" fill="#08090C" opacity=".22"/><rect x="178" y="118" width="46" height="46" fill="#08090C" opacity=".22"/><rect x="55" y="278" width="170" height="36" fill="#08090C"/></svg>
             <div class="pf-wm">A <em>(Brief)</em> History of Everything_</div>
-            <div class="pf-url">abriefhistoryofeverything.com</div>
-          </div>
-          <div class="colorbar"></div>
-        </div>
+            <div class="pf-url"></div>
+          </div></div>
       </div>
       <button class="dl-btn" onclick="dl('c1vt','C1-guide-grid-vt.png',1080,1350)">↓ 1080×1350</button>
     </div>
@@ -688,10 +694,8 @@ body{background:var(--ui-bg);color:var(--ui-text);font-family:var(--sans);}
           <div class="post-footer">
             <svg width="20" height="20" viewBox="0 0 400 400" xmlns="http://www.w3.org/2000/svg"><rect width="400" height="400" fill="#00D4F0"/><rect x="55" y="118" width="46" height="46" fill="#08090C" opacity=".22"/><rect x="178" y="118" width="46" height="46" fill="#08090C" opacity=".22"/><rect x="55" y="278" width="170" height="36" fill="#08090C"/></svg>
             <div class="pf-wm">A <em>(Brief)</em> History of Everything_</div>
-            <div class="pf-url">abriefhistoryofeverything.com</div>
-          </div>
-          <div class="colorbar"></div>
-        </div>
+            <div class="pf-url"></div>
+          </div></div>
       </div>
       <button class="dl-btn" onclick="dl('d1tw','D1-collage-3panel-tw.png',1200,628)">↓ 1200×628</button>
     </div>
@@ -723,10 +727,8 @@ body{background:var(--ui-bg);color:var(--ui-text);font-family:var(--sans);}
           <div class="post-footer">
             <svg width="18" height="18" viewBox="0 0 400 400" xmlns="http://www.w3.org/2000/svg"><rect width="400" height="400" fill="#00D4F0"/><rect x="55" y="118" width="46" height="46" fill="#08090C" opacity=".22"/><rect x="178" y="118" width="46" height="46" fill="#08090C" opacity=".22"/><rect x="55" y="278" width="170" height="36" fill="#08090C"/></svg>
             <div class="pf-wm">A <em>(Brief)</em> History of Everything_</div>
-            <div class="pf-url">abriefhistoryofeverything.com</div>
-          </div>
-          <div class="colorbar"></div>
-        </div>
+            <div class="pf-url"></div>
+          </div></div>
       </div>
       <button class="dl-btn" onclick="dl('d1vt','D1-collage-3panel-vt.png',1080,1350)">↓ 1080×1350</button>
     </div>
@@ -750,10 +752,8 @@ body{background:var(--ui-bg);color:var(--ui-text);font-family:var(--sans);}
           <div class="post-footer">
             <svg width="20" height="20" viewBox="0 0 400 400" xmlns="http://www.w3.org/2000/svg"><rect width="400" height="400" fill="#00D4F0"/><rect x="55" y="118" width="46" height="46" fill="#08090C" opacity=".22"/><rect x="178" y="118" width="46" height="46" fill="#08090C" opacity=".22"/><rect x="55" y="278" width="170" height="36" fill="#08090C"/></svg>
             <div class="pf-wm">A <em>(Brief)</em> History of Everything_</div>
-            <div class="pf-url">abriefhistoryofeverything.com</div>
-          </div>
-          <div class="colorbar"></div>
-        </div>
+            <div class="pf-url"></div>
+          </div></div>
       </div>
       <button class="dl-btn" onclick="dl('d2tw','D2-mosaic-6posters-tw.png',1200,628)">↓ 1200×628</button>
     </div>
@@ -773,10 +773,8 @@ body{background:var(--ui-bg);color:var(--ui-text);font-family:var(--sans);}
           <div class="post-footer">
             <svg width="18" height="18" viewBox="0 0 400 400" xmlns="http://www.w3.org/2000/svg"><rect width="400" height="400" fill="#00D4F0"/><rect x="55" y="118" width="46" height="46" fill="#08090C" opacity=".22"/><rect x="178" y="118" width="46" height="46" fill="#08090C" opacity=".22"/><rect x="55" y="278" width="170" height="36" fill="#08090C"/></svg>
             <div class="pf-wm">A <em>(Brief)</em> History of Everything_</div>
-            <div class="pf-url">abriefhistoryofeverything.com</div>
-          </div>
-          <div class="colorbar"></div>
-        </div>
+            <div class="pf-url"></div>
+          </div></div>
       </div>
       <button class="dl-btn" onclick="dl('d2vt','D2-mosaic-6posters-vt.png',1080,1350)">↓ 1080×1350</button>
     </div>
@@ -797,11 +795,9 @@ body{background:var(--ui-bg);color:var(--ui-text);font-family:var(--sans);}
           <div style="flex:1;display:flex;flex-direction:column;justify-content:center;padding:6% 7%;border-left:1px solid var(--rule);">
             <div style="font-family:var(--mono);font-size:.54em;letter-spacing:.22em;text-transform:uppercase;color:var(--dim);margin-bottom:.7em;">Series Launch · April 2026</div>
             <div style="font-family:var(--cond);font-weight:700;font-size:2.5em;line-height:.9;text-transform:uppercase;color:var(--bright);margin-bottom:.5em;">A <span style="color:var(--cyan);">(Brief)</span><br>History of<br>Everything<span style="color:var(--cyan);font-family:var(--mono);font-weight:300;animation:cur .9s step-end infinite;">_</span></div>
-            <div style="font-family:var(--mono);font-size:.57em;letter-spacing:.03em;color:var(--text);line-height:1.72;">6 guides. Every subject that shaped the world. Start anywhere.</div>
-            <div style="font-family:var(--mono);font-size:.52em;letter-spacing:.18em;text-transform:uppercase;color:var(--muted);margin-top:1em;">abriefhistoryofeverything.com</div>
-          </div>
-          <div class="colorbar"></div>
-        </div>
+            <div style="font-family:var(--mono);font-size:1.1em;letter-spacing:.03em;color:var(--text);line-height:1.72;">Start anywhere.</div>
+            <div style="font-family:var(--mono);font-size:.52em;letter-spacing:.18em;text-transform:uppercase;color:var(--muted);margin-top:1em;"></div>
+          </div></div>
       </div>
       <button class="dl-btn" onclick="dl('d3tw','D3-split-poster-left-tw.png',1200,628)">↓ 1200×628</button>
     </div>
@@ -817,12 +813,10 @@ body{background:var(--ui-bg);color:var(--ui-text);font-family:var(--sans);}
           </div>
           <div style="padding:6% 7% 8%;display:flex;flex-direction:column;justify-content:center;">
             <div style="font-family:var(--mono);font-size:.54em;letter-spacing:.22em;text-transform:uppercase;color:var(--dim);margin-bottom:.7em;">Series Launch · April 2026</div>
-            <div style="font-family:var(--cond);font-weight:700;font-size:2.8em;line-height:.9;text-transform:uppercase;color:var(--bright);margin-bottom:.5em;">A <span style="color:var(--cyan);">(Brief)</span><br>History of<br>Everything_</div>
-            <div style="font-family:var(--mono);font-size:.6em;letter-spacing:.03em;color:var(--text);line-height:1.72;margin-top:.4em;">6 guides. Every subject that shaped the world. Start anywhere.</div>
-            <div style="font-family:var(--mono);font-size:.52em;letter-spacing:.18em;text-transform:uppercase;color:var(--muted);margin-top:1em;">abriefhistoryofeverything.com</div>
-          </div>
-          <div class="colorbar"></div>
-        </div>
+            <div style="font-family:var(--cond);font-weight:700;font-size:2.8em;line-height:.9;text-transform:uppercase;color:var(--bright);margin-bottom:.1em;">A <span style="color:var(--cyan);">(Brief)</span><br>History of<br>Everything_</div>
+            <div style="font-family:var(--mono);font-size:1.1em;letter-spacing:.03em;color:var(--text);line-height:1.72;margin-top:.4em;">Start anywhere.</div>
+            <div style="font-family:var(--mono);font-size:.52em;letter-spacing:.18em;text-transform:uppercase;color:var(--muted);margin-top:1em;"></div>
+          </div></div>
       </div>
       <button class="dl-btn" onclick="dl('d3vt','D3-split-poster-top-vt.png',1080,1350)">↓ 1080×1350</button>
     </div>
@@ -849,12 +843,10 @@ body{background:var(--ui-bg);color:var(--ui-text);font-family:var(--sans);}
           </div>
           <div class="sp-right">
             <div class="sp-eyebrow">Series Launch</div>
-            <div class="sp-title" style="font-size:2.4em;">A <em>(Brief)</em><br>History of<br>Everything_</div>
-            <div class="sp-body">6 interactive history guides. Each one a deep dive. <span style="color:var(--cyan);">None of them Wikipedia.</span></div>
-            <div class="sp-url">abriefhistoryofeverything.com</div>
-          </div>
-          <div class="colorbar"></div>
-        </div>
+            <div class="sp-title" style="font-size:2.6em;">A <em>(Brief)</em><br>History of<br>Everything_</div>
+            <div class="sp-body" style="font-size: 1em; line-height: 1.3em">Interactive history guides. <span style="color:var(--cyan);">None of them Wikipedia.</span></div>
+            <div class="sp-url"></div>
+          </div></div>
       </div>
       <button class="dl-btn" onclick="dl('e1tw','E1-split-mark-tw.png',1200,628)">↓ 1200×628</button>
     </div>
@@ -870,12 +862,10 @@ body{background:var(--ui-bg);color:var(--ui-text);font-family:var(--sans);}
           </div>
           <div style="flex:1;display:flex;flex-direction:column;justify-content:center;padding:7% 8%;border-top:1px solid var(--rule);">
             <div style="font-family:var(--mono);font-size:.54em;letter-spacing:.22em;text-transform:uppercase;color:var(--dim);margin-bottom:.7em;">Series Launch · April 2026</div>
-            <div style="font-family:var(--cond);font-weight:700;font-size:2.8em;line-height:.9;text-transform:uppercase;color:var(--bright);margin-bottom:.5em;">A <em style="font-style:normal;color:var(--cyan);">(Brief)</em><br>History of<br>Everything_</div>
-            <div style="font-family:var(--mono);font-size:.6em;letter-spacing:.03em;color:var(--text);line-height:1.72;">6 interactive history guides. Each one a deep dive. <span style="color:var(--cyan);">None of them Wikipedia.</span></div>
-            <div style="font-family:var(--mono);font-size:.52em;letter-spacing:.18em;text-transform:uppercase;color:var(--muted);margin-top:1em;">abriefhistoryofeverything.com</div>
-          </div>
-          <div class="colorbar"></div>
-        </div>
+            <div style="font-family:var(--cond);font-weight:700;font-size:2.6em;line-height:.9;text-transform:uppercase;color:var(--bright);margin-bottom:.1em;">A <em style="font-style:normal;color:var(--cyan);">(Brief)</em><br>History of<br>Everything_</div>
+            <div style="font-family:var(--mono);font-size:.9em;letter-spacing:.03em;color:var(--text);line-height:1.42;">Interactive history guides. <br> <span style="color:var(--cyan);">None of them Wikipedia.</span></div>
+            <div style="font-family:var(--mono);font-size:.52em;letter-spacing:.18em;text-transform:uppercase;color:var(--muted);margin-top:1em;"></div>
+          </div></div>
       </div>
       <button class="dl-btn" onclick="dl('e1vt','E1-split-mark-vt.png',1080,1350)">↓ 1080×1350</button>
     </div>
@@ -900,10 +890,8 @@ body{background:var(--ui-bg);color:var(--ui-text);font-family:var(--sans);}
           <div class="wc-footer">
             <svg width="18" height="18" viewBox="0 0 400 400" xmlns="http://www.w3.org/2000/svg" style="flex-shrink:0;"><rect width="400" height="400" fill="#00D4F0"/><rect x="55" y="118" width="46" height="46" fill="#08090C" opacity=".22"/><rect x="178" y="118" width="46" height="46" fill="#08090C" opacity=".22"/><rect x="55" y="278" width="170" height="36" fill="#08090C"/></svg>
             <div style="font-family:var(--cond);font-weight:700;font-size:.75em;letter-spacing:.04em;text-transform:uppercase;color:var(--bright);">A <em style="font-style:normal;color:var(--cyan);">(Brief)</em> History of Everything_</div>
-            <div style="font-family:var(--mono);font-size:.5em;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);margin-left:auto;">abriefhistoryofeverything.com</div>
-          </div>
-          <div class="colorbar"></div>
-        </div>
+            <div style="font-family:var(--mono);font-size:.5em;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);margin-left:auto;"></div>
+          </div></div>
       </div>
       <button class="dl-btn" onclick="dl('f1tw','F1-wordcloud-tw.png',1200,628)">↓ 1200×628</button>
     </div>
@@ -917,10 +905,8 @@ body{background:var(--ui-bg);color:var(--ui-text);font-family:var(--sans);}
           <div class="wc-footer">
             <svg width="18" height="18" viewBox="0 0 400 400" xmlns="http://www.w3.org/2000/svg" style="flex-shrink:0;"><rect width="400" height="400" fill="#00D4F0"/><rect x="55" y="118" width="46" height="46" fill="#08090C" opacity=".22"/><rect x="178" y="118" width="46" height="46" fill="#08090C" opacity=".22"/><rect x="55" y="278" width="170" height="36" fill="#08090C"/></svg>
             <div style="font-family:var(--cond);font-weight:700;font-size:.75em;letter-spacing:.04em;text-transform:uppercase;color:var(--bright);">A <em style="font-style:normal;color:var(--cyan);">(Brief)</em> History of Everything_</div>
-            <div style="font-family:var(--mono);font-size:.5em;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);margin-left:auto;">abriefhistoryofeverything.com</div>
-          </div>
-          <div class="colorbar"></div>
-        </div>
+            <div style="font-family:var(--mono);font-size:.5em;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);margin-left:auto;"></div>
+          </div></div>
       </div>
       <button class="dl-btn" onclick="dl('f1vt','F1-wordcloud-vt.png',1080,1350)">↓ 1080×1350</button>
     </div>
@@ -950,9 +936,7 @@ body{background:var(--ui-bg);color:var(--ui-text);font-family:var(--sans);}
           </div>
           <div style="position:absolute;bottom:7%;right:7%;z-index:3;">
             <svg width="34" height="34" viewBox="0 0 400 400" xmlns="http://www.w3.org/2000/svg"><rect width="400" height="400" fill="#F2EFE9"/><rect x="6" y="6" width="388" height="388" fill="none" stroke="#0A0A0A" stroke-width="12"/><rect x="55" y="118" width="46" height="46" fill="#0A0A0A" opacity=".22"/><rect x="178" y="118" width="46" height="46" fill="#0A0A0A" opacity=".22"/><rect x="55" y="278" width="170" height="36" fill="#0A0A0A"/></svg>
-          </div>
-          <div class="colorbar"></div>
-        </div>
+          </div></div>
       </div>
       <button class="dl-btn" onclick="dl('g1tw','G1-manifesto-light-tw.png',1200,628)">↓ 1200×628</button>
     </div>
@@ -967,14 +951,12 @@ body{background:var(--ui-bg);color:var(--ui-text);font-family:var(--sans);}
             <div class="mf-kicker" style="color:#888;">The Manifesto</div>
             <div class="mf-quote" style="font-size:3em;color:#0A0A0A;">History<br>is not a<br>list of <span style="color:#007A8C;">dates.</span><br>It's a story.</div>
             <div style="width:32px;height:2px;background:rgba(0,0,0,.1);margin:.8em 0;"></div>
-            <div style="font-family:var(--sans);font-size:.6em;color:#666;line-height:1.7;">The subjects that shaped our world. The people who made them happen. What we missed at the time.</div>
-            <div class="mf-attr" style="color:#aaa;margin-top:.8em;">abriefhistoryofeverything.com</div>
+            <div style="font-family:var(--sans);font-size:1em;color:#666;line-height:1.7;">The subjects that shaped our world. The people who made them happen. What we missed at the time.</div>
+            <div class="mf-attr" style="color:#aaa;margin-top:.8em;"></div>
           </div>
           <div style="position:absolute;bottom:10px;right:7%;z-index:3;">
             <svg width="30" height="30" viewBox="0 0 400 400" xmlns="http://www.w3.org/2000/svg"><rect width="400" height="400" fill="#F2EFE9"/><rect x="6" y="6" width="388" height="388" fill="none" stroke="#0A0A0A" stroke-width="12"/><rect x="55" y="118" width="46" height="46" fill="#0A0A0A" opacity=".22"/><rect x="178" y="118" width="46" height="46" fill="#0A0A0A" opacity=".22"/><rect x="55" y="278" width="170" height="36" fill="#0A0A0A"/></svg>
-          </div>
-          <div class="colorbar"></div>
-        </div>
+          </div></div>
       </div>
       <button class="dl-btn" onclick="dl('g1vt','G1-manifesto-light-vt.png',1080,1350)">↓ 1080×1350</button>
     </div>
@@ -997,9 +979,7 @@ body{background:var(--ui-bg);color:var(--ui-text);font-family:var(--sans);}
           </div>
           <div style="position:absolute;bottom:7%;right:7%;z-index:3;opacity:.4;">
             <svg width="36" height="36" viewBox="0 0 400 400" xmlns="http://www.w3.org/2000/svg"><rect width="400" height="400" fill="#00D4F0"/><rect x="55" y="118" width="46" height="46" fill="#08090C" opacity=".22"/><rect x="178" y="118" width="46" height="46" fill="#08090C" opacity=".22"/><rect x="55" y="278" width="170" height="36" fill="#08090C"/></svg>
-          </div>
-          <div class="colorbar"></div>
-        </div>
+          </div></div>
       </div>
       <button class="dl-btn" onclick="dl('g2tw','G2-manifesto-dark-tw.png',1200,628)">↓ 1200×628</button>
     </div>
@@ -1015,14 +995,12 @@ body{background:var(--ui-bg);color:var(--ui-text);font-family:var(--sans);}
             <div class="mf-kicker" style="color:rgba(0,212,240,.65);font-size:.56em;">The Manifesto</div>
             <div class="mf-quote" style="font-size:3em;color:var(--bright);">History<br>is not a<br>list of <span style="color:var(--cyan);">dates.</span><br>It's a story.</div>
             <div style="width:32px;height:2px;background:var(--rule);margin:.8em 0;"></div>
-            <div style="font-family:var(--mono);font-size:.6em;color:var(--text);line-height:1.72;">The subjects that shaped our world. The people who made them happen. What we missed at the time.</div>
-            <div style="font-family:var(--mono);font-size:.52em;letter-spacing:.18em;text-transform:uppercase;color:var(--muted);margin-top:1em;">abriefhistoryofeverything.com</div>
+            <div style="font-family:var(--mono);font-size:.9em;color:var(--text);line-height:1.52;">The subjects that shaped our world. The people who made them happen. What we missed at the time.</div>
+            <div style="font-family:var(--mono);font-size:.52em;letter-spacing:.18em;text-transform:uppercase;color:var(--muted);margin-top:1em;"></div>
           </div>
           <div style="position:absolute;bottom:10px;right:7%;z-index:3;opacity:.4;">
             <svg width="32" height="32" viewBox="0 0 400 400" xmlns="http://www.w3.org/2000/svg"><rect width="400" height="400" fill="#00D4F0"/><rect x="55" y="118" width="46" height="46" fill="#08090C" opacity=".22"/><rect x="178" y="118" width="46" height="46" fill="#08090C" opacity=".22"/><rect x="55" y="278" width="170" height="36" fill="#08090C"/></svg>
-          </div>
-          <div class="colorbar"></div>
-        </div>
+          </div></div>
       </div>
       <button class="dl-btn" onclick="dl('g2vt','G2-manifesto-dark-vt.png',1080,1350)">↓ 1080×1350</button>
     </div>
@@ -1049,10 +1027,8 @@ body{background:var(--ui-bg);color:var(--ui-text);font-family:var(--sans);}
             <div class="stat-label" style="font-size:2em;">Guides. <em>Zero</em> Filler.</div>
             <div class="stat-div" style="width:44px;height:2px;"></div>
             <div class="stat-copy" style="font-size:.6em;max-width:36em;">AI · The Internet · Crypto · The Oscars · The World Cup · The Dark Web.<br><b>Each one a deep dive. None of them Wikipedia.</b></div>
-            <div class="stat-url" style="font-size:.52em;margin-top:1em;">abriefhistoryofeverything.com</div>
-          </div>
-          <div class="colorbar"></div>
-        </div>
+            <div class="stat-url" style="font-size:.52em;margin-top:1em;"></div>
+          </div></div>
       </div>
       <button class="dl-btn" onclick="dl('h1tw','H1-stat-6guides-tw.png',1200,628)">↓ 1200×628</button>
     </div>
@@ -1068,10 +1044,8 @@ body{background:var(--ui-bg);color:var(--ui-text);font-family:var(--sans);}
             <div class="stat-label" style="font-size:2.2em;">Guides.<br><em>Zero</em><br>Filler.</div>
             <div class="stat-div" style="width:40px;height:2px;margin:1em 0;"></div>
             <div class="stat-copy" style="font-size:.62em;">AI · The Internet · Crypto<br>The Oscars · The World Cup<br>The Dark Web.<br><br><b>Each one a deep dive.<br>None of them Wikipedia.</b></div>
-            <div class="stat-url" style="font-size:.52em;margin-top:1.2em;">abriefhistoryofeverything.com</div>
-          </div>
-          <div class="colorbar"></div>
-        </div>
+            <div class="stat-url" style="font-size:.52em;margin-top:1.2em;"></div>
+          </div></div>
       </div>
       <button class="dl-btn" onclick="dl('h1vt','H1-stat-6guides-vt.png',1080,1350)">↓ 1080×1350</button>
     </div>
