@@ -204,6 +204,7 @@ body{background:#F5F5F0;color:#2A2A2A;font-family:'Courier New',monospace;font-s
   <div class="top-bar-title">Social Post Generator &mdash; <span id="top-bar-guide">A (Brief) History of Everything_</span></div>
   <div class="tbbtns">
     <button class="tbload" title="Load a different guide HTML">&#8593; Load Guide<input type="file" accept=".html" onchange="loadGuideFile(this.files[0])"></button>
+    <button class="tbload" id="btn-save" onclick="saveGenerator()" title="Save a standalone copy of this generator with all content baked in">&#8595; Save Generator</button>
     <button class="tbdl sec" id="btn-set" onclick="downloadSet()">&#8595; This Set (3)</button>
     <button class="tbdl" id="btn-all" onclick="downloadAll()">&#8595; Download All</button>
   </div>
@@ -408,6 +409,7 @@ body{background:#F5F5F0;color:#2A2A2A;font-family:'Courier New',monospace;font-s
 </div><!-- #app-shell -->
 
 <script>
+
 (function(){
 
 // ── STATE ──
@@ -436,6 +438,57 @@ let BODY_FONT = "'Courier New', monospace";
 let SLUG = 'guide';
 let TOPIC_NAME = 'GUIDE';
 let OG_SUBTITLE = '';
+
+
+// ── SAVED STATE BOOT ──
+window.addEventListener('DOMContentLoaded',function(){
+  var p=window.__BHOE_SAVED;
+  if(!p)return;
+  // Restore globals from saved payload
+  Object.assign(CONTENT,p.CONTENT);
+  FIGURES.length=0;(p.FIGURES||[]).forEach(function(f){FIGURES.push(f);});
+  Object.assign(PALS,p.PALS);
+  Object.assign(SGPALS,p.SGPALS);
+  Object.assign(S,p.S);
+  if(p.SLUG)SLUG=p.SLUG;
+  if(p.TOPIC_NAME)TOPIC_NAME=p.TOPIC_NAME;
+  if(p.DISPLAY_FONT)DISPLAY_FONT=p.DISPLAY_FONT;
+  if(p.BODY_FONT)BODY_FONT=p.BODY_FONT;
+  if(p.MASCOT_ACCENT)MASCOT_ACCENT=p.MASCOT_ACCENT;
+  // Restore textarea values
+  var el;
+  el=document.getElementById('og-sub');if(el)el.value=p.OG_SUBTITLE||'';
+  el=document.getElementById('carousel-title');if(el)el.value=p.carouselTitle||'';
+  el=document.getElementById('carousel-sub');if(el)el.value=p.carouselSub||'';
+  el=document.getElementById('carousel-outro');if(el)el.value=p.carouselOutro||'';
+  el=document.getElementById('carousel-count');if(el){el.max=Math.max(3,FIGURES.length);el.value=S.carouselCount;var cv=document.getElementById('carousel-count-val');if(cv)cv.textContent=S.carouselCount;}
+  if(p.customImg){var pi=document.getElementById('custom-img-preview');if(pi){pi.src=p.customImg;var t=document.getElementById('custom-img-thumb');if(t)t.style.display='block';}}
+  // Update top bar + palette UI
+  var tg=document.getElementById('top-bar-guide');
+  if(tg){tg.textContent='A (Brief) History of '+TOPIC_NAME.charAt(0)+TOPIC_NAME.slice(1).toLowerCase();tg.style.color=PALS.dark.accent;}
+  var d;
+  d=document.getElementById('rsb-dot-accent');if(d)d.style.background=PALS.dark.accent;
+  d=document.getElementById('rsb-hex-accent');if(d)d.textContent=PALS.dark.accent;
+  d=document.getElementById('rsb-dot-accent2');if(d)d.style.background=PALS.accent2?PALS.accent2.bg:'';
+  d=document.getElementById('rsb-hex-accent2');if(d)d.textContent=PALS.accent2?PALS.accent2.bg:'';
+  d=document.getElementById('rsb-dot-dark');if(d)d.style.background=PALS.dark.bg;
+  d=document.getElementById('rsb-hex-dark');if(d)d.textContent=PALS.dark.bg;
+  d=document.getElementById('rsb-dot-light');if(d)d.style.background=PALS.light.bg;
+  d=document.getElementById('rsb-hex-light');if(d)d.textContent=PALS.light.bg;
+  d=document.getElementById('sw-dark-dot');if(d)d.style.background=PALS.dark.bg;
+  d=document.getElementById('sw-light-dot');if(d)d.style.background=PALS.light.bg;
+  d=document.getElementById('sw-accent-dot');if(d)d.style.background=PALS.dark.accent;
+  d=document.getElementById('sw-accent2-dot');if(d)d.style.background=PALS.accent2?PALS.accent2.bg:'';
+  d=document.getElementById('sg-dark-dot');if(d)d.style.background=PALS.dark.bg;
+  d=document.getElementById('sg-light-dot');if(d)d.style.background=PALS.light.bg;
+  d=document.getElementById('fig-dark-dot');if(d)d.style.background=PALS.dark.bg;
+  d=document.getElementById('fig-light-dot');if(d)d.style.background=PALS.light.bg;
+  var rf=document.getElementById('rsb-fonts');
+  if(rf)rf.innerHTML='<div class="rsfont" style="font-family:'+DISPLAY_FONT+';font-weight:700;">'+DISPLAY_FONT.split(',')[0].replace(/'/g,'')+'<span>Display</span></div><div class="rsfont" style="font-family:'+BODY_FONT+';margin-top:5px;">'+BODY_FONT.split(',')[0].replace(/'/g,'')+'<span>Body</span></div>';
+  GUIDE_LOADED=true;
+  rebuildContentSidebar();
+  updateAll();
+});
 
 // ── DROP SCREEN ──
 window.dsDragOver=function(e){e.preventDefault();e.stopPropagation();document.getElementById('ds-zone').classList.add('drag-over');};
@@ -769,6 +822,59 @@ window.downloadAll=function(){if(!GUIDE_LOADED)return;if(S.style==='ogimage'){wi
 window.downloadStarred=function(){if(!STARRED.size)return;const btn=document.getElementById('fav-dl-btn');btn.disabled=true;btn.textContent='Rendering\u2026';const saved={...S},savedStyle=S.style;S.style='figure';const queue=[];[...STARRED].forEach(key=>{const m=key.match(/^figure-(\d+)-(.+?)-(dark|light)$/);if(!m)return;const[,fi,layout,pal]=m;SOCIAL_FMTS.forEach(fmt=>queue.push({figIdx:parseInt(fi),layout,pal,fmt}));});const zip=new JSZip();let i=0;function next(){if(i>=queue.length){zip.generateAsync({type:'blob'}).then(z=>{Object.assign(S,saved);S.style=savedStyle;updateAll();trig(z,'bhoe-'+SLUG+'-starred.zip');btn.disabled=false;btn.textContent='\u2193 Download Starred';});return;}const{figIdx,layout,pal,fmt}=queue[i++];S.figureIdx=figIdx;S.figLayout=layout;S.figPal=pal;const el=document.getElementById('canvas-'+fmt);renderFigure(el,fmt);btn.textContent=`Rendering\u2026 ${i}/${queue.length}`;setTimeout(()=>c2b(fmt).then(b=>{const name=FIGURES[figIdx].name.replace(/\s+/g,'-').toLowerCase();zip.file(`bhoe-figure-${name}-${layout.replace('|','-')}-${pal}-${FNAMES[fmt]}.png`,b);next();}).catch(()=>next()),80);}next();};
 window.downloadAllFigures=function(){if(!FIGURES.length)return;const btn=document.getElementById('fig-dl-all-btn');btn.disabled=true;const saved={...S},savedStyle=S.style;S.style='figure';const queue=[];FIGURES.forEach((_,fi)=>SOCIAL_FMTS.forEach(fmt=>queue.push({fi,fmt})));const zip=new JSZip();let i=0;function next(){if(i>=queue.length){zip.generateAsync({type:'blob'}).then(z=>{Object.assign(S,saved);S.style=savedStyle;updateAll();trig(z,'bhoe-'+SLUG+'-all-figures.zip');btn.disabled=false;btn.textContent='\u2193 All Figures (\u00d73 formats)';});return;}const{fi,fmt}=queue[i++];S.figureIdx=fi;const el=document.getElementById('canvas-'+fmt);renderFigure(el,fmt);btn.textContent=`Rendering\u2026 ${i}/${queue.length}`;setTimeout(()=>c2b(fmt).then(b=>{const name=FIGURES[fi].name.replace(/\s+/g,'-').toLowerCase();zip.file(`bhoe-figure-${name}-${S.figLayout.replace('|','-')}-${S.figPal}-${FNAMES[fmt]}.png`,b);next();}).catch(()=>next()),80);}next();};
 window.downloadCarousel=function(){if(!FIGURES.length)return;const btn=document.getElementById('carousel-dl-btn');btn.disabled=true;btn.textContent='Building\u2026';const saved={...S},savedStyle=S.style;S.style='figure';const count=S.carouselCount,includeOutro=document.getElementById('carousel-outro-toggle').checked,fmts=['sq','vt'],zip=new JSZip(),queue=[];fmts.forEach(fmt=>{queue.push({type:'intro',fmt});for(let fi=0;fi<count;fi++)queue.push({type:'figure',fi,fmt});if(includeOutro)queue.push({type:'outro',fmt});});let i=0;function next(){if(i>=queue.length){zip.generateAsync({type:'blob'}).then(z=>{Object.assign(S,saved);S.style=savedStyle;updateAll();trig(z,'bhoe-'+SLUG+'-carousel.zip');btn.disabled=false;btn.textContent='\u2193 Export Carousel';});return;}const item=queue[i++];const el=document.getElementById('canvas-'+item.fmt);let filename;if(item.type==='intro'){renderIntroCard(el,item.fmt);filename=`00-intro-${item.fmt}.png`;}else if(item.type==='outro'){renderOutroCard(el,item.fmt);filename=`99-outro-${item.fmt}.png`;}else{S.figureIdx=item.fi;renderFigure(el,item.fmt);const name=FIGURES[item.fi].name.replace(/\s+/g,'-').toLowerCase();filename=`${String(item.fi+1).padStart(2,'0')}-${name}-${item.fmt}.png`;}btn.textContent=`Building\u2026 ${i}/${queue.length}`;setTimeout(()=>c2b(item.fmt).then(b=>{zip.file(filename,b);next();}).catch(()=>next()),80);}next();};
+
+
+// ── SAVE GENERATOR ──
+window.saveGenerator=function(){
+  if(!GUIDE_LOADED){alert('Load a guide first.');return;}
+  const btn=document.getElementById('btn-save');
+  btn.textContent='Saving…';btn.disabled=true;
+  try{
+    const customSrc=document.getElementById('custom-img-preview').src;
+    const payload={
+      CONTENT,FIGURES,PALS,SGPALS,S,SLUG,TOPIC_NAME,
+      DISPLAY_FONT,BODY_FONT,MASCOT_ACCENT,
+      OG_SUBTITLE:(document.getElementById('og-sub')||{}).value||'',
+      carouselTitle:(document.getElementById('carousel-title')||{}).value||'',
+      carouselSub:(document.getElementById('carousel-sub')||{}).value||'',
+      carouselOutro:(document.getElementById('carousel-outro')||{}).value||'',
+      customImg:customSrc&&customSrc.startsWith('data:')?customSrc:null
+    };
+    // Clone doc, patch it, serialize
+    const clone=document.cloneNode(true);
+    // Hide drop screen, show app shell
+    const ds=clone.getElementById('drop-screen');if(ds)ds.setAttribute('style','display:none!important');
+    const as=clone.getElementById('app-shell');if(as)as.setAttribute('style','opacity:1!important;pointer-events:all!important;');
+    // Remove any existing payload tag
+    const old=clone.getElementById('__bhoe_payload');if(old)old.remove();
+    // Inject payload as JSON script tag
+    const pt=clone.createElement('script');
+    pt.id='__bhoe_payload';pt.type='application/json';
+    pt.textContent=JSON.stringify(payload);
+    clone.querySelector('head').appendChild(pt);
+    // Inject boot script that reads payload and inits
+    const bootSrc=`
+(function(){
+var el=document.getElementById('__bhoe_payload');
+if(!el)return;
+window.__BHOE_SAVED=JSON.parse(el.textContent);
+})();
+`;
+    const bs=clone.createElement('script');bs.textContent=bootSrc;
+    clone.querySelector('head').appendChild(bs);
+    // Serialize
+    const ser=new XMLSerializer();
+    let out=ser.serializeToString(clone);
+    // Trigger download
+    const blob=new Blob([out],{type:'text/html'});
+    const url=URL.createObjectURL(blob);
+    const a=document.createElement('a');
+    a.href=url;a.download=SLUG+'-social-generator.html';
+    document.body.appendChild(a);a.click();document.body.removeChild(a);
+    setTimeout(()=>URL.revokeObjectURL(url),2000);
+  }catch(e){alert('Save failed: '+e.message);}
+  btn.textContent='↓ Save Generator';btn.disabled=false;
+};
 
 })();
 </script>
