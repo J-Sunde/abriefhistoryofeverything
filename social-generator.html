@@ -9,8 +9,7 @@
 <style>
 *{margin:0;padding:0;box-sizing:border-box;}
 html,body{height:100%;overflow:hidden;}
-body{background:#F5F5F0;color:#2A2A2A;font-family:'Courier New',monospace;font-size:14px;}
-/* Both screens are fixed — no flex parent interference */
+body{background:#F5F5F0;color:#2A2A2A;font-family:'Courier New',monospace;font-size:14px;display:flex;flex-direction:column;}
 
 /* ── DROP SCREEN ── */
 #drop-screen{position:fixed;inset:0;background:#F5F5F0;display:flex;flex-direction:column;align-items:center;justify-content:center;z-index:1000;transition:opacity .3s;}
@@ -35,7 +34,7 @@ body{background:#F5F5F0;color:#2A2A2A;font-family:'Courier New',monospace;font-s
 .guide-drop-sub{font-family:'Courier New',monospace;font-size:10px;color:rgba(0,207,255,.6);letter-spacing:.06em;}
 
 /* ── APP SHELL ── */
-#app-shell{position:fixed;inset:0;display:flex;flex-direction:column;opacity:0;pointer-events:none;transition:opacity .3s;}
+#app-shell{display:flex;flex-direction:column;flex:1;height:100%;opacity:0;pointer-events:none;transition:opacity .3s;}
 #app-shell.visible{opacity:1;pointer-events:all;}
 .series-bar{height:3px;background:linear-gradient(90deg,#00D4F0 25%,#0055EE 25% 50%,#39E07A 50% 75%,#FF5C20 75%);flex-shrink:0;}
 .top-bar{height:44px;background:#EEEEE8;border-bottom:1px solid #D8D8D0;display:flex;align-items:center;padding:0 20px;gap:10px;flex-shrink:0;}
@@ -169,36 +168,7 @@ body{background:#F5F5F0;color:#2A2A2A;font-family:'Courier New',monospace;font-s
 </head>
 <body>
 
-<!-- DROP SCREEN -->
-<div id="drop-screen">
-  <div class="ds-series-bar"></div>
-  <div class="ds-inner">
-    <svg class="ds-mark" width="56" height="56" viewBox="0 0 400 400" xmlns="http://www.w3.org/2000/svg">
-      <rect width="400" height="400" fill="#08090C"/>
-      <rect x="6" y="6" width="388" height="388" fill="none" stroke="#00D4F0" stroke-width="12"/>
-      <rect x="55" y="118" width="46" height="46" fill="#00D4F0" opacity=".3"/>
-      <rect x="178" y="118" width="46" height="46" fill="#00D4F0" opacity=".3"/>
-      <rect x="55" y="278" width="170" height="36" fill="#00D4F0"/>
-    </svg>
-    <div class="ds-zone" id="ds-zone" ondragover="dsDragOver(event)" ondragleave="dsDragLeave(event)" ondrop="dsDrop(event)">
-      <input type="file" accept=".html" onchange="loadGuideFile(this.files[0])">
-      <div class="ds-zone-icon">↓</div>
-      <div class="ds-zone-title">Drop guide HTML to begin</div>
-      <div class="ds-zone-sub">or <span>click to browse</span> for a guide file</div>
-    </div>
-    <div class="ds-brand">A (Brief) History of Everything_ · Social Post Generator</div>
-  </div>
-</div>
-
-<!-- GUIDE DROP OVERLAY (while app is active) -->
-<div class="guide-drop-overlay" id="guide-drop-overlay">
-  <div class="guide-drop-inner">
-    <div class="guide-drop-title">Drop Guide HTML</div>
-    <div class="guide-drop-sub">Release to load new guide content &amp; colors</div>
-  </div>
-</div>
-
-<!-- APP SHELL -->
+<!-- APP SHELL — first and only flow child of body -->
 <div id="app-shell">
 <div class="series-bar"></div>
 <div class="top-bar">
@@ -417,6 +387,35 @@ body{background:#F5F5F0;color:#2A2A2A;font-family:'Courier New',monospace;font-s
 
 </div><!-- .app -->
 </div><!-- #app-shell -->
+
+<!-- DROP SCREEN — fixed overlay, after app-shell in DOM -->
+<div id="drop-screen">
+  <div class="ds-series-bar"></div>
+  <div class="ds-inner">
+    <svg class="ds-mark" width="56" height="56" viewBox="0 0 400 400" xmlns="http://www.w3.org/2000/svg">
+      <rect width="400" height="400" fill="#08090C"/>
+      <rect x="6" y="6" width="388" height="388" fill="none" stroke="#00D4F0" stroke-width="12"/>
+      <rect x="55" y="118" width="46" height="46" fill="#00D4F0" opacity=".3"/>
+      <rect x="178" y="118" width="46" height="46" fill="#00D4F0" opacity=".3"/>
+      <rect x="55" y="278" width="170" height="36" fill="#00D4F0"/>
+    </svg>
+    <div class="ds-zone" id="ds-zone" ondragover="dsDragOver(event)" ondragleave="dsDragLeave(event)" ondrop="dsDrop(event)">
+      <input type="file" accept=".html" onchange="loadGuideFile(this.files[0])">
+      <div class="ds-zone-icon">↓</div>
+      <div class="ds-zone-title">Drop guide HTML to begin</div>
+      <div class="ds-zone-sub">or <span>click to browse</span> for a guide file</div>
+    </div>
+    <div class="ds-brand">A (Brief) History of Everything_ · Social Post Generator</div>
+  </div>
+</div>
+
+<!-- GUIDE DROP OVERLAY -->
+<div class="guide-drop-overlay" id="guide-drop-overlay">
+  <div class="guide-drop-inner">
+    <div class="guide-drop-title">Drop Guide HTML</div>
+    <div class="guide-drop-sub">Release to load new guide content &amp; colors</div>
+  </div>
+</div>
 
 <script>
 
