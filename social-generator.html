@@ -508,19 +508,41 @@ function parseAndApplyGuide(html,filename){
   const styleText=[...doc.querySelectorAll('style')].map(s=>s.textContent).join('\n');
   function cssVar(names){for(const n of names){const m=styleText.match(new RegExp(n+'\\s*:\\s*([^;\\n]+)'));if(m)return m[1].trim();}return null;}
 
-  // Colors
+  // Lightness check — returns true if hex color is light
+  function isLightColor(hex){try{hex=hex.trim().replace(/[^0-9a-fA-F#]/g,'');if(!hex.startsWith('#'))return false;const r=parseInt(hex.slice(1,3),16),g=parseInt(hex.slice(3,5),16),b=parseInt(hex.slice(5,7),16);return(r*299+g*587+b*114)/1000>155;}catch(e){return false;}}
+
+  // Colors — raw extraction
   const accent=cssVar(['--accent'])||'#00CFFF';
   const accent2=cssVar(['--accent2','--accent3'])||'#FF6A00';
-  const darkBg=cssVar(['--bg\\b','--charcoal','--dark-bg','--dark\\b'])||'#000D1F';
-  const lightBg=cssVar(['--cream','--ivory','--paper','--off-white'])||'#E3EEFB';
+  // --bg may be light (light-first guides like Coachella) — detect and handle
+  const rawBg=cssVar(['--bg','--charcoal','--dark-bg','--dark'])||'#000D1F';
+  const rawCream=cssVar(['--cream','--ivory','--paper','--off-white'])||null;
+
+  // Smart dark/light assignment:
+  // If --bg is light, it IS the light bg. Find dark from --surface, --bg1, or default.
+  // If --cream is dark (like Crypto's #0E1209), ignore it.
+  let darkBg, lightBg;
+  if(isLightColor(rawBg)){
+    // Light-first guide (e.g. Coachella) — --bg is actually the light bg
+    lightBg=rawBg;
+    darkBg=cssVar(['--surface','--bg1','--bg2','--card-bg'])||'#1A1A1A';
+    // If darkBg is still light, use a safe fallback
+    if(isLightColor(darkBg))darkBg='#1A1A1A';
+  } else {
+    // Dark-first guide (normal) — --bg is the dark bg
+    darkBg=rawBg;
+    // Only use cream/ivory if it's actually light
+    lightBg=(rawCream&&isLightColor(rawCream))?rawCream:'#F5F5F0';
+  }
 
   // Fonts
   const displayFont=cssVar(['--sans','--font-display','--display','--heading'])||"'Courier New', monospace";
   const bodyFont=cssVar(['--body','--font-body'])||"'Courier New', monospace";
 
-  // Google Fonts
-  const gfLink=doc.querySelector("link[href*='fonts.googleapis.com']");
-  if(gfLink){let ex=document.querySelector('link[data-guide-font]');if(ex)ex.remove();const l=document.createElement('link');l.rel='stylesheet';l.href=gfLink.href;l.dataset.guideFont='1';document.head.appendChild(l);}
+  // Google Fonts — load all link tags (guides sometimes have multiple)
+  const gfLinks=doc.querySelectorAll("link[href*='fonts.googleapis.com']");
+  document.querySelectorAll('link[data-guide-font]').forEach(l=>l.remove());
+  gfLinks.forEach((gl,i)=>{const l=document.createElement('link');l.rel='stylesheet';l.href=gl.href;l.dataset.guideFont='1';document.head.appendChild(l);});
 
   // Title & slug
   const titleEl=doc.querySelector('title');
@@ -532,31 +554,65 @@ function parseAndApplyGuide(html,filename){
   const metaDesc=doc.querySelector('meta[name="description"]');
   const ogSubtitle=metaDesc?metaDesc.content.slice(0,80):'';
 
-  // Quotes
+  // Quotes — try .quote-band first, fall back to any .pq-text in the document
   const quotes=[];
+  const seenQuotes=new Set();
+  // Method 1: spec-compliant quote-band wrapper
   doc.querySelectorAll('.quote-band').forEach(el=>{
     const textEl=el.querySelector('.pq-text');
     const attrEl=el.querySelector('.pq-attr');
-    if(textEl){const t=textEl.textContent.trim().replace(/\{[^}]*\}/g,'');if(t)quotes.push({text:t,attr:attrEl?attrEl.textContent.trim():'',hl:t.split(' ').slice(0,2).join(' '),bgNum:''});}
+    if(textEl){const t=textEl.textContent.trim().replace(/\{[^}]*\}/g,'');if(t&&!seenQuotes.has(t)){seenQuotes.add(t);quotes.push({text:t,attr:attrEl?attrEl.textContent.trim():'',hl:t.split(' ').slice(0,2).join(' '),bgNum:'',});}}
   });
+  // Method 2: bare .pq-text elements (older guides without wrapper)
+  if(quotes.length===0){
+    doc.querySelectorAll('.pq-text').forEach(el=>{
+      const t=el.textContent.trim().replace(/\{[^}]*\}/g,'');
+      // Find nearest .pq-attr sibling or parent
+      const parent=el.parentElement;
+      const attrEl=parent?parent.querySelector('.pq-attr,.quote-cite'):null;
+      if(t&&!seenQuotes.has(t)){seenQuotes.add(t);quotes.push({text:t,attr:attrEl?attrEl.textContent.trim():'',hl:t.split(' ').slice(0,2).join(' '),bgNum:''});}
+    });
+  }
 
-  // Factoids
+  // Factoids — .card with .card-year + h3
   const facts=[];
+  const seenFacts=new Set();
   doc.querySelectorAll('.card').forEach(el=>{
     const year=el.querySelector('.card-year');
     const h3=el.querySelector('h3');
     const p=el.querySelector('p');
-    if(h3)facts.push({year:year?year.textContent.trim():'',title:h3.textContent.trim(),body:p?p.textContent.trim():'',hl:h3.textContent.trim().split(' ').slice(0,2).join(' '),bgNum:year?year.textContent.replace(/\D/g,'').slice(0,4):''});
+    if(h3&&!seenFacts.has(h3.textContent.trim())){
+      seenFacts.add(h3.textContent.trim());
+      facts.push({year:year?year.textContent.trim():'',title:h3.textContent.trim(),body:p?p.textContent.trim():'',hl:h3.textContent.trim().split(' ').slice(0,2).join(' '),bgNum:year?year.textContent.replace(/\D/g,'').slice(0,4):''});
+    }
   });
 
-  // Stats
+  // Stats — try .h-stat first, then .stat-bar-cell fallback
   const stats=[];
+  const seenStats=new Set();
+  // Method 1: spec-compliant .h-stat
   doc.querySelectorAll('.h-stat').forEach(el=>{
     const num=el.querySelector('.stat-num');
     const label=el.querySelector('.stat-label');
     const sub=el.querySelector('.stat-sub');
-    if(num&&num.textContent.trim())stats.push({num:num.textContent.trim(),label:label?label.textContent.trim():'',sub:sub?sub.textContent.trim():'',hl:num.textContent.trim(),bgNum:num.textContent.replace(/\D/g,'').slice(0,4)});
+    if(num&&num.textContent.trim()&&!seenStats.has(num.textContent.trim())){
+      seenStats.add(num.textContent.trim());
+      stats.push({num:num.textContent.trim(),label:label?label.textContent.trim():'',sub:sub?sub.textContent.trim():'',hl:num.textContent.trim(),bgNum:num.textContent.replace(/\D/g,'').slice(0,4)});
+    }
   });
+  // Method 2: .stat-bar-cell (older stat bar pattern)
+  if(stats.length===0){
+    doc.querySelectorAll('.stat-bar-cell,.sbc-n').forEach(el=>{
+      const num=el.querySelector('.stat-num,.sbc-n')||el;
+      const label=el.querySelector('.stat-label,.sbc-l');
+      const sub=el.querySelector('.stat-sub,.sbc-d');
+      const t=num.textContent.trim();
+      if(t&&!seenStats.has(t)){
+        seenStats.add(t);
+        stats.push({num:t,label:label?label.textContent.trim():'',sub:sub?sub.textContent.trim():'',hl:t,bgNum:t.replace(/\D/g,'').slice(0,4)});
+      }
+    });
+  }
 
   // Figures — from inline JS FIGURES array
   const figures=[];
