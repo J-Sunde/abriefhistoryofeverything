@@ -730,12 +730,14 @@ function applyGuideTheme({accent,accent2,darkBg,lightBg,displayFont,bodyFont,tit
   document.getElementById('headline-scale-val').textContent='100%';
 
   rebuildContentSidebar();
-
   // Show app, hide drop screen
   document.getElementById('drop-screen').classList.add('hidden');
   document.getElementById('app-shell').classList.add('visible');
-
-  updateAll();
+  // Wait for fonts before rendering — prevents black canvases when display font is new
+  if(document.fonts&&document.fonts.ready){
+    document.fonts.ready.then(()=>updateAll());
+    setTimeout(()=>updateAll(),800);
+  }else{setTimeout(()=>updateAll(),400);}
 }
 
 function isLight(hex){try{const r=parseInt(hex.slice(1,3),16),g=parseInt(hex.slice(3,5),16),b=parseInt(hex.slice(5,7),16);return(r*299+g*587+b*114)/1000>155;}catch(e){return false;}}
