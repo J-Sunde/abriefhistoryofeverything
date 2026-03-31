@@ -230,6 +230,7 @@ body{background:#F5F5F0;color:#2A2A2A;font-family:'Courier New',monospace;font-s
       <button class="stbtn" data-style="branded" onclick="selStyle(this)">Branded<small>Bold Type + mascot mark</small></button>
       <button class="stbtn" data-style="ogimage" onclick="selStyle(this)">OG Image<small>Title card for the guide</small></button>
       <button class="stbtn" data-style="figure" onclick="selStyle(this)">Figure Bio<small>Full-bleed portrait + bio</small></button>
+      <button class="stbtn" data-style="custom" onclick="selStyle(this)">Custom Post<small>Type your own title + subhead</small></button>
     </div>
   </div>
   <div class="sbs" id="sb-bg">
@@ -251,7 +252,15 @@ body{background:#F5F5F0;color:#2A2A2A;font-family:'Courier New',monospace;font-s
     </div>
     <div style="margin-top:10px;"><div class="sbl">Highlight Word</div><input class="hlinput" id="hl-input" type="text" value="" oninput="updateAll()"></div>
   </div>
-  <div class="sbs" id="sb-image" style="display:none;">
+  <div class="sbs" id="sb-custom" style="display:none;">
+    <div class="sbl">Custom Post</div>
+    <div class="cgl" style="margin-bottom:4px;">Title</div>
+    <textarea class="cinput" id="custom-title" rows="3" placeholder="Type your headline here..." oninput="updateAll()"></textarea>
+    <div class="cgl" style="margin-top:10px;margin-bottom:4px;">Subhead / Attribution</div>
+    <input class="cinput" id="custom-sub" type="text" placeholder="Optional subhead or attribution" oninput="updateAll()">
+    <div class="cgl" style="margin-top:10px;margin-bottom:4px;">Highlight Word(s)</div>
+    <input class="hlinput" id="custom-hl" type="text" placeholder="Word to highlight in accent" oninput="updateAll()">
+  </div>
     <div class="sbl">Layout</div>
     <div class="lbtns" style="margin-bottom:10px;">
       <button class="lbtn active" data-layout="text|image" onclick="selLayout(this)">Text | Image</button>
@@ -823,17 +832,30 @@ function renderOutroCard(el,fmt){
   el.innerHTML=`<div style="width:100%;height:100%;background:${bg};display:flex;flex-direction:column;justify-content:center;align-items:center;padding:10%;position:relative;overflow:hidden;text-align:center;"><div style="position:absolute;bottom:-30px;right:-20px;font-family:${DISPLAY_FONT};font-weight:700;font-size:${isV?'320':'260'}px;color:${ghostColor};opacity:.05;line-height:1;pointer-events:none;user-select:none;">${count}</div><div style="position:relative;z-index:1;display:flex;flex-direction:column;align-items:center;gap:${isV?'20':'14'}px;">${BRAND_MASCOT}<div style="font-family:${DISPLAY_FONT};font-weight:700;font-size:${isV?'26':'20'}px;line-height:1.1;letter-spacing:-.01em;color:${txt};">${esc(lines[0]||'')}</div>${lines[1]?`<div style="font-family:${BODY_FONT};font-size:${isV?'11':'9'}px;letter-spacing:.14em;text-transform:uppercase;color:${accent};">${esc(lines[1])}</div>`:''}</div></div>`;
 }
 
+function renderCustom(el,fmt,mascot){
+  if(!GUIDE_LOADED){el.innerHTML='';return;}
+  const p=PALS[S.pal];
+  const title=(document.getElementById('custom-title')||{}).value||'Your title here';
+  const sub=(document.getElementById('custom-sub')||{}).value||'';
+  const hlWord=(document.getElementById('custom-hl')||{}).value||'';
+  const aw=CW[fmt]*0.86,ah=CH[fmt]*0.72,max=Math.round(CW[fmt]*0.18),min=14;
+  const bsz=fmt==='vt'?S.bodySize+2:S.bodySize;
+  const h=applyHL(title,hlWord,S.hl,p.accent,p.bg);
+  el.innerHTML=`<div style="width:100%;height:100%;position:relative;overflow:hidden;display:flex;flex-direction:column;justify-content:center;align-items:flex-start;padding:7%;background:${p.bg};color:${p.text};"><div style="position:relative;z-index:1;max-width:100%;"><div class="ctf-${fmt}" style="font-family:${DISPLAY_FONT};font-weight:700;line-height:.92;letter-spacing:-.02em;font-size:${max}px;color:${p.text};">${h}</div></div>${sub?`<div style="position:absolute;bottom:6%;left:7%;right:${mascot?'14%':'7%'};font-family:${BODY_FONT};font-size:${bsz}px;color:${p.muted};letter-spacing:.04em;line-height:1.4;z-index:1;">${esc(sub)}</div>`:''}</div>${mascot?MASCOT(p.accent):''}`;
+  const fe=el.querySelector(`.ctf-${fmt}`);if(fe)requestAnimationFrame(()=>fitText(fe,aw,ah,min,max));
+}
 function updateAll(){
   if(!GUIDE_LOADED)return;
   const fmts=S.style==='ogimage'?OG_FMT:SOCIAL_FMTS;
-  fmts.forEach(fmt=>{const el=document.getElementById('canvas-'+fmt);if(!el)return;if(S.style==='boldtype')renderBT(el,fmt,false);else if(S.style==='branded')renderBT(el,fmt,true);else if(S.style==='splitgrid')renderSG(el,fmt);else if(S.style==='ogimage')renderOG(el);else if(S.style==='figure')renderFigure(el,fmt);});
+  fmts.forEach(fmt=>{const el=document.getElementById('canvas-'+fmt);if(!el)return;if(S.style==='boldtype')renderBT(el,fmt,false);else if(S.style==='branded')renderBT(el,fmt,true);else if(S.style==='splitgrid')renderSG(el,fmt);else if(S.style==='ogimage')renderOG(el);else if(S.style==='figure')renderFigure(el,fmt);else if(S.style==='custom')renderCustom(el,fmt,false);});
   if(S.style==='figure'){const pi=document.getElementById('preview-intro'),pf=document.getElementById('preview-fig'),po=document.getElementById('preview-outro'),pow=document.getElementById('preview-outro-wrap'),includeOutro=document.getElementById('carousel-outro-toggle').checked;if(pi)renderIntroCard(pi,'sq');if(pf)renderFigure(pf,'sq');if(po)renderOutroCard(po,'sq');if(pow)pow.style.display=includeOutro?'':'none';}
 }
 window.updateAll=updateAll;
 
 // ── CONTROLS ──
 window.selContent=function(el){document.querySelectorAll('.ci').forEach(i=>i.classList.remove('active'));el.classList.add('active');S.type=el.dataset.type;S.idx=parseInt(el.dataset.idx);const it=CONTENT[S.type][S.idx];S.hlWord=it.hl||'';document.getElementById('hl-input').value=S.hlWord;document.getElementById('hl-input-rsb').value=S.hlWord;document.getElementById('rsb-text').textContent=it.text||it.num+' '+it.label;document.getElementById('rsb-attr').textContent=it.attr||it.sub||'';updateAll();};
-window.selStyle=function(el){document.querySelectorAll('.stbtn').forEach(b=>b.classList.remove('active'));el.classList.add('active');S.style=el.dataset.style;const isOG=S.style==='ogimage',isSplit=S.style==='splitgrid',isFig=S.style==='figure';document.getElementById('sb-content').style.display=(isOG||isFig)?'none':'';document.getElementById('sb-bg').style.display=(isSplit||isOG||isFig)?'none':'';document.getElementById('sb-hl').style.display=(isOG||isFig)?'none':'';document.getElementById('sb-image').style.display=isSplit?'':'none';document.getElementById('sb-og').style.display=isOG?'':'none';document.getElementById('sb-figure').style.display=isFig?'':'none';document.getElementById('sb-carousel').style.display=isFig?'':'none';document.getElementById('og-canvas-wrap').style.display=isOG?'':'none';document.getElementById('social-canvas-wrap').style.display=isOG?'none':'';document.getElementById('carousel-preview').style.display=isFig?'':'none';document.getElementById('btn-set').style.display=isOG?'none':'';document.getElementById('btn-all').textContent=isOG?'\u2193 og-'+SLUG+'.png':'\u2193 Download All';updateAll();};
+window.selStyle=function(el){document.querySelectorAll('.stbtn').forEach(b=>b.classList.remove('active'));el.classList.add('active');S.style=el.dataset.style;const isOG=S.style==='ogimage',isSplit=S.style==='splitgrid',isFig=S.style==='figure',isCustom=S.style==='custom';document.getElementById('sb-content').style.display=(isOG||isFig||isCustom)?'none':'';document.getElementById('sb-bg').style.display=(isSplit||isOG||isFig||isCustom)?'none':'';document.getElementById('sb-hl').style.display=(isOG||isFig||isCustom)?'none':'';document.getElementById('sb-custom').style.display=isCustom?'':'none';document.getElementById('sb-image').style.display=isSplit?'':'none';document.getElementById('sb-og').style.display=isOG?'':'none';document.getElementById('sb-figure').style.display=isFig?'':'none';document.getElementById('sb-carousel').style.display=isFig?'':'none';document.getElementById('og-canvas-wrap').style.display=isOG?'':'none';document.getElementById('social-canvas-wrap').style.display=isOG?'none':'';document.getElementById('carousel-preview').style.display=isFig?'':'none';document.getElementById('btn-set').style.display=isOG?'none':'';document.getElementById('btn-all').textContent=isOG?'\u2193 og-'+SLUG+'.png':'\u2193 Download All';// Show BG swatches for custom too
+document.getElementById('sb-bg').style.display=isCustom?'':'none';updateAll();};
 window.selPal=function(el){document.querySelectorAll('[data-pal]').forEach(s=>s.classList.remove('active'));el.classList.add('active');S.pal=el.dataset.pal;updateAll();};
 window.selSGPal=function(el){document.querySelectorAll('[data-sgpal]').forEach(s=>s.classList.remove('active'));el.classList.add('active');S.sgPal=el.dataset.sgpal;updateAll();};
 window.selHL=function(el){document.querySelectorAll('.hlp').forEach(p=>p.classList.remove('active'));el.classList.add('active');S.hl=el.dataset.hl;updateAll();};
@@ -884,10 +906,10 @@ window.downloadCarousel=function(){if(!FIGURES.length)return;const btn=document.
 window.saveGenerator=function(){
   if(!GUIDE_LOADED){alert('Load a guide first.');return;}
   const btn=document.getElementById('btn-save');
-  btn.textContent='Saving…';btn.disabled=true;
+  btn.textContent='Saving\u2026';btn.disabled=true;
   try{
     const customSrc=document.getElementById('custom-img-preview').src;
-    const payload={
+    const payload=JSON.stringify({
       CONTENT,FIGURES,PALS,SGPALS,S,SLUG,TOPIC_NAME,
       DISPLAY_FONT,BODY_FONT,MASCOT_ACCENT,
       OG_SUBTITLE:(document.getElementById('og-sub')||{}).value||'',
@@ -895,41 +917,45 @@ window.saveGenerator=function(){
       carouselSub:(document.getElementById('carousel-sub')||{}).value||'',
       carouselOutro:(document.getElementById('carousel-outro')||{}).value||'',
       customImg:customSrc&&customSrc.startsWith('data:')?customSrc:null
-    };
-    // Clone doc, patch it, serialize
-    const clone=document.cloneNode(true);
-    // Hide drop screen, show app shell
-    const ds=clone.getElementById('drop-screen');if(ds)ds.setAttribute('style','display:none!important');
-    const as=clone.getElementById('app-shell');if(as)as.setAttribute('style','opacity:1!important;pointer-events:all!important;');
-    // Remove any existing payload tag
-    const old=clone.getElementById('__bhoe_payload');if(old)old.remove();
-    // Inject payload as JSON script tag
-    const pt=clone.createElement('script');
-    pt.id='__bhoe_payload';pt.type='application/json';
-    pt.textContent=JSON.stringify(payload);
-    clone.querySelector('head').appendChild(pt);
-    // Inject boot script that reads payload and inits
-    const bootSrc=`
-(function(){
-var el=document.getElementById('__bhoe_payload');
-if(!el)return;
-window.__BHOE_SAVED=JSON.parse(el.textContent);
-})();
-`;
-    const bs=clone.createElement('script');bs.textContent=bootSrc;
-    clone.querySelector('head').appendChild(bs);
-    // Serialize
-    const ser=new XMLSerializer();
-    let out=ser.serializeToString(clone);
-    // Trigger download
-    const blob=new Blob([out],{type:'text/html'});
-    const url=URL.createObjectURL(blob);
-    const a=document.createElement('a');
-    a.href=url;a.download=SLUG+'-social-generator.html';
-    document.body.appendChild(a);a.click();document.body.removeChild(a);
-    setTimeout(()=>URL.revokeObjectURL(url),2000);
-  }catch(e){alert('Save failed: '+e.message);}
-  btn.textContent='↓ Save Generator';btn.disabled=false;
+    });
+    // Fetch this page's source then inject payload
+    fetch(location.href)
+      .then(r=>r.text())
+      .then(src=>{
+        // Inject a payload script and a CSS override right before </head>
+        const payloadScript='<script id="__bhoe_payload" type="application/json">'+payload.replace(/<\//g,'<\\/')+'<\/script>\n<style>#drop-screen{display:none!important}#app-shell{opacity:1!important;pointer-events:all!important}<\/style>';
+        const out=src.replace('</head>',payloadScript+'\n</head>');
+        const blob=new Blob([out],{type:'text/html'});
+        const url=URL.createObjectURL(blob);
+        const a=document.createElement('a');
+        a.href=url;a.download=SLUG+'-social-generator.html';
+        document.body.appendChild(a);a.click();document.body.removeChild(a);
+        setTimeout(()=>URL.revokeObjectURL(url),3000);
+        btn.textContent='\u2193 Save Generator';btn.disabled=false;
+      })
+      .catch(e=>{
+        // fetch() blocked on file:// — fall back to XMLSerializer
+        const ser=new XMLSerializer();
+        // Clear canvases before serializing to avoid giant inline content
+        ['canvas-tw','canvas-sq','canvas-vt','canvas-og','preview-intro','preview-fig','preview-outro'].forEach(id=>{const el=document.getElementById(id);if(el)el.innerHTML='';});
+        let raw=ser.serializeToString(document);
+        // Re-render canvases after clone
+        updateAll();
+        // Inject payload + style override
+        const payloadBlock='<script id="__bhoe_payload" type="application/json">'+payload.replace(/<\//g,'<\\/')+'<\/script><style>#drop-screen{display:none!important}#app-shell{opacity:1!important;pointer-events:all!important}<\/style>';
+        raw=raw.replace('</head>',payloadBlock+'</head>');
+        const blob=new Blob([raw],{type:'text/html'});
+        const url=URL.createObjectURL(blob);
+        const a=document.createElement('a');
+        a.href=url;a.download=SLUG+'-social-generator.html';
+        document.body.appendChild(a);a.click();document.body.removeChild(a);
+        setTimeout(()=>URL.revokeObjectURL(url),3000);
+        btn.textContent='\u2193 Save Generator';btn.disabled=false;
+      });
+  }catch(e){
+    alert('Save failed: '+e.message);
+    btn.textContent='\u2193 Save Generator';btn.disabled=false;
+  }
 };
 
 })();
