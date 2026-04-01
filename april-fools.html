@@ -1,0 +1,1268 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>A (Brief) History of April Fools Day</title>
+<meta name="description" content="From medieval jesters to internet hoaxes — a complete history of the world's most celebrated prank tradition. How humanity learned to lie, laugh, and question everything for one day a year.">
+<meta name="author" content="abriefhistoryofeverything.com">
+<meta name="robots" content="noindex">
+
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400&family=IBM+Plex+Sans+Condensed:ital,wght@0,300;0,400;0,600;0,700;1,300&family=IBM+Plex+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+<style>
+/* ══════════════════════════════════════════════════════════════
+   DESIGN TOKENS — DARK MODE (default)
+══════════════════════════════════════════════════════════════ */
+:root,
+[data-theme="dark"] {
+  --bg:        #07090C;
+  --bg1:       #0C0F14;
+  --bg2:       #10141A;
+  --bg3:       #141921;
+  --rule:      #1A2230;
+  --rule2:     #22303F;
+  --muted:     #5A7A94;
+  --dim:       #8AAABB;
+  --text:      #B8CCD8;
+  --bright:    #ECF2F6;
+  --accent:    #FF5C20;
+  --accent2:   #FF8C50;
+  --accent3:   #FFB020;
+  --warn:      #00D4F0;
+  --nav-bg:    rgba(7,9,12,.88);
+  --sidenav-bg:rgba(7,9,12,.94);
+  --nav-border:rgba(26,34,48,1);
+  --nav-text:  #ECF2F6;
+  --photo-filter: grayscale(1) contrast(1.1) brightness(.65);
+  --photo-hover:  grayscale(.15) contrast(1.15) brightness(.85);
+  --card-bg:   var(--bg);
+  --card-hover:var(--bg1);
+  --band-bg:   var(--bg1);
+  --sb-track:  var(--bg);
+  --sb-thumb:  var(--rule2);
+}
+
+[data-theme="light"] {
+  --bg:        #F2EFE9;
+  --bg1:       #EAE6DF;
+  --bg2:       #E2DDD5;
+  --bg3:       #D8D2C8;
+  --rule:      #C8C0B4;
+  --rule2:     #B8AFA0;
+  --muted:     #9A9080;
+  --dim:       #6A6055;
+  --text:      #2A2218;
+  --bright:    #100C06;
+  --accent:    #CC3300;
+  --accent2:   #994400;
+  --accent3:   #AA6600;
+  --warn:      #005FCC;
+  --nav-bg:    rgba(242,239,233,.92);
+  --sidenav-bg:rgba(234,230,223,.96);
+  --nav-border:rgba(200,192,180,1);
+  --nav-text:  #111111;
+  --photo-filter: grayscale(.6) contrast(1.05) brightness(1.05);
+  --photo-hover:  grayscale(0) contrast(1.05) brightness(1.0);
+  --card-bg:   var(--bg);
+  --card-hover:var(--bg1);
+  --band-bg:   var(--bg1);
+  --sb-track:  var(--bg);
+  --sb-thumb:  var(--rule2);
+}
+
+*{margin:0;padding:0;box-sizing:border-box;}
+html{scroll-behavior:smooth;font-size:16px;}
+body{
+  background:var(--bg);color:var(--text);
+  font-family:'IBM Plex Sans',sans-serif;
+  overflow-x:hidden;line-height:1.5;
+  transition:background .35s ease,color .35s ease;
+}
+a{color:inherit;text-decoration:none;}
+img{display:block;}
+
+/* ══ CURSOR BLINK ══ */
+@keyframes cursorBlink{0%,100%{opacity:1;}50%{opacity:0;}}
+.cursor-blink{animation:cursorBlink 1.1s step-end infinite;display:inline-block;color:var(--accent);}
+
+/* ══ PROGRESS BAR ══ */
+#progress{position:fixed;top:0;left:0;height:2px;background:var(--accent);width:0%;z-index:9100;transition:width .08s linear;}
+
+/* ══ CUSTOM CURSOR ══ */
+@media(pointer:fine){body{cursor:none;}}
+.cur{width:5px;height:5px;background:var(--accent);position:fixed;pointer-events:none;z-index:9999;transform:translate(-50%,-50%);border-radius:0;transition:background .15s,transform .1s;}
+.cur.active{transform:translate(-50%,-50%) scale(1.8);}
+.cur-ring{width:26px;height:26px;border:1px solid var(--accent);position:fixed;pointer-events:none;z-index:9998;transform:translate(-50%,-50%);border-radius:0;transition:left .09s,top .09s,width .2s,height .2s,border-color .2s,opacity .2s;opacity:.7;}
+
+/* ══ TOP NAV ══ */
+.nav{
+  position:fixed;top:0;left:0;right:0;z-index:900;
+  display:flex;align-items:stretch;gap:0;
+  padding:0;height:50px;
+  background:var(--nav-bg);
+  backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);
+  border-bottom:1px solid var(--nav-border);
+  transition:background .35s,border-color .35s;
+}
+.nav-tag{display:flex;align-items:stretch;text-decoration:none;flex-shrink:0;border-right:1px solid var(--nav-border);}
+.nav-tag:hover .nav-topic{color:var(--bright);}
+.nav-index-box{
+  width:52px;min-width:52px;height:50px;
+  display:flex;align-items:center;justify-content:center;
+  background:var(--accent);color:#fff;
+  font-family:'IBM Plex Mono',monospace;
+  font-size:0.72rem;font-weight:700;letter-spacing:.12em;
+  flex-shrink:0;
+}
+.nav-topic{
+  display:flex;align-items:center;
+  padding:0 20px 0 16px;
+  font-family:'IBM Plex Mono',monospace;
+  font-weight:700;font-size:0.72rem;letter-spacing:.16em;
+  text-transform:uppercase;color:var(--nav-text);
+  white-space:nowrap;overflow:hidden;text-overflow:ellipsis;
+  flex-shrink:0;
+  transition:color .15s;
+}
+.nav-era-links{
+  display:flex;align-items:center;gap:0;
+  overflow:hidden;flex:1;
+  padding-left:8px;
+}
+.nav-era-link{
+  padding:0 14px;height:50px;display:flex;align-items:center;
+  font-family:'IBM Plex Mono',monospace;font-size:0.64rem;
+  letter-spacing:.14em;text-transform:uppercase;
+  color:var(--dim);white-space:nowrap;
+  border-right:1px solid var(--nav-border);
+  transition:color .15s,background .15s;
+  flex-shrink:0;
+}
+.nav-era-link:hover{color:var(--bright);background:rgba(255,92,32,.04);}
+.nav-era-link.active{color:var(--accent);}
+.nav-right{display:flex;align-items:center;gap:0;margin-left:auto;}
+.nav-toggle{
+  display:flex;align-items:center;justify-content:center;
+  width:50px;height:50px;border-left:1px solid var(--nav-border);
+  cursor:pointer;flex-shrink:0;
+  font-family:'IBM Plex Mono',monospace;font-size:0.7rem;
+  color:var(--dim);letter-spacing:.08em;
+  transition:color .15s,background .15s;
+}
+.nav-toggle:hover{color:var(--bright);background:rgba(255,92,32,.04);}
+
+@media(max-width:900px){
+  .nav-era-links{display:none;}
+}
+
+/* ══ LEFT SIDENAV ══ */
+.sidenav{
+  position:fixed;top:50px;left:0;bottom:0;width:52px;
+  background:var(--sidenav-bg);
+  border-right:1px solid var(--nav-border);
+  backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);
+  z-index:800;
+  display:flex;flex-direction:column;align-items:center;
+  padding:16px 0;gap:6px;
+  transition:background .35s,border-color .35s;
+  overflow-y:auto;
+}
+.snav-item{
+  width:36px;height:36px;
+  display:flex;align-items:center;justify-content:center;
+  font-family:'IBM Plex Mono',monospace;
+  font-size:0.58rem;font-weight:700;letter-spacing:.1em;
+  color:var(--dim);border:1px solid transparent;
+  transition:color .15s,border-color .15s,background .15s;
+  cursor:pointer;flex-shrink:0;
+}
+.snav-item:hover,.snav-item.active{
+  color:var(--accent);border-color:var(--accent);
+  background:rgba(255,92,32,.06);
+}
+.snav-divider{width:24px;height:1px;background:var(--rule);}
+@media(max-width:900px){.sidenav{display:none;}}
+
+/* ══ PAGE BODY (offset for sidenav) ══ */
+.page-body{
+  margin-left:52px;
+  padding-top:50px;
+}
+@media(max-width:900px){.page-body{margin-left:0;}}
+
+/* ══ HERO ══ */
+.hero{
+  min-height:88vh;
+  display:flex;flex-direction:column;justify-content:flex-end;
+  padding:4rem 4rem 3.5rem;
+  position:relative;overflow:hidden;
+  background:var(--bg);
+  border-bottom:1px solid var(--rule);
+}
+.hero-img{
+  position:absolute;inset:0;
+  background:url('https://images.unsplash.com/photo-1601584115197-04ecc0da31d7?w=1400&q=80') center/cover no-repeat;
+  opacity:.18;
+  filter:var(--photo-filter);
+  transition:opacity .5s,filter .35s;
+}
+[data-theme="light"] .hero-img{opacity:.12;}
+.hero-eyebrow{
+  font-family:'IBM Plex Mono',monospace;
+  font-size:0.68rem;letter-spacing:.28em;text-transform:uppercase;
+  color:var(--accent);margin-bottom:1.4rem;
+  position:relative;z-index:1;
+}
+.hero-title{
+  font-family:'IBM Plex Mono',monospace;
+  font-weight:700;
+  font-size:clamp(2.2rem,5.5vw,4.4rem);
+  line-height:.92;letter-spacing:-.025em;
+  color:var(--bright);
+  position:relative;z-index:1;
+  margin-bottom:1.8rem;
+  max-width:780px;
+}
+.hero-title em{font-style:normal;color:var(--accent);}
+.hero-sub{
+  font-family:'IBM Plex Sans',sans-serif;
+  font-size:clamp(0.95rem,1.4vw,1.08rem);
+  line-height:1.7;color:var(--text);
+  max-width:580px;
+  position:relative;z-index:1;
+  margin-bottom:2.4rem;
+}
+.hero-meta{
+  display:flex;align-items:center;gap:2rem;flex-wrap:wrap;
+  position:relative;z-index:1;
+}
+.hero-stat{
+  font-family:'IBM Plex Mono',monospace;
+  font-size:0.66rem;letter-spacing:.2em;text-transform:uppercase;
+}
+.hero-stat span{display:block;color:var(--accent);font-size:1.35rem;font-weight:700;letter-spacing:-.02em;margin-bottom:2px;}
+.hero-eyebrow-tag{
+  font-family:'IBM Plex Mono',monospace;font-size:.64rem;
+  letter-spacing:.2em;text-transform:uppercase;
+  color:var(--dim);
+  border:1px solid var(--rule2);padding:.28rem .7rem;
+}
+.hero-share-btn{
+  display:flex;align-items:center;gap:.5rem;
+  font-family:'IBM Plex Mono',monospace;font-size:0.64rem;
+  letter-spacing:.2em;text-transform:uppercase;
+  color:var(--dim);
+  border:1px solid var(--rule2);padding:.4rem .9rem;
+  cursor:pointer;background:transparent;
+  transition:color .15s,border-color .15s;
+  margin-left:auto;
+}
+.hero-share-btn:hover{color:var(--accent);border-color:var(--accent);}
+.hero-index-label{
+  font-family:'IBM Plex Mono',monospace;font-size:.58rem;
+  letter-spacing:.22em;text-transform:uppercase;
+  color:var(--muted);border:1px solid var(--rule);
+  padding:.28rem .7rem;
+}
+
+/* ══ STATS GRID ══ */
+.stats-grid{
+  display:grid;grid-template-columns:repeat(4,1fr);
+  border-bottom:1px solid var(--rule);
+}
+.stat-cell{
+  padding:1.8rem 2rem;
+  border-right:1px solid var(--rule);
+  position:relative;cursor:default;
+  transition:background .2s;
+}
+.stat-cell:last-child{border-right:none;}
+.stat-cell:hover{background:var(--bg1);}
+.stat-num{
+  font-family:'IBM Plex Mono',monospace;
+  font-size:clamp(1.6rem,3vw,2.4rem);
+  font-weight:700;letter-spacing:-.03em;
+  color:var(--accent);line-height:1;margin-bottom:.5rem;
+}
+.stat-label{
+  font-family:'IBM Plex Sans Condensed',sans-serif;
+  font-size:.8rem;letter-spacing:.1em;text-transform:uppercase;
+  color:var(--dim);font-weight:700;
+}
+.stat-sub{
+  font-size:.78rem;color:var(--muted);margin-top:.3rem;
+  font-family:'IBM Plex Sans',sans-serif;line-height:1.5;
+}
+.stat-tip{
+  display:none;position:absolute;bottom:calc(100% + 8px);left:50%;
+  transform:translateX(-50%);
+  background:var(--bg3);border:1px solid var(--rule2);
+  font-family:'IBM Plex Mono',monospace;font-size:.66rem;
+  letter-spacing:.08em;color:var(--text);padding:.5rem .8rem;
+  white-space:nowrap;z-index:200;pointer-events:none;
+  line-height:1.5;
+}
+.stat-cell:hover .stat-tip{display:block;}
+@media(max-width:700px){
+  .stats-grid{grid-template-columns:repeat(2,1fr);}
+  .stat-cell:nth-child(2){border-right:none;}
+  .stat-cell:nth-child(3){border-top:1px solid var(--rule);}
+}
+
+/* ══ ERA SECTIONS ══ */
+.era-section{
+  display:grid;grid-template-columns:280px 1fr;
+  border-bottom:1px solid var(--rule);
+  min-height:0;
+}
+.era-sidebar{
+  padding:2.8rem 2rem;
+  border-right:1px solid var(--rule);
+  display:flex;flex-direction:column;gap:1.2rem;
+  position:sticky;top:50px;align-self:start;
+}
+.era-num{
+  font-family:'IBM Plex Mono',monospace;
+  font-size:3.5rem;font-weight:700;
+  color:var(--rule2);letter-spacing:-.04em;line-height:1;
+}
+.era-title{
+  font-family:'IBM Plex Sans Condensed',sans-serif;
+  font-size:1.55rem;font-weight:700;
+  color:var(--bright);letter-spacing:-.01em;line-height:1.15;
+  text-transform:uppercase;
+}
+.era-datespan{
+  font-family:'IBM Plex Mono',monospace;
+  font-size:.66rem;letter-spacing:.2em;text-transform:uppercase;
+  color:var(--accent);
+}
+.era-desc{
+  font-size:.88rem;line-height:1.7;color:var(--text);
+  margin-top:.4rem;
+}
+.era-meter{
+  margin-top:auto;
+  height:2px;background:var(--rule);
+  position:relative;overflow:hidden;
+}
+.era-meter-fill{height:100%;background:var(--accent);transition:width .6s ease;}
+.era-main{padding:2.8rem 2.4rem;}
+.events-grid{
+  display:grid;grid-template-columns:repeat(2,1fr);
+  gap:1px;
+  background:var(--rule);
+}
+.event-card{
+  background:var(--card-bg);
+  padding:1.6rem 1.8rem;
+  transition:background .2s;
+  position:relative;
+}
+.event-card:hover{background:var(--card-hover);}
+.event-card::before{
+  content:'';position:absolute;top:0;left:0;right:0;
+  height:2px;background:var(--accent);
+  transform:scaleX(0);transform-origin:left;
+  transition:transform .3s ease;
+}
+.event-card:hover::before{transform:scaleX(1);}
+.event-year{
+  font-family:'IBM Plex Mono',monospace;
+  font-size:.66rem;font-weight:700;letter-spacing:.2em;
+  color:var(--accent);text-transform:uppercase;
+  margin-bottom:.55rem;
+}
+.event-title{
+  font-family:'IBM Plex Sans Condensed',sans-serif;
+  font-size:1.05rem;font-weight:700;
+  color:var(--bright);letter-spacing:-.005em;
+  margin-bottom:.5rem;
+  line-height:1.25;
+}
+.event-body{
+  font-size:.875rem;line-height:1.68;color:var(--text);
+}
+.event-img{
+  width:100%;height:140px;object-fit:cover;
+  margin-bottom:1rem;
+  filter:var(--photo-filter);
+  transition:filter .3s;
+}
+.event-card:hover .event-img{filter:var(--photo-hover);}
+@media(max-width:1100px){.events-grid{grid-template-columns:repeat(2,1fr);}}
+@media(max-width:700px){
+  .era-section{grid-template-columns:1fr;}
+  .era-sidebar{position:static;border-right:none;border-bottom:1px solid var(--rule);padding:2rem 1.5rem;}
+  .era-main{padding:2rem 1.5rem;}
+  .events-grid{grid-template-columns:1fr;}
+}
+
+/* ══ QUOTE BAND ══ */
+.quote-band{
+  padding:4rem 4rem;
+  background:var(--band-bg);
+  border-bottom:1px solid var(--rule);
+  position:relative;overflow:hidden;
+}
+.quote-band::before{
+  content:'\201C';
+  position:absolute;top:-1rem;left:2rem;
+  font-family:'IBM Plex Mono',monospace;
+  font-size:14rem;font-weight:700;line-height:1;
+  color:var(--accent);opacity:.06;pointer-events:none;
+}
+.pq-text{
+  font-family:'IBM Plex Sans Condensed',sans-serif;
+  font-size:clamp(1.3rem,2.4vw,1.9rem);
+  font-weight:700;line-height:1.35;
+  color:var(--bright);max-width:720px;
+  position:relative;z-index:1;
+  margin-bottom:1.2rem;
+}
+.pq-hl{color:var(--accent);}
+.pq-attr{
+  font-family:'IBM Plex Mono',monospace;
+  font-size:.68rem;letter-spacing:.2em;text-transform:uppercase;
+  color:var(--dim);position:relative;z-index:1;
+}
+[data-theme="light"] .pq-text{color:var(--bright);}
+[data-theme="light"] .pq-attr{color:var(--muted);}
+
+/* ══ KEY FIGURES ══ */
+.section-header-row{
+  padding:2.8rem 2.4rem 1.6rem;
+  border-bottom:1px solid var(--rule);
+}
+.section-eyebrow{
+  font-family:'IBM Plex Mono',monospace;
+  font-size:.64rem;letter-spacing:.28em;text-transform:uppercase;
+  color:var(--accent);margin-bottom:.6rem;
+}
+.section-title-lg{
+  font-family:'IBM Plex Sans Condensed',sans-serif;
+  font-size:clamp(1.4rem,2.5vw,2rem);font-weight:700;
+  color:var(--bright);text-transform:uppercase;
+  letter-spacing:-.01em;
+}
+.figures-grid{
+  display:grid;grid-template-columns:repeat(5,1fr);
+  gap:1px;background:var(--rule);
+  border-bottom:1px solid var(--rule);
+}
+.figure-card{
+  background:var(--card-bg);padding:1.8rem 1.6rem;
+  transition:background .2s;cursor:default;
+  position:relative;
+}
+.figure-card:hover{background:var(--card-hover);}
+.figure-img{
+  width:56px;height:56px;object-fit:cover;
+  border-radius:0;margin-bottom:1rem;
+  filter:var(--photo-filter);
+  border:1px solid var(--rule2);
+  transition:filter .3s;
+}
+.figure-card:hover .figure-img{filter:var(--photo-hover);}
+.figure-name{
+  font-family:'IBM Plex Sans Condensed',sans-serif;
+  font-size:.95rem;font-weight:700;color:var(--bright);
+  margin-bottom:.25rem;
+}
+.figure-role{
+  font-family:'IBM Plex Mono',monospace;
+  font-size:.6rem;letter-spacing:.16em;text-transform:uppercase;
+  color:var(--accent);margin-bottom:.6rem;
+}
+.figure-bio{font-size:.8rem;line-height:1.65;color:var(--text);}
+@media(max-width:900px){.figures-grid{grid-template-columns:repeat(2,1fr);}}
+@media(max-width:500px){.figures-grid{grid-template-columns:1fr;}}
+
+/* ══ ENTITY GRID ══ */
+.entity-section{
+  padding:2.8rem 2.4rem;
+  border-bottom:1px solid var(--rule);
+}
+.entity-grid{
+  display:flex;flex-wrap:wrap;gap:6px;margin-top:1.4rem;
+}
+.entity-tag{
+  font-family:'IBM Plex Mono',monospace;
+  font-size:.66rem;letter-spacing:.14em;text-transform:uppercase;
+  color:var(--dim);border:1px solid var(--rule2);
+  padding:.32rem .75rem;
+  transition:color .15s,border-color .15s,background .15s;
+  cursor:default;
+}
+.entity-tag:hover{color:var(--accent);border-color:var(--accent);background:rgba(255,92,32,.04);}
+[data-theme="light"] .entity-section{background:var(--bg);}
+
+/* ══ FUTURE SECTION ══ */
+.future-grid{
+  display:grid;grid-template-columns:repeat(4,1fr);
+  gap:1px;background:var(--rule);
+  border-bottom:1px solid var(--rule);
+}
+.future-card{
+  background:var(--card-bg);padding:1.8rem 1.6rem;
+  transition:background .2s;
+}
+.future-card:hover{background:var(--card-hover);}
+.future-num{
+  font-family:'IBM Plex Mono',monospace;
+  font-size:.66rem;letter-spacing:.2em;text-transform:uppercase;
+  color:var(--accent);margin-bottom:.7rem;
+}
+.future-title{
+  font-family:'IBM Plex Sans Condensed',sans-serif;
+  font-size:1rem;font-weight:700;color:var(--bright);
+  margin-bottom:.5rem;text-transform:uppercase;
+}
+.future-body{font-size:.83rem;line-height:1.65;color:var(--text);}
+@media(max-width:700px){.future-grid{grid-template-columns:repeat(2,1fr);}}
+
+/* ══ FOOTER ══ */
+footer{
+  background:var(--bg);
+  border-top:1px solid var(--rule);
+  padding:20px 28px;
+  display:flex;align-items:center;gap:2rem;flex-wrap:wrap;
+  transition:background .35s,border-color .35s;
+  height:56px;
+}
+.footer-lockup{
+  display:flex;align-items:center;gap:10px;
+  text-decoration:none;
+  flex-shrink:0;
+}
+.footer-lockup svg{display:block;flex-shrink:0;}
+@keyframes mouthBlink{0%,90%,100%{opacity:1;}93%,97%{opacity:0;}}
+.footer-mouth{animation:mouthBlink 4s step-end infinite;}
+.footer-series{
+  font-family:'IBM Plex Mono',monospace;font-weight:700;
+  font-size:.76rem;letter-spacing:.12em;text-transform:uppercase;
+  color:var(--bright);white-space:nowrap;
+}
+.footer-series em{font-style:normal;color:#FF5C20;}
+.footer-copy{
+  font-family:'IBM Plex Mono',monospace;
+  font-size:.64rem;letter-spacing:.14em;text-transform:uppercase;
+  color:var(--muted);margin-left:auto;
+}
+@media(max-width:600px){.footer-copy{display:none;}}
+
+/* ══ SCROLLBAR ══ */
+::-webkit-scrollbar{width:4px;}
+::-webkit-scrollbar-track{background:var(--sb-track);}
+::-webkit-scrollbar-thumb{background:var(--sb-thumb);}
+
+/* ══ APRIL FOOLS REDIRECT OVERLAY ══ */
+#redirect-overlay{
+  position:fixed;inset:0;
+  background:rgba(7,9,12,.0);
+  z-index:99000;
+  pointer-events:none;
+  transition:background 1.8s ease;
+}
+#redirect-overlay.fading{
+  background:rgba(7,9,12,.98);
+  pointer-events:all;
+}
+#countdown-toast{
+  position:fixed;bottom:28px;right:28px;
+  background:var(--bg2);border:1px solid var(--rule2);
+  font-family:'IBM Plex Mono',monospace;font-size:.68rem;
+  letter-spacing:.14em;text-transform:uppercase;
+  color:var(--dim);padding:.5rem 1rem;
+  z-index:99001;
+  opacity:0;
+  transition:opacity .4s ease;
+}
+#countdown-toast.visible{opacity:1;}
+#countdown-num{color:var(--accent);}
+</style>
+</head>
+<body>
+
+<!-- REDIRECT OVERLAY -->
+<div id="redirect-overlay"></div>
+<div id="countdown-toast">Redirecting in <span id="countdown-num">10</span>s</div>
+
+<!-- CUSTOM CURSOR -->
+<div class="cur" id="cur"></div>
+<div class="cur-ring" id="cur-ring"></div>
+
+<!-- PROGRESS BAR -->
+<div id="progress"></div>
+
+<!-- NAV -->
+<nav class="nav" id="nav">
+  <a class="nav-tag" href="#hero-section">
+    <div class="nav-index-box">APR</div>
+    <div class="nav-topic">April Fools Day<span class="cursor-blink">_</span></div>
+  </a>
+  <div class="nav-era-links">
+    <a class="nav-era-link" href="#era-1">Ancient Roots</a>
+    <a class="nav-era-link" href="#era-2">Medieval Europe</a>
+    <a class="nav-era-link" href="#era-3">Print & Press</a>
+    <a class="nav-era-link" href="#era-4">Golden Age</a>
+    <a class="nav-era-link" href="#era-5">Broadcast Era</a>
+    <a class="nav-era-link" href="#era-6">Internet Age</a>
+  </div>
+  <div class="nav-right">
+    <div class="nav-toggle" id="theme-toggle" title="Toggle light/dark">◐</div>
+  </div>
+</nav>
+
+<!-- SIDENAV -->
+<aside class="sidenav" id="sidenav">
+  <a class="snav-item" href="#era-1" title="Ancient Roots">I</a>
+  <a class="snav-item" href="#era-2" title="Medieval Europe">II</a>
+  <a class="snav-item" href="#era-3" title="Print &amp; Press">III</a>
+  <div class="snav-divider"></div>
+  <a class="snav-item" href="#era-4" title="Golden Age">IV</a>
+  <a class="snav-item" href="#era-5" title="Broadcast Era">V</a>
+  <a class="snav-item" href="#era-6" title="Internet Age">VI</a>
+</aside>
+
+<!-- PAGE BODY -->
+<div class="page-body">
+
+<!-- HERO -->
+<section class="hero" id="hero-section">
+  <div class="hero-img"></div>
+  <div class="hero-eyebrow">A (Brief) History of Everything_ · Est. 2025</div>
+  <h1 class="hero-title">A <em>(Brief)</em><br>History of<br>April Fools Day<span class="cursor-blink">_</span></h1>
+  <p class="hero-sub">From Roman Hilaria to BBC spaghetti harvests — the complete history of humanity's greatest shared tradition of creative deception. How one day a year became the world's most democratic art form.</p>
+  <div class="hero-meta">
+    <div class="hero-stat">
+      <span>~2,000</span>
+      years of tradition
+    </div>
+    <div class="hero-stat">
+      <span>13B+</span>
+      pranks per year
+    </div>
+    <div class="hero-stat">
+      <span>Apr 1</span>
+      annually, since forever
+    </div>
+    <div class="hero-stat">
+      <span>100%</span>
+      unreliable sources
+    </div>
+    <button class="hero-share-btn" onclick="shareGuide()">Share ↗</button>
+  </div>
+</section>
+
+<!-- STATS -->
+<div class="stats-grid">
+  <div class="stat-cell">
+    <div class="stat-num">536</div>
+    <div class="stat-label">AD — Earliest Reference</div>
+    <div class="stat-sub">Roman Hilaria festival documented by Constantinus</div>
+    <div class="stat-tip">The Hilaria was a spring festival of joy — any joke went unpunished</div>
+  </div>
+  <div class="stat-cell">
+    <div class="stat-num">1686</div>
+    <div class="stat-label">First English Record</div>
+    <div class="stat-sub">John Aubrey calls it "Fooles holy day" in his writings</div>
+    <div class="stat-tip">The first explicit English mention of April 1 as a prank day</div>
+  </div>
+  <div class="stat-cell">
+    <div class="stat-num">1957</div>
+    <div class="stat-label">Greatest Prank Ever</div>
+    <div class="stat-sub">BBC's spaghetti harvest hoax fools millions on Panorama</div>
+    <div class="stat-tip">Viewers called the BBC asking how to grow their own spaghetti trees</div>
+  </div>
+  <div class="stat-cell">
+    <div class="stat-num">47</div>
+    <div class="stat-label">Countries Celebrate</div>
+    <div class="stat-sub">From Scotland to Iran, the tradition spans civilizations</div>
+    <div class="stat-tip">Iran's Sizdahbedar predates most Western April Fools traditions</div>
+  </div>
+</div>
+
+<!-- ERA I -->
+<section class="era-section" id="era-1">
+  <div class="era-sidebar">
+    <div class="era-num">I</div>
+    <div class="era-datespan">Antiquity — 1400s</div>
+    <div class="era-title">Ancient Roots</div>
+    <p class="era-desc">Long before April 1 had a name, spring festivals across the ancient world embraced chaos, inversion, and ritual foolishness as a way to welcome the new year.</p>
+    <div class="era-meter"><div class="era-meter-fill" style="width:15%"></div></div>
+  </div>
+  <div class="era-main">
+    <div class="events-grid">
+      <div class="event-card">
+        <img class="event-img" src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=600&q=70" alt="Ancient festival" loading="lazy">
+        <div class="event-year">Roman Antiquity</div>
+        <div class="event-title">Hilaria: Laughter as Duty</div>
+        <p class="event-body">The Romans celebrated Hilaria at the end of March — a festival dedicated to Cybele in which citizens wore disguises, mocked fellow citizens, and were generally encouraged to be as ridiculous as possible. Emperors themselves were not exempt.</p>
+      </div>
+      <div class="event-card">
+        <img class="event-img" src="https://images.unsplash.com/photo-1504701954957-2010ec3bcec1?w=600&q=70" alt="Spring equinox" loading="lazy">
+        <div class="event-year">Persian New Year</div>
+        <div class="event-title">Sizdah Bedar: The 13th Day</div>
+        <p class="event-body">Iran's Sizdah Bedar, observed on the 13th day of the Persian new year, has included pranks and jokes for over 2,500 years. Many scholars argue this is the oldest continuous April-adjacent prank tradition in the world — predating any European equivalent.</p>
+      </div>
+      <div class="event-card">
+        <div class="event-year">Medieval Concept</div>
+        <div class="event-title">The Feast of Fools</div>
+        <p class="event-body">Medieval Europe had its own inversion festivals — particularly the Feast of Fools, observed in early January, when the normal hierarchy was turned upside down. Lower clergy would dress as bishops, and the "Lord of Misrule" presided over deliberate chaos and irreverence.</p>
+      </div>
+      <div class="event-card">
+        <div class="event-year">Calendar Confusion</div>
+        <div class="event-title">The New Year Problem</div>
+        <p class="event-body">Before the Gregorian calendar standardized January 1 as New Year's Day, many European cultures celebrated the new year on or around April 1. Those who hadn't yet received the news — or refused to change — were mocked as "April fools." This theory remains plausible, if unproven.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- QUOTE 1 -->
+<div class="quote-band">
+  <p class="pq-text">The fool doth think he is wise, but the <span class="pq-hl">wise man knows himself to be a fool.</span></p>
+  <p class="pq-attr">— William Shakespeare, As You Like It, c. 1599</p>
+</div>
+
+<!-- ERA II -->
+<section class="era-section" id="era-2">
+  <div class="era-sidebar">
+    <div class="era-num">II</div>
+    <div class="era-datespan">1500s — 1700s</div>
+    <div class="era-title">Medieval Europe</div>
+    <p class="era-desc">April Fools Day crystallizes as a distinct tradition across northwestern Europe, appearing in literature, correspondence, and popular culture with increasing frequency.</p>
+    <div class="era-meter"><div class="era-meter-fill" style="width:30%"></div></div>
+  </div>
+  <div class="era-main">
+    <div class="events-grid">
+      <div class="event-card">
+        <img class="event-img" src="https://images.unsplash.com/photo-1481627834876-b7833e8f5570?w=600&q=70" alt="Old books" loading="lazy">
+        <div class="event-year">1508</div>
+        <div class="event-title">Eloy d'Amerval Writes the First Reference</div>
+        <p class="event-body">French poet Eloy d'Amerval makes one of the earliest literary references to poisson d'avril — "April fish" — in his work Le Livre de la Deablerie. The French tradition of attaching paper fish to people's backs remains alive today.</p>
+      </div>
+      <div class="event-card">
+        <img class="event-img" src="https://images.unsplash.com/photo-1455390582262-044cdead277a?w=600&q=70" alt="Writing quill" loading="lazy">
+        <div class="event-year">1686</div>
+        <div class="event-title">John Aubrey Names the Day</div>
+        <p class="event-body">English antiquary John Aubrey writes of "Fooles holy day" on April 1 in his Remaines of Gentilisme and Judaisme — the first explicit British reference to the date as a day of pranks. The observation confirms the tradition was already well established.</p>
+      </div>
+      <div class="event-card">
+        <div class="event-year">French Tradition</div>
+        <div class="event-title">Poisson d'Avril</div>
+        <p class="event-body">In France, April Fools Day is called Poisson d'Avril — April Fish. Children stick paper fish on each other's backs and shout "Poisson d'Avril!" when discovered. Historians believe young fish were abundant and easily caught in April, making them symbols of gullibility.</p>
+      </div>
+      <div class="event-card">
+        <div class="event-year">Scottish Tradition</div>
+        <div class="event-title">Hunt the Gowk</div>
+        <p class="event-body">Scotland celebrated a two-day April Fools tradition. The first day involved "hunting the gowk" — sending people on fool's errands with a letter reading "Dinna laugh, dinna smile. Hunt the gowk another mile." The second day, Taily Day, involved pranks attached to posteriors.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ERA III -->
+<section class="era-section" id="era-3">
+  <div class="era-sidebar">
+    <div class="era-num">III</div>
+    <div class="era-datespan">1700s — 1890s</div>
+    <div class="era-title">Print & Press</div>
+    <p class="era-desc">Mass printing allows hoaxes to scale beyond village squares. Newspapers discover that manufactured stories drive readership, accidentally inventing the template for modern misinformation.</p>
+    <div class="era-meter"><div class="era-meter-fill" style="width:50%"></div></div>
+  </div>
+  <div class="era-main">
+    <div class="events-grid">
+      <div class="event-card">
+        <img class="event-img" src="https://images.unsplash.com/photo-1504711434969-e33886168f5c?w=600&q=70" alt="Old newspaper" loading="lazy">
+        <div class="event-year">1698</div>
+        <div class="event-title">The Tower of London Lions</div>
+        <p class="event-body">One of the most famous early April Fools pranks: Londoners were sent official-looking notices inviting them to see the "Annual Ceremony of Washing the White Lions" at the Tower of London. Crowds arrived. There were no lions. The prank was repeated multiple times over the following century.</p>
+      </div>
+      <div class="event-card">
+        <div class="event-year">1835</div>
+        <div class="event-title">The Great Moon Hoax</div>
+        <p class="event-body">The New York Sun published a six-part series claiming astronomer Sir John Herschel had discovered life on the moon — including bat-winged humanoids and blue unicorns. Though not April-specific, it demonstrated newspapers' power to deceive at mass scale and shaped the template for modern media hoaxes.</p>
+      </div>
+      <div class="event-card">
+        <img class="event-img" src="https://images.unsplash.com/photo-1519682337058-a94d519337bc?w=600&q=70" alt="Printing press" loading="lazy">
+        <div class="event-year">1880s</div>
+        <div class="event-title">Telegraph Pranks</div>
+        <p class="event-body">The telegraph enabled April Fools pranks to cross national borders for the first time. Fake news dispatches about fictional events in distant cities — earthquakes that hadn't happened, elections with impossible results — traveled at the speed of electricity. The infrastructure of modern hoaxing was complete.</p>
+      </div>
+      <div class="event-card">
+        <div class="event-year">Print Culture</div>
+        <div class="event-title">The Joke that Travels</div>
+        <p class="event-body">As literacy spread and printing costs fell, April Fools jokes moved from local to national. Satirical pamphlets, penny papers, and eventually mass-circulation newspapers all developed traditions of April 1 hoaxes. The key lesson learned early: a good hoax needs a kernel of plausibility.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- QUOTE 2 -->
+<div class="quote-band">
+  <p class="pq-text">The first of April is the day we remember <span class="pq-hl">what we are the other 364 days of the year.</span></p>
+  <p class="pq-attr">— Mark Twain, Pudd'nhead Wilson's Calendar, 1894</p>
+</div>
+
+<!-- ERA IV -->
+<section class="era-section" id="era-4">
+  <div class="era-sidebar">
+    <div class="era-num">IV</div>
+    <div class="era-datespan">1900s — 1955</div>
+    <div class="era-title">The Golden Age</div>
+    <p class="era-desc">April Fools Day reaches peak cultural saturation as a shared holiday. Newspapers compete for the best hoax. Brands discover the marketing potential of a plausible lie.</p>
+    <div class="era-meter"><div class="era-meter-fill" style="width:65%"></div></div>
+  </div>
+  <div class="era-main">
+    <div class="events-grid">
+      <div class="event-card">
+        <img class="event-img" src="https://images.unsplash.com/photo-1495020689067-958852a7765e?w=600&q=70" alt="Vintage newspaper" loading="lazy">
+        <div class="event-year">1905</div>
+        <div class="event-title">The Colorado Springs Gazette Empties a Town</div>
+        <p class="event-body">The Gazette printed a story claiming a massive gold deposit had been discovered nearby. Hundreds of residents left work and raced to the site before realizing it was April 1. The newspaper reported on the chaos it caused as a follow-up story. The template of "hoax, then coverage of the hoax" was born.</p>
+      </div>
+      <div class="event-card">
+        <div class="event-year">1917–1945</div>
+        <div class="event-title">Wartime Satire</div>
+        <p class="event-body">During both World Wars, April Fools pranks served a psychological function. Allied propaganda services deliberately planted false stories on April 1 — plausible enough to confuse the enemy, deniable as "jokes" if discovered. Humor as cover for deception became a wartime art form.</p>
+      </div>
+      <div class="event-card">
+        <img class="event-img" src="https://images.unsplash.com/photo-1542744094-3a31f272c490?w=600&q=70" alt="Radio equipment" loading="lazy">
+        <div class="event-year">1938</div>
+        <div class="event-title">War of the Worlds Sets the Bar</div>
+        <p class="event-body">Orson Welles' radio broadcast adapting H.G. Wells's War of the Worlds wasn't an April Fools prank — it aired on October 30 — but it defined the cultural benchmark for "successful hoax." Every April 1 story since has been measured against how many people it genuinely fooled.</p>
+      </div>
+      <div class="event-card">
+        <div class="event-year">Early Advertising</div>
+        <div class="event-title">Brands Discover the Joke</div>
+        <p class="event-body">The first brand April Fools campaigns emerged in the 1930s and 40s. Companies found that plausible-but-absurd product announcements generated enormous press coverage and goodwill. A good joke cost almost nothing and earned more attention than any paid advertisement. The template that modern brands still use today was set.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ERA V -->
+<section class="era-section" id="era-5">
+  <div class="era-sidebar">
+    <div class="era-num">V</div>
+    <div class="era-datespan">1957 — 1994</div>
+    <div class="era-title">The Broadcast Era</div>
+    <p class="era-desc">Television transforms April Fools from a print game into a visual medium. The BBC's spaghetti harvest becomes the gold standard. Nations compete for hoax supremacy.</p>
+    <div class="era-meter"><div class="era-meter-fill" style="width:80%"></div></div>
+  </div>
+  <div class="era-main">
+    <div class="events-grid">
+      <div class="event-card">
+        <img class="event-img" src="https://images.unsplash.com/photo-1558985250-27a406d64cb3?w=600&q=70" alt="Vintage television" loading="lazy">
+        <div class="event-year">1957</div>
+        <div class="event-title">BBC Spaghetti Harvest</div>
+        <p class="event-body">The BBC's Panorama broadcast a three-minute segment on the "Swiss spaghetti harvest" — showing farmers pulling strands of spaghetti from trees. Hundreds of viewers called the BBC asking where to buy a spaghetti tree. The BBC's reported response: "Place a sprig of spaghetti in a tin of tomato sauce and hope for the best." The greatest April Fools prank ever executed.</p>
+      </div>
+      <div class="event-card">
+        <div class="event-year">1962</div>
+        <div class="event-title">Sweden Teaches Color TV</div>
+        <p class="event-body">Swedish national television aired a segment in which a "technical expert" explained that viewers could watch color television by stretching a nylon stocking over their black-and-white screen. The science was plausible-sounding. Thousands of Swedes tried it. Television had discovered it could fool an entire nation simultaneously.</p>
+      </div>
+      <div class="event-card">
+        <img class="event-img" src="https://images.unsplash.com/photo-1593784991095-a205069470b6?w=600&q=70" alt="1980s television" loading="lazy">
+        <div class="event-year">1980</div>
+        <div class="event-title">The Guardian's San Serriffe</div>
+        <p class="event-body">The Guardian ran a seven-page special supplement about San Serriffe — a fictional island nation in the Indian Ocean named after typeface terms, with cities called Bodoni and Garamondo. The supplement was so detailed and well-researched that the Guardian's travel desk received hundreds of inquiries about booking holidays there.</p>
+      </div>
+      <div class="event-card">
+        <div class="event-year">Television Age</div>
+        <div class="event-title">Visual Proof Changes Everything</div>
+        <p class="event-body">The broadcast era taught a crucial lesson: people believe what they can see. The same implausible story that readers might question in print became instantly credible on television. A person physically picking spaghetti from a tree was harder to disbelieve than words describing it. Visual media raised the stakes and the craft of April Fools permanently.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ERA VI -->
+<section class="era-section" id="era-6">
+  <div class="era-sidebar">
+    <div class="era-num">VI</div>
+    <div class="era-datespan">1994 — Present</div>
+    <div class="era-title">The Internet Age</div>
+    <p class="era-desc">The web democratizes April Fools Day entirely. Corporations allocate entire budgets to it. Reddit breaks the format. Misinformation makes it complicated.</p>
+    <div class="era-meter"><div class="era-meter-fill" style="width:100%"></div></div>
+  </div>
+  <div class="era-main">
+    <div class="events-grid">
+      <div class="event-card">
+        <img class="event-img" src="https://images.unsplash.com/photo-1563986768494-4dee2763ff3f?w=600&q=70" alt="Computer and internet" loading="lazy">
+        <div class="event-year">1994–2000</div>
+        <div class="event-title">The Web's First Pranks</div>
+        <p class="event-body">The early internet April Fools tradition began with software companies and tech publications. Usenet groups, then websites, discovered that fake product announcements and absurd technical specifications — presented with straight-faced documentation — were perfectly suited to a medium where context was impossible to verify.</p>
+      </div>
+      <div class="event-card">
+        <div class="event-year">2004</div>
+        <div class="event-title">Gmail Launches on April 1</div>
+        <p class="event-body">Google launched Gmail on April 1, 2004 — offering 1GB of storage at a time when competitors offered 4MB. The announcement was so unbelievably good that most tech journalists initially assumed it was a joke. Google had understood something important: the best April Fools products are the ones that turn out to be real.</p>
+      </div>
+      <div class="event-card">
+        <img class="event-img" src="https://images.unsplash.com/photo-1611262588024-d12430b98920?w=600&q=70" alt="Social media on phone" loading="lazy">
+        <div class="event-year">2008–2015</div>
+        <div class="event-title">Corporate April Fools Peak</div>
+        <p class="event-body">From 2008 to roughly 2015, corporate April Fools campaigns reached their cultural peak. Google alone would release a dozen fake products annually. ThinkGeek fake product listings would generate enough real orders to justify manufacturing them. The day had become the tech industry's most valuable PR opportunity — free advertising dressed as a joke.</p>
+      </div>
+      <div class="event-card">
+        <div class="event-year">Present Day</div>
+        <div class="event-title">The Misinformation Complication</div>
+        <p class="event-body">The misinformation crisis of the 2010s changed April Fools' relationship with the media. Fake stories now circulate for days before debunking. Many publications suspended their April Fools traditions. The joke that was always a joke became indistinguishable from the lie that was always a lie. The day survived — but it got more complicated.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- QUOTE 3 -->
+<div class="quote-band">
+  <p class="pq-text">A sense of humor is part of the art of leadership, of <span class="pq-hl">getting along with people, of getting things done.</span></p>
+  <p class="pq-attr">— Dwight D. Eisenhower</p>
+</div>
+
+<!-- KEY FIGURES -->
+<div class="section-header-row">
+  <div class="section-eyebrow">Key Figures</div>
+  <div class="section-title-lg">Architects of the Prank</div>
+</div>
+<div class="figures-grid">
+  <div class="figure-card">
+    <img class="figure-img" src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=120&q=70" alt="Figure" loading="lazy">
+    <div class="figure-name">Charles Farrar Browne</div>
+    <div class="figure-role">Humorist, 1834–1867</div>
+    <p class="figure-bio">The first great American humorist, Browne's deadpan satirical letters inspired Mark Twain and established the tradition of print comedy as social critique. His persona "Artemus Ward" perfected the art of the plausible lie.</p>
+  </div>
+  <div class="figure-card">
+    <img class="figure-img" src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=120&q=70" alt="Figure" loading="lazy">
+    <div class="figure-name">Orson Welles</div>
+    <div class="figure-role">Director, Broadcaster</div>
+    <p class="figure-bio">Welles' 1938 War of the Worlds broadcast set the modern benchmark for successful deception. Though not an April Fools prank, every subsequent hoax has been measured against how completely it fooled its audience — a standard Welles set in 60 minutes of radio.</p>
+  </div>
+  <div class="figure-card">
+    <img class="figure-img" src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=120&q=70" alt="Figure" loading="lazy">
+    <div class="figure-name">Richard Dimbleby</div>
+    <div class="figure-role">BBC Journalist, Spaghetti</div>
+    <p class="figure-bio">The respected BBC journalist who narrated the 1957 spaghetti harvest documentary. Dimbleby's gravitas was the entire prank — no one expected the BBC's most trusted voice to be in on a joke. His straight-faced delivery is the reason it worked.</p>
+  </div>
+  <div class="figure-card">
+    <img class="figure-img" src="https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?w=120&q=70" alt="Figure" loading="lazy">
+    <div class="figure-name">Larry Page &amp; Sergey Brin</div>
+    <div class="figure-role">Google Founders</div>
+    <p class="figure-bio">More than any other organization, Google redefined April Fools for the internet age. The Google April Fools tradition — beginning with the Mentalplex in 2000 — turned corporate hoaxes into an anticipated annual event and raised the bar for the entire tech industry.</p>
+  </div>
+  <div class="figure-card">
+    <img class="figure-img" src="https://images.unsplash.com/photo-1560250097-0b93528c311a?w=120&q=70" alt="Figure" loading="lazy">
+    <div class="figure-name">James Randi</div>
+    <div class="figure-role">Skeptic, Debunker</div>
+    <p class="figure-bio">The Amazing Randi spent his career exposing fraud and demonstrating how willing humans are to believe what they want to believe. His work provided the intellectual framework for understanding why April Fools pranks work — and why they eventually stopped working.</p>
+  </div>
+  <div class="figure-card">
+    <img class="figure-img" src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=120&q=70" alt="Figure" loading="lazy">
+    <div class="figure-name">Jon Stewart</div>
+    <div class="figure-role">The Daily Show, 1999–2015</div>
+    <p class="figure-bio">Stewart's Daily Show turned April Fools logic — fake news as truth-telling — into nightly television. By presenting fabricated news ironically, the show revealed more about reality than straight reporting. The line between the joke and the truth was the point.</p>
+  </div>
+  <div class="figure-card">
+    <img class="figure-img" src="https://images.unsplash.com/photo-1580489944761-15a19d654956?w=120&q=70" alt="Figure" loading="lazy">
+    <div class="figure-name">Banksy</div>
+    <div class="figure-role">Artist, Prankster</div>
+    <p class="figure-bio">The anonymous street artist extended April Fools logic into fine art — placing his own works inside major museums, selling originals for $60 on a New York street corner, and shredding a painting at auction moments after it sold for $1.4 million. Every action is a prank with a point.</p>
+  </div>
+  <div class="figure-card">
+    <img class="figure-img" src="https://images.unsplash.com/photo-1531746020798-e6953c6e8e04?w=120&q=70" alt="Figure" loading="lazy">
+    <div class="figure-name">Joey Skaggs</div>
+    <div class="figure-role">Media Prankster</div>
+    <p class="figure-bio">The ultimate professional hoaxer, Skaggs has fooled major news organizations dozens of times since the 1960s — with fake press releases, manufactured controversies, and impossible products. His work is a sustained critique of journalism's gullibility disguised as comedy.</p>
+  </div>
+  <div class="figure-card">
+    <img class="figure-img" src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=120&q=70" alt="Figure" loading="lazy">
+    <div class="figure-name">Alan Abel</div>
+    <div class="figure-role">Professional Hoaxer</div>
+    <p class="figure-bio">Abel's career spans six decades of successful hoaxes — he faked his own death and got an obituary in the New York Times, founded the Society for Indecency to Naked Animals, and ran multiple satirical political campaigns. He is the closest thing April Fools Day has to a patron saint.</p>
+  </div>
+  <div class="figure-card">
+    <img class="figure-img" src="https://images.unsplash.com/photo-1552058544-f2b08422138a?w=120&q=70" alt="Figure" loading="lazy">
+    <div class="figure-name">The ThinkGeek Team</div>
+    <div class="figure-role">Internet Retail, 2000s</div>
+    <p class="figure-bio">The gadget retailer's annual April Fools product listings became so popular — and so frequently ordered by customers — that the company began manufacturing the "fake" products. The Tauntaun sleeping bag, Canned Unicorn Meat, and the Dharma Initiative alarm clock all began as April 1 jokes.</p>
+  </div>
+</div>
+
+<!-- FUTURE -->
+<div class="section-header-row">
+  <div class="section-eyebrow">What Comes Next</div>
+  <div class="section-title-lg">The Future of the Prank</div>
+</div>
+<div class="future-grid">
+  <div class="future-card">
+    <div class="future-num">01 — Near Term</div>
+    <div class="future-title">AI Makes Everything Plausible</div>
+    <p class="future-body">Generative AI means anyone can produce video, audio, and documentation of anything that never happened. The question stops being "could this be real?" and becomes "is there any reason to trust anything?" April Fools Day either becomes meaningless — or the most important day of the year.</p>
+  </div>
+  <div class="future-card">
+    <div class="future-num">02 — Cultural</div>
+    <div class="future-title">The Sincerity Backlash</div>
+    <p class="future-body">As online irony becomes exhausting, cultural taste is shifting toward earnestness. The brands that win future April Fools cycles may be the ones that do something genuinely kind or useful — rather than something fake. The most surprising move left is the truth.</p>
+  </div>
+  <div class="future-card">
+    <div class="future-num">03 — Institutional</div>
+    <div class="future-title">The End of Corporate April Fools</div>
+    <p class="future-body">Corporate April Fools campaigns peaked around 2012–2015. As brand trust has become increasingly fragile, companies are increasingly cautious about anything that could be misread. The safest corporate April Fools move is to do nothing — which itself may signal something.</p>
+  </div>
+  <div class="future-card">
+    <div class="future-num">04 — Persistent</div>
+    <div class="future-title">The Prank Endures</div>
+    <p class="future-body">For 2,000 years, humans have designated one day to permission licensed mischief. That impulse — to disrupt the normal order for one day and laugh at the disruption — is not going anywhere. The format adapts. The tools change. The joke is eternal.</p>
+  </div>
+</div>
+
+<!-- ENTITY GRID -->
+<div class="entity-section">
+  <div class="section-eyebrow">Key Terms, Events &amp; Players</div>
+  <div class="entity-grid">
+    <span class="entity-tag">Poisson d'Avril</span>
+    <span class="entity-tag">BBC Panorama 1957</span>
+    <span class="entity-tag">Spaghetti Tree Hoax</span>
+    <span class="entity-tag">San Serriffe</span>
+    <span class="entity-tag">Sizdah Bedar</span>
+    <span class="entity-tag">Hunt the Gowk</span>
+    <span class="entity-tag">Hilaria Festival</span>
+    <span class="entity-tag">Feast of Fools</span>
+    <span class="entity-tag">War of the Worlds</span>
+    <span class="entity-tag">Gmail Launch 2004</span>
+    <span class="entity-tag">Google MentalPlex</span>
+    <span class="entity-tag">ThinkGeek</span>
+    <span class="entity-tag">Tower of London Lions</span>
+    <span class="entity-tag">The Great Moon Hoax</span>
+    <span class="entity-tag">Taily Day</span>
+    <span class="entity-tag">Lord of Misrule</span>
+    <span class="entity-tag">Richard Dimbleby</span>
+    <span class="entity-tag">Swedish Color TV</span>
+    <span class="entity-tag">Joey Skaggs</span>
+    <span class="entity-tag">Alan Abel</span>
+    <span class="entity-tag">James Randi</span>
+    <span class="entity-tag">The Guardian</span>
+    <span class="entity-tag">Orson Welles</span>
+    <span class="entity-tag">Banksy</span>
+    <span class="entity-tag">Gregorian Calendar Reform</span>
+    <span class="entity-tag">Eloy d'Amerval</span>
+    <span class="entity-tag">John Aubrey 1686</span>
+    <span class="entity-tag">Fooles holy day</span>
+    <span class="entity-tag">Tauntaun Sleeping Bag</span>
+    <span class="entity-tag">Reddit Place</span>
+    <span class="entity-tag">Canned Unicorn Meat</span>
+    <span class="entity-tag">Daily Show</span>
+    <span class="entity-tag">April Fish</span>
+    <span class="entity-tag">Mark Twain</span>
+    <span class="entity-tag">Penny Press</span>
+    <span class="entity-tag">Usenet Pranks</span>
+    <span class="entity-tag">Mass Media Hoax</span>
+    <span class="entity-tag">Corporate Prank Culture</span>
+    <span class="entity-tag">Misinformation Problem</span>
+    <span class="entity-tag">AI Deepfakes</span>
+    <span class="entity-tag">Plausible Lie</span>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <a class="footer-lockup" href="https://abriefhistoryofeverything.com" target="_blank" rel="noopener">
+    <svg width="28" height="28" viewBox="0 0 400 400" xmlns="http://www.w3.org/2000/svg">
+      <rect width="400" height="400" fill="#00D4F0"/>
+      <rect x="55" y="118" width="46" height="46" fill="#08090C" opacity=".22"/>
+      <rect x="178" y="118" width="46" height="46" fill="#08090C" opacity=".22"/>
+      <rect class="footer-mouth" x="55" y="278" width="170" height="36" fill="#08090C"/>
+    </svg>
+    <div class="footer-series">A <em>(Brief)</em> History of Everything_</div>
+  </a>
+  <div class="footer-copy">© 2026 A (Brief) History of Everything</div>
+</footer>
+
+</div><!-- /page-body -->
+
+<script>
+(function(){
+  /* ── THEME TOGGLE ── */
+  var html = document.documentElement;
+  var toggleBtn = document.getElementById('theme-toggle');
+  toggleBtn && toggleBtn.addEventListener('click', function(){
+    html.setAttribute('data-theme', html.getAttribute('data-theme') === 'dark' ? 'light' : 'dark');
+  });
+
+  /* ── CUSTOM CURSOR ── */
+  var cur = document.getElementById('cur');
+  var ring = document.getElementById('cur-ring');
+  if(cur && ring && matchMedia('(pointer:fine)').matches){
+    var rx=0,ry=0;
+    document.addEventListener('mousemove',function(e){
+      cur.style.left=e.clientX+'px';cur.style.top=e.clientY+'px';
+      rx+=(e.clientX-rx)*.1;ry+=(e.clientY-ry)*.1;
+      ring.style.left=rx+'px';ring.style.top=ry+'px';
+    });
+    document.addEventListener('mousedown',function(){cur.classList.add('active');});
+    document.addEventListener('mouseup',function(){cur.classList.remove('active');});
+    (function animRing(){ring.style.left=rx+'px';ring.style.top=ry+'px';requestAnimationFrame(animRing);})();
+  }
+
+  /* ── SCROLL PROGRESS ── */
+  var bar = document.getElementById('progress');
+  window.addEventListener('scroll',function(){
+    var pct=(document.documentElement.scrollTop||document.body.scrollTop)/
+      (document.documentElement.scrollHeight - document.documentElement.clientHeight)*100;
+    if(bar) bar.style.width=Math.min(100,pct)+'%';
+  },{passive:true});
+
+  /* ── ACTIVE NAV ── */
+  var eras = ['era-1','era-2','era-3','era-4','era-5','era-6'];
+  var links = document.querySelectorAll('.nav-era-link, .snav-item');
+  window.addEventListener('scroll',function(){
+    var scrollY = window.scrollY + 120;
+    var current = '';
+    eras.forEach(function(id){
+      var el = document.getElementById(id);
+      if(el && el.offsetTop <= scrollY) current = id;
+    });
+    links.forEach(function(l){
+      l.classList.toggle('active', l.getAttribute('href') === '#'+current);
+    });
+  },{passive:true});
+
+  /* ── SHARE ── */
+  window.shareGuide = function(){
+    if(navigator.share){
+      navigator.share({title:'A (Brief) History of April Fools Day',url:window.location.href});
+    } else {
+      navigator.clipboard && navigator.clipboard.writeText(window.location.href);
+    }
+  };
+
+  /* ════════════════════════════════════════════════
+     APRIL FOOLS REDIRECT
+     After 12 seconds, fade out and redirect to
+     abriefhistoryofeverything.com?aprilfools=1
+  ════════════════════════════════════════════════ */
+  var countdown = 12;
+  var toast = document.getElementById('countdown-toast');
+  var countEl = document.getElementById('countdown-num');
+  var overlay = document.getElementById('redirect-overlay');
+  var redirectUrl = 'https://abriefhistoryofeverything.com/?aprilfools=1';
+
+  // Show toast after 3 seconds
+  setTimeout(function(){
+    if(toast) toast.classList.add('visible');
+  }, 3000);
+
+  // Count down
+  var ticker = setInterval(function(){
+    countdown--;
+    if(countEl) countEl.textContent = countdown;
+    if(countdown <= 0){
+      clearInterval(ticker);
+      // Fade to black then redirect
+      if(overlay) overlay.classList.add('fading');
+      setTimeout(function(){
+        window.location.href = redirectUrl;
+      }, 1800);
+    }
+  }, 1000);
+
+})();
+</script>
+
+<!-- ═══════════════════════════════════════════════════════════
+     APRIL FOOLS POPUP — inject into abriefhistoryofeverything.com
+     This script runs ONLY when the ?aprilfools=1 param is present.
+     To use: add this <script> block to abriefhistoryofeverything.com
+     OR include the standalone popup-only script below.
+═══════════════════════════════════════════════════════════ -->
+<script>
+/* POPUP — fires when redirected back to hub */
+(function(){
+  if(window.location.search.indexOf('aprilfools') === -1) return;
+
+  var style = document.createElement('style');
+  style.textContent = `
+    #af-popup-bg{
+      position:fixed;inset:0;background:rgba(7,9,12,.85);
+      z-index:99999;display:flex;align-items:center;justify-content:center;
+      animation:afFadeIn .4s ease forwards;
+      backdrop-filter:blur(6px);
+    }
+    @keyframes afFadeIn{from{opacity:0;}to{opacity:1;}}
+    #af-popup{
+      background:#0C0F14;
+      border:1px solid #FF5C20;
+      padding:3rem 3.5rem;
+      text-align:center;
+      max-width:480px;width:90%;
+      position:relative;
+      animation:afSlideUp .5s cubic-bezier(.22,1,.36,1) forwards;
+      font-family:'IBM Plex Mono',monospace;
+    }
+    @keyframes afSlideUp{from{opacity:0;transform:translateY(32px);}to{opacity:1;transform:translateY(0);}}
+    #af-popup-emoji{font-size:3.5rem;margin-bottom:1.2rem;display:block;}
+    #af-popup-title{
+      font-size:clamp(1.6rem,4vw,2.4rem);font-weight:700;
+      color:#FF5C20;letter-spacing:-.02em;line-height:1;
+      margin-bottom:.8rem;
+    }
+    #af-popup-sub{
+      font-size:.82rem;letter-spacing:.1em;text-transform:uppercase;
+      color:#5A7A94;line-height:1.7;margin-bottom:1.8rem;
+    }
+    #af-popup-sub strong{color:#ECF2F6;}
+    #af-popup-close{
+      display:inline-block;
+      background:#FF5C20;color:#000;
+      font-family:'IBM Plex Mono',monospace;
+      font-size:.72rem;font-weight:700;letter-spacing:.2em;
+      text-transform:uppercase;padding:.7rem 2rem;
+      border:none;cursor:pointer;
+      transition:background .15s,transform .1s;
+    }
+    #af-popup-close:hover{background:#FF8C50;transform:translateY(-1px);}
+    #af-popup-byline{
+      margin-top:1.2rem;
+      font-size:.62rem;letter-spacing:.18em;text-transform:uppercase;
+      color:#2A3A4A;
+    }
+  `;
+  document.head.appendChild(style);
+
+  var bg = document.createElement('div');
+  bg.id = 'af-popup-bg';
+  bg.innerHTML = `
+    <div id="af-popup">
+      <span id="af-popup-emoji">🃏</span>
+      <div id="af-popup-title">April Fools!</div>
+      <p id="af-popup-sub">
+        There is no <strong>A (Brief) History of April Fools Day.</strong><br>
+        That guide doesn't exist. You just read the whole thing.<br><br>
+        But you are here now. And this is real.
+      </p>
+      <button id="af-popup-close">I deserve this</button>
+      <div id="af-popup-byline">A (Brief) History of Everything_ · Apr 1, 2026</div>
+    </div>
+  `;
+  document.body.appendChild(bg);
+
+  document.getElementById('af-popup-close').addEventListener('click', function(){
+    bg.style.animation = 'afFadeIn .3s ease reverse forwards';
+    setTimeout(function(){ bg.remove(); }, 300);
+    // clean up URL param
+    history.replaceState(null,'',window.location.pathname);
+  });
+  bg.addEventListener('click', function(e){
+    if(e.target === bg){
+      document.getElementById('af-popup-close').click();
+    }
+  });
+})();
+</script>
+
+</body>
+</html>

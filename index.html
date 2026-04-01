@@ -1222,7 +1222,7 @@ br.desk-br{display:block;}
       <div class="email-head">Suggest a Topic</div>
       <div class="email-sub">Got a subject that deserves a deep dive? Tell us.</div>
     </div>
-<a class="email-btn" href="mailto:topics@abriefhistoryofeverything.com" style="display:inline-flex;align-items:center;text-decoration:none;">Suggest a Topic →</a>  
+<a class="email-btn" href="/cdn-cgi/l/email-protection#d9adb6a9b0baaa99b8bbabb0bcbfb1b0aaadb6aba0b6bfbcafbcaba0adb1b0b7bef7bab6b4" style="display:inline-flex;align-items:center;text-decoration:none;">Suggest a Topic →</a>  
   </div>
 
   <!-- MASCOT ZONE -->
@@ -1249,7 +1249,7 @@ br.desk-br{display:block;}
 <footer>
   <span class="footer-l">©2026 A (Brief) History of Everything</span>
 </footer>
-<script>
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
 /* ═══════════════════════════════════════════════════════
    HERO ART ENGINE
    Two systems running simultaneously:
@@ -1870,15 +1870,102 @@ document.querySelectorAll('.fi').forEach(el=>_fiObs.observe(el));
           // Short delay — he notices you arrived, then reacts
           setTimeout(onHoverIn, 620);
         }
-      });
+           });
     }, { threshold: 0.6 });
     mobileObs.observe(zone);
   }
 
-  /* ── Boot ── */
-  applyNeutralFace();
-  scheduleBlink();
 })();
 </script>
+
+<!-- ═══════════════════════════════════════════════════════════
+     APRIL FOOLS POPUP
+     Fires when redirected from the April Fools guide via ?aprilfools=1
+═══════════════════════════════════════════════════════════ -->
+<script>
+(function(){
+  if(window.location.search.indexOf('aprilfools') === -1) return;
+
+  var style = document.createElement('style');
+  style.textContent = `
+    #af-popup-bg{
+      position:fixed;inset:0;background:rgba(7,9,12,.85);
+      z-index:99999;display:flex;align-items:center;justify-content:center;
+      animation:afFadeIn .4s ease forwards;
+      backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px);
+    }
+    @keyframes afFadeIn{from{opacity:0;}to{opacity:1;}}
+    #af-popup{
+      background:#0C0F14;
+      border:1px solid #FF5C20;
+      padding:3rem 3.5rem;
+      text-align:center;
+      max-width:480px;width:90%;
+      position:relative;
+      animation:afSlideUp .5s cubic-bezier(.22,1,.36,1) forwards;
+      font-family:'IBM Plex Mono',monospace;
+    }
+    @keyframes afSlideUp{from{opacity:0;transform:translateY(32px);}to{opacity:1;transform:translateY(0);}}
+    #af-popup-emoji{font-size:3.5rem;margin-bottom:1.2rem;display:block;}
+    #af-popup-title{
+      font-size:clamp(1.6rem,4vw,2.4rem);font-weight:700;
+      color:#FF5C20;letter-spacing:-.02em;line-height:1;
+      margin-bottom:.8rem;
+    }
+    #af-popup-sub{
+      font-size:.82rem;letter-spacing:.1em;text-transform:uppercase;
+      color:#5A7A94;line-height:1.7;margin-bottom:1.8rem;
+      font-family:'IBM Plex Mono',monospace;
+    }
+    #af-popup-sub strong{color:#ECF2F6;}
+    #af-popup-close{
+      display:inline-block;
+      background:#FF5C20;color:#000;
+      font-family:'IBM Plex Mono',monospace;
+      font-size:.72rem;font-weight:700;letter-spacing:.2em;
+      text-transform:uppercase;padding:.7rem 2rem;
+      border:none;cursor:pointer;
+      transition:background .15s,transform .1s;
+    }
+    #af-popup-close:hover{background:#FF8C50;transform:translateY(-1px);}
+    #af-popup-byline{
+      margin-top:1.2rem;
+      font-size:.62rem;letter-spacing:.18em;text-transform:uppercase;
+      color:#2A3A4A;
+      font-family:'IBM Plex Mono',monospace;
+    }
+  `;
+  document.head.appendChild(style);
+
+  var bg = document.createElement('div');
+  bg.id = 'af-popup-bg';
+  bg.innerHTML = '<div id="af-popup">'
+    + '<span id="af-popup-emoji">&#x1F0CF;</span>'
+    + '<div id="af-popup-title">April Fools!</div>'
+    + '<p id="af-popup-sub">'
+    + 'There is no <strong>A (Brief) History of April Fools Day.</strong><br>'
+    + 'That guide doesn\'t exist. You just read the whole thing.<br><br>'
+    + 'But you are here now. And this is real.'
+    + '</p>'
+    + '<button id="af-popup-close">I deserve this</button>'
+    + '<div id="af-popup-byline">A (Brief) History of Everything_ &middot; Apr 1, 2026</div>'
+    + '</div>';
+
+  document.body.appendChild(bg);
+
+  document.getElementById('af-popup-close').addEventListener('click', function(){
+    bg.style.animation = 'afFadeIn .3s ease reverse forwards';
+    setTimeout(function(){ bg.remove(); }, 300);
+    history.replaceState(null, '', window.location.pathname);
+  });
+
+  bg.addEventListener('click', function(e){
+    if(e.target === bg){
+      document.getElementById('af-popup-close').click();
+    }
+  });
+})();
+</script>
+
 </body>
 </html>
