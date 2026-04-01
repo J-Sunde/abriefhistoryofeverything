@@ -1142,19 +1142,30 @@ footer{
 
   /* ════════════════════════════════════════════════
      APRIL FOOLS REDIRECT
-     After 12 seconds, fade out and redirect to
-     abriefhistoryofeverything.com?aprilfools=1
+     Countdown shortens each return visit:
+     Visit 1 → 12s  |  Visit 2 → 8s  |  Visit 3 → 5s  |  Visit 4 → 3s
+     sessionStorage tracks visit count across the loop
   ════════════════════════════════════════════════ */
-  var countdown = 12;
-  var toast = document.getElementById('countdown-toast');
-  var countEl = document.getElementById('countdown-num');
-  var overlay = document.getElementById('redirect-overlay');
+
+  // If they've earned freedom, kill the redirect entirely
+  if(sessionStorage.getItem('af_free')) return;
+
+  var visits   = parseInt(sessionStorage.getItem('af_visits') || '0', 10);
+  var countdowns = [12, 8, 5, 3];
+  var countdown  = countdowns[Math.min(visits, countdowns.length - 1)];
+
+  var toast    = document.getElementById('countdown-toast');
+  var countEl  = document.getElementById('countdown-num');
+  var overlay  = document.getElementById('redirect-overlay');
   var redirectUrl = 'https://abriefhistoryofeverything.com/?aprilfools=1';
 
-  // Show toast after 3 seconds
+  // Sync initial toast number to actual countdown
+  if(countEl) countEl.textContent = countdown;
+
+  // Show toast after 2 seconds
   setTimeout(function(){
     if(toast) toast.classList.add('visible');
-  }, 3000);
+  }, 2000);
 
   // Count down
   var ticker = setInterval(function(){
@@ -1162,7 +1173,6 @@ footer{
     if(countEl) countEl.textContent = countdown;
     if(countdown <= 0){
       clearInterval(ticker);
-      // Fade to black then redirect
       if(overlay) overlay.classList.add('fading');
       setTimeout(function(){
         window.location.href = redirectUrl;
@@ -1173,96 +1183,7 @@ footer{
 })();
 </script>
 
-<!-- ═══════════════════════════════════════════════════════════
-     APRIL FOOLS POPUP — inject into abriefhistoryofeverything.com
-     This script runs ONLY when the ?aprilfools=1 param is present.
-     To use: add this <script> block to abriefhistoryofeverything.com
-     OR include the standalone popup-only script below.
-═══════════════════════════════════════════════════════════ -->
-<script>
-/* POPUP — fires when redirected back to hub */
-(function(){
-  if(window.location.search.indexOf('aprilfools') === -1) return;
 
-  var style = document.createElement('style');
-  style.textContent = `
-    #af-popup-bg{
-      position:fixed;inset:0;background:rgba(7,9,12,.85);
-      z-index:99999;display:flex;align-items:center;justify-content:center;
-      animation:afFadeIn .4s ease forwards;
-      backdrop-filter:blur(6px);
-    }
-    @keyframes afFadeIn{from{opacity:0;}to{opacity:1;}}
-    #af-popup{
-      background:#0C0F14;
-      border:1px solid #FF5C20;
-      padding:3rem 3.5rem;
-      text-align:center;
-      max-width:480px;width:90%;
-      position:relative;
-      animation:afSlideUp .5s cubic-bezier(.22,1,.36,1) forwards;
-      font-family:'IBM Plex Mono',monospace;
-    }
-    @keyframes afSlideUp{from{opacity:0;transform:translateY(32px);}to{opacity:1;transform:translateY(0);}}
-    #af-popup-emoji{font-size:3.5rem;margin-bottom:1.2rem;display:block;}
-    #af-popup-title{
-      font-size:clamp(1.6rem,4vw,2.4rem);font-weight:700;
-      color:#FF5C20;letter-spacing:-.02em;line-height:1;
-      margin-bottom:.8rem;
-    }
-    #af-popup-sub{
-      font-size:.82rem;letter-spacing:.1em;text-transform:uppercase;
-      color:#5A7A94;line-height:1.7;margin-bottom:1.8rem;
-    }
-    #af-popup-sub strong{color:#ECF2F6;}
-    #af-popup-close{
-      display:inline-block;
-      background:#FF5C20;color:#000;
-      font-family:'IBM Plex Mono',monospace;
-      font-size:.72rem;font-weight:700;letter-spacing:.2em;
-      text-transform:uppercase;padding:.7rem 2rem;
-      border:none;cursor:pointer;
-      transition:background .15s,transform .1s;
-    }
-    #af-popup-close:hover{background:#FF8C50;transform:translateY(-1px);}
-    #af-popup-byline{
-      margin-top:1.2rem;
-      font-size:.62rem;letter-spacing:.18em;text-transform:uppercase;
-      color:#2A3A4A;
-    }
-  `;
-  document.head.appendChild(style);
-
-  var bg = document.createElement('div');
-  bg.id = 'af-popup-bg';
-  bg.innerHTML = `
-    <div id="af-popup">
-      <span id="af-popup-emoji">🃏</span>
-      <div id="af-popup-title">April Fools!</div>
-      <p id="af-popup-sub">
-        There is no <strong>A (Brief) History of April Fools Day.</strong><br>
-        That guide doesn't exist. You just read the whole thing.<br><br>
-        But you are here now. And this is real.
-      </p>
-      <button id="af-popup-close">I deserve this</button>
-      <div id="af-popup-byline">A (Brief) History of Everything_ · Apr 1, 2026</div>
-    </div>
-  `;
-  document.body.appendChild(bg);
-
-  document.getElementById('af-popup-close').addEventListener('click', function(){
-    bg.style.animation = 'afFadeIn .3s ease reverse forwards';
-    setTimeout(function(){ bg.remove(); }, 300);
-    // clean up URL param
-    history.replaceState(null,'',window.location.pathname);
-  });
-  bg.addEventListener('click', function(e){
-    if(e.target === bg){
-      document.getElementById('af-popup-close').click();
-    }
-  });
-})();
-</script>
 
 </body>
 </html>

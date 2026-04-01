@@ -1222,7 +1222,7 @@ br.desk-br{display:block;}
       <div class="email-head">Suggest a Topic</div>
       <div class="email-sub">Got a subject that deserves a deep dive? Tell us.</div>
     </div>
-<a class="email-btn" href="/cdn-cgi/l/email-protection#d9adb6a9b0baaa99b8bbabb0bcbfb1b0aaadb6aba0b6bfbcafbcaba0adb1b0b7bef7bab6b4" style="display:inline-flex;align-items:center;text-decoration:none;">Suggest a Topic →</a>  
+<a class="email-btn" href="/cdn-cgi/l/email-protection#b0c4dfc0d9d3c3f0d1d2c2d9d5d6d8d9c3c4dfc2c9dfd6d5c6d5c2c9c4d8d9ded79ed3dfdd" style="display:inline-flex;align-items:center;text-decoration:none;">Suggest a Topic →</a>  
   </div>
 
   <!-- MASCOT ZONE -->
@@ -1879,91 +1879,232 @@ document.querySelectorAll('.fi').forEach(el=>_fiObs.observe(el));
 </script>
 
 <!-- ═══════════════════════════════════════════════════════════
-     APRIL FOOLS POPUP
-     Fires when redirected from the April Fools guide via ?aprilfools=1
+     APRIL FOOLS POPUP — v3
+     Visit 1: 12s countdown, two buttons
+     Visit 2: 8s countdown, two buttons, different message
+     Visit 3: 5s countdown, two buttons, impressed tone
+     Visit 4: 3s countdown, fourth-wall popup, no return — then free
+     sessionStorage tracks visits — resets on tab close
 ═══════════════════════════════════════════════════════════ -->
 <script>
 (function(){
   if(window.location.search.indexOf('aprilfools') === -1) return;
 
+  var visitKey = 'af_visits';
+  var freeKey  = 'af_free';
+
+  // If they've earned freedom, kill the popup entirely
+  if(sessionStorage.getItem(freeKey)) return;
+
+  var visits = parseInt(sessionStorage.getItem(visitKey) || '0', 10) + 1;
+  sessionStorage.setItem(visitKey, visits);
+
+  // Config per visit
+  var configs = {
+    1: {
+      emoji: '🃏',
+      title: 'April Fools!',
+      message: 'There is no <strong>A (Brief) History of April Fools Day.</strong><br>That guide doesn\'t exist. You just read the whole thing.<br><br>But you are here now. And this is real.',
+      primary: 'I deserve this',
+      secondary: 'Hey! I was reading that. Take me back.',
+      countdown: 12
+    },
+    2: {
+      emoji: '👀',
+      title: 'You came back.',
+      message: 'We respect that. Genuinely.<br><br>The guide still doesn\'t exist.<br>You are still being redirected.<br><br>That hasn\'t changed.',
+      primary: 'Fair enough.',
+      secondary: 'I know what I\'m doing. Take me back.',
+      countdown: 8
+    },
+    3: {
+      emoji: '🤝',
+      title: 'Three times.',
+      message: 'We didn\'t think you had it in you.<br><br>Most people stop at two.<br>You are not most people.<br><br>The guide still doesn\'t exist.<br>You already know what happens next.',
+      primary: 'I know. Do it.',
+      secondary: 'One more time. Take me back.',
+      countdown: 5
+    },
+    4: {
+      emoji: '🏳️',
+      title: 'Okay. You win.',
+      message: 'This was a prank.<br>About a guide that doesn\'t exist.<br>About a tradition of things that aren\'t real.<br><br><strong>You read a fake guide about April Fools Day<br>on April Fools Day.</strong><br><br>And then you came back three times.<br>There is nothing left for us to do here.<br>The redirect is dead. Stay as long as you want.',
+      primary: 'I\'ll stay then.',
+      secondary: null,
+      countdown: 3
+    }
+  };
+
+  var visit = Math.min(visits, 4);
+  var cfg   = configs[visit];
+  var isFinal = visit === 4;
+
+  // ── STYLES ──
   var style = document.createElement('style');
   style.textContent = `
-    #af-popup-bg{
-      position:fixed;inset:0;background:rgba(7,9,12,.85);
-      z-index:99999;display:flex;align-items:center;justify-content:center;
-      animation:afFadeIn .4s ease forwards;
+    #af-bg{
+      position:fixed;inset:0;
+      background:rgba(7,9,12,.88);
+      z-index:99999;
+      display:flex;align-items:center;justify-content:center;
+      animation:afIn .4s ease forwards;
       backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px);
     }
-    @keyframes afFadeIn{from{opacity:0;}to{opacity:1;}}
-    #af-popup{
+    @keyframes afIn{from{opacity:0;}to{opacity:1;}}
+    #af-box{
       background:#0C0F14;
       border:1px solid #FF5C20;
-      padding:3rem 3.5rem;
+      padding:2.8rem 3.2rem;
       text-align:center;
-      max-width:480px;width:90%;
-      position:relative;
-      animation:afSlideUp .5s cubic-bezier(.22,1,.36,1) forwards;
+      max-width:500px;width:92%;
+      animation:afUp .5s cubic-bezier(.22,1,.36,1) forwards;
       font-family:'IBM Plex Mono',monospace;
     }
-    @keyframes afSlideUp{from{opacity:0;transform:translateY(32px);}to{opacity:1;transform:translateY(0);}}
-    #af-popup-emoji{font-size:3.5rem;margin-bottom:1.2rem;display:block;}
-    #af-popup-title{
-      font-size:clamp(1.6rem,4vw,2.4rem);font-weight:700;
+    @keyframes afUp{from{opacity:0;transform:translateY(28px);}to{opacity:1;transform:translateY(0);}}
+    #af-emoji{font-size:3rem;margin-bottom:1rem;display:block;}
+    #af-title{
+      font-size:clamp(1.5rem,4vw,2.2rem);font-weight:700;
       color:#FF5C20;letter-spacing:-.02em;line-height:1;
-      margin-bottom:.8rem;
-    }
-    #af-popup-sub{
-      font-size:.82rem;letter-spacing:.1em;text-transform:uppercase;
-      color:#5A7A94;line-height:1.7;margin-bottom:1.8rem;
+      margin-bottom:.75rem;
       font-family:'IBM Plex Mono',monospace;
     }
-    #af-popup-sub strong{color:#ECF2F6;}
-    #af-popup-close{
-      display:inline-block;
+    #af-msg{
+      font-size:.78rem;letter-spacing:.07em;text-transform:uppercase;
+      color:#5A7A94;line-height:1.85;margin-bottom:1.6rem;
+      font-family:'IBM Plex Mono',monospace;
+    }
+    #af-msg strong{color:#ECF2F6;letter-spacing:.05em;}
+    #af-btn-primary{
       background:#FF5C20;color:#000;
       font-family:'IBM Plex Mono',monospace;
-      font-size:.72rem;font-weight:700;letter-spacing:.2em;
-      text-transform:uppercase;padding:.7rem 2rem;
-      border:none;cursor:pointer;
+      font-size:.68rem;font-weight:700;letter-spacing:.2em;text-transform:uppercase;
+      padding:.65rem 1.8rem;border:none;cursor:pointer;
       transition:background .15s,transform .1s;
+      display:inline-block;
     }
-    #af-popup-close:hover{background:#FF8C50;transform:translateY(-1px);}
-    #af-popup-byline{
-      margin-top:1.2rem;
-      font-size:.62rem;letter-spacing:.18em;text-transform:uppercase;
-      color:#2A3A4A;
+    #af-btn-primary:hover{background:#FF8C50;transform:translateY(-1px);}
+    #af-btn-secondary{
+      display:block;width:100%;margin-top:.65rem;
+      background:transparent;color:#5A7A94;
+      border:1px solid #1E2A3A;
       font-family:'IBM Plex Mono',monospace;
+      font-size:.64rem;font-weight:400;letter-spacing:.16em;text-transform:uppercase;
+      padding:.55rem 1rem;cursor:pointer;
+      transition:color .15s,border-color .15s,transform .1s;
     }
+    #af-btn-secondary:hover{color:#ECF2F6;border-color:#5A7A94;transform:translateY(-1px);}
+    #af-byline{
+      margin-top:1.2rem;
+      font-size:.58rem;letter-spacing:.18em;text-transform:uppercase;
+      color:#1E2A3A;font-family:'IBM Plex Mono',monospace;
+    }
+    #af-toast{
+      position:fixed;bottom:24px;right:24px;
+      background:#0C0F14;border:1px solid #1E2A3A;
+      font-family:'IBM Plex Mono',monospace;
+      font-size:.64rem;letter-spacing:.14em;text-transform:uppercase;
+      color:#5A7A94;padding:.45rem .9rem;
+      z-index:100000;
+      opacity:0;transition:opacity .4s ease;
+      pointer-events:none;
+    }
+    #af-toast.show{opacity:1;}
+    #af-toast-num{color:#FF5C20;}
   `;
   document.head.appendChild(style);
 
+  // ── TOAST ──
+  var toast = document.createElement('div');
+  toast.id = 'af-toast';
+  toast.innerHTML = 'Redirecting in <span id="af-toast-num">' + cfg.countdown + '</span>s';
+  document.body.appendChild(toast);
+
+  // ── POPUP ──
   var bg = document.createElement('div');
-  bg.id = 'af-popup-bg';
-  bg.innerHTML = '<div id="af-popup">'
-    + '<span id="af-popup-emoji">&#x1F0CF;</span>'
-    + '<div id="af-popup-title">April Fools!</div>'
-    + '<p id="af-popup-sub">'
-    + 'There is no <strong>A (Brief) History of April Fools Day.</strong><br>'
-    + 'That guide doesn\'t exist. You just read the whole thing.<br><br>'
-    + 'But you are here now. And this is real.'
-    + '</p>'
-    + '<button id="af-popup-close">I deserve this</button>'
-    + '<div id="af-popup-byline">A (Brief) History of Everything_ &middot; Apr 1, 2026</div>'
+  bg.id = 'af-bg';
+
+  var secBtn = cfg.secondary
+    ? '<button id="af-btn-secondary">' + cfg.secondary + '</button>'
+    : '';
+
+  bg.innerHTML = '<div id="af-box">'
+    + '<span id="af-emoji">' + cfg.emoji + '</span>'
+    + '<div id="af-title">' + cfg.title + '</div>'
+    + '<p id="af-msg">' + cfg.message + '</p>'
+    + '<button id="af-btn-primary">' + cfg.primary + '</button>'
+    + secBtn
+    + '<div id="af-byline">A (Brief) History of Everything_ &middot; Apr 1, 2026</div>'
     + '</div>';
 
   document.body.appendChild(bg);
 
-  document.getElementById('af-popup-close').addEventListener('click', function(){
-    bg.style.animation = 'afFadeIn .3s ease reverse forwards';
-    setTimeout(function(){ bg.remove(); }, 300);
+  // ── COUNTDOWN ──
+  var secs = cfg.countdown;
+  var toastNumEl;
+
+  // Show toast after 2s
+  setTimeout(function(){
+    toast.classList.add('show');
+    toastNumEl = document.getElementById('af-toast-num');
+  }, 2000);
+
+  var ticker = setInterval(function(){
+    secs--;
+    if(toastNumEl) toastNumEl.textContent = secs;
+    if(secs <= 0){
+      clearInterval(ticker);
+      doRedirect();
+    }
+  }, 1000);
+
+  function doRedirect(){
+    if(isFinal){
+      // No more redirects — just close popup
+      sessionStorage.setItem(freeKey, '1');
+      dismissPopup();
+      return;
+    }
+    // Fade out then redirect back to guide
+    bg.style.animation = 'afIn .5s ease reverse forwards';
+    toast.style.opacity = '0';
+    setTimeout(function(){
+      window.location.href = '/april-fools.html?aprilfools=1';
+    }, 500);
+  }
+
+  function dismissPopup(){
+    clearInterval(ticker);
+    toast.style.opacity = '0';
+    bg.style.animation = 'afIn .35s ease reverse forwards';
+    setTimeout(function(){ bg.remove(); toast.remove(); }, 350);
     history.replaceState(null, '', window.location.pathname);
+  }
+
+  // ── PRIMARY: accept fate ──
+  document.getElementById('af-btn-primary').addEventListener('click', function(){
+    if(isFinal){
+      sessionStorage.setItem(freeKey, '1');
+    }
+    dismissPopup();
   });
 
+  // ── SECONDARY: take me back ──
+  if(cfg.secondary){
+    document.getElementById('af-btn-secondary').addEventListener('click', function(){
+      clearInterval(ticker);
+      toast.style.opacity = '0';
+      bg.style.animation = 'afIn .35s ease reverse forwards';
+      setTimeout(function(){
+        window.location.href = '/april-fools.html';
+      }, 350);
+    });
+  }
+
+  // ── Click outside to dismiss (primary behavior) ──
   bg.addEventListener('click', function(e){
-    if(e.target === bg){
-      document.getElementById('af-popup-close').click();
-    }
+    if(e.target === bg) document.getElementById('af-btn-primary').click();
   });
+
 })();
 </script>
 
