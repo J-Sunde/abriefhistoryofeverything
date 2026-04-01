@@ -522,6 +522,59 @@ img{display:block;}
 .future-body{font-size:.83rem;line-height:1.65;color:var(--text);}
 @media(max-width:700px){.future-grid{grid-template-columns:repeat(2,1fr);}}
 
+/* ══ COLOPHON ══ */
+.colophon{
+  display:grid;grid-template-columns:1fr 1fr;gap:3rem;
+  padding:3.5rem 2.4rem 3.5rem calc(52px + 2.4rem);
+  border-top:1px solid var(--rule);
+  background:var(--bg1);
+  transition:background .35s,border-color .35s;
+}
+@media(max-width:768px){
+  .colophon{grid-template-columns:1fr;padding:2.5rem 1.5rem;gap:2rem;}
+}
+[data-theme="light"] .colophon{background:var(--bg1);}
+.colophon-label{
+  font-family:'IBM Plex Mono',monospace;
+  font-size:.72rem;font-weight:700;letter-spacing:.22em;text-transform:uppercase;
+  color:var(--accent);margin-bottom:.65rem;
+}
+.colophon-blurb{
+  font-family:'IBM Plex Sans',sans-serif;
+  font-size:1rem;color:var(--muted);line-height:1.6;max-width:42ch;margin:0;
+}
+.colophon-meta-label{
+  font-family:'IBM Plex Mono',monospace;
+  font-size:.72rem;font-weight:700;letter-spacing:.22em;text-transform:uppercase;
+  color:var(--muted);margin-bottom:.55rem;
+}
+.colophon-series{
+  font-family:'IBM Plex Sans',sans-serif;
+  font-size:1.05rem;font-weight:700;
+  text-transform:uppercase;letter-spacing:.04em;
+  color:var(--bright);margin-bottom:.35rem;
+  transition:color .35s;
+}
+.colophon-series em{font-style:normal;color:var(--accent);}
+.colophon-url{
+  display:block;
+  font-family:'IBM Plex Mono',monospace;
+  font-size:.82rem;color:var(--accent);text-decoration:none;
+  border-bottom:1px solid transparent;margin-bottom:1.1rem;
+  transition:border-color .15s;
+}
+.colophon-url:hover{border-bottom-color:var(--accent);}
+.colophon-share{display:flex;gap:.6rem;flex-wrap:wrap;}
+.colophon-share-link{
+  font-family:'IBM Plex Mono',monospace;
+  font-size:.78rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;
+  color:var(--accent);text-decoration:none;
+  border:1px solid rgba(255,92,32,.4);
+  padding:.25rem .65rem;
+  transition:background .15s,color .15s;
+}
+.colophon-share-link:hover{background:var(--accent);color:#000;}
+
 /* ══ FOOTER ══ */
 footer{
   background:var(--bg);
@@ -1065,6 +1118,23 @@ footer{
     <span class="entity-tag">Misinformation Problem</span>
     <span class="entity-tag">AI Deepfakes</span>
     <span class="entity-tag">Plausible Lie</span>
+  </div>
+</div>
+
+<!-- COLOPHON -->
+<div class="colophon">
+  <div class="colophon-desc">
+    <div class="colophon-label">April Fools Day / History</div>
+    <p class="colophon-blurb">From Roman Hilaria to BBC spaghetti harvests — two thousand years of humanity's most democratic art form, the licensed lie.</p>
+  </div>
+  <div class="colophon-meta">
+    <div class="colophon-meta-label">Part of</div>
+    <div class="colophon-series">A <em>(Brief)</em> History of Everything<span class="cursor-blink">_</span></div>
+    <a href="https://abriefhistoryofeverything.com" class="colophon-url" target="_blank" rel="noopener">abriefhistoryofeverything.com ↗</a>
+    <div class="colophon-share">
+      <a href="https://twitter.com/intent/tweet?text=A%20(Brief)%20History%20of%20April%20Fools%20Day%20%E2%80%94%20from%20Roman%20Hilaria%20to%20BBC%20spaghetti%20harvests&url=https%3A%2F%2Fabriefhistoryofeverything.com%2Fapril-fools" class="colophon-share-link" target="_blank" rel="noopener">Share on X</a>
+      <a href="https://www.linkedin.com/sharing/share-offsite/?url=https%3A%2F%2Fabriefhistoryofeverything.com%2Fapril-fools" class="colophon-share-link" target="_blank" rel="noopener">Share on LinkedIn</a>
+    </div>
   </div>
 </div>
 
