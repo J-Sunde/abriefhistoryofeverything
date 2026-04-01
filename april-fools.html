@@ -1143,15 +1143,24 @@ footer{
   /* ════════════════════════════════════════════════
      APRIL FOOLS REDIRECT
      Countdown shortens each return visit:
-     Visit 1 → 12s  |  Visit 2 → 8s  |  Visit 3 → 5s  |  Visit 4 → 3s
+     Visit 1 → 10s  |  Visit 2 → 8s  |  Visit 3 → 5s
+     Visit 4 → "You Win" popup fires immediately on THIS page, no redirect
      sessionStorage tracks visit count across the loop
   ════════════════════════════════════════════════ */
 
-  // If they've earned freedom, kill the redirect entirely
+  // If they've earned freedom, kill everything
   if(sessionStorage.getItem('af_free')) return;
 
-  var visits   = parseInt(sessionStorage.getItem('af_visits') || '0', 10);
-  var countdowns = [12, 8, 5, 3];
+  var visits = parseInt(sessionStorage.getItem('af_visits') || '0', 10);
+
+  // Visit 4+: show "You Win" popup immediately right here, no redirect
+  if(visits >= 3) {
+    sessionStorage.setItem('af_free', '1');
+    showYouWinPopup();
+    return;
+  }
+
+  var countdowns = [10, 8, 5];
   var countdown  = countdowns[Math.min(visits, countdowns.length - 1)];
 
   var toast    = document.getElementById('countdown-toast');
@@ -1179,6 +1188,80 @@ footer{
       }, 1800);
     }
   }, 1000);
+
+  function showYouWinPopup(){
+    var s = document.createElement('style');
+    s.textContent = `
+      #yw-bg{
+        position:fixed;inset:0;background:rgba(7,9,12,.88);
+        z-index:99999;display:flex;align-items:center;justify-content:center;
+        animation:ywIn .4s ease forwards;
+        backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px);
+      }
+      @keyframes ywIn{from{opacity:0;}to{opacity:1;}}
+      #yw-box{
+        background:#0C0F14;border:1px solid #FF5C20;
+        padding:2.8rem 3.2rem;text-align:center;
+        max-width:500px;width:92%;
+        animation:ywUp .5s cubic-bezier(.22,1,.36,1) forwards;
+        font-family:'IBM Plex Mono',monospace;
+      }
+      @keyframes ywUp{from{opacity:0;transform:translateY(28px);}to{opacity:1;transform:translateY(0);}}
+      #yw-emoji{font-size:3rem;margin-bottom:1rem;display:block;}
+      #yw-title{
+        font-size:clamp(1.5rem,4vw,2.2rem);font-weight:700;
+        color:#FF5C20;letter-spacing:-.02em;line-height:1;
+        margin-bottom:.75rem;font-family:'IBM Plex Mono',monospace;
+      }
+      #yw-msg{
+        font-size:.78rem;letter-spacing:.07em;text-transform:uppercase;
+        color:#5A7A94;line-height:1.85;margin-bottom:1.6rem;
+        font-family:'IBM Plex Mono',monospace;
+      }
+      #yw-msg strong{color:#ECF2F6;letter-spacing:.05em;}
+      #yw-btn{
+        background:#FF5C20;color:#000;
+        font-family:'IBM Plex Mono',monospace;
+        font-size:.68rem;font-weight:700;letter-spacing:.2em;text-transform:uppercase;
+        padding:.65rem 1.8rem;border:none;cursor:pointer;
+        transition:background .15s,transform .1s;display:inline-block;
+      }
+      #yw-btn:hover{background:#FF8C50;transform:translateY(-1px);}
+      #yw-byline{
+        margin-top:1.2rem;font-size:.58rem;
+        letter-spacing:.18em;text-transform:uppercase;
+        color:#1E2A3A;font-family:'IBM Plex Mono',monospace;
+      }
+    `;
+    document.head.appendChild(s);
+
+    var bg = document.createElement('div');
+    bg.id = 'yw-bg';
+    bg.innerHTML = '<div id="yw-box">'
+      + '<span id="yw-emoji">🏳️</span>'
+      + '<div id="yw-title">Okay. You win.</div>'
+      + '<p id="yw-msg">'
+      + 'This was a prank.<br>'
+      + 'About a guide that doesn\'t exist.<br>'
+      + 'About a tradition of things that aren\'t real.<br><br>'
+      + '<strong>You read a fake guide about April Fools Day<br>on April Fools Day.</strong><br><br>'
+      + 'And then you came back three times.<br>'
+      + 'There is nothing left for us to do here.<br>'
+      + 'The redirect is dead. Stay as long as you want.'
+      + '</p>'
+      + '<button id="yw-btn">I\'ll stay then.</button>'
+      + '<div id="yw-byline">A (Brief) History of Everything_ &middot; Apr 1, 2026</div>'
+      + '</div>';
+    document.body.appendChild(bg);
+
+    document.getElementById('yw-btn').addEventListener('click', function(){
+      bg.style.animation = 'ywIn .3s ease reverse forwards';
+      setTimeout(function(){ bg.remove(); }, 320);
+    });
+    bg.addEventListener('click', function(e){
+      if(e.target === bg) document.getElementById('yw-btn').click();
+    });
+  }
 
 })();
 </script>
