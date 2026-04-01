@@ -711,7 +711,7 @@ footer{
 <!-- HERO -->
 <section class="hero" id="hero-section">
   <div class="hero-img"></div>
-  <div class="hero-eyebrow">A (Brief) History of Everything_ · Est. 2026</div>
+  <div class="hero-eyebrow">A (Brief) History of Everything_ · Est. 2025</div>
   <h1 class="hero-title">A <em>(Brief)</em><br>History of<br>April Fools Day<span class="cursor-blink">_</span></h1>
   <p class="hero-sub">From Roman Hilaria to BBC spaghetti harvests — the complete history of humanity's greatest shared tradition of creative deception. How one day a year became the world's most democratic art form.</p>
   <div class="hero-meta">
@@ -1350,13 +1350,24 @@ footer{
       + '</div>';
     document.body.appendChild(bg);
 
-    document.getElementById('yw-btn').addEventListener('click', function(){
+    function dismissYW(){
       bg.style.animation = 'ywIn .3s ease reverse forwards';
       setTimeout(function(){ bg.remove(); }, 320);
+    }
+
+    document.getElementById('yw-btn').addEventListener('click', function(){
+      clearTimeout(autoDismiss);
+      dismissYW();
     });
     bg.addEventListener('click', function(e){
-      if(e.target === bg) document.getElementById('yw-btn').click();
+      if(e.target === bg){
+        clearTimeout(autoDismiss);
+        dismissYW();
+      }
     });
+
+    // Auto-dismiss after 18s — for the one person who walked away
+    var autoDismiss = setTimeout(dismissYW, 18000);
   }
 
 })();
