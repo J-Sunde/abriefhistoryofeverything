@@ -1,0 +1,2416 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>A (Brief) History of AI — Premium Edition</title>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400&family=IBM+Plex+Sans+Condensed:ital,wght@0,300;0,400;0,600;0,700;1,300&family=IBM+Plex+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+
+/* ═══════════════════════════════════════════════════
+   TOKENS
+═══════════════════════════════════════════════════ */
+:root {
+  --ink:       #0A0D12;
+  --ink2:      #1C2330;
+  --ink3:      #2E3A4A;
+  --dim:       #6A7A8A;
+  --muted:     #9AAABB;
+  --rule:      #D0D8E0;
+  --rule2:     #E4EAF0;
+  --bg:        #F7F5F2;
+  --bg1:       #EDEAE5;
+  --bg2:       #E2DED8;
+  --accent:    #0066CC;
+  --accent2:   #004499;
+  --cyan:      #00B4D8;
+  --warm:      #CC4400;
+  --page-w:    816px;   /* 8.5in at 96dpi */
+  --page-h:    1056px;  /* 11in at 96dpi */
+  --margin:    64px;
+  --margin-sm: 48px;
+}
+
+/* ═══════════════════════════════════════════════════
+   RESET + BASE
+═══════════════════════════════════════════════════ */
+*, *::before, *::after { margin:0; padding:0; box-sizing:border-box; }
+html { font-size: 16px; background: #CDD0D5; }
+body {
+  font-family: 'IBM Plex Sans', sans-serif;
+  color: var(--ink);
+  line-height: 1.6;
+}
+a { color: var(--accent); text-decoration: none; }
+a:hover { text-decoration: underline; }
+
+/* ═══════════════════════════════════════════════════
+   PAGE SYSTEM
+═══════════════════════════════════════════════════ */
+.page {
+  width: var(--page-w);
+  min-height: var(--page-h);
+  background: var(--bg);
+  margin: 0 auto 32px;
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 4px 40px rgba(0,0,0,.18);
+}
+
+/* Running footer on all inner pages */
+.page-footer {
+  position: absolute;
+  bottom: 0; left: 0; right: 0;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 var(--margin);
+  border-top: 1px solid var(--rule);
+}
+.page-footer .pf-series {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: .65rem;
+  letter-spacing: .18em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+.page-footer .pf-num {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: .65rem;
+  color: var(--muted);
+}
+
+/* Running header on inner pages */
+.page-header {
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 var(--margin);
+  border-bottom: 1px solid var(--rule);
+}
+.page-header .ph-guide {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: .65rem;
+  letter-spacing: .14em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+.page-header .ph-section {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: .65rem;
+  color: var(--accent);
+  letter-spacing: .1em;
+  text-transform: uppercase;
+}
+
+/* Content area (inside header/footer) */
+.page-body {
+  position: absolute;
+  top: 40px; bottom: 80px; left: 0; right: 0;
+  padding: var(--margin-sm) var(--margin);
+  overflow: hidden;
+}
+.page-body.no-header {
+  top: 0;
+}
+.page-body.no-footer {
+  bottom: 0;
+}
+
+/* ═══════════════════════════════════════════════════
+   PAGE 1 — COVER
+═══════════════════════════════════════════════════ */
+.page-cover {
+  background: var(--ink);
+  display: flex;
+  flex-direction: column;
+}
+
+.cover-top-bar {
+  height: 6px;
+  background: var(--accent);
+  flex-shrink: 0;
+}
+
+.cover-inner {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  padding: 72px var(--margin) 60px;
+  position: relative;
+}
+
+.cover-index {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: .72rem;
+  letter-spacing: .3em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: 12px;
+}
+
+.cover-eyebrow {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: .85rem;
+  letter-spacing: .25em;
+  text-transform: uppercase;
+  color: #7A9AB8;
+  margin-bottom: 8px;
+}
+
+.cover-title {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 5.2rem;
+  font-weight: 700;
+  line-height: .92;
+  color: #ECF4FC;
+  letter-spacing: -.02em;
+  margin-bottom: 40px;
+}
+
+.cover-title .cursor {
+  color: var(--accent);
+  animation: blink 1.1s step-end infinite;
+}
+@keyframes blink { 0%,100%{opacity:1} 50%{opacity:0} }
+
+.cover-rule {
+  width: 60px;
+  height: 3px;
+  background: var(--accent);
+  margin-bottom: 32px;
+}
+
+.cover-desc {
+  font-family: 'IBM Plex Sans', sans-serif;
+  font-size: 1.05rem;
+  font-weight: 300;
+  line-height: 1.65;
+  color: #8AAABB;
+  max-width: 460px;
+  margin-bottom: 60px;
+}
+
+.cover-meta-row {
+  display: flex;
+  gap: 48px;
+  margin-top: auto;
+}
+
+.cover-meta-item {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+.cover-meta-label {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: .6rem;
+  letter-spacing: .25em;
+  text-transform: uppercase;
+  color: #456;
+}
+.cover-meta-val {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: .82rem;
+  color: #8AAABB;
+}
+
+.cover-bottom-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 24px var(--margin) 28px;
+  border-top: 1px solid #1A2230;
+  flex-shrink: 0;
+}
+.cover-series-name {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: .72rem;
+  letter-spacing: .18em;
+  text-transform: uppercase;
+  color: #456;
+}
+.cover-url {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: .72rem;
+  color: #456;
+}
+
+/* ═══════════════════════════════════════════════════
+   PAGE 2 — TOC
+═══════════════════════════════════════════════════ */
+.toc-title {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: .72rem;
+  letter-spacing: .3em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: 24px;
+}
+
+.toc-section {
+  margin-bottom: 16px;
+}
+.toc-section-label {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: .6rem;
+  letter-spacing: .25em;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin-bottom: 12px;
+  padding-bottom: 8px;
+  border-bottom: 1px solid var(--rule);
+}
+
+.toc-entry {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  padding: 7px 0;
+  border-bottom: 1px dotted var(--rule2);
+}
+.toc-entry:last-child { border-bottom: none; }
+
+.toc-entry-left {
+  display: flex;
+  align-items: baseline;
+  gap: 16px;
+}
+.toc-num {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: .7rem;
+  color: var(--muted);
+  flex-shrink: 0;
+  width: 28px;
+}
+.toc-label {
+  font-family: 'IBM Plex Sans Condensed', sans-serif;
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--ink);
+}
+.toc-sub {
+  font-family: 'IBM Plex Sans', sans-serif;
+  font-size: .8rem;
+  color: var(--dim);
+  font-weight: 300;
+}
+.toc-pg {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: .72rem;
+  color: var(--muted);
+  flex-shrink: 0;
+}
+
+.toc-side-note {
+  position: absolute;
+  right: var(--margin);
+  top: 48px;
+  width: 180px;
+  background: var(--bg1);
+  border-left: 3px solid var(--accent);
+  padding: 16px 14px;
+}
+.toc-side-note-label {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: .58rem;
+  letter-spacing: .2em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: 8px;
+}
+.toc-side-note-text {
+  font-family: 'IBM Plex Sans', sans-serif;
+  font-size: .78rem;
+  color: var(--dim);
+  line-height: 1.5;
+}
+
+/* ═══════════════════════════════════════════════════
+   PAGE 3 — STATS
+═══════════════════════════════════════════════════ */
+.stats-page {
+  background: var(--ink);
+}
+.stats-page .page-header {
+  border-color: #1A2230;
+}
+.stats-page .ph-guide,
+.stats-page .ph-section { color: #456; }
+.stats-page .ph-section { color: var(--accent); }
+.stats-page .page-footer {
+  border-color: #1A2230;
+}
+.stats-page .pf-series,
+.stats-page .pf-num { color: #456; }
+
+.stats-eyebrow {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: .68rem;
+  letter-spacing: .3em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: 32px;
+}
+
+.stats-headline {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 1.8rem;
+  font-weight: 700;
+  color: #ECF4FC;
+  line-height: 1.2;
+  max-width: 480px;
+  margin-bottom: 56px;
+}
+
+.stats-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  gap: 1px;
+  background: #1A2230;
+  margin-bottom: 48px;
+}
+
+.stat-cell {
+  background: var(--ink);
+  padding: 28px 24px;
+  display: flex;
+  flex-direction: column;
+}
+.stat-cell.accent-bg {
+  background: var(--accent2);
+}
+.stat-num {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 2.6rem;
+  font-weight: 700;
+  color: var(--accent);
+  line-height: 1;
+  margin-bottom: 10px;
+}
+.stat-cell.accent-bg .stat-num {
+  color: #A0D4FF;
+}
+.stat-label {
+  font-family: 'IBM Plex Sans Condensed', sans-serif;
+  font-size: .78rem;
+  font-weight: 600;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+  color: #5A7A94;
+  margin-bottom: 6px;
+}
+.stat-cell.accent-bg .stat-label { color: #88BBDD; }
+.stat-desc {
+  font-family: 'IBM Plex Sans', sans-serif;
+  font-size: .75rem;
+  color: #3A5568;
+  line-height: 1.4;
+  margin-top: auto;
+}
+.stat-cell.accent-bg .stat-desc { color: #6699BB; }
+
+.stats-quote {
+  border-left: 3px solid var(--accent);
+  padding-left: 24px;
+}
+.stats-quote-text {
+  font-family: 'IBM Plex Sans Condensed', sans-serif;
+  font-size: 1.15rem;
+  font-style: italic;
+  color: #8AAABB;
+  line-height: 1.5;
+  margin-bottom: 10px;
+}
+.stats-quote-attr {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: .65rem;
+  letter-spacing: .18em;
+  text-transform: uppercase;
+  color: #456;
+}
+
+/* ═══════════════════════════════════════════════════
+   ERA PAGES
+═══════════════════════════════════════════════════ */
+.era-index-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 28px;
+}
+.era-index-num {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: .7rem;
+  font-weight: 700;
+  color: var(--accent);
+  letter-spacing: .12em;
+}
+.era-index-sep { color: var(--rule); }
+.era-index-label {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: .7rem;
+  letter-spacing: .18em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+.era-period {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: .72rem;
+  letter-spacing: .22em;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin-bottom: 10px;
+}
+
+.era-title {
+  font-family: 'IBM Plex Sans Condensed', sans-serif;
+  font-size: 1.9rem;
+  font-weight: 700;
+  color: var(--ink);
+  line-height: 1.15;
+  max-width: 520px;
+  margin-bottom: 32px;
+}
+
+.era-rule {
+  width: 40px;
+  height: 2px;
+  background: var(--accent);
+  margin-bottom: 28px;
+}
+
+/* Event cards in era pages */
+.event-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+
+.event-item {
+  display: grid;
+  grid-template-columns: 90px 1fr;
+  gap: 20px;
+  padding: 18px 0;
+  border-bottom: 1px solid var(--rule2);
+}
+.event-item:first-child { border-top: 1px solid var(--rule2); }
+
+.event-year {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: .8rem;
+  font-weight: 600;
+  color: var(--accent);
+  padding-top: 2px;
+  flex-shrink: 0;
+}
+
+.event-content {}
+.event-name {
+  font-family: 'IBM Plex Sans Condensed', sans-serif;
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--ink);
+  margin-bottom: 4px;
+}
+.event-body {
+  font-family: 'IBM Plex Sans', sans-serif;
+  font-size: .82rem;
+  color: var(--dim);
+  line-height: 1.5;
+}
+.event-tag {
+  display: inline-block;
+  margin-top: 6px;
+  padding: 2px 7px;
+  background: var(--bg1);
+  border: 1px solid var(--rule);
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: .58rem;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+  color: var(--dim);
+  border-radius: 2px;
+}
+.event-tag.key {
+  background: rgba(0,102,204,.07);
+  border-color: rgba(0,102,204,.2);
+  color: var(--accent);
+}
+
+/* Era sidebar meter (right column on 2-col eras) */
+.era-layout-2col {
+  display: grid;
+  grid-template-columns: 1fr 200px;
+  gap: 40px;
+  height: 100%;
+}
+
+.era-sidebar-block {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  padding-top: 8px;
+}
+
+.sidebar-stat {
+  padding: 16px;
+  background: var(--bg1);
+  border-left: 3px solid var(--accent);
+}
+.sidebar-stat-num {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 1.6rem;
+  font-weight: 700;
+  color: var(--accent);
+  line-height: 1;
+  margin-bottom: 4px;
+}
+.sidebar-stat-label {
+  font-family: 'IBM Plex Sans Condensed', sans-serif;
+  font-size: .72rem;
+  font-weight: 600;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+  color: var(--dim);
+}
+
+.sidebar-note {
+  font-family: 'IBM Plex Sans', sans-serif;
+  font-size: .76rem;
+  color: var(--muted);
+  line-height: 1.5;
+  padding-top: 12px;
+  border-top: 1px solid var(--rule);
+}
+
+/* ═══════════════════════════════════════════════════
+   KEY FIGURES PAGE
+═══════════════════════════════════════════════════ */
+.figures-page-title {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: .7rem;
+  letter-spacing: .3em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: 1px;
+}
+
+.figures-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 1px;
+  background: var(--rule2);
+  height: 100%;
+}
+
+.figure-card {
+  background: var(--bg);
+  display: flex;
+  flex-direction: row;
+  flex: 1;
+  overflow: hidden;
+  min-height: 0;
+}
+
+.figure-photo {
+  width: 33%;
+  flex-shrink: 0;
+  overflow: hidden;
+  background: var(--bg2);
+}
+
+.figure-photo img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: top center;
+  display: block;
+  filter: grayscale(15%) contrast(1.05);
+}
+
+.figure-info {
+  padding: 28px 32px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  flex: 1;
+  overflow: hidden;
+}
+
+.figure-era-tag {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: .62rem;
+  letter-spacing: .18em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+.figure-name {
+  font-family: 'IBM Plex Sans Condensed', sans-serif;
+  font-size: 1.6rem;
+  font-weight: 700;
+  color: var(--ink);
+  line-height: 1.05;
+}
+
+.figure-role {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: .65rem;
+  color: var(--accent);
+  letter-spacing: .08em;
+  margin-bottom: 4px;
+}
+
+.figure-bio {
+  font-family: 'IBM Plex Sans', sans-serif;
+  font-size: .84rem;
+  color: var(--ink2);
+  line-height: 1.65;
+}
+
+.figure-bio p {
+  margin-bottom: 8px;
+}
+.figure-bio p:last-child { margin-bottom: 0; }
+
+.figure-link {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: .6rem;
+  color: var(--muted);
+  letter-spacing: .08em;
+  margin-top: auto;
+  padding-top: 12px;
+  border-top: 1px solid var(--rule2);
+}
+.figure-link a { color: var(--accent); }
+
+/* ═══════════════════════════════════════════════════
+   PHOTO STRIP PAGE
+═══════════════════════════════════════════════════ */
+.photo-strip-page {
+  background: var(--ink);
+}
+.photo-strip-page .page-header {
+  border-color: #1A2230;
+}
+.photo-strip-page .ph-guide,
+.photo-strip-page .ph-section { color: #456; }
+.photo-strip-page .ph-section { color: var(--accent); }
+.photo-strip-page .page-footer { border-color: #1A2230; }
+.photo-strip-page .pf-series,
+.photo-strip-page .pf-num { color: #456; }
+
+.strip-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(3, 1fr);
+  gap: 3px;
+  height: 100%;
+}
+
+.strip-cell {
+  overflow: hidden;
+  position: relative;
+}
+
+.strip-cell img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  filter: grayscale(30%) contrast(1.1);
+  opacity: 0.85;
+  transition: opacity .3s;
+}
+
+.strip-cell-cap {
+  position: absolute;
+  bottom: 0; left: 0; right: 0;
+  padding: 6px 10px;
+  background: linear-gradient(transparent, rgba(0,0,0,.7));
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: .52rem;
+  letter-spacing: .16em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,.6);
+}
+
+/* ═══════════════════════════════════════════════════
+   ARTICLE PAGES
+═══════════════════════════════════════════════════ */
+.article-page .page-body {
+  /* single column — content manually split across pages */
+}
+
+.article-intro-page .page-body {
+  column-count: 1;
+}
+
+.article-kicker {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: .68rem;
+  letter-spacing: .3em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: 20px;
+}
+
+.article-headline {
+  font-family: 'IBM Plex Sans Condensed', sans-serif;
+  font-size: 2.6rem;
+  font-weight: 700;
+  color: var(--ink);
+  line-height: 1.1;
+  margin-bottom: 20px;
+  max-width: 560px;
+}
+
+.article-deck {
+  font-family: 'IBM Plex Sans', sans-serif;
+  font-size: 1rem;
+  font-weight: 300;
+  color: var(--dim);
+  line-height: 1.65;
+  max-width: 520px;
+  margin-bottom: 32px;
+  font-style: italic;
+}
+
+.article-rule {
+  width: 100%;
+  height: 1px;
+  background: var(--rule);
+  margin-bottom: 32px;
+}
+
+.article-section-head {
+  font-family: 'IBM Plex Sans Condensed', sans-serif;
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--ink);
+  margin-top: 22px;
+  margin-bottom: 8px;
+  break-after: avoid;
+}
+.article-section-head:first-child { margin-top: 0; }
+
+.article-section-sub {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: .68rem;
+  letter-spacing: .18em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-top: 20px;
+  margin-bottom: 6px;
+  break-after: avoid;
+}
+
+.article-p {
+  font-family: 'IBM Plex Sans', sans-serif;
+  font-size: .84rem;
+  color: var(--ink2);
+  line-height: 1.65;
+  margin-bottom: 10px;
+}
+
+.article-pull {
+  border-left: 3px solid var(--accent);
+  padding: 12px 16px;
+  margin: 16px 0;
+  break-inside: avoid;
+}
+.article-pull-text {
+  font-family: 'IBM Plex Sans Condensed', sans-serif;
+  font-size: 1.05rem;
+  font-style: italic;
+  color: var(--ink);
+  line-height: 1.4;
+}
+
+/* ═══════════════════════════════════════════════════
+   RESOURCES PAGE
+═══════════════════════════════════════════════════ */
+.resources-title {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: .7rem;
+  letter-spacing: .3em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: 36px;
+}
+
+.resources-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 32px 48px;
+}
+
+.resource-group-label {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: .62rem;
+  letter-spacing: .22em;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin-bottom: 12px;
+  padding-bottom: 8px;
+  border-bottom: 1px solid var(--rule);
+}
+
+.resource-link {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  padding: 7px 0;
+  border-bottom: 1px dotted var(--rule2);
+  font-family: 'IBM Plex Sans', sans-serif;
+  font-size: .82rem;
+  color: var(--ink);
+}
+.resource-link:last-child { border-bottom: none; }
+.resource-link a {
+  color: var(--ink);
+  font-weight: 500;
+}
+.resource-link a:hover { color: var(--accent); }
+.resource-url {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: .62rem;
+  color: var(--accent);
+}
+
+/* ═══════════════════════════════════════════════════
+   BACK PAGE
+═══════════════════════════════════════════════════ */
+.back-page {
+  background: var(--ink);
+  display: flex;
+  flex-direction: column;
+}
+
+.back-inner {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: var(--margin);
+  text-align: center;
+}
+
+.back-mark {
+  margin-bottom: 36px;
+}
+
+.back-series {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: .72rem;
+  letter-spacing: .25em;
+  text-transform: uppercase;
+  color: #456;
+  margin-bottom: 12px;
+}
+
+.back-tagline {
+  font-family: 'IBM Plex Sans Condensed', sans-serif;
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #ECF4FC;
+  line-height: 1.3;
+  max-width: 420px;
+  margin-bottom: 40px;
+}
+
+.back-guides-label {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: .6rem;
+  letter-spacing: .25em;
+  text-transform: uppercase;
+  color: #456;
+  margin-bottom: 16px;
+}
+
+.back-guides-list {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-bottom: 48px;
+}
+
+.back-guide-item {
+  font-family: 'IBM Plex Sans Condensed', sans-serif;
+  font-size: .88rem;
+  color: #5A7A94;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+}
+.back-guide-num {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: .65rem;
+  color: #2A3A4A;
+}
+
+.back-url {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: .85rem;
+  color: var(--accent);
+  letter-spacing: .06em;
+}
+
+.back-bottom {
+  padding: 20px var(--margin);
+  border-top: 1px solid #1A2230;
+  display: flex;
+  justify-content: center;
+  flex-shrink: 0;
+}
+.back-copyright {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: .62rem;
+  letter-spacing: .15em;
+  text-transform: uppercase;
+  color: #2A3A4A;
+}
+
+/* ═══════════════════════════════════════════════════
+   PRINT MEDIA
+═══════════════════════════════════════════════════ */
+@media print {
+  html { background: white; }
+  .page {
+    width: 8.5in;
+    min-height: 11in;
+    box-shadow: none;
+    margin: 0;
+    page-break-after: always;
+  }
+  @page {
+    size: 8.5in 11in;
+    margin: 0;
+  }
+}
+
+</style>
+</head>
+<body>
+
+<!-- ═══════════════════════════════════════════════
+     PAGE 1 — COVER
+═══════════════════════════════════════════════════ -->
+<div class="page page-cover" style="min-height:var(--page-h); display:flex; flex-direction:column;">
+  <div class="cover-top-bar"></div>
+  <div class="cover-inner">
+    <div class="cover-index">001 — ARTIFICIAL INTELLIGENCE</div>
+    <div class="cover-eyebrow">A (Brief) History of</div>
+    <div class="cover-title">ARTI&shy;FI&shy;CIAL<br>INTEL&shy;LI&shy;<wbr>GENCE<span class="cursor">_</span></div>
+    <div class="cover-rule"></div>
+    <div class="cover-desc">From Alan Turing's imitation game to autonomous agents — eight decades of machines learning to think, fail, and think again.</div>
+    <div class="cover-meta-row">
+      <div class="cover-meta-item">
+        <div class="cover-meta-label">Edition</div>
+        <div class="cover-meta-val">Premium — PDF</div>
+      </div>
+      <div class="cover-meta-item">
+        <div class="cover-meta-label">Published</div>
+        <div class="cover-meta-val">2026</div>
+      </div>
+      <div class="cover-meta-item">
+        <div class="cover-meta-label">Series</div>
+        <div class="cover-meta-val">Guide 001 of ∞</div>
+      </div>
+      <div class="cover-meta-item">
+        <div class="cover-meta-label">Pages</div>
+        <div class="cover-meta-val">~20</div>
+      </div>
+    </div>
+  </div>
+  <div class="cover-bottom-row">
+    <div class="cover-series-name">A (Brief) History of Everything_</div>
+    <div class="cover-url">abriefhistoryofeverything.com</div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════════
+     PAGE 2 — TABLE OF CONTENTS
+═══════════════════════════════════════════════════ -->
+<div class="page">
+  <div class="page-header">
+    <div class="ph-guide">A (Brief) History of AI — 001</div>
+    <div class="ph-section">Contents</div>
+  </div>
+  <div class="page-body" style="padding-right: 260px;">
+    <div class="toc-title">Table of Contents</div>
+
+    <div class="toc-section">
+      <div class="toc-section-label">Overview</div>
+      <div class="toc-entry">
+        <div class="toc-entry-left">
+          <div class="toc-num">—</div>
+          <div>
+            <div class="toc-label">Key Statistics</div>
+            <div class="toc-sub">Eight decades at a glance</div>
+          </div>
+        </div>
+        <div class="toc-pg">03</div>
+      </div>
+    </div>
+
+    <div class="toc-section">
+      <div class="toc-section-label">The Six Eras</div>
+      <div class="toc-entry">
+        <div class="toc-entry-left">
+          <div class="toc-num">01</div>
+          <div>
+            <div class="toc-label">The Birth</div>
+            <div class="toc-sub">1940s–60s · Theoretical foundations</div>
+          </div>
+        </div>
+        <div class="toc-pg">04</div>
+      </div>
+      <div class="toc-entry">
+        <div class="toc-entry-left">
+          <div class="toc-num">02</div>
+          <div>
+            <div class="toc-label">The AI Winters</div>
+            <div class="toc-sub">1970s–90s · Hype, collapse, retreat</div>
+          </div>
+        </div>
+        <div class="toc-pg">05</div>
+      </div>
+      <div class="toc-entry">
+        <div class="toc-entry-left">
+          <div class="toc-num">03</div>
+          <div>
+            <div class="toc-label">Deep Learning</div>
+            <div class="toc-sub">2000s–2010s · GPUs unlock scale</div>
+          </div>
+        </div>
+        <div class="toc-pg">06</div>
+      </div>
+      <div class="toc-entry">
+        <div class="toc-entry-left">
+          <div class="toc-num">04</div>
+          <div>
+            <div class="toc-label">The Transformer Era</div>
+            <div class="toc-sub">2017–2022 · One architecture reshapes everything</div>
+          </div>
+        </div>
+        <div class="toc-pg">07</div>
+      </div>
+      <div class="toc-entry">
+        <div class="toc-entry-left">
+          <div class="toc-num">05</div>
+          <div>
+            <div class="toc-label">The AI Moment</div>
+            <div class="toc-sub">2022–Now · Consumer adoption & agents</div>
+          </div>
+        </div>
+        <div class="toc-pg">08</div>
+      </div>
+      <div class="toc-entry">
+        <div class="toc-entry-left">
+          <div class="toc-num">06</div>
+          <div>
+            <div class="toc-label">Where Do We Go</div>
+            <div class="toc-sub">2026–2035 · Probabilistic forecasts</div>
+          </div>
+        </div>
+        <div class="toc-pg">09</div>
+      </div>
+    </div>
+
+    <div class="toc-section">
+      <div class="toc-section-label">Key Figures</div>
+      <div class="toc-entry">
+        <div class="toc-entry-left">
+          <div class="toc-num">—</div>
+          <div>
+            <div class="toc-label">12 People Who Shaped AI</div>
+            <div class="toc-sub">From Turing to Amodei</div>
+          </div>
+        </div>
+        <div class="toc-pg">10</div>
+      </div>
+      <div class="toc-entry">
+        <div class="toc-entry-left">
+          <div class="toc-num">—</div>
+          <div>
+            <div class="toc-label">Eight Decades · In Images</div>
+            <div class="toc-sub">Photo strip</div>
+          </div>
+        </div>
+        <div class="toc-pg">16</div>
+      </div>
+    </div>
+
+    <div class="toc-section">
+      <div class="toc-section-label">The Less Brief History</div>
+      <div class="toc-entry">
+        <div class="toc-entry-left">
+          <div class="toc-num">—</div>
+          <div>
+            <div class="toc-label">Long-Form Narrative</div>
+            <div class="toc-sub">The full story, in prose</div>
+          </div>
+        </div>
+        <div class="toc-pg">17</div>
+      </div>
+    </div>
+
+    <div class="toc-section">
+      <div class="toc-section-label">Reference</div>
+      <div class="toc-entry">
+        <div class="toc-entry-left">
+          <div class="toc-num">—</div>
+          <div>
+            <div class="toc-label">Resources &amp; Links</div>
+            <div class="toc-sub">Labs, research, news, history</div>
+          </div>
+        </div>
+        <div class="toc-pg">23</div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- Side note -->
+  <div class="toc-side-note">
+    <div class="toc-side-note-label">About this edition</div>
+    <div class="toc-side-note-text">This PDF pairs the structured timeline guide with a full long-form narrative — two ways to explore the same history. The visual guide for quick orientation, the prose for depth.</div>
+  </div>
+
+  <div class="page-footer">
+    <div class="pf-series">A (Brief) History of Everything_</div>
+    <div class="pf-num">02</div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════════
+     PAGE 3 — STATS
+═══════════════════════════════════════════════════ -->
+<div class="page stats-page">
+  <div class="page-header">
+    <div class="ph-guide" style="color:#456;">A (Brief) History of AI — 001</div>
+    <div class="ph-section">Key Statistics</div>
+  </div>
+  <div class="page-body">
+    <div class="stats-eyebrow">Eight Decades at a Glance</div>
+    <div class="stats-headline">From a 1950 thought experiment<br>to 100 million users in two months.</div>
+
+    <div class="stats-grid">
+      <div class="stat-cell">
+        <div class="stat-num">1950</div>
+        <div class="stat-label">Turing Test</div>
+        <div class="stat-desc">The foundational question posed — "Can machines think?" — that defined the field before it had a name.</div>
+      </div>
+      <div class="stat-cell">
+        <div class="stat-num">1956</div>
+        <div class="stat-label">AI Named</div>
+        <div class="stat-desc">John McCarthy coins "artificial intelligence" at the Dartmouth Conference, establishing the discipline.</div>
+      </div>
+      <div class="stat-cell accent-bg">
+        <div class="stat-num">2×</div>
+        <div class="stat-label">AI Winters</div>
+        <div class="stat-desc">Two complete cycles of hype, institutional collapse, and funding drought before the field found stable ground.</div>
+      </div>
+      <div class="stat-cell">
+        <div class="stat-num">100M</div>
+        <div class="stat-label">Users — 60 Days</div>
+        <div class="stat-desc">ChatGPT's adoption rate — the fastest consumer product launch in recorded history.</div>
+      </div>
+      <div class="stat-cell">
+        <div class="stat-num">80+</div>
+        <div class="stat-label">Years of Research</div>
+        <div class="stat-desc">From Turing's paper (1950) to autonomous agents entering the workforce — a longer road than anyone predicted.</div>
+      </div>
+      <div class="stat-cell accent-bg">
+        <div class="stat-num">175B</div>
+        <div class="stat-label">GPT-3 Parameters</div>
+        <div class="stat-desc">The scale inflection point of 2020 — 100× larger than its predecessor, with capabilities that surprised its own creators.</div>
+      </div>
+      <div class="stat-cell">
+        <div class="stat-num">$1B</div>
+        <div class="stat-label">Microsoft → OpenAI</div>
+        <div class="stat-desc">The investment that signalled the corporate world had accepted that large language models were a real platform.</div>
+      </div>
+      <div class="stat-cell">
+        <div class="stat-num">46+</div>
+        <div class="stat-label">Active AI Labs</div>
+        <div class="stat-desc">Post-2022 proliferation of serious frontier AI research organizations — up from a handful five years prior.</div>
+      </div>
+    </div>
+
+    <div class="stats-quote">
+      <div class="stats-quote-text">"We are on the edge of change comparable to the rise of human life on Earth."</div>
+      <div class="stats-quote-attr">Vernor Vinge, 1993 · Predicting the Technological Singularity</div>
+    </div>
+  </div>
+  <div class="page-footer">
+    <div class="pf-series" style="color:#456;">A (Brief) History of Everything_</div>
+    <div class="pf-num" style="color:#456;">03</div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════════
+     PAGE 4 — ERA 01: THE BIRTH
+═══════════════════════════════════════════════════ -->
+<div class="page">
+  <div class="page-header">
+    <div class="ph-guide">A (Brief) History of AI — 001</div>
+    <div class="ph-section">Era One · The Birth</div>
+  </div>
+  <div class="page-body">
+    <div class="era-layout-2col">
+      <div>
+        <div class="era-index-badge">
+          <div class="era-index-num">ERA 01</div>
+          <div class="era-index-sep">·</div>
+          <div class="era-index-label">1940s — 60s</div>
+        </div>
+        <div class="era-period">The Birth</div>
+        <div class="era-title">Laying the theoretical foundations of machine intelligence</div>
+        <div class="era-rule"></div>
+        <div class="event-list">
+          <div class="event-item">
+            <div class="event-year">1950</div>
+            <div class="event-content">
+              <div class="event-name">The Turing Test</div>
+              <div class="event-body">Alan Turing publishes "Computing Machinery and Intelligence," introducing the Imitation Game. The question "can machines think?" becomes the field's founding provocation — before the field existed.</div>
+              <span class="event-tag key">Foundational</span>
+            </div>
+          </div>
+          <div class="event-item">
+            <div class="event-year">1956</div>
+            <div class="event-content">
+              <div class="event-name">Dartmouth Conference</div>
+              <div class="event-body">John McCarthy organises a summer workshop at Dartmouth College and coins the term "artificial intelligence." The discipline is born, along with its first wave of optimism.</div>
+            </div>
+          </div>
+          <div class="event-item">
+            <div class="event-year">1958</div>
+            <div class="event-content">
+              <div class="event-name">The Perceptron</div>
+              <div class="event-body">Frank Rosenblatt builds the Perceptron — an early neural network that can learn to classify images. Headlines promise machines that will "walk, talk, see, and write." The hype is significant; the technology, considerably less so.</div>
+            </div>
+          </div>
+          <div class="event-item">
+            <div class="event-year">1966</div>
+            <div class="event-content">
+              <div class="event-name">ELIZA — First Chatbot</div>
+              <div class="event-body">MIT's Joseph Weizenbaum creates ELIZA, a program that simulates a therapist. People forget they're talking to a machine. Weizenbaum is alarmed. Everyone else is impressed.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="era-sidebar-block">
+        <div class="sidebar-stat">
+          <div class="sidebar-stat-num">4</div>
+          <div class="sidebar-stat-label">Milestone Events</div>
+        </div>
+        <div class="sidebar-stat">
+          <div class="sidebar-stat-num">16</div>
+          <div class="sidebar-stat-label">Years — 1950 to 1966</div>
+        </div>
+        <div class="sidebar-note">The founding era established the questions AI would spend the next 80 years answering. Almost every assumption made in this period turned out to be wrong about timing and right about direction.</div>
+      </div>
+    </div>
+  </div>
+  <div class="page-footer">
+    <div class="pf-series">A (Brief) History of Everything_</div>
+    <div class="pf-num">04</div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════════
+     PAGE 5 — ERA 02: THE WINTERS
+═══════════════════════════════════════════════════ -->
+<div class="page">
+  <div class="page-header">
+    <div class="ph-guide">A (Brief) History of AI — 001</div>
+    <div class="ph-section">Era Two · The AI Winters</div>
+  </div>
+  <div class="page-body">
+    <div class="era-layout-2col">
+      <div>
+        <div class="era-index-badge">
+          <div class="era-index-num">ERA 02</div>
+          <div class="era-index-sep">·</div>
+          <div class="era-index-label">1970s — 90s</div>
+        </div>
+        <div class="era-period">The AI Winters</div>
+        <div class="era-title">Two cycles of hype, collapse, and institutional retreat</div>
+        <div class="era-rule"></div>
+        <div class="event-list">
+          <div class="event-item">
+            <div class="event-year">1969–74</div>
+            <div class="event-content">
+              <div class="event-name">First AI Winter</div>
+              <div class="event-body">Minsky and Papert's book <em>Perceptrons</em> demonstrates mathematical limitations of early neural networks. Government funding collapses. The promising machines of the 1960s prove good at toy problems and useless for real ones.</div>
+            </div>
+          </div>
+          <div class="event-item">
+            <div class="event-year">1980</div>
+            <div class="event-content">
+              <div class="event-name">Expert Systems Boom</div>
+              <div class="event-body">Rule-based AI systems that encode human expertise find real commercial applications. Japan launches a national AI initiative. The US military invests hundreds of millions. The second wave of optimism peaks.</div>
+            </div>
+          </div>
+          <div class="event-item">
+            <div class="event-year">1987–93</div>
+            <div class="event-content">
+              <div class="event-name">Second AI Winter</div>
+              <div class="event-body">Expert systems prove brittle, expensive to maintain, and impossible to scale. Funding collapses again. Researchers begin avoiding "AI" in grant proposals — the phrase has become associated with overpromising.</div>
+              <span class="event-tag key">Critical</span>
+            </div>
+          </div>
+          <div class="event-item">
+            <div class="event-year">1997</div>
+            <div class="event-content">
+              <div class="event-name">Deep Blue Defeats Kasparov</div>
+              <div class="event-body">IBM's chess computer defeats the world champion Garry Kasparov. Remarkable engineering — but not a path to general intelligence. IBM's stock rises. The machine is retired. AI research continues in obscurity.</div>
+              <span class="event-tag key">Milestone</span>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="era-sidebar-block">
+        <div class="sidebar-stat">
+          <div class="sidebar-stat-num">2×</div>
+          <div class="sidebar-stat-label">Full Collapses</div>
+        </div>
+        <div class="sidebar-stat">
+          <div class="sidebar-stat-num">~28</div>
+          <div class="sidebar-stat-label">Years of Struggle</div>
+        </div>
+        <div class="sidebar-note">The winters weren't failures of imagination — they were failures of hardware, data, and theory arriving in the wrong order. All three problems would be solved, eventually, simultaneously.</div>
+      </div>
+    </div>
+  </div>
+  <div class="page-footer">
+    <div class="pf-series">A (Brief) History of Everything_</div>
+    <div class="pf-num">05</div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════════
+     PAGE 6 — ERA 03: DEEP LEARNING
+═══════════════════════════════════════════════════ -->
+<div class="page">
+  <div class="page-header">
+    <div class="ph-guide">A (Brief) History of AI — 001</div>
+    <div class="ph-section">Era Three · Deep Learning</div>
+  </div>
+  <div class="page-body">
+    <div class="era-layout-2col">
+      <div>
+        <div class="era-index-badge">
+          <div class="era-index-num">ERA 03</div>
+          <div class="era-index-sep">·</div>
+          <div class="era-index-label">2000s — 2010s</div>
+        </div>
+        <div class="era-period">Deep Learning</div>
+        <div class="era-title">GPUs unlock neural networks at scale — the modern era begins</div>
+        <div class="era-rule"></div>
+        <div class="event-list">
+          <div class="event-item">
+            <div class="event-year">2006</div>
+            <div class="event-content">
+              <div class="event-name">Hinton's Breakthrough</div>
+              <div class="event-body">Geoffrey Hinton publishes a paper showing deep neural networks can be trained effectively. After twenty years of being dismissed, the neural network approach is back — and this time the hardware can keep up.</div>
+            </div>
+          </div>
+          <div class="event-item">
+            <div class="event-year">2012</div>
+            <div class="event-content">
+              <div class="event-name">AlexNet — ImageNet</div>
+              <div class="event-body">Hinton's team enters AlexNet in the ImageNet competition and wins by a margin that looks like a scoring error. Error rates drop from 26% to 15.3%. Every serious AI researcher understands what has happened. The winter is over.</div>
+              <span class="event-tag key">Inflection Point</span>
+            </div>
+          </div>
+          <div class="event-item">
+            <div class="event-year">2014</div>
+            <div class="event-content">
+              <div class="event-name">GANs — Generative AI Born</div>
+              <div class="event-body">Ian Goodfellow invents Generative Adversarial Networks in a single night. Two networks compete — one generates fakes, one detects them. The result: images of faces, rooms, and landscapes that don't exist. The concept of a trustworthy photograph begins its long decline.</div>
+            </div>
+          </div>
+          <div class="event-item">
+            <div class="event-year">2016</div>
+            <div class="event-content">
+              <div class="event-name">AlphaGo — Go Defeated</div>
+              <div class="event-body">DeepMind's AlphaGo defeats Go world champion Lee Sedol 4–1. Nobody thought this was possible for another decade. Lee Sedol retires in 2019, citing the impossibility of competing with AI. Demis Hassabis wins the Nobel Prize in Chemistry in 2024 — for AlphaFold, the next application of the same approach.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="era-sidebar-block">
+        <div class="sidebar-stat">
+          <div class="sidebar-stat-num">15.3%</div>
+          <div class="sidebar-stat-label">AlexNet Error Rate</div>
+        </div>
+        <div class="sidebar-stat">
+          <div class="sidebar-stat-num">vs 26%</div>
+          <div class="sidebar-stat-label">Previous Best</div>
+        </div>
+        <div class="sidebar-note">The gap between AlexNet and second place in 2012 was so large that it effectively ended the debate about whether deep learning was worth pursuing. It wasn't a win — it was a discontinuity.</div>
+      </div>
+    </div>
+  </div>
+  <div class="page-footer">
+    <div class="pf-series">A (Brief) History of Everything_</div>
+    <div class="pf-num">06</div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════════
+     PAGE 7 — ERA 04: THE TRANSFORMER
+═══════════════════════════════════════════════════ -->
+<div class="page">
+  <div class="page-header">
+    <div class="ph-guide">A (Brief) History of AI — 001</div>
+    <div class="ph-section">Era Four · The Transformer Era</div>
+  </div>
+  <div class="page-body">
+    <div class="era-layout-2col">
+      <div>
+        <div class="era-index-badge">
+          <div class="era-index-num">ERA 04</div>
+          <div class="era-index-sep">·</div>
+          <div class="era-index-label">2017 — 2022</div>
+        </div>
+        <div class="era-period">The Transformer Era</div>
+        <div class="era-title">One architecture reshapes the entire field — language, vision, reasoning</div>
+        <div class="era-rule"></div>
+        <div class="event-list">
+          <div class="event-item">
+            <div class="event-year">2017</div>
+            <div class="event-content">
+              <div class="event-name">The Transformer Paper</div>
+              <div class="event-body">Eight Google researchers publish "Attention Is All You Need," introducing the Transformer architecture. Its "attention" mechanism allows networks to consider entire sequences simultaneously. Every large language model you've ever used descends from this paper.</div>
+              <span class="event-tag key">Architecture</span>
+            </div>
+          </div>
+          <div class="event-item">
+            <div class="event-year">2018</div>
+            <div class="event-content">
+              <div class="event-name">BERT &amp; GPT-1</div>
+              <div class="event-body">Google releases BERT; OpenAI releases GPT-1. The first generation of large language models built on the Transformer architecture. Impressive in 2018. Completely outclassed within two years.</div>
+            </div>
+          </div>
+          <div class="event-item">
+            <div class="event-year">2020</div>
+            <div class="event-content">
+              <div class="event-name">GPT-3 — 175B Parameters</div>
+              <div class="event-body">OpenAI releases GPT-3 with 175 billion parameters — 100× the scale of its predecessor. It writes essays, completes code, translates languages it wasn't trained to translate. Researchers call the new abilities "emergent." Nobody fully understands why scale produces them.</div>
+              <span class="event-tag key">Scale Event</span>
+            </div>
+          </div>
+          <div class="event-item">
+            <div class="event-year">2021–22</div>
+            <div class="event-content">
+              <div class="event-name">Image Generation Emerges</div>
+              <div class="event-body">DALL·E, Midjourney, and Stable Diffusion bring text-to-image generation to consumers. The creative implications — and the intellectual property questions — arrive simultaneously.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="era-sidebar-block">
+        <div class="sidebar-stat">
+          <div class="sidebar-stat-num">8</div>
+          <div class="sidebar-stat-label">Authors — Transformer Paper</div>
+        </div>
+        <div class="sidebar-stat">
+          <div class="sidebar-stat-num">100×</div>
+          <div class="sidebar-stat-label">GPT-3 vs GPT-2 Scale</div>
+        </div>
+        <div class="sidebar-note">"Attention Is All You Need" is among the most consequential papers in computer science history. Its authors scattered to found or join nearly every major AI lab that followed.</div>
+      </div>
+    </div>
+  </div>
+  <div class="page-footer">
+    <div class="pf-series">A (Brief) History of Everything_</div>
+    <div class="pf-num">07</div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════════
+     PAGE 8 — ERA 05: THE AI MOMENT
+═══════════════════════════════════════════════════ -->
+<div class="page">
+  <div class="page-header">
+    <div class="ph-guide">A (Brief) History of AI — 001</div>
+    <div class="ph-section">Era Five · The AI Moment</div>
+  </div>
+  <div class="page-body">
+    <div class="era-layout-2col">
+      <div>
+        <div class="era-index-badge">
+          <div class="era-index-num">ERA 05</div>
+          <div class="era-index-sep">·</div>
+          <div class="era-index-label">2022 — Now</div>
+        </div>
+        <div class="era-period">The AI Moment</div>
+        <div class="era-title">Consumer adoption, proliferation, and the emergence of autonomous agents</div>
+        <div class="era-rule"></div>
+        <div class="event-list">
+          <div class="event-item">
+            <div class="event-year">Nov 2022</div>
+            <div class="event-content">
+              <div class="event-name">ChatGPT — Mass Adoption</div>
+              <div class="event-body">OpenAI releases ChatGPT as a free research preview. 100 million users sign up in two months — the fastest consumer adoption in history. Dinner tables, school boards, and boardrooms confront the same question simultaneously.</div>
+              <span class="event-tag key">Consumer Inflection</span>
+            </div>
+          </div>
+          <div class="event-item">
+            <div class="event-year">2023</div>
+            <div class="event-content">
+              <div class="event-name">Proliferation</div>
+              <div class="event-body">More consequential AI systems ship in twelve months than the previous decade combined. Claude, Gemini, Llama (open source), Midjourney, voice synthesis, coding assistants. The competitive response to ChatGPT reshapes every major technology company.</div>
+            </div>
+          </div>
+          <div class="event-item">
+            <div class="event-year">2024</div>
+            <div class="event-content">
+              <div class="event-name">Agents &amp; Reasoning</div>
+              <div class="event-body">Models trained to reason step-by-step before answering dramatically outperform their predecessors on complex tasks. AI "agents" — systems that use tools to complete multi-step tasks without human guidance — move from research demos to real deployments.</div>
+            </div>
+          </div>
+          <div class="event-item">
+            <div class="event-year">2025 —</div>
+            <div class="event-content">
+              <div class="event-name">Open Horizon</div>
+              <div class="event-body">The rate of change is higher than it has ever been. The economic implications are no longer theoretical.</div>
+              <span class="event-tag">AGI Debate</span>
+              <span class="event-tag">Robotics</span>
+              <span class="event-tag">Scientific AI</span>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="era-sidebar-block">
+        <div class="sidebar-stat">
+          <div class="sidebar-stat-num">100M</div>
+          <div class="sidebar-stat-label">ChatGPT Users</div>
+        </div>
+        <div class="sidebar-stat">
+          <div class="sidebar-stat-num">60</div>
+          <div class="sidebar-stat-label">Days to 100M</div>
+        </div>
+        <div class="sidebar-note">TikTok took 9 months to reach 100 million users. Instagram took 2.5 years. ChatGPT did it in 60 days — without a marketing campaign.</div>
+      </div>
+    </div>
+  </div>
+  <div class="page-footer">
+    <div class="pf-series">A (Brief) History of Everything_</div>
+    <div class="pf-num">08</div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════════
+     PAGE 9 — ERA 06: FORECASTS
+═══════════════════════════════════════════════════ -->
+<div class="page">
+  <div class="page-header">
+    <div class="ph-guide">A (Brief) History of AI — 001</div>
+    <div class="ph-section">Era Six · Where Do We Go</div>
+  </div>
+  <div class="page-body">
+    <div class="era-index-badge">
+      <div class="era-index-num">EPILOGUE</div>
+      <div class="era-index-sep">·</div>
+      <div class="era-index-label">2026 — 2035</div>
+    </div>
+    <div class="era-period">Where Do We Go</div>
+    <div class="era-title">Probabilistic forecasts across two time horizons</div>
+    <div class="era-rule"></div>
+
+    <!-- Two-column forecast layout -->
+    <div style="display:grid; grid-template-columns:1fr 1fr; gap:24px 32px; margin-bottom: 24px;">
+
+      <!-- Horizon 1 -->
+      <div style="grid-column:1/-1; display:flex; align-items:center; gap:12px; padding-bottom:8px; border-bottom:2px solid var(--accent); margin-bottom:4px;">
+        <div style="font-family:'IBM Plex Mono',monospace; font-size:.62rem; letter-spacing:.22em; text-transform:uppercase; color:var(--accent);">Horizon 1 — Near-Term</div>
+        <div style="font-family:'IBM Plex Mono',monospace; font-size:.62rem; color:var(--muted);">2026–2030 · Higher Confidence</div>
+      </div>
+
+      <div style="background:var(--bg1); padding:16px; border-left:3px solid var(--accent);">
+        <div style="font-family:'IBM Plex Mono',monospace; font-size:.6rem; color:var(--accent); margin-bottom:6px;">2026–27 · ~85% Confidence</div>
+        <div style="font-family:'IBM Plex Sans Condensed',sans-serif; font-size:.95rem; font-weight:700; color:var(--ink); margin-bottom:6px;">Agents Enter the Workforce</div>
+        <div style="font-family:'IBM Plex Sans',sans-serif; font-size:.76rem; color:var(--dim); line-height:1.5;">AI agents begin automating components of knowledge work at scale — research, drafting, code review, scheduling. Productivity gains for adopters; real displacement for workers whose roles consist primarily of these tasks.</div>
+        <div style="margin-top:8px; display:flex; gap:6px; flex-wrap:wrap;">
+          <span class="event-tag">Agentic AI</span><span class="event-tag">Workforce</span><span class="event-tag">Enterprise</span>
+        </div>
+      </div>
+
+      <div style="background:var(--bg1); padding:16px; border-left:3px solid var(--accent);">
+        <div style="font-family:'IBM Plex Mono',monospace; font-size:.6rem; color:var(--accent); margin-bottom:6px;">2027–28 · ~80% Confidence</div>
+        <div style="font-family:'IBM Plex Sans Condensed',sans-serif; font-size:.95rem; font-weight:700; color:var(--ink); margin-bottom:6px;">Multimodal Becomes Standard</div>
+        <div style="font-family:'IBM Plex Sans',sans-serif; font-size:.76rem; color:var(--dim); line-height:1.5;">Text, image, audio, and video integration becomes routine. Systems take in a video of a malfunctioning machine and produce a repair guide — as routinely as current systems summarize documents.</div>
+        <div style="margin-top:8px; display:flex; gap:6px; flex-wrap:wrap;">
+          <span class="event-tag">Multimodal</span><span class="event-tag">Foundation Models</span>
+        </div>
+      </div>
+
+      <div style="background:var(--bg1); padding:16px; border-left:3px solid var(--accent);">
+        <div style="font-family:'IBM Plex Mono',monospace; font-size:.6rem; color:var(--accent); margin-bottom:6px;">2028–29</div>
+        <div style="font-family:'IBM Plex Sans Condensed',sans-serif; font-size:.95rem; font-weight:700; color:var(--ink); margin-bottom:6px;">Scientific Discovery Accelerates</div>
+        <div style="font-family:'IBM Plex Sans',sans-serif; font-size:.76rem; color:var(--dim); line-height:1.5;">AI systems contributing meaningfully to drug discovery, materials science, and climate modelling. AlphaFold's protein work was the first example; this decade will see many more.</div>
+        <div style="margin-top:8px; display:flex; gap:6px; flex-wrap:wrap;">
+          <span class="event-tag">Drug Discovery</span><span class="event-tag">Climate AI</span>
+        </div>
+      </div>
+
+      <div style="background:var(--bg1); padding:16px; border-left:3px solid var(--accent);">
+        <div style="font-family:'IBM Plex Mono',monospace; font-size:.6rem; color:var(--accent); margin-bottom:6px;">2028–30</div>
+        <div style="font-family:'IBM Plex Sans Condensed',sans-serif; font-size:.95rem; font-weight:700; color:var(--ink); margin-bottom:6px;">Regulatory Frameworks Emerge</div>
+        <div style="font-family:'IBM Plex Sans',sans-serif; font-size:.76rem; color:var(--dim); line-height:1.5;">The EU AI Act and its successors begin to shape how frontier models are developed, tested, and deployed globally. The governance gap narrows — though it does not close.</div>
+        <div style="margin-top:8px; display:flex; gap:6px; flex-wrap:wrap;">
+          <span class="event-tag">EU AI Act</span><span class="event-tag">Governance</span>
+        </div>
+      </div>
+
+      <!-- Horizon 2 -->
+      <div style="grid-column:1/-1; display:flex; align-items:center; gap:12px; padding-bottom:8px; border-bottom:2px solid var(--rule); margin-top:8px; margin-bottom:4px;">
+        <div style="font-family:'IBM Plex Mono',monospace; font-size:.62rem; letter-spacing:.22em; text-transform:uppercase; color:var(--muted);">Horizon 2 — Decade Out</div>
+        <div style="font-family:'IBM Plex Mono',monospace; font-size:.62rem; color:var(--muted);">2030–2035 · Speculative</div>
+      </div>
+
+      <div style="padding:14px; border:1px solid var(--rule2);">
+        <div style="font-family:'IBM Plex Mono',monospace; font-size:.6rem; color:var(--muted); margin-bottom:4px;">2030–32 · ~55% Speculative</div>
+        <div style="font-family:'IBM Plex Sans Condensed',sans-serif; font-size:.88rem; font-weight:700; color:var(--ink);">Physical AI — Robots in Context</div>
+      </div>
+
+      <div style="padding:14px; border:1px solid var(--rule2);">
+        <div style="font-family:'IBM Plex Mono',monospace; font-size:.6rem; color:var(--muted); margin-bottom:4px;">2031–33 · ~50% Speculative</div>
+        <div style="font-family:'IBM Plex Sans Condensed',sans-serif; font-size:.88rem; font-weight:700; color:var(--ink);">Personalised AI — One Per Human</div>
+      </div>
+
+      <div style="padding:14px; border:1px solid var(--rule2);">
+        <div style="font-family:'IBM Plex Mono',monospace; font-size:.6rem; color:var(--muted); margin-bottom:4px;">2032–35 · Open Question</div>
+        <div style="font-family:'IBM Plex Sans Condensed',sans-serif; font-size:.88rem; font-weight:700; color:var(--ink);">AGI — The Contested Threshold</div>
+      </div>
+
+      <div style="padding:14px; border:1px solid var(--rule2);">
+        <div style="font-family:'IBM Plex Mono',monospace; font-size:.6rem; color:var(--muted); margin-bottom:4px;">2033–35 · Unknown</div>
+        <div style="font-family:'IBM Plex Sans Condensed',sans-serif; font-size:.88rem; font-weight:700; color:var(--ink);">The Unknown Unknowns</div>
+      </div>
+
+    </div>
+  </div>
+  <div class="page-footer">
+    <div class="pf-series">A (Brief) History of Everything_</div>
+    <div class="pf-num">09</div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════════
+     PAGES 10–15 — KEY FIGURES (2 per page, half-page each)
+═══════════════════════════════════════════════════ -->
+
+<!-- PAGE 10 -->
+<div class="page">
+  <div class="page-header">
+    <div class="ph-guide">A (Brief) History of AI — 001</div>
+    <div class="ph-section">Key Figures</div>
+  </div>
+  <div class="page-body">
+    <div class="figures-page-title">12 People Who Shaped Artificial Intelligence</div>
+    <div class="figures-grid">
+
+      <div class="figure-card">
+        <div class="figure-photo"><img src="ai/images/people/01-alan-turing.jpg" alt="Alan Turing"></div>
+        <div class="figure-info">
+          <div class="figure-era-tag">1912 – 1954</div>
+          <div class="figure-name">Alan Turing</div>
+          <div class="figure-role">Father of Computer Science · Theoretical Foundation</div>
+          <div class="figure-bio">
+            <p>Before there was a field called artificial intelligence, there was a question: can machines think? Alan Turing asked it in 1950, in a paper that remains one of the most consequential in the history of science. He was 37 years old. He had four years left to live.</p>
+            <p>Turing's answer was characteristically precise. He didn't claim machines could think — he proposed a test to sidestep the question entirely. If a machine could converse convincingly enough that a human interrogator couldn't reliably distinguish it from another human, that was good enough. He called it the Imitation Game. We still call it the Turing Test.</p>
+            <p>His earlier work was equally foundational. The theoretical "Turing Machine" — a thought experiment about computation — defined what computers could and couldn't do in principle, decades before the hardware existed to test the theory. Every computer ever built operates within the limits Turing described on paper.</p>
+            <p>He died in 1954, officially by cyanide poisoning, after being convicted of "gross indecency" for his relationship with another man and subjected to chemical castration by the British government. A royal pardon came in 2013 — fifty-nine years too late.</p>
+          </div>
+          <div class="figure-link"><a href="https://en.wikipedia.org/wiki/Alan_Turing" target="_blank">Wikipedia ↗</a></div>
+        </div>
+      </div>
+
+      <div class="figure-card">
+        <div class="figure-photo"><img src="ai/images/people/02-john-mccarthy.jpg" alt="John McCarthy"></div>
+        <div class="figure-info">
+          <div class="figure-era-tag">1927 – 2011</div>
+          <div class="figure-name">John McCarthy</div>
+          <div class="figure-role">Coined "Artificial Intelligence" · Dartmouth 1956</div>
+          <div class="figure-bio">
+            <p>John McCarthy named the field. That alone would be enough for a footnote in history — but he also invented Lisp, one of the oldest programming languages still in use, and spent decades as one of the most forceful advocates for the idea that human-level machine intelligence was not just possible but imminent.</p>
+            <p>He was wrong about the timeline, consistently and spectacularly. He predicted general AI was five to fifteen years away throughout much of the 1960s, 70s, and 80s. He kept predicting it until he died in 2011. The consistency of his wrongness became its own kind of legend in the field.</p>
+            <p>What McCarthy got right was the destination. The Dartmouth Conference he organized in 1956 — a summer gathering of mathematicians and engineers to think seriously about machine intelligence — established AI as a legitimate academic discipline. Without that framing, the field might have remained scattered across mathematics, psychology, and engineering departments for decades longer.</p>
+          </div>
+          <div class="figure-link"><a href="https://en.wikipedia.org/wiki/John_McCarthy_(computer_scientist)" target="_blank">Wikipedia ↗</a></div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+  <div class="page-footer">
+    <div class="pf-series">A (Brief) History of Everything_</div>
+    <div class="pf-num">10</div>
+  </div>
+</div>
+
+<!-- PAGE 11 -->
+<div class="page">
+  <div class="page-header">
+    <div class="ph-guide">A (Brief) History of AI — 001</div>
+    <div class="ph-section">Key Figures — continued</div>
+  </div>
+  <div class="page-body">
+    <div class="figures-grid">
+
+      <div class="figure-card">
+        <div class="figure-photo"><img src="ai/images/people/03-marvin-minsky.jpg" alt="Marvin Minsky"></div>
+        <div class="figure-info">
+          <div class="figure-era-tag">1927 – 2016</div>
+          <div class="figure-name">Marvin Minsky</div>
+          <div class="figure-role">Co-founder, MIT AI Lab · The Great Skeptic</div>
+          <div class="figure-bio">
+            <p>Marvin Minsky co-founded MIT's Artificial Intelligence Laboratory and spent sixty years at the center of the field — first as one of its great optimists, then as one of its most effective critics, and finally as a figure whose legacy was more complicated than either role suggests.</p>
+            <p>In 1969, he and Seymour Papert published <em>Perceptrons</em>, a mathematical analysis of the neural network models that were then the field's great hope. Their proof of the networks' fundamental limitations was correct and devastating. Funding for neural network research collapsed almost immediately. The First AI Winter had arrived.</p>
+            <p>Minsky later said he regretted how the book was interpreted — that he and Papert had meant to push the field toward better approaches, not to kill it. The distinction may be technically accurate. The effect was the same. It took twenty years and a generation of researchers who hadn't read <em>Perceptrons</em> to bring neural networks back.</p>
+          </div>
+          <div class="figure-link"><a href="https://en.wikipedia.org/wiki/Marvin_Minsky" target="_blank">Wikipedia ↗</a></div>
+        </div>
+      </div>
+
+      <div class="figure-card">
+        <div class="figure-photo"><img src="ai/images/people/04-geoffrey-hinton.jpg" alt="Geoffrey Hinton"></div>
+        <div class="figure-info">
+          <div class="figure-era-tag">b. 1947</div>
+          <div class="figure-name">Geoffrey Hinton</div>
+          <div class="figure-role">Godfather of Deep Learning · Nobel Prize 2024</div>
+          <div class="figure-bio">
+            <p>Geoffrey Hinton spent twenty years being right about something the rest of the field had given up on. Since the early 1980s, he believed deep neural networks would work — that if you stacked enough layers, trained on enough data, the networks would learn to represent the world in ways no programmer could explicitly specify. Almost nobody agreed with him.</p>
+            <p>In 2006, he published the paper that cracked open the door. In 2012, his student Alex Krizhevsky built AlexNet — a deep neural network that won the ImageNet competition by a margin so large it looked like a scoring error. The slide decks across the industry were quietly updated. The age of deep learning had begun.</p>
+            <p>In 2023, Hinton left Google, where he had worked for over a decade, to spend his remaining time warning about the thing he'd helped build. He has said he now believes the risks of AI may be greater than he previously understood — a statement that carries weight precisely because of who is making it.</p>
+          </div>
+          <div class="figure-link"><a href="https://en.wikipedia.org/wiki/Geoffrey_Hinton" target="_blank">Wikipedia ↗</a></div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+  <div class="page-footer">
+    <div class="pf-series">A (Brief) History of Everything_</div>
+    <div class="pf-num">11</div>
+  </div>
+</div>
+
+<!-- PAGE 12 — PHOTO STRIP moved, now figures continue -->
+<div class="page">
+  <div class="page-header">
+    <div class="ph-guide">A (Brief) History of AI — 001</div>
+    <div class="ph-section">Key Figures — continued</div>
+  </div>
+  <div class="page-body">
+    <div class="figures-grid">
+
+      <div class="figure-card">
+        <div class="figure-photo"><img src="ai/images/people/05-yann-lecun.jpg" alt="Yann LeCun"></div>
+        <div class="figure-info">
+          <div class="figure-era-tag">b. 1960</div>
+          <div class="figure-name">Yann LeCun</div>
+          <div class="figure-role">Chief AI Scientist, Meta · Convolutional Networks</div>
+          <div class="figure-bio">
+            <p>Yann LeCun invented the convolutional neural network in the late 1980s — the architecture that underlies virtually every image recognition system built in the past decade. At the time, almost nobody noticed. Neural networks were unfashionable. The architecture sat largely dormant for twenty years, waiting for the hardware and data that would make it run.</p>
+            <p>When deep learning exploded after 2012, LeCun's earlier work became foundational retroactively. He had been right for two decades before being recognized as right. He is now Chief AI Scientist at Meta, one of the most prominent researchers in the world, and one of the most vocal critics of AI doom narratives — arguing that fears of near-term superintelligence are overblown and that the field's real challenges are more mundane and more tractable.</p>
+            <p>He, Hinton, and Bengio shared the 2018 Turing Award — the field's highest honor — for their foundational contributions to deep learning. Three people who spent the 1980s and 90s being ignored, together on a stage.</p>
+          </div>
+          <div class="figure-link"><a href="https://en.wikipedia.org/wiki/Yann_LeCun" target="_blank">Wikipedia ↗</a></div>
+        </div>
+      </div>
+
+      <div class="figure-card">
+        <div class="figure-photo"><img src="ai/images/people/06-yoshua-bengio.jpg" alt="Yoshua Bengio"></div>
+        <div class="figure-info">
+          <div class="figure-era-tag">b. 1966</div>
+          <div class="figure-name">Yoshua Bengio</div>
+          <div class="figure-role">Pioneer of Deep Learning · AI Safety Advocate</div>
+          <div class="figure-bio">
+            <p>Yoshua Bengio has occupied two different positions in the history of AI: first as one of the people who built it, then as one of the people most urgently warning about it. The transition is not unusual among the field's founders, but Bengio has been more consistent and more specific than most.</p>
+            <p>His research contributions sit at the core of modern AI. His work on recurrent neural networks and language modeling in the 1990s and 2000s laid groundwork that the Transformer architecture would later build on. He leads Mila, the Quebec AI Institute, one of the world's leading AI research organizations.</p>
+            <p>Since around 2020, he has increasingly focused on AI safety and governance — arguing that the field is moving faster than its ability to ensure the technology is safe, and that researchers have an obligation to engage with those questions rather than leaving them to policymakers and philosophers. He has signed open letters, testified before governments, and made the case that urgency and caution are not incompatible.</p>
+          </div>
+          <div class="figure-link"><a href="https://en.wikipedia.org/wiki/Yoshua_Bengio" target="_blank">Wikipedia ↗</a></div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+  <div class="page-footer">
+    <div class="pf-series">A (Brief) History of Everything_</div>
+    <div class="pf-num">12</div>
+  </div>
+</div>
+
+<!-- PAGE 13 -->
+<div class="page">
+  <div class="page-header">
+    <div class="ph-guide">A (Brief) History of AI — 001</div>
+    <div class="ph-section">Key Figures — continued</div>
+  </div>
+  <div class="page-body">
+    <div class="figures-grid">
+
+      <div class="figure-card">
+        <div class="figure-photo"><img src="ai/images/people/07-demis-hassabis.jpg" alt="Demis Hassabis"></div>
+        <div class="figure-info">
+          <div class="figure-era-tag">b. 1976</div>
+          <div class="figure-name">Demis Hassabis</div>
+          <div class="figure-role">CEO, Google DeepMind · Nobel Prize 2024</div>
+          <div class="figure-bio">
+            <p>Demis Hassabis is, by most measures, the person who has taken AI furthest from the lab into the real world. Co-founding DeepMind in 2010, he set out to build a general-purpose AI system — not a narrow tool for a specific task, but something that could learn to do many things well. The ambition was considered audacious at the time. Google acquired DeepMind in 2014 for around $500 million, before it had a commercial product.</p>
+            <p>What followed was a series of demonstrations that reset expectations for what AI could do. AlphaGo defeated the world's best Go player in 2016. AlphaFold, released in 2020, solved the protein folding problem — predicting the three-dimensional structure of proteins from their amino acid sequences — a challenge that had stumped structural biologists for fifty years. In 2024, Hassabis and the AlphaFold team received the Nobel Prize in Chemistry.</p>
+            <p>He now leads Google DeepMind, overseeing Gemini and the company's broader AI strategy. He remains one of the few people in the field who has turned foundational research ambitions into Nobel-level scientific breakthroughs.</p>
+          </div>
+          <div class="figure-link"><a href="https://en.wikipedia.org/wiki/Demis_Hassabis" target="_blank">Wikipedia ↗</a></div>
+        </div>
+      </div>
+
+      <div class="figure-card">
+        <div class="figure-photo"><img src="ai/images/people/08-ilya-sutskever.jpg" alt="Ilya Sutskever"></div>
+        <div class="figure-info">
+          <div class="figure-era-tag">b. 1985</div>
+          <div class="figure-name">Ilya Sutskever</div>
+          <div class="figure-role">Co-founder, OpenAI · Safe Superintelligence</div>
+          <div class="figure-bio">
+            <p>Ilya Sutskever is one of the most technically gifted researchers in the history of the field — and one of its most enigmatic figures. He co-authored AlexNet as a student under Geoffrey Hinton, helping trigger the deep learning revolution. He then co-founded OpenAI, where as Chief Scientist he oversaw the research that produced GPT-2, GPT-3, GPT-4, and ChatGPT.</p>
+            <p>In November 2023, he participated in the OpenAI board's decision to fire CEO Sam Altman — a move that lasted approximately five days before Altman was reinstated, the board was reconstituted, and most of the people who had supported the firing were gone. Sutskever publicly expressed regret for his role in the episode. He left OpenAI in 2024.</p>
+            <p>He founded Safe Superintelligence shortly after — a company with a single stated goal: building superintelligent AI safely. No products. No commercial pressure. Just the problem. Whether that focus is visionary or naive may be the defining question of the next decade.</p>
+          </div>
+          <div class="figure-link"><a href="https://en.wikipedia.org/wiki/Ilya_Sutskever" target="_blank">Wikipedia ↗</a></div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+  <div class="page-footer">
+    <div class="pf-series">A (Brief) History of Everything_</div>
+    <div class="pf-num">13</div>
+  </div>
+</div>
+
+<!-- PAGE 14 -->
+<div class="page">
+  <div class="page-header">
+    <div class="ph-guide">A (Brief) History of AI — 001</div>
+    <div class="ph-section">Key Figures — continued</div>
+  </div>
+  <div class="page-body">
+    <div class="figures-grid">
+
+      <div class="figure-card">
+        <div class="figure-photo"><img src="ai/images/people/09-sam-altman.jpg" alt="Sam Altman"></div>
+        <div class="figure-info">
+          <div class="figure-era-tag">b. 1985</div>
+          <div class="figure-name">Sam Altman</div>
+          <div class="figure-role">CEO, OpenAI · ChatGPT</div>
+          <div class="figure-bio">
+            <p>Sam Altman did not build the technology. He built the organization that put the technology in front of a hundred million people. That distinction matters — and in the history of AI, it may matter as much as the technical contributions.</p>
+            <p>He joined OpenAI as CEO after leading Y Combinator, where he had become one of Silicon Valley's most prominent voices. Under his leadership, OpenAI moved from a research organization with an unusual nonprofit structure to the most commercially consequential AI company in the world. The launch of ChatGPT in November 2022 — a product decision, not a research decision — was his.</p>
+            <p>In November 2023, OpenAI's board fired him, citing a loss of confidence in his candor. He was reinstated five days later after a near-total staff revolt. The board was replaced. The episode was the most dramatic corporate crisis in the short history of the AI industry, and Altman emerged from it with more power than he had going in. He is now navigating OpenAI's conversion from a nonprofit to a for-profit company — a transformation with implications for the entire field.</p>
+          </div>
+          <div class="figure-link"><a href="https://en.wikipedia.org/wiki/Sam_Altman" target="_blank">Wikipedia ↗</a></div>
+        </div>
+      </div>
+
+      <div class="figure-card">
+        <div class="figure-photo"><img src="ai/images/people/10-dario-amodei.jpg" alt="Dario Amodei"></div>
+        <div class="figure-info">
+          <div class="figure-era-tag">b. 1983</div>
+          <div class="figure-name">Dario Amodei</div>
+          <div class="figure-role">CEO, Anthropic · Constitutional AI</div>
+          <div class="figure-bio">
+            <p>Dario Amodei left OpenAI in 2021 with his sister Daniela and several colleagues because he believed the organization was not taking AI safety seriously enough. The company they founded, Anthropic, is built around a specific thesis: that the most important problem in AI is alignment — making sure that as AI systems become more capable, they remain reliably beneficial and honest.</p>
+            <p>Anthropic's approach, Constitutional AI, attempts to bake values into the training process rather than adding them as guardrails after the fact. Claude — the AI assistant that Anthropic produces — is the commercial product of that research program. It is also, in a sense, this document's author.</p>
+            <p>Amodei is unusual among AI leaders in his willingness to articulate specific, detailed concerns about the technology he is building — including the possibility that AI systems could cause catastrophic harm if developed carelessly. He makes the case simultaneously that this risk is real and that Anthropic's approach is the right response to it. Critics note the tension between that position and running a well-funded commercial AI company. Amodei's answer is that someone is going to build this technology, and it is better to have safety-focused organizations at the frontier than to cede that ground.</p>
+          </div>
+          <div class="figure-link"><a href="https://en.wikipedia.org/wiki/Dario_Amodei" target="_blank">Wikipedia ↗</a></div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+  <div class="page-footer">
+    <div class="pf-series">A (Brief) History of Everything_</div>
+    <div class="pf-num">14</div>
+  </div>
+</div>
+
+<!-- PAGE 15 -->
+<div class="page">
+  <div class="page-header">
+    <div class="ph-guide">A (Brief) History of AI — 001</div>
+    <div class="ph-section">Key Figures — continued</div>
+  </div>
+  <div class="page-body">
+    <div class="figures-grid">
+
+      <div class="figure-card">
+        <div class="figure-photo"><img src="ai/images/people/11-fei-fei-li.jpg" alt="Fei-Fei Li"></div>
+        <div class="figure-info">
+          <div class="figure-era-tag">b. 1971</div>
+          <div class="figure-name">Fei-Fei Li</div>
+          <div class="figure-role">Creator of ImageNet · Stanford HAI</div>
+          <div class="figure-bio">
+            <p>Fei-Fei Li built the dataset that made the modern AI era possible. ImageNet — a collection of more than fourteen million labeled images organized into twenty thousand categories — took years to assemble and was, at the time, the largest labeled dataset of its kind. She organized the ImageNet Large Scale Visual Recognition Challenge starting in 2010, inviting research teams to compete at classifying images from the dataset.</p>
+            <p>In 2012, Geoffrey Hinton's team entered AlexNet. It won by a margin that changed the field's trajectory overnight. Without ImageNet, there is no AlexNet. Without AlexNet, the deep learning revolution arrives years later, if at all. Li gave the field the ground to stand on.</p>
+            <p>She served as Chief Scientist of Google Cloud AI from 2017 to 2018, then returned to Stanford. She now leads the Stanford Institute for Human-Centered AI and co-founded World Labs, focused on spatial intelligence — teaching AI systems to understand and reason about three-dimensional space. She has also become one of the most prominent voices arguing that AI development must center human values, not just technical capability.</p>
+          </div>
+          <div class="figure-link"><a href="https://en.wikipedia.org/wiki/Fei-Fei_Li" target="_blank">Wikipedia ↗</a></div>
+        </div>
+      </div>
+
+      <div class="figure-card">
+        <div class="figure-photo"><img src="ai/images/people/12-andrew-ng.jpg" alt="Andrew Ng"></div>
+        <div class="figure-info">
+          <div class="figure-era-tag">b. 1972</div>
+          <div class="figure-name">Andrew Ng</div>
+          <div class="figure-role">Co-founder, Google Brain · Coursera</div>
+          <div class="figure-bio">
+            <p>Andrew Ng has spent his career doing two things simultaneously: advancing AI research and making sure as many people as possible understand what that research means. Both have had outsized impact.</p>
+            <p>He co-founded Google Brain in 2011 — the internal research team that became central to Google's AI capabilities and produced some of the most important work of the deep learning era. Before that, he had built one of the largest neural networks of its time at Stanford, using GPU clusters to train on unlabeled data. He was among the first to demonstrate that scale worked.</p>
+            <p>He co-founded Coursera in 2012, which has trained millions of people in machine learning and AI through online courses. His original Machine Learning course remains one of the most-taken online courses in history. Where most researchers in the field have measured their impact in citations and papers, Ng has also measured it in people who can now do the work — a constituency that has expanded the field in ways that are hard to quantify and easy to underestimate.</p>
+          </div>
+          <div class="figure-link"><a href="https://en.wikipedia.org/wiki/Andrew_Ng" target="_blank">Wikipedia ↗</a></div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+  <div class="page-footer">
+    <div class="pf-series">A (Brief) History of Everything_</div>
+    <div class="pf-num">15</div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════════
+     PAGE 12 — PHOTO STRIP
+═══════════════════════════════════════════════════ -->
+<div class="page photo-strip-page">
+  <div class="page-header">
+    <div class="ph-guide">A (Brief) History of AI — 001</div>
+    <div class="ph-section">Eight Decades · In Images</div>
+  </div>
+  <div class="page-body" style="padding:0; overflow:hidden;">
+    <div class="strip-grid">
+      <div class="strip-cell">
+        <img src="https://images.unsplash.com/photo-1518770660439-4636190af475?w=600&q=80" alt="Early computing">
+        <div class="strip-cell-cap">01 — Early Machines</div>
+      </div>
+      <div class="strip-cell">
+        <img src="https://images.unsplash.com/photo-1461749280684-dccba630e2f6?w=600&q=80" alt="Code">
+        <div class="strip-cell-cap">02 — The Code Era</div>
+      </div>
+      <div class="strip-cell">
+        <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=600&q=80" alt="Data">
+        <div class="strip-cell-cap">03 — Data &amp; Logic</div>
+      </div>
+      <div class="strip-cell">
+        <img src="https://images.unsplash.com/photo-1531746790731-6c087fecd65a?w=600&q=80" alt="Neural networks">
+        <div class="strip-cell-cap">04 — Neural Networks</div>
+      </div>
+      <div class="strip-cell">
+        <img src="https://images.unsplash.com/photo-1677442135703-1787eea5ce01?w=600&q=80" alt="AI art">
+        <div class="strip-cell-cap">05 — AI Generates Art</div>
+      </div>
+      <div class="strip-cell">
+        <img src="https://images.unsplash.com/photo-1620712943543-bcc4688e7485?w=600&q=80" alt="Robot">
+        <div class="strip-cell-cap">06 — Thinking Machines</div>
+      </div>
+      <div class="strip-cell">
+        <img src="https://images.unsplash.com/photo-1655720828018-edd2daec9349?w=600&q=80" alt="AI interface">
+        <div class="strip-cell-cap">07 — ChatGPT Era</div>
+      </div>
+      <div class="strip-cell">
+        <img src="https://images.unsplash.com/photo-1485827404703-89b55fcc595e?w=600&q=80" alt="AI future">
+        <div class="strip-cell-cap">08 — What's Next</div>
+      </div>
+      <div class="strip-cell">
+        <img src="https://images.unsplash.com/photo-1507146153580-69a1fe6d8aa1?w=600&q=80" alt="Robots">
+        <div class="strip-cell-cap">09 — Age of Agents</div>
+      </div>
+    </div>
+  </div>
+  <div class="page-footer">
+    <div class="pf-series">A (Brief) History of Everything_</div>
+    <div class="pf-num">16</div>
+  </div>
+</div>
+
+
+<!-- ═══════════════════════════════════════════════
+     PAGE 12 — ARTICLE INTRO / TITLE PAGE
+═══════════════════════════════════════════════════ -->
+<div class="page" style="background:var(--bg1);">
+  <div class="page-header">
+    <div class="ph-guide">A (Brief) History of AI — 001</div>
+    <div class="ph-section">The Less Brief History</div>
+  </div>
+  <div class="page-body" style="display:flex; flex-direction:column; justify-content:center;">
+
+    <div style="max-width: 580px;">
+      <div class="article-kicker">The Less Brief History · Long-Form Narrative</div>
+      <div class="article-headline">A (Brief) History of Artificial Intelligence</div>
+      <div class="article-deck">From Alan Turing's imitation game to autonomous agents entering the workforce — eighty years of machines learning to think, fail, and think again.</div>
+      <div class="article-rule"></div>
+      <p class="article-p">What follows is the written layer of this guide — a long-form narrative covering the same ground as the timeline above, but in prose. Where the chronology gives you orientation, this gives you context. The <em>why</em> behind the <em>when</em>.</p>
+      <p class="article-p">Some of the most important moments in AI history are also the most counterintuitive: the winters that look, in retrospect, like necessary pressure; the papers that were ignored for years before they became foundational; the demos that looked like magic and turned out to be engineering; the engineering that looked like engineering and turned out to change everything.</p>
+      <p class="article-p">The story is told in six parts, roughly corresponding to the six eras of the timeline. Each part stands alone. None of it requires prior knowledge of the field.</p>
+    </div>
+
+    <div style="margin-top:48px; display:flex; gap:32px;">
+      <div style="display:flex;flex-direction:column;gap:4px;">
+        <div style="font-family:'IBM Plex Mono',monospace; font-size:.58rem; letter-spacing:.22em; text-transform:uppercase; color:var(--muted);">Word Count</div>
+        <div style="font-family:'IBM Plex Mono',monospace; font-size:.88rem; color:var(--ink);">~2,000 words</div>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:4px;">
+        <div style="font-family:'IBM Plex Mono',monospace; font-size:.58rem; letter-spacing:.22em; text-transform:uppercase; color:var(--muted);">Reading Time</div>
+        <div style="font-family:'IBM Plex Mono',monospace; font-size:.88rem; color:var(--ink);">~8 minutes</div>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:4px;">
+        <div style="font-family:'IBM Plex Mono',monospace; font-size:.58rem; letter-spacing:.22em; text-transform:uppercase; color:var(--muted);">Parts</div>
+        <div style="font-family:'IBM Plex Mono',monospace; font-size:.88rem; color:var(--ink);">Six</div>
+      </div>
+    </div>
+
+  </div>
+  <div class="page-footer">
+    <div class="pf-series">A (Brief) History of Everything_</div>
+    <div class="pf-num">17</div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════════
+     PAGES 13-16 — ARTICLE BODY (2-col)
+═══════════════════════════════════════════════════ -->
+<div class="page article-page">
+  <div class="page-header">
+    <div class="ph-guide">A (Brief) History of AI — 001</div>
+    <div class="ph-section">The Less Brief History</div>
+  </div>
+  <div class="page-body">
+
+    <div class="article-section-sub">Part I · The Question That Started Everything</div>
+    <div class="article-section-head">1950 — Can Machines Think?</div>
+    <p class="article-p">There is a very good argument that the entire field of artificial intelligence begins with a question nobody could answer and a test nobody has quite agreed on.</p>
+    <p class="article-p">In 1950, a British mathematician named Alan Turing published a paper called "Computing Machinery and Intelligence." He opened it with a deceptively simple provocation: <em>Can machines think?</em> Then, recognizing that "think" was too slippery a word to be useful, he immediately replaced it with a more tractable problem. He called it the Imitation Game.</p>
+    <p class="article-p">The setup: a human interrogator exchanges text messages with two respondents — one human, one machine. If the interrogator cannot reliably tell which is which, the machine has passed the test. Turing didn't claim this would prove consciousness. He claimed it would be a reasonable operational definition of intelligence — and that the question of whether machines could genuinely "think" was about as useful as asking whether submarines can genuinely "swim."</p>
+    <p class="article-p">Turing died in 1954 at the age of 41. He did not live to see the field he had essentially founded produce anything resembling what he imagined. The computers of his era filled entire rooms and could barely add numbers reliably.</p>
+
+    <div class="article-section-head">1956 — The Field Gets Its Name</div>
+    <p class="article-p">In the summer of 1956, a group of mathematicians gathered at Dartmouth College for what was formally called the Dartmouth Conference. The organizer was John McCarthy, who wanted to establish, as a legitimate academic discipline, the study of machines that could simulate human intelligence. He also wanted to name it.</p>
+    <p class="article-p">The name he chose — "artificial intelligence" — was not universally loved. Some thought it was too grandiose. McCarthy thought the grandiosity was appropriate, because the goal was genuinely grand. The conference produced little of immediate consequence. But the name stuck, and McCarthy spent the next fifty years insisting that general machine intelligence was between five and fifteen years away. He was consistently wrong about the timeline and consistently right about the destination.</p>
+
+    <div class="article-pull">
+      <div class="article-pull-text">"The gap between what the technology was actually doing and what people believed it was doing would persist, in various forms, for the next six decades."</div>
+    </div>
+
+    <div class="article-section-sub">Part II · The Years Nobody Talks About</div>
+    <div class="article-section-head">1969–1993 — Two Winters</div>
+    <p class="article-p">Here is a section of AI history that tends to get skipped in the enthusiasm of the present moment: the field collapsed. Twice.</p>
+    <p class="article-p">The First AI Winter began around 1969, when a report by Minsky and Papert demonstrated mathematical limitations of the neural network approach. Funding dried up. The promising machines of the early 1960s turned out to be good at toy problems and useless for real ones.</p>
+    <p class="article-p">A partial recovery came in the 1980s in the form of "expert systems" — programs that encoded human expertise as explicit rules. These systems worked, within narrow domains. The Japanese government announced a national AI initiative. The U.S. military invested hundreds of millions. There was, briefly, a feeling that something was about to happen.</p>
+    <p class="article-p">The Second AI Winter arrived in the late 1980s. The expert systems were brittle — they failed outside their prescribed rules in embarrassing ways. Maintaining them was impossibly labor-intensive. Funding collapsed again. The phrase "artificial intelligence" became something researchers avoided putting on grant proposals because it had become associated with overpromising.</p>
+
+    <div class="article-section-head">1997 — A Different Kind of Intelligence</div>
+    <p class="article-p">In 1997, a chess computer called Deep Blue defeated world champion Garry Kasparov in a six-game match. This was considered a milestone for artificial intelligence — it demonstrated that machines could exceed human performance on specific, well-defined tasks. What Deep Blue actually demonstrated, though, was the power of brute-force computation and carefully engineered evaluation functions. It was extraordinary engineering. It was not, despite the headlines, a step toward general machine intelligence. IBM's stock went up. The chess machine was retired.</p>
+
+    <div class="article-section-sub">Part III · When It Actually Started Working</div>
+    <div class="article-section-head">2006 — Hinton's Breakthrough</div>
+    <p class="article-p">Geoffrey Hinton had spent twenty years being wrong about being right. Since the early 1980s, he'd believed that deep neural networks could actually work if you had enough layers and enough data. The field had mostly given up on this idea. Hinton hadn't.</p>
+    <p class="article-p">In 2006, he published a paper demonstrating that deep networks could be trained effectively using a technique called pretraining. It was a narrow technical result. It reopened a door that had been effectively closed for thirty years. Hinton is now called the "Godfather of Deep Learning." In 2023, he left Google to spend his remaining time warning about the thing he'd helped create.</p>
+
+  </div>
+  <div class="page-footer">
+    <div class="pf-series">A (Brief) History of Everything_</div>
+    <div class="pf-num">18</div>
+  </div>
+</div>
+
+<div class="page article-page">
+  <div class="page-header">
+    <div class="ph-guide">A (Brief) History of AI — 001</div>
+    <div class="ph-section">The Less Brief History — continued</div>
+  </div>
+  <div class="page-body">
+
+    <div class="article-section-head">2012 — The Moment Everything Changed</div>
+    <p class="article-p">ImageNet was a project that Fei-Fei Li had spent years building: a database of more than a million labeled images, organized into a thousand categories. Starting in 2010, she organized an annual competition asking research teams to build systems that could correctly classify images from the dataset.</p>
+    <p class="article-p">In 2012, a team from the University of Toronto — Geoffrey Hinton and two of his students — entered a deep neural network they called AlexNet. It didn't just win. It won by a margin so large it looked like an error in the scoring. Previous approaches were achieving error rates around 26%. AlexNet achieved 15.3%.</p>
+    <p class="article-p">Every serious AI researcher in the world understood what had happened. The slide decks that didn't mention neural networks were quietly updated. The labs that understood what AlexNet implied — Google, Facebook, Baidu — began recruiting researchers at a pace the academic world had never seen.</p>
+
+    <div class="article-pull">
+      <div class="article-pull-text">"The winter was over."</div>
+    </div>
+
+    <div class="article-section-head">2014–2016 — Three More Dominoes</div>
+    <p class="article-p">In 2014, Ian Goodfellow invented Generative Adversarial Networks — GANs — in a single night, reportedly after a bar argument. The idea: pit two neural networks against each other. One generates fake images. One tries to detect fakes. Both get better through competition. The immediate reaction was fascination. The ten-year consequence was that the concept of a trustworthy photograph was permanently complicated.</p>
+    <p class="article-p">In 2016, Google DeepMind's AlphaGo defeated Lee Sedol, one of the world's best Go players, in a five-game match. Unlike chess, Go has more possible positions than atoms in the observable universe. Nobody thought a machine would be competitive at top-level Go for at least another decade. AlphaGo won in four games. Lee Sedol retired from competitive Go in 2019, citing the impossibility of competing against AI.</p>
+
+    <div class="article-section-sub">Part IV · The Architecture That Ate Everything</div>
+    <div class="article-section-head">2017 — "Attention Is All You Need"</div>
+    <p class="article-p">In 2017, a team of eight researchers at Google published a paper with that title. The paper introduced the Transformer architecture — a new way of building neural networks that was particularly good at processing sequences of data, which is to say: language.</p>
+    <p class="article-p">Previous approaches to language modeling required networks to process text sequentially, word by word. The Transformer used a mechanism called "attention" that allowed the network to consider all parts of a sequence simultaneously, weighting each element by its relevance to every other. The technical description is easier to understand through its consequences: every large language model you have interacted with is a descendant of this architecture.</p>
+
+  </div>
+  <div class="page-footer">
+    <div class="pf-series">A (Brief) History of Everything_</div>
+    <div class="pf-num">19</div>
+  </div>
+</div>
+<div class="page article-page">
+  <div class="page-header">
+    <div class="ph-guide">A (Brief) History of AI — 001</div>
+    <div class="ph-section">The Less Brief History — continued</div>
+  </div>
+  <div class="page-body">
+
+    <div class="article-section-head">2018–2020 — Scale as a Strategy</div>
+    <p class="article-p">The years following the Transformer paper were characterized by a single, somewhat counterintuitive insight: bigger worked better. Not just a little better. Dramatically better, in ways that weren't fully explained by existing theory.</p>
+    <p class="article-p">BERT and GPT-1 arrived in 2018 — the first generation of large language models built on the Transformer. GPT-3, released in 2020, had 175 billion parameters — roughly 100 times the scale of its predecessor — and exhibited capabilities that surprised even its creators. It could write coherent essays. It could complete code. It could translate between languages it hadn't been explicitly trained to translate. The researchers called these emergent capabilities — abilities that appeared at scale without being explicitly programmed. The practical response was to scale further.</p>
+
+    <div class="article-section-sub">Part V · When Everyone Got Involved</div>
+    <div class="article-section-head">November 2022 — ChatGPT</div>
+    <p class="article-p">On November 30, 2022, OpenAI released ChatGPT as a free public research preview. One hundred million people signed up in the first two months — the fastest consumer product adoption in history to that point. The servers were overwhelmed. The response went beyond technology coverage into mainstream news, dinner table conversation, and emergency school board meetings about plagiarism.</p>
+    <p class="article-p">The companies that weren't OpenAI spent the following months in a state that politely might be called "accelerated prioritization." Google had been sitting on technology comparable to ChatGPT for years, having decided it was too risky to release. The competitive pressure changed that calculation. Microsoft invested $10 billion in OpenAI. Google rushed Bard to market, made a factual error in the demo video, and watched $100 billion of market capitalization disappear in a single afternoon.</p>
+
+    <div class="article-section-head">2023 — The Proliferation</div>
+    <p class="article-p">The twelve months following ChatGPT saw the release of more consequential AI systems than the previous decade combined. Anthropic released Claude. Google released Gemini. Meta released Llama as open source — meaning any researcher or company could build on it without restriction. Voice synthesis reached a quality where audio clips of anyone saying anything became trivially producible. AI coding assistants moved from novelty to standard practice among software engineers.</p>
+    <p class="article-p">The question that had animated the field since Turing — <em>can machines think?</em> — had been quietly replaced by a different and more practical one: <em>what, specifically, are they going to do to our economy?</em></p>
+
+  </div>
+  <div class="page-footer">
+    <div class="pf-series">A (Brief) History of Everything_</div>
+    <div class="pf-num">20</div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════════
+     PAGE 16 — ARTICLE CONCLUSION
+═══════════════════════════════════════════════════ -->
+<div class="page article-page">
+  <div class="page-header">
+    <div class="ph-guide">A (Brief) History of AI — 001</div>
+    <div class="ph-section">The Less Brief History — continued</div>
+  </div>
+  <div class="page-body">
+
+    <div class="article-section-head">2024 — Agents and Reasoning</div>
+    <p class="article-p">The 2024 wave of AI development was characterized by two advances. The first was reasoning — models that could work through complex problems step by step, checking their own work, rather than producing a single fluent output. OpenAI's o1 and its successors demonstrated that models trained to "think before answering" substantially outperformed their predecessors on mathematics, coding, and logical reasoning tasks.</p>
+    <p class="article-p">The second was agency. The combination of capable language models with the ability to use tools — browse the web, write and execute code, interact with software — produced "agents" that could complete multi-step tasks without human guidance at each stage. By the end of 2024, AI systems could meaningfully automate tasks that had previously required sustained human attention: research, coding projects, document analysis, scheduling. The economic implications were no longer theoretical.</p>
+
+    <div class="article-pull">
+      <div class="article-pull-text">"The question that had animated the field since Turing had been quietly replaced by a different one: what, specifically, are they going to do to our economy?"</div>
+    </div>
+
+    <div class="article-section-sub">Part VI · Where This Goes</div>
+    <p class="article-p">The honest answer to "where does AI go from here" is that nobody knows, including the people building it. But the forecasts made with reasonable confidence tend to cluster around a few themes.</p>
+    <p class="article-p">In the near term — the next two to three years — AI agents will enter the workforce in a more systematic way. Not replacing entire jobs at first, but automating components of knowledge work: drafting, research, scheduling, code review, customer service. The productivity gains for firms that adopt this effectively will be significant. The displacement effects for workers whose jobs consist primarily of those tasks will be real.</p>
+    <p class="article-p">Multimodal capability — the ability to seamlessly integrate text, image, audio, and video — will become standard rather than remarkable. The systems of 2027 will take in a video of a malfunctioning machine and produce a repair guide as routinely as current systems summarize documents.</p>
+    <p class="article-p">Scientific discovery — the application that arguably has the most immediately meaningful stakes — is accelerating. AlphaFold's protein structure work was one example. AI systems contributing meaningfully to drug discovery, materials science, and climate modeling appear likely within the decade, though the specifics are genuinely uncertain.</p>
+    <p class="article-p">The harder questions — whether AI systems will reach or surpass general human intelligence, what that would mean, how society would reorganize around it — remain genuinely contested. The people building the systems disagree. The people studying the risks disagree. The philosophers disagree, largely because they've been disagreeing about the relevant definitions since before the computers existed.</p>
+
+  </div>
+  <div class="page-footer">
+    <div class="pf-series">A (Brief) History of Everything_</div>
+    <div class="pf-num">21</div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════════
+     PAGE 17 — ARTICLE CONCLUSION
+═══════════════════════════════════════════════════ -->
+<div class="page article-page">
+  <div class="page-header">
+    <div class="ph-guide">A (Brief) History of AI — 001</div>
+    <div class="ph-section">The Less Brief History — continued</div>
+  </div>
+  <div class="page-body">
+
+    <p class="article-p">What isn't seriously contested is that the rate of change is higher than it has ever been, and that the systems of 2030 will look as different from ChatGPT as ChatGPT looks from ELIZA. In 1966, ELIZA fooled people into thinking they were having a meaningful conversation. In 2022, ChatGPT had a hundred million people questioning what meaningful conversation meant.</p>
+    <p class="article-p">Turing asked whether machines could think. We are somewhere in the middle of finding out, and the answer so far appears to be: <em>it depends on what you mean by think</em> — which was more or less what he suspected.</p>
+
+    <div style="margin-top: 32px; padding-top: 24px; border-top: 1px solid var(--rule);">
+      <div style="font-family:'IBM Plex Mono',monospace; font-size:.65rem; letter-spacing:.18em; text-transform:uppercase; color:var(--muted);">— End of Narrative —</div>
+    </div>
+
+  </div>
+  <div class="page-footer">
+    <div class="pf-series">A (Brief) History of Everything_</div>
+    <div class="pf-num">22</div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════════
+     PAGE 16 — RESOURCES
+═══════════════════════════════════════════════════ -->
+<div class="page">
+  <div class="page-header">
+    <div class="ph-guide">A (Brief) History of AI — 001</div>
+    <div class="ph-section">Resources &amp; Links</div>
+  </div>
+  <div class="page-body">
+    <div class="resources-title">Ecosystem · AI — Resources &amp; Further Reading</div>
+
+    <div class="resources-grid">
+
+      <div>
+        <div class="resource-group-label">Frontier Labs</div>
+        <div class="resource-link">
+          <a href="https://openai.com" target="_blank">OpenAI</a>
+          <span class="resource-url">openai.com ↗</span>
+        </div>
+        <div class="resource-link">
+          <a href="https://anthropic.com" target="_blank">Anthropic</a>
+          <span class="resource-url">anthropic.com ↗</span>
+        </div>
+        <div class="resource-link">
+          <a href="https://deepmind.google" target="_blank">Google DeepMind</a>
+          <span class="resource-url">deepmind.google ↗</span>
+        </div>
+        <div class="resource-link">
+          <a href="https://mistral.ai" target="_blank">Mistral AI</a>
+          <span class="resource-url">mistral.ai ↗</span>
+        </div>
+        <div class="resource-link">
+          <a href="https://ai.meta.com" target="_blank">Meta AI</a>
+          <span class="resource-url">ai.meta.com ↗</span>
+        </div>
+      </div>
+
+      <div>
+        <div class="resource-group-label">Research &amp; Papers</div>
+        <div class="resource-link">
+          <a href="https://arxiv.org/cs.AI" target="_blank">arXiv · CS.AI</a>
+          <span class="resource-url">arxiv.org ↗</span>
+        </div>
+        <div class="resource-link">
+          <a href="https://paperswithcode.com" target="_blank">Papers With Code</a>
+          <span class="resource-url">paperswithcode.com ↗</span>
+        </div>
+        <div class="resource-link">
+          <a href="https://huggingface.co/papers" target="_blank">HuggingFace Papers</a>
+          <span class="resource-url">huggingface.co ↗</span>
+        </div>
+        <div class="resource-link">
+          <a href="https://scholar.google.com" target="_blank">Google Scholar</a>
+          <span class="resource-url">scholar.google.com ↗</span>
+        </div>
+      </div>
+
+      <div>
+        <div class="resource-group-label">News &amp; Analysis</div>
+        <div class="resource-link">
+          <a href="https://techcrunch.com/category/artificial-intelligence/" target="_blank">TechCrunch AI</a>
+          <span class="resource-url">techcrunch.com ↗</span>
+        </div>
+        <div class="resource-link">
+          <a href="https://venturebeat.com/ai/" target="_blank">VentureBeat AI</a>
+          <span class="resource-url">venturebeat.com ↗</span>
+        </div>
+        <div class="resource-link">
+          <a href="https://theverge.com/ai" target="_blank">The Verge · AI</a>
+          <span class="resource-url">theverge.com ↗</span>
+        </div>
+        <div class="resource-link">
+          <a href="https://importai.substack.com" target="_blank">Import AI (Newsletter)</a>
+          <span class="resource-url">importai.substack.com ↗</span>
+        </div>
+      </div>
+
+      <div>
+        <div class="resource-group-label">History &amp; Reference</div>
+        <div class="resource-link">
+          <a href="https://en.wikipedia.org/wiki/History_of_artificial_intelligence" target="_blank">Wikipedia · AI History</a>
+          <span class="resource-url">wikipedia.org ↗</span>
+        </div>
+        <div class="resource-link">
+          <a href="https://aiindex.stanford.edu" target="_blank">Stanford AI Index</a>
+          <span class="resource-url">aiindex.stanford.edu ↗</span>
+        </div>
+        <div class="resource-link">
+          <a href="https://ourworldindata.org/artificial-intelligence" target="_blank">Our World in Data · AI</a>
+          <span class="resource-url">ourworldindata.org ↗</span>
+        </div>
+        <div class="resource-link">
+          <a href="https://abriefhistoryofeverything.com" target="_blank">A (Brief) History of Everything</a>
+          <span class="resource-url">abriefhistoryofeverything.com ↗</span>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Colophon -->
+    <div style="margin-top:40px; padding-top:24px; border-top:2px solid var(--ink); display:flex; justify-content:space-between; align-items:flex-end;">
+      <div>
+        <div style="font-family:'IBM Plex Mono',monospace; font-size:.6rem; letter-spacing:.22em; text-transform:uppercase; color:var(--muted); margin-bottom:8px;">About This Guide</div>
+        <div style="font-family:'IBM Plex Sans',sans-serif; font-size:.8rem; color:var(--dim); max-width:360px; line-height:1.55;">Part of the <em>A (Brief) History of Everything</em> series — structured chronologies of the ideas, events, and people that shaped the modern world. Each guide is available free at abriefhistoryofeverything.com.</div>
+      </div>
+      <div style="text-align:right;">
+        <div style="font-family:'IBM Plex Mono',monospace; font-size:.6rem; letter-spacing:.22em; text-transform:uppercase; color:var(--muted); margin-bottom:6px;">Series</div>
+        <div style="font-family:'IBM Plex Sans Condensed',sans-serif; font-size:.9rem; font-weight:700; color:var(--ink);">A (Brief) History<br>of Everything_</div>
+        <div style="font-family:'IBM Plex Mono',monospace; font-size:.65rem; color:var(--accent); margin-top:6px;">Guide 001 · AI</div>
+      </div>
+    </div>
+
+  </div>
+  <div class="page-footer">
+    <div class="pf-series">A (Brief) History of Everything_</div>
+    <div class="pf-num">23</div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════════
+     PAGE 19 — BACK COVER
+═══════════════════════════════════════════════════ -->
+<div class="page back-page" style="min-height:var(--page-h);">
+  <div class="back-inner">
+
+    <!-- Mark -->
+    <div class="back-mark">
+      <svg width="56" height="56" viewBox="0 0 400 400" xmlns="http://www.w3.org/2000/svg">
+        <rect width="400" height="400" fill="#00D4F0"/>
+        <rect x="55" y="118" width="46" height="46" fill="#08090C" opacity="0.22"/>
+        <rect x="178" y="118" width="46" height="46" fill="#08090C" opacity="0.22"/>
+        <rect x="55" y="278" width="170" height="36" fill="#08090C"/>
+      </svg>
+    </div>
+
+    <div class="back-series">A (Brief) History of Everything_</div>
+    <div class="back-tagline">Structured chronologies of the ideas and people that shaped the modern world.</div>
+
+    <div class="back-guides-label">Published Guides</div>
+    <div class="back-guides-list">
+      <div class="back-guide-item"><span class="back-guide-num">001</span> A (Brief) History of AI</div>
+      <div class="back-guide-item"><span class="back-guide-num">002</span> A (Brief) History of the Internet</div>
+      <div class="back-guide-item"><span class="back-guide-num">003</span> A (Brief) History of Crypto</div>
+      <div class="back-guide-item"><span class="back-guide-num">004</span> A (Brief) History of the Oscars</div>
+      <div class="back-guide-item"><span class="back-guide-num">005</span> A (Brief) History of the World Cup</div>
+      <div class="back-guide-item"><span class="back-guide-num">006</span> A (Brief) History of the Dark Web</div>
+    </div>
+
+    <div class="back-url">abriefhistoryofeverything.com</div>
+
+  </div>
+  <div class="back-bottom">
+    <div class="back-copyright">© 2026 A (Brief) History of Everything · All rights reserved</div>
+  </div>
+</div>
+
+</body>
+</html>
