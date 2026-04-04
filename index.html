@@ -833,10 +833,12 @@ main{padding-bottom:0;}
 }
 .email-sub{
     font-family: var(--mono);
-    font-size: 0.6rem;
+    font-size: 1em;
     letter-spacing: .18em;
     text-transform: uppercase;
     color: var(--muted);
+    padding-top: 0px;
+    margin-top: 12px;
 }
 .email-form{display:flex;gap:.5rem;flex-shrink:0;}
 .email-input{
@@ -848,11 +850,18 @@ main{padding-bottom:0;}
 .email-input:focus{border-color:var(--muted);}
 .email-input::placeholder{color:var(--muted);}
 .email-btn{
-  font-family:var(--mono);font-size:.52rem;font-weight:700;
-  letter-spacing:.16em;text-transform:uppercase;
-  background:var(--bright);color:var(--bg);
-  border:none;padding:.65rem 1.4rem;cursor:pointer;
-  transition:opacity .18s;white-space:nowrap;
+    font-family: var(--mono);
+    font-size: 0.8rem;
+    font-weight: 700;
+    letter-spacing: .16em;
+    text-transform: uppercase;
+    background: var(--bright);
+    color: var(--bg);
+    border: none;
+    padding: .65rem 1.4rem;
+    cursor: pointer;
+    transition: opacity .18s;
+    white-space: nowrap;
 }
 .email-btn:hover{opacity:.85;}
 
