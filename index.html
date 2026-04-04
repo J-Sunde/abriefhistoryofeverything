@@ -1518,7 +1518,7 @@ br.desk-br{display:block;}
       title: 'A (Brief) History of the Dark Web',
       url: 'dark-web.html',
       color: '#BF7FFF',
-      mostRecent: true,
+      mostRecent: false,
       tags: [
         'Tor','Silk Road','Ross Ulbricht','Dark Markets','Anonymity',
       ],
@@ -1528,6 +1528,40 @@ br.desk-br{display:block;}
         'Hidden','Clearnet','Exit Node','ARPANET',
         'Contraband','Hacker','NSA','Whistleblower',
         'Snowden','Hydra','AlphaBay','Cypherpunk',
+      ],
+    },
+    {
+      id: 'april-fools',
+      title: 'A (Brief) History of April Fools Day',
+      url: 'april-fools.html',
+      color: '#FF5C20',
+      mostRecent: false,
+      tags: [
+        'April Fools','Hoax','Pranks','Poisson d\'Avril','Media Hoaxes',
+      ],
+      words: [
+        'Prank','Hoax','Trickster','Fool',
+        'Jester','Satire','Deception','BBC',
+        'Spaghetti','Gotcha','Poisson','Calendar',
+        'April','Jest','Gag','Ruse',
+        'Farce','Dupe','Comic','Absurd',
+      ],
+    },
+    {
+      id: 'stock-market',
+      title: 'A (Brief) History of the Stock Market',
+      url: 'stock-market.html',
+      color: '#C9A84C',
+      mostRecent: true,
+      tags: [
+        'Wall Street','Black Tuesday','NYSE','Dot-com Bubble','GameStop',
+      ],
+      words: [
+        'Wall Street','NYSE','Ticker','Bull',
+        'Bear','Crash','Rally','Dow',
+        'S&P','Nasdaq','IPO','Short',
+        'Margin','Bubble','Panic','Lehman',
+        'GameStop','Hedge','Broker','Dividend',
       ],
     },
     // ── ADD NEW GUIDES HERE ──────────────────────────────
@@ -2030,10 +2064,4 @@ document.querySelectorAll('.fi').forEach(el=>_fiObs.observe(el));
   document.getElementById('af-btn-secondary').addEventListener('click', function(){
     clearInterval(ticker);
     toast.style.opacity = '0';
-    bg.style.animation = 'afIn .35s ease reverse forwards';
-    setTimeout(function(){
-      window.location.href = '/april-fools.html';
-    }, 350);
-  });
-
-  // Click outside = 
+    bg.styl
