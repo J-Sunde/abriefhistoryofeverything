@@ -2,9 +2,9 @@
 <!-- ════════════════════════════════════════════════════════════════════
      MASCOT SWAP — see mascot-library.html for all animation blocks
      To change the animation, replace these three sections:
-       1. CSS  →  search  /* ═══ MASCOT ZONE ═══ */
-       2. HTML →  search  <!-- MASCOT ZONE -->
-       3. JS   →  search  /* MASCOT ENGINE */
+       1. CSS  →  search  [MASCOT ZONE]  in the style block
+       2. HTML →  search  [MASCOT ZONE]  in the body
+       3. JS   →  search  [MASCOT ENGINE]  in the scripts
 ════════════════════════════════════════════════════════════════════ -->
 <html lang="en">
 <head>
@@ -815,11 +815,10 @@ main{padding-bottom:0;}
 }
 .email-sub{
     font-family: var(--mono);
-    font-size: 0.95rem;
+    font-size: 0.6rem;
     letter-spacing: .18em;
     text-transform: uppercase;
     color: var(--muted);
-    margin-top: 9px;
 }
 .email-form{display:flex;gap:.5rem;flex-shrink:0;}
 .email-input{
@@ -831,18 +830,11 @@ main{padding-bottom:0;}
 .email-input:focus{border-color:var(--muted);}
 .email-input::placeholder{color:var(--muted);}
 .email-btn{
-    font-family: var(--mono);
-    font-size: 0.7rem;
-    font-weight: 700;
-    letter-spacing: .16em;
-    text-transform: uppercase;
-    background: var(--bright);
-    color: var(--bg);
-    border: none;
-    padding: .65rem 1.4rem;
-    cursor: pointer;
-    transition: opacity .18s;
-    white-space: nowrap;
+  font-family:var(--mono);font-size:.52rem;font-weight:700;
+  letter-spacing:.16em;text-transform:uppercase;
+  background:var(--bright);color:var(--bg);
+  border:none;padding:.65rem 1.4rem;cursor:pointer;
+  transition:opacity .18s;white-space:nowrap;
 }
 .email-btn:hover{opacity:.85;}
 
