@@ -761,10 +761,13 @@ main{padding-bottom:0;}
 .manifesto{
   padding:3.5rem 2.5rem;
   border-top:1px solid var(--rule);
-  display:grid;grid-template-columns:1fr 2fr;gap:4rem;
-  align-items:center;
 }
-.manifesto-left{}
+.manifesto-left{
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  text-align:center;
+}
 .manifesto-series{
     font-family: var(--mono);
     font-size: 0.65rem;
@@ -773,30 +776,25 @@ main{padding-bottom:0;}
     color: var(--muted);
     margin-bottom: .6rem;
 }
-.manifesto-brand{
-  font-family:var(--cond);font-weight:700;
-  font-size:2rem;color:var(--bright);line-height:1.1;
-  margin-bottom:.4rem;
-}
-.manifesto-url{
-  font-family:var(--mono);font-size:.78rem;
-  letter-spacing:.12em;color:var(--dim);
-  margin-bottom:.3rem;
-}
-.manifesto-since{
-    font-family: var(--mono);
-    font-size: 0.65rem;
-    letter-spacing: .18em;
-    text-transform: uppercase;
-    color: var(--muted);
-}
 .manifesto-quote{
   font-family:var(--mono);font-weight:300;font-style:italic;
   font-size:clamp(1rem,1.8vw,1.45rem);
   line-height:1.7;color:var(--dim);
-  border-left:2px solid var(--dim);padding-left:1.8rem;
+  text-align:center;
+  max-width:700px;
+  margin:0 auto;
 }
 .manifesto-quote em{color:var(--bright);font-style:normal;font-weight:600;}
+
+/* ═══ SUGGEST ZONE ═══ */
+.suggest-zone{
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  text-align:center;
+  padding:3rem 2.5rem;
+  border-top:1px solid var(--rule);
+}
 
 /* ═══ EMAIL ═══ */
 .email-section{
@@ -867,7 +865,7 @@ br.desk-br{display:block;}
   .hero-content{padding:0 1.5rem 2.5rem;}
   .section-head,.entity-section,.email-section,footer{padding-left:1.5rem;padding-right:1.5rem;}
   .shelf-track{padding-left:1.5rem;}
-  .manifesto{grid-template-columns:1fr;gap:2rem;padding:2.5rem 1.5rem;}
+  .manifesto{ padding:2.5rem 1.5rem; }
   nav{padding:0 1.5rem;}
   nav .nav-links{display:none;}
   nav .nav-sep{display:none;}
@@ -1244,6 +1242,16 @@ br.desk-br{display:block;}
     </div>
   </div>
 
+  <!-- MANIFESTO -->
+  <div class="manifesto fi">
+    <blockquote class="manifesto-quote">
+      History is not a list of dates.
+      It is a story about <em>why things happened</em>,
+      who made them happen,
+      and what we missed at the time.
+    </blockquote>
+  </div>
+
   <!-- ENTITY TAGS — rendered by JS from GUIDES registry -->
   <div class="entity-section fi">
     <div class="entity-head">Entity Index</div>
@@ -1252,20 +1260,10 @@ br.desk-br{display:block;}
     <div class="entity-tags" id="entity-tags"></div>
   </div>
 
-  <!-- MANIFESTO -->
-  <div class="manifesto fi">
-    <div class="manifesto-left">
-      <div class="manifesto-series">The Project</div>
-      <div class="manifesto-brand">A (Brief) History of Everything</div>
-      <div class="manifesto-url">abriefhistoryofeverything.com</div>
-      <div class="manifesto-since">Est. 2026</div>
-    </div>
-    <blockquote class="manifesto-quote">
-      History is not a list of dates.<br class="desk-br">
-      It is a story about <em>why things happened</em>,<br class="desk-br">
-      who made them happen,<br class="desk-br">
-      and what we missed at the time.
-    </blockquote>
+  <!-- SUGGEST A TOPIC -->
+  <div class="suggest-zone fi">
+    <div class="manifesto-series">Got a subject that deserves a deep dive?</div>
+    <a class="email-btn" href="mailto:topics@abriefhistoryofeverything.com" style="display:inline-flex;align-items:center;text-decoration:none;margin-top:1rem;">Suggest a Topic →</a>
   </div>
 
   <!-- EMAIL — commented out until ready
@@ -1280,15 +1278,6 @@ br.desk-br{display:block;}
     </form>
   </div>
   -->
-
-  <!-- SUGGEST A TOPIC -->
-  <div class="email-section fi">
-    <div class="email-left">
-      <div class="email-head">Suggest a Topic</div>
-      <div class="email-sub">Got a subject that deserves a deep dive? Tell us.</div>
-    </div>
-<a class="email-btn" href="mailto:topics@abriefhistoryofeverything.com" style="display:inline-flex;align-items:center;text-decoration:none;">Suggest a Topic →</a>
-  </div>
 
   <!-- MASCOT ZONE -->
   <div class="mascot-zone" id="mascotZone">
@@ -1330,7 +1319,7 @@ br.desk-br{display:block;}
 
 <!-- FOOTER -->
 <footer>
-  <span class="footer-l">©2026 A (Brief) History of Everything</span>
+  <span class="footer-l">© 2026 A (Brief) History of Everything · Est. 2026</span>
 </footer>
 <script>
 /* ═══════════════════════════════════════════════════════
