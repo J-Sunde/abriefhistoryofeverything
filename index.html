@@ -1,4 +1,29 @@
 <!DOCTYPE html>
+<!-- ════════════════════════════════════════════════════════════════════
+     MONDAY REVERT — Remove Easter bunny, restore original mascot
+     Three blocks to delete and one to uncomment. Takes ~2 minutes.
+
+     STEP 1 — DELETE the CSS block (around line 930):
+       /* ── EASTER BUNNY (temp swap, revert Monday) ── */
+       .bunny-wrap { … }   .bunny-svg { … }   .bunny-label { … }
+
+     STEP 2 — In the MASCOT ZONE HTML (search "EASTER SWAP"):
+       DELETE the bunny div:
+         <div class="bunny-wrap" id="bunnyWrap"> … </div>
+       UNCOMMENT the original mascot block below it:
+         Remove the  <!-- ── ORIGINAL MASCOT …  opening comment line
+         Remove the  ── END ORIGINAL MASCOT ── -->  closing comment line
+         (leave everything in between as-is)
+
+     STEP 3 — In the scripts (search "BUNNY BLINK ENGINE"):
+       DELETE the entire bunny blink <script> block
+       UNCOMMENT the original mascot engine below it:
+         Remove the  <!-- ══ ORIGINAL MASCOT ENGINE …  opening comment line
+         Remove the  END ORIGINAL MASCOT ENGINE ══ -->  closing comment line
+         Wrap the inner JS:  <script>  (inner code)  </script>
+
+     That's it — the original scoot/mad/blink mascot is back.
+════════════════════════════════════════════════════════════════════ -->
 <html lang="en">
 <head>
 <meta charset="UTF-8">
@@ -912,6 +937,25 @@ br.desk-br{display:block;}
   transition:opacity .25s, color .2s;
   pointer-events:none;
 }
+
+/* ── EASTER BUNNY (temp swap, revert Monday) ── */
+.bunny-wrap {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+}
+.bunny-svg {
+  width: 72px; height: 103px;
+  display: block;
+}
+.bunny-label {
+  font-family: var(--mono);
+  font-size: .72rem;
+  letter-spacing: .16em;
+  text-transform: uppercase;
+  color: #ef85b7;
+}
 </style>
 
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-S80KBNWEJ5"></script>
@@ -1264,12 +1308,46 @@ br.desk-br{display:block;}
       <div class="email-head">Suggest a Topic</div>
       <div class="email-sub">Got a subject that deserves a deep dive? Tell us.</div>
     </div>
-<a class="email-btn" href="mailto:topics@abriefhistoryofeverything.com" style="display:inline-flex;align-items:center;text-decoration:none;">Suggest a Topic →</a>  
+<a class="email-btn" href="/cdn-cgi/l/email-protection#ef9b809f868c9caf8e8d9d868a8987869c9b809d9680898a998a9d969b87868188c18c8082" style="display:inline-flex;align-items:center;text-decoration:none;">Suggest a Topic →</a>  
   </div>
 
   <!-- MASCOT ZONE -->
   <div class="mascot-zone" id="mascotZone">
     <div class="mascot-stage" id="mascotStage">
+
+      <!-- ── EASTER SWAP: blinking bunny (revert Monday) ── -->
+      <div class="bunny-wrap" id="bunnyWrap">
+        <svg class="bunny-svg" viewBox="0 0 117.7 168.9" xmlns="http://www.w3.org/2000/svg">
+          <rect x="7.2" y="58.4" width="110.5" height="110.5" fill="#fff"/>
+          <rect x="22.6" y="138.9" width="46.4" height="10.5" fill="#08090b"/>
+          <rect x="39.4" y="117.2" width="13.7" height="13.7" fill="#ef85b7"/>
+          <!-- eyes — IDs for blink script -->
+          <rect id="bEyeL" x="22.3" y="91.2" width="13.7" height="13.7" fill="#898786"/>
+          <rect id="bEyeR" x="55.6" y="91.2" width="13.7" height="13.7" fill="#898786"/>
+          <!-- whiskers left -->
+          <polygon points="1 112.6 29.3 119.2 30 117 1.7 110.4 1 112.6" fill="#ef85b7"/>
+          <rect y="121.4" width="29.3" height="2.3" fill="#ef85b7"/>
+          <polygon points="1.5 134.1 30 128.2 29.4 126 .9 131.9 1.5 134.1" fill="#ef85b7"/>
+          <!-- whiskers right -->
+          <polygon points="90.1 112.6 63.6 119.2 63 117 89.5 110.4 90.1 112.6" fill="#ef85b7"/>
+          <rect x="63.6" y="121.4" width="27.4" height="2.3" fill="#ef85b7"/>
+          <polygon points="89.6 134.1 62.9 128.2 63.5 126 90.1 131.9 89.6 134.1" fill="#ef85b7"/>
+          <!-- left ear -->
+          <rect x="22.3" width="6.3" height="58.4" fill="#fff"/>
+          <rect x="41.6" width="6.3" height="58.4" fill="#fff"/>
+          <rect x="28.6" width="13" height="58.4" fill="#ef85b7"/>
+          <!-- right ear -->
+          <rect x="69.8" width="6.3" height="58.4" fill="#fff"/>
+          <rect x="89.1" width="6.3" height="58.4" fill="#fff"/>
+          <rect x="76.1" width="13" height="58.4" fill="#ef85b7"/>
+          <!-- ear caps (keep ears flush at top) -->
+          <rect x="69.8" width="42.4" height="7.7" fill="#fff"/>
+          <rect x="7.2" width="40.7" height="7.7" fill="#fff"/>
+        </svg>
+        <div class="bunny-label">Happy Easter</div>
+      </div>
+
+      <!-- ── ORIGINAL MASCOT (commented out for Easter weekend, restore Monday) ──
       <div class="mascot-wrap" id="mascotWrap">
         <div class="mascot-hitarea" id="mascotHit"></div>
         <svg class="mascot-svg" id="mascotSvg" viewBox="0 0 400 400" xmlns="http://www.w3.org/2000/svg" width="56" height="56">
@@ -1282,6 +1360,8 @@ br.desk-br{display:block;}
         </svg>
       </div>
       <div class="mascot-label" id="mascotLabel">watching.</div>
+      ── END ORIGINAL MASCOT ── -->
+
     </div>
   </div>
 
@@ -1291,7 +1371,7 @@ br.desk-br{display:block;}
 <footer>
   <span class="footer-l">©2026 A (Brief) History of Everything</span>
 </footer>
-<script>
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
 /* ═══════════════════════════════════════════════════════
    HERO ART ENGINE
    Two systems running simultaneously:
@@ -1786,12 +1866,44 @@ document.querySelectorAll('.fi').forEach(el=>_fiObs.observe(el));
 
 <script>
 /* ══════════════════════════════════════════════
-   MASCOT ENGINE
-   Sits centered between Suggest a Topic and footer.
-   On hover: scoots sideways then flips to mad face.
-   After 2s: scoots back, returns to neutral.
-   Idle: occasional blinks.
+   BUNNY BLINK ENGINE (Easter swap — revert Monday)
+   Randomly blinks both eyes every 3–6 seconds.
 ══════════════════════════════════════════════ */
+(function(){
+  const eyeL = document.getElementById('bEyeL');
+  const eyeR = document.getElementById('bEyeR');
+  if(!eyeL || !eyeR) return;
+
+  const EYE_Y = 91.2;
+  const EYE_H = 13.7;
+
+  function blink(){
+    // Squeeze eyes to a sliver
+    eyeL.setAttribute('height', '1.5');
+    eyeL.setAttribute('y', String(EYE_Y + EYE_H / 2 - 0.75));
+    eyeR.setAttribute('height', '1.5');
+    eyeR.setAttribute('y', String(EYE_Y + EYE_H / 2 - 0.75));
+
+    // Reopen after 110ms
+    setTimeout(function(){
+      eyeL.setAttribute('height', String(EYE_H));
+      eyeL.setAttribute('y', String(EYE_Y));
+      eyeR.setAttribute('height', String(EYE_H));
+      eyeR.setAttribute('y', String(EYE_Y));
+      scheduleBlink();
+    }, 110);
+  }
+
+  function scheduleBlink(){
+    setTimeout(blink, 3000 + Math.random() * 3000);
+  }
+
+  scheduleBlink();
+})();
+</script>
+
+<!-- ══════════════════════════════════════════════
+     ORIGINAL MASCOT ENGINE (commented out for Easter weekend — restore Monday)
 (function(){
   const wrap  = document.getElementById('mascotWrap');
   const hit   = document.getElementById('mascotHit');
@@ -1849,16 +1961,13 @@ document.querySelectorAll('.fi').forEach(el=>_fiObs.observe(el));
     blinkTimer = setTimeout(blink, 2800 + Math.random()*3200);
   }
 
-  /* ── Scoot amount: how far it runs (px), pick a random direction ── */
   function scootDir(){
-    // Find zone width to clamp travel
     const zw = zone.offsetWidth;
     const maxTravel = Math.min(zw * 0.32, 180);
     const dist = 60 + Math.random() * (maxTravel - 60);
     return Math.random() < 0.5 ? dist : -dist;
   }
 
-  /* ── Main hover trigger ── */
   function onHoverIn(){
     if(state !== 'idle') return;
     state = 'scooting';
@@ -1867,20 +1976,17 @@ document.querySelectorAll('.fi').forEach(el=>_fiObs.observe(el));
     clearTimeout(returnTimer);
 
     const dist = scootDir();
-    const flipped = dist > 0; // running right → face left (flipped)
+    const flipped = dist > 0;
 
-    // 1. Scoot away
     wrap.style.transition = 'transform .22s cubic-bezier(.4,0,.2,1)';
     svg.style.transition   = 'transform .14s ease';
     wrap.style.transform   = `translateX(${dist}px)`;
     svg.style.transform    = flipped ? 'scaleX(-1)' : 'scaleX(1)';
 
-    // 2. After scoot settles, flip face to mad
     madTimer = setTimeout(()=>{
       applyMadFace();
       state = 'mad';
 
-      // 3. After a beat, scoot back and calm down
       returnTimer = setTimeout(()=>{
         state = 'returning';
         wrap.style.transition = 'transform .32s cubic-bezier(.16,1,.3,1)';
@@ -1888,7 +1994,6 @@ document.querySelectorAll('.fi').forEach(el=>_fiObs.observe(el));
         wrap.style.transform   = 'translateX(0)';
         svg.style.transform    = 'scaleX(1)';
 
-        // 4. Face returns to neutral once back home
         setTimeout(()=>{
           applyNeutralFace();
           state = 'idle';
@@ -1900,16 +2005,13 @@ document.querySelectorAll('.fi').forEach(el=>_fiObs.observe(el));
     }, 200);
   }
 
-  /* ── Bind — desktop: invisible hitarea; mobile: scroll into view ── */
   if(hit) hit.addEventListener('mouseenter', onHoverIn);
 
-  /* ── Mobile: triggers when zone scrolls into view ── */
   const isTouchDevice = () => window.matchMedia('(hover:none)').matches;
   if(isTouchDevice() && zone){
     const mobileObs = new IntersectionObserver((entries) => {
       entries.forEach(e => {
         if(e.isIntersecting && state === 'idle'){
-          // Short delay — he notices you arrived, then reacts
           setTimeout(onHoverIn, 620);
         }
            });
@@ -1918,7 +2020,7 @@ document.querySelectorAll('.fi').forEach(el=>_fiObs.observe(el));
   }
 
 })();
-</script>
+     END ORIGINAL MASCOT ENGINE ══════════════════════════════════════════════ -->
 
 <!-- ═══════════════════════════════════════════════════════════
      APRIL FOOLS POPUP
@@ -2099,13 +2201,4 @@ document.querySelectorAll('.fi').forEach(el=>_fiObs.observe(el));
     }, 350);
   });
 
-  // Click outside = primary
-  bg.addEventListener('click', function(e){
-    if(e.target === bg) document.getElementById('af-btn-primary').click();
-  });
-
-})();
-</script>
-
-</body>
-</html>
+  // Click outside = 
