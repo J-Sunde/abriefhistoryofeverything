@@ -139,17 +139,26 @@ body{background:#F5F5F0;color:#2A2A2A;font-family:'Courier New',monospace;font-s
 .ca{flex:1;overflow-y:auto;padding:20px;background:#F5F5F0;}
 .ca::-webkit-scrollbar{width:5px;}.ca::-webkit-scrollbar-thumb{background:#D0D0C8;}
 .cgrid{display:grid;grid-template-columns:1fr 1fr;gap:18px;max-width:1340px;margin:0 auto;}
+.cgrid-main{display:grid;grid-template-columns:1fr 1fr;gap:18px;max-width:1340px;margin:0 auto;}
 .cw{display:flex;flex-direction:column;gap:7px;}.cm{display:flex;align-items:center;gap:8px;}
 .cn{font-family:'Courier New',monospace;font-size:9px;letter-spacing:.15em;text-transform:uppercase;color:#999;}
 .cd{font-family:'Courier New',monospace;font-size:9px;color:#ccc;margin-left:auto;}
 .dlb{background:transparent;border:1px solid #D8D8D0;color:#888;font-family:'Courier New',monospace;font-size:9px;letter-spacing:.1em;padding:3px 9px;cursor:pointer;transition:all .12s;text-transform:uppercase;border-radius:2px;}
 .dlb:hover{border-color:#00CFFF;color:#00CFFF;}
+.sq-toggle-row{max-width:1340px;margin:0 auto 10px;display:flex;align-items:center;gap:8px;}
+.sq-toggle-btn{background:transparent;border:1px solid #D8D8D0;color:#999;font-family:'Courier New',monospace;font-size:9px;letter-spacing:.1em;padding:3px 10px;cursor:pointer;transition:all .12s;text-transform:uppercase;border-radius:2px;}
+.sq-toggle-btn:hover{border-color:#aaa;color:#555;}.sq-toggle-btn.active{border-color:#00CFFF;color:#00CFFF;}
 .cf{background:#E0E8F0;border:1px solid #C8D4E0;overflow:hidden;position:relative;flex-shrink:0;}
 .cf.og{width:600px;height:315px;}.cf.tw{width:600px;height:338px;}.cf.sq{width:540px;height:540px;}.cf.vt{width:432px;height:540px;}
 
 /* ── RIGHT SIDEBAR ── */
-.rsb{width:210px;background:#EEEEE8;border-left:1px solid #D8D8D0;display:flex;flex-direction:column;overflow-y:auto;flex-shrink:0;}
+.rsb{width:210px;background:#EEEEE8;border-left:1px solid #D8D8D0;display:flex;flex-direction:column;overflow-y:auto;flex-shrink:0;transition:width .2s;}
+.rsb.collapsed{width:30px;overflow:hidden;}
 .rsb::-webkit-scrollbar{width:4px;}.rsb::-webkit-scrollbar-thumb{background:#D0D0C8;}
+.rsb-toggle{height:44px;display:flex;align-items:center;justify-content:center;cursor:pointer;border-bottom:1px solid #D8D8D0;flex-shrink:0;color:#999;font-size:11px;font-family:'Courier New',monospace;user-select:none;transition:color .12s;position:sticky;top:0;background:#EEEEE8;z-index:2;}
+.rsb-toggle:hover{color:#00CFFF;}
+.rsb-inner{flex:1;overflow-y:auto;min-width:210px;}
+.rsb-inner::-webkit-scrollbar{width:4px;}.rsb-inner::-webkit-scrollbar-thumb{background:#D0D0C8;}
 .rsbs{padding:14px;border-bottom:1px solid #D8D8D0;}
 .rsbl{font-family:'Courier New',monospace;font-size:9px;letter-spacing:.2em;text-transform:uppercase;color:#999;margin-bottom:8px;}
 .rsbtext{font-family:'Courier New',monospace;font-size:11px;color:#444;line-height:1.5;}
@@ -431,10 +440,16 @@ body{background:#F5F5F0;color:#2A2A2A;font-family:'Courier New',monospace;font-s
 
 <!-- SOCIAL CANVAS WRAP -->
 <div id="social-canvas-wrap" class="ca">
-  <div class="cgrid">
+  <div class="sq-toggle-row">
+    <button class="sq-toggle-btn" id="sq-toggle-btn" onclick="toggleSQ()">+ IG Square</button>
+    <span style="font-family:'Courier New',monospace;font-size:9px;color:#ccc;">1080&times;1080 hidden by default</span>
+  </div>
+  <div class="cgrid-main" id="main-canvas-grid">
     <div class="cw"><div class="cm"><span class="cn">Twitter / X</span><span class="cd">1200&times;675</span><button class="dlb" onclick="dlC('tw')">&#8595; PNG</button></div><div class="cf tw" id="canvas-tw"></div></div>
-    <div class="cw"><div class="cm"><span class="cn">IG Square</span><span class="cd">1080&times;1080</span><button class="dlb" onclick="dlC('sq')">&#8595; PNG</button></div><div class="cf sq" id="canvas-sq"></div></div>
     <div class="cw"><div class="cm"><span class="cn">IG Vertical</span><span class="cd">1080&times;1350</span><button class="dlb" onclick="dlC('vt')">&#8595; PNG</button></div><div class="cf vt" id="canvas-vt"></div></div>
+  </div>
+  <div id="sq-canvas-row" style="display:none;max-width:1340px;margin:18px auto 0;">
+    <div class="cw" style="max-width:560px;"><div class="cm"><span class="cn">IG Square</span><span class="cd">1080&times;1080</span><button class="dlb" onclick="dlC('sq')">&#8595; PNG</button></div><div class="cf sq" id="canvas-sq"></div></div>
   </div>
   <div id="carousel-preview" style="display:none;border-top:1px solid #D8D8D0;margin-top:18px;padding-top:18px;">
     <div class="cgrid" style="grid-template-columns:1fr 1fr 1fr;">
@@ -446,7 +461,9 @@ body{background:#F5F5F0;color:#2A2A2A;font-family:'Courier New',monospace;font-s
 </div>
 
 <!-- RIGHT SIDEBAR -->
-<div class="rsb">
+<div class="rsb collapsed" id="rsb">
+  <div class="rsb-toggle" id="rsb-toggle" onclick="toggleRSB()" title="Toggle info panel">&#8942;</div>
+  <div class="rsb-inner" id="rsb-inner">
   <div class="rsbs"><div class="rsbl">Active Content</div><div class="rsbtext" id="rsb-text">—</div><div class="rsbattr" id="rsb-attr"></div></div>
   <div class="rsbs"><div class="rsbl">Highlight Word</div><input class="hlinput" id="hl-input-rsb" type="text" value="" oninput="syncHL(this.value)"></div>
   <div class="rsbs">
@@ -479,6 +496,7 @@ body{background:#F5F5F0;color:#2A2A2A;font-family:'Courier New',monospace;font-s
       <span class="size-val" id="headline-scale-val">100%</span>
     </div>
     <div class="body-note">Scales fitted headline size. 100% = fitText default.</div>
+  </div>
   </div>
 </div>
 
@@ -662,11 +680,17 @@ function parseAndApplyGuide(html,filename){
     if(num&&num.textContent.trim())stats.push({num:num.textContent.trim(),label:label?label.textContent.trim():'',sub:sub?sub.textContent.trim():'',hl:num.textContent.trim(),bgNum:num.textContent.replace(/\D/g,'').slice(0,4)});
   });
 
-  // Figures — from inline JS FIGURES array
+  // Figures — extract FIGURES array from inline JS using bracket-depth parser
   const figures=[];
   const scriptText=[...doc.querySelectorAll('script')].map(s=>s.textContent).join('\n');
-  const figMatch=scriptText.match(/(?:const|let|var)\s+FIGURES\s*=\s*(\[[\s\S]*?\]);/);
-  if(figMatch){try{const arr=eval('('+figMatch[1]+')');arr.forEach(f=>{figures.push({name:f.name||'',era:f.era||'',role:f.role||'',bio:f.bio||'',accent:f.accent||accent,img:f.img||''});});}catch(e){}}
+  const figStart=scriptText.search(/(?:const|let|var)\s+FIGURES\s*=\s*\[/);
+  if(figStart!==-1){
+    const arrStart=scriptText.indexOf('[',figStart);
+    let depth=0,i=arrStart,len=scriptText.length;
+    while(i<len){const c=scriptText[i];if(c==='[')depth++;else if(c===']'){depth--;if(depth===0){break;}}i++;}
+    const arrStr=scriptText.slice(arrStart,i+1);
+    try{const arr=eval('('+arrStr+')');arr.forEach(f=>{figures.push({name:f.name||'',era:f.era||'',role:f.role||'',bio:f.bio||'',accent:f.accent||accent,img:f.img||''});});}catch(e){console.warn('FIGURES parse error:',e);}
+  }
 
   // Images — collect all img src paths for thumbnails
   const allImgs=[...doc.querySelectorAll('img[src]')].map(i=>i.getAttribute('src')).filter(s=>s&&!s.startsWith('data:')&&(s.match(/\.(jpg|jpeg|png|webp|gif)/i)));
@@ -978,6 +1002,10 @@ window.selCarouselBg=function(el){document.querySelectorAll('[data-cbg]').forEac
 window.setCarouselCount=function(v){S.carouselCount=parseInt(v);document.getElementById('carousel-count-val').textContent=v;updateAll();};
 window.syncHL=function(v){S.hlWord=v;document.getElementById('hl-input').value=v;updateAll();};
 document.getElementById('hl-input').addEventListener('input',e=>{S.hlWord=e.target.value;document.getElementById('hl-input-rsb').value=e.target.value;updateAll();});
+
+// ── PANEL TOGGLES ──
+window.toggleRSB=function(){const rsb=document.getElementById('rsb');rsb.classList.toggle('collapsed');const t=document.getElementById('rsb-toggle');t.textContent=rsb.classList.contains('collapsed')?'\u22ee':'\u00d7';};
+window.toggleSQ=function(){const row=document.getElementById('sq-canvas-row');const btn=document.getElementById('sq-toggle-btn');const visible=row.style.display!=='none';row.style.display=visible?'none':'block';btn.classList.toggle('active',!visible);btn.textContent=visible?'+ IG Square':'− IG Square';if(!visible)updateAll();};
 
 // ── TEXT COLOR OVERRIDE ──
 function buildTextColorPresets(){
