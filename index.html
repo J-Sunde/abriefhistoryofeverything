@@ -1,28 +1,10 @@
 <!DOCTYPE html>
 <!-- ════════════════════════════════════════════════════════════════════
-     MONDAY REVERT — Remove Easter bunny, restore original mascot
-     Three blocks to delete and one to uncomment. Takes ~2 minutes.
-
-     STEP 1 — DELETE the CSS block (around line 930):
-       /* ── EASTER BUNNY (temp swap, revert Monday) ── */
-       .bunny-wrap { … }   .bunny-svg { … }   .bunny-label { … }
-
-     STEP 2 — In the MASCOT ZONE HTML (search "EASTER SWAP"):
-       DELETE the bunny div:
-         <div class="bunny-wrap" id="bunnyWrap"> … </div>
-       UNCOMMENT the original mascot block below it:
-         Remove the  <!-- ── ORIGINAL MASCOT …  opening comment line
-         Remove the  ── END ORIGINAL MASCOT ── -->  closing comment line
-         (leave everything in between as-is)
-
-     STEP 3 — In the scripts (search "BUNNY BLINK ENGINE"):
-       DELETE the entire bunny blink <script> block
-       UNCOMMENT the original mascot engine below it:
-         Remove the  <!-- ══ ORIGINAL MASCOT ENGINE …  opening comment line
-         Remove the  END ORIGINAL MASCOT ENGINE ══ -->  closing comment line
-         Wrap the inner JS:  <script>  (inner code)  </script>
-
-     That's it — the original scoot/mad/blink mascot is back.
+     MASCOT SWAP — see mascot-library.html for all animation blocks
+     To change the animation, replace these three sections:
+       1. CSS  →  search  /* ═══ MASCOT ZONE ═══ */
+       2. HTML →  search  <!-- MASCOT ZONE -->
+       3. JS   →  search  /* MASCOT ENGINE */
 ════════════════════════════════════════════════════════════════════ -->
 <html lang="en">
 <head>
@@ -833,12 +815,11 @@ main{padding-bottom:0;}
 }
 .email-sub{
     font-family: var(--mono);
-    font-size: 1em;
+    font-size: 0.95rem;
     letter-spacing: .18em;
     text-transform: uppercase;
     color: var(--muted);
-    padding-top: 0px;
-    margin-top: 12px;
+    margin-top: 9px;
 }
 .email-form{display:flex;gap:.5rem;flex-shrink:0;}
 .email-input{
@@ -851,7 +832,7 @@ main{padding-bottom:0;}
 .email-input::placeholder{color:var(--muted);}
 .email-btn{
     font-family: var(--mono);
-    font-size: 0.8rem;
+    font-size: 0.7rem;
     font-weight: 700;
     letter-spacing: .16em;
     text-transform: uppercase;
@@ -915,13 +896,11 @@ br.desk-br{display:block;}
   align-items:center;
   gap:10px;
 }
-/* Visible mark */
 .mascot-wrap{
   width:56px;height:56px;
   position:relative;
   will-change:transform;
 }
-/* Invisible hit area — absolutely positioned, larger than the mark */
 .mascot-hitarea{
   position:absolute;
   top:-28px;left:-28px;
@@ -946,8 +925,6 @@ br.desk-br{display:block;}
   transition:opacity .25s, color .2s;
   pointer-events:none;
 }
-
-/* ── EASTER BUNNY (temp swap, revert Monday) ── */
 .bunny-wrap {
   display: flex;
   flex-direction: column;
@@ -1323,8 +1300,6 @@ br.desk-br{display:block;}
   <!-- MASCOT ZONE -->
   <div class="mascot-zone" id="mascotZone">
     <div class="mascot-stage" id="mascotStage">
-
-      <!-- ── EASTER SWAP: blinking bunny (revert Monday) ── -->
       <div class="bunny-wrap" id="bunnyWrap">
         <svg class="bunny-svg" viewBox="0 0 117.7 168.9" xmlns="http://www.w3.org/2000/svg">
           <rect x="7.2" y="58.4" width="110.5" height="110.5" fill="#fff"/>
@@ -1349,28 +1324,12 @@ br.desk-br{display:block;}
           <rect x="69.8" width="6.3" height="58.4" fill="#fff"/>
           <rect x="89.1" width="6.3" height="58.4" fill="#fff"/>
           <rect x="76.1" width="13" height="58.4" fill="#ef85b7"/>
-          <!-- ear caps (keep ears flush at top) -->
+          <!-- ear caps -->
           <rect x="69.8" width="42.4" height="7.7" fill="#fff"/>
           <rect x="7.2" width="40.7" height="7.7" fill="#fff"/>
         </svg>
         <div class="bunny-label">Happy Easter</div>
       </div>
-
-      <!-- ── ORIGINAL MASCOT (commented out for Easter weekend, restore Monday) ──
-      <div class="mascot-wrap" id="mascotWrap">
-        <div class="mascot-hitarea" id="mascotHit"></div>
-        <svg class="mascot-svg" id="mascotSvg" viewBox="0 0 400 400" xmlns="http://www.w3.org/2000/svg" width="56" height="56">
-          <rect width="400" height="400" fill="#00D4F0"/>
-          <rect id="mEyeL" x="55"  y="118" width="46" height="46" fill="#08090C" opacity=".22"/>
-          <rect id="mEyeR" x="178" y="118" width="46" height="46" fill="#08090C" opacity=".22"/>
-          <rect id="mBrowL" x="30"  y="82" width="90" height="30" fill="#08090C" opacity="0" transform="rotate(20 75 97)"/>
-          <rect id="mBrowR" x="160" y="82" width="90" height="30" fill="#08090C" opacity="0" transform="rotate(-20 205 97)"/>
-          <rect id="mMouth" x="55" y="278" width="170" height="36" fill="#08090C"/>
-        </svg>
-      </div>
-      <div class="mascot-label" id="mascotLabel">watching.</div>
-      ── END ORIGINAL MASCOT ── -->
-
     </div>
   </div>
 
@@ -1874,10 +1833,7 @@ document.querySelectorAll('.fi').forEach(el=>_fiObs.observe(el));
 </script>
 
 <script>
-/* ══════════════════════════════════════════════
-   BUNNY BLINK ENGINE (Easter swap — revert Monday)
-   Randomly blinks both eyes every 3–6 seconds.
-══════════════════════════════════════════════ */
+/* MASCOT ENGINE — swap target, see mascot-library.html */
 (function(){
   const eyeL = document.getElementById('bEyeL');
   const eyeR = document.getElementById('bEyeR');
@@ -1887,13 +1843,10 @@ document.querySelectorAll('.fi').forEach(el=>_fiObs.observe(el));
   const EYE_H = 13.7;
 
   function blink(){
-    // Squeeze eyes to a sliver
     eyeL.setAttribute('height', '1.5');
     eyeL.setAttribute('y', String(EYE_Y + EYE_H / 2 - 0.75));
     eyeR.setAttribute('height', '1.5');
     eyeR.setAttribute('y', String(EYE_Y + EYE_H / 2 - 0.75));
-
-    // Reopen after 110ms
     setTimeout(function(){
       eyeL.setAttribute('height', String(EYE_H));
       eyeL.setAttribute('y', String(EYE_Y));
@@ -1910,126 +1863,6 @@ document.querySelectorAll('.fi').forEach(el=>_fiObs.observe(el));
   scheduleBlink();
 })();
 </script>
-
-<!-- ══════════════════════════════════════════════
-     ORIGINAL MASCOT ENGINE (commented out for Easter weekend — restore Monday)
-(function(){
-  const wrap  = document.getElementById('mascotWrap');
-  const hit   = document.getElementById('mascotHit');
-  const svg   = document.getElementById('mascotSvg');
-  const mouth = document.getElementById('mMouth');
-  const browL = document.getElementById('mBrowL');
-  const browR = document.getElementById('mBrowR');
-  const eyeL  = document.getElementById('mEyeL');
-  const eyeR  = document.getElementById('mEyeR');
-  const label = document.getElementById('mascotLabel');
-  const zone  = document.getElementById('mascotZone');
-  if(!wrap) return;
-
-  let state = 'idle'; // idle | scooting | mad | returning
-  let blinkTimer, madTimer, returnTimer;
-
-  /* ── Helpers ── */
-  function applyNeutralFace(){
-    mouth.setAttribute('y','278'); mouth.setAttribute('height','36');
-    mouth.setAttribute('x','55');  mouth.setAttribute('width','170');
-    browL.setAttribute('opacity','0');
-    browR.setAttribute('opacity','0');
-    eyeL.setAttribute('y','118'); eyeL.setAttribute('height','46');
-    eyeR.setAttribute('y','118'); eyeR.setAttribute('height','46');
-    label.textContent = 'watching.';
-    label.style.opacity = '0';
-    label.style.color = '';
-  }
-
-  function applyMadFace(){
-    mouth.setAttribute('y','295'); mouth.setAttribute('height','30');
-    mouth.setAttribute('x','55');  mouth.setAttribute('width','170');
-    browL.setAttribute('opacity','1');
-    browR.setAttribute('opacity','1');
-    eyeL.setAttribute('y','130'); eyeL.setAttribute('height','46');
-    eyeR.setAttribute('y','130'); eyeR.setAttribute('height','46');
-    label.textContent = 'rude.';
-    label.style.opacity = '1';
-    label.style.color = '#00D4F0';
-  }
-
-  function blink(){
-    if(state !== 'idle') return;
-    eyeL.setAttribute('height','4'); eyeL.setAttribute('y','140');
-    eyeR.setAttribute('height','4'); eyeR.setAttribute('y','140');
-    setTimeout(()=>{
-      eyeL.setAttribute('height','46'); eyeL.setAttribute('y','118');
-      eyeR.setAttribute('height','46'); eyeR.setAttribute('y','118');
-      scheduleBlink();
-    }, 110);
-  }
-
-  function scheduleBlink(){
-    clearTimeout(blinkTimer);
-    blinkTimer = setTimeout(blink, 2800 + Math.random()*3200);
-  }
-
-  function scootDir(){
-    const zw = zone.offsetWidth;
-    const maxTravel = Math.min(zw * 0.32, 180);
-    const dist = 60 + Math.random() * (maxTravel - 60);
-    return Math.random() < 0.5 ? dist : -dist;
-  }
-
-  function onHoverIn(){
-    if(state !== 'idle') return;
-    state = 'scooting';
-    clearTimeout(blinkTimer);
-    clearTimeout(madTimer);
-    clearTimeout(returnTimer);
-
-    const dist = scootDir();
-    const flipped = dist > 0;
-
-    wrap.style.transition = 'transform .22s cubic-bezier(.4,0,.2,1)';
-    svg.style.transition   = 'transform .14s ease';
-    wrap.style.transform   = `translateX(${dist}px)`;
-    svg.style.transform    = flipped ? 'scaleX(-1)' : 'scaleX(1)';
-
-    madTimer = setTimeout(()=>{
-      applyMadFace();
-      state = 'mad';
-
-      returnTimer = setTimeout(()=>{
-        state = 'returning';
-        wrap.style.transition = 'transform .32s cubic-bezier(.16,1,.3,1)';
-        svg.style.transition   = 'transform .2s ease';
-        wrap.style.transform   = 'translateX(0)';
-        svg.style.transform    = 'scaleX(1)';
-
-        setTimeout(()=>{
-          applyNeutralFace();
-          state = 'idle';
-          scheduleBlink();
-        }, 340);
-
-      }, 2000 + Math.random()*600);
-
-    }, 200);
-  }
-
-  if(hit) hit.addEventListener('mouseenter', onHoverIn);
-
-  const isTouchDevice = () => window.matchMedia('(hover:none)').matches;
-  if(isTouchDevice() && zone){
-    const mobileObs = new IntersectionObserver((entries) => {
-      entries.forEach(e => {
-        if(e.isIntersecting && state === 'idle'){
-          setTimeout(onHoverIn, 620);
-        }
-           });
-    }, { threshold: 0.6 });
-    mobileObs.observe(zone);
-  }
-
-})();
-     END ORIGINAL MASCOT ENGINE ══════════════════════════════════════════════ -->
 
 <!-- ═══════════════════════════════════════════════════════════
      APRIL FOOLS POPUP
