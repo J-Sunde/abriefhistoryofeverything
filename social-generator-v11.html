@@ -2534,22 +2534,34 @@
                         }
                     }
 
-                    // HTML fallback — scrape .figure-card markup (used by PDF-style and newer guides)
+                    // HTML fallback — scrape person/figure card markup from web guides
+                    // Handles both .person-card (Master Prompt web guides) and .figure-card (PDF guides)
                     if (figures.length === 0) {
-                        doc.querySelectorAll('.figure-card').forEach(card => {
-                            const imgEl = card.querySelector('.figure-photo img, img');
-                            const name  = card.querySelector('.figure-name');
-                            const era   = card.querySelector('.figure-era-tag, .figure-era');
-                            const role  = card.querySelector('.figure-role');
-                            const bio   = card.querySelector('.figure-bio');
+                        const cardSel = '.person-card, .figure-card';
+                        doc.querySelectorAll(cardSel).forEach(card => {
+                            // Photo: .person-photo is the <img> itself; .figure-photo is a wrapper div
+                            const personPhoto = card.querySelector('img.person-photo');
+                            const figurePhoto = card.querySelector('.figure-photo img');
+                            const imgSrc = personPhoto ? personPhoto.getAttribute('src')
+                                         : figurePhoto ? figurePhoto.getAttribute('src')
+                                         : (card.querySelector('img') ? card.querySelector('img').getAttribute('src') : '');
+                            // Text fields — person-card uses .person-*, figure-card uses .figure-*
+                            const name = card.querySelector('.person-name, .figure-name');
+                            const era  = card.querySelector('.person-era, .figure-era-tag, .figure-era');
+                            const role = card.querySelector('.person-role, .figure-role');
+                            const bio  = card.querySelector('.person-bio, .figure-bio');
+                            // Per-card accent color via inline --p-accent style
+                            const inlineStyle = card.getAttribute('style') || '';
+                            const pAccentMatch = inlineStyle.match(/--p-accent\s*:\s*([^;]+)/);
+                            const figAccent = pAccentMatch ? pAccentMatch[1].trim() : accent;
                             if (name && name.textContent.trim()) {
                                 figures.push({
                                     name:   name.textContent.trim(),
                                     era:    era  ? era.textContent.trim()  : '',
                                     role:   role ? role.textContent.trim() : '',
                                     bio:    bio  ? bio.textContent.trim()  : '',
-                                    accent: accent,
-                                    img:    imgEl ? imgEl.getAttribute('src') : ''
+                                    accent: figAccent,
+                                    img:    imgSrc || ''
                                 });
                             }
                         });
