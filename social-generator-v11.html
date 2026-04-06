@@ -2412,15 +2412,13 @@
                     // Colors — pulled from :root only
                     const accent = cssVar(['--accent']) || '#00CFFF';
                     const accent2 = cssVar(['--accent2', '--accent3']) || '#FF6A00';
-                    let darkBg = cssVar(['--bg\\b', '--charcoal', '--dark-bg', '--dark\\b']) || '#000D1F';
-                    let lightBg = cssVar(['--cream', '--ivory', '--paper', '--off-white', '--bg1\\b', '--bg2\\b']) || '#E3EEFB';
-                    // Light-first guides use --bg for a light page color (e.g. Easter Bunny cream bg).
-                    // If parsed darkBg is actually light, swap so darkBg is always a true dark.
-                    if (isLight(darkBg)) {
-                        const trueDark = cssVar(['--charcoal', '--dark\\b', '--dark-bg']);
-                        lightBg = darkBg; // reassign the light-colored bg correctly
-                        darkBg = (trueDark && !isLight(trueDark)) ? trueDark : '#1A1A1A';
-                    }
+                    const rawBg    = cssVar(['--bg\\b', '--charcoal', '--dark-bg', '--dark\\b']) || '#000D1F';
+                    const rawLight = cssVar(['--cream', '--ivory', '--paper', '--off-white', '--bg1\\b', '--bg2\\b']) || '#E3EEFB';
+                    // Detect guide type: light-first guides (Editorial/Broadsheet) have a light --bg
+                    const guideIsLight = isLight(rawBg);
+                    // Keep both palettes meaningful regardless of guide type
+                    const darkBg  = guideIsLight ? (cssVar(['--charcoal','--dark\\b','--dark-bg','--text\\b','--bright\\b']) || '#1A1A1A') : rawBg;
+                    const lightBg = guideIsLight ? rawBg : rawLight;
 
                     // Fonts — check all common variable names including --cond used by some guides
                     const displayFont = normFont(cssVar(['--f-display', '--f-head', '--cond', '--sans', '--font-display', '--display', '--heading', '--font-heading', '--f-cond']), "'Courier New', monospace");
@@ -2440,7 +2438,7 @@
 
                     // Title & slug
                     const titleEl = doc.querySelector('title');
-                    const rawTitle = titleEl ? titleEl.textContent.replace(/A \(Brief\) History of\s*/i, '').trim() : '';
+                    const rawTitle = titleEl ? titleEl.textContent.replace(/A \(Brief\) History of\s*/i, '').replace(/_+$/, '').trim() : '';
                     const canonEl = doc.querySelector('link[rel="canonical"]');
                     const slug = canonEl ? canonEl.href.split('/').filter(Boolean).pop() : (filename.replace('.html', '').replace(/-social-generator/, ''));
 
@@ -2713,7 +2711,7 @@
                     document.getElementById('og-bg-swatches').innerHTML = `<div class="bgsw active" data-ogbg="dark" onclick="selOGBg(this)" style="background:${darkBg};color:${accent};">Dark</div><div class="bgsw" data-ogbg="accent" onclick="selOGBg(this)" style="background:${accent};color:${isLight(accent) ? darkBg : '#fff'};">Accent</div><div class="bgsw" data-ogbg="white" onclick="selOGBg(this)" style="background:#F5F5F0;color:${darkBg};">Light</div>`;
 
                     // Build carousel BG swatches
-                    document.getElementById('carousel-bg-swatches').innerHTML = `<div class="bgsw active" data-cbg="dark" onclick="selCarouselBg(this)" style="background:${darkBg};color:${accent};">Dark</div><div class="bgsw" data-cbg="accent" onclick="selCarouselBg(this)" style="background:${accent};color:${isLight(accent) ? darkBg : '#fff'};">Accent</div><div class="bgsw" data-cbg="white" onclick="selCarouselBg(this)" style="background:#F5F5F0;color:${darkBg};">Light</div>`;
+                    document.getElementById('carousel-bg-swatches').innerHTML = `<div class="bgsw ${guideIsLight ? '' : 'active'}" data-cbg="dark" onclick="selCarouselBg(this)" style="background:${darkBg};color:${accent};">Dark</div><div class="bgsw" data-cbg="accent" onclick="selCarouselBg(this)" style="background:${accent};color:${isLight(accent) ? darkBg : '#fff'};">Accent</div><div class="bgsw ${guideIsLight ? 'active' : ''}" data-cbg="white" onclick="selCarouselBg(this)" style="background:#F5F5F0;color:${darkBg};">Light</div>`;
 
                     // Build color panel swatches for split grid
                     const colorSwatches = [{
@@ -2784,7 +2782,7 @@
                     S.panelColor = accent;
                     S.ogColor = accent;
                     S.ogBg = 'dark';
-                    S.carouselBg = 'dark';
+                    S.carouselBg = guideIsLight ? 'white' : 'dark';
                     S.figureIdx = 0;
                     S.headlineScale = 1.0;
                     S.textColorOverride = null;
