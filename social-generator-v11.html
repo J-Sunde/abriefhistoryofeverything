@@ -2753,7 +2753,8 @@
                     );
 
                     // Carousel defaults
-                    document.getElementById('carousel-title').value = 'Key Players in ' + title + ' History';
+                    const carouselTitle = 'Key Players in ' + title.replace(/^the\s+/i, '') + ' History';
+                    document.getElementById('carousel-title').value = carouselTitle;
                     document.getElementById('carousel-sub').value = 'A (Brief) History of ' + title;
                     document.getElementById('carousel-outro').value = 'abriefhistoryofeverything.com\nRead the full guide \u2192';
                     document.getElementById('carousel-count').max = Math.max(3, FIGURES.length);
