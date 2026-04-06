@@ -374,42 +374,18 @@
             }
 
             .sbs {
+                padding: 14px;
                 border-bottom: 1px solid #D8D8D0;
             }
 
-            /* collapsible section header */
-            .sbs-header {
-                padding: 10px 14px;
-                display: flex;
-                align-items: center;
-                justify-content: space-between;
-                cursor: pointer;
-                user-select: none;
-            }
-            .sbs-header:hover { background: rgba(0,0,0,.03); }
-
-            /* section body (collapsible) */
-            .sbs-body {
-                padding: 0 14px 14px;
-            }
-            .sbs.collapsed .sbs-body { display: none; }
-
-            .sbs-arrow {
-                font-size: 13px;
-                color: #bbb;
-                transition: transform .18s;
-                line-height: 1;
-            }
-            .sbs.collapsed .sbs-arrow { transform: rotate(-90deg); }
-
             .sbl {
-                font-family: 'IBM Plex Sans', sans-serif;
-                font-size: 9px;
+                font-family: 'IBM Plex Sans',monospace;
+                font-size: 20px;
                 letter-spacing: .18em;
                 text-transform: uppercase;
-                color: #888;
+                color: #555;
                 margin-bottom: 10px;
-                font-weight: 600;
+                font-weight: 700;
             }
 
             .cg+.cg {
@@ -1632,15 +1608,13 @@
             <div class="series-bar"></div>
             <div class="top-bar">
                 <div class="top-bar-title">
-                    <span id="top-bar-guide">A (Brief) History of Everything_</span>
+                    Social Post Generator &mdash;<span id="top-bar-guide">A (Brief) History of Everything_</span>
                 </div>
                 <div class="tbbtns">
                     <button class="tbload" title="Load a different guide HTML">
                         &#8593;Load Guide<input type="file" accept=".html" onchange="loadGuideFile(this.files[0])">
                     </button>
                     <button class="tbload" id="btn-save" onclick="saveGenerator()" title="Save a standalone copy of this generator with all content baked in">&#8595;Save Generator</button>
-                    <button class="tbdl sec" id="btn-set" onclick="downloadSet()">&#8595;This Set (3)</button>
-                    <button class="tbdl" id="btn-all" onclick="downloadAll()">&#8595;Download All</button>
                 </div>
             </div>
             <div class="fav-bar" id="fav-bar">
@@ -1653,21 +1627,12 @@
                 <div class="sb">
                     <!-- CONTENT LIST -->
                     <div class="sbs" id="sb-content">
-                        <div class="sbs-header" onclick="toggleSbs('sb-content')">
-                            <div class="sbl" style="margin-bottom:0;">Content</div>
-                            <span class="sbs-arrow">›</span>
-                        </div>
-                        <div class="sbs-body">
-                            <div style="font-family:'IBM Plex Sans',sans-serif;font-size:11px;color:#999;">Load a guide to see content.</div>
-                        </div>
+                        <div class="sbl">Content</div>
+                        <div style="font-family:'Courier New',monospace;font-size:11px;color:#999;">Load a guide to see content.</div>
                     </div>
                     <!-- STYLE -->
-                    <div class="sbs" id="sb-style">
-                        <div class="sbs-header" onclick="toggleSbs('sb-style')">
-                            <div class="sbl" style="margin-bottom:0;">Style</div>
-                            <span class="sbs-arrow">›</span>
-                        </div>
-                        <div class="sbs-body">
+                    <div class="sbs">
+                        <div class="sbl">Style</div>
                         <div class="stbtns">
                             <button class="stbtn active" data-style="boldtype" onclick="selStyle(this)">
                                 Bold Type<small>Quote fills the frame</small>
@@ -1684,7 +1649,6 @@
                             <button class="stbtn" data-style="figure" onclick="selStyle(this)">
                                 Figure Bio<small>Portrait + bio</small>
                             </button>
-                        </div>
                         </div>
                     </div>
                     <!-- LAYOUT — Split Grid only -->
@@ -1707,11 +1671,7 @@
                     </div>
                     <!-- BACKGROUND — Bold Type, Branded, Split Grid -->
                     <div class="sbs" id="sb-bg">
-                        <div class="sbs-header" onclick="toggleSbs('sb-bg')">
-                            <div class="sbl" style="margin-bottom:0;">Background</div>
-                            <span class="sbs-arrow">›</span>
-                        </div>
-                        <div class="sbs-body">
+                        <div class="sbl">Background</div>
                         <div class="swatches" id="sw-bg">
                             <div class="sw active" data-pal="dark" onclick="selPal(this)">
                                 <div class="sw-dot" id="sw-dark-dot" style="background:#000D1F;"></div>
@@ -1729,7 +1689,6 @@
                                 <div class="sw-dot" id="sw-accent2-dot" style="background:#FF6A00;"></div>
                                 <div class="sw-lbl">Accent 2</div>
                             </div>
-                        </div>
                         </div>
                     </div>
                     <!-- FIGURE LIST — Figure Bio only -->
@@ -1915,9 +1874,7 @@
                                 </div>
                                 <div class="sbl">Headline</div>
                                 <textarea class="custom-post-area" id="cp-headline" rows="3" placeholder="Your headline here…" oninput="updateAll()"></textarea>
-                                <div style="margin-top:4px;font-family:'IBM Plex Sans',sans-serif;font-size:9px;color:#999;">*word* to highlight</div>
-                                <div class="sbl" style="margin-top:10px;">Subtitle</div>
-                                <input class="cinput" id="cp-subtitle" type="text" placeholder="A short supporting line…" oninput="updateAll()">
+                                <div style="margin-top:4px;font-family:'Courier New',monospace;font-size:9px;color:#999;">*word* to highlight</div>
                                 <div class="sbl" style="margin-top:10px;">Attribution</div>
                                 <input class="cinput" id="cp-attr" type="text" placeholder="— Source · Year" oninput="updateAll()">
                                 <div class="sbl" style="margin-top:10px;">Image</div>
@@ -2265,7 +2222,7 @@
                     // Update top bar + palette UI
                     var tg = document.getElementById('top-bar-guide');
                     if (tg) {
-                        tg.textContent = TOPIC_NAME;
+                        tg.textContent = 'A (Brief) History of ' + TOPIC_NAME.charAt(0) + TOPIC_NAME.slice(1).toLowerCase();
                         tg.style.color = PALS.dark.accent;
                     }
                     var d;
@@ -2625,7 +2582,7 @@
                     FIGURES = figures;
 
                     // Update top bar
-                    document.getElementById('top-bar-guide').textContent = title.toUpperCase();
+                    document.getElementById('top-bar-guide').textContent = 'A (Brief) History of ' + title;
                     document.getElementById('top-bar-guide').style.color = accent;
 
                     // Update right sidebar palette
@@ -2793,7 +2750,7 @@
                         getName: s => s.num + ' — ' + s.label,
                         getSub: s => s.sub || ''
                     }];
-                    sb.innerHTML = `<div class="sbs-header" onclick="toggleSbs('sb-content')"><div class="sbl" style="margin-bottom:0;">Content</div><span class="sbs-arrow">›</span></div><div class="sbs-body">` + groups.map(g => `<div class="cg"><div class="cgl">${g.label}</div>${g.items.map( (item, i) => `<div class="ci${i === 0 && g.type === 'quote' ? ' active' : ''}" data-type="${g.type}" data-idx="${i}" onclick="selContent(this)"><strong>${esc(g.getName(item))}</strong><span>${esc(g.getSub(item))}</span></div>`).join('')}</div>`).join('') + `</div>`;
+                    sb.innerHTML = '<div class="sbl">Content</div>' + groups.map(g => `<div class="cg"><div class="cgl">${g.label}</div>${g.items.map( (item, i) => `<div class="ci${i === 0 && g.type === 'quote' ? ' active' : ''}" data-type="${g.type}" data-idx="${i}" onclick="selContent(this)"><strong>${esc(g.getName(item))}</strong></div>`).join('')}</div>`).join('');
                     // Set first item active
                     if (CONTENT.quote.length) {
                         const it = CONTENT.quote[0];
@@ -3050,7 +3007,6 @@
                     }
                     const p = PALS[S.cpPal];
                     const headline = (document.getElementById('cp-headline') || {}).value || 'Your headline here_';
-                    const subtitle = (document.getElementById('cp-subtitle') || {}).value || '';
                     const attr = (document.getElementById('cp-attr') || {}).value || '';
                     const hlWord = (document.getElementById('cp-hlword') || {}).value || S.cpHlWord || '';
                     const isV = fmt === 'vt';
@@ -3075,14 +3031,13 @@
                         return h;
                     }
                     const headlineHTML = parseHL(headline, S.cpHl, p.accent, p.bg);
-                    const subtitleHTML = subtitle ? `<div style="font-family:${BODY_FONT};font-size:${bsz}px;line-height:1.5;color:${p.muted};margin-top:12px;font-weight:400;">${esc(subtitle)}</div>` : '';
                     const useImg = S.cpImg && (S.cpLayout === 'text|image' || S.cpLayout === 'image|text' || S.cpLayout === 'image-full');
 
                     // Full-image layout
                     if (S.cpLayout === 'image-full' && useImg) {
                         const maxPx = Math.round(CW[fmt] * 0.18);
                         const max = S.titleSizeCap < 100 ? Math.min(maxPx, S.titleSizeCap) : maxPx;
-                        el.innerHTML = `<div style="width:100%;height:100%;position:relative;overflow:hidden;background-image:url('${S.cpImg}');background-size:cover;background-position:center;"><div style="position:absolute;inset:0;background:${p.bg};opacity:.55;"></div><div style="position:absolute;inset:0;display:flex;flex-direction:column;justify-content:flex-end;padding:8%;"><div class="cpf-${fmt}" style="font-family:${DISPLAY_FONT};font-weight:700;line-height:.92;letter-spacing:-.02em;font-size:${max}px;color:#ffffff;position:relative;z-index:1;">${headlineHTML}</div>${subtitle ? `<div style="font-family:${BODY_FONT};font-size:${bsz}px;line-height:1.5;color:rgba(255,255,255,.75);margin-top:10px;position:relative;z-index:1;">${esc(subtitle)}</div>` : ''}${attr ? `<div style="font-family:${BODY_FONT};font-size:9px;color:rgba(255,255,255,.55);letter-spacing:.04em;margin-top:8px;position:relative;z-index:1;">${esc(attr)}</div>` : ''}</div></div>`;
+                        el.innerHTML = `<div style="width:100%;height:100%;position:relative;overflow:hidden;background-image:url('${S.cpImg}');background-size:cover;background-position:center;"><div style="position:absolute;inset:0;background:${p.bg};opacity:.55;"></div><div style="position:absolute;inset:0;display:flex;flex-direction:column;justify-content:flex-end;padding:8%;"><div class="cpf-${fmt}" style="font-family:${DISPLAY_FONT};font-weight:700;line-height:.92;letter-spacing:-.02em;font-size:${max}px;color:#ffffff;position:relative;z-index:1;">${headlineHTML}</div>${attr ? `<div style="font-family:${BODY_FONT};font-size:9px;color:rgba(255,255,255,.7);letter-spacing:.04em;margin-top:10px;position:relative;z-index:1;">${esc(attr)}</div>` : ''}</div></div>`;
                         const fe = el.querySelector(`.cpf-${fmt}`);
                         if (fe)
                             requestAnimationFrame( () => fitText(fe, CW[fmt] * 0.84, CH[fmt] * 0.5, 14, max));
@@ -3093,7 +3048,8 @@
                     if (S.cpLayout === 'text-only' || !useImg) {
                         const maxPx = Math.round(CW[fmt] * 0.18);
                         const max = S.titleSizeCap < 100 ? Math.min(maxPx, S.titleSizeCap) : maxPx;
-                        el.innerHTML = `<div style="width:100%;height:100%;position:relative;overflow:hidden;display:flex;flex-direction:column;justify-content:center;align-items:flex-start;padding:7%;background:${p.bg};color:${p.text};"><div style="position:relative;z-index:1;max-width:100%;"><div class="cpf-${fmt}" style="font-family:${DISPLAY_FONT};font-weight:700;line-height:.92;letter-spacing:-.02em;font-size:${max}px;color:${S.textColorOverride || p.text};">${headlineHTML}</div>${subtitleHTML}</div>${attr ? `<div style="position:absolute;bottom:6%;left:7%;right:7%;font-family:${BODY_FONT};font-size:9px;color:${p.muted};letter-spacing:.04em;line-height:1.4;z-index:1;">${esc(attr)}</div>` : ''}</div>`;
+                        const bn = '';
+                        el.innerHTML = `<div style="width:100%;height:100%;position:relative;overflow:hidden;display:flex;flex-direction:column;justify-content:center;align-items:flex-start;padding:7%;background:${p.bg};color:${p.text};"><div style="position:relative;z-index:1;max-width:100%;"><div class="cpf-${fmt}" style="font-family:${DISPLAY_FONT};font-weight:700;line-height:.92;letter-spacing:-.02em;font-size:${max}px;color:${S.textColorOverride || p.text};">${headlineHTML}</div></div>${attr ? `<div style="position:absolute;bottom:6%;left:7%;right:7%;font-family:${BODY_FONT};font-size:9px;color:${p.muted};letter-spacing:.04em;line-height:1.4;z-index:1;">${esc(attr)}</div>` : ''}</div>`;
                         const fe = el.querySelector(`.cpf-${fmt}`);
                         if (fe)
                             requestAnimationFrame( () => fitText(fe, CW[fmt] * 0.86, CH[fmt] * 0.72, 14, max));
@@ -3105,7 +3061,7 @@
                       , ph = isV ? CH[fmt] * 0.50 : CH[fmt] * 0.72;
                     const maxSplit = Math.round(pw * 0.22);
                     const max = S.titleSizeCap < 100 ? Math.min(maxSplit, S.titleSizeCap) : maxSplit;
-                    const tp = `<div style="flex:1;display:flex;flex-direction:column;justify-content:center;padding:9% 8%;position:relative;overflow:hidden;background:${p.bg};color:${S.textColorOverride || p.text};"><div style="position:relative;z-index:1;max-width:100%;"><div class="cpf-${fmt}" style="font-family:${DISPLAY_FONT};font-weight:700;line-height:.92;letter-spacing:-.02em;font-size:${max}px;">${headlineHTML}</div>${subtitleHTML}</div>${attr ? `<div style="margin-top:auto;padding-top:10px;font-family:${BODY_FONT};font-size:8px;color:${p.muted};letter-spacing:.04em;line-height:1.4;">${esc(attr)}</div>` : ''}</div>`;
+                    const tp = `<div style="flex:1;display:flex;flex-direction:column;justify-content:center;padding:9% 8%;position:relative;overflow:hidden;background:${p.bg};color:${S.textColorOverride || p.text};"><div style="position:relative;z-index:1;max-width:100%;"><div class="cpf-${fmt}" style="font-family:${DISPLAY_FONT};font-weight:700;line-height:.92;letter-spacing:-.02em;font-size:${max}px;">${headlineHTML}</div></div>${attr ? `<div style="margin-top:auto;padding-top:10px;font-family:${BODY_FONT};font-size:8px;color:${p.muted};letter-spacing:.04em;line-height:1.4;">${esc(attr)}</div>` : ''}</div>`;
                     const ip = `<div style="flex:1;position:relative;overflow:hidden;background-image:url('${S.cpImg}');background-size:cover;background-position:center;"><div style="position:absolute;inset:0;background:${p.accent};opacity:.1;mix-blend-mode:multiply;"></div></div>`;
                     const panels = S.cpLayout === 'text|image' ? tp + ip : ip + tp;
                     el.innerHTML = `<div style="width:100%;height:100%;display:flex;flex-direction:${isV ? 'column' : 'row'};overflow:hidden;">${panels}</div>`;
@@ -3197,8 +3153,6 @@
                     document.getElementById('og-canvas-wrap').style.display = isOG ? '' : 'none';
                     document.getElementById('social-canvas-wrap').style.display = isOG ? 'none' : '';
                     document.getElementById('carousel-preview').style.display = isFig ? '' : 'none';
-                    document.getElementById('btn-set').style.display = isOG ? 'none' : '';
-                    document.getElementById('btn-all').textContent = isOG ? '\u2193 og-' + SLUG + '.png' : '\u2193 Download All';
                     updateAll();
                 }
                 ;
@@ -3209,11 +3163,6 @@
                     drawer.style.display = open ? '' : 'none';
                     toggle.classList.toggle('adv-open', open);
                     document.getElementById('adv-label').textContent = open ? 'Advanced ▾' : 'Advanced';
-                }
-                ;
-                window.toggleSbs = function(id) {
-                    const el = document.getElementById(id);
-                    if (el) el.classList.toggle('collapsed');
                 }
                 ;
                 window.selPal = function(el) {
