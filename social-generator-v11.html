@@ -2544,6 +2544,17 @@
                     // HTML fallback — scrape person/figure card markup from web guides
                     // Handles both .person-card (Master Prompt web guides) and .figure-card (PDF guides)
                     if (figures.length === 0) {
+                        // Diagnostic: log all unique classes on elements containing an img + text
+                        const allClasses = new Set();
+                        doc.querySelectorAll('[class]').forEach(el => {
+                            if (el.querySelector('img') || el.querySelector('[class*="name"]') || el.querySelector('[class*="bio"]')) {
+                                el.className.split(/\s+/).forEach(c => c && allClasses.add(c));
+                            }
+                        });
+                        console.log('[FigureParser] Classes found near img/name/bio elements:', [...allClasses].join(', '));
+                        console.log('[FigureParser] person-card count:', doc.querySelectorAll('.person-card').length);
+                        console.log('[FigureParser] figure-card count:', doc.querySelectorAll('.figure-card').length);
+
                         const cardSel = '.person-card, .figure-card';
                         doc.querySelectorAll(cardSel).forEach(card => {
                             // Photo: .person-photo is the <img> itself; .figure-photo is a wrapper div
@@ -2572,6 +2583,7 @@
                                 });
                             }
                         });
+                        console.log('[FigureParser] figures found:', figures.length);
                     }
 
                     // Resolve relative image paths to absolute so they work regardless of
