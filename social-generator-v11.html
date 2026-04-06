@@ -2608,6 +2608,7 @@
                         accent2,
                         darkBg,
                         lightBg,
+                        guideIsLight,
                         displayFont,
                         bodyFont,
                         title: rawTitle,
@@ -2623,7 +2624,7 @@
                     });
                 }
 
-                function applyGuideTheme({accent, accent2, darkBg, lightBg, displayFont, bodyFont, title, slug, ogSubtitle, quotes, facts, stats, figures, eraImgs, figImgs, allImgs}) {
+                function applyGuideTheme({accent, accent2, darkBg, lightBg, guideIsLight, displayFont, bodyFont, title, slug, ogSubtitle, quotes, facts, stats, figures, eraImgs, figImgs, allImgs}) {
                     GUIDE_LOADED = true;
                     SLUG = slug || 'guide';
                     TOPIC_NAME = (title || slug || 'GUIDE').toUpperCase();
