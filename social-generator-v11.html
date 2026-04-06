@@ -1662,6 +1662,9 @@
                             <button class="lbtn" data-layout="text|color" onclick="selLayout(this)">Text | Color</button>
                             <button class="lbtn" data-layout="color|text" onclick="selLayout(this)">Color | Text</button>
                         </div>
+                        <div class="sbl" style="margin-top:12px;">Text Color</div>
+                        <div class="color-presets" id="tc-presets-sg"></div>
+                        <input class="hex-input" id="tc-hex-sg" type="text" placeholder="#ffffff" maxlength="9" oninput="setTextColor(this.value)">
                     </div>
                     <!-- LAYOUT — Figure Bio only -->
                     <div class="sbs" id="sb-figlayout" style="display:none;">
@@ -2853,7 +2856,7 @@
                         getName: s => s.num + ' — ' + s.label,
                         getSub: s => s.sub || ''
                     }];
-                    sb.innerHTML = '<div class="sbl">Content</div>' + groups.map(g => `<div class="cg"><div class="cgl">${g.label}</div>${g.items.map( (item, i) => `<div class="ci${i === 0 && g.type === 'quote' ? ' active' : ''}" data-type="${g.type}" data-idx="${i}" onclick="selContent(this)"><strong>${esc(g.getName(item))}</strong><span>${esc(g.getSub(item))}</span></div>`).join('')}</div>`).join('');
+                    sb.innerHTML = '<div class="sbl">Content</div>' + groups.map(g => `<div class="cg"><div class="cgl">${g.label}</div>${g.items.map( (item, i) => `<div class="ci${i === 0 && g.type === 'quote' ? ' active' : ''}" data-type="${g.type}" data-idx="${i}" onclick="selContent(this)"><strong>${esc(g.getName(item))}</strong></div>`).join('')}</div>`).join('');
                     // Set first item active
                     if (CONTENT.quote.length) {
                         const it = CONTENT.quote[0];
@@ -3501,27 +3504,26 @@
                         c: null,
                         label: 'Auto'
                     }];
-                    const container = document.getElementById('tc-presets');
-                    if (!container)
-                        return;
-                    container.innerHTML = presets.map(p => {
+                    const presetHTML = presets.map(p => {
                         const bg = p.c || '#ccc'
                           , border = p.c === null ? '#ccc' : bg;
                         const isAuto = p.c === null;
                         return `<div class="color-preset${isAuto ? ' active' : ''}" title="${p.label}" data-color="${p.c || ''}" onclick="applyTextColorPreset(this,'${p.c || ''}')" style="background:${bg};border-color:${border};${isAuto ? 'background:linear-gradient(135deg,#fff 50%,#000 50%);' : ''}"></div>`;
-                    }
-                    ).join('');
+                    }).join('');
+                    const container = document.getElementById('tc-presets');
+                    if (container) container.innerHTML = presetHTML;
+                    const containerSG = document.getElementById('tc-presets-sg');
+                    if (containerSG) containerSG.innerHTML = presetHTML;
                     const inp = document.getElementById('tc-hex');
-                    if (inp)
-                        inp.value = S.textColorOverride || '';
+                    if (inp) inp.value = S.textColorOverride || '';
+                    const inpSG = document.getElementById('tc-hex-sg');
+                    if (inpSG) inpSG.value = S.textColorOverride || '';
                 }
                 window.applyTextColorPreset = function(el, c) {
                     document.querySelectorAll('.color-preset').forEach(p => p.classList.remove('active'));
                     el.classList.add('active');
                     S.textColorOverride = c || null;
-                    const inp = document.getElementById('tc-hex');
-                    if (inp)
-                        inp.value = c || '';
+                    ['tc-hex','tc-hex-sg'].forEach(id => { const inp = document.getElementById(id); if (inp) inp.value = c || ''; });
                     updateAll();
                 }
                 ;
@@ -3530,6 +3532,7 @@
                     if (/^#[0-9A-Fa-f]{6}$/.test(val) || /^#[0-9A-Fa-f]{3}$/.test(val)) {
                         S.textColorOverride = val;
                         document.querySelectorAll('.color-preset').forEach(p => p.classList.remove('active'));
+                        ['tc-hex','tc-hex-sg'].forEach(id => { const inp = document.getElementById(id); if (inp && inp.value !== val) inp.value = val; });
                     } else if (!val) {
                         S.textColorOverride = null;
                     }
