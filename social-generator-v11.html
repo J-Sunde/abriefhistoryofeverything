@@ -1807,11 +1807,12 @@
                             <input class="cinput" id="carousel-title" type="text" value="" oninput="updateAll()">
                             <div class="sbl" style="margin-top:10px;">Subtitle</div>
                             <input class="cinput" id="carousel-sub" type="text" value="" oninput="updateAll()">
-                            <div class="sbl" style="margin-top:10px;">Figure Count</div>
+                            <div class="sbl" style="margin-top:10px;">Figures in Carousel</div>
                             <div class="count-row">
-                                <input class="count-slider" id="carousel-count" type="range" min="3" max="11" value="11" oninput="setCarouselCount(this.value)">
+                                <input class="count-slider" id="carousel-count" type="range" min="1" max="11" value="11" oninput="setCarouselCount(this.value)">
                                 <span class="count-val" id="carousel-count-val">11</span>
                             </div>
+                            <div style="font-size:9px;color:#999;letter-spacing:.06em;margin-top:2px;">Use this to cap at 8 for scheduler limits</div>
                             <div class="toggle-check">
                                 <input type="checkbox" id="carousel-outro-toggle" checked onchange="updateAll()">
                                 <span>Include closing card</span>
@@ -2770,7 +2771,7 @@
                     document.getElementById('carousel-outro').value = 'abriefhistoryofeverything.com\nRead the full guide \u2192';
                     document.getElementById('carousel-count').max = Math.max(3, FIGURES.length);
                     document.getElementById('carousel-count').value = FIGURES.length;
-                    document.getElementById('carousel-count-val').textContent = FIGURES.length;
+                    document.getElementById('carousel-count-val').textContent = FIGURES.length;  // full set by default
                     S.carouselCount = FIGURES.length;
 
                     // OG subtitle
@@ -3419,7 +3420,8 @@
                 ;
                 window.setCarouselCount = function(v) {
                     S.carouselCount = parseInt(v);
-                    document.getElementById('carousel-count-val').textContent = v;
+                    const total = parseInt(document.getElementById('carousel-count').max);
+                    document.getElementById('carousel-count-val').textContent = parseInt(v) === total ? v : v + ' / ' + total;
                     updateAll();
                 }
                 ;
