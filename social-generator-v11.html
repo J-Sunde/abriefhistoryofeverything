@@ -4040,11 +4040,12 @@
                             filename = `${String(item.fi + 1).padStart(2, '0')}-${name}-${item.fmt}.png`;
                         }
                         btn.textContent = `Building\u2026 ${i}/${queue.length}`;
-                        setTimeout( () => c2b(item.fmt).then(b => {
-                            zip.file(filename, b);
-                            next();
-                        }
-                        ).catch( () => next()), 80);
+                        requestAnimationFrame(() => {
+                            setTimeout(() => c2b(item.fmt).then(b => {
+                                zip.file(filename, b);
+                                next();
+                            }).catch(() => next()), 120);
+                        });
                     }
                     next();
                 }
