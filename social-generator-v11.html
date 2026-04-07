@@ -3734,24 +3734,25 @@
                         type: m
                     });
                 }
-                function c2b(fmt) {
+                function c2b(fmt, bgColor) {
                     return new Promise( (res, rej) => {
                         const el = document.getElementById('canvas-' + fmt);
                         html2canvas(el, {
                             scale: SCALES[fmt],
                             useCORS: true,
                             allowTaint: true,
-                            backgroundColor: PALS.dark.bg,
+                            backgroundColor: bgColor || PALS.dark.bg,
                             logging: false
                         }).then(c => {
-                            if (c.toBlob)
-                                c.toBlob(b => res(b || d2b(c.toDataURL('image/png'))), 'image/png');
-                            else
-                                res(d2b(c.toDataURL('image/png')));
-                        }
-                        ).catch(rej);
-                    }
-                    );
+                            const fallback = () => { try { res(d2b(c.toDataURL('image/png'))); } catch(e) { rej(e); } };
+                            if (c.toBlob) {
+                                try { c.toBlob(b => b ? res(b) : fallback(), 'image/png'); }
+                                catch(e) { fallback(); }
+                            } else {
+                                fallback();
+                            }
+                        }).catch(rej);
+                    });
                 }
                 function trig(blob, name) {
                     const url = URL.createObjectURL(blob)
@@ -4040,9 +4041,12 @@
                             filename = `${String(item.fi + 1).padStart(2, '0')}-${name}-${item.fmt}.png`;
                         }
                         btn.textContent = `Building\u2026 ${i}/${queue.length}`;
+                        const carouselBgColor = S.carouselBg === 'accent' ? PALS.dark.accent
+                            : S.carouselBg === 'white' ? '#F5F5F0'
+                            : PALS.dark.bg;
                         requestAnimationFrame(() => {
-                            setTimeout(() => c2b(item.fmt).then(b => {
-                                zip.file(filename, b);
+                            setTimeout(() => c2b(item.fmt, carouselBgColor).then(b => {
+                                try { zip.file(filename, b); } catch(e) { /* skip bad frame */ }
                                 next();
                             }).catch(() => next()), 120);
                         });
