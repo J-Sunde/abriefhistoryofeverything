@@ -1234,7 +1234,7 @@ br.desk-br{display:block;}
   <!-- SUGGEST A TOPIC -->
   <div class="suggest-zone fi">
     <div class="manifesto-series">Got a subject that deserves a deep dive?</div>
-    <a class="email-btn" href="mailto:topics@abriefhistoryofeverything.com" style="display:inline-flex;align-items:center;text-decoration:none;margin-top:1rem;">Suggest a Topic →</a>
+    <a class="email-btn" href="/cdn-cgi/l/email-protection#b3c7dcc3dad0c0f3d2d1c1dad6d5dbdac0c7dcc1cadcd5d6c5d6c1cac7dbdaddd49dd0dcde" style="display:inline-flex;align-items:center;text-decoration:none;margin-top:1rem;">Suggest a Topic →</a>
   </div>
 
   <!-- EMAIL — commented out until ready
@@ -1292,7 +1292,7 @@ br.desk-br{display:block;}
 <footer>
   <span class="footer-l">© 2026 A (Brief) History of Everything · Est. 2026</span>
 </footer>
-<script>
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
 /* ═══════════════════════════════════════════════════════
    HERO ART ENGINE
    Two systems running simultaneously:
@@ -1512,7 +1512,7 @@ br.desk-br{display:block;}
       title: 'A (Brief) History of the Stock Market',
       url: 'stock-market.html',
       color: '#C9A84C',
-      mostRecent: true,
+      mostRecent: false,
       tags: [
         'Wall Street','Black Tuesday','NYSE','Dot-com Bubble','GameStop',
       ],
@@ -1522,6 +1522,40 @@ br.desk-br{display:block;}
         'S&P','Nasdaq','IPO','Short',
         'Margin','Bubble','Panic','Lehman',
         'GameStop','Hedge','Broker','Dividend',
+      ],
+    },
+    {
+      id: 'easter-bunny',
+      title: 'A (Brief) History of the Easter Bunny',
+      url: 'easter-bunny.html',
+      color: '#FF80AB',
+      mostRecent: false,
+      tags: [
+        'Easter','Osterhase','Egg Tradition','Pagan Origins','Hallmark Holiday',
+      ],
+      words: [
+        'Easter','Bunny','Egg','Spring',
+        'Osterhase','Pagan','Ostara','Chocolate',
+        'Cadbury','Hallmark','Basket','Hunt',
+        'Resurrection','Fertility','Hare','Germanic',
+        'Tradition','Candy','Pascha','Symbol',
+      ],
+    },
+    {
+      id: 'typography',
+      title: 'A (Brief) History of Typography',
+      url: 'typography.html',
+      color: '#F5C842',
+      mostRecent: true,
+      tags: [
+        'Gutenberg','Movable Type','Helvetica','Bauhaus','Variable Fonts',
+      ],
+      words: [
+        'Gutenberg','Serif','Helvetica','Bauhaus',
+        'Garamond','Futura','Bodoni','Caslon',
+        'Kern','Leading','Glyph','Typeface',
+        'Blackletter','Modernism','Grid','Weight',
+        'Variable','Web Font','OpenType','Legibility',
       ],
     },
     // ── ADD NEW GUIDES HERE ──────────────────────────────
@@ -2030,13 +2064,4 @@ document.querySelectorAll('.fi').forEach(el=>_fiObs.observe(el));
     }, 350);
   });
 
-  // Click outside to dismiss
-  document.getElementById('af-bg').addEventListener('click', function(e){
-    if(e.target === this) dismiss();
-  });
-
-})();
-</script>
-
-</body>
-</html>
+  // Click out
