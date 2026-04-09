@@ -6,9 +6,14 @@
 <title>The Ultimate Coachella List — How Many Do You Know?</title>
 <meta name="description" content="500+ of the most memorable artists to ever play Coachella. Tap every one you recognise.">
 <meta name="theme-color" content="#0a0a0a">
-<link rel="canonical" href="https://abriefhistoryofeverything.com/coachella-test">
+<link rel="canonical" href="https://abriefhistoryofeverything.com/coachella-list">
 <meta property="og:title" content="The Ultimate Coachella List — How Many Do You Know?">
 <meta property="og:description" content="500+ of the most memorable Coachella artists. 25 years. One desert. Tap every one you recognise.">
+<meta property="og:image" content="https://abriefhistoryofeverything.com/og-coachella-list.png">
+<meta property="og:url" content="https://abriefhistoryofeverything.com/coachella-list">
+<meta property="og:type" content="website">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://abriefhistoryofeverything.com/og-coachella-list.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,700;1,9..40,300&family=Inter:wght@700;800;900&display=swap" rel="stylesheet">
@@ -754,15 +759,18 @@ footer {
 
   shareBtn.addEventListener('click', function() {
     var n = count();
-    var txt = 'I recognised ' + n + ' of 500+ memorable Coachella artists. (2,401 have played since 1999 — we curated the ones worth arguing about.)\nabriefhistoryofeverything.com/coachella-test';
+    var url = 'https://abriefhistoryofeverything.com/coachella-list';
+    var txt = 'I recognised ' + n + ' of 500+ Coachella artists. 2,401 have played since 1999 - these are the only ones that matter. ' + url;
     if (navigator.share) {
-      navigator.share({ title: 'The Ultimate Coachella List', text: txt, url: 'https://abriefhistoryofeverything.com/coachella-test' });
-    } else {
+      navigator.share({ title: 'The Ultimate Coachella List', text: txt, url: url }).catch(function(){});
+    } else if (navigator.clipboard && navigator.clipboard.writeText) {
       navigator.clipboard.writeText(txt).then(function() {
         showToast('Score copied to clipboard');
-        shareBtn.textContent = '✓ Copied';
+        shareBtn.textContent = 'Copied!';
         setTimeout(function(){ shareBtn.textContent = 'Share'; }, 2200);
-      });
+      }).catch(function() { showToast('Copy failed'); });
+    } else {
+      showToast(url);
     }
   });
 
