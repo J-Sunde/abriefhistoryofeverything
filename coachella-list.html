@@ -33,7 +33,7 @@ body { font-family: var(--sans); background: var(--bg); color: var(--text); min-
 .hero {
   position: relative; min-height: 92vh;
   display: flex; flex-direction: column; justify-content: space-between;
-  padding: 2rem 0 5rem; overflow: hidden;
+  padding: 2rem 0 2.5rem; overflow: hidden;
 }
 .hero-bg { position: absolute; inset: 0; background: url('images/palm-trees-bg-2.jpg') center/cover no-repeat; z-index: 0; }
 .hero-gradient {
@@ -99,11 +99,14 @@ body { font-family: var(--sans); background: var(--bg); color: var(--text); min-
 .score-word { font-size: .7rem; color: var(--text-sub); font-weight: 500; white-space: nowrap; }
 @media (max-width: 599px) { .score-word { display: none; } }
 @media (max-width: 540px) {
-  .now-bar { flex-wrap: wrap; height: auto; padding: .75rem 1rem; gap: .5rem; }
-  .bar-track { flex: 0 0 100%; }
-  .bar-title { font-size: .95rem; }
+  .now-bar { flex-wrap: wrap; height: auto; padding: .85rem 1rem .75rem; gap: .4rem; }
+  .bar-track { flex: 0 0 100%; order: 1; }
+  .bar-title { font-size: 1rem; font-weight: 800; display: block; }
+  .bar-title span { display: block; font-weight: 400; font-size: .8rem; color: var(--text-sub); margin-top: 2px; }
   .bar-progress { display: none; }
-  .score-pill { margin-left: 0; }
+  .score-pill { order: 2; margin-left: 0; }
+  .btn-share { order: 3; }
+  .btn-reset { order: 4; }
 }
 .bar-btn {
   font-family: var(--sans); font-size: .72rem; font-weight: 700; letter-spacing: .04em;
@@ -118,7 +121,7 @@ body { font-family: var(--sans); background: var(--bg); color: var(--text); min-
 .btn-reset { background: transparent; color: var(--text-muted); padding: 8px 12px; border: 1px solid var(--border-mid) !important; }
 .btn-reset:hover { color: var(--text); border-color: rgba(255,160,80,.3) !important; }
 
-.main { padding: 2.5rem 2rem 6rem; max-width: 1440px; margin: 0 auto; }
+.main { padding: .75rem 2rem 6rem; max-width: 1440px; margin: 0 auto; }
 .section-header {
   display: flex; align-items: baseline; justify-content: space-between;
   margin-bottom: 1.5rem; padding-bottom: 1rem; border-bottom: 1px solid var(--border);
@@ -215,7 +218,7 @@ footer {
 
 <div class="now-bar">
   <div class="bar-track">
-    <div class="bar-title">How many do you know? <span style="font-weight:400;color:var(--text-sub);font-size:.85rem;">Tap every artist you recognise.</span></div>
+    <div class="bar-title">How many do you know? <span>Tap every artist you recognise.</span></div>
     <div class="bar-sub" id="barSub" style="display:none"></div>
   </div>
   <div class="bar-progress">
