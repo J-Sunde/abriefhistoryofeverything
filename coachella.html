@@ -7,12 +7,12 @@
   <meta name="description" content="From a protest concert in the California desert to the world's most-photographed music festival. The full story of Coachella.">
   <meta property="og:title" content="A (Brief) History of Coachella_">
   <meta property="og:description" content="From a protest concert in the California desert to the world's most-photographed music festival.">
-  <meta property="og:image" content="https://abriefhistoryofeverything.com/og-coachella.png">
+  <meta property="og:image" content="og-coachella.png">
   <meta property="og:image:width" content="1200">
   <meta property="og:image:height" content="630">
   <meta property="og:type" content="article">
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:image" content="https://abriefhistoryofeverything.com/og-coachella.png">
+  <meta name="twitter:image" content="og-coachella.png">
   <link rel="canonical" href="https://abriefhistoryofeverything.com/coachella">
   <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='3' fill='%23E8A060'/><text x='3' y='23' font-size='15' font-family='monospace' font-weight='900' fill='%23FFF'>CO</text></svg>">
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -193,10 +193,10 @@
   .hero-gradient {
     position: absolute; inset: 0; z-index: 1;
     background: linear-gradient(to bottom,
-      rgba(20,10,0,0.18) 0%,
-      rgba(20,10,0,0.08) 50%,
-      rgba(253,246,236,0.85) 80%,
-      rgba(253,246,236,1.00) 100%
+      rgba(20,10,0,0.25) 0%,
+      rgba(20,10,0,0.15) 40%,
+      rgba(20,10,0,0.55) 72%,
+      rgba(10,5,0,0.82) 100%
     );
   }
   /* ── POSTCARD IMAGE ── */
@@ -243,14 +243,16 @@
     font-size: .72rem;
     letter-spacing: .28em;
     text-transform: uppercase;
-    color: var(--text-dim);
+    color: rgba(255,255,255,.75);
+    text-shadow: 0 1px 4px rgba(0,0,0,.5);
     margin-bottom: .6rem;
   }
   .hero-sub {
     font-family: var(--body);
     font-size: clamp(1.1rem, 2vw, 1.3rem);
     font-style: italic;
-    color: #C4521A;
+    color: #fff;
+    text-shadow: 0 1px 6px rgba(0,0,0,.45);
     max-width: 560px;
     line-height: 1.7;
     margin-bottom: 2.2rem;
@@ -261,12 +263,12 @@
     font-size: .72rem;
     letter-spacing: .18em;
     text-transform: uppercase;
-    color: var(--text);
-    border-bottom: 1.5px solid var(--accent2);
+    color: #fff;
+    border-bottom: 1.5px solid rgba(255,255,255,.6);
     padding-bottom: 2px;
     transition: color .2s;
   }
-  .hero-cta:hover { color: var(--accent2); text-decoration: none; }
+  .hero-cta:hover { color: rgba(255,255,255,.75); text-decoration: none; }
 
   .hero-cta-row {
     display: flex;
@@ -806,8 +808,26 @@
      MOBILE
   ============================================================ */
   @media (max-width: 768px) {
+    .hero-postcard {
+      top: 28%;
+      left: 50%;
+      width: min(340px, 80vw);
+      transform: translate(-50%, -50%) rotate(2deg);
+      animation: none;
+    }
     .hero-content { padding: 1.5rem 1.5rem 4rem; }
+    .hero-eyebrow { color: #fff; text-shadow: 0 1px 4px rgba(0,0,0,.6); }
+    .hero-sub { color: #fff; text-shadow: 0 1px 6px rgba(0,0,0,.55); }
+    .hero-cta { color: #fff; border-bottom-color: rgba(255,255,255,.7); }
     .hero-greeting { font-size: .85rem; transform: translate(-50%, -190%); }
+    .hero-gradient {
+      background: linear-gradient(to bottom,
+        rgba(20,10,0,0.25) 0%,
+        rgba(20,10,0,0.10) 35%,
+        rgba(20,10,0,0.55) 70%,
+        rgba(10,5,0,0.82) 100%
+      );
+    }
     .intro-section, .chapter, .headliners-section { padding-left: 1.5rem; padding-right: 1.5rem; }
     .img-break img { height: 300px; }
     .img-break-duo { grid-template-columns: 1fr; max-height: none; }
@@ -974,7 +994,7 @@
   <img src="coachella/images/rose-garden-wide.jpg" alt="The VIP Rose Garden at Empire Polo Club — roses in full bloom, palm trees, desert sky" style="object-position: center top;">
   <img src="coachella/images/rose-garden-white.jpg" alt="White roses at the Empire Polo Club Rose Garden, palms and tents behind">
 </div>
-<div class="img-break-caption">The Empire Polo Club Rose Garden — one of the festival's best-kept secrets, tucked between the stages</div>
+<div class="img-break-caption">(Left) The main stage. (Right) The Empire Polo Club Rose Garden — one of the festival's best-kept secrets, tucked between the stages</div>
 
 <!-- ============================================================
      CHAPTER 3 — Going Mainstream
@@ -1008,7 +1028,7 @@
   <img src="coachella/images/merch-store.jpg" alt="Coachella merch store 2012 — limited edition artist tees on display against chevron wood panels">
   <img src="coachella/images/illustrated-poster.jpg" alt="Jon Burgerman illustrated Coachella map poster — everything that happens, all at once">
 </div>
-<div class="img-break-caption">The merchandise and the mythology · Coachella as commerce, Coachella as cartoon</div>
+<div class="img-break-caption">(Left) The merchandise and the mythology · Coachella as commerce, Coachella as cartoon (Right) Le Grande Wheel</div>
 
 <!-- ============================================================
      CHAPTER 4 — Instagram Era
@@ -1043,7 +1063,7 @@
 <div class="img-break fi">
   <img src="coachella/images/ferris-wheel-night-lit.jpg" alt="The Coachella Ferris wheel lit against a black night sky — red and gold tents glowing below, crowds silhouetted">
 </div>
-<div class="img-break-caption">The Grande Wheel, after dark · Coachella's most photographed landmark</div>
+<div class="img-break-caption">The Grande Wheel. · Coachella's most photographed landmark</div>
 
 <!-- ============================================================
      CHAPTER 5 — The Return
@@ -1072,7 +1092,7 @@
 <div class="img-break fi">
   <img src="coachella/images/main-stage-wide.jpg" alt="The Coachella main stage from the hill — desert mountains in the distance, palm trees, clear blue sky">
 </div>
-<div class="img-break-caption">The main stage from the lawn · Indio, California</div>
+<div class="img-break-caption">Shade in the VIP. Totally worth the extra cost.</div>
 
 <!-- ============================================================
      QUOTE BAND 2
@@ -1091,7 +1111,7 @@
 <div class="img-break fi">
   <img src="coachella/images/angel-fountain.jpg" alt="The angel fountain at the Empire Polo Club — festivalgoers resting beneath palms, the fountain at center">
 </div>
-<div class="img-break-caption">Between the stages · Empire Polo Club</div>
+<div class="img-break-caption">Custom special edition tees.</div>
 
 <!-- ============================================================
      EVERY ARTIST — 1999–2025
