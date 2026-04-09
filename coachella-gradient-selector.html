@@ -1,0 +1,2382 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>A (Brief) History of Coachella_</title>
+  <meta name="description" content="From a protest concert in the California desert to the world's most-photographed music festival. The full story of Coachella.">
+  <meta property="og:title" content="A (Brief) History of Coachella_">
+  <meta property="og:description" content="From a protest concert in the California desert to the world's most-photographed music festival.">
+  <meta property="og:image" content="og-coachella.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:type" content="article">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:image" content="og-coachella.png">
+  <link rel="canonical" href="https://abriefhistoryofeverything.com/coachella">
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='3' fill='%23E8A060'/><text x='3' y='23' font-size='15' font-family='monospace' font-weight='900' fill='%23FFF'>CO</text></svg>">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,700;0,9..144,900;1,9..144,300;1,9..144,400;1,9..144,600&family=Lora:ital,wght@0,400;0,500;1,400;1,500&family=Courier+Prime:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+
+  <!-- Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-S80KBNWEJ5"></script>
+  <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-S80KBNWEJ5');</script>
+
+  <style>
+  /* ============================================================
+     TOKENS
+  ============================================================ */
+  :root {
+    --series-cyan:   #00D4F0;
+    --series-blue:   #0055EE;
+    --series-green:  #39E07A;
+    --series-orange: #FF5C20;
+
+    --accent:   #E8A060;   /* golden hour peach */
+    --accent2:  #C4607A;   /* rose / stamp ink */
+    --accent3:  #87C4D8;   /* desert sky blue */
+
+    --bg:       #FDF6EC;   /* warm card stock */
+    --cream:    #F5ECD8;
+    --sand:     #EDE0C4;
+    --paper:    #FBF4E8;
+
+    --text:        #2C1A0E;
+    --text-muted:  #7A5C42;
+    --text-dim:    #A88A6E;
+
+    --border:        rgba(180,130,70,0.15);
+    --border-mid:    rgba(180,130,70,0.25);
+    --nav-bg:        rgba(253,246,236,0.96);
+    --nav-border:    rgba(180,130,70,0.18);
+    --nav-text:      #2C1A0E;
+    --nav-text-bright: #0D0804;
+
+    --display: 'Fraunces', serif;
+    --body:    'Lora', serif;
+    --mono:    'Courier Prime', monospace;
+  }
+
+  /* ============================================================
+     BASE
+  ============================================================ */
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; font-size: 16px; }
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: var(--body);
+    font-size: 1rem;
+    line-height: 1.75;
+    overflow-x: hidden;
+    cursor: none;
+  }
+  a { color: var(--accent2); text-decoration: none; }
+  a:hover { text-decoration: underline; }
+  img { max-width: 100%; display: block; }
+
+  @keyframes cursorBlink { 0%,100%{opacity:1} 50%{opacity:0} }
+  .cursor-blink { animation: cursorBlink 1.1s step-end infinite; display: inline-block; }
+
+  /* ============================================================
+     PROGRESS / CURSOR / TOOLTIP
+  ============================================================ */
+  #progress { position:fixed;top:0;left:0;height:3px;width:0%;
+    background:linear-gradient(90deg,var(--accent),var(--accent2));
+    z-index:9999;transition:width .1s linear;pointer-events:none }
+  #cur { position:fixed;width:10px;height:10px;background:var(--accent2);
+    border-radius:50%;pointer-events:none;z-index:9998;
+    transform:translate(-50%,-50%);transition:transform .08s ease }
+  #curRing { position:fixed;width:32px;height:32px;
+    border:1.5px solid var(--accent2);border-radius:50%;
+    pointer-events:none;z-index:9997;transform:translate(-50%,-50%);
+    transition:transform .2s ease;opacity:.4 }
+  #tt { position:fixed;padding:6px 12px;background:var(--text);color:var(--bg);
+    font-family:var(--mono);font-size:.72rem;border-radius:2px;
+    pointer-events:none;z-index:9996;opacity:0;white-space:nowrap;transition:opacity .15s }
+
+  /* ============================================================
+     FADE IN
+  ============================================================ */
+  .fi { opacity:0; transform:translateY(20px); transition:opacity .7s ease, transform .7s ease; }
+  .js-ready .fi { opacity:0; }
+  .js-ready .fi.visible { opacity:1; transform:translateY(0); }
+
+  /* ============================================================
+     NAV — invariant brand rule
+  ============================================================ */
+  .nav {
+    height: 50px;
+    position: fixed; top: 0; left: 0; right: 0; z-index: 900;
+    display: flex; align-items: stretch;
+    background: var(--nav-bg);
+    backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px);
+    border-bottom: 1px solid var(--nav-border);
+  }
+  .nav-tag {
+    display: flex; align-items: stretch;
+    text-decoration: none; flex-shrink: 0;
+    border-right: 1px solid var(--nav-border);
+  }
+  .nav-tag:hover .nav-topic { color: var(--nav-text-bright); }
+  .nav-index-box {
+    width: 52px; min-width: 52px; height: 50px;
+    display: flex; align-items: center; justify-content: center;
+    background: #F5C842; /* gold — guide 011 */
+    color: #000;
+    font-family: var(--mono); font-size: .72rem; font-weight: 700; letter-spacing: .12em;
+    flex-shrink: 0;
+  }
+  .nav-topic {
+    display: flex; align-items: center;
+    padding: 0 20px 0 16px;
+    font-family: var(--mono); font-size: .72rem; font-weight: 700;
+    letter-spacing: .16em; text-transform: uppercase;
+    color: var(--nav-text); white-space: nowrap;
+    overflow: hidden; text-overflow: ellipsis;
+    transition: color .15s;
+  }
+  .nav-links {
+    display: flex; align-items: center; margin-left: 12px; overflow: hidden;
+  }
+  .nav-links a {
+    font-family: var(--mono); font-size: .68rem; letter-spacing: .1em;
+    text-transform: uppercase; color: var(--text-muted);
+    padding: 0 14px; height: 50px;
+    display: flex; align-items: center;
+    border-right: 1px solid var(--nav-border);
+    transition: color .15s, background .15s; white-space: nowrap;
+  }
+  .nav-links a:hover { color: var(--accent2); background: rgba(196,96,122,.06); text-decoration: none; }
+  .nav-right { margin-left: auto; display: flex; align-items: center; padding-right: 20px; }
+  .share-btn {
+    font-family: var(--mono); font-size: .68rem; letter-spacing: .14em;
+    text-transform: uppercase; background: var(--accent2); color: #fff;
+    border: none; padding: 6px 16px; border-radius: 2px;
+    cursor: pointer; transition: opacity .15s; font-weight: 700;
+  }
+  .share-btn:hover { opacity: .82; }
+  .share-dropdown {
+    position: fixed; top: 58px; right: 20px; background: var(--text);
+    border-radius: 3px; overflow: hidden; z-index: 999; display: none;
+    box-shadow: 0 8px 28px rgba(0,0,0,.15);
+  }
+  .share-dropdown.open { display: block; }
+  .share-dropdown a {
+    display: block; padding: 10px 20px;
+    font-family: var(--mono); font-size: .72rem; letter-spacing: .1em;
+    color: var(--bg); transition: background .15s;
+  }
+  .share-dropdown a:hover { background: rgba(255,255,255,.1); text-decoration: none; }
+
+  /* ============================================================
+     HERO — postcard
+  ============================================================ */
+  .hero {
+    min-height: 100vh;
+    padding-top: 50px;
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+  }
+  /* Photo layer */
+  .hero-photo {
+    position: absolute; inset: 0;
+    background-image: url('coachella/images/coachella-bg.jpg');
+    background-size: cover;
+    background-position: center 55%;
+  }
+  /* Subtle veil so postcard pops off photo */
+  .hero-gradient {
+    position: absolute; inset: 0; z-index: 1;
+    background: linear-gradient(to bottom,
+      rgba(20,10,0,0.18) 0%,
+      rgba(20,10,0,0.08) 50%,
+      rgba(253,246,236,0.85) 80%,
+      rgba(253,246,236,1.00) 100%
+    );
+  }
+  /* ── POSTCARD IMAGE ── */
+  @keyframes postcardJiggle {
+    0%   { transform: translate(-50%, -55%) rotate(3deg); }
+    10%  { transform: translate(-50%, -55%) rotate(5.5deg) translateY(-6px); }
+    20%  { transform: translate(-50%, -55%) rotate(1deg) translateY(-2px); }
+    30%  { transform: translate(-50%, -55%) rotate(4.5deg) translateY(-8px); }
+    40%  { transform: translate(-50%, -55%) rotate(2deg) translateY(-3px); }
+    50%  { transform: translate(-50%, -55%) rotate(4deg) translateY(-5px); }
+    60%  { transform: translate(-50%, -55%) rotate(2.5deg) translateY(-1px); }
+    70%  { transform: translate(-50%, -55%) rotate(3.8deg) translateY(-4px); }
+    80%  { transform: translate(-50%, -55%) rotate(2.8deg) translateY(-2px); }
+    90%  { transform: translate(-50%, -55%) rotate(3.2deg) translateY(-1px); }
+    100% { transform: translate(-50%, -55%) rotate(3deg); }
+  }
+  .hero-postcard {
+    position: absolute;
+    top: 48%;
+    left: 55%;
+    transform: translate(-50%, -55%) rotate(3deg);
+    width: min(520px, 78vw);
+    z-index: 3;
+    border-radius: 4px;
+    box-shadow: 0 32px 90px rgba(0,0,0,0.50), 0 6px 24px rgba(0,0,0,0.30);
+    pointer-events: none;
+    line-height: 0;
+    animation: postcardJiggle 3.5s ease-in-out 1.2s 1 forwards;
+  }
+  .hero-postcard img {
+    width: 100%;
+    display: block;
+    border-radius: 4px;
+  }
+  /* Content below postcard */
+  .hero-content {
+    position: relative;
+    z-index: 4;
+    padding: 2rem 3rem 5rem 4rem;
+    max-width: 740px;
+  }
+  .hero-eyebrow {
+    font-family: var(--mono);
+    font-size: .72rem;
+    letter-spacing: .28em;
+    text-transform: uppercase;
+    color: var(--text-dim);
+    margin-bottom: .6rem;
+  }
+  .hero-sub {
+    font-family: var(--body);
+    font-size: clamp(1.1rem, 2vw, 1.3rem);
+    font-style: italic;
+    color: var(--text-muted);
+    max-width: 560px;
+    line-height: 1.7;
+    margin-bottom: 2.2rem;
+  }
+  .hero-cta {
+    display: inline-block;
+    font-family: var(--mono);
+    font-size: .72rem;
+    letter-spacing: .18em;
+    text-transform: uppercase;
+    color: var(--text);
+    border-bottom: 1.5px solid var(--accent2);
+    padding-bottom: 2px;
+    transition: color .2s;
+  }
+  .hero-cta:hover { color: var(--accent2); text-decoration: none; }
+
+  .hero-cta-row {
+    display: flex;
+    align-items: center;
+    gap: 1.6rem;
+    flex-wrap: wrap;
+    margin-top: .2rem;
+  }
+  .hero-live {
+    display: inline-flex;
+    align-items: center;
+    gap: .55rem;
+    font-family: var(--mono);
+    font-size: .72rem;
+    letter-spacing: .18em;
+    text-transform: uppercase;
+    color: #fff;
+    background: #FF0000;
+    padding: .38rem .9rem .38rem .7rem;
+    border-radius: 2px;
+    text-decoration: none;
+    transition: opacity .2s;
+  }
+  .hero-live:hover { opacity: .85; text-decoration: none; }
+  .hero-live-dot {
+    width: 7px; height: 7px;
+    background: #fff;
+    border-radius: 50%;
+    flex-shrink: 0;
+    animation: livePulse 1.6s ease-in-out infinite;
+  }
+  @keyframes livePulse {
+    0%, 100% { opacity: 1; }
+    50% { opacity: .35; }
+  }
+
+  /* ============================================================
+     INTRO — wide opening paragraph
+  ============================================================ */
+  .intro-section {
+    max-width: 760px;
+    margin: 0 auto;
+    padding: 6rem 3rem 4rem 4rem;
+  }
+  .intro-label {
+    font-family: var(--mono);
+    font-size: .72rem;
+    letter-spacing: .28em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 1.4rem;
+    display: block;
+  }
+  .intro-lede {
+    font-family: var(--display);
+    font-size: clamp(1.6rem, 3.5vw, 2.4rem);
+    font-weight: 400;
+    line-height: 1.3;
+    color: var(--text);
+    margin-bottom: 2rem;
+  }
+  .intro-body {
+    font-family: var(--body);
+    font-size: 1.12rem;
+    line-height: 1.85;
+    color: var(--text-muted);
+  }
+  .intro-body p + p { margin-top: 1.4em; }
+
+  /* ============================================================
+     FULL-BLEED IMAGE BREAK
+  ============================================================ */
+  .img-break {
+    width: 100%;
+    max-height: 580px;
+    overflow: hidden;
+  }
+  .img-break img {
+    width: 100%;
+    height: 580px;
+    object-fit: cover;
+    display: block;
+  }
+  .img-break-caption {
+    max-width: 760px;
+    margin: 0 auto;
+    padding: .75rem 3rem;
+    font-family: var(--mono);
+    font-size: .72rem;
+    letter-spacing: .1em;
+    color: var(--text-dim);
+    text-transform: uppercase;
+  }
+
+  /* Two-column image break */
+  .img-break-duo {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    max-height: 480px;
+    overflow: hidden;
+  }
+  .img-break-duo img {
+    width: 100%;
+    height: 480px;
+    object-fit: cover;
+    display: block;
+  }
+
+  /* Three-column image break */
+  .img-break-trio {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    max-height: 380px;
+    overflow: hidden;
+  }
+  .img-break-trio img {
+    width: 100%;
+    height: 380px;
+    object-fit: cover;
+    display: block;
+  }
+
+  /* ============================================================
+     CHAPTER — each era as a loose editorial section
+  ============================================================ */
+  .chapter {
+    max-width: 760px;
+    margin: 0 auto;
+    padding: 5rem 3rem 5rem 4rem;
+  }
+  .chapter + .chapter {
+    border-top: 1px solid var(--border);
+  }
+  .chapter-num {
+    font-family: var(--mono);
+    font-size: .68rem;
+    letter-spacing: .32em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: .5rem;
+    display: block;
+  }
+  .chapter-years {
+    font-family: var(--mono);
+    font-size: .72rem;
+    letter-spacing: .2em;
+    text-transform: uppercase;
+    color: var(--text-dim);
+    margin-bottom: 1rem;
+    display: block;
+  }
+  .chapter-title {
+    font-family: var(--display);
+    font-weight: 700;
+    font-size: clamp(2rem, 5vw, 3.2rem);
+    line-height: 1.1;
+    color: var(--text);
+    margin-bottom: 1.6rem;
+  }
+  .chapter-body {
+    font-family: var(--body);
+    font-size: 1.1rem;
+    line-height: 1.85;
+    color: var(--text-muted);
+  }
+  .chapter-body p + p { margin-top: 1.5em; }
+
+  /* Inline year markers within chapter body */
+  .year-marker {
+    font-family: var(--mono);
+    font-size: .72rem;
+    letter-spacing: .2em;
+    color: var(--accent2);
+    text-transform: uppercase;
+    display: block;
+    margin: 2rem 0 .4rem;
+  }
+
+  /* Pull quote inside chapter */
+  .pull-quote {
+    border-left: 3px solid var(--accent);
+    margin: 2.5rem 0;
+    padding: 1rem 0 1rem 2rem;
+  }
+  .pull-quote p {
+    font-family: var(--display);
+    font-size: clamp(1.3rem, 2.5vw, 1.8rem);
+    font-style: italic;
+    font-weight: 400;
+    color: var(--text);
+    line-height: 1.4;
+  }
+  .pull-quote cite {
+    display: block;
+    margin-top: .8rem;
+    font-family: var(--mono);
+    font-size: .68rem;
+    letter-spacing: .18em;
+    text-transform: uppercase;
+    color: var(--text-dim);
+    font-style: normal;
+  }
+
+  /* ============================================================
+     WIDE QUOTE BAND
+  ============================================================ */
+  .quote-band {
+    background: var(--cream);
+    padding: 5rem 3rem;
+    text-align: center;
+    border-top: 1px solid var(--border);
+    border-bottom: 1px solid var(--border);
+  }
+  .quote-band-inner { max-width: 700px; margin: 0 auto; }
+  .pq-mark {
+    font-family: var(--display);
+    font-size: clamp(4rem, 10vw, 7rem);
+    line-height: .6;
+    color: var(--accent);
+    opacity: .25;
+    margin-bottom: 1rem;
+    font-weight: 900;
+  }
+  .pq-text {
+    font-family: var(--display);
+    font-size: clamp(1.5rem, 3.5vw, 2.4rem);
+    font-style: italic;
+    font-weight: 400;
+    color: var(--text);
+    line-height: 1.35;
+    margin-bottom: 1.4rem;
+  }
+  .pq-hl { color: var(--accent2); }
+  .pq-attr {
+    font-family: var(--mono);
+    font-size: .72rem;
+    letter-spacing: .2em;
+    text-transform: uppercase;
+    color: var(--text-dim);
+  }
+
+  /* ============================================================
+     HEADLINERS ROW — loose typographic list
+  ============================================================ */
+  .headliners-section {
+    max-width: 760px;
+    margin: 0 auto;
+    padding: 4rem 3rem;
+  }
+  .headliners-label {
+    font-family: var(--mono);
+    font-size: .72rem;
+    letter-spacing: .28em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 2rem;
+    display: block;
+  }
+  .headliner-row {
+    display: flex;
+    align-items: baseline;
+    gap: 1.5rem;
+    padding: 1rem 0;
+    border-bottom: 1px solid var(--border);
+  }
+  .headliner-year {
+    font-family: var(--mono);
+    font-size: .78rem;
+    letter-spacing: .14em;
+    color: var(--accent2);
+    flex-shrink: 0;
+    width: 48px;
+  }
+  .headliner-names {
+    font-family: var(--display);
+    font-size: clamp(1rem, 2vw, 1.3rem);
+    font-weight: 400;
+    color: var(--text);
+    line-height: 1.3;
+  }
+  .headliner-note {
+    margin-left: auto;
+    font-family: var(--mono);
+    font-size: .65rem;
+    letter-spacing: .1em;
+    text-transform: uppercase;
+    color: var(--text-dim);
+    flex-shrink: 0;
+    text-align: right;
+  }
+
+  /* ============================================================
+     POSTER STRIP — lineup aesthetic
+  ============================================================ */
+  .poster-strip {
+    background: var(--text);
+    padding: 4rem 3rem;
+    text-align: center;
+    overflow: hidden;
+  }
+  .ps-eyebrow {
+    font-family: var(--mono);
+    font-size: .62rem;
+    letter-spacing: .32em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: .5rem;
+  }
+  .ps-inner { max-width: 1000px; margin: 0 auto; }
+  .ps-rule { height: 1px; background: rgba(232,160,96,.15); margin: .8rem auto; }
+  .ps-h1 {
+    font-family: var(--display);
+    font-weight: 900;
+    font-size: clamp(2.5rem, 8vw, 6rem);
+    color: #FBF4E8;
+    line-height: .9;
+    letter-spacing: -.01em;
+  }
+  .ps-h2 {
+    font-family: var(--display);
+    font-size: clamp(1rem, 2.5vw, 1.8rem);
+    font-weight: 400;
+    color: #C4A880;
+    line-height: 1.2;
+  }
+  .ps-h3 {
+    font-family: var(--body);
+    font-size: clamp(.8rem, 1.5vw, 1rem);
+    color: #7A6850;
+    line-height: 1.8;
+    letter-spacing: .04em;
+  }
+  .ps-cta { margin-top: 2rem; }
+  .ps-cta a {
+    font-family: var(--mono);
+    font-size: .68rem;
+    letter-spacing: .18em;
+    text-transform: uppercase;
+    color: var(--accent);
+    border: 1px solid rgba(232,160,96,.4);
+    padding: 8px 22px;
+    border-radius: 2px;
+    transition: all .2s;
+    display: inline-block;
+  }
+  .ps-cta a:hover { background: rgba(232,160,96,.1); text-decoration: none; }
+
+  /* ============================================================
+     POSTER GALLERY
+  ============================================================ */
+  .poster-gallery {
+    background: var(--sand);
+    padding: 5rem 3rem;
+    border-top: 1px solid var(--border-mid);
+  }
+  .poster-gallery-label {
+    font-family: var(--mono);
+    font-size: .72rem;
+    letter-spacing: .28em;
+    text-transform: uppercase;
+    color: var(--accent2);
+    margin-bottom: .5rem;
+    display: block;
+  }
+  .poster-gallery-title {
+    font-family: var(--display);
+    font-size: clamp(1.6rem, 3vw, 2.4rem);
+    font-weight: 700;
+    color: var(--text);
+    margin-bottom: .6rem;
+  }
+  .poster-gallery-intro {
+    font-family: var(--body);
+    font-size: 1rem;
+    color: var(--text-muted);
+    max-width: 620px;
+    margin-bottom: 3rem;
+    line-height: 1.7;
+  }
+  .poster-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1.5rem;
+  }
+  .poster-item {
+    display: flex;
+    flex-direction: column;
+    gap: .6rem;
+  }
+  .poster-item img {
+    width: 100%;
+    aspect-ratio: 3/4;
+    object-fit: cover;
+    object-position: top;
+    display: block;
+    border: 1px solid var(--border-mid);
+    transition: opacity .2s;
+  }
+  .poster-item img:hover { opacity: .88; }
+  .poster-item-year {
+    font-family: var(--mono);
+    font-size: .72rem;
+    letter-spacing: .18em;
+    color: var(--accent2);
+    text-transform: uppercase;
+  }
+  .poster-item-heads {
+    font-family: var(--display);
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--text);
+    line-height: 1.2;
+  }
+  .poster-item-credit {
+    font-family: var(--mono);
+    font-size: .62rem;
+    letter-spacing: .1em;
+    color: var(--text-dim);
+    text-transform: uppercase;
+  }
+  .poster-gallery-cta {
+    margin-top: 2.5rem;
+    font-family: var(--mono);
+    font-size: .72rem;
+    letter-spacing: .16em;
+    text-transform: uppercase;
+  }
+  .poster-gallery-cta a {
+    color: var(--accent2);
+    border-bottom: 1px solid var(--accent2);
+    padding-bottom: 1px;
+    transition: opacity .15s;
+  }
+  .poster-gallery-cta a:hover { opacity: .7; text-decoration: none; }
+
+  @media (max-width: 900px) {
+    .poster-grid { grid-template-columns: repeat(2, 1fr); }
+  }
+  @media (max-width: 480px) {
+    .poster-grid { grid-template-columns: 1fr 1fr; gap: 1rem; }
+  }
+
+  /* ============================================================
+     COLOPHON
+  ============================================================ */
+  .colophon {
+    background: var(--sand);
+    padding: 4rem 3rem;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 3rem;
+    max-width: 100%;
+    border-top: 1px solid var(--border-mid);
+  }
+  .colophon-title {
+    font-family: var(--display);
+    font-size: clamp(1.1rem, 2vw, 1.4rem);
+    font-weight: 600;
+    color: var(--text);
+    margin-bottom: 1rem;
+  }
+  .colophon-body {
+    font-family: var(--body);
+    font-size: .95rem;
+    color: var(--text-muted);
+    line-height: 1.7;
+  }
+  .colophon-series {
+    font-family: var(--mono);
+    font-size: .72rem;
+    letter-spacing: .14em;
+    text-transform: uppercase;
+    color: var(--text-dim);
+    margin-bottom: 1.2rem;
+  }
+  .colophon-share {
+    display: flex;
+    flex-direction: column;
+    gap: .6rem;
+  }
+  .colophon-share a {
+    font-family: var(--mono);
+    font-size: .78rem;
+    letter-spacing: .1em;
+    text-transform: uppercase;
+    color: var(--accent2);
+    transition: opacity .15s;
+  }
+  .colophon-share a:hover { opacity: .7; text-decoration: none; }
+
+  /* ============================================================
+     FOOTER — invariant brand rule
+  ============================================================ */
+  footer {
+    height: 56px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 2rem;
+    background: var(--bg);
+    border-top: 1px solid var(--border);
+  }
+  .footer-lockup {
+    display: flex; align-items: center; gap: 10px;
+    text-decoration: none;
+  }
+  .footer-mark {
+    width: 32px; height: 32px;
+    flex-shrink: 0;
+    display: block;
+  }
+  .footer-mouth {
+    animation: cursorBlink 2s step-end infinite;
+  }
+  .footer-wordmark {
+    font-family: var(--mono);
+    font-size: .82rem;
+    letter-spacing: .06em;
+    color: var(--text-muted);
+  }
+  .footer-copy {
+    font-family: var(--mono);
+    font-size: .82rem;
+    color: var(--text-dim);
+    letter-spacing: .04em;
+  }
+
+  /* ============================================================
+     PRINT
+  ============================================================ */
+  @media print {
+    .nav, #progress, #cur, #curRing, #tt, footer { display: none; }
+    body { background: #fff; color: #000; }
+  }
+
+  /* ============================================================
+     MOBILE
+  ============================================================ */
+  @media (max-width: 768px) {
+    .hero-content { padding: 1.5rem 1.5rem 4rem; }
+    .hero-greeting { font-size: .85rem; transform: translate(-50%, -190%); }
+    .intro-section, .chapter, .headliners-section { padding-left: 1.5rem; padding-right: 1.5rem; }
+    .img-break img { height: 300px; }
+    .img-break-duo { grid-template-columns: 1fr; max-height: none; }
+    .img-break-duo img { height: 280px; }
+    .img-break-trio { grid-template-columns: 1fr; max-height: none; }
+    .img-break-trio img { height: 240px; }
+    .colophon { grid-template-columns: 1fr; gap: 2rem; padding: 3rem 1.5rem; }
+    .nav-links { display: none; }
+    footer { height: auto; padding: 1rem 1.5rem; flex-direction: column; gap: .5rem; text-align: center; }
+    .headliner-note { display: none; }
+    .poster-strip { padding: 3rem 1.5rem; }
+    .quote-band { padding: 4rem 1.5rem; }
+  }
+  </style>
+</head>
+<body>
+
+<div id="progress"></div>
+<div id="cur"></div>
+<div id="curRing"></div>
+<div id="tt"></div>
+
+<!-- ============================================================
+     NAV
+============================================================ -->
+<nav class="nav">
+  <a href="#top" class="nav-tag">
+    <div class="nav-index-box">011</div>
+    <span class="nav-topic">Coachella<span class="cursor-blink" style="color:var(--accent);">_</span></span>
+  </a>
+  <div class="nav-links">
+    <a href="#origins">Origins</a>
+    <a href="#rise">The Rise</a>
+    <a href="#mainstream">Mainstream</a>
+    <a href="#instagram">Instagram Era</a>
+    <a href="#return">The Return</a>
+    <a href="#lineups">Lineups</a>
+  </div>
+  <div class="nav-right">
+    <button class="share-btn" id="shareBtn">Share</button>
+    <div class="share-dropdown" id="shareDropdown">
+      <a href="#" id="shareX">Share on X</a>
+      <a href="#" id="shareLinkedIn">Share on LinkedIn</a>
+      <a href="#" id="shareCopy">Copy Link</a>
+    </div>
+  </div>
+</nav>
+
+<!-- ============================================================
+     HERO — postcard
+============================================================ -->
+<section class="hero" id="top">
+  <div class="hero-photo"></div>
+  <div class="hero-gradient"></div>
+
+  <!-- POSTCARD — jpg, angled, drop shadow -->
+  <div class="hero-postcard">
+    <img src="coachella/images/coachella-postcard.jpg" alt="Greetings from Coachella">
+  </div>
+
+  <div class="hero-content fi">
+    <div class="hero-eyebrow">A (Brief) History of Coachella</div>
+    <p class="hero-sub">From a protest concert in the California desert to the world's most-photographed music festival. Every April, a polo field in Indio becomes the center of everything.</p>
+    <div class="hero-cta-row">
+      <a href="#origins" class="hero-cta">Read the Story ↓</a>
+      <a href="https://www.youtube.com/@coachella/streams" target="_blank" rel="noopener" class="hero-live">
+        <span class="hero-live-dot"></span>Watch Live on YouTube
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     INTRO
+============================================================ -->
+<section class="intro-section fi" id="intro">
+  <span class="intro-label">Indio, California · 1999 – Present</span>
+  <p class="intro-lede">It started as a protest. It became a pilgrimage. And somewhere along the way, it became the most powerful brand in live music.</p>
+  <div class="intro-body">
+    <p>Coachella was never supposed to happen. It exists because a rock band got into a fight with a ticketing company, played a polo field in the middle of the desert, and accidentally showed a promoter what was possible. That promoter's name was Paul Tollett. The band was Pearl Jam. The year was 1996.</p>
+    <p>Three years later, Tollett turned that accidental proof-of-concept into the first Coachella Valley Music and Arts Festival. It lost money. Nobody cared. He came back the next year anyway.</p>
+    <p>What followed is one of the stranger stories in American culture — a small independent festival that survived bankruptcy, reinvented itself as the home of indie music, went mainstream, became a fashion event, accidentally invented a new kind of celebrity tourism, and along the way hosted some of the most discussed performances in modern music history.</p>
+  </div>
+</section>
+
+<!-- ============================================================
+     FULL BLEED — polo field entrance
+============================================================ -->
+<div class="img-break fi">
+  <img src="coachella/images/polo-field-entrance.jpg" alt="The Empire Polo Club grounds — palm trees, desert mountains, festival tents">
+</div>
+<div class="img-break-caption">The Empire Polo Club, Indio, California · The venue Pearl Jam accidentally discovered in 1996</div>
+
+<!-- ============================================================
+     CHAPTER 1 — Origins
+============================================================ -->
+<section class="chapter fi" id="origins">
+  <span class="chapter-num">Chapter One</span>
+  <span class="chapter-years">1993 – 1999</span>
+  <h2 class="chapter-title">Born from a Fight</h2>
+  <div class="chapter-body">
+    <p>In 1993, Pearl Jam did something almost no major band had attempted: they refused to play Ticketmaster venues. The antitrust complaint they filed with the Department of Justice went nowhere legally, but it forced them to tour independently — playing fairgrounds, polo fields, anywhere that would take them without the Ticketmaster surcharge.</p>
+
+    <span class="year-marker">1996</span>
+    <p>One of those venues was the Empire Polo Club in Indio, California. Twenty-five thousand people showed up to see Pearl Jam play a polo field in the desert, ninety miles east of Los Angeles. Paul Tollett, then running Goldenvoice, a Los Angeles concert promoter, was watching. He saw something the numbers didn't explain: people wanted to be there. The drive, the heat, the middle of nowhere — none of it was a deterrent. It was the point.</p>
+
+    <div class="pull-quote">
+      <p>The desert wasn't the obstacle. It was the attraction.</p>
+      <cite>— The lesson Pearl Jam taught without meaning to</cite>
+    </div>
+
+    <span class="year-marker">1998 – 1999</span>
+    <p>Tollett negotiated a deal with the Empire Polo Club and began planning a multi-day, multi-stage festival. Nothing quite like it existed in America. Lollapalooza had stopped touring. Woodstock had ended in disaster. The moment felt open.</p>
+    <p>The first Coachella ran October 9–10, 1999. Beck, Tool, Rage Against the Machine, and Morrissey headlined. Tickets cost $50. Twenty-five thousand people attended. The festival lost money. Tollett didn't care — or at least, he acted like he didn't.</p>
+  </div>
+</section>
+
+<!-- ============================================================
+     IMAGE BREAK — dome stage + tent light
+============================================================ -->
+<div class="img-break-duo fi">
+  <img src="coachella/images/dome-stage.jpg" alt="The geodesic dome stage — early Coachella's most distinctive structure" style="object-position: center;">
+  <img src="coachella/images/tent-golden-light.jpg" alt="Crowd inside a festival tent, golden afternoon light flooding through the opening">
+</div>
+
+<!-- ============================================================
+     CHAPTER 2 — The Indie Years
+============================================================ -->
+<section class="chapter fi" id="rise">
+  <span class="chapter-num">Chapter Two</span>
+  <span class="chapter-years">2001 – 2007</span>
+  <h2 class="chapter-title">The Indie Underground</h2>
+  <div class="chapter-body">
+    <p>Coachella skipped 2000 entirely — the losses from the first year were too significant, the financial picture too uncertain. When it came back in 2001, it was a one-day event, smaller, cheaper to produce. Jane's Addiction headlined. Daft Punk and The Chemical Brothers played. The electronic stage, which would eventually become the Sahara Tent — Coachella's beating heart — was born.</p>
+
+    <span class="year-marker">2002 – 2004</span>
+    <p>The festival expanded to two days. The White Stripes, Björk, Oasis. Then Radiohead in 2004 — a Sunday night performance widely considered one of the greatest festival sets ever played. People drove hours. They camped in the desert heat. They called it a pilgrimage without irony, and they were right. Coachella was becoming the place where you proved you cared.</p>
+
+    <div class="pull-quote">
+      <p>Radiohead's Sunday set was the moment Coachella stopped being a concert and became a cathedral.</p>
+      <cite>— The 2004 booking that changed everything</cite>
+    </div>
+
+    <span class="year-marker">2006 – 2007</span>
+    <p>Daft Punk's 2006 Sahara Tent set — the one with the pyramid — is still talked about as a religious experience by people who were there. The year after, Rage Against the Machine reunited exclusively for Coachella. The festival sold out in hours. Something had shifted. Coachella was no longer a music festival you attended. It was a cultural event you either got into or didn't.</p>
+  </div>
+</section>
+
+<!-- ============================================================
+     QUOTE BAND
+============================================================ -->
+<div class="quote-band fi">
+  <div class="quote-band-inner">
+    <div class="pq-mark">&ldquo;</div>
+    <p class="pq-text">Coachella is where <span class="pq-hl">careers are made</span> and legends are confirmed.</p>
+    <div class="pq-attr">— Two decades of booking history</div>
+  </div>
+</div>
+
+<!-- ============================================================
+     IMAGE BREAK — rose gardens (the secret nobody talks about)
+============================================================ -->
+<div class="img-break-duo fi">
+  <img src="coachella/images/rose-garden-wide.jpg" alt="The VIP Rose Garden at Empire Polo Club — roses in full bloom, palm trees, desert sky" style="object-position: center top;">
+  <img src="coachella/images/rose-garden-white.jpg" alt="White roses at the Empire Polo Club Rose Garden, palms and tents behind">
+</div>
+<div class="img-break-caption">The Empire Polo Club Rose Garden — one of the festival's best-kept secrets, tucked between the stages</div>
+
+<!-- ============================================================
+     CHAPTER 3 — Going Mainstream
+============================================================ -->
+<section class="chapter fi" id="mainstream">
+  <span class="chapter-num">Chapter Three</span>
+  <span class="chapter-years">2008 – 2014</span>
+  <h2 class="chapter-title">Going Mainstream</h2>
+  <div class="chapter-body">
+    <p>Madonna headlined in 2008. For the indie faithful, this was a provocation. Coachella was supposed to be about Radiohead, about the Sahara Tent, about discovering something before it was famous. Madonna was not that. She was the opposite of that.</p>
+    <p>But Tollett understood something the purists didn't: Coachella's identity was never purely about genre. It was about spectacle, about the convergence of things that shouldn't converge. Madonna was as good a booking as any, if you thought about it that way. Most people, eventually, came around.</p>
+
+    <span class="year-marker">2012</span>
+    <p>The second weekend was introduced — two identical lineups, two weekends, double the capacity, double the revenue. Almost overnight, Coachella became the highest-grossing music festival in North America. The economics changed everything. The booking philosophy followed.</p>
+    <p>Also in 2012: Dr. Dre and Snoop Dogg brought Tupac Shakur back. A 3D projection of the dead rapper appeared on stage during their headlining set. The clip was on every website within hours. Coachella had its first genuinely viral moment — and a decade of conversation about digital resurrection began.</p>
+
+    <div class="pull-quote">
+      <p>The Tupac hologram moment was the first time the internet and the festival felt like the same thing.</p>
+      <cite>— 2012, the year Coachella went viral</cite>
+    </div>
+
+    <span class="year-marker">2014</span>
+    <p>Arcade Fire closed the festival on Sunday. It was, in retrospect, the last great indie coronation at Coachella. After that, the center of gravity shifted permanently toward pop, hip-hop, and electronic headliners. The booking list became the music industry's most-watched document.</p>
+  </div>
+</section>
+
+<!-- ============================================================
+     IMAGE BREAK — merch store + illustrated poster
+============================================================ -->
+<div class="img-break-duo fi">
+  <img src="coachella/images/merch-store.jpg" alt="Coachella merch store 2012 — limited edition artist tees on display against chevron wood panels">
+  <img src="coachella/images/illustrated-poster.jpg" alt="Jon Burgerman illustrated Coachella map poster — everything that happens, all at once">
+</div>
+<div class="img-break-caption">The merchandise and the mythology · Coachella as commerce, Coachella as cartoon</div>
+
+<!-- ============================================================
+     CHAPTER 4 — Instagram Era
+============================================================ -->
+<section class="chapter fi" id="instagram">
+  <span class="chapter-num">Chapter Four</span>
+  <span class="chapter-years">2015 – 2019</span>
+  <h2 class="chapter-title">The Instagram Era</h2>
+  <div class="chapter-body">
+    <p>It is hard to pinpoint exactly when Coachella became a fashion event. The flower crown era crept up gradually — celebrity attendees photographed in bohemian looks, the images spreading far beyond music media into gossip pages and style blogs. By the mid-2010s, "Coachella style" was a searchable trend on Google two weeks before the music even started.</p>
+    <p>Revolve launched its own off-site festival. Brands sent influencers. The audience became as photographed as the performers. The Ferris wheel, the desert light, the palm silhouettes — the grounds themselves were a set, and everyone on them knew it.</p>
+
+    <span class="year-marker">2017</span>
+    <p>Kendrick Lamar became the first solo hip-hop artist to headline Coachella. His performance — dense, political, musically impeccable — was a reminder that the music could still be the point. His set is still cited as one of the all-time great Coachella performances.</p>
+
+    <span class="year-marker">2018</span>
+    <p>Beyoncé delivered two hours of HBCU pageantry, marching bands, and precision choreography that redefined what a festival headliner could do. Netflix paid sixty million dollars to document it. The internet renamed the festival "Beychella" and the name stuck. No performance since has matched it for sheer cultural weight.</p>
+
+    <div class="pull-quote">
+      <p>Beyoncé didn't just headline Coachella. She made the festival part of her argument.</p>
+      <cite>— Beychella, 2018</cite>
+    </div>
+
+    <span class="year-marker">2019</span>
+    <p>Ariana Grande became the youngest solo headliner in Coachella history. The show was massive. The crowd at the main stage was among the largest ever recorded there. Then, almost immediately, the world changed.</p>
+  </div>
+</section>
+
+<!-- ============================================================
+     IMAGE BREAK — ferris wheel at night
+============================================================ -->
+<div class="img-break fi">
+  <img src="coachella/images/ferris-wheel-night-lit.jpg" alt="The Coachella Ferris wheel lit against a black night sky — red and gold tents glowing below, crowds silhouetted">
+</div>
+<div class="img-break-caption">The Grande Wheel, after dark · Coachella's most photographed landmark</div>
+
+<!-- ============================================================
+     CHAPTER 5 — The Return
+============================================================ -->
+<section class="chapter fi" id="return">
+  <span class="chapter-num">Chapter Five</span>
+  <span class="chapter-years">2020 – Present</span>
+  <h2 class="chapter-title">The Return</h2>
+  <div class="chapter-body">
+    <p>Coachella 2020 was cancelled in March, two weeks before it was supposed to begin. Then 2021 was cancelled too. For the first time in twenty years, April came and went without a festival in Indio. The silence was its own cultural moment — a measure of how embedded the thing had become.</p>
+
+    <span class="year-marker">2022</span>
+    <p>The comeback was exactly what it needed to be: enormous, emotional, slightly overwhelming. Billie Eilish became the youngest solo headliner in Coachella history. The Weeknd stepped in when Kanye West withdrew. Swedish House Mafia closed the Sahara Tent on Sunday night. The festival sold out before most people knew ticket sales had opened.</p>
+
+    <span class="year-marker">2023</span>
+    <p>Bad Bunny headlined — the first Latin artist to do so — performing almost entirely in Spanish to the largest crowds the main stage had ever seen. Frank Ocean's long-anticipated headline set became one of the most-discussed non-performances in festival history when he appeared drastically late and visibly off-form at Weekend 1, then skipped Weekend 2 entirely due to injury. The discourse was enormous. It was peak Coachella: the conversation around the event as significant as the event itself.</p>
+
+    <span class="year-marker">2025</span>
+    <p>Lady Gaga ended a years-long absence from live performance with a headline set that was equal parts concert and theatrical production. It was covered as news. The return to Coachella remained, as it always had been, the most visible stage in live music.</p>
+  </div>
+</section>
+
+<!-- ============================================================
+     IMAGE BREAK — main stage wide
+============================================================ -->
+<div class="img-break fi">
+  <img src="coachella/images/main-stage-wide.jpg" alt="The Coachella main stage from the hill — desert mountains in the distance, palm trees, clear blue sky">
+</div>
+<div class="img-break-caption">The main stage from the lawn · Indio, California</div>
+
+<!-- ============================================================
+     QUOTE BAND 2
+============================================================ -->
+<div class="quote-band fi">
+  <div class="quote-band-inner">
+    <div class="pq-mark">&ldquo;</div>
+    <p class="pq-text">I want to create something that <span class="pq-hl">people will never forget.</span></p>
+    <div class="pq-attr">— Beyoncé · Homecoming · Netflix · 2019</div>
+  </div>
+</div>
+
+<!-- ============================================================
+     IMAGE BREAK — angel fountain
+============================================================ -->
+<div class="img-break fi">
+  <img src="coachella/images/angel-fountain.jpg" alt="The angel fountain at the Empire Polo Club — festivalgoers resting beneath palms, the fountain at center">
+</div>
+<div class="img-break-caption">Between the stages · Empire Polo Club</div>
+
+<!-- ============================================================
+     EVERY ARTIST — 1999–2025
+============================================================ -->
+<section class="poster-strip fi" id="lineups">
+  <div class="ps-eyebrow">Coachella Valley Music and Arts Festival · Goldenvoice Presents · Empire Polo Club · Indio, California</div>
+  <div class="ps-inner">
+    <div class="ps-h1">Every Artist.<br>1999 – 2025.</div>
+    <div class="ps-rule"></div>
+    <div class="ps-h2" style="margin-bottom:.6rem;">2401 acts · 25 years · one desert</div>
+    <p class="ag-instructions">Tap every artist you recognise.</p>
+    <div class="ag-counter-wrap" id="agCounterWrap">
+      <span class="ag-count" id="agCount">0</span>
+      <span class="ag-count-label" id="agLabel">&nbsp;recognised — keep going, it gets worse.</span>
+    </div>
+    <div class="ag-wrap ag-collapsed" id="agWrap">
+      <div class="ag-grid" id="agGrid">
+        <button class="ag-cell ag-t1" data-name="The Cure">The Cure</button>
+        <button class="ag-cell ag-t1" data-name="Beck">Beck</button>
+        <button class="ag-cell ag-t1" data-name="Rage Against the Machine">Rage Against the Machine</button>
+        <button class="ag-cell ag-t1" data-name="Tool">Tool</button>
+        <button class="ag-cell ag-t1" data-name="Jane's Addiction">Jane's Addiction</button>
+        <button class="ag-cell ag-t1" data-name="Björk">Björk</button>
+        <button class="ag-cell ag-t1" data-name="Oasis">Oasis</button>
+        <button class="ag-cell ag-t1" data-name="Radiohead">Radiohead</button>
+        <button class="ag-cell ag-t1" data-name="Coldplay">Coldplay</button>
+        <button class="ag-cell ag-t1" data-name="Nine Inch Nails">Nine Inch Nails</button>
+        <button class="ag-cell ag-t1" data-name="Depeche Mode">Depeche Mode</button>
+        <button class="ag-cell ag-t1" data-name="Prince">Prince</button>
+        <button class="ag-cell ag-t1" data-name="Roger Waters">Roger Waters</button>
+        <button class="ag-cell ag-t1" data-name="Jack Johnson">Jack Johnson</button>
+        <button class="ag-cell ag-t1" data-name="Red Hot Chili Peppers">Red Hot Chili Peppers</button>
+        <button class="ag-cell ag-t1" data-name="Paul McCartney">Paul McCartney</button>
+        <button class="ag-cell ag-t1" data-name="The Killers">The Killers</button>
+        <button class="ag-cell ag-t1" data-name="Jay-Z">Jay-Z</button>
+        <button class="ag-cell ag-t1" data-name="Muse">Muse</button>
+        <button class="ag-cell ag-t1" data-name="Gorillaz">Gorillaz</button>
+        <button class="ag-cell ag-t1" data-name="Kings of Leon">Kings of Leon</button>
+        <button class="ag-cell ag-t1" data-name="Arcade Fire">Arcade Fire</button>
+        <button class="ag-cell ag-t1" data-name="Kanye West">Kanye West</button>
+        <button class="ag-cell ag-t1" data-name="The Black Keys">The Black Keys</button>
+        <button class="ag-cell ag-t1" data-name="Dr. Dre &amp; Snoop Dogg">Dr. Dre &amp; Snoop Dogg</button>
+        <button class="ag-cell ag-t1" data-name="Blur">Blur</button>
+        <button class="ag-cell ag-t1" data-name="The Stone Roses">The Stone Roses</button>
+        <button class="ag-cell ag-t1" data-name="Phoenix">Phoenix</button>
+        <button class="ag-cell ag-t1" data-name="OutKast">OutKast</button>
+        <button class="ag-cell ag-t1" data-name="AC/DC">AC/DC</button>
+        <button class="ag-cell ag-t1" data-name="Jack White">Jack White</button>
+        <button class="ag-cell ag-t1" data-name="Drake">Drake</button>
+        <button class="ag-cell ag-t1" data-name="LCD Soundsystem">LCD Soundsystem</button>
+        <button class="ag-cell ag-t1" data-name="Guns N' Roses">Guns N' Roses</button>
+        <button class="ag-cell ag-t1" data-name="Calvin Harris">Calvin Harris</button>
+        <button class="ag-cell ag-t1" data-name="Lady Gaga">Lady Gaga</button>
+        <button class="ag-cell ag-t1" data-name="Kendrick Lamar">Kendrick Lamar</button>
+        <button class="ag-cell ag-t1" data-name="The Weeknd">The Weeknd</button>
+        <button class="ag-cell ag-t1" data-name="Beyoncé">Beyoncé</button>
+        <button class="ag-cell ag-t1" data-name="Eminem">Eminem</button>
+        <button class="ag-cell ag-t1" data-name="Childish Gambino">Childish Gambino</button>
+        <button class="ag-cell ag-t1" data-name="Tame Impala">Tame Impala</button>
+        <button class="ag-cell ag-t1" data-name="Ariana Grande">Ariana Grande</button>
+        <button class="ag-cell ag-t1" data-name="Harry Styles">Harry Styles</button>
+        <button class="ag-cell ag-t1" data-name="Billie Eilish">Billie Eilish</button>
+        <button class="ag-cell ag-t1" data-name="Swedish House Mafia">Swedish House Mafia</button>
+        <button class="ag-cell ag-t1" data-name="Bad Bunny">Bad Bunny</button>
+        <button class="ag-cell ag-t1" data-name="BLACKPINK">BLACKPINK</button>
+        <button class="ag-cell ag-t1" data-name="Frank Ocean">Frank Ocean</button>
+        <button class="ag-cell ag-t1" data-name="Lana Del Rey">Lana Del Rey</button>
+        <button class="ag-cell ag-t1" data-name="Tyler, The Creator">Tyler, The Creator</button>
+        <button class="ag-cell ag-t1" data-name="Doja Cat">Doja Cat</button>
+        <button class="ag-cell ag-t1" data-name="No Doubt">No Doubt</button>
+        <button class="ag-cell ag-t1" data-name="Green Day">Green Day</button>
+        <button class="ag-cell ag-t1" data-name="Post Malone">Post Malone</button>
+        <button class="ag-cell ag-t1" data-name="Travis Scott">Travis Scott</button>
+
+        <button class="ag-cell ag-t2" data-name="The Chemical Brothers">The Chemical Brothers</button>
+        <button class="ag-cell ag-t2" data-name="Morrissey">Morrissey</button>
+        <button class="ag-cell ag-t2" data-name="Underworld">Underworld</button>
+        <button class="ag-cell ag-t2" data-name="Art of Noise">Art of Noise</button>
+        <button class="ag-cell ag-t2" data-name="Moby">Moby</button>
+        <button class="ag-cell ag-t2" data-name="Gus Gus">Gus Gus</button>
+        <button class="ag-cell ag-t2" data-name="Paul Oakenfold">Paul Oakenfold</button>
+        <button class="ag-cell ag-t2" data-name="Weezer">Weezer</button>
+        <button class="ag-cell ag-t2" data-name="Fatboy Slim">Fatboy Slim</button>
+        <button class="ag-cell ag-t2" data-name="The Orb">The Orb</button>
+        <button class="ag-cell ag-t2" data-name="The Roots">The Roots</button>
+        <button class="ag-cell ag-t2" data-name="Roni Size Reprazent">Roni Size Reprazent</button>
+        <button class="ag-cell ag-t2" data-name="Siouxsie &amp; the Banshees">Siouxsie &amp; the Banshees</button>
+        <button class="ag-cell ag-t2" data-name="Sasha &amp; Digweed">Sasha &amp; Digweed</button>
+        <button class="ag-cell ag-t2" data-name="Prodigy">Prodigy</button>
+        <button class="ag-cell ag-t2" data-name="Foo Fighters">Foo Fighters</button>
+        <button class="ag-cell ag-t2" data-name="The Strokes">The Strokes</button>
+        <button class="ag-cell ag-t2" data-name="Pixies">Pixies</button>
+        <button class="ag-cell ag-t2" data-name="Kraftwerk">Kraftwerk</button>
+        <button class="ag-cell ag-t2" data-name="The Flaming Lips">The Flaming Lips</button>
+        <button class="ag-cell ag-t2" data-name="Air">Air</button>
+        <button class="ag-cell ag-t2" data-name="Bauhaus">Bauhaus</button>
+        <button class="ag-cell ag-t2" data-name="New Order">New Order</button>
+        <button class="ag-cell ag-t2" data-name="Bright Eyes">Bright Eyes</button>
+        <button class="ag-cell ag-t2" data-name="Gang of Four">Gang of Four</button>
+        <button class="ag-cell ag-t2" data-name="Daft Punk">Daft Punk</button>
+        <button class="ag-cell ag-t2" data-name="Franz Ferdinand">Franz Ferdinand</button>
+        <button class="ag-cell ag-t2" data-name="Sigur Rós">Sigur Rós</button>
+        <button class="ag-cell ag-t2" data-name="Massive Attack">Massive Attack</button>
+        <button class="ag-cell ag-t2" data-name="Madonna">Madonna</button>
+        <button class="ag-cell ag-t2" data-name="Yeah Yeah Yeahs">Yeah Yeah Yeahs</button>
+        <button class="ag-cell ag-t2" data-name="Portishead">Portishead</button>
+        <button class="ag-cell ag-t2" data-name="Death Cab for Cutie">Death Cab for Cutie</button>
+        <button class="ag-cell ag-t2" data-name="The Verve">The Verve</button>
+        <button class="ag-cell ag-t2" data-name="The Raconteurs">The Raconteurs</button>
+        <button class="ag-cell ag-t2" data-name="My Morning Jacket">My Morning Jacket</button>
+        <button class="ag-cell ag-t2" data-name="Aphex Twin">Aphex Twin</button>
+        <button class="ag-cell ag-t2" data-name="Justice">Justice</button>
+        <button class="ag-cell ag-t2" data-name="Interpol">Interpol</button>
+        <button class="ag-cell ag-t2" data-name="Jesus and Mary Chain">Jesus and Mary Chain</button>
+        <button class="ag-cell ag-t2" data-name="Arctic Monkeys">Arctic Monkeys</button>
+        <button class="ag-cell ag-t2" data-name="the Arcade Fire">the Arcade Fire</button>
+        <button class="ag-cell ag-t2" data-name="Tiësto">Tiësto</button>
+        <button class="ag-cell ag-t2" data-name="the Decemberists">the Decemberists</button>
+        <button class="ag-cell ag-t2" data-name="Manu Chao">Manu Chao</button>
+        <button class="ag-cell ag-t2" data-name="Happy Mondays">Happy Mondays</button>
+        <button class="ag-cell ag-t2" data-name="Paul van Dyk">Paul van Dyk</button>
+        <button class="ag-cell ag-t2" data-name="M.I.A.">M.I.A.</button>
+        <button class="ag-cell ag-t2" data-name="Thievery Corporation">Thievery Corporation</button>
+        <button class="ag-cell ag-t2" data-name="My Bloody Valentine">My Bloody Valentine</button>
+        <button class="ag-cell ag-t2" data-name="Them Crooked Vultures">Them Crooked Vultures</button>
+        <button class="ag-cell ag-t2" data-name="Faith No More">Faith No More</button>
+        <button class="ag-cell ag-t2" data-name="Pavement">Pavement</button>
+        <button class="ag-cell ag-t2" data-name="Thom Yorke">Thom Yorke</button>
+        <button class="ag-cell ag-t2" data-name="Robyn">Robyn</button>
+        <button class="ag-cell ag-t2" data-name="Animal Collective">Animal Collective</button>
+        <button class="ag-cell ag-t2" data-name="Mumford &amp; Sons">Mumford &amp; Sons</button>
+        <button class="ag-cell ag-t2" data-name="Duran Duran">Duran Duran</button>
+        <button class="ag-cell ag-t2" data-name="The National">The National</button>
+        <button class="ag-cell ag-t2" data-name="PJ Harvey">PJ Harvey</button>
+        <button class="ag-cell ag-t2" data-name="Bon Iver">Bon Iver</button>
+        <button class="ag-cell ag-t2" data-name="the Shins">the Shins</button>
+        <button class="ag-cell ag-t2" data-name="David Guetta">David Guetta</button>
+        <button class="ag-cell ag-t2" data-name="Kaskade">Kaskade</button>
+        <button class="ag-cell ag-t2" data-name="Miike Snow">Miike Snow</button>
+        <button class="ag-cell ag-t2" data-name="At The Drive-In">At The Drive-In</button>
+        <button class="ag-cell ag-t2" data-name="Florence + the Machine">Florence + the Machine</button>
+        <button class="ag-cell ag-t2" data-name="AVICII">AVICII</button>
+        <button class="ag-cell ag-t2" data-name="Modest Mouse">Modest Mouse</button>
+        <button class="ag-cell ag-t2" data-name="Jurassic 5">Jurassic 5</button>
+        <button class="ag-cell ag-t2" data-name="Grinderman">Grinderman</button>
+        <button class="ag-cell ag-t2" data-name="the XX">the XX</button>
+        <button class="ag-cell ag-t2" data-name="the Postal Service">the Postal Service</button>
+        <button class="ag-cell ag-t2" data-name="Hot Chip">Hot Chip</button>
+        <button class="ag-cell ag-t2" data-name="Grizzly Bear">Grizzly Bear</button>
+        <button class="ag-cell ag-t2" data-name="Nick Cave and the Bad Seeds">Nick Cave and the Bad Seeds</button>
+        <button class="ag-cell ag-t2" data-name="Vampire Weekend">Vampire Weekend</button>
+        <button class="ag-cell ag-t2" data-name="Social Distortion">Social Distortion</button>
+        <button class="ag-cell ag-t2" data-name="Wu-Tang Clan">Wu-Tang Clan</button>
+        <button class="ag-cell ag-t2" data-name="The Knife">The Knife</button>
+        <button class="ag-cell ag-t2" data-name="The Replacements">The Replacements</button>
+        <button class="ag-cell ag-t2" data-name="Ellie Goulding">Ellie Goulding</button>
+        <button class="ag-cell ag-t2" data-name="Chromeo">Chromeo</button>
+        <button class="ag-cell ag-t2" data-name="Queens of the Stone Age">Queens of the Stone Age</button>
+        <button class="ag-cell ag-t2" data-name="Skrillex">Skrillex</button>
+        <button class="ag-cell ag-t2" data-name="Pharrell Williams">Pharrell Williams</button>
+        <button class="ag-cell ag-t2" data-name="Lorde">Lorde</button>
+        <button class="ag-cell ag-t2" data-name="Foster the People">Foster the People</button>
+        <button class="ag-cell ag-t2" data-name="Neutral Milk Hotel">Neutral Milk Hotel</button>
+        <button class="ag-cell ag-t2" data-name="Disclosure">Disclosure</button>
+        <button class="ag-cell ag-t2" data-name="Steely Dan">Steely Dan</button>
+        <button class="ag-cell ag-t2" data-name="Alabama Shakes">Alabama Shakes</button>
+        <button class="ag-cell ag-t2" data-name="Axwell ^ Ingrosso">Axwell ^ Ingrosso</button>
+        <button class="ag-cell ag-t2" data-name="alt-J">alt-J</button>
+        <button class="ag-cell ag-t2" data-name="Hozier">Hozier</button>
+        <button class="ag-cell ag-t2" data-name="Ryan Adams">Ryan Adams</button>
+        <button class="ag-cell ag-t2" data-name="St. Vincent">St. Vincent</button>
+        <button class="ag-cell ag-t2" data-name="Sufjan Stevens">Sufjan Stevens</button>
+        <button class="ag-cell ag-t2" data-name="Jack Ü">Jack Ü</button>
+        <button class="ag-cell ag-t2" data-name="M83">M83</button>
+        <button class="ag-cell ag-t2" data-name="Ice Cube">Ice Cube</button>
+        <button class="ag-cell ag-t2" data-name="Zedd">Zedd</button>
+        <button class="ag-cell ag-t2" data-name="A$AP Rocky">A$AP Rocky</button>
+        <button class="ag-cell ag-t2" data-name="Halsey">Halsey</button>
+        <button class="ag-cell ag-t2" data-name="Sia">Sia</button>
+        <button class="ag-cell ag-t2" data-name="Major Lazer">Major Lazer</button>
+        <button class="ag-cell ag-t2" data-name="Flume">Flume</button>
+        <button class="ag-cell ag-t2" data-name="Beach House">Beach House</button>
+        <button class="ag-cell ag-t2" data-name="The 1975">The 1975</button>
+        <button class="ag-cell ag-t2" data-name="the xx">the xx</button>
+        <button class="ag-cell ag-t2" data-name="Father John Misty">Father John Misty</button>
+        <button class="ag-cell ag-t2" data-name="Empire of the Sun">Empire of the Sun</button>
+        <button class="ag-cell ag-t2" data-name="Dillon Francis">Dillon Francis</button>
+        <button class="ag-cell ag-t2" data-name="Future">Future</button>
+        <button class="ag-cell ag-t2" data-name="DJ Snake">DJ Snake</button>
+        <button class="ag-cell ag-t2" data-name="Martin Garrix">Martin Garrix</button>
+        <button class="ag-cell ag-t2" data-name="ScHoolboy Q">ScHoolboy Q</button>
+        <button class="ag-cell ag-t2" data-name="Gucci Mane">Gucci Mane</button>
+        <button class="ag-cell ag-t2" data-name="Porter Robinson &amp; Madeon">Porter Robinson &amp; Madeon</button>
+        <button class="ag-cell ag-t2" data-name="Future Islands">Future Islands</button>
+        <button class="ag-cell ag-t2" data-name="SZA">SZA</button>
+        <button class="ag-cell ag-t2" data-name="Kygo">Kygo</button>
+        <button class="ag-cell ag-t2" data-name="Jamiroquai">Jamiroquai</button>
+        <button class="ag-cell ag-t2" data-name="the War on Drugs">the War on Drugs</button>
+        <button class="ag-cell ag-t2" data-name="Vince Staples">Vince Staples</button>
+        <button class="ag-cell ag-t2" data-name="HAIM">HAIM</button>
+        <button class="ag-cell ag-t2" data-name="Tyler, the Creator">Tyler, the Creator</button>
+        <button class="ag-cell ag-t2" data-name="David Byrne">David Byrne</button>
+        <button class="ag-cell ag-t2" data-name="Fleet Foxes">Fleet Foxes</button>
+        <button class="ag-cell ag-t2" data-name="ODESZA">ODESZA</button>
+        <button class="ag-cell ag-t2" data-name="Portugal. the Man">Portugal. the Man</button>
+        <button class="ag-cell ag-t2" data-name="Migos">Migos</button>
+        <button class="ag-cell ag-t2" data-name="A Perfect Circle">A Perfect Circle</button>
+        <button class="ag-cell ag-t2" data-name="Cardi B">Cardi B</button>
+        <button class="ag-cell ag-t2" data-name="Miguel">Miguel</button>
+        <button class="ag-cell ag-t2" data-name="Janelle Monáe">Janelle Monáe</button>
+        <button class="ag-cell ag-t2" data-name="Diplo">Diplo</button>
+        <button class="ag-cell ag-t2" data-name="RÜFÜS DU SOL">RÜFÜS DU SOL</button>
+        <button class="ag-cell ag-t2" data-name="Solange">Solange</button>
+        <button class="ag-cell ag-t2" data-name="Kid Cudi">Kid Cudi</button>
+        <button class="ag-cell ag-t2" data-name="J Balvin">J Balvin</button>
+        <button class="ag-cell ag-t2" data-name="Khalid">Khalid</button>
+        <button class="ag-cell ag-t2" data-name="Gesaffelstein">Gesaffelstein</button>
+        <button class="ag-cell ag-t2" data-name="CHVRCHES">CHVRCHES</button>
+        <button class="ag-cell ag-t2" data-name="Lil Baby">Lil Baby</button>
+        <button class="ag-cell ag-t2" data-name="Daniel Caesar">Daniel Caesar</button>
+        <button class="ag-cell ag-t2" data-name="Phoebe Bridgers">Phoebe Bridgers</button>
+        <button class="ag-cell ag-t2" data-name="Big Sean">Big Sean</button>
+        <button class="ag-cell ag-t2" data-name="Louis the Child">Louis the Child</button>
+        <button class="ag-cell ag-t2" data-name="Megan Thee Stallion">Megan Thee Stallion</button>
+        <button class="ag-cell ag-t2" data-name="21 Savage">21 Savage</button>
+        <button class="ag-cell ag-t2" data-name="Danny Elfman">Danny Elfman</button>
+        <button class="ag-cell ag-t2" data-name="Stromae">Stromae</button>
+        <button class="ag-cell ag-t2" data-name="Joji">Joji</button>
+        <button class="ag-cell ag-t2" data-name="Jamie xx">Jamie xx</button>
+        <button class="ag-cell ag-t2" data-name="Run the Jewels">Run the Jewels</button>
+        <button class="ag-cell ag-t2" data-name="Karol G">Karol G</button>
+        <button class="ag-cell ag-t2" data-name="Maggie Rogers">Maggie Rogers</button>
+        <button class="ag-cell ag-t2" data-name="Burna Boy">Burna Boy</button>
+        <button class="ag-cell ag-t2" data-name="Kaytranada">Kaytranada</button>
+        <button class="ag-cell ag-t2" data-name="Becky G">Becky G</button>
+        <button class="ag-cell ag-t2" data-name="Metro Boomin">Metro Boomin</button>
+        <button class="ag-cell ag-t2" data-name="ROSALÍA">ROSALÍA</button>
+        <button class="ag-cell ag-t2" data-name="Eric Prydz">Eric Prydz</button>
+        <button class="ag-cell ag-t2" data-name="boygenius">boygenius</button>
+        <button class="ag-cell ag-t2" data-name="Charli XCX">Charli XCX</button>
+        <button class="ag-cell ag-t2" data-name="Labrinth">Labrinth</button>
+        <button class="ag-cell ag-t2" data-name="Kali Uchis">Kali Uchis</button>
+        <button class="ag-cell ag-t2" data-name="Porter Robinson">Porter Robinson</button>
+        <button class="ag-cell ag-t2" data-name="Fisher + Chris Lake">Fisher + Chris Lake</button>
+        <button class="ag-cell ag-t2" data-name="Peso Pluma">Peso Pluma</button>
+        <button class="ag-cell ag-t2" data-name="Lil Uzi Vert">Lil Uzi Vert</button>
+        <button class="ag-cell ag-t2" data-name="Bizarrap">Bizarrap</button>
+        <button class="ag-cell ag-t2" data-name="Deftones">Deftones</button>
+        <button class="ag-cell ag-t2" data-name="ATEEZ">ATEEZ</button>
+        <button class="ag-cell ag-t2" data-name="Peggy Gou">Peggy Gou</button>
+        <button class="ag-cell ag-t2" data-name="Ice Spice">Ice Spice</button>
+        <button class="ag-cell ag-t2" data-name="Sublime">Sublime</button>
+        <button class="ag-cell ag-t2" data-name="Jungle">Jungle</button>
+        <button class="ag-cell ag-t2" data-name="Dom Dolla">Dom Dolla</button>
+        <button class="ag-cell ag-t2" data-name="Bleachers">Bleachers</button>
+        <button class="ag-cell ag-t2" data-name="Jhené Aiko">Jhené Aiko</button>
+        <button class="ag-cell ag-t2" data-name="Khruangbin">Khruangbin</button>
+        <button class="ag-cell ag-t2" data-name="Carin León">Carin León</button>
+        <button class="ag-cell ag-t2" data-name="John Summit">John Summit</button>
+        <button class="ag-cell ag-t2" data-name="Lil Yachty">Lil Yachty</button>
+        <button class="ag-cell ag-t2" data-name="Missy Elliott">Missy Elliott</button>
+        <button class="ag-cell ag-t2" data-name="The Marías">The Marías</button>
+        <button class="ag-cell ag-t2" data-name="LISA">LISA</button>
+        <button class="ag-cell ag-t2" data-name="The Prodigy">The Prodigy</button>
+        <button class="ag-cell ag-t2" data-name="FKA twigs">FKA twigs</button>
+        <button class="ag-cell ag-t2" data-name="Mustard">Mustard</button>
+        <button class="ag-cell ag-t2" data-name="The Misfits">The Misfits</button>
+        <button class="ag-cell ag-t2" data-name="Keinemusik">Keinemusik</button>
+        <button class="ag-cell ag-t2" data-name="Above &amp; Beyond">Above &amp; Beyond</button>
+        <button class="ag-cell ag-t2" data-name="Ivan Cornejo">Ivan Cornejo</button>
+        <button class="ag-cell ag-t2" data-name="Clairo">Clairo</button>
+        <button class="ag-cell ag-t2" data-name="ENHYPEN">ENHYPEN</button>
+        <button class="ag-cell ag-t2" data-name="Junior H">Junior H</button>
+        <button class="ag-cell ag-t2" data-name="JENNIE">JENNIE</button>
+        <button class="ag-cell ag-t2" data-name="beabadoobee">beabadoobee</button>
+        <button class="ag-cell ag-t2" data-name="Polo &amp; Pan">Polo &amp; Pan</button>
+
+        <button class="ag-cell ag-t3" data-name="Perry Farrell">Perry Farrell</button>
+        <button class="ag-cell ag-t3" data-name="Cornelius">Cornelius</button>
+        <button class="ag-cell ag-t3" data-name="Bis">Bis</button>
+        <button class="ag-cell ag-t3" data-name="Breakbeat Era">Breakbeat Era</button>
+        <button class="ag-cell ag-t3" data-name="Roni Size">Roni Size</button>
+        <button class="ag-cell ag-t3" data-name="Plastikman">Plastikman</button>
+        <button class="ag-cell ag-t3" data-name="Richie Hawtin">Richie Hawtin</button>
+        <button class="ag-cell ag-t3" data-name="Juan Atkins">Juan Atkins</button>
+        <button class="ag-cell ag-t3" data-name="Kevin Saunderson">Kevin Saunderson</button>
+        <button class="ag-cell ag-t3" data-name="Derrick May">Derrick May</button>
+        <button class="ag-cell ag-t3" data-name="Spiritualized">Spiritualized</button>
+        <button class="ag-cell ag-t3" data-name="Medeski Martin &amp; Wood">Medeski Martin &amp; Wood</button>
+        <button class="ag-cell ag-t3" data-name="Super Furry Animals">Super Furry Animals</button>
+        <button class="ag-cell ag-t3" data-name="At the Drive-In">At the Drive-In</button>
+        <button class="ag-cell ag-t3" data-name="Amon Tobin">Amon Tobin</button>
+        <button class="ag-cell ag-t3" data-name="Kid Koala">Kid Koala</button>
+        <button class="ag-cell ag-t3" data-name="Ben Harper and the Innocent Criminals">Ben Harper and the Innocent Criminals</button>
+        <button class="ag-cell ag-t3" data-name="Cibo Matto">Cibo Matto</button>
+        <button class="ag-cell ag-t3" data-name="Money Mark">Money Mark</button>
+        <button class="ag-cell ag-t3" data-name="DJ Shadow">DJ Shadow</button>
+        <button class="ag-cell ag-t3" data-name="Gang Starr">Gang Starr</button>
+        <button class="ag-cell ag-t3" data-name="Ozomatli">Ozomatli</button>
+        <button class="ag-cell ag-t3" data-name="Mos Def">Mos Def</button>
+        <button class="ag-cell ag-t3" data-name="Iggy Pop">Iggy Pop</button>
+        <button class="ag-cell ag-t3" data-name="St. Germain">St. Germain</button>
+        <button class="ag-cell ag-t3" data-name="Dandy Warhols">Dandy Warhols</button>
+        <button class="ag-cell ag-t3" data-name="Tricky">Tricky</button>
+        <button class="ag-cell ag-t3" data-name="Squarepusher">Squarepusher</button>
+        <button class="ag-cell ag-t3" data-name="Plaid">Plaid</button>
+        <button class="ag-cell ag-t3" data-name="Groove Armada">Groove Armada</button>
+        <button class="ag-cell ag-t3" data-name="Cake">Cake</button>
+        <button class="ag-cell ag-t3" data-name="Pete Yorn">Pete Yorn</button>
+        <button class="ag-cell ag-t3" data-name="the Beta Band">the Beta Band</button>
+        <button class="ag-cell ag-t3" data-name="Belle &amp; Sebastian">Belle &amp; Sebastian</button>
+        <button class="ag-cell ag-t3" data-name="Wilco">Wilco</button>
+        <button class="ag-cell ag-t3" data-name="Laurent Garnier">Laurent Garnier</button>
+        <button class="ag-cell ag-t3" data-name="the Rapture">the Rapture</button>
+        <button class="ag-cell ag-t3" data-name="Stereolab">Stereolab</button>
+        <button class="ag-cell ag-t3" data-name="the Black Keys">the Black Keys</button>
+        <button class="ag-cell ag-t3" data-name="Basement Jaxx">Basement Jaxx</button>
+        <button class="ag-cell ag-t3" data-name="Paul Van Dyk">Paul Van Dyk</button>
+        <button class="ag-cell ag-t3" data-name="Atmosphere">Atmosphere</button>
+        <button class="ag-cell ag-t3" data-name="BRMC">BRMC</button>
+        <button class="ag-cell ag-t3" data-name="Le Tigre">Le Tigre</button>
+        <button class="ag-cell ag-t3" data-name="the Crystal Method">the Crystal Method</button>
+        <button class="ag-cell ag-t3" data-name="Keane">Keane</button>
+        <button class="ag-cell ag-t3" data-name="Snow Patrol">Snow Patrol</button>
+        <button class="ag-cell ag-t3" data-name="Black Star">Black Star</button>
+        <button class="ag-cell ag-t3" data-name="The Faint">The Faint</button>
+        <button class="ag-cell ag-t3" data-name="Rilo Kiley">Rilo Kiley</button>
+        <button class="ag-cell ag-t3" data-name="Café Tacuba">Café Tacuba</button>
+        <button class="ag-cell ag-t3" data-name="Bloc Party">Bloc Party</button>
+        <button class="ag-cell ag-t3" data-name="Damian Marley">Damian Marley</button>
+        <button class="ag-cell ag-t3" data-name="Common">Common</button>
+        <button class="ag-cell ag-t3" data-name="Carl Cox">Carl Cox</button>
+        <button class="ag-cell ag-t3" data-name="TV On The Radio">TV On The Radio</button>
+        <button class="ag-cell ag-t3" data-name="Scissor Sisters">Scissor Sisters</button>
+        <button class="ag-cell ag-t3" data-name="Matisyahu">Matisyahu</button>
+        <button class="ag-cell ag-t3" data-name="Sleater-Kinney">Sleater-Kinney</button>
+        <button class="ag-cell ag-t3" data-name="Mogwai">Mogwai</button>
+        <button class="ag-cell ag-t3" data-name="Coheed and Cambria">Coheed and Cambria</button>
+        <button class="ag-cell ag-t3" data-name="The Breeders">The Breeders</button>
+        <button class="ag-cell ag-t3" data-name="Love and Rockets">Love and Rockets</button>
+        <button class="ag-cell ag-t3" data-name="Tegan and Sara">Tegan and Sara</button>
+        <button class="ag-cell ag-t3" data-name="Goldfrapp">Goldfrapp</button>
+        <button class="ag-cell ag-t3" data-name="Gogol Bordello">Gogol Bordello</button>
+        <button class="ag-cell ag-t3" data-name="Flogging Molly">Flogging Molly</button>
+        <button class="ag-cell ag-t3" data-name="MGMT">MGMT</button>
+        <button class="ag-cell ag-t3" data-name="Jarvis Cocker">Jarvis Cocker</button>
+        <button class="ag-cell ag-t3" data-name="Sonic Youth">Sonic Youth</button>
+        <button class="ag-cell ag-t3" data-name="Faithless">Faithless</button>
+        <button class="ag-cell ag-t3" data-name="Peeping Tom">Peeping Tom</button>
+        <button class="ag-cell ag-t3" data-name="the Good, the Bad and the Queen">the Good, the Bad and the Queen</button>
+        <button class="ag-cell ag-t3" data-name="Travis">Travis</button>
+        <button class="ag-cell ag-t3" data-name="Willie Nelson">Willie Nelson</button>
+        <button class="ag-cell ag-t3" data-name="Crowded House">Crowded House</button>
+        <button class="ag-cell ag-t3" data-name="Kaiser Chiefs">Kaiser Chiefs</button>
+        <button class="ag-cell ag-t3" data-name="Damian Rice">Damian Rice</button>
+        <button class="ag-cell ag-t3" data-name="Leonard Cohen">Leonard Cohen</button>
+        <button class="ag-cell ag-t3" data-name="Conor Oberst">Conor Oberst</button>
+        <button class="ag-cell ag-t3" data-name="Beirut">Beirut</button>
+        <button class="ag-cell ag-t3" data-name="Girl Talk">Girl Talk</button>
+        <button class="ag-cell ag-t3" data-name="TV on the Radio">TV on the Radio</button>
+        <button class="ag-cell ag-t3" data-name="Band of Horses">Band of Horses</button>
+        <button class="ag-cell ag-t3" data-name="Throbbing Gristle">Throbbing Gristle</button>
+        <button class="ag-cell ag-t3" data-name="Lupe Fiasco">Lupe Fiasco</button>
+        <button class="ag-cell ag-t3" data-name="Paul Weller">Paul Weller</button>
+        <button class="ag-cell ag-t3" data-name="deadmau5">deadmau5</button>
+        <button class="ag-cell ag-t3" data-name="Public Image Limited">Public Image Limited</button>
+        <button class="ag-cell ag-t3" data-name="the Specials">the Specials</button>
+        <button class="ag-cell ag-t3" data-name="the Dead Weather">the Dead Weather</button>
+        <button class="ag-cell ag-t3" data-name="Devo">Devo</button>
+        <button class="ag-cell ag-t3" data-name="Orbital">Orbital</button>
+        <button class="ag-cell ag-t3" data-name="Spoon">Spoon</button>
+        <button class="ag-cell ag-t3" data-name="Sly Stone">Sly Stone</button>
+        <button class="ag-cell ag-t3" data-name="De La Soul">De La Soul</button>
+        <button class="ag-cell ag-t3" data-name="Infected Mushroom">Infected Mushroom</button>
+        <button class="ag-cell ag-t3" data-name="Caifanes">Caifanes</button>
+        <button class="ag-cell ag-t3" data-name="Ms. Lauryn Hill">Ms. Lauryn Hill</button>
+        <button class="ag-cell ag-t3" data-name="Erykah Badu">Erykah Badu</button>
+        <button class="ag-cell ag-t3" data-name="Ratatat">Ratatat</button>
+        <button class="ag-cell ag-t3" data-name="Wiz Khalifa">Wiz Khalifa</button>
+        <button class="ag-cell ag-t3" data-name="Jimmy Eat World">Jimmy Eat World</button>
+        <button class="ag-cell ag-t3" data-name="Pulp">Pulp</button>
+        <button class="ag-cell ag-t3" data-name="Refused">Refused</button>
+        <button class="ag-cell ag-t3" data-name="Mazzy Star">Mazzy Star</button>
+        <button class="ag-cell ag-t3" data-name="Explosions in the Sky">Explosions in the Sky</button>
+        <button class="ag-cell ag-t3" data-name="Jeff Mangum">Jeff Mangum</button>
+        <button class="ag-cell ag-t3" data-name="Feist">Feist</button>
+        <button class="ag-cell ag-t3" data-name="Godspeed You! Black Emperor">Godspeed You! Black Emperor</button>
+        <button class="ag-cell ag-t3" data-name="The Hives">The Hives</button>
+        <button class="ag-cell ag-t3" data-name="Bassnectar">Bassnectar</button>
+        <button class="ag-cell ag-t3" data-name="Passion Pit">Passion Pit</button>
+        <button class="ag-cell ag-t3" data-name="Knife Party">Knife Party</button>
+        <button class="ag-cell ag-t3" data-name="Benny Benassi">Benny Benassi</button>
+        <button class="ag-cell ag-t3" data-name="Two Door Cinema Club">Two Door Cinema Club</button>
+        <button class="ag-cell ag-t3" data-name="Pretty Lights">Pretty Lights</button>
+        <button class="ag-cell ag-t3" data-name="The Lumineers">The Lumineers</button>
+        <button class="ag-cell ag-t3" data-name="Afghan Whigs">Afghan Whigs</button>
+        <button class="ag-cell ag-t3" data-name="the Cult">the Cult</button>
+        <button class="ag-cell ag-t3" data-name="Bastille">Bastille</button>
+        <button class="ag-cell ag-t3" data-name="Pet Shop Boys">Pet Shop Boys</button>
+        <button class="ag-cell ag-t3" data-name="Nas">Nas</button>
+        <button class="ag-cell ag-t3" data-name="Chance the Rapper">Chance the Rapper</button>
+        <button class="ag-cell ag-t3" data-name="Krewella">Krewella</button>
+        <button class="ag-cell ag-t3" data-name="Azealia Banks">Azealia Banks</button>
+        <button class="ag-cell ag-t3" data-name="Flying Lotus">Flying Lotus</button>
+        <button class="ag-cell ag-t3" data-name="Lykke Li">Lykke Li</button>
+        <button class="ag-cell ag-t3" data-name="Caribou">Caribou</button>
+        <button class="ag-cell ag-t3" data-name="Tyler the Creator">Tyler the Creator</button>
+        <button class="ag-cell ag-t3" data-name="The War on Drugs">The War on Drugs</button>
+        <button class="ag-cell ag-t3" data-name="Marina and the Diamonds">Marina and the Diamonds</button>
+        <button class="ag-cell ag-t3" data-name="Brand New">Brand New</button>
+        <button class="ag-cell ag-t3" data-name="Madeon">Madeon</button>
+        <button class="ag-cell ag-t3" data-name="Odesza">Odesza</button>
+        <button class="ag-cell ag-t3" data-name="the Kills">the Kills</button>
+        <button class="ag-cell ag-t3" data-name="Foals">Foals</button>
+        <button class="ag-cell ag-t3" data-name="Of Monsters and Men">Of Monsters and Men</button>
+        <button class="ag-cell ag-t3" data-name="G-Eazy">G-Eazy</button>
+        <button class="ag-cell ag-t3" data-name="Rae Sremmurd">Rae Sremmurd</button>
+        <button class="ag-cell ag-t3" data-name="James Bay">James Bay</button>
+        <button class="ag-cell ag-t3" data-name="Grimes">Grimes</button>
+        <button class="ag-cell ag-t3" data-name="Courtney Barnett">Courtney Barnett</button>
+        <button class="ag-cell ag-t3" data-name="Rancid">Rancid</button>
+        <button class="ag-cell ag-t3" data-name="Death Grips">Death Grips</button>
+        <button class="ag-cell ag-t3" data-name="The Chainsmokers">The Chainsmokers</button>
+        <button class="ag-cell ag-t3" data-name="Mac Miller">Mac Miller</button>
+        <button class="ag-cell ag-t3" data-name="Glass Animals">Glass Animals</button>
+        <button class="ag-cell ag-t3" data-name="Phantogram">Phantogram</button>
+        <button class="ag-cell ag-t3" data-name="Mac DeMarco">Mac DeMarco</button>
+        <button class="ag-cell ag-t3" data-name="Little Dragon">Little Dragon</button>
+        <button class="ag-cell ag-t3" data-name="BANKS">BANKS</button>
+        <button class="ag-cell ag-t3" data-name="Nicolas Jaar">Nicolas Jaar</button>
+        <button class="ag-cell ag-t3" data-name="Tycho">Tycho</button>
+        <button class="ag-cell ag-t3" data-name="Röyksopp">Röyksopp</button>
+        <button class="ag-cell ag-t3" data-name="Moderat">Moderat</button>
+        <button class="ag-cell ag-t3" data-name="Hans Zimmer">Hans Zimmer</button>
+        <button class="ag-cell ag-t3" data-name="DJ Khaled">DJ Khaled</button>
+        <button class="ag-cell ag-t3" data-name="Marshmello">Marshmello</button>
+        <button class="ag-cell ag-t3" data-name="Galantis">Galantis</button>
+        <button class="ag-cell ag-t3" data-name="Kehlani">Kehlani</button>
+        <button class="ag-cell ag-t3" data-name="Soulwax">Soulwax</button>
+        <button class="ag-cell ag-t3" data-name="Jean-Michel Jarre">Jean-Michel Jarre</button>
+        <button class="ag-cell ag-t3" data-name="Deorro">Deorro</button>
+        <button class="ag-cell ag-t3" data-name="Nile Rodgers &amp; CHIC">Nile Rodgers &amp; CHIC</button>
+        <button class="ag-cell ag-t3" data-name="BØRNS">BØRNS</button>
+        <button class="ag-cell ag-t3" data-name="Angel Olsen">Angel Olsen</button>
+        <button class="ag-cell ag-t3" data-name="King Krule">King Krule</button>
+        <button class="ag-cell ag-t3" data-name="Illenium">Illenium</button>
+        <button class="ag-cell ag-t3" data-name="Kamasi Washington">Kamasi Washington</button>
+        <button class="ag-cell ag-t3" data-name="French Montana">French Montana</button>
+        <button class="ag-cell ag-t3" data-name="6LACK">6LACK</button>
+        <button class="ag-cell ag-t3" data-name="Vance Joy">Vance Joy</button>
+        <button class="ag-cell ag-t3" data-name="Anderson .Paak">Anderson .Paak</button>
+        <button class="ag-cell ag-t3" data-name="Kacey Musgraves">Kacey Musgraves</button>
+        <button class="ag-cell ag-t3" data-name="Juice WRLD">Juice WRLD</button>
+        <button class="ag-cell ag-t3" data-name="Ella Mai">Ella Mai</button>
+        <button class="ag-cell ag-t3" data-name="FISHER">FISHER</button>
+        <button class="ag-cell ag-t3" data-name="Four Tet">Four Tet</button>
+        <button class="ag-cell ag-t3" data-name="Christine and the Queens">Christine and the Queens</button>
+        <button class="ag-cell ag-t3" data-name="Bazzi">Bazzi</button>
+        <button class="ag-cell ag-t3" data-name="Cirez D">Cirez D</button>
+        <button class="ag-cell ag-t3" data-name="Playboi Carti">Playboi Carti</button>
+        <button class="ag-cell ag-t3" data-name="H.E.R.">H.E.R.</button>
+        <button class="ag-cell ag-t3" data-name="Blood Orange">Blood Orange</button>
+        <button class="ag-cell ag-t3" data-name="Pusha T">Pusha T</button>
+        <button class="ag-cell ag-t3" data-name="King Gizzard &amp; the Lizard Wizard">King Gizzard &amp; the Lizard Wizard</button>
+        <button class="ag-cell ag-t3" data-name="Snoh Aalegra">Snoh Aalegra</button>
+        <button class="ag-cell ag-t3" data-name="City Girls">City Girls</button>
+        <button class="ag-cell ag-t3" data-name="BROCKHAMPTON">BROCKHAMPTON</button>
+        <button class="ag-cell ag-t3" data-name="Rich Brian">Rich Brian</button>
+        <button class="ag-cell ag-t3" data-name="girl in red">girl in red</button>
+        <button class="ag-cell ag-t3" data-name="Cuco">Cuco</button>
+        <button class="ag-cell ag-t3" data-name="Conan Gray">Conan Gray</button>
+        <button class="ag-cell ag-t3" data-name="Ari Lennox">Ari Lennox</button>
+        <button class="ag-cell ag-t3" data-name="Banda MS">Banda MS</button>
+        <button class="ag-cell ag-t3" data-name="FKJ">FKJ</button>
+        <button class="ag-cell ag-t3" data-name="Wet Leg">Wet Leg</button>
+        <button class="ag-cell ag-t3" data-name="SG Lewis">SG Lewis</button>
+        <button class="ag-cell ag-t3" data-name="Yves Tumor">Yves Tumor</button>
+        <button class="ag-cell ag-t3" data-name="Diljit Dosanjh">Diljit Dosanjh</button>
+        <button class="ag-cell ag-t3" data-name="SOFi TUKKER">SOFi TUKKER</button>
+        <button class="ag-cell ag-t3" data-name="Remi Wolf">Remi Wolf</button>
+        <button class="ag-cell ag-t3" data-name="Yung Lean">Yung Lean</button>
+        <button class="ag-cell ag-t3" data-name="Jackson Wang">Jackson Wang</button>
+        <button class="ag-cell ag-t3" data-name="Latto">Latto</button>
+        <button class="ag-cell ag-t3" data-name="the Blaze">the Blaze</button>
+        <button class="ag-cell ag-t3" data-name="WILLOW">WILLOW</button>
+        <button class="ag-cell ag-t3" data-name="GloRilla">GloRilla</button>
+        <button class="ag-cell ag-t3" data-name="Boris Brejcha">Boris Brejcha</button>
+        <button class="ag-cell ag-t3" data-name="Sabrina Carpenter">Sabrina Carpenter</button>
+        <button class="ag-cell ag-t3" data-name="Anti Up">Anti Up</button>
+        <button class="ag-cell ag-t3" data-name="Steve Angello">Steve Angello</button>
+        <button class="ag-cell ag-t3" data-name="Ken Carson">Ken Carson</button>
+        <button class="ag-cell ag-t3" data-name="Skepta">Skepta</button>
+        <button class="ag-cell ag-t3" data-name="Faye Webster">Faye Webster</button>
+        <button class="ag-cell ag-t3" data-name="Charlotte de Witte">Charlotte de Witte</button>
+        <button class="ag-cell ag-t3" data-name="ISOKnock">ISOKnock</button>
+        <button class="ag-cell ag-t3" data-name="Santa Fe Klan">Santa Fe Klan</button>
+        <button class="ag-cell ag-t3" data-name="Blxst">Blxst</button>
+        <button class="ag-cell ag-t3" data-name="Purple Disco Machine">Purple Disco Machine</button>
+        <button class="ag-cell ag-t3" data-name="Anyma">Anyma</button>
+        <button class="ag-cell ag-t3" data-name="LUDMILLA">LUDMILLA</button>
+        <button class="ag-cell ag-t3" data-name="Yeat">Yeat</button>
+        <button class="ag-cell ag-t3" data-name="MARINA">MARINA</button>
+        <button class="ag-cell ag-t3" data-name="Djo">Djo</button>
+        <button class="ag-cell ag-t3" data-name="Tyla">Tyla</button>
+        <button class="ag-cell ag-t3" data-name="Shoreline Mafia">Shoreline Mafia</button>
+        <button class="ag-cell ag-t3" data-name="T-Pain">T-Pain</button>
+        <button class="ag-cell ag-t3" data-name="Sam Fender">Sam Fender</button>
+        <button class="ag-cell ag-t3" data-name="Japanese Breakfast">Japanese Breakfast</button>
+        <button class="ag-cell ag-t3" data-name="Beth Gibbons">Beth Gibbons</button>
+        <button class="ag-cell ag-t3" data-name="Keshi">Keshi</button>
+        <button class="ag-cell ag-t3" data-name="Chase &amp; Status">Chase &amp; Status</button>
+        <button class="ag-cell ag-t3" data-name="Still Woozy">Still Woozy</button>
+        <button class="ag-cell ag-t3" data-name="Jessie Murph">Jessie Murph</button>
+
+        <button class="ag-cell ag-t4" data-name="IQU">IQU</button>
+        <button class="ag-cell ag-t4" data-name="Los Amigos Invisibles">Los Amigos Invisibles</button>
+        <button class="ag-cell ag-t4" data-name="The Bicycle Thief">The Bicycle Thief</button>
+        <button class="ag-cell ag-t4" data-name="Mr. Scruff">Mr. Scruff</button>
+        <button class="ag-cell ag-t4" data-name="Nightmares on Wax">Nightmares on Wax</button>
+        <button class="ag-cell ag-t4" data-name="DJ Food">DJ Food</button>
+        <button class="ag-cell ag-t4" data-name="µ-Ziq">µ-Ziq</button>
+        <button class="ag-cell ag-t4" data-name="Tomas">Tomas</button>
+        <button class="ag-cell ag-t4" data-name="DJ Rap">DJ Rap</button>
+        <button class="ag-cell ag-t4" data-name="The Wiseguys">The Wiseguys</button>
+        <button class="ag-cell ag-t4" data-name="Bassbin Twins">Bassbin Twins</button>
+        <button class="ag-cell ag-t4" data-name="Sandra Collins">Sandra Collins</button>
+        <button class="ag-cell ag-t4" data-name="Christopher Lawrence">Christopher Lawrence</button>
+        <button class="ag-cell ag-t4" data-name="Simply Jeff">Simply Jeff</button>
+        <button class="ag-cell ag-t4" data-name="Lamb">Lamb</button>
+        <button class="ag-cell ag-t4" data-name="Esthero">Esthero</button>
+        <button class="ag-cell ag-t4" data-name="Fantastic Plastic Machine">Fantastic Plastic Machine</button>
+        <button class="ag-cell ag-t4" data-name="BT">BT</button>
+        <button class="ag-cell ag-t4" data-name="Banco de Gaia">Banco de Gaia</button>
+        <button class="ag-cell ag-t4" data-name="Carl Craig Innerzone Orchestra">Carl Craig Innerzone Orchestra</button>
+        <button class="ag-cell ag-t4" data-name="Spearhead">Spearhead</button>
+        <button class="ag-cell ag-t4" data-name="Gil Scott Heron">Gil Scott Heron</button>
+        <button class="ag-cell ag-t4" data-name="Kruder &amp; Dorfmeister">Kruder &amp; Dorfmeister</button>
+        <button class="ag-cell ag-t4" data-name="Photek">Photek</button>
+        <button class="ag-cell ag-t4" data-name="Doc Martin">Doc Martin</button>
+        <button class="ag-cell ag-t4" data-name="Ian Pooley">Ian Pooley</button>
+        <button class="ag-cell ag-t4" data-name="Adam Freeland">Adam Freeland</button>
+        <button class="ag-cell ag-t4" data-name="Souls of Mischief">Souls of Mischief</button>
+        <button class="ag-cell ag-t4" data-name="Raymond Roker">Raymond Roker</button>
+        <button class="ag-cell ag-t4" data-name="Nikka Costa">Nikka Costa</button>
+        <button class="ag-cell ag-t4" data-name="Detroit Grand Pu Bahs">Detroit Grand Pu Bahs</button>
+        <button class="ag-cell ag-t4" data-name="KRS-One">KRS-One</button>
+        <button class="ag-cell ag-t4" data-name="Cornershop">Cornershop</button>
+        <button class="ag-cell ag-t4" data-name="Folk Implosion">Folk Implosion</button>
+        <button class="ag-cell ag-t4" data-name="Z-Trip">Z-Trip</button>
+        <button class="ag-cell ag-t4" data-name="Dan the Automator">Dan the Automator</button>
+        <button class="ag-cell ag-t4" data-name="Pharcyde">Pharcyde</button>
+        <button class="ag-cell ag-t4" data-name="Citizen Cope">Citizen Cope</button>
+        <button class="ag-cell ag-t4" data-name="Pete Tong">Pete Tong</button>
+        <button class="ag-cell ag-t4" data-name="Cut Chemist">Cut Chemist</button>
+        <button class="ag-cell ag-t4" data-name="Mixmaster Mike">Mixmaster Mike</button>
+        <button class="ag-cell ag-t4" data-name="Blonde Redhead">Blonde Redhead</button>
+        <button class="ag-cell ag-t4" data-name="The Mars Volta">The Mars Volta</button>
+        <button class="ag-cell ag-t4" data-name="Zero 7">Zero 7</button>
+        <button class="ag-cell ag-t4" data-name="And You Will Know Us By The Trail of Dead">And You Will Know Us By The Trail of Dead</button>
+        <button class="ag-cell ag-t4" data-name="Kinky">Kinky</button>
+        <button class="ag-cell ag-t4" data-name="the Evens">the Evens</button>
+        <button class="ag-cell ag-t4" data-name="Danny Howells">Danny Howells</button>
+        <button class="ag-cell ag-t4" data-name="Moving Units">Moving Units</button>
+        <button class="ag-cell ag-t4" data-name="Dizzee Rascal">Dizzee Rascal</button>
+        <button class="ag-cell ag-t4" data-name="Ferry Corsten">Ferry Corsten</button>
+        <button class="ag-cell ag-t4" data-name="Ash">Ash</button>
+        <button class="ag-cell ag-t4" data-name="2many Dj's">2many Dj's</button>
+        <button class="ag-cell ag-t4" data-name="Broken Social Scene">Broken Social Scene</button>
+        <button class="ag-cell ag-t4" data-name="Danger Mouse">Danger Mouse</button>
+        <button class="ag-cell ag-t4" data-name="Prefuse 73">Prefuse 73</button>
+        <button class="ag-cell ag-t4" data-name="Jamie Cullum">Jamie Cullum</button>
+        <button class="ag-cell ag-t4" data-name="MF Doom">MF Doom</button>
+        <button class="ag-cell ag-t4" data-name="Tiga">Tiga</button>
+        <button class="ag-cell ag-t4" data-name="Armin Van Buuren">Armin Van Buuren</button>
+        <button class="ag-cell ag-t4" data-name="DJ Krush">DJ Krush</button>
+        <button class="ag-cell ag-t4" data-name="Miss Kittin">Miss Kittin</button>
+        <button class="ag-cell ag-t4" data-name="Kasabian">Kasabian</button>
+        <button class="ag-cell ag-t4" data-name="Cat Power">Cat Power</button>
+        <button class="ag-cell ag-t4" data-name="Devendra Banhart">Devendra Banhart</button>
+        <button class="ag-cell ag-t4" data-name="James Blunt">James Blunt</button>
+        <button class="ag-cell ag-t4" data-name="Wolf Parade">Wolf Parade</button>
+        <button class="ag-cell ag-t4" data-name="Gnarls Barkley">Gnarls Barkley</button>
+        <button class="ag-cell ag-t4" data-name="Metric">Metric</button>
+        <button class="ag-cell ag-t4" data-name="Editors">Editors</button>
+        <button class="ag-cell ag-t4" data-name="Be Your Own Pet">Be Your Own Pet</button>
+        <button class="ag-cell ag-t4" data-name="OneRepublic">OneRepublic</button>
+        <button class="ag-cell ag-t4" data-name="Serj Tankian">Serj Tankian</button>
+        <button class="ag-cell ag-t4" data-name="Dwight Yoakam">Dwight Yoakam</button>
+        <button class="ag-cell ag-t4" data-name="Mark Ronson">Mark Ronson</button>
+        <button class="ag-cell ag-t4" data-name="Battles">Battles</button>
+        <button class="ag-cell ag-t4" data-name="Aesop Rock">Aesop Rock</button>
+        <button class="ag-cell ag-t4" data-name="Spank Rock">Spank Rock</button>
+        <button class="ag-cell ag-t4" data-name="Boys Noize">Boys Noize</button>
+        <button class="ag-cell ag-t4" data-name="Black Mountain">Black Mountain</button>
+        <button class="ag-cell ag-t4" data-name="Santogold">Santogold</button>
+        <button class="ag-cell ag-t4" data-name="Kid Sister">Kid Sister</button>
+        <button class="ag-cell ag-t4" data-name="Brazilian Girls">Brazilian Girls</button>
+        <button class="ag-cell ag-t4" data-name="Peaches">Peaches</button>
+        <button class="ag-cell ag-t4" data-name="Tokyo Police Club">Tokyo Police Club</button>
+        <button class="ag-cell ag-t4" data-name="Of Montreal">Of Montreal</button>
+        <button class="ag-cell ag-t4" data-name="Circa Survive">Circa Survive</button>
+        <button class="ag-cell ag-t4" data-name="Silversun Pickups">Silversun Pickups</button>
+        <button class="ag-cell ag-t4" data-name="Amy Winehouse">Amy Winehouse</button>
+        <button class="ag-cell ag-t4" data-name="MSTRKRFT">MSTRKRFT</button>
+        <button class="ag-cell ag-t4" data-name="Ghostface Killah">Ghostface Killah</button>
+        <button class="ag-cell ag-t4" data-name="Fountains of Wayne">Fountains of Wayne</button>
+        <button class="ag-cell ag-t4" data-name="Lily Allen">Lily Allen</button>
+        <button class="ag-cell ag-t4" data-name="Amos Lee">Amos Lee</button>
+        <button class="ag-cell ag-t4" data-name="José González">José González</button>
+        <button class="ag-cell ag-t4" data-name="Mika">Mika</button>
+        <button class="ag-cell ag-t4" data-name="the Avett Bros.">the Avett Bros.</button>
+        <button class="ag-cell ag-t4" data-name="Crystal Castles">Crystal Castles</button>
+        <button class="ag-cell ag-t4" data-name="Airborne Toxic Event">Airborne Toxic Event</button>
+        <button class="ag-cell ag-t4" data-name="Michael Franti &amp; Spearhead">Michael Franti &amp; Spearhead</button>
+        <button class="ag-cell ag-t4" data-name="Mastodon">Mastodon</button>
+        <button class="ag-cell ag-t4" data-name="Busy P">Busy P</button>
+        <button class="ag-cell ag-t4" data-name="Sebastien Tellier">Sebastien Tellier</button>
+        <button class="ag-cell ag-t4" data-name="No Age">No Age</button>
+        <button class="ag-cell ag-t4" data-name="Friendly Fires">Friendly Fires</button>
+        <button class="ag-cell ag-t4" data-name="the Gaslight Anthem">the Gaslight Anthem</button>
+        <button class="ag-cell ag-t4" data-name="Bonobo">Bonobo</button>
+        <button class="ag-cell ag-t4" data-name="Capital Cities">Capital Cities</button>
+        <button class="ag-cell ag-t4" data-name="SOHN">SOHN</button>
+        <button class="ag-cell ag-t4" data-name="Jagwar Ma">Jagwar Ma</button>
+        <button class="ag-cell ag-t4" data-name="BROODS">BROODS</button>
+        <button class="ag-cell ag-t4" data-name="Guided By Voices">Guided By Voices</button>
+        <button class="ag-cell ag-t4" data-name="D.R.A.M.">D.R.A.M.</button>
+        <button class="ag-cell ag-t4" data-name="BICEP">BICEP</button>
+        <button class="ag-cell ag-t4" data-name="the Martinez Brothers">the Martinez Brothers</button>
+        <button class="ag-cell ag-t4" data-name="Oh Wonder">Oh Wonder</button>
+        <button class="ag-cell ag-t4" data-name="Stormzy">Stormzy</button>
+        <button class="ag-cell ag-t4" data-name="Denzel Curry">Denzel Curry</button>
+        <button class="ag-cell ag-t4" data-name="Nora En Pure">Nora En Pure</button>
+        <button class="ag-cell ag-t4" data-name="Tall Juan">Tall Juan</button>
+        <button class="ag-cell ag-t4" data-name="Sasha">Sasha</button>
+        <button class="ag-cell ag-t4" data-name="Magnetic Man">Magnetic Man</button>
+        <button class="ag-cell ag-t4" data-name="Erick Morillo">Erick Morillo</button>
+        <button class="ag-cell ag-t4" data-name="Cut Copy">Cut Copy</button>
+        <button class="ag-cell ag-t4" data-name="Cold War Kids">Cold War Kids</button>
+        <button class="ag-cell ag-t4" data-name="Sleigh Bells">Sleigh Bells</button>
+        <button class="ag-cell ag-t4" data-name="Fedde Le Grand">Fedde Le Grand</button>
+        <button class="ag-cell ag-t4" data-name="Leftfield">Leftfield</button>
+        <button class="ag-cell ag-t4" data-name="Best Coast">Best Coast</button>
+        <button class="ag-cell ag-t4" data-name="Lightning Bolt">Lightning Bolt</button>
+        <button class="ag-cell ag-t4" data-name="Jack's Mannequin">Jack's Mannequin</button>
+        <button class="ag-cell ag-t4" data-name="M. Ward">M. Ward</button>
+        <button class="ag-cell ag-t4" data-name="the Horrors">the Horrors</button>
+        <button class="ag-cell ag-t4" data-name="James">James</button>
+        <button class="ag-cell ag-t4" data-name="Alesso">Alesso</button>
+        <button class="ag-cell ag-t4" data-name="SebastieAn">SebastieAn</button>
+        <button class="ag-cell ag-t4" data-name="Datsik">Datsik</button>
+        <button class="ag-cell ag-t4" data-name="Neon Indian">Neon Indian</button>
+        <button class="ag-cell ag-t4" data-name="WU LYF">WU LYF</button>
+        <button class="ag-cell ag-t4" data-name="Atari Teenage Riot">Atari Teenage Riot</button>
+        <button class="ag-cell ag-t4" data-name="Gary Clark Jr.">Gary Clark Jr.</button>
+        <button class="ag-cell ag-t4" data-name="Nero">Nero</button>
+        <button class="ag-cell ag-t4" data-name="Wild Flag">Wild Flag</button>
+        <button class="ag-cell ag-t4" data-name="Modeselektor">Modeselektor</button>
+        <button class="ag-cell ag-t4" data-name="Dada Life">Dada Life</button>
+        <button class="ag-cell ag-t4" data-name="Santigold">Santigold</button>
+        <button class="ag-cell ag-t4" data-name="Dog Blood">Dog Blood</button>
+        <button class="ag-cell ag-t4" data-name="Japandroids">Japandroids</button>
+        <button class="ag-cell ag-t4" data-name="Divine Fits">Divine Fits</button>
+        <button class="ag-cell ag-t4" data-name="Stars">Stars</button>
+        <button class="ag-cell ag-t4" data-name="Seth Troxler">Seth Troxler</button>
+        <button class="ag-cell ag-t4" data-name="Wolfgang Gartner">Wolfgang Gartner</button>
+        <button class="ag-cell ag-t4" data-name="Nicky Romero">Nicky Romero</button>
+        <button class="ag-cell ag-t4" data-name="Modestep">Modestep</button>
+        <button class="ag-cell ag-t4" data-name="Julio Bashmore">Julio Bashmore</button>
+        <button class="ag-cell ag-t4" data-name="Bingo Players">Bingo Players</button>
+        <button class="ag-cell ag-t4" data-name="Allen Stone">Allen Stone</button>
+        <button class="ag-cell ag-t4" data-name="Robert DeLong">Robert DeLong</button>
+        <button class="ag-cell ag-t4" data-name="White Arrows">White Arrows</button>
+        <button class="ag-cell ag-t4" data-name="Adrian Lux">Adrian Lux</button>
+        <button class="ag-cell ag-t4" data-name="Michael Brun">Michael Brun</button>
+        <button class="ag-cell ag-t4" data-name="Kate Nash">Kate Nash</button>
+        <button class="ag-cell ag-t4" data-name="Hot Since 82">Hot Since 82</button>
+        <button class="ag-cell ag-t4" data-name="GOAT">GOAT</button>
+        <button class="ag-cell ag-t4" data-name="Nina Kraviz">Nina Kraviz</button>
+        <button class="ag-cell ag-t4" data-name="Washed Out">Washed Out</button>
+        <button class="ag-cell ag-t4" data-name="Ty Segall">Ty Segall</button>
+        <button class="ag-cell ag-t4" data-name="DARKSIDE">DARKSIDE</button>
+        <button class="ag-cell ag-t4" data-name="Banks">Banks</button>
+        <button class="ag-cell ag-t4" data-name="Fishbone">Fishbone</button>
+        <button class="ag-cell ag-t4" data-name="AlunaGeorge">AlunaGeorge</button>
+        <button class="ag-cell ag-t4" data-name="Flight Facilities">Flight Facilities</button>
+        <button class="ag-cell ag-t4" data-name="Netsky">Netsky</button>
+        <button class="ag-cell ag-t4" data-name="Frank Turner">Frank Turner</button>
+        <button class="ag-cell ag-t4" data-name="Todd Terje and the Olsens">Todd Terje and the Olsens</button>
+        <button class="ag-cell ag-t4" data-name="George Ezra">George Ezra</button>
+        <button class="ag-cell ag-t4" data-name="Action Bronson">Action Bronson</button>
+        <button class="ag-cell ag-t4" data-name="Sylvan Esso">Sylvan Esso</button>
+        <button class="ag-cell ag-t4" data-name="Jon Hopkins">Jon Hopkins</button>
+        <button class="ag-cell ag-t4" data-name="Oliver Heldens">Oliver Heldens</button>
+        <button class="ag-cell ag-t4" data-name="Clean Bandit">Clean Bandit</button>
+        <button class="ag-cell ag-t4" data-name="Royal Blood">Royal Blood</button>
+        <button class="ag-cell ag-t4" data-name="Alison Wonderland">Alison Wonderland</button>
+        <button class="ag-cell ag-t4" data-name="Loco Dice">Loco Dice</button>
+        <button class="ag-cell ag-t4" data-name="Parquet Courts">Parquet Courts</button>
+        <button class="ag-cell ag-t4" data-name="Gramatik">Gramatik</button>
+        <button class="ag-cell ag-t4" data-name="Lights">Lights</button>
+        <button class="ag-cell ag-t4" data-name="Yellow Claw">Yellow Claw</button>
+        <button class="ag-cell ag-t4" data-name="Ryn Weaver">Ryn Weaver</button>
+        <button class="ag-cell ag-t4" data-name="Radkey">Radkey</button>
+        <button class="ag-cell ag-t4" data-name="Coasts">Coasts</button>
+        <button class="ag-cell ag-t4" data-name="the Last Shadow Puppets">the Last Shadow Puppets</button>
+        <button class="ag-cell ag-t4" data-name="Joey Bada$$">Joey Bada$$</button>
+        <button class="ag-cell ag-t4" data-name="DJ Mustard">DJ Mustard</button>
+        <button class="ag-cell ag-t4" data-name="BADBADNOTGOOD">BADBADNOTGOOD</button>
+        <button class="ag-cell ag-t4" data-name="Moon Taxi">Moon Taxi</button>
+        <button class="ag-cell ag-t4" data-name="Mr. Carmack">Mr. Carmack</button>
+        <button class="ag-cell ag-t4" data-name="SOPHIE">SOPHIE</button>
+        <button class="ag-cell ag-t4" data-name="Alvvays">Alvvays</button>
+        <button class="ag-cell ag-t4" data-name="Baauer">Baauer</button>
+        <button class="ag-cell ag-t4" data-name="KSHMR">KSHMR</button>
+        <button class="ag-cell ag-t4" data-name="John Digweed">John Digweed</button>
+        <button class="ag-cell ag-t4" data-name="Crystal Fighters">Crystal Fighters</button>
+        <button class="ag-cell ag-t4" data-name="Joywave">Joywave</button>
+        <button class="ag-cell ag-t4" data-name="De Lux">De Lux</button>
+        <button class="ag-cell ag-t4" data-name="Girlpool">Girlpool</button>
+        <button class="ag-cell ag-t4" data-name="Local Natives">Local Natives</button>
+        <button class="ag-cell ag-t4" data-name="Majid Jordan">Majid Jordan</button>
+        <button class="ag-cell ag-t4" data-name="DREAMCAR">DREAMCAR</button>
+        <button class="ag-cell ag-t4" data-name="Röisin Murphy">Röisin Murphy</button>
+        <button class="ag-cell ag-t4" data-name="Mura Masa">Mura Masa</button>
+        <button class="ag-cell ag-t4" data-name="Tale of Us">Tale of Us</button>
+        <button class="ag-cell ag-t4" data-name="Toots &amp; the Maytals">Toots &amp; the Maytals</button>
+        <button class="ag-cell ag-t4" data-name="Tove Lo">Tove Lo</button>
+        <button class="ag-cell ag-t4" data-name="Jai Wolf">Jai Wolf</button>
+        <button class="ag-cell ag-t4" data-name="Marcel Dettmann">Marcel Dettmann</button>
+        <button class="ag-cell ag-t4" data-name="SOFI TUKKER">SOFI TUKKER</button>
+        <button class="ag-cell ag-t4" data-name="Whitney">Whitney</button>
+        <button class="ag-cell ag-t4" data-name="Patrick Topping">Patrick Topping</button>
+        <button class="ag-cell ag-t4" data-name="HONNE">HONNE</button>
+        <button class="ag-cell ag-t4" data-name="Maceo Plex">Maceo Plex</button>
+        <button class="ag-cell ag-t4" data-name="Alan Walker">Alan Walker</button>
+        <button class="ag-cell ag-t4" data-name="the Neighbourhood">the Neighbourhood</button>
+        <button class="ag-cell ag-t4" data-name="Kelela">Kelela</button>
+        <button class="ag-cell ag-t4" data-name="REZZ">REZZ</button>
+        <button class="ag-cell ag-t4" data-name="Tash Sultana">Tash Sultana</button>
+        <button class="ag-cell ag-t4" data-name="Marian Hill">Marian Hill</button>
+        <button class="ag-cell ag-t4" data-name="First Aid Kit">First Aid Kit</button>
+        <button class="ag-cell ag-t4" data-name="Snakehips">Snakehips</button>
+        <button class="ag-cell ag-t4" data-name="Wizkid">Wizkid</button>
+        <button class="ag-cell ag-t4" data-name="the Drums">the Drums</button>
+        <button class="ag-cell ag-t4" data-name="Aminé">Aminé</button>
+        <button class="ag-cell ag-t4" data-name="Jessie Ware">Jessie Ware</button>
+        <button class="ag-cell ag-t4" data-name="Jamie Jones">Jamie Jones</button>
+        <button class="ag-cell ag-t4" data-name="San Holo">San Holo</button>
+        <button class="ag-cell ag-t4" data-name="FIDLAR">FIDLAR</button>
+        <button class="ag-cell ag-t4" data-name="Barclay Crenshaw">Barclay Crenshaw</button>
+        <button class="ag-cell ag-t4" data-name="Giraffage">Giraffage</button>
+        <button class="ag-cell ag-t4" data-name="Talaboman">Talaboman</button>
+        <button class="ag-cell ag-t4" data-name="Westside Gunn + Conway">Westside Gunn + Conway</button>
+        <button class="ag-cell ag-t4" data-name="Buscabulla">Buscabulla</button>
+        <button class="ag-cell ag-t4" data-name="Snail Mail">Snail Mail</button>
+        <button class="ag-cell ag-t4" data-name="Rolling Blackouts Coastal Fever">Rolling Blackouts Coastal Fever</button>
+        <button class="ag-cell ag-t4" data-name="Jaden Smith">Jaden Smith</button>
+        <button class="ag-cell ag-t4" data-name="Rosalía">Rosalía</button>
+        <button class="ag-cell ag-t4" data-name="Gorgon City">Gorgon City</button>
+        <button class="ag-cell ag-t4" data-name="Mon Laferte">Mon Laferte</button>
+        <button class="ag-cell ag-t4" data-name="Kayzo">Kayzo</button>
+        <button class="ag-cell ag-t4" data-name="King Princess">King Princess</button>
+        <button class="ag-cell ag-t4" data-name="Chris Lake">Chris Lake</button>
+        <button class="ag-cell ag-t4" data-name="Jauz">Jauz</button>
+        <button class="ag-cell ag-t4" data-name="Charlotte Gainsbourg">Charlotte Gainsbourg</button>
+        <button class="ag-cell ag-t4" data-name="Perfume">Perfume</button>
+        <button class="ag-cell ag-t4" data-name="boy pablo">boy pablo</button>
+        <button class="ag-cell ag-t4" data-name="HYUKOH">HYUKOH</button>
+        <button class="ag-cell ag-t4" data-name="Emily King">Emily King</button>
+        <button class="ag-cell ag-t4" data-name="Dennis Lloyd">Dennis Lloyd</button>
+        <button class="ag-cell ag-t4" data-name="Rico Nasty">Rico Nasty</button>
+        <button class="ag-cell ag-t4" data-name="Mansionair">Mansionair</button>
+        <button class="ag-cell ag-t4" data-name="Nocturnal Sunshine">Nocturnal Sunshine</button>
+        <button class="ag-cell ag-t4" data-name="NIKI">NIKI</button>
+        <button class="ag-cell ag-t4" data-name="Lane 8">Lane 8</button>
+        <button class="ag-cell ag-t4" data-name="Pink Sweat$">Pink Sweat$</button>
+        <button class="ag-cell ag-t4" data-name="Omar Apollo">Omar Apollo</button>
+        <button class="ag-cell ag-t4" data-name="Black Coffee">Black Coffee</button>
+        <button class="ag-cell ag-t4" data-name="IDLES">IDLES</button>
+        <button class="ag-cell ag-t4" data-name="EPIK HIGH">EPIK HIGH</button>
+        <button class="ag-cell ag-t4" data-name="the Marías">the Marías</button>
+        <button class="ag-cell ag-t4" data-name="Carly Rae Jepsen">Carly Rae Jepsen</button>
+        <button class="ag-cell ag-t4" data-name="Wallows">Wallows</button>
+        <button class="ag-cell ag-t4" data-name="Isaiah Rashad">Isaiah Rashad</button>
+        <button class="ag-cell ag-t4" data-name="Solomun">Solomun</button>
+        <button class="ag-cell ag-t4" data-name="Jessie Reyez">Jessie Reyez</button>
+        <button class="ag-cell ag-t4" data-name="FINNEAS">FINNEAS</button>
+        <button class="ag-cell ag-t4" data-name="Duck Sauce">Duck Sauce</button>
+        <button class="ag-cell ag-t4" data-name="Chicano Batman">Chicano Batman</button>
+        <button class="ag-cell ag-t4" data-name="Duke Dumont">Duke Dumont</button>
+        <button class="ag-cell ag-t4" data-name="Two Friends">Two Friends</button>
+        <button class="ag-cell ag-t4" data-name="YUNGBLUD">YUNGBLUD</button>
+        <button class="ag-cell ag-t4" data-name="Ashnikko">Ashnikko</button>
+        <button class="ag-cell ag-t4" data-name="Malaa">Malaa</button>
+        <button class="ag-cell ag-t4" data-name="Domi &amp; JD Beck">Domi &amp; JD Beck</button>
+        <button class="ag-cell ag-t4" data-name="DannyLux">DannyLux</button>
+        <button class="ag-cell ag-t4" data-name="Vintage Culture">Vintage Culture</button>
+        <button class="ag-cell ag-t4" data-name="Marc Rebillet">Marc Rebillet</button>
+        <button class="ag-cell ag-t4" data-name="Hiatus Kaiyote">Hiatus Kaiyote</button>
+        <button class="ag-cell ag-t4" data-name="Dinner Party">Dinner Party</button>
+        <button class="ag-cell ag-t4" data-name="Kenny Beats">Kenny Beats</button>
+        <button class="ag-cell ag-t4" data-name="Flo Milli">Flo Milli</button>
+        <button class="ag-cell ag-t4" data-name="Pi'erre Bourne">Pi'erre Bourne</button>
+        <button class="ag-cell ag-t4" data-name="Cassian">Cassian</button>
+        <button class="ag-cell ag-t4" data-name="Joy Crookes">Joy Crookes</button>
+        <button class="ag-cell ag-t4" data-name="TSHA">TSHA</button>
+        <button class="ag-cell ag-t4" data-name="El Michels Affair">El Michels Affair</button>
+        <button class="ag-cell ag-t4" data-name="Conexión Divina">Conexión Divina</button>
+        <button class="ag-cell ag-t4" data-name="Airrica">Airrica</button>
+        <button class="ag-cell ag-t4" data-name="Desert Cahuilla Bird Singers">Desert Cahuilla Bird Singers</button>
+        <button class="ag-cell ag-t4" data-name="L'Impératrice">L'Impératrice</button>
+        <button class="ag-cell ag-t4" data-name="Suki Waterhouse">Suki Waterhouse</button>
+        <button class="ag-cell ag-t4" data-name="Lovejoy">Lovejoy</button>
+        <button class="ag-cell ag-t4" data-name="Brittany Howard">Brittany Howard</button>
+        <button class="ag-cell ag-t4" data-name="Chappell Roan">Chappell Roan</button>
+        <button class="ag-cell ag-t4" data-name="Chlöe">Chlöe</button>
+        <button class="ag-cell ag-t4" data-name="Japanese House">Japanese House</button>
+        <button class="ag-cell ag-t4" data-name="Black Country, New Road">Black Country, New Road</button>
+        <button class="ag-cell ag-t4" data-name="Adriatique">Adriatique</button>
+        <button class="ag-cell ag-t4" data-name="Kevin Abstract">Kevin Abstract</button>
+        <button class="ag-cell ag-t4" data-name="the Aquabats">the Aquabats</button>
+        <button class="ag-cell ag-t4" data-name="Kevin Kaarl">Kevin Kaarl</button>
+        <button class="ag-cell ag-t4" data-name="RAYE">RAYE</button>
+        <button class="ag-cell ag-t4" data-name="FLO">FLO</button>
+        <button class="ag-cell ag-t4" data-name="Hatsune Miku">Hatsune Miku</button>
+        <button class="ag-cell ag-t4" data-name="Folamour">Folamour</button>
+        <button class="ag-cell ag-t4" data-name="Jockstrap">Jockstrap</button>
+        <button class="ag-cell ag-t4" data-name="Carlita">Carlita</button>
+        <button class="ag-cell ag-t4" data-name="Mdou Moctar">Mdou Moctar</button>
+        <button class="ag-cell ag-t4" data-name="Eddie Zuko">Eddie Zuko</button>
+        <button class="ag-cell ag-t4" data-name="feeble little horse">feeble little horse</button>
+        <button class="ag-cell ag-t4" data-name="JOPLYN">JOPLYN</button>
+        <button class="ag-cell ag-t4" data-name="jjuujjuu">jjuujjuu</button>
+        <button class="ag-cell ag-t4" data-name="Three 6 Mafia">Three 6 Mafia</button>
+        <button class="ag-cell ag-t4" data-name="Chris Lorenzo">Chris Lorenzo</button>
+        <button class="ag-cell ag-t4" data-name="SAINt JHN">SAINt JHN</button>
+        <button class="ag-cell ag-t4" data-name="4batz">4batz</button>
+        <button class="ag-cell ag-t4" data-name="CA7RIEL &amp; Paco Amoroso">CA7RIEL &amp; Paco Amoroso</button>
+        <button class="ag-cell ag-t4" data-name="Chris Stussy">Chris Stussy</button>
+        <button class="ag-cell ag-t4" data-name="Damian Lazarus">Damian Lazarus</button>
+        <button class="ag-cell ag-t4" data-name="Lola Young">Lola Young</button>
+        <button class="ag-cell ag-t4" data-name="Tinlicker">Tinlicker</button>
+        <button class="ag-cell ag-t4" data-name="Seun Kuti &amp; Egypt 80">Seun Kuti &amp; Egypt 80</button>
+        <button class="ag-cell ag-t4" data-name="Ravyn Lenae">Ravyn Lenae</button>
+        <button class="ag-cell ag-t4" data-name="Beltran">Beltran</button>
+        <button class="ag-cell ag-t4" data-name="TOPS">TOPS</button>
+        <button class="ag-cell ag-t4" data-name="Los Mirlos">Los Mirlos</button>
+        <button class="ag-cell ag-t4" data-name="KNEECAP">KNEECAP</button>
+        <button class="ag-cell ag-t4" data-name="Shermanology">Shermanology</button>
+        <button class="ag-cell ag-t4" data-name="vs self">vs self</button>
+        <button class="ag-cell ag-t4" data-name="HiTech">HiTech</button>
+        <button class="ag-cell ag-t4" data-name="Moon Boots">Moon Boots</button>
+        <button class="ag-cell ag-t4" data-name="Medium Build">Medium Build</button>
+        <button class="ag-cell ag-t4" data-name="underscores">underscores</button>
+        <button class="ag-cell ag-t4" data-name="Indo Warehouse">Indo Warehouse</button>
+        <button class="ag-cell ag-t4" data-name="Indira Paganotto">Indira Paganotto</button>
+        <button class="ag-cell ag-t4" data-name="Ty Dolla $ign">Ty Dolla $ign</button>
+        <button class="ag-cell ag-t4" data-name="Circle Jerks">Circle Jerks</button>
+        <button class="ag-cell ag-t4" data-name="Ben Böhmer">Ben Böhmer</button>
+        <button class="ag-cell ag-t4" data-name="Amyl and the Sniffers">Amyl and the Sniffers</button>
+        <button class="ag-cell ag-t4" data-name="Dixon x Jimi Jules">Dixon x Jimi Jules</button>
+        <button class="ag-cell ag-t4" data-name="Muni Long">Muni Long</button>
+        <button class="ag-cell ag-t4" data-name="Amaarae">Amaarae</button>
+        <button class="ag-cell ag-t4" data-name="BigXthaPlug">BigXthaPlug</button>
+        <button class="ag-cell ag-t4" data-name="Snow Strippers">Snow Strippers</button>
+        <button class="ag-cell ag-t4" data-name="Fcukers">Fcukers</button>
+        <button class="ag-cell ag-t4" data-name="Interplanetary Criminal">Interplanetary Criminal</button>
+        <button class="ag-cell ag-t4" data-name="Francis Mercier">Francis Mercier</button>
+        <button class="ag-cell ag-t4" data-name="Hope Tala">Hope Tala</button>
+        <button class="ag-cell ag-t4" data-name="Sparrow &amp; Barbossa">Sparrow &amp; Barbossa</button>
+        <button class="ag-cell ag-t4" data-name="Ginger Root">Ginger Root</button>
+        <button class="ag-cell ag-t4" data-name="Kumo 99">Kumo 99</button>
+        <button class="ag-cell ag-t4" data-name="DESIREE">DESIREE</button>
+        <button class="ag-cell ag-t4" data-name="Tripolism">Tripolism</button>
+        <button class="ag-cell ag-t4" data-name="Yulia Niko">Yulia Niko</button>
+        <button class="ag-cell ag-t4" data-name="DJ Gigola">DJ Gigola</button>
+        <button class="ag-cell ag-t4" data-name="HAAi">HAAi</button>
+        <button class="ag-cell ag-t4" data-name="Judeline">Judeline</button>
+        <button class="ag-cell ag-t4" data-name="Together Pangea">Together Pangea</button>
+        <button class="ag-cell ag-t4" data-name="Bob Vylan">Bob Vylan</button>
+      </div>
+      </div>
+      <div class="ag-fade" id="agFade"></div>
+    </div>
+    <button class="ag-expand-btn" id="agExpandBtn" onclick="agToggleExpand()">Show All Artists ↓</button>
+    <div class="ps-rule" style="margin-top:2rem;"></div>
+    <div class="ps-cta" style="margin-top:1.2rem;">
+      <a href="https://www.coachella.com/past-festivals" target="_blank" rel="noopener">
+        View All Official Lineup Posters (1999 – Present) →
+      </a>
+    </div>
+
+<style>
+  .ag-instructions {
+    font-family: var(--mono);
+    font-size: .7rem;
+    letter-spacing: .18em;
+    text-transform: uppercase;
+    color: rgba(196,168,128,.55);
+    margin: 0 0 1rem;
+  }
+  .ag-counter-wrap {
+    font-family: var(--mono);
+    font-size: .78rem;
+    letter-spacing: .12em;
+    text-transform: uppercase;
+    color: rgba(196,168,128,.45);
+    margin-bottom: 1.4rem;
+    min-height: 1.2em;
+    transition: color .3s;
+  }
+  .ag-counter-wrap.has-picks {
+    color: var(--accent);
+  }
+  .ag-count {
+    font-size: 1.4rem;
+    font-family: var(--display);
+    font-weight: 700;
+    letter-spacing: -.02em;
+    color: inherit;
+    vertical-align: middle;
+  }
+  .ag-count-label {
+    font-size: .7rem;
+    vertical-align: middle;
+  }
+  .ag-wrap {
+    position: relative;
+  }
+  .ag-wrap.ag-collapsed {
+    max-height: 28rem;
+    overflow: hidden;
+  }
+  .ag-fade {
+    position: absolute;
+    bottom: 0; left: 0; right: 0;
+    height: 6rem;
+    background: linear-gradient(to bottom, transparent, #2C1A0E);
+    pointer-events: none;
+  }
+  .ag-wrap:not(.ag-collapsed) .ag-fade {
+    display: none;
+  }
+  .ag-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    justify-content: center;
+  }
+  .ag-cell {
+    font-family: var(--mono);
+    font-size: .8rem;
+    letter-spacing: .07em;
+    text-transform: uppercase;
+    color: rgba(196,168,128,.6);
+    background: rgba(196,168,128,.06);
+    border: 1px solid rgba(196,168,128,.12);
+    padding: 8px 14px;
+    border-radius: 2px;
+    cursor: pointer;
+    transition: background .15s, color .15s, border-color .15s;
+    line-height: 1;
+    white-space: nowrap;
+  }
+  .ag-cell:hover {
+    color: rgba(196,168,128,.9);
+    background: rgba(196,168,128,.12);
+    border-color: rgba(196,168,128,.25);
+  }
+  .ag-cell.ag-known {
+    color: #fff;
+    border-color: #C4607A;
+  }
+
+  /* Tier sizing — mirrors poster billing hierarchy */
+  .ag-t1 {
+    font-size: 1.6rem;
+    letter-spacing: .04em;
+    padding: 10px 20px;
+    color: rgba(232,160,96,.85);
+    border-color: rgba(196,168,128,.2);
+    font-family: var(--display);
+    font-weight: 700;
+  }
+  .ag-t2 {
+    font-size: 1.1rem;
+    letter-spacing: .06em;
+    padding: 8px 15px;
+    color: rgba(196,168,128,.75);
+  }
+  .ag-t3 {
+    font-size: .8rem;
+    letter-spacing: .08em;
+    padding: 6px 11px;
+    color: rgba(196,168,128,.55);
+  }
+  .ag-t4 {
+    font-size: .6rem;
+    letter-spacing: .1em;
+    padding: 5px 8px;
+    color: rgba(196,168,128,.38);
+    border-color: rgba(196,168,128,.07);
+  }
+  .ag-t1.ag-known, .ag-t2.ag-known, .ag-t3.ag-known, .ag-t4.ag-known {
+    color: #fff;
+    border-color: #C4607A;
+  }
+  @media (max-width: 768px) {
+    .ag-t1 { font-size: 1.25rem; padding: 9px 14px; }
+    .ag-t2 { font-size: .88rem; }
+    .ag-t3 { font-size: .7rem; }
+    .ag-t4 { font-size: .55rem; }
+  }
+
+  .ag-expand-btn {
+    margin-top: 1.4rem;
+    background: transparent;
+    border: 1px solid rgba(232,160,96,.4);
+    color: var(--accent);
+    font-family: var(--mono);
+    font-size: .68rem;
+    letter-spacing: .18em;
+    text-transform: uppercase;
+    padding: 8px 22px;
+    border-radius: 2px;
+    cursor: pointer;
+    transition: background .2s;
+    display: inline-block;
+  }
+  .ag-expand-btn:hover { background: rgba(232,160,96,.1); }
+  @media (max-width: 768px) {
+    .ag-cell { padding: 6px 9px; }
+  }
+</style>
+
+<script>
+  (function() {
+    var STORAGE_KEY = 'coachella-known-artists';
+    var known = {};
+    try { known = JSON.parse(localStorage.getItem(STORAGE_KEY) || '{}'); } catch(e) {}
+
+    function save() {
+      try { localStorage.setItem(STORAGE_KEY, JSON.stringify(known)); } catch(e) {}
+    }
+
+    function updateCounter() {
+      var n = Object.keys(known).filter(function(k){ return known[k] && k.indexOf('__angle') === -1; }).length;
+      var el = document.getElementById('agCount');
+      var lbl = document.getElementById('agLabel');
+      var wrap = document.getElementById('agCounterWrap');
+      if (el) el.textContent = n;
+      if (lbl) {
+        if (n === 0) lbl.innerHTML = '&nbsp;recognised — tap the ones you know.';
+        else if (n < 10) lbl.innerHTML = '&nbsp;recognised — not bad. Keep going.';
+        else if (n < 25) lbl.innerHTML = '&nbsp;recognised — getting somewhere.';
+        else if (n < 50) lbl.innerHTML = '&nbsp;recognised — respectable.';
+        else if (n < 100) lbl.innerHTML = '&nbsp;recognised — you have been to the desert.';
+        else if (n < 200) lbl.innerHTML = '&nbsp;recognised — deeply suspicious of your age.';
+        else lbl.innerHTML = '&nbsp;recognised — ok you definitely work in music.';
+      }
+      if (wrap) wrap.classList.toggle('has-picks', n > 0);
+    }
+
+    document.addEventListener('DOMContentLoaded', function() {
+      var cells = document.querySelectorAll('.ag-cell');
+      cells.forEach(function(cell) {
+        var name = cell.dataset.name;
+        if (known[name]) {
+          cell.classList.add('ag-known');
+          var angle = known[name + '__angle'] || 135;
+          cell.style.background = 'linear-gradient(' + angle + 'deg, #C4607A 0%, #87C4D8 100%)';
+          cell.style.borderColor = '#C4607A';
+        }
+        cell.addEventListener('click', function() {
+          var isKnown = cell.classList.toggle('ag-known');
+          if (isKnown) {
+            var angle = Math.floor(Math.random() * 360);
+            cell.style.background = 'linear-gradient(' + angle + 'deg, #C4607A 0%, #87C4D8 100%)';
+            cell.style.borderColor = '#C4607A';
+            known[name] = true;
+            known[name + '__angle'] = angle;
+          } else {
+            cell.style.background = '';
+            cell.style.borderColor = '';
+            known[name] = false;
+            delete known[name + '__angle'];
+          }
+          save();
+          updateCounter();
+        });
+      });
+      updateCounter();
+    });
+  })();
+
+  function agToggleExpand() {
+    var wrap = document.getElementById('agWrap');
+    var btn = document.getElementById('agExpandBtn');
+    var collapsed = wrap.classList.toggle('ag-collapsed');
+    btn.textContent = collapsed ? 'Show All Artists ↓' : '↑ Collapse';
+  }
+</script>
+
+<!-- ============================================================
+     POSTER GALLERY — 8 landmark years, attributed
+============================================================ -->
+<section class="poster-gallery fi">
+  <span class="poster-gallery-label">The Posters</span>
+  <h2 class="poster-gallery-title">25 Years of Lineup Art</h2>
+  <p class="poster-gallery-intro">Every year, Goldenvoice releases a lineup poster that becomes its own cultural artifact. The design evolves — painted deserts, night skies, psychedelic gradients — but the mountain silhouette and palm trees are always there.</p>
+
+  <div class="poster-grid">
+
+    <div class="poster-item">
+      <img src="coachella/images/poster-2005.jpg" alt="Coachella 2005 official lineup poster — Coldplay, Nine Inch Nails, Chemical Brothers" onerror="this.style.display='none'">
+      <span class="poster-item-year">2006</span>
+      <span class="poster-item-heads">Depeche Mode · Daft Punk</span>
+      <span class="poster-item-credit">© Goldenvoice / Coachella</span>
+    </div>
+
+    <div class="poster-item">
+      <img src="coachella/images/poster-2007.jpg" alt="Coachella 2007 official lineup poster — Rage Against the Machine reunion, Björk" onerror="this.style.display='none'">
+      <span class="poster-item-year">2008</span>
+      <span class="poster-item-heads">Prince · Roger Waters</span>
+      <span class="poster-item-credit">© Goldenvoice / Coachella</span>
+    </div>
+
+    <div class="poster-item">
+      <img src="coachella/images/poster-2009.jpg" alt="Coachella 2009 official lineup poster — Paul McCartney, The Killers, The Cure" onerror="this.style.display='none'">
+      <span class="poster-item-year">2010</span>
+      <span class="poster-item-heads">Jay-Z · Muse · Gorillaz</span>
+      <span class="poster-item-credit">© Goldenvoice / Coachella</span>
+    </div>
+
+    <div class="poster-item">
+      <img src="coachella/images/poster-2012.jpg" alt="Coachella 2012 official lineup poster — Dr. Dre and Snoop Dogg, Radiohead, The Black Keys" onerror="this.style.display='none'">
+      <span class="poster-item-year">2012</span>
+      <span class="poster-item-heads">Dr. Dre & Snoop · Radiohead</span>
+      <span class="poster-item-credit">© Goldenvoice / Coachella</span>
+    </div>
+
+    <div class="poster-item">
+      <img src="coachella/images/poster-2014.jpg" alt="Coachella 2014 official lineup poster — Arcade Fire, Outkast, Muse" onerror="this.style.display='none'">
+      <span class="poster-item-year">2014</span>
+      <span class="poster-item-heads">Arcade Fire · Outkast</span>
+      <span class="poster-item-credit">© Goldenvoice / Coachella</span>
+    </div>
+
+    <div class="poster-item">
+      <img src="coachella/images/poster-2017.jpg" alt="Coachella 2017 official lineup poster — Radiohead, Kendrick Lamar, Beyoncé" onerror="this.style.display='none'">
+      <span class="poster-item-year">2017</span>
+      <span class="poster-item-heads">Kendrick Lamar · Radiohead</span>
+      <span class="poster-item-credit">© Goldenvoice / Coachella</span>
+    </div>
+
+    <div class="poster-item">
+      <img src="coachella/images/poster-2018.jpg" alt="Coachella 2018 official lineup poster — Beyoncé Beychella, The Weeknd, Eminem" onerror="this.style.display='none'">
+      <span class="poster-item-year">2018</span>
+      <span class="poster-item-heads">Beyoncé · The Weeknd</span>
+      <span class="poster-item-credit">© Goldenvoice / Coachella</span>
+    </div>
+
+    <div class="poster-item">
+      <img src="coachella/images/poster-1999.jpg" alt="Coachella 1999 official lineup poster — Beck, Rage Against the Machine, Tool" onerror="this.style.display='none'">
+      <span class="poster-item-year">1999</span>
+      <span class="poster-item-heads">Beck · Rage Against the Machine · Tool</span>
+      <span class="poster-item-credit">© Goldenvoice / Coachella</span>
+    </div>
+
+  </div>
+  <p class="poster-gallery-cta">All official lineup posters 1999–present: <a href="https://www.coachella.com/past-festivals" target="_blank" rel="noopener">coachella.com/past-festivals →</a></p>
+</section>
+
+<!-- ============================================================
+     COLOPHON
+============================================================ -->
+<section class="colophon fi">
+  <div class="colophon-left">
+    <h3 class="colophon-title">A (Brief) History of Coachella</h3>
+    <p class="colophon-body">This guide covers the origins, evolution, and cultural impact of the Coachella Valley Music and Arts Festival from 1993 to the present. It is an independent editorial work — not affiliated with, endorsed by, or sponsored by Goldenvoice, AEG, or the Coachella festival. All official poster artwork remains the property of Goldenvoice. Photographs in this guide were taken at the festival by independent photographers.</p>
+  </div>
+  <div class="colophon-right">
+    <div class="colophon-series">A (Brief) History of Everything_ · Guide 011</div>
+    <div class="colophon-share">
+      <a href="#" id="colophonShareX">Share on X</a>
+      <a href="#" id="colophonShareLinkedIn">Share on LinkedIn</a>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     FOOTER
+============================================================ -->
+<footer>
+  <a href="https://abriefhistoryofeverything.com" target="_blank" rel="noopener" class="footer-lockup">
+    <div class="footer-mark">
+      <svg width="32" height="32" viewBox="0 0 400 400" xmlns="http://www.w3.org/2000/svg">
+        <rect width="400" height="400" fill="#00D4F0"/>
+        <rect x="55" y="118" width="46" height="46" fill="#08090C" opacity=".22"/>
+        <rect x="178" y="118" width="46" height="46" fill="#08090C" opacity=".22"/>
+        <rect class="footer-mouth" x="55" y="278" width="170" height="36" fill="#08090C"/>
+      </svg>
+    </div>
+    <span class="footer-wordmark"><strong>A (Brief) History</strong> of Everything_</span>
+  </a>
+  <span class="footer-copy">© 2026 A (Brief) History of Everything</span>
+</footer>
+
+<!-- ============================================================
+     JS
+============================================================ -->
+<script>
+(function(){
+  'use strict';
+  document.documentElement.classList.add('js-ready');
+
+  const prog = document.getElementById('progress');
+  function updateProgress(){
+    const h = document.documentElement;
+    const pct = (h.scrollTop||document.body.scrollTop)/(h.scrollHeight-h.clientHeight)*100;
+    prog.style.width = pct+'%';
+  }
+  window.addEventListener('scroll',updateProgress,{passive:true});
+
+  const isMobile = /Mobi|Android|iPhone|iPad/i.test(navigator.userAgent)||window.innerWidth<768;
+  const cur = document.getElementById('cur');
+  const ring = document.getElementById('curRing');
+  if(isMobile){ cur.style.display='none'; ring.style.display='none'; document.body.style.cursor='auto'; }
+  else {
+    document.addEventListener('mousemove',function(e){
+      cur.style.left=e.clientX+'px'; cur.style.top=e.clientY+'px';
+      ring.style.left=e.clientX+'px'; ring.style.top=e.clientY+'px';
+    },{passive:true});
+  }
+
+  const tt = document.getElementById('tt');
+  document.querySelectorAll('[data-tip]').forEach(function(el){
+    el.addEventListener('mouseenter',function(){tt.textContent=el.dataset.tip;tt.style.opacity='1';});
+    el.addEventListener('mousemove',function(e){tt.style.left=(e.clientX+14)+'px';tt.style.top=(e.clientY-8)+'px';});
+    el.addEventListener('mouseleave',function(){tt.style.opacity='0';});
+  });
+
+  function revealAll(){
+    document.querySelectorAll('.fi:not(.visible)').forEach(function(el){el.classList.add('visible');});
+  }
+  const obs = new IntersectionObserver(function(entries){
+    entries.forEach(function(e){if(e.isIntersecting){e.target.classList.add('visible');obs.unobserve(e.target);}});
+  },{threshold:0.06});
+  document.querySelectorAll('.fi').forEach(function(el){obs.observe(el);});
+  [100,400,1000].forEach(function(t){
+    setTimeout(function(){if(document.querySelectorAll('.fi:not(.visible)').length)revealAll();},t);
+  });
+
+  const url = 'https://abriefhistoryofeverything.com/coachella';
+  const shareText = 'A (Brief) History of Coachella — from protest concert to cultural institution.';
+  const btn = document.getElementById('shareBtn');
+  const drop = document.getElementById('shareDropdown');
+  if(btn){
+    btn.addEventListener('click',function(e){
+      e.stopPropagation();
+      if(navigator.share){navigator.share({title:'A (Brief) History of Coachella',url:url});return;}
+      drop.classList.toggle('open');
+    });
+  }
+  document.addEventListener('click',function(){drop&&drop.classList.remove('open');});
+
+  function bindLinks(xId,liId,cpId){
+    const xEl=document.getElementById(xId);
+    const liEl=document.getElementById(liId);
+    const cpEl=document.getElementById(cpId);
+    if(xEl) xEl.addEventListener('click',function(e){e.preventDefault();window.open('https://x.com/intent/tweet?text='+encodeURIComponent(shareText)+'&url='+encodeURIComponent(url),'_blank');});
+    if(liEl) liEl.addEventListener('click',function(e){e.preventDefault();window.open('https://www.linkedin.com/sharing/share-offsite/?url='+encodeURIComponent(url),'_blank');});
+    if(cpEl) cpEl.addEventListener('click',function(e){e.preventDefault();navigator.clipboard.writeText(url).then(function(){cpEl.textContent='Copied!';setTimeout(function(){cpEl.textContent='Copy Link';},2000);});});
+  }
+  bindLinks('shareX','shareLinkedIn','shareCopy');
+  bindLinks('colophonShareX','colophonShareLinkedIn','colophonCopy');
+
+  document.querySelectorAll('a[href^="#"]').forEach(function(a){
+    a.addEventListener('click',function(e){
+      const t=document.querySelector(a.getAttribute('href'));
+      if(t){e.preventDefault();t.scrollIntoView({behavior:'smooth'});}
+    });
+  });
+})();
+</script>
+</body>
+</html>
