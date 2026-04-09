@@ -33,7 +33,7 @@ body { font-family: var(--sans); background: var(--bg); color: var(--text); min-
 .hero {
   position: relative; min-height: 92vh;
   display: flex; flex-direction: column; justify-content: space-between;
-  padding: 2rem 0 2.5rem; overflow: hidden;
+  padding: 2rem 0 1.5rem; overflow: hidden;
 }
 .hero-bg { position: absolute; inset: 0; background: url('images/palm-trees-bg-2.jpg') center/cover no-repeat; z-index: 0; }
 .hero-gradient {
@@ -121,7 +121,7 @@ body { font-family: var(--sans); background: var(--bg); color: var(--text); min-
 .btn-reset { background: transparent; color: var(--text-muted); padding: 8px 12px; border: 1px solid var(--border-mid) !important; }
 .btn-reset:hover { color: var(--text); border-color: rgba(255,160,80,.3) !important; }
 
-.main { padding: .75rem 2rem 6rem; max-width: 1440px; margin: 0 auto; }
+.main { padding: 0 2rem 6rem; max-width: 1440px; margin: 0 auto; }
 .section-header {
   display: flex; align-items: baseline; justify-content: space-between;
   margin-bottom: 1.5rem; padding-bottom: 1rem; border-bottom: 1px solid var(--border);
@@ -134,9 +134,10 @@ body { font-family: var(--sans); background: var(--bg); color: var(--text); min-
 
 .tier-label {
   width: 100%; font-size: .63rem; font-weight: 700; letter-spacing: .14em; text-transform: uppercase;
-  color: var(--text-muted); margin: 2.2rem 0 .9rem;
+  color: var(--text-muted); margin: 1.5rem 0 .9rem;
   display: flex; align-items: center; gap: 12px;
 }
+.tier-label:first-child { margin-top: .5rem; }
 .tier-label::after { content: ''; flex: 1; height: 1px; background: var(--border); }
 
 .chip-grid { display: flex; flex-wrap: wrap; gap: 6px; }
@@ -164,7 +165,7 @@ body { font-family: var(--sans); background: var(--bg); color: var(--text); min-
   .hero { min-height: 75vh; }
   .hero-content { padding: 0 1.5rem; }
   .hero-stats { gap: 1.4rem; }
-  .main { padding: 2rem 1rem 5rem; }
+  .main { padding: 0 1.5rem 5rem; }
   .now-bar { padding: 0 1rem; gap: .8rem; }
   .bar-progress { display: none; }
 }
