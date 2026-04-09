@@ -133,14 +133,28 @@ body { font-family: var(--sans); background: var(--bg); color: var(--text); min-
 .section-footnote { font-size: .65rem; color: rgba(201,169,138,.3); font-style: italic; }
 
 .tier-label {
-  width: 100%; font-size: .63rem; font-weight: 700; letter-spacing: .14em; text-transform: uppercase;
-  color: var(--text-muted); margin: 1.5rem 0 .9rem;
-  display: flex; align-items: center; gap: 12px;
+    width: 100%;
+    font-size: 0.83rem;
+    font-weight: 700;
+    letter-spacing: .14em;
+    text-transform: uppercase;
+    color: var(--text-muted);
+    margin: 1.5rem 0 .9rem;
+    display: flex;
+    align-items: center;
+    gap: 12px;
 }
 .tier-label:first-child { margin-top: .5rem; }
 .tier-label::after { content: ''; flex: 1; height: 1px; background: var(--border); }
 
-.chip-grid { display: flex; flex-wrap: wrap; gap: 6px; }
+.chip-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    margin-left: 26px;
+    margin-right: 26px;
+    margin-top: 40px;
+}
 .chip {
   font-family: var(--sans); font-weight: 500; color: var(--text-sub);
   background: var(--surface2); border: 1px solid var(--border); border-radius: var(--pill);
@@ -237,29 +251,27 @@ footer {
   <button class="bar-btn btn-reset" id="clearBtn">Reset</button>
 </div>
 
-<div class="main">
 
-  </div>
 
   <div class="chip-grid" id="chipGrid">
 
   <div class="tier-label">Headliners &amp; Icons</div>
   <button class="chip chip-t1" data-name="The Cure">The Cure</button>
   <button class="chip chip-t1" data-name="Beck">Beck</button>
-  <button class="chip chip-t1" data-name="Rage Against the Machine">Rage Against the Machine</button>
   <button class="chip chip-t1" data-name="Tool">Tool</button>
   <button class="chip chip-t1" data-name="Jane's Addiction">Jane's Addiction</button>
   <button class="chip chip-t1" data-name="Björk">Björk</button>
   <button class="chip chip-t1" data-name="Oasis">Oasis</button>
   <button class="chip chip-t1" data-name="Radiohead">Radiohead</button>
   <button class="chip chip-t1" data-name="Coldplay">Coldplay</button>
+  <button class="chip chip-t1" data-name="Paul McCartney">Paul McCartney</button>
   <button class="chip chip-t1" data-name="Nine Inch Nails">Nine Inch Nails</button>
   <button class="chip chip-t1" data-name="Depeche Mode">Depeche Mode</button>
   <button class="chip chip-t1" data-name="Prince">Prince</button>
   <button class="chip chip-t1" data-name="Roger Waters">Roger Waters</button>
   <button class="chip chip-t1" data-name="Jack Johnson">Jack Johnson</button>
   <button class="chip chip-t1" data-name="Red Hot Chili Peppers">Red Hot Chili Peppers</button>
-  <button class="chip chip-t1" data-name="Paul McCartney">Paul McCartney</button>
+  <button class="chip chip-t1" data-name="Rage Against the Machine">Rage Against the Machine</button>
   <button class="chip chip-t1" data-name="The Killers">The Killers</button>
   <button class="chip chip-t1" data-name="Jay-Z">Jay-Z</button>
   <button class="chip chip-t1" data-name="Muse">Muse</button>
