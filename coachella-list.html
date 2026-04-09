@@ -98,6 +98,13 @@ body { font-family: var(--sans); background: var(--bg); color: var(--text); min-
 .score-num { font-family: var(--display); font-size: 1.15rem; font-weight: 800; color: var(--accent2); line-height: 1; min-width: 2ch; }
 .score-word { font-size: .7rem; color: var(--text-sub); font-weight: 500; white-space: nowrap; }
 @media (max-width: 599px) { .score-word { display: none; } }
+@media (max-width: 540px) {
+  .now-bar { flex-wrap: wrap; height: auto; padding: .75rem 1rem; gap: .5rem; }
+  .bar-track { flex: 0 0 100%; }
+  .bar-title { font-size: .95rem; }
+  .bar-progress { display: none; }
+  .score-pill { margin-left: 0; }
+}
 .bar-btn {
   font-family: var(--sans); font-size: .72rem; font-weight: 700; letter-spacing: .04em;
   border-radius: var(--pill); cursor: pointer; border: none; white-space: nowrap; flex-shrink: 0;
