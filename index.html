@@ -1642,7 +1642,12 @@ br.desk-br{display:block;}
   /* ── Render entity tags from registry ── */
   const tagContainer = document.getElementById('entity-tags');
   if(tagContainer){
+    const isMobile = window.innerWidth <= 768;
+    const MOBILE_TAG_LIMIT = 3;
+    let guideCount = 0;
+    let hiddenTags = [];
     GUIDES.forEach(guide => {
+      guideCount++;
       guide.tags.forEach(tag => {
         const a = document.createElement('a');
         a.className = 'etag';
@@ -1650,9 +1655,23 @@ br.desk-br{display:block;}
         a.textContent = tag.toUpperCase();
         a.style.color = guide.color;
         a.style.borderColor = guide.color + '20';
+        if(isMobile && guideCount > MOBILE_TAG_LIMIT){
+          a.style.display = 'none';
+          hiddenTags.push(a);
+        }
         tagContainer.appendChild(a);
       });
     });
+    if(isMobile && hiddenTags.length > 0){
+      const wrap = document.createElement('div');
+      wrap.style.cssText = 'width:100%;margin-top:.75rem;';
+      const btn = document.createElement('button');
+      btn.style.cssText = 'font-family:var(--mono);font-size:.6rem;letter-spacing:.18em;text-transform:uppercase;background:transparent;color:var(--dim);border:1px solid var(--rule);padding:.6rem 1.5rem;cursor:pointer;';
+      btn.textContent = '+ ' + hiddenTags.length + ' MORE TOPICS';
+      btn.addEventListener('click', () => { hiddenTags.forEach(t => t.style.display = ''); wrap.remove(); });
+      wrap.appendChild(btn);
+      tagContainer.appendChild(wrap);
+    }
   }
 
   /* ── Build nav dropdown + mobile menu from registry ── */
