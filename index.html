@@ -1667,8 +1667,13 @@ br.desk-br{display:block;}
       wrap.style.cssText = 'width:100%;margin-top:.75rem;';
       const btn = document.createElement('button');
       btn.style.cssText = 'font-family:var(--mono);font-size:.6rem;letter-spacing:.18em;text-transform:uppercase;background:transparent;color:var(--dim);border:1px solid var(--rule);padding:.6rem 1.5rem;cursor:pointer;';
+      let expanded = false;
       btn.textContent = '+ ' + hiddenTags.length + ' MORE TOPICS';
-      btn.addEventListener('click', () => { hiddenTags.forEach(t => t.style.display = ''); wrap.remove(); });
+      btn.addEventListener('click', () => {
+        expanded = !expanded;
+        hiddenTags.forEach(t => t.style.display = expanded ? '' : 'none');
+        btn.textContent = expanded ? '− SHOW LESS' : '+ ' + hiddenTags.length + ' MORE TOPICS';
+      });
       wrap.appendChild(btn);
       tagContainer.appendChild(wrap);
     }
