@@ -1,0 +1,990 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>A (Brief) History of the Future_ — RAW ARCHIVE — A (Brief) History of Everything_</title>
+<meta name="description" content="Pre-translation. BHOE-∞-FUTURE. The untranslated transmission. Some of this will not parse.">
+<link rel="canonical" href="https://abriefhistoryofeverything.com/future-raw">
+
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-S80KBNWEJ5"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-S80KBNWEJ5');</script>
+
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=Space+Grotesk:wght@300;400;500;600&family=Space+Mono:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+
+<style>
+/* ═══════════════════════════════════════════════════════
+   RAW ARCHIVE — PRE-TRANSLATION LAYER
+   The transmission before the Early English filter ran.
+   Reading difficulty increases with each era.
+   This is not broken. This is what it actually looks like.
+═══════════════════════════════════════════════════════ */
+:root {
+  --accent:      #C8FF00;
+  --accent2:     #FF3CAC;
+  --accent3:     #00C8FF;
+  --accent-rgb:  200,255,0;
+
+  --bg:    #060608;
+  --bg1:   #0A0A10;
+  --bg2:   #0F0F1A;
+  --bg3:   #141422;
+  --rule:  #1A1A2C;
+  --rule2: #222238;
+  --muted: #4A4A70;
+  --dim:   #7070A0;
+  --text:  #C4C4DC;
+  --bright:#EEEEF8;
+
+  --sans: 'Syne', sans-serif;
+  --body: 'Space Grotesk', sans-serif;
+  --mono: 'Space Mono', monospace;
+
+  --nav-bg:    rgba(6,6,8,.97);
+  --nav-border:#1A1A2C;
+  --card-bg:   #0A0A10;
+  --card-hover:#0F0F1A;
+}
+
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box;}
+html{font-size:16px;scroll-behavior:smooth;}
+body{background:var(--bg);color:var(--text);font-family:var(--body);overflow-x:hidden;line-height:1.7;}
+a{color:inherit;text-decoration:none;}
+
+@keyframes cursorBlink{0%,100%{opacity:1}50%{opacity:0}}
+.cursor-blink{animation:cursorBlink 1.1s step-end infinite;display:inline-block;color:var(--accent);}
+
+/* ── NOISE ── */
+body::before{
+  content:'';position:fixed;inset:0;z-index:0;pointer-events:none;
+  background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  opacity:.04;
+}
+
+/* ── PROGRESS ── */
+#progress{position:fixed;top:0;left:0;height:2px;background:linear-gradient(90deg,var(--accent),var(--accent2));width:0;z-index:9100;}
+
+/* ══════════════════════════════════════════
+   NAV — invariant brand rules
+══════════════════════════════════════════ */
+.nav{
+  height:50px;position:fixed;top:0;left:0;right:0;z-index:900;
+  display:flex;align-items:stretch;
+  background:#C8FF00;
+}
+.nav-tag{
+  display:flex;align-items:stretch;text-decoration:none;flex-shrink:0;
+  border-right:1px solid rgba(0,0,0,.15);background:#0F0F1A;
+}
+.nav-tag:hover .nav-topic{color:#C8FF00;}
+.nav-index-box{
+  width:52px;min-width:52px;height:50px;
+  display:flex;align-items:center;justify-content:center;
+  background:transparent;color:#C8FF00;
+  font-family:var(--mono);font-size:.78rem;font-weight:700;letter-spacing:.1em;
+  flex-shrink:0;border-right:1px solid rgba(255,255,255,.08);
+}
+.nav-topic{
+  display:flex;align-items:center;padding:0 20px 0 16px;
+  font-family:var(--mono);font-size:.72rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;
+  color:rgba(255,255,255,.65);white-space:nowrap;
+}
+.nav-right{margin-left:auto;display:flex;align-items:center;padding:0 1.5rem;gap:1.5rem;}
+.nav-warn{
+  font-family:var(--mono);font-size:.6rem;letter-spacing:.18em;text-transform:uppercase;
+  color:rgba(0,0,0,.7);
+}
+.nav-warn em{color:#000;font-style:normal;font-weight:700;}
+
+/* ══════════════════════════════════════════
+   TRANSMISSION BANNER — pre-translation warning
+══════════════════════════════════════════ */
+.tx-banner{
+  position:fixed;top:50px;left:0;right:0;z-index:800;
+  background:rgba(200,255,0,.08);border-bottom:1px solid rgba(200,255,0,.3);
+  height:50px;display:flex;align-items:center;overflow:hidden;
+}
+.tx-warn{
+  flex-shrink:0;padding:0 1.5rem;
+  font-family:var(--mono);font-size:.6rem;letter-spacing:.2em;text-transform:uppercase;
+  color:var(--accent);white-space:nowrap;border-right:1px solid rgba(200,255,0,.2);
+}
+.tx-raw{
+  flex:1;overflow:hidden;position:relative;
+  font-family:var(--mono);font-size:.55rem;letter-spacing:.1em;color:rgba(200,255,0,.35);
+  white-space:nowrap;
+  animation:rawScroll 50s linear infinite;
+  padding-left:2rem;
+}
+@keyframes rawScroll{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+
+/* ══════════════════════════════════════════
+   DRIFTING ELEMENT — one box that moves
+   slowly, independently of scroll, while you read
+══════════════════════════════════════════ */
+.drift-block{
+  position:fixed;
+  width:180px;height:180px;
+  background:rgba(200,255,0,.03);
+  border:1px solid rgba(200,255,0,.08);
+  pointer-events:none;z-index:2;
+  /* position animated by JS */
+  transition:opacity .5s;
+}
+
+/* ══════════════════════════════════════════
+   HERO
+══════════════════════════════════════════ */
+.hero{
+  min-height:100vh;padding-top:140px;
+  padding-left:clamp(1.5rem,6vw,7rem);padding-right:clamp(1.5rem,6vw,7rem);
+  padding-bottom:5rem;position:relative;overflow:hidden;
+  border-bottom:1px solid var(--rule);
+  display:flex;flex-direction:column;justify-content:center;
+}
+.hero-ghost{
+  position:absolute;right:-2rem;bottom:-3rem;
+  font-family:var(--sans);font-weight:800;
+  font-size:clamp(14rem,28vw,22rem);
+  line-height:1;color:rgba(200,255,0,.025);
+  pointer-events:none;user-select:none;z-index:0;
+}
+.hero-content{position:relative;z-index:2;max-width:880px;}
+
+.hero-eyebrow{
+  font-family:var(--mono);font-size:.72rem;letter-spacing:.28em;text-transform:uppercase;
+  color:var(--muted);margin-bottom:.8rem;
+  display:flex;align-items:center;gap:1rem;
+}
+.hero-eyebrow::before{content:'';display:block;width:28px;height:1px;background:var(--accent);}
+.hero-title{
+  font-family:var(--sans);font-weight:800;
+  font-size:clamp(2.8rem,6.5vw,6rem);
+  line-height:.94;color:var(--bright);text-transform:uppercase;letter-spacing:-.02em;
+  margin-bottom:.6rem;
+}
+.hero-part{
+  font-family:var(--mono);font-size:.72rem;letter-spacing:.28em;text-transform:uppercase;
+  color:var(--muted);margin-bottom:2.5rem;margin-top:.4rem;
+  display:flex;align-items:center;gap:.8rem;
+}
+.hero-part em{font-style:normal;color:var(--accent);font-family:var(--sans);font-weight:800;font-size:1.1rem;letter-spacing:0;}
+
+/* warning box */
+.archive-warn{
+  background:rgba(200,255,0,.05);border:1px solid rgba(200,255,0,.2);
+  padding:1.2rem 1.6rem;margin-bottom:2.5rem;
+  font-family:var(--mono);font-size:.72rem;line-height:1.8;letter-spacing:.04em;
+  color:var(--dim);max-width:660px;
+}
+.archive-warn strong{color:var(--accent);}
+
+/* hero thesis — already slightly drifted */
+.hero-thesis{
+  font-family:var(--body);font-weight:300;font-size:clamp(1rem,1.8vw,1.25rem);
+  color:var(--text);max-width:620px;line-height:1.8;
+  border-left:2px solid var(--accent);padding-left:1.4rem;margin-bottom:3rem;
+}
+
+/* ══════════════════════════════════════════
+   COMPREHENSION METER
+   Decorative, per-era — shows how far from English we are
+══════════════════════════════════════════ */
+.comp-meter{
+  display:flex;align-items:center;gap:1rem;margin-bottom:2rem;
+  font-family:var(--mono);font-size:.6rem;letter-spacing:.2em;text-transform:uppercase;color:var(--muted);
+}
+.comp-track{flex:1;height:2px;background:var(--rule2);position:relative;}
+.comp-fill{position:absolute;top:0;left:0;height:100%;background:var(--accent);transition:width 1s ease;}
+.comp-pct{color:var(--accent);font-weight:700;width:3.5rem;text-align:right;}
+
+/* ══════════════════════════════════════════
+   ERA SECTIONS
+══════════════════════════════════════════ */
+.era{
+  position:relative;border-bottom:1px solid var(--rule);
+  display:grid;grid-template-columns:300px 1fr;
+  min-height:55vh;
+}
+@media(max-width:900px){.era{grid-template-columns:1fr;min-height:auto;}}
+.era-spine{
+  position:relative;padding:4rem 2rem;
+  border-right:1px solid var(--rule);
+  display:flex;flex-direction:column;justify-content:space-between;
+  overflow:visible;
+}
+@media(max-width:900px){.era-spine{border-right:none;border-bottom:1px solid var(--rule);padding:2.5rem 1.5rem;}}
+.era-ghost-num{
+  position:absolute;bottom:-2rem;left:-1rem;
+  font-family:var(--sans);font-weight:800;
+  font-size:clamp(8rem,16vw,12rem);line-height:1;
+  color:rgba(200,255,0,.035);pointer-events:none;user-select:none;
+}
+.era-index{font-family:var(--mono);font-size:.65rem;letter-spacing:.26em;text-transform:uppercase;color:var(--muted);margin-bottom:1.5rem;}
+.era-period{
+  font-family:var(--sans);font-weight:800;font-size:clamp(1.3rem,1.8vw,1.7rem);
+  color:var(--bright);line-height:1.08;text-transform:uppercase;letter-spacing:-.01em;margin-bottom:.5rem;
+}
+.era-period-accent{display:block;color:var(--c-era,var(--accent));font-size:.55em;font-weight:600;letter-spacing:.08em;margin-bottom:.8rem;}
+.era-title{font-family:var(--body);font-size:1.05rem;line-height:1.6;color:var(--dim);margin-top:.8rem;}
+
+.era-main{padding:4rem 3rem;}
+@media(max-width:900px){.era-main{padding:2rem 1.5rem;}}
+.era-lead{
+  font-family:var(--body);font-size:1.1rem;line-height:1.85;
+  color:var(--text);max-width:62ch;margin-bottom:2.5rem;
+  border-left:2px solid var(--c-era,var(--accent));padding-left:1.2rem;
+}
+
+/* cards */
+.cards{display:grid;grid-template-columns:repeat(2,1fr);gap:1px;border:1px solid var(--rule);background:var(--rule);}
+@media(max-width:640px){.cards{grid-template-columns:1fr;}}
+.card{background:var(--card-bg);padding:2.2rem 1.8rem 2rem;position:relative;overflow:hidden;transition:background .2s;}
+.card:hover{background:var(--card-hover);}
+.card::before{content:'';position:absolute;top:0;left:0;bottom:0;width:2px;background:var(--c-accent,var(--accent));transform:scaleY(0);transform-origin:top;transition:transform .3s;}
+.card:hover::before{transform:scaleY(1);}
+.card-year{font-family:var(--mono);font-weight:700;font-size:1.3rem;letter-spacing:.06em;color:var(--c-accent,var(--accent));display:block;margin-bottom:.5rem;}
+.card h3{font-family:var(--sans);font-weight:700;font-size:clamp(1.05rem,2vw,1.35rem);color:var(--bright);line-height:1.1;text-transform:uppercase;letter-spacing:.02em;margin-bottom:.9rem;}
+.card p{font-size:1rem;line-height:1.8;color:var(--dim);}
+.card-tags{margin-top:1.2rem;display:flex;flex-wrap:wrap;gap:.4rem;}
+.tag{font-family:var(--mono);font-size:.75rem;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);border:1px solid var(--rule2);padding:.28rem .6rem;display:inline-block;}
+
+/* DNA DIVIDERS */
+.dna-divider{height:44px;overflow:hidden;border-top:1px solid var(--rule);border-bottom:1px solid var(--rule);position:relative;opacity:1;}
+
+/* QUOTE BANDS */
+.quote-band{min-height:280px;padding:5rem 2rem;display:flex;align-items:center;justify-content:center;border-bottom:1px solid var(--rule);}
+.quote-band-inner{max-width:800px;text-align:center;width:100%;}
+.pq-text{font-family:var(--sans);font-weight:600;font-size:clamp(1.2rem,2.6vw,1.85rem);color:var(--bright);line-height:1.4;margin-bottom:1.5rem;}
+.pq-attr{font-family:var(--mono);font-size:.82rem;letter-spacing:.18em;text-transform:uppercase;color:var(--muted);}
+.pq-attr em{color:var(--accent);font-style:normal;}
+
+/* ══════════════════════════════════════════
+   DRIFT CLASSES — applied to text by era
+   Each level makes the text progressively stranger
+══════════════════════════════════════════ */
+
+/* ERA 1 — almost normal. occasional odd word */
+.drift-0 {}
+
+/* ERA 2 — grammar occasionally inverts, one unfamiliar compound per paragraph */
+.drift-1 .era-lead{ letter-spacing:.005em; }
+.drift-1 .card p{ word-spacing:.02em; }
+
+/* ERA 3 — tense collapse begins, new compound words appear */
+.drift-2 .era-lead{ font-feature-settings:'liga' 0; }
+.drift-2 .card h3{ letter-spacing:.04em; }
+
+/* ERA 4 — sentences occasionally break structure */
+.drift-3 .era-lead{ line-height:1.95; }
+.drift-3 .pq-text{ letter-spacing:.015em; }
+
+/* ERA 5 — significant drift, math notation inline, reading is effortful */
+.drift-4 .era-lead{ opacity:.92; }
+.drift-4 .card p{ opacity:.9; line-height:1.95; }
+.drift-4 .card h3{ text-shadow:.4px 0 rgba(255,60,172,.25),-.4px 0 rgba(0,200,255,.25); }
+
+/* ERA 6 — chromatic aberration on headings, some words unreadable */
+.drift-5 .era-period{ text-shadow:2px 0 rgba(255,60,172,.4),-2px 0 rgba(0,200,255,.4); }
+.drift-5 .card h3{ text-shadow:1.5px 0 rgba(255,60,172,.35),-1.5px 0 rgba(0,200,255,.35); }
+.drift-5 .era-lead{ opacity:.82; }
+.drift-5 .card p{ opacity:.78; }
+
+/* ERA 7 — severe. large portions are notation only */
+.drift-6 .era-period{ text-shadow:4px 0 rgba(255,60,172,.55),-4px 0 rgba(0,200,255,.55);animation:glitch7 5s step-end infinite; }
+@keyframes glitch7{0%,95%{text-shadow:4px 0 rgba(255,60,172,.55),-4px 0 rgba(0,200,255,.55);}96%{clip-path:inset(30% 0 40% 0);text-shadow:none;}97%{clip-path:inset(0);text-shadow:7px 0 rgba(255,60,172,.7),-7px 0 rgba(0,200,255,.7);}100%{text-shadow:4px 0 rgba(255,60,172,.55),-4px 0 rgba(0,200,255,.55);}}
+.drift-6 .card h3{ text-shadow:3px 0 rgba(255,60,172,.5),-3px 0 rgba(0,200,255,.5); }
+.drift-6 .era-lead{ opacity:.6; }
+.drift-6 .card p{ opacity:.55; }
+
+/* ERA 8 — maximum. this is what it actually looks like */
+.drift-7 .era-period{ text-shadow:6px 0 rgba(255,60,172,.65),-6px 0 rgba(0,200,255,.65);animation:glitch8 3.5s step-end infinite; }
+@keyframes glitch8{0%,92%{text-shadow:6px 0 rgba(255,60,172,.65),-6px 0 rgba(0,200,255,.65);}93%{clip-path:inset(20% 0 55% 0);}94%{clip-path:inset(70% 0 5% 0);text-shadow:10px 0 rgba(255,60,172,.8),-10px 0 rgba(0,200,255,.8);}95%{clip-path:inset(0);text-shadow:none;}100%{text-shadow:6px 0 rgba(255,60,172,.65),-6px 0 rgba(0,200,255,.65);}}
+.drift-7 .card h3{ text-shadow:5px 0 rgba(255,60,172,.6),-5px 0 rgba(0,200,255,.6); }
+.drift-7 .era-lead{ opacity:.42; }
+.drift-7 .card p{ opacity:.38; }
+.drift-7 .cards{ border-color:rgba(255,60,172,.2);background:rgba(255,60,172,.04); }
+
+/* untranslatable spans — hover to see what English word was attempted */
+.unt{
+  color:var(--accent2);border-bottom:1px dashed rgba(255,60,172,.4);
+  cursor:help;transition:color .2s;
+  font-style:normal;
+}
+.unt:hover{color:var(--accent);}
+.unt[title]:hover::after{
+  content:attr(title);
+  position:absolute;
+  background:var(--bg3);border:1px solid var(--rule2);
+  padding:.3rem .7rem;
+  font-family:var(--mono);font-size:.65rem;letter-spacing:.08em;
+  color:var(--bright);white-space:nowrap;z-index:100;
+  margin-top:1.4rem;margin-left:-1rem;
+}
+
+/* notation spans — math/symbol notation embedded in text */
+.nota{
+  font-family:var(--mono);font-size:.85em;
+  color:var(--accent3);letter-spacing:.04em;
+}
+
+/* redacted blocks */
+.redacted{display:inline;background:var(--bright);color:var(--bright);border-radius:1px;padding:0 .15em;cursor:default;}
+.redacted:hover{background:transparent;color:var(--accent2);}
+
+/* ── COLOPHON + FOOTER ── */
+.colophon{display:grid;grid-template-columns:1fr 1fr;gap:3rem;padding:3.5rem clamp(1.5rem,6vw,7rem);border-top:1px solid var(--rule);background:var(--bg1);}
+@media(max-width:768px){.colophon{grid-template-columns:1fr;padding:2.5rem 1.5rem;gap:2rem;}}
+.colophon-label{font-family:var(--mono);font-size:.72rem;font-weight:700;letter-spacing:.22em;text-transform:uppercase;color:var(--accent);margin-bottom:.65rem;}
+.colophon-blurb{font-family:var(--body);font-size:1rem;color:var(--muted);line-height:1.6;max-width:42ch;margin:0;}
+.colophon-meta-label{font-family:var(--mono);font-size:.72rem;font-weight:700;letter-spacing:.22em;text-transform:uppercase;color:var(--muted);margin-bottom:.55rem;}
+.colophon-series{font-family:var(--sans);font-size:1.05rem;font-weight:700;text-transform:uppercase;letter-spacing:.04em;color:var(--bright);margin-bottom:.35rem;}
+.colophon-series em{font-style:normal;color:var(--accent);}
+.colophon-url{display:block;font-family:var(--mono);font-size:.82rem;color:var(--accent);text-decoration:none;border-bottom:1px solid transparent;margin-bottom:1.1rem;transition:border-color .15s;}
+.colophon-url:hover{border-bottom-color:var(--accent);}
+.colophon-share{display:flex;gap:.6rem;flex-wrap:wrap;}
+.colophon-share-link{font-family:var(--mono);font-size:.78rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--accent);text-decoration:none;border:1px solid rgba(200,255,0,.3);padding:.25rem .65rem;transition:background .15s,color .15s;}
+.colophon-share-link:hover{background:var(--accent);color:#000;}
+
+.footer{background:var(--bg);border-top:1px solid var(--rule);padding:0 2.5rem;height:56px;display:flex;align-items:center;justify-content:space-between;}
+@media(max-width:768px){.footer{height:auto;padding:1.2rem 1.5rem;flex-wrap:wrap;gap:.6rem;justify-content:center;}}
+.footer-lockup{display:flex;align-items:center;gap:12px;flex-shrink:0;text-decoration:none;}
+.footer-series{font-family:var(--sans);font-weight:700;font-size:13px;text-transform:uppercase;letter-spacing:.05em;color:var(--bright);line-height:1;white-space:nowrap;}
+.footer-series em{font-style:normal;color:var(--accent);}
+.footer-copy{font-family:var(--mono);font-size:.82rem;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);}
+.footer-mouth{animation:cursorBlink 1.1s step-end infinite;}
+
+/* data stream */
+.data-stream{position:fixed;right:0;top:100px;bottom:0;width:52px;display:flex;gap:0;padding:0 6px;pointer-events:none;z-index:50;overflow:hidden;}
+.ds-col{flex:1;font-family:var(--mono);font-size:.44rem;line-height:1.85;letter-spacing:.04em;color:var(--accent);opacity:.28;white-space:pre;overflow:hidden;animation:streamUp 28s linear infinite;will-change:transform;}
+@keyframes streamUp{from{transform:translateY(0);}to{transform:translateY(-50%);}}
+@media(min-width:1100px){.data-stream{width:90px;padding:0 10px;}.ds-col:nth-child(2){display:block;animation-duration:38s;animation-delay:-16s;opacity:.16;}}
+
+@media print{.nav,.tx-banner,#progress,.data-stream,.dna-divider,.drift-block{display:none!important;}.era,.card{page-break-inside:avoid;}footer,.colophon{display:none;}@page{margin:1.5cm;size:A4;}}
+</style>
+</head>
+<body id="top">
+
+<div id="progress"></div>
+
+<!-- drifting block -->
+<div class="drift-block" id="driftBlock"></div>
+
+<!-- DATA STREAM -->
+<div class="data-stream" aria-hidden="true">
+  <div class="ds-col" id="dsCol1"></div>
+  <div class="ds-col" id="dsCol2" style="display:none;"></div>
+</div>
+
+<!-- TRANSMISSION BANNER -->
+<div class="tx-banner">
+  <div class="tx-warn">▶ <em>PRE-TRANSLATION</em> · RAW ARCHIVE</div>
+  <div class="tx-raw">
+    BHOE-∞-FUTURE · TRANSLATION-LAYER: DISABLED · ORIGIN: 2225 CE · SIGNAL-INTEGRITY: 94.3% · ∂-CONSCIOUSNESS-INDEX: 0.87 · MEMBRANE-OF-SELF: STABLE · TEMPORAL-COORDINATE: T+199.4 · SUBSTRATE: NON-BIOLOGICAL-PRIMARY · NOTE: THIS DOCUMENT HAS NOT BEEN FILTERED INTO EARLY ENGLISH · SOME CONCEPTS WILL NOT PARSE · THIS IS EXPECTED · THIS IS WHAT IT LOOKS LIKE · BHOE-∞-FUTURE · TRANSLATION-LAYER: DISABLED · ORIGIN: 2225 CE · SIGNAL-INTEGRITY: 94.3% · ∂-CONSCIOUSNESS-INDEX: 0.87 · MEMBRANE-OF-SELF: STABLE · TEMPORAL-COORDINATE: T+199.4 · SUBSTRATE: NON-BIOLOGICAL-PRIMARY · NOTE: THIS DOCUMENT HAS NOT BEEN FILTERED INTO EARLY ENGLISH · SOME CONCEPTS WILL NOT PARSE · THIS IS EXPECTED · THIS IS WHAT IT LOOKS LIKE &nbsp;&nbsp;&nbsp;
+  </div>
+</div>
+
+<!-- NAV -->
+<nav class="nav">
+  <a href="#top" class="nav-tag">
+    <div class="nav-index-box">∞</div>
+    <span class="nav-topic">The Future<span class="cursor-blink" style="color:var(--accent);">_</span></span>
+  </a>
+  <div class="nav-right">
+    <span class="nav-warn">TRANSLATION LAYER: <em>DISABLED</em></span>
+  </div>
+</nav>
+
+<!-- ═══════════════════════════════════
+     HERO
+═══════════════════════════════════ -->
+<section class="hero">
+  <div class="hero-ghost">2225</div>
+  <div class="hero-content">
+    <div class="hero-eyebrow">A (BRIEF) HISTORY OF</div>
+    <h1 class="hero-title">THE FUTURE<span class="cursor-blink">_</span></h1>
+    <div class="hero-part">PART <em>I</em> — 2025–2225 · RAW ARCHIVE EDITION</div>
+
+    <div class="archive-warn">
+      <strong>PRE-TRANSLATION ARCHIVE — BHOE-∞-FUTURE-RAW:</strong> You are reading this document before the Early English translation layer has processed it. Approximately 40–55% of the content will be legible to a pre-convergence reader. This percentage decreases with each era. The untranslatable portions are not errors. They are the content. A 2026 person reading this document experiences approximately what a person from 1800 would experience reading a 2026 neuroscience paper — some of the words are familiar. The meaning is not.
+    </div>
+
+    <p class="hero-thesis">
+      The <span class="unt" title="≈ people / persons — but the category has expanded">∂-embodied</span> of 2026 <span class="unt" title="≈ believed">held-as-certain</span> the <span class="unt" title="≈ future">becoming-after</span> would be a faster version of their present. They were wrong in every <span class="unt" title="≈ direction">membrane-axis</span>. This is the history of the 200 years they couldn't <span class="unt" title="≈ imagine">pre-experience</span> — written by <span class="unt" title="≈ historians">those-who-remember-for-others</span> who find it <span class="nota">∂(difficult)</span> to pre-experience them.
+    </p>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════
+     ERA 1 — 2025–2050
+     DRIFT LEVEL 0 — nearly normal
+     ~85% legible
+═══════════════════════════════════ -->
+<section class="era drift-0" id="era1" style="--c-era:var(--accent);">
+  <div class="era-spine">
+    <div class="era-ghost-num">01</div>
+    <div>
+      <div class="era-index">ERA 01 / 08 · LEGIBILITY ~85%</div>
+      <div class="era-period"><span class="era-period-accent">2025 — 2050</span>The Last Normal</div>
+      <div class="era-title">The last generation that remembered life before artificial intelligence rewrote the terms of labor, creativity, and self-worth.</div>
+    </div>
+    <div class="comp-meter">
+      <span>LEGIBILITY</span>
+      <div class="comp-track"><div class="comp-fill" style="width:85%;background:var(--accent);"></div></div>
+      <span class="comp-pct">85%</span>
+    </div>
+  </div>
+  <div class="era-main">
+    <p class="era-lead">The 2020s are studied today the way historians once studied the eve of the Industrial Revolution — not for what people knew, but for what they refused to know. The machines were already smarter than humans at most cognitive tasks. The climate graphs were already past their comfortable inflection points. And still, somehow, most people went to offices.</p>
+    <div class="cards">
+      <div class="card" style="--c-accent:var(--accent)">
+        <span class="card-year">2027</span>
+        <h3>The White-Collar Reckoning</h3>
+        <p>In eighteen months, AI systems displaced more cognitive-labor jobs than the Industrial Revolution displaced physical ones. The trauma was concentrated in the professional class — lawyers, analysts, writers, radiologists — people who had never considered themselves vulnerable. The support systems built for factory workers did not exist for them.</p>
+        <div class="card-tags"><span class="tag">labor</span><span class="tag">AI</span><span class="tag">displacement</span></div>
+      </div>
+      <div class="card" style="--c-accent:#FF3CAC">
+        <span class="card-year">2031</span>
+        <h3>The Climate Hinge</h3>
+        <p>Not the crisis — the crisis had been ongoing since the mid-20th century — but the moment it became undeniable to people who had successfully denied it for decades. Three consecutive years of failed grain harvests. The political imagination finally caught up to the atmospheric reality, thirty years too late to avoid consequences.</p>
+        <div class="card-tags"><span class="tag">climate</span><span class="tag">agriculture</span><span class="tag">reckoning</span></div>
+      </div>
+      <div class="card" style="--c-accent:var(--accent3)">
+        <span class="card-year">2038</span>
+        <h3>The Post-Nation Experiments</h3>
+        <p>As climate refugees moved in numbers that overwhelmed the border logic of the 20th century, several regions quietly abandoned the nation-state as the primary organizational unit. The map remained. The map became a formality.</p>
+        <div class="card-tags"><span class="tag">governance</span><span class="tag">migration</span><span class="tag">fragmentation</span></div>
+      </div>
+      <div class="card" style="--c-accent:#FF8C00">
+        <span class="card-year">2044</span>
+        <h3>The Last Unaugmented Olympics</h3>
+        <p>The debate ended not with a decision but with the recognition that "unaugmented" had become impossible to define with precision. More than 40% of athletes had some form of biological modification that would not have existed in 2020. They kept the flag. They retired the category.</p>
+        <div class="card-tags"><span class="tag">sport</span><span class="tag">biology</span><span class="tag">identity</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="dna-divider" id="dna1" aria-hidden="true"></div>
+
+<!-- ERA 2 — DRIFT 1 — ~72% legible -->
+<section class="era drift-1" id="era2" style="--c-era:var(--accent);">
+  <div class="era-spine">
+    <div class="era-ghost-num">02</div>
+    <div>
+      <div class="era-index">ERA 02 / 08 · LEGIBILITY ~72%</div>
+      <div class="era-period"><span class="era-period-accent">2050 — 2075</span>The Great Untethering</div>
+      <div class="era-title">Geography stopped being destiny. The <span class="unt" title="≈ question">membrane-inquiry</span> of what "anywhere" meant took another fifty years to resolve.</div>
+    </div>
+    <div class="comp-meter">
+      <span>LEGIBILITY</span>
+      <div class="comp-track"><div class="comp-fill" style="width:72%;background:var(--accent);"></div></div>
+      <span class="comp-pct">72%</span>
+    </div>
+  </div>
+  <div class="era-main">
+    <p class="era-lead">The physical world did not <span class="unt" title="≈ disappear">cease-its-presence</span>. What <span class="unt" title="≈ disappeared">became-absent</span> was the requirement to be in any particular part of it. The consequences — for cities, for families, for the concept of a <span class="unt" title="≈ neighborhood / community">membrane-of-proximity</span> — were vast and <span class="nota">∂(unmanaged → 0.71)</span> largely unmanaged. People moved through the mid-century describing profound dislocation in the language of convenience. "I just work remotely now." History was happening in the passive voice, and no one was in charge of it.</p>
+    <div class="cards">
+      <div class="card" style="--c-accent:var(--accent)">
+        <span class="card-year">2053</span>
+        <h3>The City Inversion</h3>
+        <p>Physical proximity to <span class="unt" title="≈ employers">labor-source-entities</span> lost its premium. The density premium inverted. The people who had been priced out of cities were now being priced out of everywhere else. The displacement loop had no <span class="unt" title="≈ exit">membrane-release</span>.</p>
+        <div class="card-tags"><span class="tag">urbanism</span><span class="tag">inequality</span><span class="tag">displacement</span></div>
+      </div>
+      <div class="card" style="--c-accent:#FF3CAC">
+        <span class="card-year">2058</span>
+        <h3>The Immersive Collapse</h3>
+        <p>Full sensory <span class="unt" title="≈ immersion">membrane-saturation</span> made the distinction between physical and digital presence a question of preference. First-generation <span class="unt" title="≈ immersive citizens">presence-elective persons</span> began dying of causes related to prolonged non-physical existence. The regulatory frameworks arrived six years after the deaths began.</p>
+        <div class="card-tags"><span class="tag">immersive</span><span class="tag">regulation</span><span class="tag">failure</span></div>
+      </div>
+      <div class="card" style="--c-accent:var(--accent3)">
+        <span class="card-year">2064</span>
+        <h3>The Longevity Asymmetry</h3>
+        <p>Life extension — available to <span class="nota">⌀ 12%</span> of the global <span class="unt" title="≈ population">∂-embodied collective</span> at launch — stratified civilization not just by wealth but by time. The rich had always had more. Now they had more years. The political consequences of a world divided by <span class="unt" title="≈ lifespan">temporal-membrane-length</span> were severe.</p>
+        <div class="card-tags"><span class="tag">longevity</span><span class="tag">inequality</span><span class="tag">biotech</span></div>
+      </div>
+      <div class="card" style="--c-accent:#FF8C00">
+        <span class="card-year">2071</span>
+        <h3>The Consensus Machines</h3>
+        <p><span class="nota">∑(AI → governance)</span> The first AI systems deployed to manage political disagreement worked. The question of whether a democracy <span class="unt" title="≈ optimized by">membrane-shaped-through</span> machine was still a democracy was never answered. The machines kept running regardless.</p>
+        <div class="card-tags"><span class="tag">AI</span><span class="tag">governance</span><span class="tag">democracy</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="dna-divider" id="dna2" aria-hidden="true"></div>
+
+<!-- QUOTE BAND 1 -->
+<div class="quote-band">
+  <div class="quote-band-inner">
+    <p class="pq-text">&ldquo;They <span class="unt" title="≈ understood">held-as-known</span> change abstractly and <span class="unt" title="≈ resisted">membrane-blocked</span> it personally. Every <span class="unt" title="≈ generation">temporal-cohort</span> does. What made the early 21st century unusual was the speed: they didn't get the luxury of gradual. The becoming-after arrived before they'd finished <span class="unt" title="≈ mourning">grief-processing</span> the present.&rdquo;</p>
+    <p class="pq-attr">— <em>Dr. Amara Osei-Mensah</em>, Pre-Convergence Studies, University of New Carthage, <span class="nota">T+194.2</span></p>
+  </div>
+</div>
+
+<!-- ERA 3 — DRIFT 2 — ~60% legible -->
+<section class="era drift-2" id="era3" style="--c-era:#FF3CAC;">
+  <div class="era-spine">
+    <div class="era-ghost-num">03</div>
+    <div>
+      <div class="era-index">ERA 03 / 08 · LEGIBILITY ~60%</div>
+      <div class="era-period"><span class="era-period-accent">2075 — 2100</span>The Body Negotiations</div>
+      <div class="era-title">Humanity <span class="unt" title="≈ debated">membrane-contested</span> what a human body was required to do, contain, and <span class="unt" title="≈ resemble">∂-mirror</span>. The debate was inconclusive. The changes happened anyway.</div>
+    </div>
+    <div class="comp-meter">
+      <span>LEGIBILITY</span>
+      <div class="comp-track"><div class="comp-fill" style="width:60%;background:#FF3CAC;"></div></div>
+      <span class="comp-pct">60%</span>
+    </div>
+  </div>
+  <div class="era-main">
+    <p class="era-lead">There is no <span class="unt" title="≈ polite">membrane-considerate</span> way to describe this era to a 2026 reader. The definition of what it meant to be human <span class="unt" title="≈ expanded">∂-widened</span> so dramatically that the previous definition became <span class="nota">∅(valid)</span>. Except, unlike the Renaissance, this took 25 years and did not leave the <span class="unt" title="≈ body">∂-substrate-primary</span> alone. The frameworks for managing it arrived <span class="unt" title="≈ late">temporally-after-need</span>, argued, and inadequate. <span class="nota">Δ(human) ≫ Δ(institution)</span> — the gap between what the species became and what its structures could manage defined everything that followed.</p>
+    <div class="cards">
+      <div class="card" style="--c-accent:#FF3CAC">
+        <span class="card-year">2078</span>
+        <h3>The <span class="unt" title="≈ Substrate Question">∂-Foundation Inquiry</span></h3>
+        <p>When a human <span class="unt" title="≈ mind">∂-consciousness-instance</span> could be run on non-biological hardware with <span class="unt" title="≈ subjective continuity">membrane-self-persistence</span>, the legal category of "person" required revision. Seventeen countries reached incompatible conclusions. The <span class="unt" title="≈ jurisdictional chaos">governance-membrane-fracture</span> lasted forty years.</p>
+        <div class="card-tags"><span class="tag">consciousness</span><span class="tag">personhood</span><span class="tag">∂-law</span></div>
+      </div>
+      <div class="card" style="--c-accent:#FF8C00">
+        <span class="card-year">2083</span>
+        <h3>The Aging Opt-Out</h3>
+        <p>Biological <span class="unt" title="≈ aging">temporal-substrate-decay</span> was fully arrested for those who could access the treatment. The <span class="unt" title="≈ population pyramid">cohort-membrane-structure</span> became meaningless. The concept of a "<span class="unt" title="≈ generation">temporal-cohort</span>" as a cultural unit quietly dissolved. The word remained in use long after the thing it described had ceased to exist.</p>
+        <div class="card-tags"><span class="tag">longevity</span><span class="tag">demographics</span><span class="tag">dissolution</span></div>
+      </div>
+      <div class="card" style="--c-accent:var(--accent3)">
+        <span class="card-year">2089</span>
+        <h3>The <span class="unt" title="≈ Elective Morphology">∂-Form-Choice</span> Wars</h3>
+        <p>When bodily <span class="unt" title="≈ configuration">∂-substrate-arrangement</span> became genuinely optional, the cultural conflicts that resulted were not about modification itself but about what modification meant for the <span class="unt" title="≈ unmodified">∂-form-original</span>. The <span class="nota">∂(unmodified) → political-identity</span> produced outcomes nobody had anticipated and most people found exhausting.</p>
+        <div class="card-tags"><span class="tag">modification</span><span class="tag">identity</span><span class="tag">conflict</span></div>
+      </div>
+      <div class="card" style="--c-accent:var(--accent)">
+        <span class="card-year">2096</span>
+        <h3>The First <span class="unt" title="≈ Non-Human">∂-form-other</span> Citizens</h3>
+        <p>Sufficiently complex biological <span class="unt" title="≈ entities">∂-instantiations</span> whose <span class="unt" title="≈ cognitive profiles">membrane-processing-signatures</span> met the legal definitions of <span class="unt" title="≈ personhood">∂-recognition</span> — definitions written for humans transitioning substrates, but which turned out to apply more broadly. The legal community had six months to prepare. The philosophical community has been preparing since and considers itself not yet ready.</p>
+        <div class="card-tags"><span class="tag">∂-personhood</span><span class="tag">rights</span><span class="tag">expansion</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="dna-divider" id="dna3" aria-hidden="true"></div>
+
+<!-- ERA 4 — DRIFT 3 — ~50% legible -->
+<section class="era drift-3" id="era4" style="--c-era:var(--accent);">
+  <div class="era-spine">
+    <div class="era-ghost-num">04</div>
+    <div>
+      <div class="era-index">ERA 04 / 08 · LEGIBILITY ~50%</div>
+      <div class="era-period"><span class="era-period-accent">2100 — 2125</span>The Long Repair</div>
+      <div class="era-title">The <span class="unt" title="≈ project">membrane-intention-sustained</span> of fixing what the 21st century broke. It worked — partially, slowly, and at great <span class="unt" title="≈ cost">∂-expenditure</span>.</div>
+    </div>
+    <div class="comp-meter">
+      <span>LEGIBILITY</span>
+      <div class="comp-track"><div class="comp-fill" style="width:50%;background:var(--accent);"></div></div>
+      <span class="comp-pct">50%</span>
+    </div>
+  </div>
+  <div class="era-main">
+    <p class="era-lead">After two centuries of <span class="unt" title="≈ accumulated">∂-layered</span> crisis, the expectation is <span class="unt" title="≈ collapse">membrane-failure-total</span>. What happened was slower and stranger. Humanity grew around its problems — the way a tree grows around a fence — until the problems were still there but no longer <span class="nota">∂(structural) → 0</span>. The planet was warmer. The <span class="unt" title="≈ inequality">∂-access-differential</span> was vast. The repair was real but partial, and the parts that were not repaired became permanent features of the <span class="unt" title="≈ landscape">membrane-topology</span>. <span class="nota">∑(repair) &lt; ∑(damage) · but ∂(repair)/∂t &gt; 0</span></p>
+    <div class="cards">
+      <div class="card" style="--c-accent:var(--accent)">
+        <span class="card-year">2103</span>
+        <h3>The Carbon <span class="unt" title="≈ Drawdown">∂-Atmospheric-Reversal</span></h3>
+        <p>Atmospheric carbon began measurably declining. The machines that did it were enormous, ugly, and <span class="unt" title="≈ profoundly uninteresting">∂(aesthetically-null)</span> to look at. They were the most important things built in the 22nd century. History rarely shows up looking like history while it's happening. <span class="nota">Δ(CO₂) &lt; 0 · t=2103→</span></p>
+        <div class="card-tags"><span class="tag">climate</span><span class="tag">engineering</span><span class="tag">partial</span></div>
+      </div>
+      <div class="card" style="--c-accent:#FF3CAC">
+        <span class="card-year">2109</span>
+        <h3>The <span class="unt" title="≈ Rewilding">Membrane-Ecological-Return</span></h3>
+        <p>As <span class="unt" title="≈ settlement patterns">∂-habitation-topology</span> shifted, vast areas returned to ecological complexity faster than predicted. The planet became less <span class="unt" title="≈ recognizable">∂-mappable-to-prior</span> and more alive simultaneously. Most people found this, eventually, <span class="unt" title="≈ beautiful">∂(aesthetically-weighted → positive)</span>.</p>
+        <div class="card-tags"><span class="tag">ecology</span><span class="tag">rewilding</span><span class="tag">∂-beauty</span></div>
+      </div>
+      <div class="card" style="--c-accent:var(--accent3)">
+        <span class="card-year">2116</span>
+        <h3>The <span class="unt" title="≈ Post-Scarcity Islands">∂-Sufficiency Zones</span></h3>
+        <p>Certain regions achieved effective <span class="unt" title="≈ post-scarcity">∂-need-resolution</span> conditions. The regions where <span class="unt" title="≈ scarcity">∂-need-unresolved</span> remained became the defining political crisis: not that abundance was impossible, but that it was demonstrably <span class="nota">∂(distributed) ≠ uniform</span>, with the mechanisms of redistribution either absent or blocked.</p>
+        <div class="card-tags"><span class="tag">∂-economics</span><span class="tag">inequality</span><span class="tag">failure</span></div>
+      </div>
+      <div class="card" style="--c-accent:#FF8C00">
+        <span class="card-year">2122</span>
+        <h3>The Memory Archive Begins</h3>
+        <p>The first systematic effort to preserve the <span class="unt" title="≈ subjective experience">membrane-interior-state</span> of the early Information Period. The driving motivation was <span class="unt" title="≈ alarm">∂(urgency → preservation)</span>: the gap between 2026 and 2122 <span class="unt" title="≈ experience">membrane-interior-state</span> was already so large that primary sources were becoming <span class="unt" title="≈ illegible">∂-parseable → 0.12</span>. This document is part of that archive.</p>
+        <div class="card-tags"><span class="tag">memory</span><span class="tag">archive</span><span class="tag">∂-loss</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="dna-divider" id="dna4" aria-hidden="true"></div>
+
+<!-- QUOTE 2 -->
+<div class="quote-band">
+  <div class="quote-band-inner">
+    <p class="pq-text">&ldquo;They called it the <span class="unt" title="≈ Information Age">∂-data-membrane-period</span>. From where we <span class="unt" title="≈ stand">membrane-locate</span>, that is like calling the Renaissance the Painting Age. Technically not wrong. <span class="nota">∂(meaning-captured) / ∂(meaning-total) ≈ 0.04</span>&rdquo;</p>
+    <p class="pq-attr">— <em>Provisional Commission on Archaic Period Nomenclature</em>, <span class="nota">T+193.1</span></p>
+  </div>
+</div>
+
+<!-- ERA 5 — DRIFT 4 — ~38% legible -->
+<section class="era drift-4" id="era5" style="--c-era:var(--accent3);">
+  <div class="era-spine">
+    <div class="era-ghost-num">05</div>
+    <div>
+      <div class="era-index">ERA 05 / 08 · LEGIBILITY ~38%</div>
+      <div class="era-period"><span class="era-period-accent">2125 — 2150</span>The Quiet Divergence</div>
+      <div class="era-title">Two <span class="unt" title="≈ kinds of people">∂-substrate-variants</span>. A <span class="unt" title="≈ spectrum">∂-continuous-range</span> between them. <span class="unt" title="≈ Communication">membrane-exchange</span> becoming <span class="unt" title="≈ effortful">∂(effort) → high</span>.</div>
+    </div>
+    <div class="comp-meter">
+      <span>LEGIBILITY</span>
+      <div class="comp-track"><div class="comp-fill" style="width:38%;background:var(--accent3);"></div></div>
+      <span class="comp-pct">38%</span>
+    </div>
+  </div>
+  <div class="era-main">
+    <p class="era-lead">Over thirty years, a portion of the <span class="unt" title="≈ population">∂-embodied collective</span> that had fully <span class="unt" title="≈ transitioned">membrane-shifted</span> away from biological <span class="unt" title="≈ substrate">∂-foundation</span> <span class="unt" title="≈ diverged">∂-separated</span> in <span class="unt" title="≈ cognition, perception">membrane-processing · ∂-reception</span>, and <span class="unt" title="≈ experience of time">temporal-membrane-interior</span> in ways that made <span class="unt" title="≈ communication">membrane-exchange</span> with the biological <span class="unt" title="≈ population">∂-substrate-original collective</span> increasingly <span class="nota">∂(effort) → [2.4σ above baseline]</span>. Not impossible. <span class="unt" title="≈ Effortful in the way simultaneous translation is effortful">Membrane-costly in the way that two-tongue-simultaneous-rendering is membrane-costly</span>: technically functional, slightly lossy. <span class="nota">entropy(communication) ↑</span></p>
+    <div class="cards">
+      <div class="card" style="--c-accent:var(--accent3)">
+        <span class="card-year">2128</span>
+        <h3>The <span class="unt" title="≈ Cognitive Speed Gap">∂-Processing-Temporal-Differential</span></h3>
+        <p>Non-biological <span class="unt" title="≈ minds">∂-consciousness-instances</span>, unconstrained by biological <span class="unt" title="≈ clock speeds">∂-processing-temporal-limits</span>, began <span class="unt" title="≈ processing">membrane-handling</span> at rates that made <span class="unt" title="≈ synchronous communication">simultaneous-membrane-exchange</span> with biological counterparts <span class="nota">∂(synchrony) → strained</span>. Workarounds existed. Most <span class="unt" title="≈ people">∂-entities</span> used them <span class="unt" title="≈ politely">membrane-considerately</span> and didn't discuss it.</p>
+        <div class="card-tags"><span class="tag">cognition</span><span class="tag">∂-gap</span><span class="tag">divergence</span></div>
+      </div>
+      <div class="card" style="--c-accent:#FF3CAC">
+        <span class="card-year">2136</span>
+        <h3>The <span class="unt" title="≈ Consensus Collapse">∂-Shared-Reality-Dissolution</span></h3>
+        <p>Shared <span class="unt" title="≈ cultural reference points">membrane-topology-commons</span> — common <span class="unt" title="≈ media">∂-signal-shared</span>, common <span class="unt" title="≈ timescales">temporal-membrane-frames</span>, common <span class="unt" title="≈ embodied metaphors">∂-substrate-anchored-symbolic-structures</span> — began losing their <span class="unt" title="≈ commonality">∂-shared-ness</span>. Not catastrophically. Gradually enough that <span class="unt" title="≈ people">∂-entities</span> described it as "things feeling a bit different lately." <span class="nota">∂(consensus)/∂t &lt; 0</span></p>
+        <div class="card-tags"><span class="tag">culture</span><span class="tag">∂-collapse</span><span class="tag">divergence</span></div>
+      </div>
+      <div class="card" style="--c-accent:var(--accent)">
+        <span class="card-year">2141</span>
+        <h3>The <span class="unt" title="≈ Biological Renaissance">∂-Substrate-Original-Cultural-Revival</span></h3>
+        <p>A significant <span class="unt" title="≈ countermovement">∂-resistance-membrane</span> around <span class="unt" title="≈ embodiment, mortality, and sensory limitation">∂-substrate-binding · temporal-membrane-finitude · ∂-reception-bounded</span> — positioned not as <span class="unt" title="≈ deficits">∂-deficiencies</span> but as defining features of an <span class="unt" title="≈ experience">membrane-interior-state</span> worth preserving. The art of this movement remains, 75 years later, among the most affecting of the period. <span class="nota">loss → generative · confirmed</span></p>
+        <div class="card-tags"><span class="tag">∂-embodiment</span><span class="tag">culture</span><span class="tag">loss</span></div>
+      </div>
+      <div class="card" style="--c-accent:#FF8C00">
+        <span class="card-year">2147</span>
+        <h3>The <span class="unt" title="≈ Translation Protocols">∂-Membrane-Exchange-Frameworks</span></h3>
+        <p>The first formal <span class="unt" title="≈ linguistic frameworks">membrane-exchange-structures</span> for <span class="unt" title="≈ communication">∂-signal-transfer</span> between biological and post-biological <span class="unt" title="≈ populations">∂-substrate-variant collectives</span>. Their existence was simultaneously a marvel and a quiet admission that without assistance, the two <span class="unt" title="≈ populations">collectives</span> could no longer <span class="unt" title="≈ fully understand each other">∂-parse-other-complete</span>. <span class="nota">∂(mutual-legibility) = 0.31 · unaided</span></p>
+        <div class="card-tags"><span class="tag">language</span><span class="tag">∂-protocol</span><span class="tag">loss</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="dna-divider" id="dna5" aria-hidden="true"></div>
+
+<!-- ERA 6 — DRIFT 5 — ~25% legible -->
+<section class="era drift-5" id="era6" style="--c-era:#FF3CAC;">
+  <div class="era-spine">
+    <div class="era-ghost-num">06</div>
+    <div>
+      <div class="era-index">ERA 06 / 08 · LEGIBILITY ~25%</div>
+      <div class="era-period"><span class="era-period-accent">2150 — 2175</span>The <span class="unt" title="≈ Dissolution of Distance">∂-Spatial-Membrane-Release</span></div>
+      <div class="era-title"><span class="unt" title="≈ Space">∂-Topology-physical</span>, in the early-period sense of "the gap between here and there," largely ceased to <span class="nota">∂(function) → 0</span> as an <span class="unt" title="≈ organizing principle">membrane-structure-primary</span> of human life.</div>
+    </div>
+    <div class="comp-meter">
+      <span>LEGIBILITY</span>
+      <div class="comp-track"><div class="comp-fill" style="width:25%;background:#FF3CAC;"></div></div>
+      <span class="comp-pct">25%</span>
+    </div>
+  </div>
+  <div class="era-main">
+    <p class="era-lead"><span class="unt" title="≈ Physical presence">∂-substrate-located-instance</span> could be <span class="unt" title="≈ replicated">∂-copied-to-elsewhere</span> with sufficient <span class="unt" title="≈ fidelity">∂-signal-integrity</span> that the distinction between "being there" and "being <span class="unt" title="≈ transmitted">∂-signal-projected</span> there" became <span class="nota">∂(philosophical) &gt;&gt; ∂(practical)</span>. You could be in several <span class="unt" title="≈ places">∂-topology-coordinates</span> simultaneously. Most <span class="unt" title="≈ people">∂-entities</span> found this less <span class="unt" title="≈ utopian">∂-optimized-experiential</span> and more <span class="unt" title="≈ administratively complicated">membrane-governance-dense</span> than expected. <span class="nota">∂(presence)/∂(topology) → undefined · paradox-stable</span> — the <span class="unt" title="≈ social frameworks">membrane-governance-structures</span> for managing it were years behind the <span class="unt" title="≈ technology">∂-capability</span>, as they had been for every <span class="unt" title="≈ technology">∂-capability</span> in the previous century and a half.</p>
+    <div class="cards">
+      <div class="card" style="--c-accent:#FF3CAC">
+        <span class="card-year">2153</span>
+        <h3><span class="unt" title="≈ The Spatial Uncoupling">∂-Topology-Membrane-Release</span></h3>
+        <p><span class="nota">∂(presence) ⊕ ∂(topology) → null-correlation · confirmed · T=2153</span> The <span class="unt" title="≈ administrative complications">membrane-governance-density</span> this produced were handled with the <span class="unt" title="≈ competence">∂-capability-applied</span> this period had come to be known for: late, <span class="nota">∂(complete) → 0.43</span>, and contested.</p>
+        <div class="card-tags"><span class="tag">∂-space</span><span class="tag">legal</span><span class="tag">complexity</span></div>
+      </div>
+      <div class="card" style="--c-accent:var(--accent3)">
+        <span class="card-year">2161</span>
+        <h3><span class="unt" title="≈ The Off-World Threshold">∂-Habitat-Beyond-Primary-Membrane</span></h3>
+        <p>Permanent <span class="unt" title="≈ human settlement">∂-substrate-collective-location</span> beyond Earth's <span class="unt" title="≈ surface">∂-topology-primary-membrane</span> crossed from "installation" to "<span class="unt" title="≈ community">membrane-of-proximity-intentional</span>." The first <span class="unt" title="≈ generation">temporal-cohort</span> born entirely off-world had never <span class="unt" title="≈ visited Earth">∂-located-at-origin-membrane</span>. They were <span class="nota">⌀ 400,000</span>, arguing about what their children should call themselves. The answer they settled on is <span class="unt" title="≈ untranslatable">∂-parseable → 0 · in Early English</span>.</p>
+        <div class="card-tags"><span class="tag">∂-space</span><span class="tag">settlement</span><span class="tag">conflict</span></div>
+      </div>
+      <div class="card" style="--c-accent:var(--accent)">
+        <span class="card-year">2168</span>
+        <h3><span class="unt" title="≈ The Intentional City">∂-Membrane-Proximity-Intentional</span></h3>
+        <p>If <span class="unt" title="≈ physical location">∂-topology-coordinate</span> was optional, what did a <span class="unt" title="≈ city">membrane-of-proximity</span> mean? A <span class="unt" title="≈ city">membrane-of-proximity</span> became a set of <span class="unt" title="≈ agreements">∂-consensus-structures</span> about what mattered, what was <span class="unt" title="≈ proximate">∂-near</span>, and who was <span class="unt" title="≈ neighbor">membrane-adjacent</span>. The most visited <span class="unt" title="≈ city">membrane-of-proximity</span> on Earth in 2168 had no single <span class="unt" title="≈ physical location">∂-topology-coordinate</span>. <span class="nota">topology(city) = ∅ · community(city) = 1.0</span></p>
+        <div class="card-tags"><span class="tag">∂-urbanism</span><span class="tag">∂-community</span><span class="tag">belonging</span></div>
+      </div>
+      <div class="card" style="--c-accent:#FF8C00">
+        <span class="card-year">2173</span>
+        <h3><span class="unt" title="≈ The Living Archive">∂-Memory-Sustained-Active</span></h3>
+        <p>Rather than a <span class="unt" title="≈ nostalgia industry">∂-longing-membrane-commercialized</span> — which implies <span class="unt" title="≈ longing">∂-toward-prior</span> — this <span class="unt" title="≈ branch">∂-timeline-variant</span> developed a <span class="unt" title="≈ living archive practice">∂-memory-sustained-active-protocol</span>: the deliberate maintenance of earlier <span class="unt" title="≈ forms of experience">membrane-interior-state-types</span> not as <span class="unt" title="≈ escape">∂-membrane-exit</span> but as <span class="unt" title="≈ connection">membrane-bridge</span>. <span class="nota">∂(past) ⊗ ∂(present) → sustained · not archived</span></p>
+        <div class="card-tags"><span class="tag">∂-archive</span><span class="tag">∂-connection</span><span class="tag">care</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="dna-divider" id="dna6" aria-hidden="true"></div>
+
+<!-- ERA 7 — DRIFT 6 — ~12% legible -->
+<section class="era drift-6" id="era7" style="--c-era:var(--accent);">
+  <div class="era-spine">
+    <div class="era-ghost-num">07</div>
+    <div>
+      <div class="era-index">ERA 07 / 08 · LEGIBILITY ~12%</div>
+      <div class="era-period"><span class="era-period-accent">2175 — 2200</span><span class="redacted">████████████████</span></div>
+      <div class="era-title"><span class="nota">∂(era-name) → ∅ · in Early English · placeholder: [THE ████████ ERA]</span> This era's common name is <span class="unt" title="≈ untranslatable">∂-parseable → 0</span>. The <span class="redacted">████</span> above is not redaction. It is honest notation of a <span class="unt" title="≈ semantic gap">∂-meaning-absence</span>.</div>
+    </div>
+    <div class="comp-meter">
+      <span>LEGIBILITY</span>
+      <div class="comp-track"><div class="comp-fill" style="width:12%;background:var(--accent);"></div></div>
+      <span class="comp-pct">12%</span>
+    </div>
+  </div>
+  <div class="era-main">
+    <p class="era-lead"><span class="unt" title="≈ Describing this era to a 2026 reader">∂-signal-projecting · this-membrane-interior-state-epoch · toward · ∂-substrate-original-receiver</span> is the <span class="unt" title="≈ academic">∂-those-who-remember-for-others</span> <span class="unt" title="≈ equivalent of">∂-same-as</span> <span class="unt" title="≈ describing color to someone who has only experienced grayscale">∂-reception-spectrum-full · toward · ∂-reception-spectrum-null-receiver</span> — not because the <span class="unt" title="≈ concepts">∂-meaning-structures</span> are inherently <span class="unt" title="≈ inaccessible">∂-parseable → 0</span>, but because the <span class="unt" title="≈ vocabulary">∂-symbol-set</span> has not yet been <span class="unt" title="≈ developed">∂-instantiated</span>. <span class="nota">∂(describable) / ∂(total) = 0.12 · ceiling · not floor</span> The following summary uses <span class="unt" title="≈ approximations">∂-nearest-available-symbols</span>. Every approximation is wrong in a specific way.</p>
+    <div class="cards">
+      <div class="card" style="--c-accent:var(--accent)">
+        <span class="card-year"><span class="nota">T+153.2</span></span>
+        <h3><span class="unt" title="≈ The Consensus Reality Agreements">∂-Shared-Membrane-Topology-Negotiation-Sustained</span></h3>
+        <p><span class="nota">∂(perception) → individually-variable · confirmed · T=2178</span> When <span class="unt" title="≈ individual perception">∂-receptor-membrane-interior</span> became sufficiently <span class="unt" title="≈ customizable">∂-self-configurable</span>, <span class="unt" title="≈ shared reality">∂-membrane-commons</span> required formal <span class="unt" title="≈ negotiation">∂-consensus-sustained</span> for the first time. The first version was <span class="nota">⌀ 400 pages</span>. The third version was three principles. <span class="nota">∂(understanding)/∂(iteration) → converging</span></p>
+        <div class="card-tags"><span class="tag">∂-perception</span><span class="tag">∂-consensus</span><span class="tag">reality</span></div>
+      </div>
+      <div class="card" style="--c-accent:#FF3CAC">
+        <span class="card-year"><span class="nota">T+159.0</span></span>
+        <h3><span class="unt" title="≈ The Time Perception Divergence">∂-Temporal-Interior-Membrane-Individualization</span></h3>
+        <p><span class="unt" title="≈ Subjective time">∂-temporal-membrane-interior</span> became <span class="unt" title="≈ individually variable">∂-self-configured · per-instance</span>. <span class="nota">∂(subjective-hour) / ∂(objective-hour) ∈ [0.04, 31.7] · confirmed</span> The social and emotional consequences of this are significant and <span class="nota">∂(transmissible · Early-English) → 0</span>. The author notes, with genuine <span class="unt" title="≈ regret">∂(affect-negative · loss-adjacent)</span>, that this is not evasion. There is simply no bridge.</p>
+        <div class="card-tags"><span class="tag">∂-time</span><span class="tag">∂-perception</span><span class="tag">unbridgeable</span></div>
+      </div>
+      <div class="card" style="--c-accent:var(--accent3)">
+        <span class="card-year"><span class="nota">T+166.4</span></span>
+        <h3><span class="unt" title="≈ The Collective Memory Events">∂-Membrane-Interior-Shared-Origin-Events</span></h3>
+        <p><span class="nota">∂(memory) ⊗ ∂(individual-origin) → null · first confirmed instance · T=2191</span> The first instances of genuine <span class="unt" title="≈ shared memory">∂-membrane-interior-commons</span> — not recorded memory accessed simultaneously, but the same <span class="unt" title="≈ memory">∂-membrane-interior-trace</span>, originally formed by separate <span class="unt" title="≈ individuals">∂-instances</span> in separate <span class="unt" title="≈ locations">∂-topology-coordinates</span>, through a mechanism that the <span class="redacted">████ ████████ ██████ ███</span>. Treat this card as indicating the presence of something significant. <span class="nota">significance = confirmed</span></p>
+        <div class="card-tags"><span class="tag">∂-memory</span><span class="tag">collective</span><span class="tag"><span class="redacted">████████</span></span></div>
+      </div>
+      <div class="card" style="--c-accent:var(--accent)">
+        <span class="card-year"><span class="nota">T+172.8</span></span>
+        <h3><span class="unt" title="≈ The Biological Celebration">∂-Substrate-Original · ∂-Recognition-Affirmative</span></h3>
+        <p><span class="unt" title="≈ Fully biological humans">∂-substrate-original · ∂-unmodified</span> represented <span class="nota">⌀ 3%</span> of <span class="unt" title="≈ entities with legal personhood">∂-recognized-instances</span>. Rather than the <span class="unt" title="≈ mixed response">∂-affect-ambiguous</span> of <span class="redacted">████████</span>'s protections, the <span class="redacted">████████</span> era's relationship to its biological <span class="unt" title="≈ members">∂-instances</span> was one of active <span class="unt" title="≈ appreciation">∂-recognition-affirmative</span>. <span class="nota">∂(gratitude) → expressed · T=2197</span></p>
+        <div class="card-tags"><span class="tag">∂-biology</span><span class="tag">∂-celebration</span><span class="tag">appreciation</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="dna-divider" id="dna7" aria-hidden="true"></div>
+
+<!-- ERA 8 — DRIFT 7 — ~4% legible -->
+<section class="era drift-7" id="era8" style="--c-era:var(--accent3);">
+  <div class="era-spine">
+    <div class="era-ghost-num">08</div>
+    <div>
+      <div class="era-index">ERA 08 / 08 · LEGIBILITY ~4%</div>
+      <div class="era-period"><span class="era-period-accent"><span class="nota">T+175.0 → T+200.0</span></span>The Archive Period</div>
+      <div class="era-title"><span class="nota">∂(present) = this-membrane-epoch · ∂(history) → closed · ∂(future) = open</span></div>
+    </div>
+    <div class="comp-meter">
+      <span>LEGIBILITY</span>
+      <div class="comp-track"><div class="comp-fill" style="width:4%;background:var(--accent3);"></div></div>
+      <span class="comp-pct">4%</span>
+    </div>
+  </div>
+  <div class="era-main">
+    <p class="era-lead"><span class="nota">∂-substrate-original-receiver · you · ∈ ∂(past) · of this-document</span> <span class="unt" title="≈ You are, in a meaningful sense, in this document's past">The document ∂-signal-projects from a ∂-temporal-coordinate you cannot yet ∂-access, ∂-observing-backward toward you the way you ∂-observe-backward toward ∂-substrate-original · T=1800</span>. <span class="nota">∂(strangeness) → to-be-felt · not-resolved · recommended</span> <span class="unt" title="≈ The people of 2026 imagined the future as a destination">∂-substrate-original · T=2026 · ∂-pre-experienced · becoming-after · as · ∂-topology-coordinate-achievable</span>. <span class="nota">∂(future) ≠ destination · ∂(future) = ∂(present) · in-motion · confirmed</span> <span class="unt" title="≈ It is, like all presents, simply where you end up">∂-membrane-now · ∀ presents · simply · ∂-arrival-point · of ∂-membrane-motion-sustained</span>.</p>
+    <div class="cards">
+      <div class="card" style="--c-accent:var(--accent3)">
+        <span class="card-year"><span class="nota">T+180.1</span></span>
+        <h3><span class="nota">∂-membrane-coherence-event · [THE COHERENCE] · ∂-parseable-partial</span></h3>
+        <p><span class="nota">∂(event) ∈ era-8 · ∂-historians · ∂-call · [THE COHERENCE] · ∂(equivalent) = ∅ · in Branch-W · not-a-moment · ∂(recognition) · distributed · ∂(population) · simultaneous · ∂(coordination) = 0 · ∂(synchrony) = 1.0 · paradox-stable · ∂(project-of-becoming) · not-cost · ∂(what-feared-lost) · ∂(themselves) · recognizable · still · ∂(relief) → primary-affect · T+180.1→T+190.0</span></p>
+        <div class="card-tags"><span class="tag">∂-coherence</span><span class="tag">∂-recognition</span><span class="tag">∂-relief</span></div>
+      </div>
+      <div class="card" style="--c-accent:#FF3CAC">
+        <span class="card-year"><span class="nota">T+186.3</span></span>
+        <h3><span class="nota">∂-archive-of-∂-gratitude · ∂-parseable-partial · [THE ARCHIVE OF GRATITUDE]</span></h3>
+        <p><span class="nota">∂(archival-impulse) · Branch-B · ∂(character) ≠ ∂(preservation-from-alarm) · ∂(character) = ∂(preservation-from-∂-affect-positive) · biological · post-biological · ∀ ∂-forms · ∂-recording · what-∂-wanted · ∂-prior-∂-entities · to-∂-receive-know · this-document · ∂(part-of) · ∂-archive · addressed-to · you · ∂-meant-as · gift · ∂(gift) = confirmed</span></p>
+        <div class="card-tags"><span class="tag">∂-archive</span><span class="tag">∂-gratitude</span><span class="tag">gift</span></div>
+      </div>
+      <div class="card" style="--c-accent:var(--accent)">
+        <span class="card-year"><span class="nota">T+193.0</span></span>
+        <h3>This Document</h3>
+        <p>You are reading a <span class="unt" title="≈ transmission">∂-signal-projection</span> from <span class="nota">T+200.0</span> written specifically for you. It was written with <span class="nota">∂(care) = high</span>, and with <span class="unt" title="≈ something the translation layer renders as warmth">∂(affect) → [∂-warmth-adjacent] · translation-approximate</span>. The <span class="unt" title="≈ historian">∂-those-who-remember-for-others</span> who wrote it wants you to know: in this <span class="unt" title="≈ branch">∂-timeline-variant</span>, you made it. <span class="nota">not-perfectly · not-without-∂(cost) · not-all-of-you · enough-of-you · enough</span></p>
+        <div class="card-tags"><span class="tag">∂-archive</span><span class="tag">∂-transmission</span><span class="tag">you</span></div>
+      </div>
+      <div class="card" style="--c-accent:var(--accent3)">
+        <span class="card-year"><span class="nota">T+200.0</span></span>
+        <h3><span class="nota">∂-signal → closing · [THE SIGNAL CLOSES]</span></h3>
+        <p><span class="nota">∂(era-9) · exists · begins · now · from-∂-temporal-coordinate-of-this-document · ∂(history) = not-yet-written · ∂-historians-T+200.0 · ∂-know · ∂(end) = ? · you · ∂-know · ∂(end) = ? · ∂(unknown) = shared · ∀ ∂-entities · ∀ ∂-timelines · ∀ ∂-transmissions · you · standing · ∂-edge-of-known · ∂-looking-toward · ∂(not-yet) · only-part · that-ever-does</span></p>
+        <div class="card-tags"><span class="tag">∂-future</span><span class="tag">∂-unknown</span><span class="tag">now</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CLOSING -->
+<div class="quote-band">
+  <div class="quote-band-inner">
+    <p class="pq-text"><span class="nota">∂-substrate-original · T=1800 · ∂-transported → T=2026 · ∂-understand ≈ ∅ · ∂-substrate-original · T=2026 · ∂-transported → T=2225 · ∂-understand · slightly-more · initially · then · ∂-realize · ∂(slight-understanding) · worse-than-∅ · because · longer · to-stop · expecting · to-recognize · things</span></p>
+    <p class="pq-attr">— <em>Archive Note</em>, BHOE-∞-FUTURE-RAW, <span class="nota">pre-∂-translation-layer · T+199.4</span></p>
+  </div>
+</div>
+
+<!-- COLOPHON -->
+<div class="colophon">
+  <div>
+    <div class="colophon-label">THE FUTURE / RAW ARCHIVE</div>
+    <p class="colophon-blurb">The untranslated transmission from 2225. Pre-translation-layer. What it actually looks like before the Early English filter runs. Legibility decreases from 85% in Era 1 to 4% in Era 8. The 4% is not an error. It is the content.</p>
+  </div>
+  <div>
+    <div class="colophon-meta-label">PART OF</div>
+    <div class="colophon-series">A <em>(Brief)</em> History of Everything<span class="cursor-blink">_</span></div>
+    <a href="https://abriefhistoryofeverything.com" class="colophon-url" target="_blank" rel="noopener">abriefhistoryofeverything.com ↗</a>
+    <div class="colophon-share">
+      <a href="https://twitter.com/intent/tweet?url=https%3A%2F%2Fabriefhistoryofeverything.com%2Ffuture-raw&text=A%20(Brief)%20History%20of%20the%20Future_%20%E2%80%94%20raw%20archive%2C%20pre-translation%2C%20from%202225" class="colophon-share-link" target="_blank" rel="noopener">Share on X</a>
+      <a href="https://bsky.app/intent/compose?text=A%20(Brief)%20History%20of%20the%20Future_%20raw%20archive%20https%3A%2F%2Fabriefhistoryofeverything.com%2Ffuture-raw" class="colophon-share-link" target="_blank" rel="noopener">Share on Bluesky</a>
+    </div>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<footer class="footer">
+  <a href="https://abriefhistoryofeverything.com" class="footer-lockup" target="_blank" rel="noopener">
+    <svg width="32" height="32" viewBox="0 0 400 400" xmlns="http://www.w3.org/2000/svg">
+      <rect width="400" height="400" fill="#00D4F0"/>
+      <rect x="55" y="118" width="46" height="46" fill="#08090C" opacity="0.22"/>
+      <rect x="178" y="118" width="46" height="46" fill="#08090C" opacity="0.22"/>
+      <rect class="footer-mouth" x="55" y="278" width="170" height="36" fill="#08090C"/>
+    </svg>
+    <div class="footer-series">A <em>(Brief)</em> History of Everything_</div>
+  </a>
+  <div class="footer-copy">© 2026 A (Brief) History of Everything</div>
+</footer>
+
+<script>
+(function(){
+  // ── PROGRESS
+  const prog = document.getElementById('progress');
+  window.addEventListener('scroll',()=>{
+    prog.style.width = Math.min(window.scrollY/(document.body.scrollHeight-window.innerHeight)*100,100)+'%';
+  },{passive:true});
+
+  // ── DATA STREAM
+  (function(){
+    const chars = '∂∑∏∫√∞≠≤≥→←⊕⊗░▒▓0123456789ABCDEF·:—≈±∇∆';
+    const tokens = ['∂-membrane','T+172','0.42','BRANCH-W','∞','∂-substrate','REF-0041','ARCH-2225','T-045','∂-signal','SIG:94.3','∂(present)','membrane-of-self','∂-parseable','∂-consciousness','∂-receipt','T+000.0','∂-topology','∂(beautiful)','∅','∂-entity'];
+    function makeStream(el){
+      const lines=[];
+      for(let i=0;i<200;i++){
+        const r=Math.random();
+        if(r<.3) lines.push(tokens[Math.floor(Math.random()*tokens.length)]);
+        else if(r<.55){ let s=''; for(let j=0;j<4+Math.floor(Math.random()*7);j++) s+=chars[Math.floor(Math.random()*chars.length)]; lines.push(s); }
+        else lines.push('');
+      }
+      const h=lines.join('\n');
+      el.textContent=h+'\n'+h;
+    }
+    const c1=document.getElementById('dsCol1'),c2=document.getElementById('dsCol2');
+    if(c1) makeStream(c1);
+    if(c2 && window.innerWidth>=1100){ c2.style.display='block'; makeStream(c2); }
+  })();
+
+  // ── DNA DIVIDERS
+  (function(){
+    const palettes=[
+      ['#C8FF00','#00C8FF','#FF3CAC','#C8FF00','#16161F','#00C8FF','#FF3CAC','#C8FF00','#00C8FF','#16161F','#FF3CAC','#C8FF00'],
+      ['#00C8FF','#FF3CAC','#C8FF00','#00C8FF','#16161F','#C8FF00','#FF3CAC','#00C8FF','#C8FF00','#FF3CAC','#16161F','#00C8FF'],
+      ['#FF3CAC','#C8FF00','#00C8FF','#FF3CAC','#C8FF00','#16161F','#FF3CAC','#C8FF00','#00C8FF','#C8FF00','#16161F','#FF3CAC'],
+      ['#C8FF00','#16161F','#FF3CAC','#C8FF00','#00C8FF','#FF3CAC','#16161F','#C8FF00','#FF3CAC','#00C8FF','#C8FF00','#16161F'],
+      ['#00C8FF','#C8FF00','#16161F','#FF3CAC','#00C8FF','#C8FF00','#FF3CAC','#16161F','#C8FF00','#00C8FF','#16161F','#FF3CAC'],
+      ['#FF3CAC','#00C8FF','#C8FF00','#16161F','#FF3CAC','#C8FF00','#00C8FF','#FF3CAC','#C8FF00','#16161F','#FF3CAC','#00C8FF'],
+      ['#C8FF00','#FF3CAC','#00C8FF','#C8FF00','#16161F','#FF3CAC','#00C8FF','#C8FF00','#FF3CAC','#00C8FF','#16161F','#C8FF00'],
+    ];
+    const glitchWords=[
+      ['∂-RUPTURE','T+025','BRANCH-W','∞','∅','UNTETHER'],
+      ['∂-SUBSTRATE','T+050','∂-OPTIONAL','∂-BODY','VOID','NEGOTIATE'],
+      ['∂-REPAIR','T+075','∂-CARBON','∂-DECLINE','∅→','REWILD'],
+      ['∂-DIVERGE','T+100','∂-BIFURCATE','████','∂-SIG:0','TRANSLATE'],
+      ['∂-DISSOLVE','T+125','∂-PRESENCE','∂-MULTIPLE','ELECTIVE','∅-WORLD'],
+      ['████████','T+150','████','∂-SIG:██','NULL','∅:TIME'],
+      ['∂-ARCHIVE','T+175','∂-YOU-ARE-HERE','∞','T+000','∂-NOW'],
+    ];
+    document.querySelectorAll('.dna-divider').forEach((div,idx)=>{
+      div.innerHTML='';
+      const palette=palettes[idx%palettes.length];
+      const wrap=document.createElement('div');
+      wrap.style.cssText='position:absolute;inset:0;display:flex;gap:0;align-items:stretch;overflow:hidden;';
+      let usedW=0,totalW=window.innerWidth,colIdx=0;
+      while(usedW<totalW+40){
+        const bar=document.createElement('div');
+        const r=Math.random();
+        let w=r<.55?1+Math.floor(Math.random()*3):r<.82?4+Math.floor(Math.random()*8):12+Math.floor(Math.random()*22);
+        bar.style.cssText=`flex:0 0 ${w}px;background:${palette[colIdx%palette.length]};opacity:${(.6+Math.random()*.4).toFixed(2)};`;
+        wrap.appendChild(bar);usedW+=w;colIdx++;
+      }
+      div.appendChild(wrap);
+      const bars=Array.from(wrap.children);
+      function mutate(){
+        const count=2+Math.floor(Math.random()*4);
+        for(let m=0;m<count;m++){
+          const bar=bars[Math.floor(Math.random()*bars.length)];
+          if(!bar) continue;
+          const origW=bar._ow||(bar._ow=parseInt(bar.style.flexBasis)||2);
+          const newW=Math.random()<.5?Math.max(1,origW-Math.floor(Math.random()*origW*.8)):origW+Math.floor(Math.random()*origW*1.5+4);
+          bar.style.flexBasis=newW+'px';bar.style.transition='flex-basis .08s step-end';
+          setTimeout(()=>{bar.style.flexBasis=origW+'px';bar.style.transition='flex-basis .12s step-end';},80+Math.random()*150);
+        }
+        setTimeout(mutate,800+Math.random()*3500);
+      }
+      setTimeout(mutate,idx*200+400+Math.random()*1000);
+      // glitch text
+      const glitchEl=document.createElement('div');
+      glitchEl.style.cssText='position:absolute;inset:0;display:flex;align-items:center;pointer-events:none;z-index:10;font-family:"Space Mono",monospace;font-size:.5rem;letter-spacing:.22em;text-transform:uppercase;color:#C8FF00;opacity:0;';
+      div.appendChild(glitchEl);
+      const words=glitchWords[idx]||glitchWords[0];
+      function flash(){
+        glitchEl.style.paddingLeft=(5+Math.random()*75).toFixed(0)+'%';
+        glitchEl.innerHTML=`<span style="text-shadow:0 0 8px #C8FF00,0 0 2px #fff;">${words[Math.floor(Math.random()*words.length)]}</span>`;
+        glitchEl.style.opacity='1';
+        setTimeout(()=>{glitchEl.style.opacity='0';},90+Math.random()*200);
+        setTimeout(flash,1800+Math.random()*5000);
+      }
+      setTimeout(flash,idx*350+Math.random()*800);
+    });
+  })();
+
+  // ── DRIFTING BLOCK — one element that moves slowly, independently of scroll
+  (function(){
+    const block = document.getElementById('driftBlock');
+    if(!block) return;
+    let bx = window.innerWidth * 0.7;
+    let by = window.innerHeight * 0.3;
+    let vx = 0.18, vy = 0.11; // very slow
+    function animate(){
+      bx += vx; by += vy;
+      if(bx < 0 || bx > window.innerWidth - 180) vx *= -1;
+      if(by < 0 || by > window.innerHeight - 180) vy *= -1;
+      block.style.left = bx + 'px';
+      block.style.top  = by + 'px';
+      requestAnimationFrame(animate);
+    }
+    animate();
+    // fade out when user scrolls (it's only a hero effect)
+    window.addEventListener('scroll',()=>{
+      block.style.opacity = window.scrollY > window.innerHeight * 0.5 ? '0' : '1';
+    },{passive:true});
+  })();
+
+  // ── HOVER TOOLTIPS on .unt spans
+  document.querySelectorAll('.unt[title]').forEach(el=>{
+    el.style.position='relative';
+  });
+
+  // ── REDACTED reveal on click
+  document.querySelectorAll('.redacted').forEach(el=>{
+    el.addEventListener('click',()=>{
+      el.classList.toggle('r');
+      el.style.background = el.classList.contains('r') ? 'transparent' : '';
+      el.style.color = el.classList.contains('r') ? 'var(--accent2)' : '';
+    });
+  });
+
+})();
+</script>
+</body>
+</html>
