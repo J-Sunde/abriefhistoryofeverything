@@ -1,0 +1,1263 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>A (Brief) History of Taylor Swift_</title>
+<meta name="description" content="From a Pennsylvania teenager with a guitar to the most powerful force in modern music.">
+<meta property="og:title" content="A (Brief) History of Taylor Swift_">
+<meta property="og:image" content="og-taylor-swift.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="og-taylor-swift.png">
+<link rel="canonical" href="https://abriefhistoryofeverything.com/taylor-swift">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>✦</text></svg>">
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-S80KBNWEJ5"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-S80KBNWEJ5');</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700;1,900&family=DM+Mono:wght@400;500&family=Crimson+Pro:ital,wght@0,300;0,400;1,300;1,400&display=swap" rel="stylesheet">
+<style>
+:root {
+  --accent:#C4185A; --accent2:#E8336E; --accent-soft:rgba(196,24,90,0.08);
+  --series-cyan:#00D4F0; --series-blue:#0055EE; --series-green:#39E07A; --series-orange:#FF5C20;
+  --cream:#FAF6EF; --ivory:#F3EDE0; --paper:#EDE5D0; --blush:#F7E4EC;
+  --ink:#1C1410; --ink-mid:#3D2F2A; --ink-soft:#7A6058; --ink-faint:#C4B0A8;
+  --ink-rule:rgba(28,20,16,0.09);
+  --nav-bg:rgba(250,246,239,0.96); --nav-border:rgba(28,20,16,0.10); --nav-text:#1C1410;
+  --card-bg:#FFFCF7; --border:rgba(28,20,16,0.08);
+  --display:'Playfair Display',Georgia,serif;
+  --body:'Crimson Pro',Georgia,serif;
+  --mono:'DM Mono',monospace;
+  --max:1100px;
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+html{scroll-behavior:smooth;}
+body{background:var(--cream);color:var(--ink);font-family:var(--body);font-size:1.1rem;line-height:1.7;-webkit-font-smoothing:antialiased;overflow-x:hidden;}
+@keyframes cursorBlink{0%,100%{opacity:1}50%{opacity:0}}
+.cursor-blink{animation:cursorBlink 1.1s step-end infinite;display:inline-block;}
+.fi{opacity:0;transform:translateY(14px);transition:opacity 0.6s ease,transform 0.6s ease;}
+.fi.visible{opacity:1;transform:none;}
+
+/* ── SPLASH ── */
+#splash{position:fixed;inset:0;z-index:9999;cursor:pointer;display:flex;align-items:stretch;}
+.splash-left{flex:1;position:relative;display:flex;align-items:center;justify-content:flex-start;padding:0 0 0 10vw;overflow:hidden;}
+@keyframes iriFlow{0%{background-position:0% 50%}50%{background-position:100% 50%}100%{background-position:0% 50%}}
+.splash-iri{position:absolute;inset:0;background:linear-gradient(135deg,#fde8f0 0%,#e8c8f0 20%,#c8d8f8 40%,#c0f0e8 60%,#e0c8f4 80%,#f8d0e0 100%);background-size:300% 300%;animation:iriFlow 10s ease infinite;}
+.splash-text{position:relative;z-index:2;}
+.splash-svg-stack{width:min(420px,80%);margin-bottom:28px;}
+.sp-abh{display:block;width:72%;margin-left:0;filter:brightness(0);}
+.sp-of {display:block;width:22%;margin-left:50%;margin-top:-5%;filter:brightness(0);opacity:0.6;}
+.sp-ts {display:block;width:88%;margin-left:2%;margin-top:1%;filter:brightness(0);}
+.splash-enter{display:inline-flex;align-items:center;gap:12px;font-family:var(--mono);font-size:0.78rem;font-weight:500;letter-spacing:0.18em;text-transform:uppercase;color:var(--ink-mid);border:1px solid rgba(28,20,16,0.25);padding:13px 24px;border-radius:2px;background:none;cursor:pointer;transition:all 0.2s;animation:enterPulse 2.5s ease-in-out infinite;}
+@keyframes enterPulse{0%,100%{border-color:rgba(28,20,16,0.25);}50%{border-color:rgba(196,24,90,0.6);color:var(--accent);}}
+.splash-hint{display:block;margin-top:12px;font-family:var(--body);font-size:0.9rem;font-style:italic;color:var(--ink-faint);}
+
+.splash-right{width:46%;flex-shrink:0;position:cover;overflow:hidden;}
+.splash-portrait{width:100%;height:100%;object-fit:cover;object-position:left center;display:block;}
+.splash-right::before{content:'';position:absolute;inset:0;background:linear-gradient(to right,var(--cream) 0%,transparent 28%);z-index:1;pointer-events:none;}
+#splash.exiting{animation:splashExit 0.65s cubic-bezier(0.4,0,0.2,1) forwards;}
+@keyframes splashExit{to{opacity:0;transform:scale(1.03);pointer-events:none;}}
+
+/* ── AUDIO BAR ── */
+#audio-bar{position:fixed;bottom:0;left:0;right:0;height:48px;z-index:800;display:flex;align-items:center;transform:translateY(100%);transition:transform 0.4s cubic-bezier(0.4,0,0.2,1);}
+#audio-bar::before{content:'';position:absolute;inset:0;background:linear-gradient(90deg,#fde8f0 0%,#e8c8f4 20%,#c8d8f8 40%,#c0f0ec 60%,#e0c8f4 80%,#f8d0e4 100%);background-size:300% 100%;animation:iriFlow 8s ease infinite;}
+#audio-bar::after{content:'';position:absolute;inset:0;background:rgba(255,255,255,0.15);}
+#audio-bar>*{position:relative;z-index:1;}
+#audio-bar.visible{transform:none;}
+#audio-bar.visible{transform:none;}
+.ab-btn{width:48px;height:48px;flex-shrink:0;display:flex;align-items:center;justify-content:center;background:none;border:none;cursor:pointer;transition:background 0.15s;}
+.ab-play{color:var(--accent);border-right:1px solid rgba(28,20,16,0.12);}
+.ab-play:hover{background:rgba(196,24,90,0.12);}
+.ab-play svg{width:15px;height:15px;}
+.ab-info{flex:1;padding:0 16px;min-width:0;}
+.ab-title{font-family:var(--body);font-size:0.9rem;color:var(--ink);display:block;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
+.ab-artist{font-family:var(--mono);font-size:0.6rem;letter-spacing:0.12em;text-transform:uppercase;color:var(--ink-soft);display:block;}
+.ab-track-wrap{flex:2;max-width:300px;padding:0 16px;}
+.ab-track{height:2px;background:rgba(28,20,16,0.15);border-radius:2px;cursor:pointer;position:relative;}
+.ab-fill{height:100%;background:var(--accent);border-radius:2px;width:0%;transition:width 0.5s linear;pointer-events:none;}
+.ab-time{font-family:var(--mono);font-size:0.65rem;color:var(--ink-soft);padding-right:8px;white-space:nowrap;}
+.ab-close{color:var(--ink-soft);border-left:1px solid rgba(28,20,16,0.1);font-size:1rem;}
+.ab-close:hover{color:var(--accent);}
+body.audio-active{padding-bottom:48px;}
+
+/* ── PROGRESS ── */
+#progress{position:fixed;top:0;left:0;height:2px;background:var(--accent);width:0%;z-index:9998;transition:width 0.1s linear;}
+
+/* ── NAV ── */
+.nav{height:50px;position:fixed;top:0;left:0;right:0;z-index:900;display:flex;align-items:stretch;background:var(--nav-bg);backdrop-filter:blur(14px);border-bottom:1px solid var(--nav-border);}
+.nav-tag{display:flex;align-items:stretch;text-decoration:none;flex-shrink:0;border-right:1px solid var(--nav-border);}
+.nav-tag:hover .nav-topic{color:#000;}
+.nav-index-box{width:52px;min-width:52px;height:50px;display:flex;align-items:center;justify-content:center;background:var(--accent);color:#fff;font-family:var(--mono);font-size:0.9rem;font-weight:700;letter-spacing:0.12em;flex-shrink:0;}
+.nav-topic{display:flex;align-items:center;padding:0 20px 0 16px;font-family:var(--mono);font-size:0.72rem;font-weight:700;letter-spacing:0.16em;text-transform:uppercase;color:var(--nav-text);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;transition:color 0.15s;}
+.nav-right{margin-left:auto;display:flex;align-items:center;}
+.nav-btn{height:50px;padding:0 18px;display:flex;align-items:center;gap:7px;font-family:var(--mono);font-size:0.72rem;font-weight:700;letter-spacing:0.14em;text-transform:uppercase;color:var(--nav-text);background:none;border:none;border-left:1px solid var(--nav-border);cursor:pointer;transition:color 0.15s,background 0.15s;text-decoration:none;}
+.nav-btn:hover{color:var(--accent);background:var(--accent-soft);}
+.share-drop{display:none;position:absolute;top:50px;right:0;background:var(--cream);border:1px solid var(--border);border-top:none;border-radius:0 0 3px 3px;overflow:hidden;min-width:160px;z-index:800;box-shadow:0 8px 24px rgba(0,0,0,0.08);}
+.share-drop.open{display:block;}
+.share-drop a,.share-drop button{display:flex;align-items:center;gap:10px;width:100%;padding:11px 16px;font-family:var(--mono);font-size:0.75rem;font-weight:500;letter-spacing:0.1em;text-transform:uppercase;color:var(--ink);text-decoration:none;background:none;border:none;cursor:pointer;transition:background 0.12s;}
+.share-drop a:hover,.share-drop button:hover{background:var(--accent-soft);color:var(--accent);}
+.nav-share-wrap{position:relative;}
+
+/* ── HERO ── */
+.hero{min-height:100vh;padding-top:50px;position:relative;overflow:hidden;display:flex;align-items:flex-end;justify-content:flex-start;}
+.hero-photo{position:absolute;inset:0;background:#1a0810;}
+.hero-photo img{width:100%;height:100%;object-fit:cover;object-position:right center;display:block;opacity:0.92;}
+.hero-photo::before{content:'';position:absolute;inset:0;z-index:1;background:linear-gradient(to right,rgba(18,6,10,0.72) 0%,rgba(18,6,10,0.3) 50%,transparent 100%);pointer-events:none;}
+.hero-photo::after{content:'';position:absolute;bottom:0;left:0;right:0;height:40%;z-index:2;background:linear-gradient(to bottom,transparent,rgba(250,246,239,0.8) 90%,var(--cream) 100%);}
+.hero-content{position:relative;z-index:3;width:100%;max-width:var(--max);margin:0 auto;padding:0 48px 80px;}
+/* Hero SVG title stack */
+.hero-scattered-title{max-width:580px;padding:0;}
+.hero-svg-stack{position:relative;width:100%;margin-bottom:24px;}
+.ht-abh{display:block;width:68%;margin-left:0;filter:brightness(0) invert(1);}
+.ht-of {display:block;width:20%;margin-left:52%;margin-top:-4%;filter:brightness(0) invert(1);opacity:0.75;}
+.ht-ts {display:block;width:82%;margin-left:2%;margin-top:2%;filter:brightness(0) invert(1);}
+.hero-thesis{font-family:var(--body);font-size:clamp(0.95rem,1.5vw,1.1rem);line-height:1.65;color:rgba(255,255,255,0.78);font-style:italic;margin:0;}
+.hero-stats{display:flex;gap:40px;flex-wrap:wrap;}
+.hero-stat-num{font-family:var(--display);font-size:clamp(2.2rem,4vw,3.2rem);font-weight:900;color:var(--accent2);line-height:1;display:block;}
+.hero-stat-label{font-family:var(--mono);font-size:0.7rem;font-weight:500;letter-spacing:0.18em;text-transform:uppercase;color:rgba(255,255,255,0.4);display:block;margin-top:3px;}
+
+/* ── STATS BAND ── */
+.stats-band{background:var(--ink);display:none;}
+.stats-band-inner{max-width:var(--max);margin:0 auto;padding:0 48px;display:grid;grid-template-columns:repeat(4,1fr);gap:32px;}
+.s-stat{text-align:center;}
+.s-num{font-family:var(--display);font-size:clamp(2.4rem,4.5vw,3.5rem);font-weight:900;color:var(--accent2);line-height:1;margin-bottom:6px;}
+.s-label{font-family:var(--mono);font-size:0.72rem;font-weight:700;letter-spacing:0.18em;text-transform:uppercase;color:rgba(255,255,255,0.32);margin-bottom:5px;}
+.s-sub{font-family:var(--body);font-size:1.02rem;color:rgba(255,255,255,0.42);font-style:italic;line-height:1.4;}
+
+/* ── ERA SECTIONS / VINYL REGISTER ── */
+.era-section{padding:72px 0;position:relative;}
+.era-wrap{max-width:var(--max);margin:0 auto;padding:0 48px;}
+.vinyl-era{display:grid;grid-template-columns:200px 1fr;gap:56px;align-items:start;}
+.vinyl-cover-col{position:sticky;top:70px;}
+.vinyl-cover{width:100%;aspect-ratio:1;object-fit:cover;border-radius:3px;display:block;box-shadow:4px 4px 0 rgba(28,20,16,0.10),8px 8px 0 rgba(28,20,16,0.05),0 20px 40px rgba(0,0,0,0.10);transition:transform 0.3s,box-shadow 0.3s;}
+.vinyl-cover:hover{transform:translateY(-3px) rotate(-1deg);box-shadow:6px 10px 0 rgba(28,20,16,0.12),0 28px 50px rgba(0,0,0,0.15);}
+.vinyl-cover-meta{margin-top:11px;padding-left:10px;}
+.vinyl-cover-title{font-family:var(--body);font-size:0.95rem;font-weight:600;color:var(--ink);display:block;line-height:1.3;}
+.vinyl-cover-year{font-family:var(--mono);font-size:0.65rem;font-weight:500;letter-spacing:0.14em;color:var(--ink-soft);display:block;margin-top:3px;}
+.vinyl-content-col{min-width:0;}
+.era-eyebrow{display:flex;align-items:baseline;gap:14px;margin-bottom:12px;}
+.era-num{font-family:var(--display);font-size:3.2rem;font-weight:900;line-height:1;color:var(--ink-faint);font-style:italic;}
+.era-years{font-family:var(--mono);font-size:0.72rem;font-weight:700;letter-spacing:0.18em;text-transform:uppercase;color:var(--ink-soft);}
+.era-title{font-family:var(--display);font-size:clamp(1.9rem,3.8vw,3rem);font-weight:700;line-height:1.08;color:var(--ink);margin-bottom:12px;}
+.era-title em{font-style:italic;}
+.era-badge{display:inline-block;font-family:var(--body);font-size:0.88rem;font-style:italic;padding:3px 12px;border-radius:20px;margin-bottom:18px;}
+.era-intro{font-family:var(--body);font-size:1.12rem;line-height:1.75;color:var(--ink-mid);font-style:italic;margin-bottom:30px;border-left:2px solid var(--accent-soft);padding-left:16px;}
+
+/* ── CARDS ── */
+.era-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:14px;}
+.card{background:var(--card-bg);border:1px solid var(--border);border-radius:2px;padding:22px 20px;transition:box-shadow 0.2s,transform 0.2s;position:relative;}
+.card::after{content:'';position:absolute;top:0;right:0;width:14px;height:14px;background:linear-gradient(225deg,var(--ivory) 50%,transparent 50%);border-left:1px solid var(--border);border-bottom:1px solid var(--border);}
+.card:hover{box-shadow:3px 3px 0 rgba(196,24,90,0.10),0 6px 20px rgba(196,24,90,0.06);transform:translateY(-2px);}
+.card-year{font-family:var(--display);font-size:1.4rem;font-weight:700;color:var(--accent);margin-bottom:5px;display:block;font-style:italic;}
+.card h3{font-family:var(--display);font-size:clamp(1.05rem,2vw,1.25rem);font-weight:700;line-height:1.2;color:var(--ink);margin-bottom:8px;}
+.card p{font-family:var(--body);font-size:1.032rem;line-height:1.65;color:var(--ink-mid);}
+.card-tags{display:flex;gap:6px;flex-wrap:wrap;margin-top:10px;}
+.tag{font-family:var(--mono);font-size:0.72rem;font-weight:500;letter-spacing:0.08em;text-transform:uppercase;padding:2px 8px;border-radius:20px;background:var(--accent-soft);color:var(--accent);text-decoration:none;transition:background 0.15s,color 0.15s;cursor:pointer;display:inline-block;}
+.tag:hover{background:var(--accent);color:#fff;}
+
+
+/* ── LYRIC GENERATOR ── */
+.lyric-gen-section{padding:80px 0;position:relative;overflow:hidden;}
+.lyric-gen-section::before{content:'';position:absolute;inset:0;background:linear-gradient(135deg,#fde8f0 0%,#e8c8f4 25%,#c8d8f8 50%,#c0f0ec 75%,#f8d0e4 100%);background-size:300% 300%;animation:iriFlow 12s ease infinite;}
+.lyric-gen-section::after{content:'';position:absolute;inset:0;background:rgba(255,255,255,0.3);}
+.lyric-gen-inner{max-width:var(--max);margin:0 auto;padding:0 48px;position:relative;z-index:1;}
+.lyric-gen-label{font-family:var(--mono);font-size:0.72rem;font-weight:700;letter-spacing:0.24em;text-transform:uppercase;color:var(--accent);margin-bottom:8px;}
+.lyric-gen-title{font-family:var(--display);font-size:clamp(2rem,4vw,3rem);font-weight:900;color:var(--ink);line-height:1.05;margin-bottom:12px;}
+.lyric-gen-title em{font-style:italic;color:var(--accent);}
+.lyric-gen-sub{font-family:var(--body);font-size:1.05rem;color:var(--ink-mid);font-style:italic;max-width:560px;margin-bottom:36px;line-height:1.65;}
+.lyric-gen-controls{background:rgba(255,255,255,0.5);backdrop-filter:blur(8px);border:1px solid rgba(196,24,90,0.12);border-radius:4px;padding:28px 28px 24px;margin-bottom:28px;}
+.lyric-gen-row{display:grid;grid-template-columns:1fr 1fr;gap:28px;margin-bottom:24px;}
+.lyric-gen-field-label{font-family:var(--mono);font-size:0.68rem;font-weight:700;letter-spacing:0.18em;text-transform:uppercase;color:var(--ink-soft);display:block;margin-bottom:10px;}
+.lyric-gen-pills{display:flex;flex-wrap:wrap;gap:8px;}
+.lyric-pill{font-family:var(--body);font-size:0.92rem;padding:6px 14px;border-radius:20px;border:1px solid rgba(196,24,90,0.25);background:transparent;color:var(--ink-mid);cursor:pointer;transition:all 0.15s;font-style:italic;}
+.lyric-pill:hover{border-color:var(--accent);color:var(--accent);background:rgba(196,24,90,0.06);}
+.lyric-pill.active{background:var(--accent);color:#fff;border-color:var(--accent);}
+.lyric-gen-btn{display:inline-flex;align-items:center;gap:10px;font-family:var(--mono);font-size:0.78rem;font-weight:700;letter-spacing:0.18em;text-transform:uppercase;background:var(--accent);color:#fff;border:none;padding:13px 28px;border-radius:2px;cursor:pointer;transition:background 0.15s,transform 0.15s;}
+.lyric-gen-btn:hover{background:var(--accent2);transform:translateY(-1px);}
+.lyric-gen-btn:disabled{opacity:0.5;cursor:not-allowed;transform:none;}
+.lyric-output-wrap{margin-top:28px;}
+.lyric-output{background:rgba(255,255,255,0.7);backdrop-filter:blur(12px);border:1px solid rgba(196,24,90,0.15);border-radius:4px;border-left:3px solid var(--accent);padding:36px 40px 32px;}
+.lyric-output-lines{font-family:var(--display);font-size:clamp(1.1rem,2vw,1.5rem);font-style:italic;line-height:1.7;color:var(--ink);white-space:pre-line;margin-bottom:20px;}
+.lyric-output-attr{font-family:var(--mono);font-size:0.68rem;letter-spacing:0.14em;text-transform:uppercase;color:var(--ink-faint);}
+.lyric-output-actions{display:flex;gap:10px;margin-top:14px;}
+.lyric-action-btn{font-family:var(--mono);font-size:0.72rem;font-weight:700;letter-spacing:0.14em;text-transform:uppercase;padding:8px 18px;border-radius:2px;cursor:pointer;transition:all 0.15s;background:var(--accent);color:#fff;border:none;}
+.lyric-action-btn:hover{background:var(--accent2);}
+.lyric-action-outline{background:transparent;color:var(--accent);border:1px solid rgba(196,24,90,0.4);}
+.lyric-action-outline:hover{background:rgba(196,24,90,0.06);}
+.lyric-loading{display:flex;align-items:center;gap:14px;padding:28px 0;}
+.lyric-dots{display:flex;gap:6px;}
+.lyric-dots span{width:6px;height:6px;border-radius:50%;background:var(--accent);animation:dotPulse 1.2s ease-in-out infinite;}
+.lyric-dots span:nth-child(2){animation-delay:0.2s;}
+.lyric-dots span:nth-child(3){animation-delay:0.4s;}
+@keyframes dotPulse{0%,80%,100%{transform:scale(0.6);opacity:0.4}40%{transform:scale(1);opacity:1}}
+.lyric-loading-text{font-family:var(--body);font-size:1rem;font-style:italic;color:var(--ink-soft);}
+.lyric-disclaimer{font-family:var(--mono);font-size:0.62rem;letter-spacing:0.1em;text-transform:uppercase;color:var(--ink-faint);margin-top:20px;}
+@media(max-width:640px){
+  .lyric-gen-row{grid-template-columns:1fr;}
+  .lyric-gen-inner{padding:0 20px;}
+  .lyric-output{padding:24px 20px;}
+}
+
+
+/* ── LETTER / OWNERSHIP SECTION ── */
+.letter-section{position:relative;overflow:hidden;padding:88px 0;}
+.letter-section::before{content:'';position:absolute;inset:0;background:linear-gradient(135deg,#fde8f0 0%,#e8c8f4 20%,#c8d8f8 40%,#c0f0ec 60%,#e0c8f4 80%,#f8d0e4 100%);background-size:300% 300%;animation:iriFlow 12s ease infinite;}
+.letter-section::after{content:'';position:absolute;inset:0;background:rgba(255,255,255,0.25);}
+.letter-inner{position:relative;z-index:1;}
+.letter-inner{max-width:760px;margin:0 auto;padding:0 48px;}
+.letter-label{font-family:var(--mono);font-size:0.72rem;font-weight:700;letter-spacing:0.24em;text-transform:uppercase;color:var(--ink-soft);margin-bottom:8px;}
+.letter-title{font-family:var(--display);font-size:clamp(2.2rem,4.5vw,3.4rem);font-weight:900;font-style:italic;color:var(--ink);line-height:1.05;margin-bottom:32px;}
+.letter-title em{color:var(--accent);}
+.letter-body p{font-family:var(--body);font-size:1.12rem;line-height:1.8;color:var(--ink-mid);margin-bottom:18px;}
+.letter-body p:last-child{margin-bottom:0;}
+.letter-quote{border-left:3px solid var(--accent);padding:28px 32px;margin:40px 0;background:rgba(255,255,255,0.45);backdrop-filter:blur(8px);}
+.letter-quote-text{font-family:var(--display);font-size:clamp(1.5rem,3vw,2.2rem);font-weight:700;font-style:italic;color:var(--ink);line-height:1.35;margin-bottom:14px;}
+.letter-quote-attr{font-family:var(--mono);font-size:0.72rem;letter-spacing:0.14em;text-transform:uppercase;color:var(--ink-soft);display:block;}
+.letter-quote-attr a{color:var(--accent);text-decoration:none;}
+.letter-quote-attr a:hover{text-decoration:underline;}
+.letter-timeline{margin-top:40px;display:flex;flex-direction:column;gap:0;}
+.letter-event{display:grid;grid-template-columns:56px 1fr;gap:16px;align-items:start;padding:14px 0;border-bottom:1px solid rgba(28,20,16,0.08);}
+.letter-event:last-child{border-bottom:none;}
+.letter-event-year{font-family:var(--display);font-size:1.05rem;font-weight:700;font-style:italic;color:var(--accent);line-height:1.4;}
+.letter-event-text{font-family:var(--body);font-size:1rem;color:var(--ink-mid);line-height:1.5;}
+@media(max-width:640px){.letter-inner{padding:0 20px;}}
+
+/* ── PHOTO STRIP ── */
+.photo-strip{width:100%;overflow:hidden;line-height:0;}
+.photo-strip-inner{display:flex;gap:3px;height:180px;}
+.photo-strip-slot{flex:1;min-width:0;overflow:hidden;transition:flex 0.4s ease;}
+.photo-strip-slot:hover{flex:2.5;}
+.photo-strip-slot img{width:100%;height:100%;object-fit:cover;object-position:center 20%;display:block;filter:sepia(8%) contrast(1.05);transition:filter 0.3s;}
+.photo-strip-slot:hover img{filter:sepia(0%) contrast(1.1);}
+.photo-strip-slot.ph{background:var(--paper);display:flex;align-items:center;justify-content:center;font-family:var(--mono);font-size:0.62rem;letter-spacing:0.12em;text-transform:uppercase;color:var(--ink-faint);border:1px dashed var(--ink-rule);}
+
+/* ── QUOTE BAND ── */
+.quote-band{position:relative;overflow:hidden;padding:80px 40px;}
+.quote-band::before{content:'';position:absolute;inset:0;background:linear-gradient(135deg,#fde8f0 0%,#e8c8f4 20%,#c8d8f8 40%,#c0f0ec 60%,#e0c8f4 80%,#f8d0e4 100%);background-size:300% 300%;animation:iriFlow 10s ease infinite;}
+.quote-band::after{content:'';position:absolute;inset:0;background:rgba(255,255,255,0.18);z-index:0;}
+.quote-band-inner{max-width:820px;margin:0 auto;position:relative;z-index:1;text-align:center;}
+.pq-text{font-family:var(--display);font-size:clamp(1.5rem,3vw,2.4rem);font-weight:700;font-style:italic;line-height:1.4;color:var(--ink);margin-bottom:18px;}
+.pq-hl{color:var(--accent);}
+.pq-attr{font-family:var(--mono);font-size:0.82rem;font-weight:500;letter-spacing:0.16em;text-transform:uppercase;color:var(--ink-soft);}
+
+/* ── NUMBERS ── */
+.numbers-section{position:relative;padding:80px 0;overflow:hidden;}
+.numbers-section::before{content:'';position:absolute;inset:0;background:linear-gradient(135deg,#fde8f0 0%,#e8c8f4 20%,#c8d8f8 40%,#c0f0ec 60%,#e0c8f4 80%,#f8d0e4 100%);background-size:300% 300%;animation:iriFlow 12s ease infinite;}
+.numbers-section::after{content:'';position:absolute;inset:0;background:rgba(255,255,255,0.22);}
+.numbers-inner{position:relative;z-index:1;}
+.numbers-inner{max-width:var(--max);margin:0 auto;padding:0 48px;display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:start;}
+.numbers-label{font-family:var(--mono);font-size:0.72rem;font-weight:700;letter-spacing:0.24em;text-transform:uppercase;color:var(--ink-soft);margin-bottom:8px;}
+.numbers-title{font-family:var(--display);font-size:clamp(2rem,4vw,3rem);font-weight:900;font-style:italic;color:var(--ink);line-height:1.05;margin-bottom:36px;}
+.numbers-title em{color:var(--accent);}
+.songs-list{display:flex;flex-direction:column;}
+.song-row{display:grid;grid-template-columns:26px 1fr auto;gap:14px;align-items:center;padding:11px 0;border-bottom:1px solid rgba(28,20,16,0.08);}
+.song-row:last-of-type{border-bottom:none;}
+.song-rank{font-family:var(--display);font-size:1rem;font-weight:700;font-style:italic;color:var(--accent);text-align:right;}
+.song-name{font-family:var(--body);font-size:1rem;font-weight:600;color:var(--ink);display:block;line-height:1.2;}
+.song-meta{font-family:var(--mono);font-size:0.6rem;letter-spacing:0.1em;text-transform:uppercase;color:var(--ink-soft);display:block;margin-top:2px;}
+.song-stat{font-family:var(--mono);font-size:0.72rem;font-weight:700;color:var(--ink-soft);letter-spacing:0.05em;text-align:right;}
+.songs-note{font-family:var(--mono);font-size:0.6rem;letter-spacing:0.1em;text-transform:uppercase;color:var(--ink-faint);margin-top:14px;}
+.records-list{display:flex;flex-direction:column;gap:24px;}
+.record-num{font-family:var(--display);font-size:clamp(2.4rem,5vw,3.8rem);font-weight:900;font-style:italic;color:var(--accent);line-height:1;display:block;margin-bottom:4px;}
+.record-label{font-family:var(--mono);font-size:0.72rem;font-weight:700;letter-spacing:0.16em;text-transform:uppercase;color:var(--ink-soft);display:block;margin-bottom:4px;}
+.record-desc{font-family:var(--body);font-size:1.02rem;color:var(--ink-mid);font-style:italic;line-height:1.5;}
+.records-div{width:28px;height:1px;background:rgba(196,24,90,0.4);margin-top:-8px;}
+
+/* ── DISCOGRAPHY ── */
+.discog-section{background-image: url('taylor-swift/images/plufow-le-studio-VdXu2m_JLFM-unsplash.jpg'); padding:80px 0;border-top:1px solid rgba(255,255,255,0.04);}
+.discog-inner{max-width:var(--max);margin:0 auto;padding:0 48px;}
+.discog-label{font-family:var(--mono);font-size:0.72rem;font-weight:700;letter-spacing:0.24em;text-transform:uppercase;color:rgba(255,255,255,0.22);margin-bottom:8px;}
+.discog-title{font-family:var(--display);font-size:clamp(1.8rem,3.5vw,2.6rem);font-weight:900;font-style:italic;color:#fff;margin-bottom:36px;line-height:1.1;}
+.discog-title em{color:var(--accent2);}
+.discog-grid{display:grid;grid-template-columns:repeat(6,1fr);gap:12px;margin-bottom:20px;}
+.discog-tile img{width:100%;aspect-ratio:1;object-fit:cover;border-radius:2px;display:block;transition:transform 0.25s,box-shadow 0.25s;box-shadow:0 2px 8px rgba(0,0,0,0.3);}
+.discog-tile:hover img{transform:translateY(-4px) scale(1.04);box-shadow:0 16px 32px rgba(196,24,90,0.35);}
+.discog-tile-info{margin-top:7px;text-align:center;}
+.discog-tile-name{font-family:var(--body);font-size:0.82rem;color:rgba(255,255,255,0.55);display:block;line-height:1.2;}
+.discog-tile-year{font-family:var(--mono);font-size:0.58rem;font-weight:700;letter-spacing:0.1em;color:var(--accent);display:block;margin-top:2px;}
+.discog-foot{font-family:var(--mono);font-size:0.6rem;letter-spacing:0.14em;text-transform:uppercase;color:rgba(255,255,255,0.14);text-align:center;padding-top:16px;border-top:1px solid rgba(255,255,255,0.04);}
+
+/* ── VERSIONS ── */
+.versions-section{background:var(--ivory);padding:72px 0;}
+.versions-inner{max-width:var(--max);margin:0 auto;padding:0 48px;}
+.section-label{font-family:var(--mono);font-size:0.72rem;font-weight:700;letter-spacing:0.24em;text-transform:uppercase;color:var(--accent);margin-bottom:8px;}
+.section-title{font-family:var(--display);font-size:clamp(1.8rem,3.5vw,2.6rem);font-weight:700;color:var(--ink);margin-bottom:12px;line-height:1.1;}
+.section-title em{font-style:italic;color:var(--accent);}
+.section-intro{font-family:var(--body);font-size:1.1rem;line-height:1.72;color:var(--ink-mid);font-style:italic;max-width:620px;margin-bottom:36px;}
+.versions-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;}
+.version-card{background:var(--card-bg);border:1px solid var(--border);border-radius:2px;padding:22px 20px;border-top:3px solid var(--accent);}
+.version-card-album{font-family:var(--display);font-size:1.15rem;font-weight:700;font-style:italic;color:var(--ink);margin-bottom:4px;}
+.version-card-date{font-family:var(--mono);font-size:0.68rem;letter-spacing:0.14em;text-transform:uppercase;color:var(--accent);margin-bottom:10px;display:block;}
+.version-card-body{font-family:var(--body);font-size:1.02rem;line-height:1.6;color:var(--ink-mid);}
+
+/* ── ECOSYSTEM ── */
+.eco-section{background:var(--cream);padding:72px 0;border-top:1px solid var(--border);}
+.eco-inner{max-width:var(--max);margin:0 auto;padding:0 48px;}
+.eco-header{display:flex;align-items:center;gap:10px;margin-bottom:32px;}
+.eco-header-label{font-family:var(--mono);font-size:0.72rem;font-weight:700;letter-spacing:0.22em;text-transform:uppercase;color:var(--accent);}
+.eco-header-sep{color:var(--ink-faint);}
+.eco-header-topic{font-family:var(--mono);font-size:0.72rem;font-weight:500;letter-spacing:0.16em;text-transform:uppercase;color:var(--ink-soft);}
+.eco-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:32px;}
+.eco-col-label{font-family:var(--mono);font-size:0.72rem;font-weight:700;letter-spacing:0.18em;text-transform:uppercase;color:var(--ink-soft);margin-bottom:14px;padding-bottom:8px;border-bottom:1px solid var(--border);}
+.eco-link{display:block;font-family:var(--body);font-size:1.05rem;color:var(--ink);text-decoration:none;margin-bottom:2px;transition:color 0.15s;}
+.eco-link:hover{color:var(--accent);}
+.eco-link-sub{font-family:var(--body);font-size:0.88rem;font-style:italic;color:var(--ink-faint);margin-bottom:12px;line-height:1.4;}
+
+/* ── COLOPHON ── */
+.colophon{background:var(--ivory);border-top:1px solid var(--border);padding:48px;display:grid;grid-template-columns:1fr 1fr;gap:40px;}
+.colophon-label{font-family:var(--mono);font-size:0.72rem;font-weight:700;letter-spacing:0.22em;text-transform:uppercase;color:var(--accent);margin-bottom:10px;}
+.colophon-blurb{font-family:var(--body);font-size:1rem;line-height:1.6;color:var(--ink-mid);max-width:42ch;margin:0;}
+.colophon-meta-label{font-family:var(--mono);font-size:0.72rem;font-weight:700;letter-spacing:0.22em;text-transform:uppercase;color:var(--ink-faint);margin-bottom:8px;}
+.colophon-series{font-family:var(--display);font-size:1.05rem;font-weight:700;color:var(--ink);margin-bottom:6px;}
+.colophon-series em{font-style:italic;color:var(--accent);}
+.colophon-url{display:block;font-family:var(--mono);font-size:0.82rem;color:var(--accent);text-decoration:none;margin-bottom:14px;border-bottom:1px solid transparent;transition:border-color 0.15s;}
+.colophon-url:hover{border-bottom-color:var(--accent);}
+.colophon-share{display:flex;gap:8px;}
+.colophon-share-link{font-family:var(--mono);font-size:0.75rem;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:var(--accent);text-decoration:none;border:1px solid rgba(196,24,90,0.35);padding:4px 10px;transition:background 0.15s,color 0.15s;}
+.colophon-share-link:hover{background:var(--accent);color:#fff;}
+
+/* ── FOOTER ── */
+footer{background:var(--cream);border-top:1px solid var(--border);height:56px;padding:0 2.5rem;display:flex;align-items:center;justify-content:space-between;}
+.footer-lockup{display:flex;align-items:center;gap:12px;text-decoration:none;flex-shrink:0;}
+.footer-series{font-family:var(--mono);font-weight:700;font-size:0.82rem;text-transform:uppercase;letter-spacing:0.05em;color:var(--ink);white-space:nowrap;}
+.footer-series em{font-style:normal;color:var(--accent);}
+.footer-copy{font-family:var(--mono);font-size:0.82rem;letter-spacing:0.14em;text-transform:uppercase;color:var(--ink-faint);}
+.footer-mouth{animation:cursorBlink 1.1s step-end infinite;}
+
+/* ── RESPONSIVE ── */
+@media(max-width:900px){
+  .vinyl-era{grid-template-columns:160px 1fr;gap:32px;}
+  .stats-band-inner{grid-template-columns:repeat(2,1fr);}
+  .numbers-inner{grid-template-columns:1fr;gap:48px;}
+  .discog-grid{grid-template-columns:repeat(4,1fr);}
+  .versions-grid{grid-template-columns:repeat(2,1fr);}
+  .eco-grid{grid-template-columns:repeat(2,1fr);}
+  .colophon{grid-template-columns:1fr;padding:32px 24px;}
+}
+@media(max-width:640px){
+  .hero-content,.era-wrap,.numbers-inner,.discog-inner,.versions-inner,.eco-inner,.stats-band-inner{padding-left:20px;padding-right:20px;}
+  .vinyl-era{grid-template-columns:1fr;gap:20px;}
+  .vinyl-cover-col{display:flex;gap:16px;align-items:flex-start;position:static;}
+  .vinyl-cover{width:88px;flex-shrink:0;}
+  .vinyl-cover-meta{margin-top:0;}
+  .era-grid{grid-template-columns:1fr;}
+  .discog-grid{grid-template-columns:repeat(3,1fr);}
+  .versions-grid{grid-template-columns:1fr;}
+  .eco-grid{grid-template-columns:1fr;}
+  .photo-strip-inner{height:130px;}
+  .hero-stats{gap:24px;}
+  .splash-right{width:38%;}
+  
+  .ab-track-wrap,.ab-time{display:none;}
+  .colophon{padding:24px 20px;}
+}
+</style>
+</head>
+<body>
+
+<audio id="audio" preload="none">
+  <source src="taylor-swift/images/cruel-summer.mp3" type="audio/mpeg">
+</audio>
+
+<!-- SPLASH -->
+<div id="splash">
+  <div class="splash-left">
+    <div class="splash-iri"></div>
+    <div class="splash-text">
+      <div class="splash-svg-stack">
+        <img class="sp-abh" src="taylor-swift/images/hero-title-a-brief-history.svg" alt="A (Brief) History">
+        <img class="sp-of"  src="taylor-swift/images/hero-title-of.svg" alt="of">
+        <img class="sp-ts"  src="taylor-swift/images/hero-title-taylor-swift.svg" alt="Taylor Swift">
+      </div>
+      <button class="splash-enter" id="splash-btn">
+        <svg viewBox="0 0 24 24" fill="currentColor" width="14" height="14"><polygon points="5 3 19 12 5 21 5 3"/></svg>
+        Enter
+      </button>
+      <span class="splash-hint">Cruel Summer is playing</span>
+    </div>
+  </div>
+  <!--
+	<div class="splash-right">
+    <img src="taylor-swift/images/hero-portrait-2.jpg" alt="" class="splash-portrait">
+  </div>
+!-->
+</div>
+
+<!-- AUDIO BAR -->
+<div id="audio-bar">
+  <button class="ab-btn ab-play" id="ab-play" aria-label="Play/pause">
+    <svg id="ico-play" viewBox="0 0 24 24" fill="currentColor"><polygon points="5 3 19 12 5 21 5 3"/></svg>
+    <svg id="ico-pause" viewBox="0 0 24 24" fill="currentColor" style="display:none"><rect x="6" y="4" width="4" height="16"/><rect x="14" y="4" width="4" height="16"/></svg>
+  </button>
+  <div class="ab-info">
+    <span class="ab-title">Cruel Summer</span>
+    <span class="ab-artist">Taylor Swift · 1989 (Taylor's Version)</span>
+  </div>
+  <div class="ab-track-wrap">
+    <div class="ab-track" id="ab-track"><div class="ab-fill" id="ab-fill"></div></div>
+  </div>
+  <span class="ab-time" id="ab-time">0:00</span>
+  <button class="ab-btn ab-close" id="ab-close">✕</button>
+</div>
+
+<div id="progress"></div>
+
+<!-- NAV -->
+<nav class="nav">
+  <a href="#top" class="nav-tag">
+    <div class="nav-index-box">013</div>
+    <span class="nav-topic">Taylor Swift<span class="cursor-blink" style="color:var(--accent);">_</span></span>
+  </a>
+  <div class="nav-right">
+    <div class="nav-share-wrap">
+      <button class="nav-btn" id="share-btn">
+        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><line x1="8.59" y1="13.51" x2="15.42" y2="17.49"/><line x1="15.41" y1="6.51" x2="8.59" y2="10.49"/></svg>
+        Share
+      </button>
+      <div class="share-drop" id="share-drop">
+        <a href="https://twitter.com/intent/tweet?text=A%20(Brief)%20History%20of%20Taylor%20Swift&url=https://abriefhistoryofeverything.com/taylor-swift" target="_blank" rel="noopener">𝕏 Post</a>
+        <a href="https://bsky.app/intent/compose?text=A%20(Brief)%20History%20of%20Taylor%20Swift%20https://abriefhistoryofeverything.com/taylor-swift" target="_blank" rel="noopener">🦋 Bluesky</a>
+        <button id="copy-btn">🔗 Copy Link</button>
+      </div>
+    </div>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero" id="top">
+  <div class="hero-photo"><img src="taylor-swift/images/sequin-costume.jpg" alt="Taylor Swift"></div>
+  <div class="hero-content">
+    <div class="hero-scattered-title fi">
+      <div class="hero-svg-stack">
+        <img class="ht-abh" src="taylor-swift/images/hero-title-a-brief-history.svg" alt="A (Brief) History">
+        <img class="ht-of"  src="taylor-swift/images/hero-title-of.svg" alt="of">
+        <img class="ht-ts"  src="taylor-swift/images/hero-title-taylor-swift.svg" alt="Taylor Swift">
+      </div>
+      <p class="hero-thesis">She arrived as a country teenager with a notebook full of stories. She leaves — or doesn't — as the most commercially powerful force in the history of the music industry. This is the story of how that happened, and why it keeps happening.</p>
+    </div>
+  </div>
+</section>
+
+<!-- STATS BAND -->
+	<!--
+<div class="stats-band">
+  <div class="stats-band-inner">
+    <div class="s-stat fi"><div class="s-num">12</div><div class="s-label">Studio Albums</div><div class="s-sub">2006–2025 · plus six Taylor's Versions</div></div>
+    <div class="s-stat fi"><div class="s-num">6</div><div class="s-label">Re-recordings</div><div class="s-sub">Masters reclaimed — one album at a time</div></div>
+    <div class="s-stat fi"><div class="s-num">10</div><div class="s-label">Hot 100 Top 10</div><div class="s-sub">Midnights held every slot simultaneously</div></div>
+    <div class="s-stat fi"><div class="s-num">52</div><div class="s-label">Countries</div><div class="s-sub">Eras Tour · 149 shows · 5 continents</div></div>
+  </div>
+</div>
+!-->
+	
+<!-- PHOTO STRIP 1 -->
+<div class="photo-strip"><div class="photo-strip-inner">
+  <div class="photo-strip-slot ph">photo · early era</div>
+  <div class="photo-strip-slot ph">photo · nashville</div>
+  <div class="photo-strip-slot ph">photo · fearless tour</div>
+  <div class="photo-strip-slot ph">photo · speak now era</div>
+  <div class="photo-strip-slot ph">photo · early awards</div>
+</div></div>
+
+<!-- ERA I -->
+<div class="era-section" style="background:var(--cream);" id="era-1">
+  <div class="era-wrap">
+    <div class="vinyl-era fi">
+      <div class="vinyl-cover-col">
+        <img src="taylor-swift/images/cover-taylor-swift.jpg" alt="Taylor Swift debut" class="vinyl-cover">
+        <div class="vinyl-cover-meta" style="border-left:3px solid #3a5a30;"><span class="vinyl-cover-title">Taylor Swift</span><span class="vinyl-cover-year">2006</span></div>
+      </div>
+      <div class="vinyl-content-col">
+        <div class="era-eyebrow"><span class="era-num">I</span><span class="era-years">2004 – 2010</span></div>
+        <h2 class="era-title">The <em>Country Girl</em> Origin Story</h2>
+        <div class="era-badge" style="background:#D4E8CC;color:#3a5a30;">Country Roots</div>
+        <p class="era-intro">A thirteen-year-old from Pennsylvania decides she's going to be a country star. Not a pop star. Not a celebrity. A songwriter. She moves to Nashville alone, cold-calls labels, and lands a deal at DreamWorks. The origin story is almost implausibly clean — but what follows is not.</p>
+        <div class="era-grid fi">
+          <div class="card"><span class="card-year">2006</span><h3>Writing Her Own Rules</h3><p>Taylor Swift is 16. The debut album she wrote almost entirely alone goes platinum and produces Tim McGraw — a song about a boy written before she'd even broken up with him. Country radio resists. Then folds.</p><div class="card-tags"><a class="tag" href="https://open.spotify.com/album/5eyZZoQEFQWRHkV2xgAeBw" target="_blank" rel="noopener">Debut</a><a class="tag" href="https://en.wikipedia.org/wiki/Nashville,_Tennessee" target="_blank" rel="noopener">Nashville</a></div></div>
+          <div class="card"><span class="card-year">2008</span><h3>Fearless — The Country-Pop Bridge</h3><p>Love Story and You Belong With Me cross from country radio to Top 40 without anyone's permission. Fearless wins Album of the Year at the Grammys. She is the youngest artist ever to win. She will not be finished with that award.</p><div class="card-tags"><a class="tag" href="https://open.spotify.com/album/2dFLbKIRNTZtTmDHFYJ6N2" target="_blank" rel="noopener">Fearless</a><a class="tag" href="https://www.grammy.com/artists/taylor-swift/8586" target="_blank" rel="noopener">Grammy</a></div></div>
+          <div class="card"><span class="card-year">2009</span><h3>The VMA Interruption</h3><p>Kanye West takes her microphone mid-acceptance speech. She is 19. The moment will follow both of them for a decade — weaponized, litigated, re-litigated. She files it away. She is already taking notes.</p><div class="card-tags"><a class="tag" href="https://en.wikipedia.org/wiki/2009_MTV_Video_Music_Awards" target="_blank" rel="noopener">VMAs</a><a class="tag" href="https://en.wikipedia.org/wiki/Taylor_Swift%E2%80%93Kanye_West_feud" target="_blank" rel="noopener">Turning Point</a></div></div>
+          <div class="card"><span class="card-year">2010</span><h3>Speak Now — Written Alone</h3><p>All 14 tracks written without co-writers — a direct answer to critics who said she needed help. The critical consensus shifts: maybe this isn't a marketing project. Maybe it never was.</p><div class="card-tags"><a class="tag" href="https://open.spotify.com/album/1r0NxtFMmFCBKuCdFp5Odb" target="_blank" rel="noopener">Speak Now</a><a class="tag" href="https://en.wikipedia.org/wiki/Taylor_Swift_discography" target="_blank" rel="noopener">Authorship</a></div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ERA II -->
+<div class="era-section" style="background:var(--ivory);" id="era-2">
+  <div class="era-wrap">
+    <div class="vinyl-era fi">
+      <div class="vinyl-cover-col">
+        <img src="taylor-swift/images/cover-red.jpg" alt="Red album" class="vinyl-cover">
+        <div class="vinyl-cover-meta" style="border-left:3px solid #B33040;"><span class="vinyl-cover-title">Red</span><span class="vinyl-cover-year">2012 · TV 2021</span></div>
+      </div>
+      <div class="vinyl-content-col">
+        <div class="era-eyebrow"><span class="era-num" style="color:rgba(179,48,64,0.15);">II</span><span class="era-years">2012 – 2013</span></div>
+        <h2 class="era-title">The <em>Red</em> Transition</h2>
+        <div class="era-badge" style="background:#F9DCE0;color:#B33040;">Maximum Feeling</div>
+        <p class="era-intro">Red is the hinge album — half country, half pop, all chaos. It's messy and emotional and too long and contains All Too Well, which is quietly one of the greatest breakup songs ever written. Nobody knows this yet. They will.</p>
+        <div class="era-grid fi">
+          <div class="card"><span class="card-year">2012</span><h3>Genre Without a Home</h3><p>Red sells 1.21 million copies its first week — the highest total in a decade. It is neither country nor pop. The CMA calls it country. The Grammys disagree. The listeners don't care.</p><div class="card-tags"><a class="tag" href="https://open.spotify.com/album/1NAmidJlEaVgA3MpcPFYGq" target="_blank" rel="noopener">Red</a><a class="tag" href="https://en.wikipedia.org/wiki/Taylor_Swift_discography" target="_blank" rel="noopener">Records</a></div></div>
+          <div class="card"><span class="card-year">2013</span><h3>The Streaming Standoff</h3><p>Swift removes her music from Spotify, citing unfair compensation. The industry calls it a stunt. Three years later, Spotify changes its policies. She was right about this, as she is right about most things, eventually.</p><div class="card-tags"><a class="tag" href="https://en.wikipedia.org/wiki/Taylor_Swift%E2%80%93Spotify_conflict" target="_blank" rel="noopener">Streaming</a><a class="tag" href="https://en.wikipedia.org/wiki/Taylor_Swift%E2%80%93Scooter_Braun_conflict" target="_blank" rel="noopener">Artist Rights</a></div></div>
+          <div class="card"><span class="card-year">2021</span><h3>All Too Well — The Full Version</h3><p>Red (Taylor's Version) drops with the 10-minute All Too Well. It debuts at #1 on the Hot 100 — the longest song ever to do so. What was a beloved deep cut becomes a monument.</p><div class="card-tags"><a class="tag" href="https://en.wikipedia.org/wiki/Taylor%27s_Version" target="_blank" rel="noopener">Taylor's Version</a><a class="tag" href="https://en.wikipedia.org/wiki/All_Too_Well" target="_blank" rel="noopener">All Too Well</a></div></div>
+          <div class="card"><span class="card-year">2022</span><h3>The Short Film</h3><p>Swift directs a 15-minute short film for All Too Well starring Sadie Sink and Dylan O'Brien. It wins an MTV VMA for Best Direction. She is now, without announcement, a filmmaker.</p><div class="card-tags"><a class="tag" href="https://www.youtube.com/watch?v=sRBqBFXCQrg" target="_blank" rel="noopener">Direction</a><a class="tag" href="https://www.youtube.com/watch?v=sRBqBFXCQrg" target="_blank" rel="noopener">Film</a></div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- PHOTO STRIP 2 -->
+<div class="photo-strip"><div class="photo-strip-inner">
+  <div class="photo-strip-slot ph">photo · red era</div>
+  <div class="photo-strip-slot ph">photo · 1989 tour</div>
+  <div class="photo-strip-slot ph">photo · squad era</div>
+  <div class="photo-strip-slot ph">photo · 1989 awards</div>
+  <div class="photo-strip-slot ph">photo · apple music</div>
+</div></div>
+
+<!-- ERA III -->
+<div class="era-section" style="background:var(--cream);" id="era-3">
+  <div class="era-wrap">
+    <div class="vinyl-era fi">
+      <div class="vinyl-cover-col">
+        <img src="taylor-swift/images/cover-1989.jpg" alt="1989 album" class="vinyl-cover">
+        <div class="vinyl-cover-meta" style="border-left:3px solid #5090c0;"><span class="vinyl-cover-title">1989</span><span class="vinyl-cover-year">2014 · TV 2023</span></div>
+      </div>
+      <div class="vinyl-content-col">
+        <div class="era-eyebrow"><span class="era-num" style="color:rgba(124,180,212,0.18);">III</span><span class="era-years">2014 – 2016</span></div>
+        <h2 class="era-title"><em>1989</em> — Pop at Maximum</h2>
+        <div class="era-badge" style="background:#DCF0F8;color:#3a6a90;">Polaroid Summer</div>
+        <p class="era-intro">The clean-break album. Pure synth-pop, Max Martin production, not a banjo in sight. It wins Album of the Year — making Swift the first woman to win the award twice. For a moment, she is the center of everything. Then the internet decides otherwise.</p>
+        <div class="era-grid fi">
+          <div class="card"><span class="card-year">2014</span><h3>The Pop Coronation</h3><p>Shake It Off, Blank Space, Bad Blood, Style — the singles arrive like a conquest. 1989 sells 1.287 million copies its first week. She crossed cleanly from country to pop without losing either audience. Nobody else had done that.</p><div class="card-tags"><a class="tag" href="https://open.spotify.com/album/64LU4c1nfjz1t4VnGhagcg" target="_blank" rel="noopener">1989</a><a class="tag" href="https://en.wikipedia.org/wiki/Taylor_Swift_discography" target="_blank" rel="noopener">Records</a></div></div>
+          <div class="card"><span class="card-year">2015</span><h3>The Apple Music Letter</h3><p>Swift publishes an open letter refusing to license 1989 during Apple Music's free trial. Artists would receive nothing. Apple reverses its policy within 24 hours. She is not just an artist — she is now a negotiating position.</p><div class="card-tags"><a class="tag" href="https://en.wikipedia.org/wiki/Taylor_Swift%E2%80%93Apple_Music_conflict" target="_blank" rel="noopener">Streaming Rights</a><a class="tag" href="https://en.wikipedia.org/wiki/Taylor_Swift%E2%80%93Scooter_Braun_conflict" target="_blank" rel="noopener">Industry</a></div></div>
+          <div class="card"><span class="card-year">2016</span><h3>The Snake Year</h3><p>The Kim Kardashian phone call leak. "Taylor Swift is over party" trends globally. She disappears entirely — no interviews, no social media, nothing. For a full year. She is taking notes about what it feels like to be buried alive by the internet.</p><div class="card-tags"><a class="tag" href="https://en.wikipedia.org/wiki/Taylor_Swift%E2%80%93Kanye_West_feud" target="_blank" rel="noopener">Media</a><a class="tag" href="https://en.wikipedia.org/wiki/Taylor_Swift%E2%80%93Kanye_West_feud" target="_blank" rel="noopener">Crisis</a></div></div>
+          <div class="card"><span class="card-year">2016</span><h3>The Grammy Speech</h3><p>1989 wins Album of the Year. In her acceptance speech, Swift addresses the room — and Kanye West — directly: someone will always try to take credit for your accomplishments. The industry understands exactly who she means.</p><div class="card-tags"><a class="tag" href="https://www.grammy.com/artists/taylor-swift/8586" target="_blank" rel="noopener">Grammy</a><a class="tag" href="https://en.wikipedia.org/wiki/Taylor_Swift%E2%80%93Scooter_Braun_conflict" target="_blank" rel="noopener">Industry</a></div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- QUOTE BAND 1 -->
+<div class="quote-band">
+  <div class="quote-band-inner">
+    <div class="pq-text">&ldquo;I had the most magical, perfect life. And I had worked really hard for it. And then I just watched it <span class="pq-hl">crumble</span>.&rdquo;</div>
+    <div class="pq-attr">— Taylor Swift · Miss Americana · 2020</div>
+  </div>
+</div>
+
+<!-- ERA IV -->
+<div class="era-section" id="era-4" style="background:#1C1410;color:#fff;">
+  <div class="era-wrap">
+    <div class="vinyl-era fi">
+      <div class="vinyl-cover-col">
+        <img src="taylor-swift/images/reputation-album.jpg" alt="reputation" class="vinyl-cover">
+        <div class="vinyl-cover-meta" style="border-left:3px solid rgba(255,255,255,0.18);"><span class="vinyl-cover-title" style="color:rgba(255,255,255,0.68);">reputation</span><span class="vinyl-cover-year">2017</span></div>
+      </div>
+      <div class="vinyl-content-col">
+        <div class="era-eyebrow"><span class="era-num" style="color:rgba(255,255,255,0.06);">IV</span><span class="era-years" style="color:rgba(255,255,255,0.28);">2017 – 2018</span></div>
+        <h2 class="era-title" style="color:#fff;">The <em>Snake</em> Becomes the Artist</h2>
+        <div class="era-badge" style="background:rgba(255,255,255,0.06);color:rgba(255,255,255,0.58);">Controlled Burn</div>
+        <p class="era-intro" style="color:rgba(255,255,255,0.52);border-left-color:rgba(196,24,90,0.25);">She returns from silence as something different. reputation doesn't apologize. It weaponizes the media narrative that tried to destroy her — wearing snakes as jewelry, making the tabloid villain persona the artistic concept. The most controlled album she'll ever make.</p>
+        <div class="era-grid fi">
+          <div class="card" style="background:rgba(255,255,255,0.04);border-color:rgba(255,255,255,0.07);"><span class="card-year">2017</span><h3 style="color:#fff;">The Return</h3><p style="color:rgba(255,255,255,0.58);">After a year of silence, she wipes all social media and drops Look What You Made Me Do. reputation sells 1.05 million copies in its first week. The snake imagery is now her aesthetic. She recontextualized the attack.</p><div class="card-tags"><a class="tag" href="https://open.spotify.com/album/6DEjYFkNZh67HP7R9PSZvv" target="_blank" rel="noopener">reputation</a><a class="tag" href="https://en.wikipedia.org/wiki/Reputation_(Taylor_Swift_album)" target="_blank" rel="noopener">Comeback</a></div></div>
+          <div class="card" style="background:rgba(255,255,255,0.04);border-color:rgba(255,255,255,0.07);"><span class="card-year">2019</span><h3 style="color:#fff;">The Masters Deal</h3><p style="color:rgba(255,255,255,0.58);">Scooter Braun's company acquires Big Machine Records and with it, the masters to her first six albums — without her knowledge. She finds out when it's announced publicly. The dispute will define the next five years of her career.</p><div class="card-tags"><a class="tag" href="https://en.wikipedia.org/wiki/Taylor_Swift%E2%80%93Scooter_Braun_conflict" target="_blank" rel="noopener">Masters</a><a class="tag" href="https://en.wikipedia.org/wiki/Taylor_Swift%E2%80%93Scooter_Braun_conflict" target="_blank" rel="noopener">Ownership</a></div></div>
+          <div class="card" style="background:rgba(255,255,255,0.04);border-color:rgba(255,255,255,0.07);"><span class="card-year">2018</span><h3 style="color:#fff;">The Stadium Tour</h3><p style="color:rgba(255,255,255,0.58);">345 million dollars. The highest-grossing North American tour in history at the time. She plays to 2.9 million people across 53 shows. Nobody is calling her over anymore.</p><div class="card-tags"><a class="tag" href="https://en.wikipedia.org/wiki/The_Eras_Tour" target="_blank" rel="noopener">Tour</a><a class="tag" href="https://en.wikipedia.org/wiki/Taylor_Swift_discography" target="_blank" rel="noopener">Records</a></div></div>
+          <div class="card" style="background:rgba(255,255,255,0.04);border-color:rgba(255,255,255,0.07);"><span class="card-year">2018</span><h3 style="color:#fff;">First Political Statement</h3><p style="color:rgba(255,255,255,0.58);">After years of deliberate silence, Swift endorses two Tennessee Democratic candidates. Voter registration in Tennessee spikes 65,000 in a single day. She was right to wait, and right about the timing.</p><div class="card-tags"><a class="tag" href="https://en.wikipedia.org/wiki/Taylor_Swift%27s_political_views" target="_blank" rel="noopener">Politics</a><a class="tag" href="https://en.wikipedia.org/wiki/Taylor_Swift%27s_political_views" target="_blank" rel="noopener">Influence</a></div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- PHOTO STRIP 3 -->
+<div class="photo-strip"><div class="photo-strip-inner">
+  <div class="photo-strip-slot ph">photo · reputation era</div>
+  <div class="photo-strip-slot ph">photo · lover era</div>
+  <div class="photo-strip-slot ph">photo · folklore era</div>
+  <div class="photo-strip-slot ph">photo · eras tour</div>
+  <div class="photo-strip-slot ph">photo · midnights era</div>
+</div></div>
+
+<!-- ERA V -->
+<div class="era-section" style="background:var(--cream);" id="era-5">
+  <div class="era-wrap">
+    <div class="vinyl-era fi">
+      <div class="vinyl-cover-col">
+        <img src="taylor-swift/images/cover-folklore.jpg" alt="folklore" class="vinyl-cover">
+        <div class="vinyl-cover-meta" style="border-left:3px solid #7a8070;"><span class="vinyl-cover-title">folklore · evermore</span><span class="vinyl-cover-year">2020</span></div>
+      </div>
+      <div class="vinyl-content-col">
+        <div class="era-eyebrow"><span class="era-num" style="color:rgba(28,20,16,0.08);">V</span><span class="era-years">2019 – 2021</span></div>
+        <h2 class="era-title">The <em>Quiet</em> Masterworks</h2>
+        <div class="era-badge" style="background:var(--blush);color:var(--accent);">Indie Pivot</div>
+        <p class="era-intro">Lover is the bright, pastel intermission. Then the pandemic happens, and Swift does something genuinely surprising: a spare, literary, indie-folk record with Aaron Dessner, announced Thursday and released Friday. It becomes one of the most critically acclaimed releases of her career. She does it again two months later.</p>
+        <div class="era-grid fi">
+          <div class="card"><span class="card-year">2019</span><h3>Lover — Before the Silence</h3><p>In retrospect, Lover is the last album she makes with full commercial intentionality before letting go of the formula entirely. Bright, joyful, slightly overstuffed. The last thing that sounds like the old rules.</p><div class="card-tags"><a class="tag" href="https://open.spotify.com/album/1KW91XkMznOqFaQKABd7dz" target="_blank" rel="noopener">Lover</a><a class="tag" href="https://en.wikipedia.org/wiki/Taylor_Swift_discography" target="_blank" rel="noopener">Pop</a></div></div>
+          <div class="card"><span class="card-year">2020</span><h3>folklore — The Pivot Nobody Expected</h3><p>Spare, literary, radically unlike anything on pop radio. folklore wins Album of the Year — making Swift the first artist to win three times. Critics who spent years dismissing her offer apologies in print.</p><div class="card-tags"><a class="tag" href="https://open.spotify.com/album/2fenSS68JI1h4Fo1HkVZT5" target="_blank" rel="noopener">folklore</a><a class="tag" href="https://www.grammy.com/artists/taylor-swift/8586" target="_blank" rel="noopener">Grammy</a></div></div>
+          <div class="card"><span class="card-year">2020</span><h3>evermore — The Sister Album</h3><p>Two months after folklore. Same collaborators, darker, more autumnal. The back-to-back stuns the industry — no major artist releases albums four months apart. She doesn't ask permission. She is the permission.</p><div class="card-tags"><a class="tag" href="https://open.spotify.com/album/6AORtDjduMM3bupSWzbTSG" target="_blank" rel="noopener">evermore</a><a class="tag" href="https://en.wikipedia.org/wiki/Aaron_Dessner" target="_blank" rel="noopener">Aaron Dessner</a></div></div>
+          <div class="card"><span class="card-year">2021</span><h3>Fearless (Taylor's Version)</h3><p>The first re-recording lands and Swifties immediately treat it as canonical. Streaming charts shift toward the new versions. The strategy is working: the originals are slowly losing their commercial value. One album at a time.</p><div class="card-tags"><a class="tag" href="https://en.wikipedia.org/wiki/Taylor%27s_Version" target="_blank" rel="noopener">Taylor's Version</a><a class="tag" href="https://en.wikipedia.org/wiki/Taylor_Swift%E2%80%93Scooter_Braun_conflict" target="_blank" rel="noopener">Masters</a></div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- QUOTE BAND 2 -->
+<div class="quote-band">
+  <div class="quote-band-inner">
+    <div class="pq-text">&ldquo;Somebody will always try to undermine your <span class="pq-hl">success</span> or take credit for your accomplishments or your fame.&rdquo;</div>
+    <div class="pq-attr">— Taylor Swift · Grammy acceptance speech · 2016</div>
+  </div>
+</div>
+
+<!-- ERA VI -->
+<div class="era-section" style="background:var(--ivory);" id="era-6">
+  <div class="era-wrap">
+    <div class="vinyl-era fi">
+      <div class="vinyl-cover-col">
+        <img src="taylor-swift/images/cover-midnights.jpg" alt="Midnights" class="vinyl-cover">
+        <div class="vinyl-cover-meta" style="border-left:3px solid #3D5070;"><span class="vinyl-cover-title">Midnights</span><span class="vinyl-cover-year">2022</span></div>
+      </div>
+      <div class="vinyl-content-col">
+        <div class="era-eyebrow"><span class="era-num" style="color:rgba(28,20,16,0.07);">VI</span><span class="era-years">2022 – Present</span></div>
+        <h2 class="era-title">She Is <em>Infrastructure</em></h2>
+        <div class="era-badge" style="background:var(--blush);color:var(--accent);">The Eras Phenomenon</div>
+        <p class="era-intro">Midnights breaks Spotify streaming records on release day. Then the Eras Tour begins — three hours, 44 songs, every era — and becomes the first concert tour to gross over two billion dollars. Cities report economic boosts in the hundreds of millions when she arrives. She is no longer just an artist.</p>
+        <div class="era-grid fi">
+          <div class="card"><span class="card-year">2022</span><h3>Midnights — All Ten Slots</h3><p>Midnights smashes Spotify's first-day streaming record within hours. It occupies the entire top 10 of the Hot 100 simultaneously — a feat never accomplished before. Ten slots. Her ten songs. Nobody else, ever.</p><div class="card-tags"><a class="tag" href="https://open.spotify.com/album/151w1FgRZfnKZA9FEcg9Z3" target="_blank" rel="noopener">Midnights</a><a class="tag" href="https://en.wikipedia.org/wiki/Taylor_Swift_discography" target="_blank" rel="noopener">Records</a></div></div>
+          <div class="card"><span class="card-year">2023</span><h3>The Eras Tour — $2.1 Billion</h3><p>The first concert tour to gross over two billion dollars. Cities lobby to be included. The Federal Reserve mentions her in economic reports. When she performs in Edinburgh, seismographs register a minor earthquake.</p><div class="card-tags"><a class="tag" href="https://en.wikipedia.org/wiki/The_Eras_Tour" target="_blank" rel="noopener">Eras Tour</a><a class="tag" href="https://en.wikipedia.org/wiki/Taylor_Swift_discography" target="_blank" rel="noopener">Records</a></div></div>
+          <div class="card"><span class="card-year">2023</span><h3>The Eras Tour Film</h3><p>She bypasses traditional studio distribution and negotiates directly with AMC, Regal, and Cinemark. The concert film grosses $260 million globally. She keeps a significantly larger share than any normal studio deal. She is now also a distribution model.</p><div class="card-tags"><a class="tag" href="https://www.youtube.com/watch?v=sRBqBFXCQrg" target="_blank" rel="noopener">Film</a><span class="tag">Distribution</span></div></div>
+          <div class="card"><span class="card-year">2024</span><h3>TTPD — Poet Declared</h3><p>The Tortured Poets Department drops as a double album with 31 tracks. She is now four-time Album of the Year winner. No solo artist in Grammy history has won four times. The question is no longer whether she's the greatest. It's what comes next.</p><div class="card-tags"><a class="tag" href="https://open.spotify.com/album/5H7ixXZSTi1x2iTQzJJE3U" target="_blank" rel="noopener">TTPD</a><a class="tag" href="https://www.grammy.com/artists/taylor-swift/8586" target="_blank" rel="noopener">Grammy</a></div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- PHOTO STRIP 4 -->
+<div class="photo-strip"><div class="photo-strip-inner">
+  <div class="photo-strip-slot ph">photo · travis kelce</div>
+  <div class="photo-strip-slot ph">photo · joe alwyn</div>
+  <div class="photo-strip-slot ph">photo · harry styles era</div>
+  <div class="photo-strip-slot ph">photo · jake gyllenhaal</div>
+  <div class="photo-strip-slot ph">photo · superbowl 2024</div>
+</div></div>
+
+<!-- ERA VII — DATING HISTORY -->
+<div class="era-section" style="background:var(--blush);" id="era-7">
+  <div class="era-wrap">
+    <div class="vinyl-era fi">
+      <div class="vinyl-cover-col">
+        <img src="taylor-swift/images/cover-red.jpg" alt="Red — the breakup album" class="vinyl-cover">
+        <div class="vinyl-cover-meta" style="border-left:3px solid var(--accent);">
+          <span class="vinyl-cover-title">She dated. She wrote.</span>
+          <span class="vinyl-cover-year">2008 – Present</span>
+        </div>
+      </div>
+      <div class="vinyl-content-col">
+        <div class="era-eyebrow"><span class="era-num" style="color:rgba(196,24,90,0.12);">VII</span><span class="era-years">The Personal History</span></div>
+        <h2 class="era-title">Every <em>Heartbreak</em>, a #1 Hit</h2>
+        <div class="era-badge" style="background:rgba(196,24,90,0.1);color:var(--accent);">Muse & Myth</div>
+        <p class="era-intro">The music industry spent years reducing Taylor Swift to her relationships. She responded by making her relationships the most commercially successful subject matter in modern pop history. The men came and went. The albums stayed. All Too Well alone outlasted every one of them.</p>
+        <div class="era-grid fi">
+          <div class="card" style="background:var(--cream);"><span class="card-year">2008–10</span><h3>Joe Jonas — The First Public Heartbreak</h3><p>Jonas broke up with her by phone in 27 seconds. She said so on The Today Show. She was 18. The interview went viral before viral was a thing. Forever & Always was written in 25 minutes while her hands shook. She'd always be faster than them.</p><div class="card-tags"><a class="tag" href="https://en.wikipedia.org/wiki/Fearless_(Taylor_Swift_album)" target="_blank" rel="noopener">Fearless Era</a><a class="tag" href="https://en.wikipedia.org/wiki/Taylor_Swift%E2%80%93Kanye_West_feud" target="_blank" rel="noopener">First Feud</a></div></div>
+          <div class="card" style="background:var(--cream);"><span class="card-year">2011–12</span><h3>Jake Gyllenhaal — All Too Well</h3><p>He was 29. She was 20. The relationship lasted three months. The song it produced — All Too Well — is 10 minutes long and is quietly one of the greatest breakup songs ever written. Gyllenhaal spent a decade pretending it wasn't about him. Then it went to #1 and he didn't have to.</p><div class="card-tags"><a class="tag" href="https://en.wikipedia.org/wiki/Red_(Taylor_Swift_album)" target="_blank" rel="noopener">Red Era</a><a class="tag" href="https://en.wikipedia.org/wiki/All_Too_Well" target="_blank" rel="noopener">All Too Well</a></div></div>
+          <div class="card" style="background:var(--cream);"><span class="card-year">2012–13</span><h3>Harry Styles — 1989's Ghost</h3><p>The most photographed relationship of her career to that point. Style, Out of the Woods, Clean — half of 1989 is the anatomy of this relationship. Styles was gracious about it. The album sold 1.287 million copies its first week.</p><div class="card-tags"><a class="tag" href="https://en.wikipedia.org/wiki/1989_(Taylor_Swift_album)" target="_blank" rel="noopener">1989 Era</a><a class="tag" href="https://en.wikipedia.org/wiki/Style_(Taylor_Swift_song)" target="_blank" rel="noopener">Style</a></div></div>
+          <div class="card" style="background:var(--cream);"><span class="card-year">2017–23</span><h3>Joe Alwyn — The Quiet Years</h3><p>Six years. The longest relationship of her public life. Conducted almost entirely in private. It produced folklore, evermore, and portions of Midnights — her three most critically acclaimed records. When it ended in 2023, TTPD followed immediately. She was always going to write about it.</p><div class="card-tags"><a class="tag" href="https://open.spotify.com/album/2fenSS68JI1h4Fo1HkVZT5" target="_blank" rel="noopener">folklore</a><a class="tag" href="https://open.spotify.com/album/5H7ixXZSTi1x2iTQzJJE3U" target="_blank" rel="noopener">TTPD</a></div></div>
+          <div class="card" style="background:var(--cream);"><span class="card-year">2023–</span><h3>Travis Kelce — She Is Infrastructure</h3><p>When Swift started attending Kansas City Chiefs games in fall 2023, NFL viewership among women aged 18–49 jumped 24%. The league noticed. The economists noticed. The Federal Reserve noticed. Kelce is the first boyfriend who generated his own economic data.</p><div class="card-tags"><a class="tag" href="https://en.wikipedia.org/wiki/The_Eras_Tour" target="_blank" rel="noopener">Eras Tour Era</a><a class="tag" href="https://en.wikipedia.org/wiki/Taylor_Swift_and_Travis_Kelce" target="_blank" rel="noopener">NFL</a></div></div>
+          <div class="card" style="background:var(--cream);"><span class="card-year">Every time</span><h3>The Narrative She Refused</h3><p>For twenty years, critics framed her relationships as the story. She made the music the story instead. Every breakup became a record. Every record outlasted the relationship. The narrative about her love life is ultimately a narrative about her output. She won that argument.</p><div class="card-tags"><a class="tag" href="https://en.wikipedia.org/wiki/Taylor_Swift_discography" target="_blank" rel="noopener">Authorship</a><a class="tag" href="https://en.wikipedia.org/wiki/Taylor_Swift" target="_blank" rel="noopener">Framing</a></div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ERA VIII — FEUDS -->
+<div class="era-section" style="background:var(--ivory);" id="era-8">
+  <div class="era-wrap">
+    <div class="vinyl-era fi">
+      <div class="vinyl-cover-col">
+        <img src="taylor-swift/images/reputation-album.jpg" alt="reputation" class="vinyl-cover">
+        <div class="vinyl-cover-meta" style="border-left:3px solid #3d3d3d;">
+          <span class="vinyl-cover-title">They came for her.</span>
+          <span class="vinyl-cover-year">2009 – Present</span>
+        </div>
+      </div>
+      <div class="vinyl-content-col">
+        <div class="era-eyebrow"><span class="era-num" style="color:rgba(28,20,16,0.08);">VIII</span><span class="era-years">The Public Record</span></div>
+        <h2 class="era-title">The <em>Feuds</em> That Shaped Her</h2>
+        <div class="era-badge" style="background:var(--paper);color:var(--ink-soft);">They Started It. She Finished It.</div>
+        <p class="era-intro">Every major conflict in Taylor Swift's career followed the same arc: someone underestimated her, overplayed their hand, or thought the news cycle would bury her. None of them were right. She is, at this point, empirically undefeatable in a long-running public dispute.</p>
+        <div class="era-grid fi">
+          <div class="card"><span class="card-year">2009</span><h3>Kanye West — The VMAs</h3><p>He took her microphone. She took notes. The feud would run for seven years, escalate through a phone call leak, produce reputation, and ultimately resolve — or not — in ways that continue to define both of their public narratives. She never directly lost a round.</p><div class="card-tags"><a class="tag" href="https://en.wikipedia.org/wiki/2009_MTV_Video_Music_Awards" target="_blank" rel="noopener">VMAs</a><a class="tag" href="https://en.wikipedia.org/wiki/Taylor_Swift%E2%80%93Kanye_West_feud" target="_blank" rel="noopener">Turning Point</a></div></div>
+          <div class="card"><span class="card-year">2016</span><h3>Kim Kardashian — The Phone Call</h3><p>Kardashian released footage from a phone call between Swift and Kanye. "Taylor Swift is over party" trended globally. She disappeared for a year. Then returned as something different. reputation sold over a million copies its first week. The party ended on her terms.</p><div class="card-tags"><a class="tag" href="https://en.wikipedia.org/wiki/Reputation_(Taylor_Swift_album)" target="_blank" rel="noopener">reputation Era</a><a class="tag" href="https://en.wikipedia.org/wiki/Taylor_Swift%E2%80%93Kanye_West_feud" target="_blank" rel="noopener">Media</a></div></div>
+          <div class="card"><span class="card-year">2019</span><h3>Scooter Braun — The Masters War</h3><p>The most consequential dispute of her career. Braun bought her masters without warning. She declared war publicly and methodically. Six re-recordings later, the original masters have diminished commercial value. She didn't sue. She made the music.</p><div class="card-tags"><a class="tag" href="https://en.wikipedia.org/wiki/Taylor_Swift%E2%80%93Scooter_Braun_conflict" target="_blank" rel="noopener">Masters</a><a class="tag" href="https://en.wikipedia.org/wiki/Taylor_Swift%E2%80%93Scooter_Braun_conflict" target="_blank" rel="noopener">Ownership</a></div></div>
+          <div class="card"><span class="card-year">2021</span><h3>Jake Gyllenhaal — All Too Well Returns</h3><p>Nine years after the relationship ended, the full 10-minute version of All Too Well premiered. Gyllenhaal was the subject of sustained public scrutiny. He gave one interview about it. The song went to #1. She said nothing. She didn't need to.</p><div class="card-tags"><a class="tag" href="https://open.spotify.com/album/6kZ42qRrzov54LcAk4onW9" target="_blank" rel="noopener">Red TV</a><a class="tag" href="https://en.wikipedia.org/wiki/All_Too_Well" target="_blank" rel="noopener">All Too Well</a></div></div>
+          <div class="card"><span class="card-year">2015–23</span><h3>Ticketmaster — The Eras Tour Collapse</h3><p>When the Eras Tour presale crashed Ticketmaster's systems in 2022, Congress called hearings. Swift didn't testify, but her fans did. The resulting antitrust scrutiny of Live Nation/Ticketmaster was directly attributed to the event. She broke a ticketing monopoly by accident.</p><div class="card-tags"><a class="tag" href="https://en.wikipedia.org/wiki/Taylor_Swift%E2%80%93Scooter_Braun_conflict" target="_blank" rel="noopener">Industry</a><a class="tag" href="https://en.wikipedia.org/wiki/Live_Nation_Entertainment" target="_blank" rel="noopener">Congress</a></div></div>
+          <div class="card"><span class="card-year">Pattern</span><h3>The Undefeated Record</h3><p>Kanye: she outlasted him culturally and commercially. Kim: the phone call leaked; reputation sold a million copies. Braun: six re-recordings, originals losing value. The pattern is not that she's lucky. It's that she's patient, and she never stops working while you're busy winning the news cycle.</p><div class="card-tags"><a class="tag" href="https://en.wikipedia.org/wiki/Taylor_Swift" target="_blank" rel="noopener">Legacy</a><a class="tag" href="https://en.wikipedia.org/wiki/Taylor_Swift" target="_blank" rel="noopener">Pattern</a></div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- NUMBERS -->
+<div class="numbers-section" id="numbers">
+  <div class="numbers-inner">
+    <div>
+      <div class="numbers-label fi">The Catalog</div>
+      <h2 class="numbers-title fi">Ten Songs That <em>Define</em> the Story</h2>
+      <div class="songs-list fi">
+        <div class="song-row"><span class="song-rank">1</span><div><span class="song-name">Cruel Summer</span><span class="song-meta">1989 (Taylor's Version) · 2019/2023</span></div><span class="song-stat">4.2B</span></div>
+        <div class="song-row"><span class="song-rank">2</span><div><span class="song-name">Anti-Hero</span><span class="song-meta">Midnights · 2022</span></div><span class="song-stat">3.8B</span></div>
+        <div class="song-row"><span class="song-rank">3</span><div><span class="song-name">Shake It Off</span><span class="song-meta">1989 · 2014</span></div><span class="song-stat">3.5B</span></div>
+        <div class="song-row"><span class="song-rank">4</span><div><span class="song-name">Blank Space</span><span class="song-meta">1989 · 2014</span></div><span class="song-stat">3.3B</span></div>
+        <div class="song-row"><span class="song-rank">5</span><div><span class="song-name">Love Story (TV)</span><span class="song-meta">Fearless TV · 2021</span></div><span class="song-stat">2.9B</span></div>
+        <div class="song-row"><span class="song-rank">6</span><div><span class="song-name">cardigan</span><span class="song-meta">folklore · 2020</span></div><span class="song-stat">2.5B</span></div>
+        <div class="song-row"><span class="song-rank">7</span><div><span class="song-name">All Too Well (10 Min)</span><span class="song-meta">Red TV · 2021 · Hot 100 #1</span></div><span class="song-stat">2.1B</span></div>
+        <div class="song-row"><span class="song-rank">8</span><div><span class="song-name">willow</span><span class="song-meta">evermore · 2020</span></div><span class="song-stat">1.9B</span></div>
+        <div class="song-row"><span class="song-rank">9</span><div><span class="song-name">Look What You Made Me Do</span><span class="song-meta">reputation · 2017</span></div><span class="song-stat">1.8B</span></div>
+        <div class="song-row"><span class="song-rank">10</span><div><span class="song-name">Style</span><span class="song-meta">1989 · 2014</span></div><span class="song-stat">1.7B</span></div>
+        <p class="songs-note">Spotify streams · approximate · 2025</p>
+      </div>
+    </div>
+    <div>
+      <div class="numbers-label fi">The Records</div>
+      <div class="records-list fi">
+        <div><span class="record-num">$2.1B</span><span class="record-label">Eras Tour Gross</span><span class="record-desc">First concert tour to surpass $2 billion. The previous record was $939M.</span></div>
+        <div class="records-div"></div>
+        <div><span class="record-num">4×</span><span class="record-label">Album of the Year</span><span class="record-desc">Most wins by any solo artist. The closest competitors have one or two.</span></div>
+        <div class="records-div"></div>
+        <div><span class="record-num">10/10</span><span class="record-label">Hot 100 Top 10</span><span class="record-desc">Midnights occupied every position simultaneously. Never done before.</span></div>
+        <div class="records-div"></div>
+        <div><span class="record-num">6</span><span class="record-label">Re-recordings</span><span class="record-desc">Albums re-recorded to reclaim her masters. The industry had no playbook for this. She wrote one.</span></div>
+        <div class="records-div"></div>
+        <div><span class="record-num">65K</span><span class="record-label">Voter Registrations</span><span class="record-desc">Tennessee voter registrations in one day after her 2018 political endorsement post.</span></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- LYRIC GENERATOR -->
+<div class="lyric-gen-section" id="lyric-generator">
+  <div class="lyric-gen-inner">
+    <div class="lyric-gen-header fi">
+      <div class="lyric-gen-label">Write Your Own Era</div>
+      <h2 class="lyric-gen-title">What Would <em>Taylor</em> Write?</h2>
+      <p class="lyric-gen-sub">Pick an era. Pick a mood. Get an original verse in her style — second-person address, confessional voice, the bridge that goes somewhere unexpected.</p>
+    </div>
+    <div class="lyric-gen-controls fi">
+      <div class="lyric-gen-row">
+        <div class="lyric-gen-field">
+          <label class="lyric-gen-field-label">Era</label>
+          <div class="lyric-gen-pills" id="era-pills">
+            <button class="lyric-pill active" data-val="fearless">Fearless</button>
+            <button class="lyric-pill" data-val="red">Red</button>
+            <button class="lyric-pill" data-val="1989">1989</button>
+            <button class="lyric-pill" data-val="reputation">reputation</button>
+            <button class="lyric-pill" data-val="folklore">folklore</button>
+            <button class="lyric-pill" data-val="midnights">Midnights</button>
+            <button class="lyric-pill" data-val="ttpd">TTPD</button>
+          </div>
+        </div>
+        <div class="lyric-gen-field">
+          <label class="lyric-gen-field-label">Mood</label>
+          <div class="lyric-gen-pills" id="mood-pills">
+            <button class="lyric-pill active" data-val="heartbreak">Heartbreak</button>
+            <button class="lyric-pill" data-val="defiant">Defiant</button>
+            <button class="lyric-pill" data-val="longing">Longing</button>
+            <button class="lyric-pill" data-val="bittersweet">Bittersweet</button>
+            <button class="lyric-pill" data-val="triumphant">Triumphant</button>
+          </div>
+        </div>
+      </div>
+      <button class="lyric-gen-btn" id="lyric-gen-btn">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+        Generate
+      </button>
+    </div>
+
+    <div class="lyric-output-wrap fi" id="lyric-output-wrap" style="display:none;">
+      <div class="lyric-output" id="lyric-output">
+        <div class="lyric-output-lines" id="lyric-lines"></div>
+        <div class="lyric-output-attr" id="lyric-attr"></div>
+      </div>
+      <div class="lyric-output-actions">
+        <button class="lyric-action-btn" id="lyric-copy-btn">Copy</button>
+        <button class="lyric-action-btn lyric-action-outline" id="lyric-regen-btn">Try Again</button>
+      </div>
+    </div>
+
+    <div class="lyric-loading" id="lyric-loading" style="display:none;">
+      <div class="lyric-dots"><span></span><span></span><span></span></div>
+      <span class="lyric-loading-text">Writing in her voice<span class="cursor-blink">_</span></span>
+    </div>
+
+    <p class="lyric-disclaimer fi">AI-generated original verse in Taylor Swift's lyrical style. Not her words — just inspired by them.</p>
+  </div>
+</div>
+
+<!-- DISCOGRAPHY -->
+<div class="discog-section" id="discography">
+  <div class="discog-inner">
+    <div class="discog-label fi">Complete Discography</div>
+    <h2 class="discog-title fi">Every Album. <em>Every Era.</em></h2>
+    <div class="discog-grid fi">
+      <div class="discog-tile"><img src="taylor-swift/images/cover-taylor-swift.jpg" alt="Taylor Swift"><div class="discog-tile-info"><span class="discog-tile-name">Taylor Swift</span><span class="discog-tile-year">2006</span></div></div>
+      <div class="discog-tile"><img src="taylor-swift/images/cover-fearless.jpg" alt="Fearless"><div class="discog-tile-info"><span class="discog-tile-name">Fearless</span><span class="discog-tile-year">2008</span></div></div>
+      <div class="discog-tile"><img src="taylor-swift/images/cover-speak-now.jpg" alt="Speak Now"><div class="discog-tile-info"><span class="discog-tile-name">Speak Now</span><span class="discog-tile-year">2010</span></div></div>
+      <div class="discog-tile"><img src="taylor-swift/images/cover-red.jpg" alt="Red"><div class="discog-tile-info"><span class="discog-tile-name">Red</span><span class="discog-tile-year">2012</span></div></div>
+      <div class="discog-tile"><img src="taylor-swift/images/cover-1989.jpg" alt="1989"><div class="discog-tile-info"><span class="discog-tile-name">1989</span><span class="discog-tile-year">2014</span></div></div>
+      <div class="discog-tile"><img src="taylor-swift/images/cover-reputation.jpg" alt="reputation"><div class="discog-tile-info"><span class="discog-tile-name">reputation</span><span class="discog-tile-year">2017</span></div></div>
+      <div class="discog-tile"><img src="taylor-swift/images/cover-lover.jpg" alt="Lover"><div class="discog-tile-info"><span class="discog-tile-name">Lover</span><span class="discog-tile-year">2019</span></div></div>
+      <div class="discog-tile"><img src="taylor-swift/images/cover-folklore.jpg" alt="folklore"><div class="discog-tile-info"><span class="discog-tile-name">folklore</span><span class="discog-tile-year">2020</span></div></div>
+      <div class="discog-tile"><img src="taylor-swift/images/cover-evermore.jpg" alt="evermore"><div class="discog-tile-info"><span class="discog-tile-name">evermore</span><span class="discog-tile-year">2020</span></div></div>
+      <div class="discog-tile"><img src="taylor-swift/images/cover-midnights.jpg" alt="Midnights"><div class="discog-tile-info"><span class="discog-tile-name">Midnights</span><span class="discog-tile-year">2022</span></div></div>
+      <div class="discog-tile"><img src="taylor-swift/images/cover-ttpd.jpg" alt="TTPD"><div class="discog-tile-info"><span class="discog-tile-name">TTPD</span><span class="discog-tile-year">2024</span></div></div>
+      <div class="discog-tile"><img src="taylor-swift/images/cover-tloas.jpg" alt="The Life of a Showgirl"><div class="discog-tile-info"><span class="discog-tile-name">Showgirl</span><span class="discog-tile-year">2025</span></div></div>
+    </div>
+    <p class="discog-foot fi">12 studio albums · 2006–2025 · Plus 6 Taylor's Version re-recordings</p>
+  </div>
+</div>
+
+<!-- THE LETTER / OWNERSHIP STORY -->
+<div class="letter-section">
+  <div class="letter-inner">
+    <div class="letter-label fi">The Story Behind the Story</div>
+    <h2 class="letter-title fi">All of it. <em>Finally.</em> Hers.</h2>
+    <div class="letter-body fi">
+      <p>In 2019, Scooter Braun's company acquired Big Machine Records and with it, the masters to Taylor Swift's first six albums. She found out when the deal was announced publicly. Her response was not a lawsuit. It was a letter, a plan, and six years of work.</p>
+      <p>The plan: re-record every album she didn't own. Release them methodically. Make the originals commercially irrelevant by making the new versions better, and by making her fans understand exactly why it mattered. Swifties responded by treating Taylor's Version as canonical — refusing to stream the originals, advocating for the new versions in playlists and recommendations. It worked. The original masters began losing value almost immediately.</p>
+      <p>Six re-recordings followed: Fearless, Red, Speak Now, 1989, and portions beyond. Each one arrived with vault tracks — songs written during the original era that had never been released. The vault tracks became their own event. All Too Well (10 Minute Version) went to #1 on the Hot 100, making it the longest song ever to debut there.</p>
+      <p>Then, in 2023, via Shamrock Capital, she bought back her masters entirely.</p>
+    </div>
+    <blockquote class="letter-quote fi">
+      <p class="letter-quote-text">&ldquo;All of the music I've ever made&hellip; now belongs&hellip; to me.&rdquo;</p>
+      <cite class="letter-quote-attr">— Taylor Swift, in her letter to fans · 2023 · <a href="https://www.taylorswift.com/read-my-letter/" target="_blank" rel="noopener">Read the full letter ↗</a></cite>
+    </blockquote>
+    <div class="letter-timeline fi">
+      <div class="letter-event">
+        <span class="letter-event-year">2019</span>
+        <span class="letter-event-text">Braun acquires Big Machine. Masters sold without her knowledge.</span>
+      </div>
+      <div class="letter-event">
+        <span class="letter-event-year">2021</span>
+        <span class="letter-event-text">Fearless (TV) drops. First re-recording. The project begins.</span>
+      </div>
+      <div class="letter-event">
+        <span class="letter-event-year">2021</span>
+        <span class="letter-event-text">Red (TV) + All Too Well (10 Min). Hot 100 #1. The argument is won.</span>
+      </div>
+      <div class="letter-event">
+        <span class="letter-event-year">2023</span>
+        <span class="letter-event-text">Speak Now (TV) + 1989 (TV). Originals losing ground in every market.</span>
+      </div>
+      <div class="letter-event">
+        <span class="letter-event-year">2023</span>
+        <span class="letter-event-text">Shamrock Capital deal closes. She owns her catalog. Elated and amazed.</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ECOSYSTEM -->
+<div class="eco-section">
+  <div class="eco-inner">
+    <div class="eco-header fi"><span class="eco-header-label">Ecosystem</span><span class="eco-header-sep">·</span><span class="eco-header-topic">Taylor Swift</span></div>
+    <div class="eco-grid fi">
+      <div class="eco-col">
+        <div class="eco-col-label">Stream</div>
+        <a class="eco-link" href="https://open.spotify.com/artist/06HL4z0CvFAxyc27GXpf02" target="_blank" rel="noopener">Taylor Swift on Spotify</a>
+        <div class="eco-link-sub">Full discography including all Taylor's Versions</div>
+        <a class="eco-link" href="https://music.apple.com/us/artist/taylor-swift/159260351" target="_blank" rel="noopener">Apple Music</a>
+        <div class="eco-link-sub">Including TTPD deluxe and all vault tracks</div>
+      </div>
+      <div class="eco-col">
+        <div class="eco-col-label">Watch</div>
+        <a class="eco-link" href="https://www.disneyplus.com/movies/taylor-swift-the-eras-tour/4bFwGIw6Q7sO" target="_blank" rel="noopener">The Eras Tour — Disney+</a>
+        <div class="eco-link-sub">Three hours. 44 songs. Every era.</div>
+        <a class="eco-link" href="https://www.netflix.com/title/81452831" target="_blank" rel="noopener">Miss Americana — Netflix</a>
+        <div class="eco-link-sub">The 2020 documentary. Essential context.</div>
+      </div>
+      <div class="eco-col">
+        <div class="eco-col-label">Read</div>
+        <a class="eco-link" href="https://www.rollingstone.com/music/music-lists/taylor-swift-100-greatest-songs/" target="_blank" rel="noopener">Rolling Stone — 100 Greatest Songs</a>
+        <div class="eco-link-sub">The critical case for her catalog</div>
+        <a class="eco-link" href="https://pitchfork.com/artists/26994-taylor-swift/" target="_blank" rel="noopener">Pitchfork — Albums reviewed</a>
+        <div class="eco-link-sub">The arc from dismissal to 8.0s</div>
+      </div>
+      <div class="eco-col">
+        <div class="eco-col-label">Context</div>
+        <a class="eco-link" href="https://en.wikipedia.org/wiki/Taylor_Swift%E2%80%93Scooter_Braun_conflict" target="_blank" rel="noopener">The Masters Dispute</a>
+        <div class="eco-link-sub">Full timeline of the ownership conflict</div>
+        <a class="eco-link" href="https://www.taylorswift.com" target="_blank" rel="noopener">taylorswift.com</a>
+        <div class="eco-link-sub">Letters, vault, official announcements</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- COLOPHON -->
+<div class="colophon">
+  <div>
+    <div class="colophon-label">Taylor Swift / History</div>
+    <p class="colophon-blurb">From country teenager to the most commercially powerful force in the history of the music industry — the story of how Taylor Swift turned every betrayal into a catalog and every era into a religion.</p>
+  </div>
+  <div>
+    <div class="colophon-meta-label">Part of</div>
+    <div class="colophon-series">A <em>(Brief)</em> History of Everything<span class="cursor-blink">_</span></div>
+    <a href="https://abriefhistoryofeverything.com" class="colophon-url" target="_blank" rel="noopener">abriefhistoryofeverything.com ↗</a>
+    <div class="colophon-share">
+      <a href="https://twitter.com/intent/tweet?text=A%20(Brief)%20History%20of%20Taylor%20Swift&url=https://abriefhistoryofeverything.com/taylor-swift" class="colophon-share-link" target="_blank" rel="noopener">Share on X</a>
+      <a href="https://bsky.app/intent/compose?text=A%20(Brief)%20History%20of%20Taylor%20Swift%20https://abriefhistoryofeverything.com/taylor-swift" class="colophon-share-link" target="_blank" rel="noopener">Share on Bluesky</a>
+    </div>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <a href="https://abriefhistoryofeverything.com" class="footer-lockup" target="_blank" rel="noopener">
+    <svg width="32" height="32" viewBox="0 0 400 400" xmlns="http://www.w3.org/2000/svg"><rect width="400" height="400" fill="#00D4F0"/><rect x="55" y="118" width="46" height="46" fill="#08090C" opacity="0.22"/><rect x="178" y="118" width="46" height="46" fill="#08090C" opacity="0.22"/><rect class="footer-mouth" x="55" y="278" width="170" height="36" fill="#08090C"/></svg>
+    <div class="footer-series">A <em>(Brief)</em> History of Everything_</div>
+  </a>
+  <div class="footer-copy">© 2026 A (Brief) History of Everything</div>
+</footer>
+
+<script>
+(function(){
+'use strict';
+
+// SPLASH + AUDIO
+var splash=document.getElementById('splash');
+var audio=document.getElementById('audio');
+var bar=document.getElementById('audio-bar');
+var entered=false;
+
+function enter(){
+  if(entered)return; entered=true;
+  audio.volume=0.75;
+  audio.play().catch(function(){});
+  document.body.classList.add('audio-active');
+  bar.classList.add('visible');
+  splash.classList.add('exiting');
+  setTimeout(function(){splash.style.display='none';},680);
+}
+splash.addEventListener('click',enter);
+document.getElementById('splash-btn').addEventListener('click',function(e){e.stopPropagation();enter();});
+
+// AUDIO BAR
+var abPlay=document.getElementById('ab-play');
+var icoPlay=document.getElementById('ico-play');
+var icoPause=document.getElementById('ico-pause');
+var abFill=document.getElementById('ab-fill');
+var abTime=document.getElementById('ab-time');
+var abTrack=document.getElementById('ab-track');
+
+function fmt(s){var m=Math.floor(s/60),sec=Math.floor(s%60);return m+':'+(sec<10?'0':'')+sec;}
+
+audio.addEventListener('timeupdate',function(){
+  if(!audio.duration)return;
+  abFill.style.width=(audio.currentTime/audio.duration*100)+'%';
+  abTime.textContent=fmt(audio.currentTime);
+});
+audio.addEventListener('play',function(){icoPlay.style.display='none';icoPause.style.display='';});
+audio.addEventListener('pause',function(){icoPlay.style.display='';icoPause.style.display='none';});
+audio.addEventListener('ended',function(){abFill.style.width='0%';abTime.textContent='0:00';icoPlay.style.display='';icoPause.style.display='none';});
+
+abPlay.addEventListener('click',function(){audio.paused?audio.play():audio.pause();});
+abTrack.addEventListener('click',function(e){
+  if(!audio.duration)return;
+  var r=abTrack.getBoundingClientRect();
+  audio.currentTime=((e.clientX-r.left)/r.width)*audio.duration;
+});
+document.getElementById('ab-close').addEventListener('click',function(){
+  audio.pause();bar.classList.remove('visible');document.body.classList.remove('audio-active');
+});
+
+// PAGE PROGRESS
+var prog=document.getElementById('progress');
+window.addEventListener('scroll',function(){
+  var s=document.documentElement;
+  prog.style.width=(s.scrollTop/(s.scrollHeight-s.clientHeight)*100)+'%';
+},{passive:true});
+
+// FADE IN
+var io=new IntersectionObserver(function(entries){
+  entries.forEach(function(e){if(e.isIntersecting)e.target.classList.add('visible');});
+},{threshold:0.08});
+document.querySelectorAll('.fi').forEach(function(el){io.observe(el);});
+
+// SHARE
+var sBtn=document.getElementById('share-btn');
+var sDrop=document.getElementById('share-drop');
+var cBtn=document.getElementById('copy-btn');
+sBtn.addEventListener('click',function(e){e.stopPropagation();sDrop.classList.toggle('open');});
+cBtn.addEventListener('click',function(){
+  navigator.clipboard.writeText('https://abriefhistoryofeverything.com/taylor-swift').then(function(){
+    cBtn.textContent='✓ Copied!';setTimeout(function(){cBtn.textContent='🔗 Copy Link';},2000);
+  });
+});
+document.addEventListener('click',function(){sDrop.classList.remove('open');});
+
+
+// LYRIC GENERATOR — local template engine
+(function(){
+  var selectedEra = 'fearless';
+  var selectedMood = 'heartbreak';
+
+  var verses = {
+    fearless: {
+      heartbreak: [
+        "You left in the middle of a Tuesday\nLike it was nothing\nLike Tuesdays aren't the day I still drive past your street\nI thought love was supposed to announce itself\nTurn off the lights when it left\nBut you just didn't come back\nAnd I kept setting two plates\nFor longer than I'll admit to anyone",
+        "I kept the ticket stubs from every show we saw\nIn a shoebox under things I don't look at\nSometimes I think about burning it\nBut mostly I think about the drive home after\nHow you sang every word wrong\nAnd I didn't correct you\nI should have corrected you",
+        "The summer we met I thought I'd remember everything\nAnd I do — just not the parts you'd want me to\nI remember the way the screen door didn't close right\nI remember being twenty and so certain\nI remember being wrong\nSlowly, then all at once"
+      ],
+      longing: [
+        "Somewhere you're awake at the same hour I am\nNot thinking about me\nAnd I find that almost comforting\nThat we're still synchronized in some small useless way\nThat the distance is just geography\nNot the other thing",
+        "I heard a song that sounded like the feeling\nOf being almost there\nOf standing at the edge of something good\nAnd not quite stepping in\nI listened to it four times\nI didn't save it\nI didn't need to",
+        "You probably have a whole life now\nThat I'm not even a footnote in\nAnd I think about that sometimes\nNot with sadness exactly\nMore like the specific feeling\nOf a door you know is locked\nBut try anyway\nEvery time you pass it"
+      ],
+      defiant: [
+        "You told the story like I wasn't in it\nLike I was the weather — something that happened to you\nBut I was there\nI remember the date, the light, the exact words\nI have receipts for things you've already forgotten\nAnd I am patient\nI am so patient",
+        "They wanted me to be gracious about it\nAnd I was — publicly\nPrivately I wrote it all down\nEvery word, every silence, every exit\nGrace has a shelf life\nThe songs do not",
+        "Go ahead and tell the story your way\nI've heard every version and I'm fine\nI know what the morning looked like from my window\nI know what I said and what I meant\nYou can have the myth\nI'll keep the actual thing"
+      ],
+      bittersweet: [
+        "I'm glad I loved you even knowing how it ended\nGlad I didn't protect myself from it\nThe version of me who stayed careful\nWould have missed everything\nThe mess included\nMaybe especially the mess",
+        "You were the best year of my life\nAnd the year I learned what I could survive\nThose aren't different things\nI've been trying to explain that to people\nThey don't get it yet\nThey will",
+        "Some loves are tuition\nYou don't get the money back\nBut you get what you paid for\nI got three albums out of it\nAnd the knowledge that I could feel that much\nAnd still show up on Monday\nThat's worth something"
+      ],
+      triumphant: [
+        "I didn't need the last word\nTurns out the work was the last word\nTurns out four million people singing along\nIs a more satisfying ending\nThan anything I could have said\nTo your face\nIn that parking lot",
+        "You thought silence was surrender\nYou misread the whole situation\nI was just reloading",
+        "The youngest winner in the room\nWas also the most prepared\nI wrote every word myself\nI've always written every word myself\nYou can fact-check that"
+      ]
+    },
+    red: {
+      heartbreak: [
+        "It was October and everything was the right color for grief\nI drove through it like a movie\nLike someone had art-directed my heartbreak\nGold and red and almost beautiful\nI hated how beautiful it was\nI hated that I noticed",
+        "Three months felt like architecture\nLike something with load-bearing walls\nAnd then it didn't\nAnd I was standing in a field\nWhere a building used to be\nStill trying to find the door",
+        "You are the chapter I reread for no good reason\nAt hours when I should be sleeping\nI know how it ends\nI've always known how it ends\nI'm just not finished with the middle yet"
+      ],
+      longing: [
+        "All the songs I wrote that year were about a color\nNot you specifically\nJust the color of the room\nThe color of October\nThe color of being twenty-two and reckless\nYou just happened to be there\nIn that color",
+        "I found your handwriting on a receipt I'd kept\nFrom a restaurant we went to twice\nYou'd written a tip calculation in the margin\nThat math is still correct\nEverything else is not",
+        "The scarf is a metaphor for everything I held onto\nLonger than I should have\nLonger than it made sense\nLonger than you deserved\nI'm working on it\nThe metaphor is ongoing"
+      ],
+      defiant: [
+        "You wanted a quieter version of this story\nOne where I was less certain about what I remember\nI am inconveniently certain\nI have always been inconveniently certain\nThat's the part of me you should have read the fine print on",
+        "Go ahead and call it dramatic\nCall it too much, too loud, too long\nI've been called worse by people whose names I use in songs now\nThere's a pattern here if you want to look at it",
+        "I wrote the ten-minute version\nBecause three minutes wasn't enough room\nTo say what actually happened\nYou had years to say something true\nI had ten minutes\nWe both know which one mattered"
+      ],
+      bittersweet: [
+        "The love was real even if it wasn't right\nEven if the timing was terrible\nEven if we were both a little wrong for each other\nIn ways we were too young to name\nI don't regret it\nI just wish I'd known sooner\nWhat I was grieving",
+        "Messy is not the same as wrong\nI needed someone to tell me that at twenty-two\nI needed someone to say the chaos was the point\nThat you don't get the good songs without it\nI know that now\nIt cost me a lot to know that",
+        "Half country, half pop, all chaos — that was us\nNeither genre claimed it\nNeither of us knew what to call it\nWe just knew it was loud\nAnd it was ours\nFor exactly as long as it was"
+      ],
+      triumphant: [
+        "Ten minutes was all it took to say what I meant\nTo say it in a way that would last\nIt went to number one\nThe longest song ever to do that\nLength, it turns out, was the point",
+        "I re-recorded it and the world chose the new version\nWhich is the nicest thing the streaming charts have ever done for me\nWhich is saying something\nGiven the streaming charts",
+        "Nine years later and it's still the song\nThe one people quote back to me like I might have forgotten\nI haven't forgotten\nI will never forget\nI wrote it in twenty minutes crying\nBest twenty minutes of my life"
+      ]
+    },
+    "1989": {
+      heartbreak: [
+        "New York is good at this — making you feel small\nIn a way that's almost comforting\nEight million people not thinking about you either\nI fit right in\nI walked until my feet were sure of something\nEven if my chest wasn't",
+        "I deleted everything in the wrong order\nThe photos first, then the texts, then the number\nBut I still remember the number\nWhich means I did it wrong\nWhich means I did it in the order I meant to",
+        "Clean break is a lie we tell ourselves\nThere's no such thing as clean\nThere's just — new city, new sound, new hair\nAnd the same 3am\nIn a different zip code"
+      ],
+      longing: [
+        "Somewhere in this city you're at a party I wasn't invited to\nAnd I'm fine\nI'm almost completely fine\nI just think about it sometimes\nThe room, the light, whether you mentioned me\nProbably not\nProbably not",
+        "Style is the word I use when I mean you specifically\nThe way certain things still read as you\nA certain light, a certain song key\nI've gotten better at it\nMost days I make it all the way to noon",
+        "Out of the woods doesn't mean you stop looking back\nIt means the trees are behind you\nBut you still know exactly where they were\nYou could draw a map\nYou could walk back in the dark\nYou know better\nYou don't"
+      ],
+      defiant: [
+        "You thought clean break meant I'd go quietly\nYou thought clean break was something that happened to me\nBut I walked out of that year like I owned it\nLike I'd planned the whole thing\nLike the reinvention was always the point\nIt was always the point",
+        "I shook it off\nNot because it didn't hurt\nBut because hurting in public\nWas giving you something I decided you didn't deserve\nThe dance break was load-bearing\nThe dance break was the whole argument",
+        "They wrote the narrative before I had a chance to\nSo I wrote a better one\nWith better production\nAnd a more satisfying chorus\nAnd I own the masters\nOf that version"
+      ],
+      bittersweet: [
+        "We were good for exactly one summer\nWhich is more than some people get\nI'm not being sarcastic\nOne summer is a lot\nOne summer in New York at twenty-four\nWith someone who made you feel like the city was yours\nIs actually everything",
+        "The polaroid version of us is the true one\nOverexposed, slightly blurry\nEverything a little brighter than it actually was\nThat's the one I keep\nThe accurate one isn't as interesting",
+        "I'm nostalgic for a version of this\nI've already idealized beyond recognition\nWhich is a Taylor Swift era in itself\nWhich is maybe the most self-aware thing I've ever said\nAnd I've said a lot of self-aware things"
+      ],
+      triumphant: [
+        "I wrote the breakup album before we broke up\nWhich either means I knew\nOr I made it happen\nI've been trying to figure out which one for ten years\nThe album sold a million copies its first week\nMaybe it doesn't matter",
+        "First woman to win Album of the Year twice\nI said thank you\nI said I wanted to be the one to write my story\nI said I wrote every word myself\nAll of that is still true\nAll of that is still mine",
+        "They put me on the cover and called it a moment\nI was making a catalog\nThose aren't the same thing\nA moment ends\nA catalog compounds"
+      ]
+    },
+    reputation: {
+      heartbreak: [
+        "You found me at my worst and called it a personality\nThat's not love, that's a project\nI figured that out about a year too late\nIn the specific way you figure things out\nWhen you've already done the damage\nAnd the silence after is very loud",
+        "I ghosted the version of myself you knew\nDeleted her like she was the problem\nMaybe she was\nMaybe that's the thing about being buried alive by the internet\nYou come back different\nAnd not everyone who knew you before\nKnows what to do with that",
+        "It was easier to be the snake\nThan to explain the whole thing\nSo I wore the snake\nI put it on the stage\nI sold tickets to the snake\nAnd underneath it\nI was still just someone who got hurt\nIn a very public parking lot"
+      ],
+      longing: [
+        "I miss the before\nNot you specifically — the before\nWhen my name was just my name\nWhen I could be wrong in private\nWhen there was a version of this that didn't get screenshotted\nI miss having a face that was only mine",
+        "There was a version of us that was real\nBefore it became a headline\nBefore it became a take\nBefore everyone had an opinion about what we meant\nI think about that version sometimes\nThe quiet one\nThe one that was actually ours",
+        "Late night in a city that doesn't care who I am\nIs the closest I get to it now\nThat specific anonymity\nOf being somewhere loud enough\nThat no one can hear you being yourself"
+      ],
+      defiant: [
+        "You gave me a villain\nSo I wore it\nI decorated it\nI made it the whole aesthetic\nAnd then I sold tickets\nTwo point nine million people bought tickets\nTo watch me wear your narrative\nAnd make it mine",
+        "The old Taylor can't come to the phone right now\nBecause I decided she was done apologizing\nFor things she didn't do\nAnd things she did do\nAnd things you decided she did\nWithout asking her",
+        "You thought the silence meant I was gone\nI was writing\nI was always writing\nThe silence is where the work happens\nYou should have known that by now"
+      ],
+      bittersweet: [
+        "There was a version of us that was real\nBefore it became a headline\nBefore everyone had a take\nI think about that version sometimes\nThe quiet one\nThe one that was actually ours",
+        "Darkness suits me better than people expected\nWhich is either growth or damage\nI've decided it's growth\nThe sequined snake suit helped me decide",
+        "I came back from that year smaller in some ways\nAnd larger in others\nThe parts that shrank were the parts\nThat were never mine to carry\nI didn't notice until I put them down"
+      ],
+      triumphant: [
+        "You thought the silence meant I was finished\nThe silence was the album\nThe album sold a million copies its first week\nYou should have left me louder",
+        "I weaponized the narrative\nWhich is a polite way of saying\nI turned your press release\nInto my best-reviewed record\nThank you for the material",
+        "Came back from the dead\nWith better lighting\nAnd a stadium tour\nThat grossed three hundred and forty-five million dollars\nDead is relative"
+      ]
+    },
+    folklore: {
+      heartbreak: [
+        "In the version of this story I write at 3am\nYou stay\nIn the version I write in daylight\nI let you go and it makes sense\nI've been living in the 3am version\nWhich is probably the problem",
+        "There's a cabin in this metaphor\nAnd a lake\nAnd a version of us who figured it out\nBefore the frost came\nI've visited that version so many times\nI know every room\nI just can't stay there",
+        "The fictional version of us is easier to write\nBecause I can give it an ending\nI can decide what the lake looked like\nI can decide whether it rained\nI can decide you stayed\nIn the fictional version\nYou always stay"
+      ],
+      longing: [
+        "I told myself it was fiction\nThat the characters were invented\nThat the grief was theoretical\nBut I knew your coffee order\nWhen I wrote it\nAnd I knew exactly how you held the door",
+        "The cardigan is a metaphor for the thing\nYou hold onto when you're cold\nThat used to belong to someone else\nAnd still smells like them\nAnd you wear it anyway\nBecause warm is warm",
+        "Somewhere in a story I invented\nYou're still sitting on that porch\nAnd the light is doing that thing\nAnd neither of us knows yet\nHow it ends\nIn that version\nWe never find out"
+      ],
+      defiant: [
+        "You wanted me to make it smaller\nTo file it down into something manageable\nA feeling with edges\nI made an album instead\nIt won a Grammy\nSorry",
+        "I wrote the characters so specifically\nThat the real people got uncomfortable\nWhich is not my fault\nI was writing about invented people\nWho happened to have your posture\nAnd your specific way of leaving",
+        "The literary references aren't pretentious\nThey're load-bearing\nThe whole structure depends on them\nYou can't understand the grief\nWithout the library that surrounds it\nThat's not showing off\nThat's architecture"
+      ],
+      bittersweet: [
+        "The pandemic was a terrible time to fall in love with a feeling\nBut I did\nI fell in love with the quiet of it\nThe fog and the minor keys\nThe permission to be soft for one year\nI'm still grateful for it\nEven knowing what came after",
+        "I made something good out of something terrible\nWhich is the whole art form\nWhich is the only reason to make anything\nFolklore was the proof of concept\nThat the worst year could be the best work\nI needed that proof\nI still need it",
+        "Announced Thursday, released Friday\nBecause I didn't want to wait anymore\nBecause waiting felt like asking permission\nAnd I was done asking permission\nFor things that were already mine"
+      ],
+      triumphant: [
+        "I made the quiet album during the loud year\nAnd it was the loudest thing I'd ever done\nWhich is the joke\nWhich is the whole joke",
+        "Three Album of the Year wins\nThe third one for the album I made in a pandemic\nWith sixteen hours notice\nWith a collaborator I'd never met in person\nFormula is overrated",
+        "The critics who spent years dismissing me\nReviewed folklore in complete sentences\nWith words like 'literary' and 'restrained'\nI appreciated that\nI noted it\nI will not be forgetting it"
+      ]
+    },
+    midnights: {
+      heartbreak: [
+        "3am is the hour for the questions that don't have answers\nLike why I still reach for my phone\nLike whether you think about this\nLike what I would say if you called\nI've rehearsed it\nI shouldn't have rehearsed it",
+        "I keep a list of things I shouldn't have said\nIt's very long\nI keep a list of things I should have said\nIt's somehow longer\nAt 3am they feel the same\nBy morning I know which is which\nBy midnight I forget again",
+        "The insomnia is not a symptom\nThe insomnia is the whole condition\nEvery night I audit the year\nEvery night I find new line items\nI have been doing this for months\nThe books still don't balance"
+      ],
+      longing: [
+        "Somewhere you're sleeping at a normal hour\nLike a person who made peace with something\nI'm awake\nRunning the tape\nLooking for the frame where it changed\nI find a different one every time",
+        "Lavender is the color of almost-okay\nOf the hour before things settle\nOf the specific feeling of surviving something\nAnd not being sure yet how you feel about that\nI've been living in lavender for a while now\nIt's not the worst place",
+        "There's a version of this where I sleep through the night\nI've been told it exists\nI believe it theoretically\nThe way I believe in cities I've never been to\nAnd plan to visit\nSometime"
+      ],
+      defiant: [
+        "I spiral beautifully\nI've been told this is a problem\nI've been told this is actually fine\nDepends who you ask\nDepends on the hour\nAt 3am everything I've ever done feels inevitable\nAt 8am I'm a completely different person\nI'm trying to get them to agree",
+        "Anti-hero is a joke I'm making about myself\nBefore you make it\nThat's the whole move\nThat's always been the move\nSelf-awareness as preemptive defense\nThe critics called it brave\nI called it Tuesday",
+        "I held the entire top ten\nSimultaneously\nWhich either means something profound about the culture\nOr something profound about insomnia\nI think it means both\nI think it means I was right"
+      ],
+      bittersweet: [
+        "Glitter is the physical form of 3am optimism\nIt looks incredible going on\nIt's impossible to fully remove\nYou find it months later\nIn places that make no sense\nWhich is exactly right\nWhich is exactly what I mean",
+        "I've made peace with being a lot\nIt took longer than it should have\nBut here I am\nA lot\nUnapologetically\nIn a sequined jumpsuit\nAt midnight\nOn a stage I sold out in four minutes",
+        "The self-examination is the product\nNot the byproduct — the product\nI examined myself at 3am for a year\nAnd made a record out of it\nTen slots in the Hot 100\nThe examination was worth it"
+      ],
+      triumphant: [
+        "I held the entire top ten\nSimultaneously\nTen songs\nTen slots\nEvery one of them mine\nI don't know what to say about that\nExcept that I knew\nAt 3am\nBefore anyone else did",
+        "Broke the Spotify record on release day\nBefore noon\nJust to be clear about the timeline\nBefore noon on release day\nWhich means I did it while most people\nWere still having breakfast",
+        "They said Midnights was too self-indulgent\nToo interior, too much me\nI had the top ten\nAll ten\nAt the same time\nI'd like to revisit that criticism"
+      ]
+    },
+    ttpd: {
+      heartbreak: [
+        "I documented the whole thing in real time\nWhich is either brave or unhinged\nDepending on whether the album's good\nThe album's good\nSo I'll say brave\nBut I was also unhinged\nBoth are true\nI was very brave and very unhinged\nIn the same season",
+        "You gave me six years of material\nI used all of it\nEvery quiet room, every careful word, every strategic silence\nI used all of it\nThank you\nI mean that\nThank you sincerely\nFor the double album",
+        "The typewriter is a prop but the grief is not\nI want to be clear about that distinction\nThe aesthetic is constructed\nThe feeling is original\nI made it look beautiful\nBecause that's what I do with things that hurt me\nI make them beautiful and then I sell them\nAnd I keep the masters"
+      ],
+      longing: [
+        "The tortured part is not the feeling\nThe tortured part is how precisely I can describe it\nI know exactly what it was\nI know exactly when it became something else\nI know the specific Tuesday\nI know the weather\nI wrote it down",
+        "I am very good at the part\nWhere it's already over\nAnd you're still writing about it\nThe part where the grief becomes a craft\nThe part where craft becomes a catalog\nI'm less good at the part before that\nBut the catalog is excellent",
+        "Somewhere you're reading headlines about yourself\nAnd recognizing nothing\nAnd that's the whole story actually\nThat I could know someone that well\nAnd have them know me that little\nThirty-one tracks of that\nIn case the eleven wasn't enough"
+      ],
+      defiant: [
+        "They told me it was too much\nToo long, too raw, too honest, too soon\nThirty-one tracks is too many they said\nA billion streams later\nI'm still not taking questions",
+        "I overshared in the most produced way possible\nWith the best mixing money can buy\nWith lighting and staging and a three-hour set list\nIf you're going to be a tortured poet\nBe a thorough one\nBe a well-lit one",
+        "The double album was a choice\nSo was everything else\nEvery leak, every announcement, every vault track\nI know what I'm doing\nI have always known what I'm doing\nThe chaos is organized\nThe chaos is the organization"
+      ],
+      bittersweet: [
+        "The poems are real even if the drama is performed\nThe grief is real even if the presentation is theatrical\nI learned to stop apologizing for the production value\nOf my own suffering\nIt's still suffering\nIt just has better lighting",
+        "I wrote thirty-one songs about one year\nWhich is either excessive or proportionate\nDepending on the year\nIt was that kind of year\nThirty-one was restraint actually\nI had more",
+        "The fortnight passes and the feeling doesn't\nThat's the whole thing\nThe feeling outlasts the situation\nThe feeling outlasts the person\nThe feeling eventually becomes a record\nAnd the record outlasts everything"
+      ],
+      triumphant: [
+        "I became a four-time Album of the Year winner\nIn the year everyone said I'd gone too far\nMake of that what you will\nI already have",
+        "No solo artist had done it four times\nUntil I did it four times\nWhich means I did something\nNo one had ever done\nIn a year when I also broke\nThe concert gross record\nAnd topped the streaming charts\nAnd directed a short film\nI was busy",
+        "The tortured poet won everything\nWhich is either the punchline\nOr the point\nI think it's both\nI think I planned for it to be both"
+      ]
+    }
+  };
+
+  // Pill selection
+  function setupPills(groupId, onSelect) {
+    document.querySelectorAll('#' + groupId + ' .lyric-pill').forEach(function(btn){
+      btn.addEventListener('click', function(){
+        document.querySelectorAll('#' + groupId + ' .lyric-pill').forEach(function(b){ b.classList.remove('active'); });
+        btn.classList.add('active');
+        onSelect(btn.dataset.val);
+      });
+    });
+  }
+  setupPills('era-pills', function(v){ selectedEra = v; });
+  setupPills('mood-pills', function(v){ selectedMood = v; });
+
+  function getVerse() {
+    var eraVerses = verses[selectedEra];
+    if (!eraVerses) return null;
+    var moodVerses = eraVerses[selectedMood];
+    if (!moodVerses || !moodVerses.length) {
+      // fallback to heartbreak
+      moodVerses = eraVerses['heartbreak'] || [];
+    }
+    if (!moodVerses.length) return null;
+    return moodVerses[Math.floor(Math.random() * moodVerses.length)];
+  }
+
+  function showVerse() {
+    var verse = getVerse();
+    var outputWrap = document.getElementById('lyric-output-wrap');
+    var linesEl = document.getElementById('lyric-lines');
+    var attrEl = document.getElementById('lyric-attr');
+    var loading = document.getElementById('lyric-loading');
+
+    loading.style.display = 'flex';
+    outputWrap.style.display = 'none';
+
+    setTimeout(function(){
+      loading.style.display = 'none';
+      if (verse) {
+        linesEl.textContent = verse;
+        attrEl.textContent = selectedEra + ' era · ' + selectedMood + ' mood · original verse';
+        outputWrap.style.display = 'block';
+      }
+    }, 600);
+  }
+
+  document.getElementById('lyric-gen-btn').addEventListener('click', showVerse);
+  document.getElementById('lyric-regen-btn').addEventListener('click', showVerse);
+  document.getElementById('lyric-copy-btn').addEventListener('click', function(){
+    var text = document.getElementById('lyric-lines').textContent;
+    navigator.clipboard.writeText(text).then(function(){
+      var btn = document.getElementById('lyric-copy-btn');
+      btn.textContent = 'Copied!';
+      setTimeout(function(){ btn.textContent = 'Copy'; }, 2000);
+    });
+  });
+})();
+
+})();
+</script>
+</body>
+</html>
