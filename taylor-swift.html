@@ -31,7 +31,7 @@
   --max:1100px;
 }
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
-html{scroll-behavior:smooth;}
+html{scroll-behavior:smooth;overflow-x:hidden;}
 body{background:var(--cream);color:var(--ink);font-family:var(--body);font-size:1.1rem;line-height:1.7;-webkit-font-smoothing:antialiased;overflow-x:hidden;}
 @keyframes cursorBlink{0%,100%{opacity:1}50%{opacity:0}}
 .cursor-blink{animation:cursorBlink 1.1s step-end infinite;display:inline-block;}
@@ -40,21 +40,19 @@ body{background:var(--cream);color:var(--ink);font-family:var(--body);font-size:
 
 /* ── SPLASH ── */
 #splash{position:fixed;inset:0;z-index:9999;cursor:pointer;display:flex;align-items:stretch;}
-.splash-left{flex:1;position:relative;display:flex;align-items:center;justify-content:flex-start;padding:0 0 0 10vw;overflow:hidden;}
+.splash-left{flex:1;position:relative;display:flex;align-items:center;justify-content:flex-start;padding:0 0 0 7vw;overflow:hidden;}
 @keyframes iriFlow{0%{background-position:0% 50%}50%{background-position:100% 50%}100%{background-position:0% 50%}}
 .splash-iri{position:absolute;inset:0;background:linear-gradient(135deg,#fde8f0 0%,#e8c8f0 20%,#c8d8f8 40%,#c0f0e8 60%,#e0c8f4 80%,#f8d0e0 100%);background-size:300% 300%;animation:iriFlow 10s ease infinite;}
 .splash-text{position:relative;z-index:2;}
-.splash-svg-stack{width:min(420px,80%);margin-bottom:28px;}
-.sp-abh{display:block;width:72%;margin-left:0;filter:brightness(0);}
-.sp-of {display:block;width:22%;margin-left:50%;margin-top:-5%;filter:brightness(0);opacity:0.6;}
-.sp-ts {display:block;width:88%;margin-left:2%;margin-top:1%;filter:brightness(0);}
+.splash-svg-stack{width:clamp(280px,22vw,420px);margin-bottom:28px;}
+.sp-abh{display:block;width:72%;margin-left:0;}
+.sp-of {display:block;width:22%;margin-left:50%;margin-top:-5%;opacity:0.7;}
+.sp-ts {display:block;width:88%;margin-left:2%;margin-top:1%;}
 .splash-enter{display:inline-flex;align-items:center;gap:12px;font-family:var(--mono);font-size:0.78rem;font-weight:500;letter-spacing:0.18em;text-transform:uppercase;color:var(--ink-mid);border:1px solid rgba(28,20,16,0.25);padding:13px 24px;border-radius:2px;background:none;cursor:pointer;transition:all 0.2s;animation:enterPulse 2.5s ease-in-out infinite;}
 @keyframes enterPulse{0%,100%{border-color:rgba(28,20,16,0.25);}50%{border-color:rgba(196,24,90,0.6);color:var(--accent);}}
 .splash-hint{display:block;margin-top:12px;font-family:var(--body);font-size:0.9rem;font-style:italic;color:var(--ink-faint);}
 
-.splash-right{width:46%;flex-shrink:0;position:cover;overflow:hidden;}
-.splash-portrait{width:100%;height:100%;object-fit:cover;object-position:left center;display:block;}
-.splash-right::before{content:'';position:absolute;inset:0;background:linear-gradient(to right,var(--cream) 0%,transparent 28%);z-index:1;pointer-events:none;}
+.splash-right{display:none;}
 #splash.exiting{animation:splashExit 0.65s cubic-bezier(0.4,0,0.2,1) forwards;}
 @keyframes splashExit{to{opacity:0;transform:scale(1.03);pointer-events:none;}}
 
@@ -100,18 +98,17 @@ body.audio-active{padding-bottom:48px;}
 
 /* ── HERO ── */
 .hero{min-height:100vh;padding-top:50px;position:relative;overflow:hidden;display:flex;align-items:flex-end;justify-content:flex-start;}
-.hero-photo{position:absolute;inset:0;background:#1a0810;}
-.hero-photo img{width:100%;height:100%;object-fit:cover;object-position:right center;display:block;opacity:0.92;}
-.hero-photo::before{content:'';position:absolute;inset:0;z-index:1;background:linear-gradient(to right,rgba(18,6,10,0.72) 0%,rgba(18,6,10,0.3) 50%,transparent 100%);pointer-events:none;}
-.hero-photo::after{content:'';position:absolute;bottom:0;left:0;right:0;height:40%;z-index:2;background:linear-gradient(to bottom,transparent,rgba(250,246,239,0.8) 90%,var(--cream) 100%);}
-.hero-content{position:relative;z-index:3;width:100%;max-width:var(--max);margin:0 auto;padding:0 48px 80px;}
+.hero-photo{position:absolute;inset:0;}
+.hero-photo img{width:100%;height:100%;object-fit:cover;object-position:right center;display:block;}
+@media(max-width:640px){.hero-photo img{object-position:center center;}}
+.hero-content{position:relative;z-index:3;width:100%;max-width:var(--max);margin:0 auto;padding:120px 48px 80px;}
 /* Hero SVG title stack */
 .hero-scattered-title{max-width:580px;padding:0;}
 .hero-svg-stack{position:relative;width:100%;margin-bottom:24px;}
-.ht-abh{display:block;width:68%;margin-left:0;filter:brightness(0) invert(1);}
-.ht-of {display:block;width:20%;margin-left:52%;margin-top:-4%;filter:brightness(0) invert(1);opacity:0.75;}
-.ht-ts {display:block;width:82%;margin-left:2%;margin-top:2%;filter:brightness(0) invert(1);}
-.hero-thesis{font-family:var(--body);font-size:clamp(0.95rem,1.5vw,1.1rem);line-height:1.65;color:rgba(255,255,255,0.78);font-style:italic;margin:0;}
+.ht-abh{display:block;width:48%;margin-left:0;filter:drop-shadow(0 2px 10px rgba(0,0,0,0.55));}
+.ht-of {display:block;width:14%;margin-left:36%;margin-top:-3%;filter:drop-shadow(0 2px 7px rgba(0,0,0,0.45));}
+.ht-ts {display:block;width:57%;margin-left:2%;margin-top:2%;filter:drop-shadow(0 2px 10px rgba(0,0,0,0.55));}
+.hero-thesis{font-family:var(--body);font-size:clamp(0.95rem,1.5vw,1.1rem);line-height:1.65;color:var(--accent);font-style:italic;margin:0;background:rgba(255,255,255,0.82);padding:12px 16px;border-radius:2px;backdrop-filter:blur(4px);}
 .hero-stats{display:flex;gap:40px;flex-wrap:wrap;}
 .hero-stat-num{font-family:var(--display);font-size:clamp(2.2rem,4vw,3.2rem);font-weight:900;color:var(--accent2);line-height:1;display:block;}
 .hero-stat-label{font-family:var(--mono);font-size:0.7rem;font-weight:500;letter-spacing:0.18em;text-transform:uppercase;color:rgba(255,255,255,0.4);display:block;margin-top:3px;}
@@ -267,7 +264,7 @@ body.audio-active{padding-bottom:48px;}
 .discog-section{background-image: url('taylor-swift/images/plufow-le-studio-VdXu2m_JLFM-unsplash.jpg'); padding:80px 0;border-top:1px solid rgba(255,255,255,0.04);}
 .discog-inner{max-width:var(--max);margin:0 auto;padding:0 48px;}
 .discog-label{font-family:var(--mono);font-size:0.72rem;font-weight:700;letter-spacing:0.24em;text-transform:uppercase;color:rgba(255,255,255,0.22);margin-bottom:8px;}
-.discog-title{font-family:var(--display);font-size:clamp(1.8rem,3.5vw,2.6rem);font-weight:900;font-style:italic;color:#fff;margin-bottom:36px;line-height:1.1;}
+.discog-title{font-family:var(--display);font-size:clamp(1.8rem,3.5vw,2.6rem);font-weight:900;font-style:italic;color:var(--accent2);margin-bottom:36px;line-height:1.1;}
 .discog-title em{color:var(--accent2);}
 .discog-grid{display:grid;grid-template-columns:repeat(6,1fr);gap:12px;margin-bottom:20px;}
 .discog-tile img{width:100%;aspect-ratio:1;object-fit:cover;border-radius:2px;display:block;transition:transform 0.25s,box-shadow 0.25s;box-shadow:0 2px 8px rgba(0,0,0,0.3);}
@@ -347,10 +344,18 @@ footer{background:var(--cream);border-top:1px solid var(--border);height:56px;pa
   .photo-strip-inner{height:130px;}
   .hero-stats{gap:24px;}
   .splash-right{width:38%;}
-  
+  body{font-size:1.15rem;}
+  .era-intro,.letter-body p{font-size:1.1rem;}
+  .card p{font-size:1.05rem;}
   .ab-track-wrap,.ab-time{display:none;}
   .colophon{padding:24px 20px;}
 }
+
+/* ── LETTER PILL BUTTON ── */
+.letter-pill-wrap{margin-top:28px;}
+.letter-pill{display:inline-flex;align-items:center;gap:8px;font-family:var(--mono);font-size:0.75rem;font-weight:700;letter-spacing:0.16em;text-transform:uppercase;color:#fff;background:var(--accent);border:none;padding:13px 28px;border-radius:40px;text-decoration:none;transition:background 0.2s,transform 0.15s;cursor:pointer;}
+.letter-pill:hover{background:var(--accent2);transform:translateY(-1px);}
+.letter-pill svg{flex-shrink:0;}
 </style>
 </head>
 <body>
@@ -365,22 +370,92 @@ footer{background:var(--cream);border-top:1px solid var(--border);height:56px;pa
     <div class="splash-iri"></div>
     <div class="splash-text">
       <div class="splash-svg-stack">
-        <img class="sp-abh" src="taylor-swift/images/hero-title-a-brief-history.svg" alt="A (Brief) History">
-        <img class="sp-of"  src="taylor-swift/images/hero-title-of.svg" alt="of">
-        <img class="sp-ts"  src="taylor-swift/images/hero-title-taylor-swift.svg" alt="Taylor Swift">
+        <div class="sp-abh"><?xml version="1.0" encoding="UTF-8"?>
+<svg id="Layer_2" data-name="Layer 2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 223.65 227.5">
+  <defs>
+    <style>
+      .sp-abh-cls {
+        fill: #C4185A;
+      }
+    </style>
+  </defs>
+  <g id="Layer_1-2" data-name="Layer 1">
+    <g>
+      <path class="sp-abh-cls" d="M45.86,0h13.89l-4.14,73.7h-8.74l1.34-16.58h-6.72l-3.36,16.58h-8.74L45.86,0ZM48.77,49.06l3.58-45.36-9.18,45.36h5.6Z"/>
+      <g>
+        <path class="sp-abh-cls" d="M82.46,58.41c-8.38,13.84-15.15,41.41-15.15,63.93,0,8.99,1.01,16.97,3.03,22.72h-7.27c-2.02-6.06-2.93-13.94-2.93-22.52,0-22.72,6.77-50.8,15.05-64.13h7.27Z"/>
+        <path class="sp-abh-cls" d="M88.05,62.2h12.32c7.62,0,11.31,4.14,10.08,11.87l-1.34,9.52c-.9,6.27-4.59,9.63-9.86,10.42,5.04.9,7.95,3.02,7.17,8.74l-3.02,21.28c-1.23,7.73-5.71,11.87-13.33,11.87h-12.32l10.3-73.7ZM91.08,127.83c1.79,0,3.14-1.23,3.47-3.14l3.02-21.17c.22-2.13-.67-3.14-2.58-3.14h-3.58l-3.81,27.44h3.47ZM92.42,93.22c4.37,0,6.83-2.58,7.62-7.39l1.68-12.43c.34-1.68-.45-3.14-2.58-3.14h-3.47l-3.25,22.96Z"/>
+        <path class="sp-abh-cls" d="M122.33,103.75h-.67l-4.48,32.14h-8.74l10.3-73.7h12.32c7.62,0,11.31,4.14,10.08,11.87l-2.13,14.45c-1.01,6.38-4.03,10.75-8.96,13.1l5.15,34.27h-8.96l-3.92-32.14ZM122.77,95.69c4.82,0,6.94-2.46,7.5-6.5l2.13-15.79c.34-1.68-.45-3.14-2.58-3.14h-3.47l-3.58,25.42Z"/>
+        <path class="sp-abh-cls" d="M149.43,62.2h8.74l-10.3,73.7h-8.74l10.3-73.7Z"/>
+        <path class="sp-abh-cls" d="M165.44,62.2h19.49l-1.12,8.06h-10.75l-3.02,21.73h9.63l-1.12,8.06h-9.63l-3.92,27.78h10.75l-1.12,8.06h-19.49l10.3-73.7Z"/>
+        <path class="sp-abh-cls" d="M190.53,62.2h19.49l-1.12,8.06h-10.75l-3.47,25.09h9.63l-1.12,8.06h-9.63l-4.59,32.48h-8.74l10.3-73.7Z"/>
+        <path class="sp-abh-cls" d="M220.72,58.41c2.02,5.96,2.93,13.94,2.93,22.32,0,22.22-6.56,51-15.15,64.34h-7.27c8.58-13.74,15.15-41.81,15.15-63.93,0-8.79-.91-16.66-2.93-22.72h7.27Z"/>
+      </g>
+      <g>
+        <path class="sp-abh-cls" d="M10.3,152.69h8.74l-4.03,28.67h6.5l4.03-28.67h8.74l-10.3,73.7h-8.74l5.15-36.96h-6.5l-5.15,36.96H0l10.3-73.7Z"/>
+        <path class="sp-abh-cls" d="M41.55,152.69h8.74l-10.3,73.7h-8.74l10.3-73.7Z"/>
+        <path class="sp-abh-cls" d="M47.04,215.63l1.9-13.44h8.74l-1.9,13.78c-.34,1.9.45,3.47,2.69,3.47,2.35,0,3.47-1.68,3.81-3.47l.9-6.61c.78-4.82-1.9-10.19-4.7-15.9-3.47-6.72-6.38-13.1-5.49-19.94l1.34-10.08c1.01-7.62,5.94-11.87,13.66-11.87s11.65,4.14,10.42,11.87l-2.35,16.69h-8.74l2.35-16.91c.34-1.68-.22-3.58-2.8-3.58-2.35,0-3.36,1.9-3.7,3.58l-1.46,10.3c-.78,4.82,1.9,9.86,4.59,15.57,3.25,6.72,6.61,13.44,5.6,20.27l-.9,6.27c-1.12,7.95-5.71,11.87-13.66,11.87s-11.54-4.26-10.3-11.87Z"/>
+        <path class="sp-abh-cls" d="M88.37,160.75h-6.27l1.12-8.06h21.28l-1.12,8.06h-6.27l-9.18,65.63h-8.74l9.18-65.63Z"/>
+        <path class="sp-abh-cls" d="M100.01,215.63l7.28-52.19c1.12-7.95,5.71-11.87,13.66-11.87s11.54,4.14,10.3,11.87l-7.28,52.19c-1.23,7.73-5.94,11.87-13.66,11.87s-11.54-4.14-10.3-11.87ZM108.75,215.97c-.34,1.9.45,3.47,2.69,3.47s3.47-1.12,3.81-3.47l7.39-52.86c.34-1.9-.45-3.47-2.8-3.47-2.13,0-3.36,1.57-3.7,3.47l-7.39,52.86Z"/>
+        <path class="sp-abh-cls" d="M143.02,194.24h-.67l-4.48,32.14h-8.74l10.3-73.7h12.32c7.62,0,11.31,4.14,10.08,11.87l-2.13,14.45c-1.01,6.38-4.03,10.75-8.96,13.1l5.15,34.27h-8.96l-3.92-32.14ZM143.47,186.18c4.82,0,6.94-2.46,7.5-6.5l2.13-15.79c.34-1.68-.45-3.14-2.58-3.14h-3.47l-3.58,25.42Z"/>
+        <path class="sp-abh-cls" d="M177.85,202.86l-3.36,23.52h-8.74l3.36-23.52-1.79-50.18h8.74l-1.12,39.65,9.86-39.65h8.74l-15.68,50.18Z"/>
+      </g>
+    </g>
+  </g>
+</svg></div>
+        <div class="sp-of"><?xml version="1.0" encoding="UTF-8"?>
+<svg id="Layer_2" data-name="Layer 2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 59.13 75.94">
+  <defs>
+    <style>
+      .sp-of-cls {
+        fill: #C4185A;
+      }
+    </style>
+  </defs>
+  <g id="Layer_1-2" data-name="Layer 1">
+    <g>
+      <path class="sp-of-cls" d="M.22,64.06L7.5,11.87C8.62,3.92,13.21,0,21.17,0s11.54,4.14,10.3,11.87l-7.28,52.19c-1.23,7.73-5.94,11.87-13.66,11.87S-1.01,71.79.22,64.06ZM8.96,64.4c-.34,1.9.45,3.47,2.69,3.47s3.47-1.12,3.81-3.47l7.39-52.86c.34-1.9-.45-3.47-2.8-3.47-2.13,0-3.36,1.57-3.7,3.47l-7.39,52.86Z"/>
+      <path class="sp-of-cls" d="M39.65,1.12h19.49l-1.12,8.06h-10.75l-3.47,25.09h9.63l-1.12,8.06h-9.63l-4.59,32.48h-8.74L39.65,1.12Z"/>
+    </g>
+  </g>
+</svg></div>
+        <div class="sp-ts"><?xml version="1.0" encoding="UTF-8"?>
+<svg id="Layer_2" data-name="Layer 2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 156.94">
+  <defs>
+    <style>
+      .sp-ts-cls {
+        fill: #C4185A;
+      }
+    </style>
+  </defs>
+  <g id="Layer_1-2" data-name="Layer 1">
+    <g>
+      <g>
+        <path class="sp-ts-cls" d="M9.18,9.18H2.91L4.03,1.12h21.28l-1.12,8.06h-6.27l-9.18,65.63H0L9.18,9.18Z"/>
+        <path class="sp-ts-cls" d="M31.25,1.12h13.89l-4.14,73.7h-8.74l1.34-16.58h-6.72l-3.36,16.58h-8.74L31.25,1.12ZM34.16,50.18l3.58-45.36-9.18,45.36h5.6Z"/>
+        <path class="sp-ts-cls" d="M60.7,51.3l-3.36,23.52h-8.74l3.36-23.52-1.79-50.18h8.74l-1.12,39.65L67.65,1.12h8.74l-15.68,50.18Z"/>
+        <path class="sp-ts-cls" d="M89.49,1.12l-9.18,65.63h10.75l-1.12,8.06h-19.49L80.75,1.12h8.74Z"/>
+        <path class="sp-ts-cls" d="M95.31,64.06l7.28-52.19c1.12-7.95,5.71-11.87,13.66-11.87s11.54,4.14,10.3,11.87l-7.28,52.19c-1.23,7.73-5.94,11.87-13.66,11.87s-11.54-4.14-10.3-11.87ZM104.04,64.4c-.34,1.9.45,3.47,2.69,3.47s3.47-1.12,3.81-3.47l7.39-52.86c.34-1.9-.45-3.47-2.8-3.47-2.13,0-3.36,1.57-3.7,3.47l-7.39,52.86Z"/>
+        <path class="sp-ts-cls" d="M138.31,42.67h-.67l-4.48,32.14h-8.74L134.73,1.12h12.32c7.62,0,11.31,4.14,10.08,11.87l-2.13,14.45c-1.01,6.38-4.03,10.75-8.96,13.1l5.15,34.27h-8.96l-3.92-32.14ZM138.76,34.61c4.82,0,6.94-2.46,7.5-6.5l2.13-15.79c.34-1.68-.45-3.14-2.58-3.14h-3.47l-3.58,25.42Z"/>
+      </g>
+      <g>
+        <path class="sp-ts-cls" d="M56.75,145.06l1.9-13.44h8.74l-1.9,13.78c-.34,1.9.45,3.47,2.69,3.47,2.35,0,3.47-1.68,3.81-3.47l.9-6.61c.78-4.82-1.9-10.19-4.7-15.9-3.47-6.72-6.38-13.1-5.49-19.94l1.34-10.08c1.01-7.62,5.94-11.87,13.66-11.87s11.65,4.14,10.42,11.87l-2.35,16.69h-8.74l2.35-16.91c.34-1.68-.22-3.58-2.8-3.58-2.35,0-3.36,1.9-3.7,3.58l-1.46,10.3c-.78,4.82,1.9,9.86,4.59,15.57,3.25,6.72,6.61,13.44,5.6,20.27l-.9,6.27c-1.12,7.95-5.71,11.87-13.66,11.87s-11.54-4.26-10.3-11.87Z"/>
+        <path class="sp-ts-cls" d="M113.43,149.88l13.55-67.76h8.62l-15.9,73.7h-12.1l4.03-56.45-11.87,56.45h-12.1l4.7-73.7h8.62l-5.38,67.76,14-67.76h8.74l-4.93,67.76Z"/>
+        <path class="sp-ts-cls" d="M139.97,82.12h8.74l-10.3,73.7h-8.74l10.3-73.7Z"/>
+        <path class="sp-ts-cls" d="M155.98,82.12h19.49l-1.12,8.06h-10.75l-3.47,25.09h9.63l-1.12,8.06h-9.63l-4.59,32.48h-8.74l10.3-73.7Z"/>
+        <path class="sp-ts-cls" d="M183.87,90.18h-6.27l1.12-8.06h21.28l-1.12,8.06h-6.27l-9.18,65.63h-8.74l9.18-65.63Z"/>
+      </g>
+    </g>
+  </g>
+</svg></div>
       </div>
       <button class="splash-enter" id="splash-btn">
         <svg viewBox="0 0 24 24" fill="currentColor" width="14" height="14"><polygon points="5 3 19 12 5 21 5 3"/></svg>
         Enter
       </button>
-      <span class="splash-hint">Cruel Summer is playing</span>
     </div>
   </div>
-  <!--
-	<div class="splash-right">
-    <img src="taylor-swift/images/hero-portrait-2.jpg" alt="" class="splash-portrait">
-  </div>
-!-->
+
 </div>
 
 <!-- AUDIO BAR -->
@@ -429,9 +504,84 @@ footer{background:var(--cream);border-top:1px solid var(--border);height:56px;pa
   <div class="hero-content">
     <div class="hero-scattered-title fi">
       <div class="hero-svg-stack">
-        <img class="ht-abh" src="taylor-swift/images/hero-title-a-brief-history.svg" alt="A (Brief) History">
-        <img class="ht-of"  src="taylor-swift/images/hero-title-of.svg" alt="of">
-        <img class="ht-ts"  src="taylor-swift/images/hero-title-taylor-swift.svg" alt="Taylor Swift">
+        <div class="ht-abh"><?xml version="1.0" encoding="UTF-8"?>
+<svg id="Layer_2" data-name="Layer 2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 223.65 227.5">
+  <defs>
+    <style>
+      .ht-abh-cls {
+        fill: #ffe3e2;
+      }
+    </style>
+  </defs>
+  <g id="Layer_1-2" data-name="Layer 1">
+    <g>
+      <path class="ht-abh-cls" d="M45.86,0h13.89l-4.14,73.7h-8.74l1.34-16.58h-6.72l-3.36,16.58h-8.74L45.86,0ZM48.77,49.06l3.58-45.36-9.18,45.36h5.6Z"/>
+      <g>
+        <path class="ht-abh-cls" d="M82.46,58.41c-8.38,13.84-15.15,41.41-15.15,63.93,0,8.99,1.01,16.97,3.03,22.72h-7.27c-2.02-6.06-2.93-13.94-2.93-22.52,0-22.72,6.77-50.8,15.05-64.13h7.27Z"/>
+        <path class="ht-abh-cls" d="M88.05,62.2h12.32c7.62,0,11.31,4.14,10.08,11.87l-1.34,9.52c-.9,6.27-4.59,9.63-9.86,10.42,5.04.9,7.95,3.02,7.17,8.74l-3.02,21.28c-1.23,7.73-5.71,11.87-13.33,11.87h-12.32l10.3-73.7ZM91.08,127.83c1.79,0,3.14-1.23,3.47-3.14l3.02-21.17c.22-2.13-.67-3.14-2.58-3.14h-3.58l-3.81,27.44h3.47ZM92.42,93.22c4.37,0,6.83-2.58,7.62-7.39l1.68-12.43c.34-1.68-.45-3.14-2.58-3.14h-3.47l-3.25,22.96Z"/>
+        <path class="ht-abh-cls" d="M122.33,103.75h-.67l-4.48,32.14h-8.74l10.3-73.7h12.32c7.62,0,11.31,4.14,10.08,11.87l-2.13,14.45c-1.01,6.38-4.03,10.75-8.96,13.1l5.15,34.27h-8.96l-3.92-32.14ZM122.77,95.69c4.82,0,6.94-2.46,7.5-6.5l2.13-15.79c.34-1.68-.45-3.14-2.58-3.14h-3.47l-3.58,25.42Z"/>
+        <path class="ht-abh-cls" d="M149.43,62.2h8.74l-10.3,73.7h-8.74l10.3-73.7Z"/>
+        <path class="ht-abh-cls" d="M165.44,62.2h19.49l-1.12,8.06h-10.75l-3.02,21.73h9.63l-1.12,8.06h-9.63l-3.92,27.78h10.75l-1.12,8.06h-19.49l10.3-73.7Z"/>
+        <path class="ht-abh-cls" d="M190.53,62.2h19.49l-1.12,8.06h-10.75l-3.47,25.09h9.63l-1.12,8.06h-9.63l-4.59,32.48h-8.74l10.3-73.7Z"/>
+        <path class="ht-abh-cls" d="M220.72,58.41c2.02,5.96,2.93,13.94,2.93,22.32,0,22.22-6.56,51-15.15,64.34h-7.27c8.58-13.74,15.15-41.81,15.15-63.93,0-8.79-.91-16.66-2.93-22.72h7.27Z"/>
+      </g>
+      <g>
+        <path class="ht-abh-cls" d="M10.3,152.69h8.74l-4.03,28.67h6.5l4.03-28.67h8.74l-10.3,73.7h-8.74l5.15-36.96h-6.5l-5.15,36.96H0l10.3-73.7Z"/>
+        <path class="ht-abh-cls" d="M41.55,152.69h8.74l-10.3,73.7h-8.74l10.3-73.7Z"/>
+        <path class="ht-abh-cls" d="M47.04,215.63l1.9-13.44h8.74l-1.9,13.78c-.34,1.9.45,3.47,2.69,3.47,2.35,0,3.47-1.68,3.81-3.47l.9-6.61c.78-4.82-1.9-10.19-4.7-15.9-3.47-6.72-6.38-13.1-5.49-19.94l1.34-10.08c1.01-7.62,5.94-11.87,13.66-11.87s11.65,4.14,10.42,11.87l-2.35,16.69h-8.74l2.35-16.91c.34-1.68-.22-3.58-2.8-3.58-2.35,0-3.36,1.9-3.7,3.58l-1.46,10.3c-.78,4.82,1.9,9.86,4.59,15.57,3.25,6.72,6.61,13.44,5.6,20.27l-.9,6.27c-1.12,7.95-5.71,11.87-13.66,11.87s-11.54-4.26-10.3-11.87Z"/>
+        <path class="ht-abh-cls" d="M88.37,160.75h-6.27l1.12-8.06h21.28l-1.12,8.06h-6.27l-9.18,65.63h-8.74l9.18-65.63Z"/>
+        <path class="ht-abh-cls" d="M100.01,215.63l7.28-52.19c1.12-7.95,5.71-11.87,13.66-11.87s11.54,4.14,10.3,11.87l-7.28,52.19c-1.23,7.73-5.94,11.87-13.66,11.87s-11.54-4.14-10.3-11.87ZM108.75,215.97c-.34,1.9.45,3.47,2.69,3.47s3.47-1.12,3.81-3.47l7.39-52.86c.34-1.9-.45-3.47-2.8-3.47-2.13,0-3.36,1.57-3.7,3.47l-7.39,52.86Z"/>
+        <path class="ht-abh-cls" d="M143.02,194.24h-.67l-4.48,32.14h-8.74l10.3-73.7h12.32c7.62,0,11.31,4.14,10.08,11.87l-2.13,14.45c-1.01,6.38-4.03,10.75-8.96,13.1l5.15,34.27h-8.96l-3.92-32.14ZM143.47,186.18c4.82,0,6.94-2.46,7.5-6.5l2.13-15.79c.34-1.68-.45-3.14-2.58-3.14h-3.47l-3.58,25.42Z"/>
+        <path class="ht-abh-cls" d="M177.85,202.86l-3.36,23.52h-8.74l3.36-23.52-1.79-50.18h8.74l-1.12,39.65,9.86-39.65h8.74l-15.68,50.18Z"/>
+      </g>
+    </g>
+  </g>
+</svg></div>
+        <div class="ht-of"><?xml version="1.0" encoding="UTF-8"?>
+<svg id="Layer_2" data-name="Layer 2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 59.13 75.94">
+  <defs>
+    <style>
+      .ht-of-cls {
+        fill: #ffe3e2;
+      }
+    </style>
+  </defs>
+  <g id="Layer_1-2" data-name="Layer 1">
+    <g>
+      <path class="ht-of-cls" d="M.22,64.06L7.5,11.87C8.62,3.92,13.21,0,21.17,0s11.54,4.14,10.3,11.87l-7.28,52.19c-1.23,7.73-5.94,11.87-13.66,11.87S-1.01,71.79.22,64.06ZM8.96,64.4c-.34,1.9.45,3.47,2.69,3.47s3.47-1.12,3.81-3.47l7.39-52.86c.34-1.9-.45-3.47-2.8-3.47-2.13,0-3.36,1.57-3.7,3.47l-7.39,52.86Z"/>
+      <path class="ht-of-cls" d="M39.65,1.12h19.49l-1.12,8.06h-10.75l-3.47,25.09h9.63l-1.12,8.06h-9.63l-4.59,32.48h-8.74L39.65,1.12Z"/>
+    </g>
+  </g>
+</svg></div>
+        <div class="ht-ts"><?xml version="1.0" encoding="UTF-8"?>
+<svg id="Layer_2" data-name="Layer 2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 156.94">
+  <defs>
+    <style>
+      .ht-ts-cls {
+        fill: #ffe3e2;
+      }
+    </style>
+  </defs>
+  <g id="Layer_1-2" data-name="Layer 1">
+    <g>
+      <g>
+        <path class="ht-ts-cls" d="M9.18,9.18H2.91L4.03,1.12h21.28l-1.12,8.06h-6.27l-9.18,65.63H0L9.18,9.18Z"/>
+        <path class="ht-ts-cls" d="M31.25,1.12h13.89l-4.14,73.7h-8.74l1.34-16.58h-6.72l-3.36,16.58h-8.74L31.25,1.12ZM34.16,50.18l3.58-45.36-9.18,45.36h5.6Z"/>
+        <path class="ht-ts-cls" d="M60.7,51.3l-3.36,23.52h-8.74l3.36-23.52-1.79-50.18h8.74l-1.12,39.65L67.65,1.12h8.74l-15.68,50.18Z"/>
+        <path class="ht-ts-cls" d="M89.49,1.12l-9.18,65.63h10.75l-1.12,8.06h-19.49L80.75,1.12h8.74Z"/>
+        <path class="ht-ts-cls" d="M95.31,64.06l7.28-52.19c1.12-7.95,5.71-11.87,13.66-11.87s11.54,4.14,10.3,11.87l-7.28,52.19c-1.23,7.73-5.94,11.87-13.66,11.87s-11.54-4.14-10.3-11.87ZM104.04,64.4c-.34,1.9.45,3.47,2.69,3.47s3.47-1.12,3.81-3.47l7.39-52.86c.34-1.9-.45-3.47-2.8-3.47-2.13,0-3.36,1.57-3.7,3.47l-7.39,52.86Z"/>
+        <path class="ht-ts-cls" d="M138.31,42.67h-.67l-4.48,32.14h-8.74L134.73,1.12h12.32c7.62,0,11.31,4.14,10.08,11.87l-2.13,14.45c-1.01,6.38-4.03,10.75-8.96,13.1l5.15,34.27h-8.96l-3.92-32.14ZM138.76,34.61c4.82,0,6.94-2.46,7.5-6.5l2.13-15.79c.34-1.68-.45-3.14-2.58-3.14h-3.47l-3.58,25.42Z"/>
+      </g>
+      <g>
+        <path class="ht-ts-cls" d="M56.75,145.06l1.9-13.44h8.74l-1.9,13.78c-.34,1.9.45,3.47,2.69,3.47,2.35,0,3.47-1.68,3.81-3.47l.9-6.61c.78-4.82-1.9-10.19-4.7-15.9-3.47-6.72-6.38-13.1-5.49-19.94l1.34-10.08c1.01-7.62,5.94-11.87,13.66-11.87s11.65,4.14,10.42,11.87l-2.35,16.69h-8.74l2.35-16.91c.34-1.68-.22-3.58-2.8-3.58-2.35,0-3.36,1.9-3.7,3.58l-1.46,10.3c-.78,4.82,1.9,9.86,4.59,15.57,3.25,6.72,6.61,13.44,5.6,20.27l-.9,6.27c-1.12,7.95-5.71,11.87-13.66,11.87s-11.54-4.26-10.3-11.87Z"/>
+        <path class="ht-ts-cls" d="M113.43,149.88l13.55-67.76h8.62l-15.9,73.7h-12.1l4.03-56.45-11.87,56.45h-12.1l4.7-73.7h8.62l-5.38,67.76,14-67.76h8.74l-4.93,67.76Z"/>
+        <path class="ht-ts-cls" d="M139.97,82.12h8.74l-10.3,73.7h-8.74l10.3-73.7Z"/>
+        <path class="ht-ts-cls" d="M155.98,82.12h19.49l-1.12,8.06h-10.75l-3.47,25.09h9.63l-1.12,8.06h-9.63l-4.59,32.48h-8.74l10.3-73.7Z"/>
+        <path class="ht-ts-cls" d="M183.87,90.18h-6.27l1.12-8.06h21.28l-1.12,8.06h-6.27l-9.18,65.63h-8.74l9.18-65.63Z"/>
+      </g>
+    </g>
+  </g>
+</svg></div>
       </div>
       <p class="hero-thesis">She arrived as a country teenager with a notebook full of stories. She leaves — or doesn't — as the most commercially powerful force in the history of the music industry. This is the story of how that happened, and why it keeps happening.</p>
     </div>
@@ -452,11 +602,11 @@ footer{background:var(--cream);border-top:1px solid var(--border);height:56px;pa
 	
 <!-- PHOTO STRIP 1 -->
 <div class="photo-strip"><div class="photo-strip-inner">
-  <div class="photo-strip-slot ph">photo · early era</div>
-  <div class="photo-strip-slot ph">photo · nashville</div>
-  <div class="photo-strip-slot ph">photo · fearless tour</div>
-  <div class="photo-strip-slot ph">photo · speak now era</div>
-  <div class="photo-strip-slot ph">photo · early awards</div>
+  <div class="photo-strip-slot ph"><img src="taylor-swift/images/Taylor_Swift_2011crop.jpg"></div>
+  <div class="photo-strip-slot ph"><img src="taylor-swift/images/TaylorSwiftApr09.jpg"></div>
+  <div class="photo-strip-slot ph"><img src="taylor-swift/images/Taylor_Swift_Sydney.jpg"></div>
+  <div class="photo-strip-slot ph"><img src="taylor-swift/images/Taylor_Swift_at_the_2023_MTV_Video_Music_Awards.png"></div>
+  <div class="photo-strip-slot ph"><img src="taylor-swift/images/Taylor_Swift_2009_MTV_VMA_(cropped).jpg"></div>
 </div></div>
 
 <!-- ERA I -->
@@ -509,11 +659,11 @@ footer{background:var(--cream);border-top:1px solid var(--border);height:56px;pa
 
 <!-- PHOTO STRIP 2 -->
 <div class="photo-strip"><div class="photo-strip-inner">
-  <div class="photo-strip-slot ph">photo · red era</div>
-  <div class="photo-strip-slot ph">photo · 1989 tour</div>
-  <div class="photo-strip-slot ph">photo · squad era</div>
-  <div class="photo-strip-slot ph">photo · 1989 awards</div>
-  <div class="photo-strip-slot ph">photo · apple music</div>
+  <div class="photo-strip-slot ph"><img src="taylor-swift/images/Taylor_Swift_-_Reputation_Tour_Seattle_-_Long_Live-New_Years_Day_(cropped).jpg"></div>
+  <div class="photo-strip-slot ph"><img src="taylor-swift/images/not-a-lot.jpg"></div>
+  <div class="photo-strip-slot ph"><img src="taylor-swift/images/eras-tour-concert.jpg"></div>
+  <div class="photo-strip-slot ph"><img src="taylor-swift/images/hero-portrait.jpg"></div>
+  <div class="photo-strip-slot ph"><img src="taylor-swift/images/codioful-formerly-gradienta-EN_upkV3_Zs-unsplash.jpg">c</div>
 </div></div>
 
 <!-- ERA III -->
@@ -572,7 +722,7 @@ footer{background:var(--cream);border-top:1px solid var(--border);height:56px;pa
   </div>
 </div>
 
-<!-- PHOTO STRIP 3 -->
+<!-- PHOTO STRIP 3 
 <div class="photo-strip"><div class="photo-strip-inner">
   <div class="photo-strip-slot ph">photo · reputation era</div>
   <div class="photo-strip-slot ph">photo · lover era</div>
@@ -580,7 +730,7 @@ footer{background:var(--cream);border-top:1px solid var(--border);height:56px;pa
   <div class="photo-strip-slot ph">photo · eras tour</div>
   <div class="photo-strip-slot ph">photo · midnights era</div>
 </div></div>
-
+-->
 <!-- ERA V -->
 <div class="era-section" style="background:var(--cream);" id="era-5">
   <div class="era-wrap">
@@ -639,11 +789,11 @@ footer{background:var(--cream);border-top:1px solid var(--border);height:56px;pa
 
 <!-- PHOTO STRIP 4 -->
 <div class="photo-strip"><div class="photo-strip-inner">
-  <div class="photo-strip-slot ph">photo · travis kelce</div>
-  <div class="photo-strip-slot ph">photo · joe alwyn</div>
-  <div class="photo-strip-slot ph">photo · harry styles era</div>
-  <div class="photo-strip-slot ph">photo · jake gyllenhaal</div>
-  <div class="photo-strip-slot ph">photo · superbowl 2024</div>
+  <div class="photo-strip-slot ph"><img src="taylor-swift/images/kelce-white-house.jpg"></div>
+  <div class="photo-strip-slot ph"><img src="taylor-swift/images/Joseph_Alwyn.jpg"></div>
+  <div class="photo-strip-slot ph"><img src="taylor-swift/images/styles-swift.jpg"></div>
+  <div class="photo-strip-slot ph"><img src="taylor-swift/images/jake-taylor.jpg"></div>
+  <div class="photo-strip-slot ph"><img src="taylor-swift/images/tay-trav.jpg"></div>
 </div></div>
 
 <!-- ERA VII — DATING HISTORY -->
@@ -732,8 +882,7 @@ footer{background:var(--cream);border-top:1px solid var(--border);height:56px;pa
         <div><span class="record-num">4×</span><span class="record-label">Album of the Year</span><span class="record-desc">Most wins by any solo artist. The closest competitors have one or two.</span></div>
         <div class="records-div"></div>
         <div><span class="record-num">10/10</span><span class="record-label">Hot 100 Top 10</span><span class="record-desc">Midnights occupied every position simultaneously. Never done before.</span></div>
-        <div class="records-div"></div>
-        <div><span class="record-num">6</span><span class="record-label">Re-recordings</span><span class="record-desc">Albums re-recorded to reclaim her masters. The industry had no playbook for this. She wrote one.</span></div>
+     
         <div class="records-div"></div>
         <div><span class="record-num">65K</span><span class="record-label">Voter Registrations</span><span class="record-desc">Tennessee voter registrations in one day after her 2018 political endorsement post.</span></div>
       </div>
@@ -796,7 +945,7 @@ footer{background:var(--cream);border-top:1px solid var(--border);height:56px;pa
       <span class="lyric-loading-text">Writing in her voice<span class="cursor-blink">_</span></span>
     </div>
 
-    <p class="lyric-disclaimer fi">AI-generated original verse in Taylor Swift's lyrical style. Not her words — just inspired by them.</p>
+    <p class="lyric-disclaimer fi">Original verse in Taylor Swift's lyrical style. Not her words — just inspired by them.</p>
   </div>
 </div>
 
@@ -820,6 +969,11 @@ footer{background:var(--cream);border-top:1px solid var(--border);height:56px;pa
       <div class="discog-tile"><img src="taylor-swift/images/cover-tloas.jpg" alt="The Life of a Showgirl"><div class="discog-tile-info"><span class="discog-tile-name">Showgirl</span><span class="discog-tile-year">2025</span></div></div>
     </div>
     <p class="discog-foot fi">12 studio albums · 2006–2025 · Plus 6 Taylor's Version re-recordings</p>
+    <div class="fi" style="text-align:center;margin-top:16px;padding-top:16px;border-top:1px solid rgba(255,255,255,0.06);">
+      <a href="tloas-vault.html" style="display:inline-flex;align-items:center;gap:10px;font-family:var(--mono);font-size:0.72rem;font-weight:700;letter-spacing:0.16em;text-transform:uppercase;color:#fff;background:#C4185A;padding:12px 24px;border-radius:40px;text-decoration:none;transition:background 0.15s;" onmouseover="this.style.background='#E8336E'" onmouseout="this.style.background='#C4185A'">
+        ✦ What Could've Been — Imagined Vault Tracks ↗
+      </a>
+    </div>
   </div>
 </div>
 
@@ -831,13 +985,19 @@ footer{background:var(--cream);border-top:1px solid var(--border);height:56px;pa
     <div class="letter-body fi">
       <p>In 2019, Scooter Braun's company acquired Big Machine Records and with it, the masters to Taylor Swift's first six albums. She found out when the deal was announced publicly. Her response was not a lawsuit. It was a letter, a plan, and six years of work.</p>
       <p>The plan: re-record every album she didn't own. Release them methodically. Make the originals commercially irrelevant by making the new versions better, and by making her fans understand exactly why it mattered. Swifties responded by treating Taylor's Version as canonical — refusing to stream the originals, advocating for the new versions in playlists and recommendations. It worked. The original masters began losing value almost immediately.</p>
-      <p>Six re-recordings followed: Fearless, Red, Speak Now, 1989, and portions beyond. Each one arrived with vault tracks — songs written during the original era that had never been released. The vault tracks became their own event. All Too Well (10 Minute Version) went to #1 on the Hot 100, making it the longest song ever to debut there.</p>
+      <p>4 re-recordings followed: Fearless, Red, Speak Now, and 1989. Each one arrived with vault tracks — songs written during the original era that had never been released. The vault tracks became their own event. All Too Well (10 Minute Version) went to #1 on the Hot 100, making it the longest song ever to debut there.</p>
       <p>Then, in 2023, via Shamrock Capital, she bought back her masters entirely.</p>
     </div>
     <blockquote class="letter-quote fi">
       <p class="letter-quote-text">&ldquo;All of the music I've ever made&hellip; now belongs&hellip; to me.&rdquo;</p>
-      <cite class="letter-quote-attr">— Taylor Swift, in her letter to fans · 2023 · <a href="https://www.taylorswift.com/read-my-letter/" target="_blank" rel="noopener">Read the full letter ↗</a></cite>
+      <cite class="letter-quote-attr">— Taylor Swift, in her letter to fans · 2023</cite>
     </blockquote>
+    <div class="letter-pill-wrap fi">
+      <a class="letter-pill" href="https://www.taylorswift.com/read-my-letter/" target="_blank" rel="noopener">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+        Read the full letter
+      </a>
+    </div>
     <div class="letter-timeline fi">
       <div class="letter-event">
         <span class="letter-event-year">2019</span>
