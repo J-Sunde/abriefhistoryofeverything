@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg id="Layer_2" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" viewBox="0 0 59.1 75.9">
+  <!-- Generator: Adobe Illustrator 30.0.0, SVG Export Plug-In . SVG Version: 2.1.1 Build 123)  -->
+  <defs>
+    <style>
+      .st0 {
+        fill: none;
+      }
+
+      .st1 {
+        clip-path: url(#clippath);
+      }
+    </style>
+    <clipPath id="clippath">
+      <path id="Layer_1-2" class="st0" d="M.2,64.1L7.5,11.9C8.6,3.9,13.2,0,21.2,0s11.5,4.1,10.3,11.9l-7.3,52.2c-1.2,7.7-5.9,11.9-13.7,11.9S-1,71.8.2,64.1ZM9,64.4c-.3,1.9.4,3.5,2.7,3.5s3.5-1.1,3.8-3.5l7.4-52.9c.3-1.9-.5-3.5-2.8-3.5s-3.4,1.6-3.7,3.5c0,0-7.4,52.9-7.4,52.9ZM39.7,1.1h19.5l-1.1,8.1h-10.8l-3.5,25.1h9.6l-1.1,8.1h-9.6l-4.6,32.5h-8.7L39.7,1.1Z"/>
+    </clipPath>
+  </defs>
+  <g class="st1">
+    <image width="6016" height="4016" transform="translate(-11.5 -7.4) scale(0)" xlink:href="glitter-titling.jpg"/>
+  </g>
+</svg>
