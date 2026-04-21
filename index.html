@@ -385,61 +385,6 @@ main{padding-bottom:0;}
 }
 
 /* ═══ GUIDES GRID HEADER ═══ */
-/* ═══ FEATURED SECTION ═══ */
-.featured-section{padding:2.5rem 2.5rem 3rem;}
-.featured-eyebrow{
-  display:flex;align-items:center;gap:10px;
-  font-family:var(--mono);font-size:.6rem;font-weight:600;
-  letter-spacing:.2em;text-transform:uppercase;color:#B8942A;
-  margin-bottom:1.2rem;
-}
-.featured-eyebrow-line{display:inline-block;width:28px;height:2px;background:#F5C842;flex-shrink:0;}
-.featured-grid{
-  display:grid;grid-template-columns:1fr 1fr;gap:2px;
-  border-radius:6px;overflow:hidden;
-}
-.featured-panel{
-  position:relative;min-height:360px;
-  display:flex;flex-direction:column;justify-content:flex-end;
-  overflow:hidden;text-decoration:none;cursor:pointer;
-}
-.featured-panel img{
-  position:absolute;inset:0;width:100%;height:100%;
-  object-fit:cover;object-position:center center;
-  transition:transform .5s ease;
-}
-.featured-panel:hover img{transform:scale(1.04);}
-.featured-overlay{
-  position:relative;z-index:2;padding:1.6rem;
-  background:linear-gradient(to top,rgba(8,4,1,.93) 0%,rgba(8,4,1,.52) 55%,transparent 100%);
-}
-.featured-badge{
-  display:inline-block;background:#F5C842;color:#412402;
-  font-family:var(--mono);font-size:.58rem;font-weight:600;
-  letter-spacing:.14em;text-transform:uppercase;
-  padding:3px 8px;border-radius:3px;margin-bottom:10px;
-}
-.featured-badge-alt{background:#FF6B4A;color:#fff;}
-.featured-title{
-  font-family:var(--cond);font-weight:700;font-size:1.4rem;
-  color:#fff;line-height:1.2;margin:0 0 6px;
-}
-.featured-sub{
-  font-family:var(--body);font-size:.82rem;
-  color:rgba(255,247,240,.62);margin:0 0 14px;line-height:1.5;
-}
-.featured-cta{
-  display:inline-block;font-family:var(--mono);font-size:.68rem;
-  font-weight:600;letter-spacing:.08em;color:#E8A060;
-  border-bottom:1px solid rgba(232,160,96,.4);padding-bottom:1px;
-}
-.featured-cta-alt{color:#FF9B5E;border-bottom-color:rgba(255,155,94,.4);}
-@media(max-width:768px){
-  .featured-section{padding:1.5rem 1.5rem 2.5rem;}
-  .featured-grid{grid-template-columns:1fr;}
-  .featured-panel{min-height:260px;}
-}
-
 .grid-header{
   display:flex;align-items:center;gap:1rem;
   padding:2.5rem 2.5rem 1.5rem;
@@ -509,7 +454,7 @@ main{padding-bottom:0;}
 }
 .grid-card-title{
   font-family:var(--cond);font-weight:700;
-  font-size:clamp(.9rem,1.8vw,1.15rem);line-height:1.05;
+  font-size:clamp(.8rem,1vw,1rem);line-height:1.05;
   color:#fff;letter-spacing:.01em;
 }
 .grid-card-era{
@@ -1031,38 +976,8 @@ br.desk-br{display:block;}
   </div>
 </section>
 
-<!-- FEATURED -->
-<section class="featured-section">
-  <div class="featured-eyebrow"><span class="featured-eyebrow-line"></span>Featured this week</div>
-  <div class="featured-grid">
-
-    <a class="featured-panel" href="coachella.html">
-      <img src="coachella/images/feature-2.jpg" alt="Coachella ferris wheel at golden hour">
-      <div class="featured-overlay">
-        <div class="featured-badge">011 — Culture</div>
-        <div class="featured-title">A (Brief) History of Coachella<span class="cursor-blink">_</span></div>
-        <div class="featured-sub">From a 1999 Pearl Jam concert to the world's most influential music festival.</div>
-        <div class="featured-cta">Read the guide →</div>
-      </div>
-    </a>
-
-    <a class="featured-panel" href="coachella-list.html">
-      <img src="coachella/images/feature-1.jpg" alt="Palm trees at golden hour">
-      <div class="featured-overlay">
-        <div class="featured-badge featured-badge-alt">Interactive</div>
-        <div class="featured-title">The Ultimate Coachella List</div>
-        <div class="featured-sub">Every iconic moment, headliner, and meltdown. How many do you know?</div>
-        <div class="featured-cta featured-cta-alt">Try the list →</div>
-      </div>
-    </a>
-
-  </div>
-</section>
-
 <!-- GUIDES -->
 <main id="guides">
-
-  <div class="featured-eyebrow" style="padding:0 2.5rem 1.2rem;"><span class="featured-eyebrow-line"></span>All Guides</div>
 
   <div class="guides-grid fi">
 
@@ -1207,8 +1122,7 @@ br.desk-br{display:block;}
         <span class="grid-card-era">1999 — Present</span>
       </div>
     </a>
-
-	  <!-- COACHELLA LIST  -->
+ <!-- COACHELLA LIST  -->
     <a class="grid-card" href="coachella-list.html">
       <div class="grid-card-inner">
         <img src="images/poster-ultimate-coachella-list.jpg" alt="Coachella">
@@ -1232,7 +1146,7 @@ br.desk-br{display:block;}
       </div>
       <div class="grid-card-overlay">
         <span class="grid-card-title">Taylor Swift</span>
-        <span class="grid-card-era">12/13/1999 — Present</span>
+        <span class="grid-card-era">12/13/1999 - Present</span>
       </div>
     </div>
 	  
@@ -1359,7 +1273,7 @@ br.desk-br{display:block;}
   <!-- SUGGEST A TOPIC -->
   <div class="suggest-zone fi">
     <div class="manifesto-series">Got a subject that deserves a deep dive?</div>
-    <a class="email-btn" href="/cdn-cgi/l/email-protection#21554e5148425261404353484447494852554e53584e4744574453585549484f460f424e4c" style="display:inline-flex;align-items:center;text-decoration:none;margin-top:1rem;">Suggest a Topic →</a>
+    <a class="email-btn" href="/cdn-cgi/l/email-protection#98ecf7e8f1fbebd8f9faeaf1fdfef0f1ebecf7eae1f7fefdeefdeae1ecf0f1f6ffb6fbf7f5" style="display:inline-flex;align-items:center;text-decoration:none;margin-top:1rem;">Suggest a Topic →</a>
   </div>
 
   <!-- EMAIL — commented out until ready
