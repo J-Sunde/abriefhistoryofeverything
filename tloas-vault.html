@@ -11,111 +11,267 @@
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700;1,900&family=DM+Mono:wght@400;500&family=Crimson+Pro:ital,wght@0,300;0,400;1,300;1,400&family=Barlow+Condensed:ital,wght@1,600;1,700;1,800&display=swap" rel="stylesheet">
 <style>
 :root {
-  --accent:#C4185A; --accent2:#E8336E; --accent-soft:rgba(196,24,90,0.08);
+  --accent:#C4185A; --accent2:#E8336E;
   --cream:#FAF6EF; --ivory:#F3EDE0; --ink:#1C1410; --ink-mid:#3D2F2A;
   --ink-soft:#7A6058; --ink-faint:#C4B0A8; --border:rgba(28,20,16,0.08);
   --display:'Playfair Display',Georgia,serif;
   --body:'Crimson Pro',Georgia,serif;
   --mono:'DM Mono',monospace;
-  --max:800px;
+  --max:820px;
 }
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
 html{scroll-behavior:smooth;}
-body{background:var(--cream);color:var(--ink);font-family:var(--body);font-size:1.1rem;line-height:1.7;-webkit-font-smoothing:antialiased;overflow-x:hidden;}
+body{background:#0a0a0a;color:#FAF6EF;font-family:var(--body);font-size:1.1rem;line-height:1.7;-webkit-font-smoothing:antialiased;overflow-x:hidden;}
 
 @keyframes cursorBlink{0%,100%{opacity:1}50%{opacity:0}}
 .cursor-blink{animation:cursorBlink 1.1s step-end infinite;display:inline-block;}
 @keyframes iriFlow{0%{background-position:0% 50%}50%{background-position:100% 50%}100%{background-position:0% 50%}}
-.fi{opacity:0;transform:translateY(14px);transition:opacity 0.6s ease,transform 0.6s ease;}
+@keyframes shimmer{0%{background-position:-200% center}100%{background-position:200% center}}
+.fi{opacity:0;transform:translateY(18px);transition:opacity 0.7s ease,transform 0.7s ease;}
 .fi.visible{opacity:1;transform:none;}
 
 /* ── HERO ── */
-.vault-hero{position:relative;overflow:hidden;padding:80px 0 72px;text-align:center;}
-.vault-hero::before{content:'';position:absolute;inset:0;background:#D4124E;}
-.vault-hero::after{content:'';position:absolute;inset:0;background:rgba(0,0,0,0.08);}
+.vault-hero{
+  position:relative;overflow:hidden;
+  padding:100px 0 80px;text-align:center;
+  background:#0a0a0a;
+}
+.hero-gradient{
+  position:absolute;inset:0;
+  background:radial-gradient(ellipse 120% 60% at 50% 0%, #2a0818 0%, transparent 70%),
+             radial-gradient(ellipse 80% 40% at 50% 100%, #0d1a10 0%, transparent 60%);
+  pointer-events:none;
+}
+.hero-stars{
+  position:absolute;inset:0;overflow:hidden;pointer-events:none;
+}
+.hero-stars::before{
+  content:'✦ ✧ ★ ✦ ✧ ★ ✦ ✧ ★ ✦';
+  position:absolute;top:20%;left:5%;right:5%;
+  font-size:10px;letter-spacing:3em;color:rgba(232,200,74,0.15);
+  white-space:nowrap;overflow:hidden;
+}
 .vault-hero-inner{position:relative;z-index:1;max-width:var(--max);margin:0 auto;padding:0 32px;}
-.vault-back{font-family:var(--mono);font-size:0.68rem;font-weight:700;letter-spacing:0.2em;text-transform:uppercase;color:rgba(255,255,255,0.7);text-decoration:none;display:inline-block;margin-bottom:32px;transition:color 0.15s;}
-.vault-back:hover{color:#fff;}
-.vault-kicker{font-family:var(--mono);font-size:0.72rem;font-weight:700;letter-spacing:0.24em;text-transform:uppercase;color:rgba(255,255,255,0.85);margin-bottom:12px;display:block;}
-.vault-title{font-family:var(--display);font-size:clamp(2.4rem,6vw,4.5rem);font-weight:900;font-style:italic;color:#fff;line-height:1.0;margin-bottom:16px;}
-.vault-title em{color:rgba(255,255,255,0.6);}
-.vault-subtitle{font-family:var(--display);font-size:clamp(1.1rem,2.5vw,1.6rem);font-weight:400;font-style:italic;color:rgba(255,255,255,0.8);margin-bottom:28px;line-height:1.4;}
-.vault-disclaimer{font-family:var(--mono);font-size:0.65rem;letter-spacing:0.1em;text-transform:uppercase;color:rgba(255,255,255,0.55);max-width:480px;margin:0 auto;line-height:1.6;}
-.vault-disclaimer a{color:rgba(255,255,255,0.85);text-decoration:none;}
+.vault-back{
+  font-family:var(--mono);font-size:0.68rem;font-weight:700;
+  letter-spacing:0.2em;text-transform:uppercase;
+  color:rgba(255,255,255,0.4);text-decoration:none;
+  display:inline-block;margin-bottom:36px;
+  transition:color 0.15s;
+}
+.vault-back:hover{color:rgba(255,255,255,0.8);}
+.vault-kicker{
+  font-family:var(--mono);font-size:0.72rem;font-weight:700;
+  letter-spacing:0.28em;text-transform:uppercase;
+  color:#e8c84a;margin-bottom:16px;display:block;
+  text-shadow:0 0 20px rgba(232,200,74,0.4);
+}
+.vault-title{
+  font-family:var(--display);font-size:clamp(2.8rem,7vw,5.5rem);
+  font-weight:900;font-style:italic;
+  line-height:1.0;margin-bottom:18px;
+  background:linear-gradient(135deg,#fff 0%,#e8c84a 40%,#fff 60%,#e8c84a 100%);
+  background-size:200% auto;
+  -webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;
+  animation:shimmer 4s linear infinite;
+}
+.vault-subtitle{
+  font-family:var(--display);font-size:clamp(1rem,2.5vw,1.5rem);
+  font-weight:400;font-style:italic;color:rgba(255,255,255,0.55);
+  margin-bottom:32px;line-height:1.4;
+}
+.vault-disclaimer{
+  font-family:var(--mono);font-size:0.64rem;letter-spacing:0.1em;
+  text-transform:uppercase;color:rgba(255,255,255,0.3);
+  max-width:480px;margin:0 auto 32px;line-height:1.7;
+}
+.vault-disclaimer a{color:rgba(232,200,74,0.6);text-decoration:none;}
+.vault-disclaimer a:hover{color:#e8c84a;}
 
-/* ── TRACK LIST NAV ── */
-.tracklist-nav{background:var(--cream);padding:32px 0;border-bottom:1px solid var(--border);}
+/* ── COVER GRID ── */
+.collage-strip{
+  display:grid;
+  grid-template-columns:repeat(5,1fr);
+  gap:8px;
+  margin:36px 0 0;
+}
+.collage-thumb{
+  cursor:pointer;border-radius:4px;overflow:hidden;
+}
+.collage-thumb img{
+  display:block;width:100%;height:auto;
+  transition:transform 0.3s ease;
+}
+.collage-thumb:hover img{transform:scale(1.03);}
+
+/* ── TRACKLIST NAV ── */
+.tracklist-nav{
+  background:#0f0f0f;padding:36px 0;
+  border-top:1px solid rgba(232,200,74,0.1);
+  border-bottom:1px solid rgba(232,200,74,0.1);
+}
 .tracklist-nav-inner{max-width:var(--max);margin:0 auto;padding:0 32px;}
-.tracklist-label{font-family:var(--mono);font-size:0.65rem;font-weight:700;letter-spacing:0.2em;text-transform:uppercase;color:var(--ink-soft);margin-bottom:16px;display:block;}
-.tracklist{list-style:none;display:flex;flex-direction:column;gap:2px;}
-.tracklist li a{display:grid;grid-template-columns:28px 1fr auto;gap:12px;align-items:center;padding:10px 12px;text-decoration:none;transition:background 0.15s;border-radius:2px;}
-.tracklist li a:hover{background:rgba(196,24,90,0.05);}
-.track-num{font-family:var(--mono);font-size:0.65rem;color:var(--ink-faint);text-align:right;}
-.track-name{font-family:var(--body);font-size:1rem;color:var(--ink);}
-.track-name .feat{font-size:0.78rem;color:var(--ink-soft);font-style:italic;}
-.track-tag{font-family:var(--mono);font-size:0.65rem;letter-spacing:0.06em;color:var(--ink-soft);}
+.tracklist-label{
+  font-family:var(--mono);font-size:0.65rem;font-weight:700;
+  letter-spacing:0.22em;text-transform:uppercase;
+  color:rgba(232,200,74,0.6);margin-bottom:18px;display:block;
+}
+.tracklist{list-style:none;display:flex;flex-direction:column;gap:1px;}
+.tracklist li a{
+  display:grid;grid-template-columns:28px 1fr auto;
+  gap:12px;align-items:center;padding:11px 12px;
+  text-decoration:none;transition:background 0.15s;border-radius:2px;
+}
+.tracklist li a:hover{background:rgba(232,200,74,0.06);}
+.track-num{font-family:var(--mono);font-size:0.65rem;color:rgba(255,255,255,0.2);text-align:right;}
+.track-name{font-family:var(--body);font-size:1rem;color:rgba(255,255,255,0.75);}
+.track-name .feat{font-size:0.78rem;color:rgba(255,255,255,0.35);font-style:italic;}
+.track-tag{font-family:var(--mono);font-size:0.65rem;color:rgba(255,255,255,0.25);letter-spacing:0.06em;}
+.tracklist li a:hover .track-name{color:#fff;}
+.tracklist li a:hover .track-num{color:#e8c84a;}
 
 /* ── TRACK SECTIONS ── */
-.track-section{padding:52px 0 44px;position:relative;overflow:hidden;}
-.track-section:nth-child(odd){background:var(--cream);}
-.track-section:nth-child(even){background:var(--ivory);}
-.track-section.iri::before{content:'';position:absolute;inset:0;background:linear-gradient(135deg,#fde8f0 0%,#e8c8f4 20%,#c8d8f8 40%,#c0f0ec 60%,#e0c8f4 80%,#f8d0e4 100%);background-size:300% 300%;animation:iriFlow 12s ease infinite;}
-.track-section.iri::after{content:'';position:absolute;inset:0;background:rgba(255,255,255,0.3);}
-.track-section.dark{background:var(--ink);}
-.track-inner{max-width:var(--max);margin:0 auto;padding:0 48px;position:relative;z-index:1;}
+.track-section{
+  position:relative;overflow:hidden;
+}
 
-.track-header{display:flex;align-items:center;gap:14px;margin-bottom:4px;}
-.track-number{font-family:var(--mono);font-size:0.68rem;font-weight:700;letter-spacing:0.14em;text-transform:uppercase;color:var(--accent);}
-.track-duration{font-family:var(--mono);font-size:0.68rem;color:var(--ink-faint);letter-spacing:0.08em;}
-.track-section-title{font-family:'Barlow Condensed',Arial Narrow,sans-serif;font-size:clamp(2rem,4.5vw,3.2rem);font-weight:800;font-style:italic;color:var(--ink);line-height:1.0;text-transform:uppercase;letter-spacing:-0.01em;}
-.track-section-title em{font-style:italic;color:var(--accent);}
-.track-section-title.white{color:var(--ink);}
-.track-feat{font-family:var(--body);font-size:0.95rem;font-style:italic;color:var(--ink-soft);margin-bottom:20px;display:block;}
-.track-feat.white{color:rgba(255,255,255,0.45);}
-.track-mood{display:inline-block;font-family:var(--body);font-size:0.82rem;font-style:italic;padding:2px 10px;border-radius:20px;margin-bottom:18px;}
-.lyric-row{margin-bottom:14px;}
-.lyric-block{margin-bottom:14px;display:block;}
+/* ── COVER HERO ── */
+.track-cover-hero{
+  width:100%;height:420px;
+  background-size:cover;background-position:center top;
+  position:relative;
+}
+.track-cover-hero::after{
+  content:'';
+  position:absolute;inset:0;
+  background:linear-gradient(to bottom, transparent 30%, var(--section-bg, #0d1f1a) 100%);
+}
+
+/* ── TRACK INNER ── */
+.track-inner{
+  max-width:var(--max);margin:0 auto;
+  padding:0 48px 56px;
+  position:relative;z-index:1;
+  margin-top:-60px;
+}
+
+.track-header{display:flex;align-items:center;gap:14px;margin-bottom:6px;}
+.track-number{
+  font-family:var(--mono);font-size:0.68rem;font-weight:700;
+  letter-spacing:0.14em;text-transform:uppercase;
+}
+.track-duration{font-family:var(--mono);font-size:0.68rem;color:rgba(255,255,255,0.25);letter-spacing:0.08em;}
+.track-section-title{
+  font-family:'Barlow Condensed',Arial Narrow,sans-serif;
+  font-size:clamp(2.2rem,5vw,3.6rem);
+  font-weight:800;font-style:italic;
+  line-height:1.0;text-transform:uppercase;letter-spacing:-0.01em;
+  margin-bottom:6px;
+}
+.track-feat-inline{
+  display:block;font-family:var(--body);font-size:1rem;
+  font-style:italic;color:rgba(255,255,255,0.45);
+  font-weight:400;text-transform:none;letter-spacing:0;
+  margin-top:4px;
+}
+.track-mood{
+  display:inline-block;font-family:var(--body);font-size:0.85rem;
+  font-style:italic;padding:4px 12px;border-radius:20px;
+  margin-bottom:24px;margin-top:8px;
+}
 
 /* ── LYRICS ── */
 .lyrics{font-family:var(--display);font-style:italic;}
-.lyric-block{margin-bottom:18px;}
-.lyric-section-label{font-family:var(--mono);font-size:0.6rem;font-weight:700;letter-spacing:0.18em;text-transform:uppercase;color:var(--accent);margin-bottom:6px;display:block;}
-.lyric-section-label.white{color:rgba(196,24,90,0.7);}
-.lyric-lines{font-size:0.95rem;line-height:1.65;color:var(--ink-mid);display:block;}
-.lyric-lines.white{font-size:clamp(0.95rem,1.6vw,1.08rem);line-height:1.8;color:rgba(255,255,255,0.72);}
-.lyric-lines .bridge{font-size:clamp(0.95rem,1.6vw,1.08rem);color:var(--ink);font-weight:700;}
-.lyric-lines.white .bridge{color:#fff;}
+.lyric-block{margin-bottom:22px;}
+.lyric-section-label{
+  font-family:var(--mono);font-size:0.6rem;font-weight:700;
+  letter-spacing:0.18em;text-transform:uppercase;
+  color:rgba(255,255,255,0.3);margin-bottom:7px;display:block;
+}
+.lyric-lines{
+  font-size:0.98rem;line-height:1.75;
+  color:rgba(255,255,255,0.65);display:block;
+}
+.lyric-lines .bridge{
+  font-size:1.05rem;color:rgba(255,255,255,0.9);
+  font-weight:700;
+}
 .lyric-indent{padding-left:32px;}
-.track-note{font-family:var(--mono);font-size:0.65rem;letter-spacing:0.1em;text-transform:uppercase;color:var(--ink-faint);margin-top:32px;padding-top:20px;border-top:1px solid var(--border);}
-.track-note.white{color:rgba(255,255,255,0.2);border-top-color:rgba(255,255,255,0.08);}
+.track-note{
+  font-family:var(--mono);font-size:0.62rem;
+  letter-spacing:0.1em;text-transform:uppercase;
+  color:rgba(255,255,255,0.15);margin-top:36px;
+  padding-top:20px;border-top:1px solid rgba(255,255,255,0.06);
+}
+
+/* ── DIVIDER ── */
+.track-divider{
+  height:1px;background:linear-gradient(to right,transparent,rgba(232,200,74,0.2),transparent);
+}
 
 /* ── FOOTER ── */
-.vault-share-btn{display:inline-flex;align-items:center;gap:9px;font-family:var(--mono);font-size:0.72rem;font-weight:700;letter-spacing:0.16em;text-transform:uppercase;background:#fff;color:#C4185A;border:none;padding:13px 28px;border-radius:40px;cursor:pointer;margin-top:28px;transition:background 0.15s,transform 0.15s;position:relative;}
-.vault-share-btn:hover{background:rgba(255,255,255,0.88);transform:translateY(-1px);}
-.vault-share-drop{position:absolute;top:calc(100% + 10px);left:50%;transform:translateX(-50%);background:#fff;border-radius:8px;padding:8px 0;min-width:180px;box-shadow:0 8px 32px rgba(0,0,0,0.18);z-index:100;display:none;}
+.vault-footer{
+  background:#080808;
+  padding:52px 32px;text-align:center;
+  border-top:1px solid rgba(232,200,74,0.1);
+}
+.vault-footer-text{
+  font-family:var(--mono);font-size:0.64rem;
+  letter-spacing:0.12em;text-transform:uppercase;
+  color:rgba(255,255,255,0.2);line-height:2;
+}
+.vault-footer-text a{color:rgba(232,200,74,0.4);text-decoration:none;}
+.vault-footer-text a:hover{color:#e8c84a;}
+
+/* ── SHARE BTN ── */
+.vault-share-btn{
+  display:inline-flex;align-items:center;gap:9px;
+  font-family:var(--mono);font-size:0.7rem;font-weight:700;
+  letter-spacing:0.16em;text-transform:uppercase;
+  background:rgba(232,200,74,0.12);color:#e8c84a;
+  border:1px solid rgba(232,200,74,0.3);
+  padding:13px 28px;border-radius:40px;cursor:pointer;
+  margin-top:28px;transition:all 0.15s;position:relative;
+}
+.vault-share-btn:hover{background:rgba(232,200,74,0.2);transform:translateY(-1px);}
+.vault-share-drop{
+  position:absolute;top:calc(100% + 10px);left:50%;transform:translateX(-50%);
+  background:#1a1a1a;border:1px solid rgba(232,200,74,0.15);
+  border-radius:8px;padding:8px 0;min-width:180px;
+  box-shadow:0 8px 32px rgba(0,0,0,0.5);z-index:100;display:none;
+}
 .vault-share-drop.open{display:block;}
-.vault-share-drop a{display:flex;align-items:center;gap:10px;padding:10px 18px;font-family:var(--mono);font-size:0.68rem;letter-spacing:0.1em;text-transform:uppercase;color:var(--ink);text-decoration:none;transition:background 0.1s;}
-.vault-share-drop a:hover{background:rgba(196,24,90,0.06);color:var(--accent);}
-.vault-footer-text{font-family:var(--mono);font-size:0.65rem;letter-spacing:0.12em;text-transform:uppercase;color:rgba(255,255,255,0.2);line-height:1.8;}
-.vault-footer-text a{color:rgba(255,255,255,0.35);text-decoration:none;}
-.vault-footer-text a:hover{color:var(--accent);}
+.vault-share-drop a{
+  display:flex;align-items:center;gap:10px;padding:10px 18px;
+  font-family:var(--mono);font-size:0.68rem;letter-spacing:0.1em;
+  text-transform:uppercase;color:rgba(255,255,255,0.6);
+  text-decoration:none;transition:background 0.1s;
+}
+.vault-share-drop a:hover{background:rgba(232,200,74,0.08);color:#e8c84a;}
 
 @media(max-width:640px){
-  .track-inner{padding:0 20px;}
+  .track-inner{padding:0 20px 40px;}
   .vault-hero-inner{padding:0 20px;}
+  .track-cover-hero{height:280px;}
+  .collage-strip{grid-template-columns:repeat(3,1fr);}
 }
 </style>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700;1,900&family=DM+Mono:wght@400;500&family=Crimson+Pro:ital,wght@0,300;0,400;1,300;1,400&family=Barlow+Condensed:ital,wght@1,600;1,700;1,800&display=swap" rel="stylesheet">
 </head>
 <body>
 
 <!-- HERO -->
 <div class="vault-hero">
+  <div class="hero-gradient"></div>
+  <div class="hero-stars"></div>
   <div class="vault-hero-inner">
     <a href="taylor-swift.html" class="vault-back fi">← A (Brief) History of Taylor Swift</a>
-    <span class="vault-kicker fi">The Life of a Showgirl · Vault Sessions</span>
-    <h1 class="vault-title fi">What Could've <em>Been</em><span class="cursor-blink">_</span></h1>
+    <span class="vault-kicker fi">The Life of a Showgirl · Vault Sessions Vol. II</span>
+    <h1 class="vault-title fi">What Could've Been<span class="cursor-blink">_</span></h1>
     <p class="vault-subtitle fi">The ones that almost made it.</p>
-    <p class="vault-disclaimer fi">Original creative writing — not affiliated with Taylor Swift or her team. These songs don't exist. The feeling that they should is the whole point. <a href="https://abriefhistoryofeverything.com/taylor-swift">Read the full guide ↗</a></p>
+    <p class="vault-disclaimer fi">Original creative writing — not affiliated with Taylor Swift or her team.<br>These songs don't exist. The feeling that they should is the whole point. <a href="https://abriefhistoryofeverything.com/taylor-swift">Read the full guide ↗</a></p>
     <div class="fi" style="position:relative;display:inline-block;">
       <button class="vault-share-btn" id="vault-share-btn">
         <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><line x1="8.59" y1="13.51" x2="15.42" y2="17.49"/><line x1="15.41" y1="6.51" x2="8.59" y2="10.49"/></svg>
@@ -127,6 +283,18 @@ body{background:var(--cream);color:var(--ink);font-family:var(--body);font-size:
         <a href="https://bsky.app/intent/compose?text=What+Could%27ve+Been+%E2%80%94+imagined+vault+tracks+for+The+Life+of+a+Showgirl+https://abriefhistoryofeverything.com/tloas-vault" target="_blank">🦋 Bluesky</a>
       </div>
     </div>
+    <div class="collage-strip fi">
+      <div class="collage-thumb"><img src="taylor-swift/images/cover-standing-ovation.jpg" alt="Track cover"></div>
+      <div class="collage-thumb"><img src="taylor-swift/images/cover-main-character.jpg" alt="Track cover"></div>
+      <div class="collage-thumb"><img src="taylor-swift/images/cover-rhinestone.jpg" alt="Track cover"></div>
+      <div class="collage-thumb"><img src="taylor-swift/images/cover-matinee.jpg" alt="Track cover"></div>
+      <div class="collage-thumb"><img src="taylor-swift/images/cover-intermission.jpg" alt="Track cover"></div>
+      <div class="collage-thumb"><img src="taylor-swift/images/cover-green-room.jpg" alt="Track cover"></div>
+      <div class="collage-thumb"><img src="taylor-swift/images/cover-speak-when.jpg" alt="Track cover"></div>
+      <div class="collage-thumb"><img src="taylor-swift/images/cover-house-lights-down.jpg" alt="Track cover"></div>
+      <div class="collage-thumb"><img src="taylor-swift/images/cover-tloas-reprise.jpg" alt="Track cover"></div>
+      <div class="collage-thumb"><img src="taylor-swift/images/cover-curtain-call.jpg" alt="Track cover"></div>
+    </div>
   </div>
 </div>
 
@@ -135,843 +303,291 @@ body{background:var(--cream);color:var(--ink);font-family:var(--body);font-size:
   <div class="tracklist-nav-inner">
     <span class="tracklist-label">The Imagined Deluxe</span>
     <ul class="tracklist">
-      <li><a href="#t1"><span class="track-num">1</span><span class="track-name">Standing Ovation</span><span class="track-tag">3:42</span></a></li>
-      <li><a href="#t2"><span class="track-num">2</span><span class="track-name">MAIN CHARACTER</span><span class="track-tag">3:18</span></a></li>
-      <li><a href="#t3"><span class="track-num">3</span><span class="track-name">Rhinestone</span><span class="track-tag">3:55</span></a></li>
-      <li><a href="#t4"><span class="track-num">4</span><span class="track-name">Matinee</span><span class="track-tag">4:12</span></a></li>
-      <li><a href="#t5"><span class="track-num">5</span><span class="track-name">Intermission</span><span class="track-tag">4:28</span></a></li>
-      <li><a href="#t6"><span class="track-num">6</span><span class="track-name">Green Room</span><span class="track-tag">3:36</span></a></li>
-      <li><a href="#t7"><span class="track-num">7</span><span class="track-name">Speak When Spoken To <span class="feat">(feat. Olivia Rodrigo)</span></span><span class="track-tag">5:14</span></a></li>
-      <li><a href="#t8"><span class="track-num">8</span><span class="track-name">House Lights Down</span><span class="track-tag">4:47</span></a></li>
-      <li><a href="#t9"><span class="track-num">9</span><span class="track-name">The Life of a Showgirl (Reprise)</span><span class="track-tag">3:22</span></a></li>
-      <li><a href="#t10"><span class="track-num">10</span><span class="track-name">Curtain Call</span><span class="track-tag">2:58</span></a></li>
+      <li><a href="#t1">
+        <span class="track-num">1</span>
+        <span class="track-name">Standing Ovation</span>
+        <span class="track-tag">3:42</span>
+      </a></li>
+      <li><a href="#t2">
+        <span class="track-num">2</span>
+        <span class="track-name">MAIN CHARACTER</span>
+        <span class="track-tag">3:18</span>
+      </a></li>
+      <li><a href="#t3">
+        <span class="track-num">3</span>
+        <span class="track-name">Rhinestone</span>
+        <span class="track-tag">3:55</span>
+      </a></li>
+      <li><a href="#t4">
+        <span class="track-num">4</span>
+        <span class="track-name">Matinee</span>
+        <span class="track-tag">4:12</span>
+      </a></li>
+      <li><a href="#t5">
+        <span class="track-num">5</span>
+        <span class="track-name">Intermission</span>
+        <span class="track-tag">4:28</span>
+      </a></li>
+      <li><a href="#t6">
+        <span class="track-num">6</span>
+        <span class="track-name">Green Room</span>
+        <span class="track-tag">3:36</span>
+      </a></li>
+      <li><a href="#t7">
+        <span class="track-num">7</span>
+        <span class="track-name">Speak When Spoken To <span class="feat">(feat. feat. Olivia Rodrigo)</span></span>
+        <span class="track-tag">5:14</span>
+      </a></li>
+      <li><a href="#t8">
+        <span class="track-num">8</span>
+        <span class="track-name">House Lights Down</span>
+        <span class="track-tag">4:47</span>
+      </a></li>
+      <li><a href="#t9">
+        <span class="track-num">9</span>
+        <span class="track-name">The Life of a Showgirl (Reprise)</span>
+        <span class="track-tag">3:22</span>
+      </a></li>
+      <li><a href="#t10">
+        <span class="track-num">10</span>
+        <span class="track-name">Curtain Call</span>
+        <span class="track-tag">2:58</span>
+      </a></li>
     </ul>
   </div>
 </div>
 
+
 <!-- TRACK 1 -->
-<div class="track-section" id="t1">
+<div class="track-section" id="t1" style="background:#0d1f1a;">
+  <div class="track-cover-hero fi" style="background-image:url(taylor-swift/images/cover-standing-ovation.jpg);"></div>
   <div class="track-inner">
     <div class="fi">
-      <div class="track-header"><span class="track-number">Track 1</span><span class="track-duration">3:42</span></div>
-      <h2 class="track-section-title">Standing <em>Ovation</em></h2>
-      <div class="track-mood" style="background:#D4E8CC;color:#3a5a30;">Revenge served with confetti</div>
+      <div class="track-header">
+        <span class="track-number" style="color:#e8336e;">Track 1</span>
+        <span class="track-duration">3:42</span>
+      </div>
+      <h2 class="track-section-title" style="color:#fff;">Standing <em>Ovation</em></h2>
+      <div class="track-mood" style="background:rgba(255,255,255,0.07);color:rgba(255,255,255,0.55);border:1px solid rgba(255,255,255,0.1);">Revenge served with confetti</div>
     </div>
     <div class="lyrics fi">
-      <div class="lyric-block">
-        <span class="lyric-section-label">Verse 1</span>
-        <div class="lyric-lines">
-          You called it a phase, said I’d peaked at twenty-three<br>
-          Posted your little think piece on a Thursday<br>
-          I was in Zurich, sold out, not checking my phone<br>
-          By Friday you were quoting me
-        </div>
-      </div>
-      <div class="lyric-block">
-        <span class="lyric-section-label">Pre-Chorus</span>
-        <div class="lyric-lines">
-          I don’t need you in the room<br>
-          But I do love that you’re watching<br>
-          From the very back row<br>
-          That you paid for yourself
-        </div>
-      </div>
-      <div class="lyric-block">
-        <span class="lyric-section-label">Chorus</span>
-        <div class="lyric-lines">
-          Standing ovation, seventy thousand on their feet<br>
-          And you’re refreshing your mentions from the cheap seats<br>
-          You called the run over, said the lights were out<br>
-          Baby, that’s not what standing ovations are about<br>
-          It’s not for you — it was never about you
-        </div>
-      </div>
-      <div class="lyric-block">
-        <span class="lyric-section-label">Verse 2</span>
-        <div class="lyric-lines">
-          You gave that interview, bless your heart<br>
-          Said I was “overexposed, past my commercial peak”<br>
-          The week my tour grossed a hundred million dollars<br>
-          And your podcast lost its deal
-        </div>
-      </div>
-      <div class="lyric-block">
-        <span class="lyric-section-label">Pre-Chorus</span>
-        <div class="lyric-lines">
-          I don’t need the last word<br>
-          But here’s the thing about last words —<br>
-          The last word is usually a number<br>
-          And my numbers are fine
-        </div>
-      </div>
-      <div class="lyric-block">
-        <span class="lyric-section-label">Chorus</span>
-        <div class="lyric-lines">
-          Standing ovation, seventy thousand on their feet<br>
-          And you’re refreshing your mentions from the cheap seats<br>
-          You called the run over, said the lights were out<br>
-          Baby, that’s not what standing ovations are about<br>
-          It’s not for you — it was never about you
-        </div>
-      </div>
-      <div class="lyric-block">
-        <span class="lyric-section-label">Bridge</span>
-        <div class="lyric-lines">
-          <span class="bridge">You could clap now<br>
-          Or you could keep typing<br>
-          I genuinely don’t care which one<br>
-          I’m already gone</span>
-        </div>
-      </div>
-      <div class="lyric-block">
-        <span class="lyric-section-label">Outro Chorus</span>
-        <div class="lyric-lines">
-          Standing ovation — standing ovation<br>
-          Seventy thousand, not a single one of them you<br>
-          Not one of them you
-        </div>
-      </div>
+      
+      <div class="lyric-block"><span class="lyric-section-label">Verse 1</span><div class="lyric-lines">You called it a phase, said I'd peaked at twenty-three<br>Posted your little think piece on a Thursday<br>I was in Zurich, sold out, not checking my phone<br>By Friday you were quoting me</div></div>
+      <div class="lyric-block"><span class="lyric-section-label">Pre-Chorus</span><div class="lyric-lines">I don't need you in the room<br>But I do love that you're watching<br>From the very back row<br>That you paid for yourself</div></div>
+      <div class="lyric-block"><span class="lyric-section-label">Chorus</span><div class="lyric-lines">Standing ovation, seventy thousand on their feet<br>And you're refreshing your mentions from the cheap seats<br>You called the run over, said the lights were out<br>Baby, that's not what standing ovations are about<br>It's not for you — it was never about you</div></div>
+      <div class="lyric-block"><span class="lyric-section-label">Verse 2</span><div class="lyric-lines">You gave that interview, bless your heart<br>Said I was "overexposed, past my commercial peak"<br>The week my tour grossed a hundred million dollars<br>And your podcast lost its deal</div></div>
+      <div class="lyric-block"><span class="lyric-section-label">Bridge</span><div class="lyric-lines"><span class="bridge">You could clap now<br>Or you could keep typing<br>I genuinely don't care which one<br>I'm already gone</span></div></div>
+      <div class="lyric-block"><span class="lyric-section-label">Outro Chorus</span><div class="lyric-lines">Standing ovation — standing ovation<br>Seventy thousand, not a single one of them you<br>Not one of them you</div></div>
     </div>
-    <p class="track-note">Imagined vault track · The Life of a Showgirl · Original creative writing</p>
+    <p class="track-note white">Imagined vault track · The Life of a Showgirl · Original creative writing</p>
   </div>
 </div>
 
 <!-- TRACK 2 -->
-<div class="track-section iri" id="t2">
+<div class="track-section" id="t2" style="background:#0e2a28;">
+  <div class="track-cover-hero fi" style="background-image:url(taylor-swift/images/cover-main-character.jpg);"></div>
   <div class="track-inner">
     <div class="fi">
-      <div class="track-header"><span class="track-number">Track 2</span><span class="track-duration">3:18</span></div>
-      <h2 class="track-section-title" style="font-size:clamp(2.2rem,5vw,4rem);letter-spacing:-0.01em;">MAIN CHARACTER</h2>
-      <div class="track-mood" style="background:rgba(196,24,90,0.1);color:var(--accent);">All caps. Fully aware.</div>
+      <div class="track-header">
+        <span class="track-number" style="color:#1a9a8a;">Track 2</span>
+        <span class="track-duration">3:18</span>
+      </div>
+      <h2 class="track-section-title" style="color:#fff;">MAIN CHARACTER</h2>
+      <div class="track-mood" style="background:rgba(255,255,255,0.07);color:rgba(255,255,255,0.55);border:1px solid rgba(255,255,255,0.1);">All caps. Fully aware.</div>
     </div>
     <div class="lyrics fi">
-      <div class="lyric-block">
-        <span class="lyric-section-label">Verse 1</span>
-        <div class="lyric-lines">
-          The think pieces said I was making it all about me<br>
-          I was at the Met, I couldn’t hear them<br>
-          The op-eds said my era was commercially cynical<br>
-          My era grossed two billion dollars<br>
-          I think we define cynical differently
-        </div>
-      </div>
-      <div class="lyric-block">
-        <span class="lyric-section-label">Pre-Chorus</span>
-        <div class="lyric-lines">
-          Someone has to drive the story<br>
-          Someone has to want it badly enough<br>
-          I wanted it badly enough<br>
-          Still do, still do
-        </div>
-      </div>
-      <div class="lyric-block">
-        <span class="lyric-section-label">Chorus</span>
-        <div class="lyric-lines">
-          MAIN CHARACTER, go ahead, write it down<br>
-          MAIN CHARACTER of every think piece in this town<br>
-          Somebody has to be the one who moves the plot along<br>
-          Might as well be the one who’s been writing all the songs<br>
-          MAIN CHARACTER — and honestly? Thank you
-        </div>
-      </div>
-      <div class="lyric-block">
-        <span class="lyric-section-label">Verse 2</span>
-        <div class="lyric-lines">
-          You said I weaponized my fanbase, I said interesting<br>
-          You said I controlled the narrative, I said you’re welcome<br>
-          You said the whole thing was a PR machine<br>
-          I said yes, and the machine makes music<br>
-          What does your machine make
-        </div>
-      </div>
-      <div class="lyric-block">
-        <span class="lyric-section-label">Chorus</span>
-        <div class="lyric-lines">
-          MAIN CHARACTER, go ahead, write it down<br>
-          MAIN CHARACTER of every think piece in this town<br>
-          Somebody has to be the one who moves the plot along<br>
-          Might as well be the one who’s been writing all the songs<br>
-          MAIN CHARACTER — and honestly? Thank you
-        </div>
-      </div>
-      <div class="lyric-block">
-        <span class="lyric-section-label">Bridge</span>
-        <div class="lyric-lines">
-          <span class="bridge">Go ahead and call it a narrative<br>
-          I call it Tuesday<br>
-          Go ahead and call it calculated<br>
-          I call it knowing what I want<br>
-          There’s a word for women who know what they want<br>
-          I’ve been called it</span>
-        </div>
-      </div>
-      <div class="lyric-block">
-        <span class="lyric-section-label">Outro Chorus</span>
-        <div class="lyric-lines">
-          MAIN CHARACTER — MAIN CHARACTER<br>
-          Still moving the plot<br>
-          Still writing the songs<br>
-          Still here
-        </div>
-      </div>
+      
+      <div class="lyric-block"><span class="lyric-section-label">Verse 1</span><div class="lyric-lines">The think pieces said I was making it all about me<br>I was at the Met, I couldn't hear them<br>The op-eds said my era was commercially cynical<br>My era grossed two billion dollars<br>I think we define cynical differently</div></div>
+      <div class="lyric-block"><span class="lyric-section-label">Chorus</span><div class="lyric-lines">MAIN CHARACTER, go ahead, write it down<br>MAIN CHARACTER of every think piece in this town<br>Somebody has to be the one who moves the plot along<br>Might as well be the one who's been writing all the songs<br>MAIN CHARACTER — and honestly? Thank you</div></div>
+      <div class="lyric-block"><span class="lyric-section-label">Bridge</span><div class="lyric-lines"><span class="bridge">Go ahead and call it a narrative<br>I call it Tuesday<br>There's a word for women who know what they want<br>I've been called it</span></div></div>
+      <div class="lyric-block"><span class="lyric-section-label">Outro</span><div class="lyric-lines">MAIN CHARACTER — MAIN CHARACTER<br>Still moving the plot<br>Still writing the songs<br>Still here</div></div>
     </div>
-    <p class="track-note">Imagined vault track · The Life of a Showgirl · Original creative writing</p>
+    <p class="track-note white">Imagined vault track · The Life of a Showgirl · Original creative writing</p>
   </div>
 </div>
 
 <!-- TRACK 3 -->
-<div class="track-section" id="t3">
+<div class="track-section" id="t3" style="background:#0e2a28;">
+  <div class="track-cover-hero fi" style="background-image:url(taylor-swift/images/cover-rhinestone.jpg);"></div>
   <div class="track-inner">
     <div class="fi">
-      <div class="track-header"><span class="track-number">Track 3</span><span class="track-duration">3:55</span></div>
-      <h2 class="track-section-title"><em>Rhinestone</em></h2>
-      <div class="track-mood" style="background:rgba(196,24,90,0.15);color:var(--accent2);">Maximalist and fully aware of it</div>
+      <div class="track-header">
+        <span class="track-number" style="color:#1a9a8a;">Track 3</span>
+        <span class="track-duration">3:55</span>
+      </div>
+      <h2 class="track-section-title" style="color:#fff;"><em>Rhinestone</em></h2>
+      <div class="track-mood" style="background:rgba(255,255,255,0.07);color:rgba(255,255,255,0.55);border:1px solid rgba(255,255,255,0.1);">Maximalist and fully aware of it</div>
     </div>
     <div class="lyrics fi">
-      <div class="lyric-block">
-        <span class="lyric-section-label">Verse 1</span>
-        <div class="lyric-lines">
-          Anna Wintour approved the look at 11pm<br>
-          They sewed me into it at 4am<br>
-          Thirty thousand crystals, fourteen people<br>
-          And one woman asking if this was too much<br>
-          It was not too much
-        </div>
-      </div>
-      <div class="lyric-block">
-        <span class="lyric-section-label">Pre-Chorus</span>
-        <div class="lyric-lines">
-          You can’t tell from the floor<br>
-          Which ones are real<br>
-          Neither can I<br>
-          That’s the whole bit
-        </div>
-      </div>
-      <div class="lyric-block">
-        <span class="lyric-section-label">Chorus</span>
-        <div class="lyric-lines">
-          Rhinestone, rhinestone, all down the aisle<br>
-          Fake as hell and worth every mile<br>
-          You want authenticity, I’ll give you a show<br>
-          There’s nothing more real than the way this glows<br>
-          Rhinestone — beautiful, cold, and mine
-        </div>
-      </div>
-      <div class="lyric-block">
-        <span class="lyric-section-label">Verse 2</span>
-        <div class="lyric-lines">
-          The woman behind me at the afterparty<br>
-          Was wearing actual diamonds and looking bored<br>
-          I was wearing forty dollars of craft store glitter<br>
-          And every single phone in the room<br>
-          Was pointed at me
-        </div>
-      </div>
-      <div class="lyric-block">
-        <span class="lyric-section-label">Chorus</span>
-        <div class="lyric-lines">
-          Rhinestone, rhinestone, all down the aisle<br>
-          Fake as hell and worth every mile<br>
-          You want authenticity, I’ll give you a show<br>
-          There’s nothing more real than the way this glows<br>
-          Rhinestone — beautiful, cold, and mine
-        </div>
-      </div>
-      <div class="lyric-block">
-        <span class="lyric-section-label">Bridge</span>
-        <div class="lyric-lines">
-          <span class="bridge">I’m not a diamond<br>
-          Diamonds don’t catch light like this<br>
-          Diamonds don’t stop traffic on Fifth Avenue<br>
-          At 1am on a Wednesday<br>
-          But I do</span>
-        </div>
-      </div>
-      <div class="lyric-block">
-        <span class="lyric-section-label">Outro Chorus</span>
-        <div class="lyric-lines">
-          Rhinestone, rhinestone<br>
-          Every phone in the room<br>
-          Every single one<br>
-          Mine
-        </div>
-      </div>
+      
+      <div class="lyric-block"><span class="lyric-section-label">Verse 1</span><div class="lyric-lines">Anna Wintour approved the look at 11pm<br>They sewed me into it at 4am<br>Thirty thousand crystals, fourteen people<br>And one woman asking if this was too much<br>It was not too much</div></div>
+      <div class="lyric-block"><span class="lyric-section-label">Chorus</span><div class="lyric-lines">Rhinestone, rhinestone, all down the aisle<br>Fake as hell and worth every mile<br>You want authenticity, I'll give you a show<br>There's nothing more real than the way this glows<br>Rhinestone — beautiful, cold, and mine</div></div>
+      <div class="lyric-block"><span class="lyric-section-label">Bridge</span><div class="lyric-lines"><span class="bridge">I'm not a diamond<br>Diamonds don't catch light like this<br>Diamonds don't stop traffic on Fifth Avenue<br>At 1am on a Wednesday<br>But I do</span></div></div>
     </div>
-    <p class="track-note">Imagined vault track · The Life of a Showgirl · Original creative writing</p>
+    <p class="track-note white">Imagined vault track · The Life of a Showgirl · Original creative writing</p>
   </div>
 </div>
 
 <!-- TRACK 4 -->
-<div class="track-section iri" id="t4">
+<div class="track-section" id="t4" style="background:#120e04;">
+  <div class="track-cover-hero fi" style="background-image:url(taylor-swift/images/cover-matinee.jpg);"></div>
   <div class="track-inner">
     <div class="fi">
-      <div class="track-header"><span class="track-number">Track 4</span><span class="track-duration">4:12</span></div>
-      <h2 class="track-section-title"><em>Matinee</em></h2>
-      <div class="track-mood" style="background:#DCF0F8;color:#3a6a90;">A relationship that only existed in public</div>
+      <div class="track-header">
+        <span class="track-number" style="color:#d4a043;">Track 4</span>
+        <span class="track-duration">4:12</span>
+      </div>
+      <h2 class="track-section-title" style="color:#fff;"><em>Matinee</em></h2>
+      <div class="track-mood" style="background:rgba(255,255,255,0.07);color:rgba(255,255,255,0.55);border:1px solid rgba(255,255,255,0.1);">A relationship that only existed in public</div>
     </div>
     <div class="lyrics fi">
-      <div class="lyric-block">
-        <span class="lyric-section-label">Verse 1</span>
-        <div class="lyric-lines">
-          We did the whole thing — the airport, the dinners<br>
-          The very deliberate Sunday afternoon walk<br>
-          Past the restaurant they always photograph<br>
-          You held my hand like you’d practiced it<br>
-          I smiled like I hadn’t noticed
-        </div>
-      </div>
-      <div class="lyric-block">
-        <span class="lyric-section-label">Pre-Chorus</span>
-        <div class="lyric-lines">
-          The cameras loved us<br>
-          God, the cameras loved us<br>
-          I think that was actually the whole thing<br>
-          I think that was the whole thing
-        </div>
-      </div>
-      <div class="lyric-block">
-        <span class="lyric-section-label">Chorus</span>
-        <div class="lyric-lines">
-          Matinee, two o’clock, look this way<br>
-          We only ever loved each other in the daylight<br>
-          Shorter run, cheaper seats, one season only<br>
-          Nobody was there for the night show<br>
-          We never had a night show
-        </div>
-      </div>
-      <div class="lyric-block">
-        <span class="lyric-section-label">Verse 2</span>
-        <div class="lyric-lines">
-          You left your sunglasses at my house in Tribeca<br>
-          Sent someone to get them — not yourself, someone<br>
-          I kept them for a week thinking you’d come<br>
-          You sent a driver<br>
-          I should have kept the sunglasses
-        </div>
-      </div>
-      <div class="lyric-block">
-        <span class="lyric-section-label">Pre-Chorus</span>
-        <div class="lyric-lines">
-          The cameras loved us<br>
-          They really loved us<br>
-          I wonder sometimes if they knew<br>
-          Before I did
-        </div>
-      </div>
-      <div class="lyric-block">
-        <span class="lyric-section-label">Chorus</span>
-        <div class="lyric-lines">
-          Matinee, two o’clock, look this way<br>
-          We only ever loved each other in the daylight<br>
-          Shorter run, cheaper seats, one season only<br>
-          Nobody was there for the night show<br>
-          We never had a night show
-        </div>
-      </div>
-      <div class="lyric-block">
-        <span class="lyric-section-label">Bridge</span>
-        <div class="lyric-lines">
-          <span class="bridge">Somewhere between the first paparazzi shot<br>
-          And the last one<br>
-          Something might have been real<br>
-          I actually can’t tell anymore<br>
-          And that’s the saddest thing I’ve ever said</span>
-        </div>
-      </div>
-      <div class="lyric-block">
-        <span class="lyric-section-label">Outro</span>
-        <div class="lyric-lines">
-          Two o’clock, matinee, look this way<br>
-          Look this way<br>
-          We never had a night show<br>
-          We never had a night show
-        </div>
-      </div>
+      
+      <div class="lyric-block"><span class="lyric-section-label">Verse 1</span><div class="lyric-lines">We did the whole thing — the airport, the dinners<br>The very deliberate Sunday afternoon walk<br>Past the restaurant they always photograph<br>You held my hand like you'd practiced it<br>I smiled like I hadn't noticed</div></div>
+      <div class="lyric-block"><span class="lyric-section-label">Chorus</span><div class="lyric-lines">Matinee, two o'clock, look this way<br>We only ever loved each other in the daylight<br>Shorter run, cheaper seats, one season only<br>Nobody was there for the night show<br>We never had a night show</div></div>
+      <div class="lyric-block"><span class="lyric-section-label">Bridge</span><div class="lyric-lines"><span class="bridge">Somewhere between the first paparazzi shot<br>And the last one<br>Something might have been real<br>I actually can't tell anymore<br>And that's the saddest thing I've ever said</span></div></div>
     </div>
-    <p class="track-note">Imagined vault track · The Life of a Showgirl · Original creative writing</p>
+    <p class="track-note white">Imagined vault track · The Life of a Showgirl · Original creative writing</p>
   </div>
 </div>
 
 <!-- TRACK 5 -->
-<div class="track-section" id="t5">
+<div class="track-section" id="t5" style="background:#0d1f15;">
+  <div class="track-cover-hero fi" style="background-image:url(taylor-swift/images/cover-intermission.jpg);"></div>
   <div class="track-inner">
     <div class="fi">
-      <div class="track-header"><span class="track-number">Track 5</span><span class="track-duration">4:28</span></div>
-      <h2 class="track-section-title"><em>Intermission</em></h2>
-      <div class="track-mood" style="background:var(--ivory);color:var(--ink-soft);">The feud song. Plausible deniability intact.</div>
+      <div class="track-header">
+        <span class="track-number" style="color:#c8a94a;">Track 5</span>
+        <span class="track-duration">4:28</span>
+      </div>
+      <h2 class="track-section-title" style="color:#fff;"><em>Intermission</em></h2>
+      <div class="track-mood" style="background:rgba(255,255,255,0.07);color:rgba(255,255,255,0.55);border:1px solid rgba(255,255,255,0.1);">The feud song. Plausible deniability intact.</div>
     </div>
     <div class="lyrics fi">
-      <div class="lyric-block">
-        <span class="lyric-section-label">Verse 1</span>
-        <div class="lyric-lines">
-          So a girl posts a video calling me out by name<br>
-          Thirty million views in forty-eight hours<br>
-          I was in a studio in London, didn’t see it<br>
-          My lawyer did<br>
-          My lawyer always sees it first
-        </div>
-      </div>
-      <div class="lyric-block">
-        <span class="lyric-section-label">Pre-Chorus</span>
-        <div class="lyric-lines">
-          I’m not saying anything<br>
-          I’m not saying a word<br>
-          I’m in London making music<br>
-          You’re making content about me making music<br>
-          One of us is working
-        </div>
-      </div>
-      <div class="lyric-block">
-        <span class="lyric-section-label">Chorus</span>
-        <div class="lyric-lines">
-          Intermission — check your phone, take a breath<br>
-          See who’s trending, see who’s left<br>
-          The second act reveals what the first one meant<br>
-          Intermission — I’m not saying anything<br>
-          I’m just in London
-        </div>
-      </div>
-      <div class="lyric-block">
-        <span class="lyric-section-label">Verse 2</span>
-        <div class="lyric-lines">
-          Three weeks later the video got a community note<br>
-          Her merch deal fell through, mine sold out in an hour<br>
-          I still haven’t said anything<br>
-          I’m going to keep not saying anything<br>
-          Watch how well that works
-        </div>
-      </div>
-      <div class="lyric-block">
-        <span class="lyric-section-label">Chorus</span>
-        <div class="lyric-lines">
-          Intermission — check your phone, take a breath<br>
-          See who’s trending, see who’s left<br>
-          The second act reveals what the first one meant<br>
-          Intermission — I’m not saying anything<br>
-          I’m just in London
-        </div>
-      </div>
-      <div class="lyric-block">
-        <span class="lyric-section-label">Bridge</span>
-        <div class="lyric-lines">
-          <span class="bridge">The lights come back up<br>
-          The story continues<br>
-          I never said her name<br>
-          I’m not saying it now<br>
-          The algorithm already knows</span>
-        </div>
-      </div>
-      <div class="lyric-block">
-        <span class="lyric-section-label">Outro</span>
-        <div class="lyric-lines">
-          Just watching — just watching<br>
-          From London<br>
-          Just watching
-        </div>
-      </div>
+      
+      <div class="lyric-block"><span class="lyric-section-label">Verse 1</span><div class="lyric-lines">So a girl posts a video calling me out by name<br>Thirty million views in forty-eight hours<br>I was in a studio in London, didn't see it<br>My lawyer did<br>My lawyer always sees it first</div></div>
+      <div class="lyric-block"><span class="lyric-section-label">Chorus</span><div class="lyric-lines">Intermission — check your phone, take a breath<br>See who's trending, see who's left<br>The second act reveals what the first one meant<br>Intermission — I'm not saying anything<br>I'm just in London</div></div>
+      <div class="lyric-block"><span class="lyric-section-label">Bridge</span><div class="lyric-lines"><span class="bridge">The lights come back up<br>The story continues<br>I never said her name<br>I'm not saying it now<br>The algorithm already knows</span></div></div>
+      <div class="lyric-block"><span class="lyric-section-label">Outro</span><div class="lyric-lines">Just watching — just watching<br>From London<br>Just watching</div></div>
     </div>
-    <p class="track-note">Imagined vault track · The Life of a Showgirl · Original creative writing · Any resemblance to real feuds is entirely the point and also entirely deniable</p>
+    <p class="track-note white">Imagined vault track · The Life of a Showgirl · Original creative writing · Any resemblance to real feuds is entirely the point and also entirely deniable</p>
   </div>
 </div>
 
 <!-- TRACK 6 -->
-<div class="track-section iri" id="t6">
+<div class="track-section" id="t6" style="background:#0d1f15;">
+  <div class="track-cover-hero fi" style="background-image:url(taylor-swift/images/cover-green-room.jpg);"></div>
   <div class="track-inner">
     <div class="fi">
-      <div class="track-header"><span class="track-number">Track 6</span><span class="track-duration">3:36</span></div>
-      <h2 class="track-section-title">Green <em>Room</em></h2>
-      <div class="track-mood" style="background:rgba(255,255,255,0.5);color:var(--ink-soft);">The quiet one</div>
+      <div class="track-header">
+        <span class="track-number" style="color:#d4a043;">Track 6</span>
+        <span class="track-duration">3:36</span>
+      </div>
+      <h2 class="track-section-title" style="color:#fff;">Green <em>Room</em></h2>
+      <div class="track-mood" style="background:rgba(255,255,255,0.07);color:rgba(255,255,255,0.55);border:1px solid rgba(255,255,255,0.1);">The quiet one</div>
     </div>
     <div class="lyrics fi">
-      <div class="lyric-block">
-        <span class="lyric-section-label">Verse 1</span>
-        <div class="lyric-lines">
-          Twenty minutes before the show in Brisbane<br>
-          I ate a granola bar over a trash can<br>
-          In a sports bra with my hair half-done<br>
-          And nobody needed anything from me<br>
-          For twenty actual minutes<br>
-          I almost cried about it
-        </div>
-      </div>
-      <div class="lyric-block">
-        <span class="lyric-section-label">Pre-Chorus</span>
-        <div class="lyric-lines">
-          I’m not complaining<br>
-          I want you to know I’m not complaining<br>
-          I’m just saying it out loud<br>
-          Because I never get to say it out loud
-        </div>
-      </div>
-      <div class="lyric-block">
-        <span class="lyric-section-label">Chorus</span>
-        <div class="lyric-lines">
-          In the green room I’m nobody’s anything<br>
-          Not a brand, not a moment, not a thing<br>
-          Just a person eating a granola bar<br>
-          Who happens to know every word<br>
-          To every song she’s about to sing<br>
-          In the green room
-        </div>
-      </div>
-      <div class="lyric-block">
-        <span class="lyric-section-label">Verse 2</span>
-        <div class="lyric-lines">
-          My mom called from a green room in Glasgow<br>
-          Asked if I was sleeping, I said of course<br>
-          She said you sound tired, I said I’m fine<br>
-          We both knew I was lying<br>
-          The green room is the only place I lie badly
-        </div>
-      </div>
-      <div class="lyric-block">
-        <span class="lyric-section-label">Chorus</span>
-        <div class="lyric-lines">
-          In the green room I’m nobody’s anything<br>
-          Not a brand, not a moment, not a thing<br>
-          Just a person eating a granola bar<br>
-          Who happens to know every word<br>
-          To every song she’s about to sing<br>
-          In the green room
-        </div>
-      </div>
-      <div class="lyric-block">
-        <span class="lyric-section-label">Bridge</span>
-        <div class="lyric-lines">
-          <span class="bridge">Twenty minutes<br>
-          Brisbane, Glasgow, São Paulo, Rome<br>
-          Twenty minutes in every city<br>
-          That is the entire amount<br>
-          Of time I have<br>
-          That is only mine</span>
-        </div>
-      </div>
-      <div class="lyric-block">
-        <span class="lyric-section-label">Outro</span>
-        <div class="lyric-lines">
-          In the green room<br>
-          In the green room<br>
-          Nobody’s anything<br>
-          Just me
-        </div>
-      </div>
+      
+      <div class="lyric-block"><span class="lyric-section-label">Verse 1</span><div class="lyric-lines">Twenty minutes before the show in Brisbane<br>I ate a granola bar over a trash can<br>In a sports bra with my hair half-done<br>And nobody needed anything from me<br>For twenty actual minutes<br>I almost cried about it</div></div>
+      <div class="lyric-block"><span class="lyric-section-label">Chorus</span><div class="lyric-lines">In the green room I'm nobody's anything<br>Not a brand, not a moment, not a thing<br>Just a person eating a granola bar<br>Who happens to know every word<br>To every song she's about to sing<br>In the green room</div></div>
+      <div class="lyric-block"><span class="lyric-section-label">Bridge</span><div class="lyric-lines"><span class="bridge">Twenty minutes<br>Brisbane, Glasgow, São Paulo, Rome<br>Twenty minutes in every city<br>That is the entire amount<br>Of time I have<br>That is only mine</span></div></div>
     </div>
-    <p class="track-note">Imagined vault track · The Life of a Showgirl · Original creative writing</p>
+    <p class="track-note white">Imagined vault track · The Life of a Showgirl · Original creative writing</p>
   </div>
 </div>
 
 <!-- TRACK 7 -->
-<div class="track-section" id="t7">
+<div class="track-section" id="t7" style="background:#1a0408;">
+  <div class="track-cover-hero fi" style="background-image:url(taylor-swift/images/cover-speak-when.jpg);"></div>
   <div class="track-inner">
     <div class="fi">
-      <div class="track-header"><span class="track-number">Track 7</span><span class="track-duration">5:14</span></div>
-      <h2 class="track-section-title">Speak When <em>Spoken To</em></h2>
-      <span class="track-feat">feat. Olivia Rodrigo</span>
-      <div class="track-mood" style="background:rgba(255,255,255,0.5);color:var(--ink-soft);">The supposed feud becomes a duet. Both winning.</div>
+      <div class="track-header">
+        <span class="track-number" style="color:#e8c84a;">Track 7</span>
+        <span class="track-duration">5:14</span>
+      </div>
+      <h2 class="track-section-title" style="color:#fff;">Speak When <em>Spoken To</em><span class="track-feat-inline">feat. feat. Olivia Rodrigo</span></h2>
+      <div class="track-mood" style="background:rgba(255,255,255,0.07);color:rgba(255,255,255,0.55);border:1px solid rgba(255,255,255,0.1);">The supposed feud becomes a duet. Both winning.</div>
     </div>
     <div class="lyrics fi">
-      <div class="lyric-block">
-        <span class="lyric-section-label">Verse 1 — Taylor</span>
-        <div class="lyric-lines">
-          The headline wrote itself before we’d even met<br>
-          Two women at the top and one of us had to fall<br>
-          They needed a catfight for the slow news week<br>
-          We were in the studio, didn’t take the call
-        </div>
-      </div>
-      <div class="lyric-block">
-        <span class="lyric-section-label">Verse 2 — Olivia</span>
-        <div class="lyric-lines lyric-indent">
-          I grew up on your songs, I said it in an interview<br>
-          They turned that into a whole thing<br>
-          You texted me, I texted back<br>
-          They turned that into a whole thing<br>
-          Everything is always a whole thing
-        </div>
-      </div>
-      <div class="lyric-block">
-        <span class="lyric-section-label">Pre-Chorus — Both</span>
-        <div class="lyric-lines">
-          Be grateful, be quiet, don’t take up too much room<br>
-          Smile for the camera, don’t make it weird<br>
-          We made it weird<br>
-          We made a whole album about it
-        </div>
-      </div>
-      <div class="lyric-block">
-        <span class="lyric-section-label">Chorus — Both</span>
-        <div class="lyric-lines">
-          Speak when spoken to — who made that rule<br>
-          Speak when spoken to — we were never that girl<br>
-          They put us in a box and we turned it into a stage<br>
-          Speak when spoken to?<br>
-          We speak when we want
-        </div>
-      </div>
-      <div class="lyric-block">
-        <span class="lyric-section-label">Verse 3 — Both</span>
-        <div class="lyric-lines">
-          We are twenty years apart and built of the same stuff<br>
-          The same specific kind of stubborn<br>
-          They thought that meant we’d compete<br>
-          We compared notes for two hours<br>
-          The notes were basically identical<br>
-          We laughed about it for a while<br>
-          Then we wrote this
-        </div>
-      </div>
-      <div class="lyric-block">
-        <span class="lyric-section-label">Chorus — Both</span>
-        <div class="lyric-lines">
-          Speak when spoken to — who made that rule<br>
-          Speak when spoken to — we were never that girl<br>
-          They put us in a box and we turned it into a stage<br>
-          Speak when spoken to?<br>
-          We speak when we want
-        </div>
-      </div>
-      <div class="lyric-block">
-        <span class="lyric-section-label">Bridge</span>
-        <div class="lyric-lines">
-          <span class="bridge">Two women at the top of the same mountain<br>
-          They really hate that<br>
-          They hate that so much<br>
-          We find it pretty funny actually</span>
-        </div>
-      </div>
-      <div class="lyric-block">
-        <span class="lyric-section-label">Outro</span>
-        <div class="lyric-lines">
-          Speak when spoken to<br>
-          We never learned that<br>
-          We never learned that rule<br>
-          And we never will
-        </div>
-      </div>
+      
+      <div class="lyric-block"><span class="lyric-section-label">Verse 1 — Taylor</span><div class="lyric-lines">The headline wrote itself before we'd even met<br>Two women at the top and one of us had to fall<br>They needed a catfight for the slow news week<br>We were in the studio, didn't take the call</div></div>
+      <div class="lyric-block"><span class="lyric-section-label">Verse 2 — Olivia</span><div class="lyric-lines lyric-indent">I grew up on your songs, I said it in an interview<br>They turned that into a whole thing<br>You texted me, I texted back<br>They turned that into a whole thing<br>Everything is always a whole thing</div></div>
+      <div class="lyric-block"><span class="lyric-section-label">Chorus — Both</span><div class="lyric-lines">Speak when spoken to — who made that rule<br>Speak when spoken to — we were never that girl<br>They put us in a box and we turned it into a stage<br>Speak when spoken to?<br>We speak when we want</div></div>
+      <div class="lyric-block"><span class="lyric-section-label">Bridge</span><div class="lyric-lines"><span class="bridge">Two women at the top of the same mountain<br>They really hate that<br>They hate that so much<br>We find it pretty funny actually</span></div></div>
     </div>
-    <p class="track-note">Imagined vault track · The Life of a Showgirl · Original creative writing · Olivia Rodrigo has no connection to this project. This is fan fiction.</p>
+    <p class="track-note white">Imagined vault track · The Life of a Showgirl · Original creative writing · Olivia Rodrigo has no connection to this project. This is fan fiction.</p>
   </div>
 </div>
 
 <!-- TRACK 8 -->
-<div class="track-section iri" id="t8">
+<div class="track-section" id="t8" style="background:#080a0c;">
+  <div class="track-cover-hero fi" style="background-image:url(taylor-swift/images/cover-house-lights-down.jpg);"></div>
   <div class="track-inner">
     <div class="fi">
-      <div class="track-header"><span class="track-number">Track 8</span><span class="track-duration">4:47</span></div>
-      <h2 class="track-section-title">House Lights <em>Down</em></h2>
-      <div class="track-mood" style="background:rgba(255,255,255,0.06);color:var(--ink-mid);">The slow devastating one</div>
+      <div class="track-header">
+        <span class="track-number" style="color:#c8a060;">Track 8</span>
+        <span class="track-duration">4:47</span>
+      </div>
+      <h2 class="track-section-title" style="color:#fff;">House Lights <em>Down</em></h2>
+      <div class="track-mood" style="background:rgba(255,255,255,0.07);color:rgba(255,255,255,0.55);border:1px solid rgba(255,255,255,0.1);">The slow devastating one</div>
     </div>
     <div class="lyrics fi">
-      <div class="lyric-block">
-        <span class="lyric-section-label">Verse 1</span>
-        <div class="lyric-lines">
-          Last night of the run, the crew’s already in cabs<br>
-          Cast WhatsApp’s blowing up about the afterparty<br>
-          I’m standing center stage in the dark<br>
-          Asking the empty seats a question<br>
-          They’ve already heard seventy-three thousand answers to
-        </div>
-      </div>
-      <div class="lyric-block">
-        <span class="lyric-section-label">Pre-Chorus</span>
-        <div class="lyric-lines">
-          I don’t know who I am in the quiet<br>
-          I should probably figure that out<br>
-          I’ve been meaning to figure that out
-        </div>
-      </div>
-      <div class="lyric-block">
-        <span class="lyric-section-label">Chorus</span>
-        <div class="lyric-lines">
-          House lights down, nobody’s watching now<br>
-          No one to perform it for, no one to take a bow<br>
-          Just a woman on a stage who built this all herself<br>
-          Standing in the wreckage of everything that went well<br>
-          House lights down
-        </div>
-      </div>
-      <div class="lyric-block">
-        <span class="lyric-section-label">Verse 2</span>
-        <div class="lyric-lines">
-          I FaceTimed someone I love from the empty stage<br>
-          They asked what I was doing<br>
-          I said I don’t know<br>
-          They said come home<br>
-          I said where is that, specifically<br>
-          There was a long pause<br>
-          There was a very long pause<br>
-          And then we both just sort of sat there
-        </div>
-      </div>
-      <div class="lyric-block">
-        <span class="lyric-section-label">Chorus</span>
-        <div class="lyric-lines">
-          House lights down, nobody’s watching now<br>
-          No one to perform it for, no one to take a bow<br>
-          Just a woman on a stage who built this all herself<br>
-          Standing in the wreckage of everything that went well<br>
-          House lights down
-        </div>
-      </div>
-      <div class="lyric-block">
-        <span class="lyric-section-label">Bridge</span>
-        <div class="lyric-lines">
-          <span class="bridge">The show was perfect<br>
-          Every night the show was perfect<br>
-          I don’t know what the hell I’m going to do now<br>
-          That the show was perfect</span>
-        </div>
-      </div>
-      <div class="lyric-block">
-        <span class="lyric-section-label">Outro</span>
-        <div class="lyric-lines">
-          House lights down<br>
-          Just a woman and a stage<br>
-          And a very long pause<br>
-          House lights down
-        </div>
-      </div>
+      
+      <div class="lyric-block"><span class="lyric-section-label">Verse 1</span><div class="lyric-lines">Last night of the run, the crew's already in cabs<br>Cast WhatsApp's blowing up about the afterparty<br>I'm standing center stage in the dark<br>Asking the empty seats a question<br>They've already heard seventy-three thousand answers to</div></div>
+      <div class="lyric-block"><span class="lyric-section-label">Chorus</span><div class="lyric-lines">House lights down, nobody's watching now<br>No one to perform it for, no one to take a bow<br>Just a woman on a stage who built this all herself<br>Standing in the wreckage of everything that went well<br>House lights down</div></div>
+      <div class="lyric-block"><span class="lyric-section-label">Bridge</span><div class="lyric-lines"><span class="bridge">The show was perfect<br>Every night the show was perfect<br>I don't know what the hell I'm going to do now<br>That the show was perfect</span></div></div>
+      <div class="lyric-block"><span class="lyric-section-label">Outro</span><div class="lyric-lines">House lights down<br>Just a woman and a stage<br>And a very long pause<br>House lights down</div></div>
     </div>
-    <p class="track-note">Imagined vault track · The Life of a Showgirl · Original creative writing</p>
+    <p class="track-note white">Imagined vault track · The Life of a Showgirl · Original creative writing</p>
   </div>
 </div>
 
 <!-- TRACK 9 -->
-<div class="track-section" id="t9">
+<div class="track-section" id="t9" style="background:#0a1a20;">
+  <div class="track-cover-hero fi" style="background-image:url(taylor-swift/images/cover-tloas-reprise.jpg);"></div>
   <div class="track-inner">
     <div class="fi">
-      <div class="track-header"><span class="track-number">Track 9</span><span class="track-duration">3:22</span></div>
-      <h2 class="track-section-title">The Life of a Showgirl <em>(Reprise)</em></h2>
-      <div class="track-mood" style="background:var(--blush);color:var(--accent);">The coda. What comes after the curtain.</div>
+      <div class="track-header">
+        <span class="track-number" style="color:#e8c84a;">Track 9</span>
+        <span class="track-duration">3:22</span>
+      </div>
+      <h2 class="track-section-title" style="color:#fff;">The Life of a Showgirl <em>(Reprise)</em></h2>
+      <div class="track-mood" style="background:rgba(255,255,255,0.07);color:rgba(255,255,255,0.55);border:1px solid rgba(255,255,255,0.1);">The coda. What comes after the curtain.</div>
     </div>
     <div class="lyrics fi">
-      <div class="lyric-block">
-        <span class="lyric-section-label">Verse</span>
-        <div class="lyric-lines">
-          I’ve been doing this since I was seventeen<br>
-          I am so good at it now it’s genuinely alarming<br>
-          I can cry on command, I can fill a stadium<br>
-          I can read a room from three hundred feet away<br>
-          I learned all of this in public<br>
-          Every mistake was a headline<br>
-          Every headline was a lesson<br>
-          I have a lot of lessons
-        </div>
-      </div>
-      <div class="lyric-block">
-        <span class="lyric-section-label">Chorus</span>
-        <div class="lyric-lines">
-          This is the life of a showgirl<br>
-          Make it beautiful or go home<br>
-          I was never going home<br>
-          So I made it so goddamn beautiful<br>
-          Every night, even the bad ones<br>
-          Especially the bad ones
-        </div>
-      </div>
-      <div class="lyric-block">
-        <span class="lyric-section-label">Bridge</span>
-        <div class="lyric-lines">
-          <span class="bridge">Ask me if I’d do it again<br>
-          Don’t ask me that<br>
-          Yes<br>
-          Obviously yes</span>
-        </div>
-      </div>
-      <div class="lyric-block">
-        <span class="lyric-section-label">Final Chorus</span>
-        <div class="lyric-lines">
-          This is the life of a showgirl<br>
-          You make it beautiful or you go home<br>
-          I was never, ever going home<br>
-          So I made it beautiful<br>
-          Every night — beautiful<br>
-          The whole damn thing — beautiful<br>
-          Still here — beautiful<br>
-          Still here
-        </div>
-      </div>
+      
+      <div class="lyric-block"><span class="lyric-section-label">Verse</span><div class="lyric-lines">I've been doing this since I was seventeen<br>I am so good at it now it's genuinely alarming<br>I can cry on command, I can fill a stadium<br>I can read a room from three hundred feet away<br>I learned all of this in public<br>Every mistake was a headline<br>Every headline was a lesson<br>I have a lot of lessons</div></div>
+      <div class="lyric-block"><span class="lyric-section-label">Chorus</span><div class="lyric-lines">This is the life of a showgirl<br>Make it beautiful or go home<br>I was never going home<br>So I made it so goddamn beautiful<br>Every night, even the bad ones<br>Especially the bad ones</div></div>
+      <div class="lyric-block"><span class="lyric-section-label">Bridge</span><div class="lyric-lines"><span class="bridge">Ask me if I'd do it again<br>Don't ask me that<br>Yes<br>Obviously yes</span></div></div>
+      <div class="lyric-block"><span class="lyric-section-label">Final Chorus</span><div class="lyric-lines">This is the life of a showgirl<br>You make it beautiful or you go home<br>I was never, ever going home<br>So I made it beautiful<br>Every night — beautiful<br>The whole damn thing — beautiful<br>Still here — beautiful<br>Still here</div></div>
     </div>
-    <p class="track-note">Imagined vault track · The Life of a Showgirl · Original creative writing · These songs don’t exist. The feeling that they should is the whole point.</p>
+    <p class="track-note white">Imagined vault track · The Life of a Showgirl · Original creative writing · These songs don't exist. The feeling that they should is the whole point.</p>
   </div>
 </div>
 
 <!-- TRACK 10 -->
-<div class="track-section iri" id="t10">
+<div class="track-section" id="t10" style="background:#0f1a0c;">
+  <div class="track-cover-hero fi" style="background-image:url(taylor-swift/images/cover-curtain-call.jpg);"></div>
   <div class="track-inner">
     <div class="fi">
-      <div class="track-header"><span class="track-number">Track 10</span><span class="track-duration">2:58</span></div>
-      <h2 class="track-section-title">Curtain <em>Call</em></h2>
-      <div class="track-mood" style="background:#F9DCE0;color:#B33040;">The one that breaks the frame</div>
+      <div class="track-header">
+        <span class="track-number" style="color:#e8c84a;">Track 10</span>
+        <span class="track-duration">2:58</span>
+      </div>
+      <h2 class="track-section-title" style="color:#fff;">Curtain <em>Call</em></h2>
+      <div class="track-mood" style="background:rgba(255,255,255,0.07);color:rgba(255,255,255,0.55);border:1px solid rgba(255,255,255,0.1);">The one that breaks the frame</div>
     </div>
     <div class="lyrics fi">
-      <div class="lyric-block">
-        <span class="lyric-section-label">Verse 1</span>
-        <div class="lyric-lines">
-          I know exactly how I look taking this bow<br>
-          I’ve practiced it — not ashamed to say I’ve practiced it<br>
-          The angle, the pause, the hand to the heart<br>
-          The specific kind of overwhelmed<br>
-          That reads as genuine from the back row<br>
-          Because it is genuine<br>
-          That’s the part they never believe
-        </div>
-      </div>
-      <div class="lyric-block">
-        <span class="lyric-section-label">Pre-Chorus</span>
-        <div class="lyric-lines">
-          They want the performance<br>
-          The performance is real<br>
-          I keep trying to explain that<br>
-          Nobody believes me<br>
-          The performance is real
-        </div>
-      </div>
-      <div class="lyric-block">
-        <span class="lyric-section-label">Chorus</span>
-        <div class="lyric-lines">
-          Curtain call, take a bow, do it all again tomorrow<br>
-          Thirty-eight cities, forty-four songs, borrowed time I bought<br>
-          They paid to see the version I invented at seventeen<br>
-          She’s still in there<br>
-          She’s right here actually<br>
-          She never left
-        </div>
-      </div>
-      <div class="lyric-block">
-        <span class="lyric-section-label">Verse 2</span>
-        <div class="lyric-lines">
-          The girl from Pennsylvania who cold-called labels<br>
-          Is the same one standing in this light<br>
-          Same hands, same stubborn, same notebook full of things<br>
-          She wanted to say<br>
-          She just has a better sound system now
-        </div>
-      </div>
-      <div class="lyric-block">
-        <span class="lyric-section-label">Chorus</span>
-        <div class="lyric-lines">
-          Curtain call, take a bow, do it all again tomorrow<br>
-          Thirty-eight cities, forty-four songs, borrowed time I bought<br>
-          They paid to see the version I invented at seventeen<br>
-          She’s still in there<br>
-          She’s right here actually<br>
-          She never left
-        </div>
-      </div>
-      <div class="lyric-block">
-        <span class="lyric-section-label">Outro</span>
-        <div class="lyric-lines">
-          What if I walked offstage and never came back…<br><br>
-          Would anyone notice the difference…<br><br>
-          Would anyone notice the difference…<br><br>
-          <em>Would anyone notice the difference…</em>
-        </div>
-      </div>
+      
+      <div class="lyric-block"><span class="lyric-section-label">Verse 1</span><div class="lyric-lines">I know exactly how I look taking this bow<br>I've practiced it — not ashamed to say I've practiced it<br>The angle, the pause, the hand to the heart<br>The specific kind of overwhelmed<br>That reads as genuine from the back row<br>Because it is genuine<br>That's the part they never believe</div></div>
+      <div class="lyric-block"><span class="lyric-section-label">Chorus</span><div class="lyric-lines">Curtain call, take a bow, do it all again tomorrow<br>Thirty-eight cities, forty-four songs, borrowed time I bought<br>They paid to see the version I invented at seventeen<br>She's still in there<br>She's right here actually<br>She never left</div></div>
+      <div class="lyric-block"><span class="lyric-section-label">Verse 2</span><div class="lyric-lines">The girl from Pennsylvania who cold-called labels<br>Is the same one standing in this light<br>Same hands, same stubborn, same notebook full of things<br>She wanted to say<br>She just has a better sound system now</div></div>
+      <div class="lyric-block"><span class="lyric-section-label">Outro</span><div class="lyric-lines">What if I walked offstage and never came back…<br><br>Would anyone notice the difference…<br><br><em>Would anyone notice the difference…</em></div></div>
     </div>
-    <p class="track-note">Imagined vault track · The Life of a Showgirl · Original creative writing</p>
+    <p class="track-note white">Imagined vault track · The Life of a Showgirl · Original creative writing</p>
   </div>
 </div>
+
+<div class="track-divider"></div>
 
 <!-- FOOTER -->
 <div class="vault-footer">
@@ -987,9 +603,21 @@ body{background:var(--cream);color:var(--ink);font-family:var(--body);font-size:
 (function(){
   var io = new IntersectionObserver(function(entries){
     entries.forEach(function(e){ if(e.isIntersecting) e.target.classList.add('visible'); });
-  },{threshold:0.06});
+  },{threshold:0.04});
   document.querySelectorAll('.fi').forEach(function(el){ io.observe(el); });
 })();
+
+// Set CSS var for gradient fade on each section
+document.querySelectorAll('.track-section').forEach(function(el){
+  var bg = el.style.background || getComputedStyle(el).backgroundColor;
+  el.style.setProperty('--section-bg', el.style.background);
+  var hero = el.querySelector('.track-cover-hero');
+  if(hero){
+    hero.style.setProperty('--section-bg', el.style.background);
+    hero.style.cssText += '; --section-bg:' + el.style.background + ';';
+  }
+});
+
 // Share button
 var vsBtn=document.getElementById('vault-share-btn');
 var vsDrop=document.getElementById('vault-share-drop');
@@ -997,6 +625,15 @@ var vsCopy=document.getElementById('vs-copy');
 if(vsBtn){vsBtn.addEventListener('click',function(e){e.stopPropagation();vsDrop.classList.toggle('open');});}
 document.addEventListener('click',function(){if(vsDrop)vsDrop.classList.remove('open');});
 if(vsCopy){vsCopy.addEventListener('click',function(e){e.preventDefault();navigator.clipboard.writeText(window.location.href).then(function(){vsCopy.textContent='✓ Copied!';setTimeout(function(){vsCopy.textContent='📋 Copy Link';},2000);});});}
+
+// Collage hover
+document.querySelectorAll('.collage-thumb').forEach(function(el, i){
+  el.addEventListener('click', function(){
+    var id = 't' + (i+1);
+    var target = document.getElementById(id);
+    if(target) target.scrollIntoView({behavior:'smooth'});
+  });
+});
 </script>
 </body>
 </html>
