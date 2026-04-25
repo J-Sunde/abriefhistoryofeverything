@@ -100,10 +100,16 @@ nav.solid{background:rgba(10,10,10,.96);border-bottom:1px solid var(--rule);}
 /* ═══ FEATURED SECTION ═══ */
 .featured-section{padding:2.5rem 2.5rem 0;}
 .featured-eyebrow{
-  display:flex;align-items:center;gap:10px;
-  font-family:var(--mono);font-size:.6rem;font-weight:600;
-  letter-spacing:.2em;text-transform:uppercase;color:#9B6FCC;
-  margin-bottom:1.2rem;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-family: var(--mono);
+    font-size: 0.82rem;
+    font-weight: 600;
+    letter-spacing: .2em;
+    text-transform: uppercase;
+    color: #9B6FCC;
+    margin-bottom: 1.2rem;
 }
 .featured-eyebrow-line{display:inline-block;width:28px;height:2px;background:#C084FC;flex-shrink:0;}
 .featured-panel{
@@ -180,11 +186,15 @@ nav.solid{background:rgba(10,10,10,.96);border-bottom:1px solid var(--rule);}
     line-height: 1.65;
 }
 .featured-cta{
-  display:inline-block;font-family:var(--mono);font-size:.68rem;
-  font-weight:600;letter-spacing:.1em;
-  color:#e8c8f0;
-  border-bottom:1px solid rgba(232,200,240,.4);padding-bottom:2px;
-  transition:color .2s,border-color .2s;
+    display: inline-block;
+    font-family: var(--mono);
+    font-size: 0.82rem;
+    font-weight: 600;
+    letter-spacing: .1em;
+    color: #e8c8f0;
+    border-bottom: 1px solid rgba(232,200,240,.4);
+    padding-bottom: 2px;
+    transition: color .2s,border-color .2s;
 }
 .featured-panel:hover .featured-cta{color:#fff;border-bottom-color:rgba(255,255,255,.5);}
 @media(max-width:768px){
@@ -846,7 +856,7 @@ main{padding-bottom:0;}
 }
 .manifesto-series{
     font-family: var(--mono);
-    font-size: 0.65rem;
+    font-size: 0.85rem;
     letter-spacing: .28em;
     text-transform: uppercase;
     color: var(--muted);
@@ -905,11 +915,18 @@ main{padding-bottom:0;}
 .email-input:focus{border-color:var(--muted);}
 .email-input::placeholder{color:var(--muted);}
 .email-btn{
-  font-family:var(--mono);font-size:.52rem;font-weight:700;
-  letter-spacing:.16em;text-transform:uppercase;
-  background:var(--bright);color:var(--bg);
-  border:none;padding:.65rem 1.4rem;cursor:pointer;
-  transition:opacity .18s;white-space:nowrap;
+    font-family: var(--mono);
+    font-size: 0.82rem;
+    font-weight: 700;
+    letter-spacing: .16em;
+    text-transform: uppercase;
+    background: var(--bright);
+    color: var(--bg);
+    border: none;
+    padding: .65rem 1.4rem;
+    cursor: pointer;
+    transition: opacity .18s;
+    white-space: nowrap;
 }
 .email-btn:hover{opacity:.85;}
 
@@ -921,10 +938,10 @@ footer{
 }
 .footer-l{
     font-family: var(--mono);
-    font-size: 0.7rem;
+    font-size: 0.8rem;
     letter-spacing: .16em;
     text-transform: uppercase;
-    color: var(--muted);
+    color: #028FAB;
 }
 
 br.desk-br{display:block;}
@@ -1012,13 +1029,13 @@ br.desk-br{display:block;}
   <div class="nav-sep"></div>
   <div class="nav-links">
     <span class="nav-link active" onclick="window.scrollTo({top:0,behavior:'smooth'})">Home</span>
-    <span class="nav-link" onclick="document.getElementById('guides').scrollIntoView({behavior:'smooth'})">Guides</span>
+    <span class="nav-link" onclick="document.getElementById('guides').scrollIntoView({behavior:'smooth'})">The (Brief) Histories</span>
     <span class="nav-link" onclick="document.getElementById('about').scrollIntoView({behavior:'smooth'})">About</span>
   </div>
   <div class="nav-right">
     <!-- Guides dropdown (desktop) -->
     <div class="nav-guides-btn" id="navGuidesBtn">
-      Guides <span class="btn-arrow">▾</span>
+       All (Brief) Histories <span class="btn-arrow">▾</span>
       <div class="nav-guides-dropdown" id="navGuidesDropdown">
         <!-- populated by JS from GUIDES registry -->
       </div>
@@ -1065,8 +1082,7 @@ br.desk-br{display:block;}
       Everything<span class="cursor">_</span>
     </h1>
     <p class="hero-desc fi d2">
-      Curated, interactive timelines for the subjects that shaped our world.
-      Each guide is a deep dive, a structured chronology of key figures and cultural context.
+      The full story, from the beginning. History, tech, pop culture. The moments that changed everything.<br>
       <span style="color:#00D4F0;">Not a list of dates. A story.</span>
     </p>
   </div>
@@ -1085,7 +1101,7 @@ br.desk-br{display:block;}
       <div class="featured-text">
         <div class="featured-badge">013 — Culture</div>
         <div class="featured-title">A (Brief) History of <br>Taylor Swift<span class="cursor-blink">_</span></div>
-        <div class="featured-sub">From a Nashville teenager with a guitar to the most-streamed artist in Spotify history. Every heartbreak became a #1 hit. This is how that happened.</div>
+        <div class="featured-sub">From a Pennsylvania teenager with a guitar to the most-streamed artist in Spotify history. Every heartbreak became a #1 hit. This is how that happened.</div>
         <div class="featured-cta">Read the (Brief) History →</div>
       </div>
     </div>
@@ -1095,7 +1111,7 @@ br.desk-br{display:block;}
 <!-- GUIDES -->
 <main id="guides">
 
-  <div class="featured-eyebrow" style="padding:2.5rem 2.5rem 1.2rem;"><span class="featured-eyebrow-line" style="background:var(--rule);"></span><span style="color:var(--muted);">All Guides</span></div>
+  <div class="featured-eyebrow" style="padding:2.5rem 2.5rem 1.2rem;"><span class="featured-eyebrow-line" style="background:var(--rule);"></span><span style="color:var(--muted);">All Posts</span></div>
 
   <div class="guides-grid fi">
 
@@ -1349,19 +1365,19 @@ br.desk-br{display:block;}
       <div class="feature-item">
         <div class="feat-bar" style="background:#C9A84C;"></div>
         <div class="feat-name">Key Figures</div>
-        <div class="feat-desc">The people who made it happen — founders, rebels, visionaries, and villains — with profiles and their place in the story.</div>
+        <div class="feat-desc">The people who made it happen, the founders, rebels, visionaries, and villains. Each with profiles and their place in the story.</div>
       </div>
 
       <div class="feature-item">
         <div class="feat-bar" style="background:#39E07A;"></div>
         <div class="feat-name">Ecosystem Maps</div>
-        <div class="feat-desc">The companies, organisations, and projects that define each field — linked, tagged by tier, and navigable.</div>
+        <div class="feat-desc">The companies, organisations, and projects that define each field, linked, tagged by tier, and navigable.</div>
       </div>
 
       <div class="feature-item">
         <div class="feat-bar" style="background:#FF5C20;"></div>
         <div class="feat-name">Interactive Design</div>
-        <div class="feat-desc">Custom cursors, section navigation, scroll progress, theme toggles, fade-in animations, and keyboard navigation throughout.</div>
+        <div class="feat-desc">Custom cursors, section navigation, scroll progress, theme toggles, animations, and other surprises throughout. Expect the unexpected</div>
       </div>
 
     </div>
