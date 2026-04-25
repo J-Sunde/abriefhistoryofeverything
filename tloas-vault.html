@@ -53,18 +53,30 @@ body{background:#0a0a0a;color:#FAF6EF;font-family:var(--body);font-size:1.1rem;l
 }
 .vault-hero-inner{position:relative;z-index:1;max-width:var(--max);margin:0 auto;padding:0 32px;}
 .vault-back{
-  font-family:var(--mono);font-size:0.68rem;font-weight:700;
-  letter-spacing:0.2em;text-transform:uppercase;
-  color:rgba(255,255,255,0.4);text-decoration:none;
-  display:inline-block;margin-bottom:36px;
-  transition:color 0.15s;
+    font-family: var(--mono);
+    font-size: 0.88rem;
+    font-weight: 700;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.4);
+    text-decoration: none;
+    display: inline-block;
+    margin-bottom: 36px;
+    transition: color 0.15s;
 }
 .vault-back:hover{color:rgba(255,255,255,0.8);}
 .vault-kicker{
-  font-family:var(--mono);font-size:0.72rem;font-weight:700;
-  letter-spacing:0.28em;text-transform:uppercase;
-  color:#e8c84a;margin-bottom:16px;display:block;
-  text-shadow:0 0 20px rgba(232,200,74,0.4);
+    font-family: var(--mono);
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 0.28em;
+    text-transform: uppercase;
+    color: #e8c84a;
+    margin-bottom: 16px;
+    display: block;
+    text-shadow: 0 0 20px rgba(232,200,74,0.4);
+    padding-top: 0px;
+    margin-top: -6px;
 }
 .vault-title{
   font-family:var(--display);font-size:clamp(2.8rem,7vw,5.5rem);
@@ -81,9 +93,17 @@ body{background:#0a0a0a;color:#FAF6EF;font-family:var(--body);font-size:1.1rem;l
   margin-bottom:32px;line-height:1.4;
 }
 .vault-disclaimer{
-  font-family:var(--mono);font-size:0.64rem;letter-spacing:0.1em;
-  text-transform:uppercase;color:rgba(255,255,255,0.3);
-  max-width:480px;margin:0 auto 32px;line-height:1.7;
+    font-family: var(--mono);
+    font-size: 0.64rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.3);
+    max-width: 480px;
+    margin-top: 0;
+    margin-right: auto;
+    margin-left: auto;
+    margin-bottom: 52px;
+    line-height: 1.7;
 }
 .vault-disclaimer a{color:rgba(232,200,74,0.6);text-decoration:none;}
 .vault-disclaimer a:hover{color:#e8c84a;}
@@ -112,9 +132,14 @@ body{background:#0a0a0a;color:#FAF6EF;font-family:var(--body);font-size:1.1rem;l
 }
 .tracklist-nav-inner{max-width:var(--max);margin:0 auto;padding:0 32px;}
 .tracklist-label{
-  font-family:var(--mono);font-size:0.65rem;font-weight:700;
-  letter-spacing:0.22em;text-transform:uppercase;
-  color:rgba(232,200,74,0.6);margin-bottom:18px;display:block;
+    font-family: var(--mono);
+    font-size: 0.8rem;
+    font-weight: 700;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: rgba(232,200,74,0.6);
+    margin-bottom: 18px;
+    display: block;
 }
 .tracklist{list-style:none;display:flex;flex-direction:column;gap:1px;}
 .tracklist li a{
@@ -124,7 +149,11 @@ body{background:#0a0a0a;color:#FAF6EF;font-family:var(--body);font-size:1.1rem;l
 }
 .tracklist li a:hover{background:rgba(232,200,74,0.06);}
 .track-num{font-family:var(--mono);font-size:0.65rem;color:rgba(255,255,255,0.2);text-align:right;}
-.track-name{font-family:var(--body);font-size:1rem;color:rgba(255,255,255,0.75);}
+.track-name{
+    font-family: var(--body);
+    font-size: 1.3rem;
+    color: rgba(255,255,255,0.75);
+}
 .track-name .feat{font-size:0.78rem;color:rgba(255,255,255,0.35);font-style:italic;}
 .track-tag{font-family:var(--mono);font-size:0.65rem;color:rgba(255,255,255,0.25);letter-spacing:0.06em;}
 .tracklist li a:hover .track-name{color:#fff;}
@@ -181,7 +210,9 @@ body{background:#0a0a0a;color:#FAF6EF;font-family:var(--body);font-size:1.1rem;l
 }
 
 /* ── LYRICS ── */
-.lyrics{font-family:var(--display);font-style:italic;}
+.lyrics{
+    font-family: var(--display);
+}
 .lyric-block{margin-bottom:22px;}
 .lyric-section-label{
   font-family:var(--mono);font-size:0.6rem;font-weight:700;
@@ -271,8 +302,9 @@ body{background:#0a0a0a;color:#FAF6EF;font-family:var(--body);font-size:1.1rem;l
     <span class="vault-kicker fi">The Life of a Showgirl · Vault Sessions Vol. II</span>
     <h1 class="vault-title fi">What Could've Been<span class="cursor-blink">_</span></h1>
     <p class="vault-subtitle fi">The ones that almost made it.</p>
-    <p class="vault-disclaimer fi">Original creative writing — not affiliated with Taylor Swift or her team.<br>These songs don't exist. The feeling that they should is the whole point. <a href="https://abriefhistoryofeverything.com/taylor-swift">Read the full guide ↗</a></p>
-    <div class="fi" style="position:relative;display:inline-block;">
+    <p class="vault-disclaimer fi">Original creative writing — not affiliated with Taylor Swift.<br>These songs don't exist. :( <br><a href="https://abriefhistoryofeverything.com/taylor-swift">Read the full (brief) history ↗</a></p>
+    <!--
+	  <div class="fi" style="position:relative;display:inline-block;">
       <button class="vault-share-btn" id="vault-share-btn">
         <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><line x1="8.59" y1="13.51" x2="15.42" y2="17.49"/><line x1="15.41" y1="6.51" x2="8.59" y2="10.49"/></svg>
         Share
@@ -283,6 +315,7 @@ body{background:#0a0a0a;color:#FAF6EF;font-family:var(--body);font-size:1.1rem;l
         <a href="https://bsky.app/intent/compose?text=What+Could%27ve+Been+%E2%80%94+imagined+vault+tracks+for+The+Life+of+a+Showgirl+https://abriefhistoryofeverything.com/tloas-vault" target="_blank">🦋 Bluesky</a>
       </div>
     </div>
+!-->
     <div class="collage-strip fi">
       <div class="collage-thumb"><img src="taylor-swift/images/cover-standing-ovation.jpg" alt="Track cover"></div>
       <div class="collage-thumb"><img src="taylor-swift/images/cover-main-character.jpg" alt="Track cover"></div>
