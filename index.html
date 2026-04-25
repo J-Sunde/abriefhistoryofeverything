@@ -1135,37 +1135,31 @@ br.desk-br{display:block;}
     </a> 
 	  
 	   <!-- TAYLOR SWIFT  -->
-
-	  <div class="grid-card is-coming-soon">
+    <a class="grid-card" href="taylor-swift.html">
       <div class="grid-card-inner">
         <img src="images/poster-taylor-swift.jpg" alt="Taylor Swift">
       </div>
+      <div class="grid-card-dot"></div>
       <div class="grid-card-issue" data-group="3">013</div>
-      <div class="cs-center">
-        <span class="cs-center-text">Coming Soon</span>
-      </div>
       <div class="grid-card-overlay">
         <span class="grid-card-title">Taylor Swift</span>
-        <span class="grid-card-era">12/13/1999 - Present</span>
+        <span class="grid-card-era">12/13/1989 — Present</span>
       </div>
-    </div>
+    </a>
 	  
 	  
-	   <!-- Kanye West  -->
-
-	  <div class="grid-card is-coming-soon">
+	   <!-- KANYE WEST  -->
+    <a class="grid-card" href="kanye-west.html">
       <div class="grid-card-inner">
         <img src="images/poster-kanye-west.jpg" alt="Kanye West">
       </div>
+      <div class="grid-card-dot"></div>
       <div class="grid-card-issue" data-group="3">014</div>
-      <div class="cs-center">
-        <span class="cs-center-text">Coming Soon</span>
-      </div>
       <div class="grid-card-overlay">
         <span class="grid-card-title">Kanye West</span>
         <span class="grid-card-era">Me, Myself, and I</span>
       </div>
-    </div>
+    </a>
 	  
 	    <!-- The Future  -->
 
@@ -1273,7 +1267,7 @@ br.desk-br{display:block;}
   <!-- SUGGEST A TOPIC -->
   <div class="suggest-zone fi">
     <div class="manifesto-series">Got a subject that deserves a deep dive?</div>
-    <a class="email-btn" href="/cdn-cgi/l/email-protection#98ecf7e8f1fbebd8f9faeaf1fdfef0f1ebecf7eae1f7fefdeefdeae1ecf0f1f6ffb6fbf7f5" style="display:inline-flex;align-items:center;text-decoration:none;margin-top:1rem;">Suggest a Topic →</a>
+    <a class="email-btn" href="mailto:topics@abriefhistoryofeverything.com" style="display:inline-flex;align-items:center;text-decoration:none;margin-top:1rem;">Suggest a Topic →</a>
   </div>
 
   <!-- EMAIL — commented out until ready
@@ -1313,7 +1307,7 @@ br.desk-br{display:block;}
 <footer>
   <span class="footer-l">© 2026 A (Brief) History of Everything · Est. 2026</span>
 </footer>
-<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+<script>
 /* ═══════════════════════════════════════════════════════
    HERO ART ENGINE
    Two systems running simultaneously:
@@ -1584,7 +1578,7 @@ br.desk-br{display:block;}
       title: 'A (Brief) History of Coachella',
       url: 'coachella.html',
       color: '#FF9F1C',
-      mostRecent: true,
+      mostRecent: false,
       tags: [
         'Coachella','Desert','Goldenvoice','Woodstock of the West','Festival Culture',
       ],
@@ -1597,15 +1591,38 @@ br.desk-br{display:block;}
       ],
     },
     // ── ADD NEW GUIDES HERE ──────────────────────────────
-    // {
-    //   id: 'starwars',
-    //   title: 'A (Brief) History of Star Wars',
-    //   url: 'starwars.html',
-    //   color: '#FFD700',
-    //   mostRecent: true,   ← make this true, set previous to false
-    //   tags: ['ILM','George Lucas','The Force','Merchandise','Blockbuster'],
-    //   words: ['Lucas','Skywalker','Empire','Force','ILM','Merchandise',...],
-    // },
+    {
+      id: 'taylor-swift',
+      title: 'A (Brief) History of Taylor Swift',
+      url: 'taylor-swift.html',
+      color: '#C084FC',
+      mostRecent: true,
+      tags: [
+        'Taylor Swift','Eras Tour','Swifties','Re-Recording','Pop Phenomenon',
+      ],
+      words: [
+        'Taylor','Swift','Eras','Nashville','Fearless',
+        'Reputation','Folklore','Evermore','Midnights','Re-record',
+        'Swifties','Kelce','Scooter','Masters','Anthem',
+        'Album','Billboard','Grammy','Tour','Stadium',
+      ],
+    },
+    {
+      id: 'kanye-west',
+      title: 'A (Brief) History of Kanye West',
+      url: 'kanye-west.html',
+      color: '#E5E5E5',
+      mostRecent: true,
+      tags: [
+        'Kanye West','Yeezy','College Dropout','Donda','Ye',
+      ],
+      words: [
+        'Kanye','Yeezy','Dropout','Donda','Ye',
+        'Louis','Adidas','Gap','Beyoncé','Taylor',
+        'Sunday','Service','Def Jam','Roc-A-Fella','808s',
+        'MBDTF','Yeezus','Pablo','Grammy','Arc',
+      ],
+    },
   ];
 
   /* ── Build hero word pool from registry ── */
