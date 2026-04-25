@@ -97,6 +97,102 @@ nav.solid{background:rgba(10,10,10,.96);border-bottom:1px solid var(--rule);}
 }
 .nav-badge span{color:#00D4F0;}
 
+/* ═══ FEATURED SECTION ═══ */
+.featured-section{padding:2.5rem 2.5rem 0;}
+.featured-eyebrow{
+  display:flex;align-items:center;gap:10px;
+  font-family:var(--mono);font-size:.6rem;font-weight:600;
+  letter-spacing:.2em;text-transform:uppercase;color:#9B6FCC;
+  margin-bottom:1.2rem;
+}
+.featured-eyebrow-line{display:inline-block;width:28px;height:2px;background:#C084FC;flex-shrink:0;}
+.featured-panel{
+  position:relative;min-height:440px;
+  display:flex;flex-direction:column;justify-content:flex-end;
+  overflow:hidden;text-decoration:none;cursor:pointer;
+}
+.featured-panel img{
+  position:absolute;inset:0;width:100%;height:100%;
+  object-fit:cover;object-position:left center;
+  transition:transform .6s ease;
+}
+.featured-panel:hover img{transform:scale(1.03);}
+/* Iridescent shimmer overlay — from Taylor guide */
+.featured-panel::before{
+  content:'';
+  position:absolute;inset:0;z-index:1;
+  background:linear-gradient(135deg,
+    rgba(253,232,240,0) 0%,
+    rgba(232,200,240,.08) 25%,
+    rgba(200,216,248,.12) 50%,
+    rgba(192,240,232,.06) 75%,
+    rgba(248,208,224,0) 100%);
+  background-size:300% 300%;
+  animation:iriShimmer 10s ease infinite;
+  pointer-events:none;
+}
+@keyframes iriShimmer{
+  0%{background-position:0% 50%;}
+  50%{background-position:100% 50%;}
+  100%{background-position:0% 50%;}
+}
+/* Right-side text vignette — text lives on the purple bokeh side */
+.featured-overlay{
+  position:absolute;inset:0;z-index:2;
+  display:flex;flex-direction:column;justify-content:flex-end;
+  padding:2.2rem 2.5rem;
+  background:linear-gradient(to right,
+    transparent 0%,
+    transparent 32%,
+    rgba(8,4,16,.55) 52%,
+    rgba(8,4,16,.88) 70%,
+    rgba(8,4,16,.96) 100%);
+}
+.featured-text{
+  margin-left:auto;
+  max-width:480px;
+}
+.featured-badge{
+  display:inline-block;
+  background:linear-gradient(135deg,#fde8f0,#e8c8f0,#c8d8f8,#c0f0e8);
+  background-size:200% 200%;
+  animation:iriShimmer 6s ease infinite;
+  color:#1a0a2e;
+  font-family:var(--mono);font-size:.58rem;font-weight:700;
+  letter-spacing:.14em;text-transform:uppercase;
+  padding:3px 10px;margin-bottom:12px;
+}
+.featured-title{
+  font-family:var(--cond);font-weight:700;
+  font-size:clamp(1.6rem,3vw,2.6rem);
+  color:#fff;line-height:1.1;margin:0 0 10px;
+}
+.featured-title .cursor-blink{
+  color:#C084FC;font-weight:300;font-family:var(--mono);
+  animation:blink .9s step-end infinite;
+}
+.featured-sub{
+  font-family:var(--sans);font-size:.88rem;font-weight:300;
+  color:rgba(242,239,233,.58);margin:0 0 18px;line-height:1.65;
+}
+.featured-cta{
+  display:inline-block;font-family:var(--mono);font-size:.68rem;
+  font-weight:600;letter-spacing:.1em;
+  color:#e8c8f0;
+  border-bottom:1px solid rgba(232,200,240,.4);padding-bottom:2px;
+  transition:color .2s,border-color .2s;
+}
+.featured-panel:hover .featured-cta{color:#fff;border-bottom-color:rgba(255,255,255,.5);}
+@media(max-width:768px){
+  .featured-section{padding:1.5rem 1.5rem 0;}
+  .featured-panel{min-height:340px;}
+  .featured-overlay{
+    background:linear-gradient(to top,rgba(8,4,16,.95) 0%,rgba(8,4,16,.5) 55%,transparent 100%);
+    padding:1.5rem;
+  }
+  .featured-text{margin-left:0;max-width:100%;}
+}
+
 /* ── Guides dropdown ── */
 .nav-guides-btn{
   position:relative;
@@ -976,8 +1072,26 @@ br.desk-br{display:block;}
   </div>
 </section>
 
+<!-- FEATURED -->
+<section class="featured-section">
+  <div class="featured-eyebrow"><span class="featured-eyebrow-line"></span>Featured this week</div>
+  <a class="featured-panel" href="taylor-swift.html">
+    <img src="taylor-swift/images/sequin-costume-wide.jpg" alt="Taylor Swift Eras Tour sequin costume">
+    <div class="featured-overlay">
+      <div class="featured-text">
+        <div class="featured-badge">013 — Culture</div>
+        <div class="featured-title">A (Brief) History of Taylor Swift<span class="cursor-blink">_</span></div>
+        <div class="featured-sub">From a Nashville teenager with a guitar to the most culturally dominant artist on the planet. The full story.</div>
+        <div class="featured-cta">Read the guide →</div>
+      </div>
+    </div>
+  </a>
+</section>
+
 <!-- GUIDES -->
 <main id="guides">
+
+  <div class="featured-eyebrow" style="padding:2.5rem 2.5rem 1.2rem;"><span class="featured-eyebrow-line" style="background:var(--rule);"></span><span style="color:var(--muted);">All Guides</span></div>
 
   <div class="guides-grid fi">
 
