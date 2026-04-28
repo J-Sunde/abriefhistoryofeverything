@@ -269,6 +269,62 @@
     .yoda-interlude.visible .yoda-quote:nth-child(3){animation-delay:0.5s;}
     .yoda-interlude.visible .yoda-quote:nth-child(4){animation-delay:0.7s;}
 
+
+    /* ── SITH ZONE ── Vader band + Twist section */
+    :root {
+      --sith:#CC2200;
+      --sith2:#FF4422;
+      --sith-dim:#8A1800;
+      --sith-bg:#080000;
+      --sith-card:#1A0808;
+      --sith-card-hover:#220A0A;
+      --sith-rule:rgba(204,34,0,0.2);
+      --sith-rule2:rgba(204,34,0,0.35);
+      --sith-text:#E8E0E0;
+      --sith-muted:rgba(232,224,224,0.45);
+    }
+    .sith-zone{background:var(--sith-bg);}
+    .sith-zone .sec-label{color:rgba(204,34,0,0.75);}
+    .sith-zone .sec-title{color:var(--sith-text);}
+    .sith-zone .sec-intro{color:var(--sith-muted);}
+    .sith-zone .cursor-blink{color:var(--sith)!important;}
+
+    /* Sith HUD cards */
+    .sith-zone .hud-card{background:var(--sith-card);border-color:var(--sith-rule2);outline-color:var(--sith-rule2);}
+    .sith-zone .hud-card:hover{background:var(--sith-card-hover);}
+    .sith-zone .hud-top-bar{background:rgba(204,34,0,0.04);border-bottom-color:rgba(204,34,0,0.12);}
+    .sith-zone .hud-top-label{color:rgba(204,34,0,0.6);}
+    .sith-zone .hud-status{color:rgba(232,80,50,0.35);}
+    .sith-zone .hud-dot{background:var(--sith);}
+    .sith-zone .hud-eyebrow{color:var(--sith);opacity:0.7;}
+    .sith-zone .hud-eyebrow-aurabesh{color:var(--sith);opacity:0.3;}
+    .sith-zone .hud-year{color:var(--sith);}
+    .sith-zone .hud-year-tick{background:linear-gradient(90deg,rgba(204,34,0,0.4),transparent);}
+    .sith-zone .hud-card h3{color:var(--sith-text);}
+    .sith-zone .hud-card p{color:rgba(232,224,224,0.65);}
+    .sith-zone .hud-scan-code{color:rgba(204,34,0,0.25);}
+    .sith-zone .hud-card-tags .tag{color:rgba(204,34,0,0.5);border-color:rgba(204,34,0,0.2);}
+    .sith-zone .hud-card-tags .tag:hover{color:var(--sith);border-color:var(--sith);}
+    .sith-zone .hud-corner{--accent:var(--sith);}
+    .sith-zone .hud-corner-tl,.sith-zone .hud-corner-tr,.sith-zone .hud-corner-bl,.sith-zone .hud-corner-br{border-color:var(--sith)!important;opacity:0.5;}
+    .sith-zone .hud-scan-line{background:linear-gradient(90deg,transparent,rgba(204,34,0,0.2),transparent);}
+    .sith-zone .hud-card::before{background:var(--sith-rule2);}
+
+    /* Vader band in sith zone */
+    .sith-zone.vader-band .vf-num{color:var(--sith);}
+    .sith-zone.vader-band .vf-label{color:rgba(232,224,224,0.4);}
+    .sith-zone.vader-band .vf-sub{color:rgba(232,224,224,0.25);}
+    .sith-zone.vader-band .vader-facts{background:rgba(204,34,0,0.05);border-color:rgba(204,34,0,0.1);}
+    .sith-zone.vader-band .vf{background:rgba(8,0,0,0.5);}
+    .sith-zone.vader-band .vader-pre{color:var(--sith);opacity:0.75;}
+
+    /* Red pulse on "your father" */
+    @keyframes sithPulse{0%,100%{text-shadow:0 0 18px rgba(204,34,0,0.25)}50%{text-shadow:0 0 60px rgba(204,34,0,0.9),0 0 120px rgba(204,34,0,0.15)}}
+    .sith-zone .reveal{color:var(--sith)!important;animation:sithPulse 3s ease-in-out infinite!important;}
+
+    /* Vader image overlay tint */
+    .vader-sith-overlay{position:absolute;inset:0;background:linear-gradient(to left,rgba(8,0,0,0.95) 35%,rgba(20,2,2,0.5) 100%);z-index:0;}
+
     .quote-band{min-height:260px;padding:5rem 6vw;display:flex;align-items:center;justify-content:center;border-bottom:1px solid var(--rule);background:var(--bg1);}
     .quote-band-inner{max-width:880px;text-align:center;width:100%;}
     .pq-mark{font-family:var(--display);font-size:clamp(4rem,10vw,8rem);color:var(--accent);opacity:0.15;line-height:0.8;display:block;margin-bottom:0.8rem;}
@@ -718,8 +774,8 @@
 </section>
 
 <!-- VADER BAND -->
-<div class="vader-band" id="vader" style="background-image:url('empire/images/vader-small-crop.png');background-size:auto 95%;background-repeat:no-repeat;background-position:left 2% bottom;">
-  <div style="position:absolute;inset:0;background:linear-gradient(to left,rgba(0,0,0,0.98) 40%,rgba(0,0,0,0.55) 100%);z-index:0;"></div>
+<div class="vader-band sith-zone" id="vader" style="background-image:url('empire/images/vader-small-crop.png');background-size:auto 95%;background-repeat:no-repeat;background-position:left 2% bottom;">
+  <div class="vader-sith-overlay"></div>
   <div style="position:relative;z-index:1;display:contents;">
   <div class="vader-pre fi">Cloud City · Bespin · May 21, 1980</div>
   <div class="vader-line fi" style="--d:0.1s">&ldquo;No. I am<br><span class="reveal">your father.&rdquo;</span></div>
@@ -733,10 +789,10 @@
 </div>
 
 <!-- SECTION 04 -->
-<section class="section" id="thetwist" style="background:#000;border-top:none;border-bottom:1px solid rgba(74,158,255,0.08);">
-  <div class="sec-label fi" style="color:rgba(74,158,255,0.7);">Section 04 · The Twist</div>
-  <h2 class="sec-title fi" style="--d:0.05s;color:#E8F4FF;">How They Kept the Secret<span class="cursor-blink" style="color:var(--accent);">_</span></h2>
-  <p class="sec-intro fi" style="--d:0.1s;color:rgba(180,210,240,0.7);">The Vader reveal is the most documented secret in cinema history. It held for three years, through an era of no internet, but with a leak-prone industry, hundreds of crew, and a cast that would have been the natural source. How it stayed secret, and what happened when it didn't, is its own story.</p>
+<section class="section sith-zone" id="thetwist" style="background:var(--sith-bg);border-top:none;border-bottom:1px solid rgba(204,34,0,0.1);">
+  <div class="sec-label fi">Section 04 · The Twist</div>
+  <h2 class="sec-title fi" style="--d:0.05s;">How They Kept the Secret<span class="cursor-blink">_</span></h2>
+  <p class="sec-intro fi" style="--d:0.1s;">The Vader reveal is the most documented secret in cinema history. It held for three years, through an era of no internet, but with a leak-prone industry, hundreds of crew, and a cast that would have been the natural source. How it stayed secret, and what happened when it didn't, is its own story.</p>
   <div class="hud-grid" style="grid-template-columns:1fr 1fr;">
 <div class="hud-card hud-a fi" style="--c-col:#4A9EFF">
   <div class="hud-corner hud-corner-tl"></div><div class="hud-corner hud-corner-br"></div>
@@ -1583,33 +1639,33 @@
 
   /* LIGHTSABER SOUND */
   var saberPlayed = false;
+  var saberAudio = null;
+  function initSaber(){
+    if(saberAudio) return;
+    saberAudio = new Audio('empire/images/lightsaber_02.mp3');
+    saberAudio.preload = 'auto';
+    saberAudio.volume = 0.7;
+  }
+  function playSaber(){
+    if(saberPlayed) return;
+    saberPlayed = true;
+    initSaber();
+    saberAudio.play().catch(function(err){
+      console.log('Saber audio blocked:', err);
+    });
+  }
+  // Pre-init audio on first user interaction anywhere on page
+  document.addEventListener('click', initSaber, {once:true});
+  document.addEventListener('scroll', initSaber, {once:true});
+  document.addEventListener('keydown', initSaber, {once:true});
+  // Fire on vader section scroll into view
   var vaderSection = document.getElementById('vader');
-  if(vaderSection){
+  if(vaderSection && 'IntersectionObserver' in window){
     var saberObs = new IntersectionObserver(function(entries){
       entries.forEach(function(e){
-        if(e.isIntersecting && !saberPlayed){
-          saberPlayed = true;
-          saberObs.disconnect();
-          try {
-            var saberAudio = new Audio('empire/images/lightsaber_02.mp3');
-            saberAudio.volume = 0.7;
-            var playPromise = saberAudio.play();
-            if(playPromise !== undefined){
-              playPromise.catch(function(){
-                // autoplay blocked - try on next user interaction
-                var resume = function(){
-                  saberAudio.play().catch(function(){});
-                  document.removeEventListener('click', resume);
-                  document.removeEventListener('scroll', resume);
-                };
-                document.addEventListener('click', resume, {once:true});
-                document.addEventListener('scroll', resume, {once:true});
-              });
-            }
-          } catch(e){}
-        }
+        if(e.isIntersecting){ playSaber(); saberObs.disconnect(); }
       });
-    },{threshold:0.15, rootMargin:'0px 0px -100px 0px'});
+    },{threshold:0.1});
     saberObs.observe(vaderSection);
   }
 })();
