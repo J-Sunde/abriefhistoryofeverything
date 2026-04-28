@@ -1,13 +1,13 @@
 <!DOCTYPE html>
-<html lang="en" data-theme="dark">
+<html lang="en" data-theme="light">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>A (Brief) History of The Empire Strikes Back_</title>
-  <meta name="description" content="The full story — the accident that changed Luke's face, the director who went 25 days over schedule, the secret kept from the entire cast, and why Empire became the greatest sequel ever made.">
+  <meta name="description" content="The full story, the accident that changed Luke's face, the director who went 25 days over schedule, the secret kept from the entire cast, and why Empire became the greatest sequel ever made.">
   <link rel="canonical" href="https://abriefhistoryofeverything.com/empire-strikes-back">
   <meta property="og:title" content="A (Brief) History of The Empire Strikes Back_">
-  <meta property="og:description" content="The accident, the chaos, the secret — the full story of The Empire Strikes Back.">
+  <meta property="og:description" content="The accident, the chaos, the secret, the full story of The Empire Strikes Back.">
   <meta property="og:image" content="og-empire-strikes-back.png">
   <meta property="og:image:width" content="1200">
   <meta property="og:image:height" content="630">
@@ -34,7 +34,24 @@
   </style>
   <style>
     :root{--accent:#4A9EFF;--accent2:#C8E8FF;--accent-rgb:74,158,255;--bg:#04070F;--bg1:#080D1A;--bg2:#0C1220;--bg3:#101828;--card-bg:#0A1320;--card-hover:#0F1A2E;--rule:rgba(74,158,255,0.12);--rule2:rgba(74,158,255,0.22);--muted:#4A6080;--dim:#7A9AB8;--text:#B8CDE0;--bright:#E8F4FF;--nav-bg:rgba(4,7,15,0.92);--nav-border:rgba(74,158,255,0.15);--nav-text:#6080A0;--nav-text-bright:#C8E4FF;--glow:0 0 40px rgba(74,158,255,0.3);--display:'SerifGothic','ITC Serif Gothic Std',sans-serif;--mono:'Share Tech Mono',monospace;--sans:'SerifGothic',sans-serif;--body:'DM Sans',sans-serif;--aurebesh:'Aurebesh',sans-serif;}
-    [data-theme="light"]{--accent:#1A5FAA;--accent2:#0A3A70;--accent-rgb:26,95,170;--bg:#F2EDE4;--bg1:#EDE6DA;--bg2:#E5DDD0;--bg3:#DDD4C4;--card-bg:#EDE8DC;--card-hover:#E4DCCC;--rule:rgba(26,95,170,0.15);--rule2:rgba(26,95,170,0.25);--muted:#8A7A62;--dim:#5A4E3C;--text:#2A2418;--bright:#0A0804;--nav-bg:rgba(242,237,228,0.94);--nav-border:rgba(26,95,170,0.18);--nav-text:#7A6A50;--nav-text-bright:#1A1008;--glow:none;}
+    [data-theme="light"]{--accent:#1A5FAA;--accent2:#4A7FBB;--accent-rgb:26,95,170;--bg:#F4F7FB;--bg1:#EBF0F7;--bg2:#DDE5F0;--bg3:#CFD9EC;--card-bg:#EEF3FA;--card-hover:#E4ECF6;--rule:rgba(26,95,170,0.12);--rule2:rgba(26,95,170,0.22);--muted:#6A80A0;--dim:#344A6A;--text:#1A2A3A;--bright:#0A1220;--nav-bg:rgba(244,247,251,0.94);--nav-border:rgba(26,95,170,0.15);--nav-text:#6A80A0;--nav-text-bright:#0A1220;--glow:none;--card-dark:#1A2535;--card-dark-hover:#222E42;}
+
+    /* Era cards stay dark in light mode */
+    [data-theme="light"] .hud-card{background:#1A2535;border-color:rgba(74,158,255,0.25);}
+    [data-theme="light"] .hud-card:hover{background:#222E42;}
+    [data-theme="light"] .hud-card h3{color:#E8F4FF;}
+    [data-theme="light"] .hud-card p{color:#9AB8D8;}
+    [data-theme="light"] .hud-top-bar{background:rgba(74,158,255,0.06);border-bottom-color:rgba(74,158,255,0.15);}
+    [data-theme="light"] .hud-top-label{color:rgba(74,158,255,0.7);}
+    [data-theme="light"] .hud-eyebrow{color:#4A9EFF;}
+    [data-theme="light"] .hud-year{color:#4A9EFF;}
+    [data-theme="light"] .hud-year-tick{background:linear-gradient(90deg,rgba(74,158,255,0.4),transparent);}
+    [data-theme="light"] .hud-bottom-bar{}
+    [data-theme="light"] .hud-card-tags .tag{color:rgba(74,158,255,0.6);border-color:rgba(74,158,255,0.2);}
+    [data-theme="light"] .hud-scan-code{color:rgba(74,158,255,0.3);}
+    [data-theme="light"] .hud-corner{--accent:#4A9EFF;}
+    [data-theme="light"] .split-ghost{color:#4A9EFF;}
+
     *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
     html{scroll-behavior:smooth;}
     body{background:var(--bg);color:var(--text);font-family:var(--body);font-size:1rem;line-height:1.7;transition:background .4s,color .4s;overflow-x:hidden;}
@@ -77,16 +94,23 @@
     .hero-splash-fade{position:absolute;inset:0;background:rgba(4,7,15,0.08);z-index:1;}
     .hero-splash-content{position:relative;z-index:2;display:flex;flex-direction:column;align-items:center;justify-content:flex-end;height:100%;padding-bottom:4rem;text-align:center;padding-left:2rem;padding-right:2rem;}
     .hero-splash-brief{font-family:var(--display);font-size:clamp(1.4rem,3vw,2.2rem);letter-spacing:0.18em;text-transform:uppercase;color:#fff;margin-bottom:1.4rem;text-shadow:0 2px 20px rgba(0,0,0,0.6);font-weight:400;}
-    .hero-splash-hook{font-family:var(--body);font-size:clamp(0.9rem,1.6vw,1.05rem);line-height:1.8;color:rgba(255,255,255,0.65);max-width:580px;margin-bottom:2rem;text-shadow:0 1px 12px rgba(0,0,0,0.9);}
-    .hero-splash-trailer{display:inline-flex;align-items:center;gap:0.7rem;font-family:var(--mono);font-size:0.82rem;letter-spacing:0.18em;text-transform:uppercase;color:var(--accent);border:2px solid var(--accent);padding:0.7rem 1.6rem;text-decoration:none;transition:background .2s,color .2s;margin-bottom:2.5rem;}
-    .hero-splash-trailer:hover{background:var(--accent);color:#000;}
+    .hero-splash-hook{font-family:var(--body);font-size:clamp(0.9rem,1.6vw,1.05rem);line-height:1.8;color:rgba(255,255,255,0.7);max-width:580px;margin-bottom:2rem;}
+    .hero-splash-trailer{display:inline-flex;align-items:center;gap:0.7rem;font-family:var(--mono);font-size:0.82rem;letter-spacing:0.18em;text-transform:uppercase;color:#fff;background:var(--accent);border:2px solid var(--accent);padding:0.7rem 1.6rem;text-decoration:none;transition:background .2s,color .2s,border-color .2s;margin-bottom:2.5rem;}
+    .hero-splash-trailer:hover{background:transparent;color:var(--accent);border-color:var(--accent);}
     .hero-splash-scroll{font-family:var(--mono);font-size:0.68rem;letter-spacing:0.2em;text-transform:uppercase;color:rgba(255,255,255,0.28);display:flex;flex-direction:column;align-items:center;gap:0.4rem;animation:scrollHint 2.2s ease-in-out infinite;}
     @keyframes scrollHint{0%,100%{opacity:0.28;transform:translateY(0)}50%{opacity:0.6;transform:translateY(5px)}}
     .hero-splash-scroll::after{content:'↓';font-size:0.9rem;}
 
     /* STATS HERO */
     .stats-hero{padding:4rem 6vw;border-bottom:1px solid var(--rule);background:var(--bg);}
-    .stats-hero-inner{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--rule);border:1px solid var(--rule);}
+    .stats-hud-frame{position:relative;border:1px solid rgba(74,158,255,0.22);clip-path:polygon(0 0,calc(100% - 20px) 0,100% 20px,100% 100%,20px 100%,0 calc(100% - 20px));background:var(--card-bg);}
+    [data-theme="light"] .stats-hud-frame{background:#1A2535;border-color:rgba(74,158,255,0.3);}
+    .stats-hud-frame-corner-tl{position:absolute;top:0;left:0;width:20px;height:20px;border-top:1px solid var(--accent);border-left:1px solid var(--accent);opacity:0.6;pointer-events:none;}
+    .stats-hud-frame-corner-br{position:absolute;bottom:0;right:0;width:20px;height:20px;border-bottom:1px solid var(--accent);border-right:1px solid var(--accent);opacity:0.6;pointer-events:none;}
+    .stats-hud-bar{display:flex;align-items:center;justify-content:space-between;padding:0.5rem 1.4rem;border-bottom:1px solid rgba(74,158,255,0.1);background:rgba(74,158,255,0.03);}
+    .stats-hud-bar-label{font-family:var(--mono);font-size:0.62rem;letter-spacing:0.22em;text-transform:uppercase;color:rgba(74,158,255,0.6);}
+    .stats-hud-bar-status{display:flex;align-items:center;gap:0.4rem;font-family:var(--mono);font-size:0.58rem;letter-spacing:0.14em;color:rgba(74,158,255,0.3);}
+    .stats-hero-inner{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:rgba(74,158,255,0.08);}
     @media(max-width:900px){.stats-hero-inner{grid-template-columns:repeat(2,1fr);}}
     .hero{display:grid;grid-template-columns:1fr 1fr;align-items:start;padding:5rem 6vw;gap:5rem;border-bottom:1px solid var(--rule);}
     @media(max-width:960px){.hero{grid-template-columns:1fr;padding:4rem 2rem;gap:3rem;}}
@@ -137,16 +161,16 @@
     .hud-card{background:var(--card-bg);padding:0;position:relative;transition:background .2s;border:1px solid rgba(74,158,255,0.18);isolation:isolate;}
     .hud-card:hover{background:var(--card-hover);}
 
-    /* Style A — top-right + bottom-left clipped */
+    /* Style A, top-right + bottom-left clipped */
     .hud-a{clip-path:polygon(0 0,calc(100% - 16px) 0,100% 16px,100% 100%,16px 100%,0 calc(100% - 16px));border:none;outline:1px solid rgba(74,158,255,0.18);}
-    /* Style B — top-left + bottom-right clipped (mirror) */
+    /* Style B, top-left + bottom-right clipped (mirror) */
     .hud-b{clip-path:polygon(16px 0,100% 0,100% calc(100% - 16px),calc(100% - 16px) 100%,0 100%,0 16px);border:none;outline:1px solid rgba(74,158,255,0.18);}
-    /* Style C — all four corners clipped */
+    /* Style C, all four corners clipped */
     .hud-c{clip-path:polygon(12px 0,calc(100% - 12px) 0,100% 12px,100% calc(100% - 12px),calc(100% - 12px) 100%,12px 100%,0 calc(100% - 12px),0 12px);border:none;outline:1px solid rgba(74,158,255,0.18);}
-    /* Style D — top-right + top-left clipped */
+    /* Style D, top-right + top-left clipped */
     .hud-d{clip-path:polygon(14px 0,calc(100% - 14px) 0,100% 14px,100% 100%,0 100%,0 14px);border:none;outline:1px solid rgba(74,158,255,0.18);}
 
-    /* Corner accent lines — rendered as SVG-like borders via pseudo + absolute */
+    /* Corner accent lines, rendered as SVG-like borders via pseudo + absolute */
     .hud-corner{position:absolute;pointer-events:none;z-index:1;}
     .hud-corner-tl{top:0;left:0;width:20px;height:20px;border-top:1px solid var(--accent);border-left:1px solid var(--accent);opacity:0.55;}
     .hud-corner-tr{top:0;right:0;width:20px;height:20px;border-top:1px solid var(--accent);border-right:1px solid var(--accent);opacity:0.55;}
@@ -171,7 +195,7 @@
     .hud-year{font-family:var(--mono);font-size:1.2rem;color:var(--c-col,var(--accent));letter-spacing:0.1em;line-height:1;flex-shrink:0;}
     .hud-year-tick{flex:1;height:1px;background:linear-gradient(90deg,rgba(74,158,255,0.3),transparent);}
     .hud-eyebrow{font-family:var(--mono);font-size:0.62rem;letter-spacing:0.24em;text-transform:uppercase;color:var(--accent);opacity:0.55;margin-bottom:0.5rem;display:flex;align-items:center;gap:0.5rem;}
-    .hud-eyebrow-aurabesh{font-family:var(--aurebesh,"Aurebesh",monospace);font-size:0.9rem;color:var(--accent);opacity:0.3;margin-left:auto;letter-spacing:0.02em;}
+    .hud-eyebrow-aurabesh{font-family:var(--aurebesh,"Aurebesh",monospace);font-size:1.3rem;color:var(--accent);opacity:0.35;margin-left:auto;letter-spacing:0.02em;line-height:1;}
     .hud-card h3{font-family:var(--display);font-size:clamp(1rem,1.9vw,1.28rem);color:var(--bright);line-height:1.2;margin-bottom:0.75rem;text-transform:uppercase;letter-spacing:0.03em;}
     .hud-card p{font-family:var(--body);font-size:1.05rem;line-height:1.8;color:var(--dim);}
 
@@ -202,7 +226,7 @@
     .card h3{font-family:var(--display);font-size:clamp(1.1rem,2vw,1.35rem);color:var(--bright);line-height:1.2;margin-bottom:0.8rem;text-transform:uppercase;letter-spacing:0.03em;}
     .card p{font-family:var(--mono);font-size:1.032rem;line-height:1.78;color:var(--dim);}
     .card-tags{margin-top:1rem;display:flex;flex-wrap:wrap;gap:0.4rem;}
-    .tag{font-family:var(--mono);font-size:0.78rem;letter-spacing:0.1em;text-transform:uppercase;color:var(--muted);border:1px solid var(--rule2);padding:0.15rem 0.5rem;}
+    .tag{font-family:var(--mono);font-size:0.78rem;letter-spacing:0.1em;text-transform:uppercase;color:var(--muted);border:1px solid var(--rule2);padding:0.15rem 0.5rem;text-decoration:none;transition:color .15s,border-color .15s;cursor:pointer;} .tag:hover{color:var(--accent);border-color:var(--accent);}
     .img-strip{display:grid;grid-template-columns:1fr 1fr 1fr;gap:1.5rem;}
     @media(max-width:600px){.img-strip{grid-template-columns:1fr 1fr;}.img-strip-item:nth-child(3){display:none;}}
     .img-strip-item{position:relative;aspect-ratio:4/3;overflow:hidden;background:var(--card-bg);border:1px solid rgba(74,158,255,0.18);}
@@ -251,7 +275,7 @@
     .pq-text{font-family:var(--display);font-size:clamp(1.3rem,2.8vw,2.1rem);line-height:1.4;color:var(--bright);text-transform:uppercase;letter-spacing:0.04em;margin-bottom:1.2rem;}
     .pq-hl{color:var(--accent);}
     .pq-attr{font-family:var(--mono);font-size:0.84rem;letter-spacing:0.2em;text-transform:uppercase;color:var(--muted);}
-    .vader-band{background:#000;padding:6rem 6vw;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;border-bottom:1px solid var(--rule);position:relative;overflow:hidden;}
+    .vader-band{background:#000;padding:6rem 6vw;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;border-bottom:none;position:relative;overflow:hidden;}
     [data-theme="light"] .vader-band{background:#080202;}
     .vader-band::before{content:'V';position:absolute;font-family:var(--display);font-size:clamp(14rem,35vw,32rem);color:#fff;opacity:0.012;pointer-events:none;line-height:1;user-select:none;}
     .vader-pre{font-family:var(--mono);font-size:0.72rem;letter-spacing:0.35em;text-transform:uppercase;color:var(--accent);margin-bottom:2rem;opacity:0.75;}
@@ -368,15 +392,23 @@
 
 <!-- STATS -->
 <section class="stats-hero">
-  <div class="stats-hero-inner fi">
-    <div class="h-stat" data-tip="Empire cost $18M — double its original budget. It returned $547.9M worldwide, the highest-grossing film of 1980."><div class="stat-num">$547M</div><div class="stat-label">Worldwide Gross</div><div class="stat-sub">On an $18M budget</div></div>
+  <div class="stats-hud-frame fi">
+    <div class="stats-hud-frame-corner-tl"></div>
+    <div class="stats-hud-frame-corner-br"></div>
+    <div class="stats-hud-bar">
+      <span class="stats-hud-bar-label">Episode V · Combat Data · 1980</span>
+      <span class="stats-hud-bar-status"><span class="hud-dot"></span>DATABANK::ACTIVE</span>
+    </div>
+    <div class="stats-hero-inner">
+    <div class="h-stat" data-tip="Empire cost $18M, double its original budget. It returned $547.9M worldwide, the highest-grossing film of 1980."><div class="stat-num">$547M</div><div class="stat-label">Worldwide Gross</div><div class="stat-sub">On an $18M budget</div></div>
     <div class="h-stat" data-tip="Empire opened May 21, 1980 in 126 theaters. Lines formed before dawn. Theaters ran prints 24 hours a day for the first two weeks."><div class="stat-num">126</div><div class="stat-label">Opening Theaters</div><div class="stat-sub">May 21, 1980</div></div>
     <div class="h-stat" data-tip="Lucas, Kershner, and Kasdan. David Prowse was given the false line 'Obi-Wan killed your father.' James Earl Jones recorded the real line in post-production."><div class="stat-num">3</div><div class="stat-label">People Knew</div><div class="stat-sub">The real ending</div></div>
-    <div class="h-stat" data-tip="Empire's critical score has climbed over 45 years — from a respectful 1980 reception to 97% on Rotten Tomatoes."><div class="stat-num">97%</div><div class="stat-label">Rotten Tomatoes</div><div class="stat-sub">45 years of reassessment</div></div>
+    <div class="h-stat" data-tip="Empire's critical score has climbed over 45 years, from a respectful 1980 reception to 97% on Rotten Tomatoes."><div class="stat-num">97%</div><div class="stat-label">Rotten Tomatoes</div><div class="stat-sub">45 years of reassessment</div></div>
     <div class="h-stat" data-tip="John Williams's Imperial March has been used in over 200 films, TV shows, and political broadcasts since 1980."><div class="stat-num">200+</div><div class="stat-label">Imperial March Uses</div><div class="stat-sub">Films, TV, politics</div></div>
     <div class="h-stat" data-tip="Kenner reported $150M in Star Wars toy sales in 1980 alone. The AT-AT Walker sold out nationally within two weeks."><div class="stat-num">$150M</div><div class="stat-label">Kenner Toys 1980</div><div class="stat-sub">AT-AT sold out in 2 weeks</div></div>
     <div class="h-stat" data-tip="Kershner went 25 days over the shooting schedule. Lucas flew to London multiple times. The tension was real and documented."><div class="stat-num">+25</div><div class="stat-label">Days Over Schedule</div><div class="stat-sub">Lucas was furious</div></div>
     <div class="h-stat" data-tip="Hamill's January 1977 car accident broke his nose and cheekbone. The wampa attack is widely believed to explain the visible facial difference between the two films."><div class="stat-num">1977</div><div class="stat-label">Hamill's Accident</div><div class="stat-sub">The wampa wasn't random</div></div>
+      </div>
   </div>
 </section>
 
@@ -384,7 +416,7 @@
 <section class="section alt" id="before">
   <div class="sec-label fi">Section 01 · 1977–1978</div>
   <h2 class="sec-title fi" style="--d:0.05s">Before the Film Existed<span class="cursor-blink" style="color:var(--accent);">_</span></h2>
-  <p class="sec-intro fi" style="--d:0.1s">A New Hope opened May 25, 1977. It wasn't supposed to be a hit. Within six months it had made $300 million and changed every calculation in Hollywood. What happened next — how Lucas structured the deal, who got hired, and what Hamill's face had to do with any of it — set the terms for everything that followed.</p>
+  <p class="sec-intro fi" style="--d:0.1s">A New Hope opened May 25, 1977. It wasn't supposed to be a hit. Within six months it had made $300 million and changed every calculation in Hollywood. What happened next, how Lucas structured the deal, who got hired, and what Hamill's face had to do with any of it, set the terms for everything that followed.</p>
   <div class="hud-grid" style="grid-template-columns:1fr 1fr;">
 <div class="hud-card hud-a fi" style="--c-col:#4A9EFF">
   <div class="hud-corner hud-corner-tl"></div><div class="hud-corner hud-corner-br"></div>
@@ -397,9 +429,9 @@
     <div class="hud-eyebrow">The Bet <span class="hud-eyebrow-aurabesh">ABCDE</span></div>
     <div class="hud-year-row"><span class="hud-year">1977</span><span class="hud-year-tick"></span></div>
     <h3>Fox Thought They Won</h3>
-    <p>Fox got distribution fees and first-look rights. Lucas got everything else — the characters, the sequels, the merchandise, the licensing. The studio considered it generous of them to let Lucas have the scraps. When the toys alone generated $100 million in 1977 and 1978, the full weight of the miscalculation became apparent.</p>
+    <p>Fox got distribution fees and first-look rights. Lucas got everything else, the characters, the sequels, the merchandise, the licensing. The studio considered it generous of them to let Lucas have the scraps. When the toys alone generated $100 million in 1977 and 1978, the full weight of the miscalculation became apparent.</p>
     <div class="hud-bottom-bar">
-      <div class="hud-card-tags"><span class="tag">Business</span><span class="tag">Ownership</span></div>
+      <div class="hud-card-tags"><a class="tag" href="https://en.wikipedia.org/wiki/Business" target="_blank" rel="noopener">Business</a><a class="tag" href="https://en.wikipedia.org/wiki/Ownership" target="_blank" rel="noopener">Ownership</a></div>
       <span class="hud-scan-code">BET::MADE</span>
     </div>
   </div>
@@ -417,7 +449,7 @@
     <h3>Lucas Mortgaged Everything</h3>
     <p>To keep creative control of Empire, Lucas refused Fox financing and borrowed $25 million from Bank of America against his personal assets and Lucasfilm's future earnings. A box office failure would have bankrupted him personally. He accepted that risk to ensure no studio could alter the film. The creative independence that produced Empire had a specific price tag.</p>
     <div class="hud-bottom-bar">
-      <div class="hud-card-tags"><span class="tag">Finance</span><span class="tag">Risk</span></div>
+      <div class="hud-card-tags"><a class="tag" href="https://en.wikipedia.org/wiki/Finance" target="_blank" rel="noopener">Finance</a><a class="tag" href="https://en.wikipedia.org/wiki/Risk" target="_blank" rel="noopener">Risk</a></div>
       <span class="hud-scan-code">RISK::HIGH</span>
     </div>
   </div>
@@ -433,9 +465,9 @@
     <div class="hud-eyebrow">The Accident <span class="hud-eyebrow-aurabesh">KLMNO</span></div>
     <div class="hud-year-row"><span class="hud-year">Jan 1977</span><span class="hud-year-tick"></span></div>
     <h3>Hamill's Car Crash</h3>
-    <p>In January 1977 — four months before A New Hope opened — Mark Hamill was in a serious car accident. He broke his nose and cheekbone. The injuries were surgically repaired but left a visible difference in his appearance between the two films. The wampa attack opening Empire — which leaves Luke's face slashed — is widely understood to have been written partly to explain that difference. Lucas and Hamill have both acknowledged the connection without fully confirming it.</p>
+    <p>In January 1977, four months before A New Hope opened, Mark Hamill was in a serious car accident. He broke his nose and cheekbone. The injuries were surgically repaired but left a visible difference in his appearance between the two films. The wampa attack opening Empire, which leaves Luke's face slashed, is widely understood to have been written partly to explain that difference. Lucas and Hamill have both acknowledged the connection without fully confirming it.</p>
     <div class="hud-bottom-bar">
-      <div class="hud-card-tags"><span class="tag">Mark Hamill</span><span class="tag">Production</span></div>
+      <div class="hud-card-tags"><a class="tag" href="https://en.wikipedia.org/wiki/Mark_Hamill" target="_blank" rel="noopener">Mark Hamill</a><a class="tag" href="https://en.wikipedia.org/wiki/Production" target="_blank" rel="noopener">Production</a></div>
       <span class="hud-scan-code">INJURY::1977</span>
     </div>
   </div>
@@ -451,9 +483,9 @@
     <div class="hud-eyebrow">The Writers <span class="hud-eyebrow-aurabesh">PQRST</span></div>
     <div class="hud-year-row"><span class="hud-year">1977–1978</span><span class="hud-year-tick"></span></div>
     <h3>Leigh Brackett Dies Before She Sees It</h3>
-    <p>Lucas hired Leigh Brackett — screenwriter of The Big Sleep, Rio Bravo, and The Long Goodbye — to write the first draft of Empire. She delivered it in February 1978 and died of cancer six weeks later. Lawrence Kasdan, 29 years old and unknown, was hired to complete the screenplay. Empire is dedicated to Brackett.</p>
+    <p>Lucas hired Leigh Brackett, screenwriter of The Big Sleep, Rio Bravo, and The Long Goodbye, to write the first draft of Empire. She delivered it in February 1978 and died of cancer six weeks later. Lawrence Kasdan, 29 years old and unknown, was hired to complete the screenplay. Empire is dedicated to Brackett.</p>
     <div class="hud-bottom-bar">
-      <div class="hud-card-tags"><span class="tag">Leigh Brackett</span><span class="tag">Lawrence Kasdan</span></div>
+      <div class="hud-card-tags"><a class="tag" href="https://en.wikipedia.org/wiki/Leigh_Brackett" target="_blank" rel="noopener">Leigh Brackett</a><a class="tag" href="https://en.wikipedia.org/wiki/Lawrence_Kasdan" target="_blank" rel="noopener">Lawrence Kasdan</a></div>
       <span class="hud-scan-code">MEM::BRACKETT</span>
     </div>
   </div>
@@ -465,8 +497,8 @@
 <section class="section" id="making">
   <div class="sec-label fi">Section 02 · 1978–1980</div>
   <h2 class="sec-title fi" style="--d:0.05s">Making The Empire Strikes Back<span class="cursor-blink" style="color:var(--accent);">_</span></h2>
-  <p class="sec-intro fi" style="--d:0.1s">Principal photography began March 5, 1979 at Finse, Norway — one of the worst winters in the region's recorded history. It ended at Elstree Studios in London in September 1979, 25 days late and $6 million over budget. What happened in between was unprecedented: a major blockbuster sequel built by a director who had never worked at this scale, deliberately slowing everything down.</p>
-  <p class="sec-intro fi" style="--d:0.12s;margin-top:-2rem;">Irvin Kershner was Lucas's former professor at USC's film school. He was 55, known for intimate character work — not spectacle. Lucas chose him precisely because he wouldn't make a crowd-pleasing machine. What followed was 175 shooting days of conflict. Kershner insisted on rehearsal time that wasn't budgeted. He let scenes breathe past the point where effects supervisors grew anxious. Lucas flew to London three times to discuss the schedule. Kershner went 25 days over anyway. The film is better for every day of it.</p>
+  <p class="sec-intro fi" style="--d:0.1s">Principal photography began March 5, 1979 at Finse, Norway, one of the worst winters in the region's recorded history. It ended at Elstree Studios in London in September 1979, 25 days late and $6 million over budget. What happened in between was unprecedented: a major blockbuster sequel built by a director who had never worked at this scale, deliberately slowing everything down.</p>
+  <p class="sec-intro fi" style="--d:0.12s;margin-top:-2rem;">Irvin Kershner was Lucas's former professor at USC's film school. He was 55, known for intimate character work, not spectacle. Lucas chose him precisely because he wouldn't make a crowd-pleasing machine. What followed was 175 shooting days of conflict. Kershner insisted on rehearsal time that wasn't budgeted. He let scenes breathe past the point where effects supervisors grew anxious. Lucas flew to London three times to discuss the schedule. Kershner went 25 days over anyway. The film is better for every day of it.</p>
   <div class="hud-grid" style="grid-template-columns:1fr 1fr;">
 <div class="hud-card hud-a fi" style="--c-col:#4A9EFF">
   <div class="hud-corner hud-corner-tl"></div><div class="hud-corner hud-corner-br"></div>
@@ -481,7 +513,7 @@
     <h3>Finse in the Worst Winter on Record</h3>
     <p>The Hoth exterior sequences were shot in Finse, Norway, 4,000 feet above sea level on the Hardangerjøkulen glacier. The crew arrived during one of the worst winter storms the region had seen in decades. Winds reached 100 mph. Crew and cast were snowbound for four days. Mark Hamill had to be escorted across a rope line to reach set. The desperation visible in the opening sequence is not entirely acted.</p>
     <div class="hud-bottom-bar">
-      <div class="hud-card-tags"><span class="tag">Hoth</span><span class="tag">On Location</span></div>
+      <div class="hud-card-tags"><a class="tag" href="https://en.wikipedia.org/wiki/Hoth" target="_blank" rel="noopener">Hoth</a><a class="tag" href="https://en.wikipedia.org/wiki/On_Location" target="_blank" rel="noopener">On Location</a></div>
       <span class="hud-scan-code">LOC::FINSE</span>
     </div>
   </div>
@@ -499,7 +531,7 @@
     <h3>Elstree Studio Fire</h3>
     <p>In June 1979, a fire broke out at Elstree Studios and destroyed one of the main sets mid-production. The set had to be rebuilt from scratch, adding weeks to an already delayed schedule and pushing the budget further past its limit. Lucas, simultaneously producing Raiders of the Lost Ark and financing Empire personally, was by multiple accounts under extraordinary pressure.</p>
     <div class="hud-bottom-bar">
-      <div class="hud-card-tags"><span class="tag">Elstree</span><span class="tag">Production Chaos</span></div>
+      <div class="hud-card-tags"><a class="tag" href="https://en.wikipedia.org/wiki/Elstree" target="_blank" rel="noopener">Elstree</a><a class="tag" href="https://en.wikipedia.org/wiki/Production_Chaos" target="_blank" rel="noopener">Production Chaos</a></div>
       <span class="hud-scan-code">LOC::ELSTREE</span>
     </div>
   </div>
@@ -517,7 +549,7 @@
     <h3>The Carbon Freeze Set Was Unbearable</h3>
     <p>The carbon freeze chamber was lit to achieve its red-orange industrial glow. The lighting rigs generated enormous heat. Crew members rotated off set every 20 minutes to avoid heat exhaustion. Several required medical attention. Harrison Ford's scenes were shot in multiple short bursts over several days. The urgency in those sequences is not performed.</p>
     <div class="hud-bottom-bar">
-      <div class="hud-card-tags"><span class="tag">Cloud City</span><span class="tag">Production</span></div>
+      <div class="hud-card-tags"><a class="tag" href="https://en.wikipedia.org/wiki/Cloud_City" target="_blank" rel="noopener">Cloud City</a><a class="tag" href="https://en.wikipedia.org/wiki/Production" target="_blank" rel="noopener">Production</a></div>
       <span class="hud-scan-code">TEMP::CRITICAL</span>
     </div>
   </div>
@@ -533,9 +565,9 @@
     <div class="hud-eyebrow">Go-Motion <span class="hud-eyebrow-aurabesh">PQRST</span></div>
     <div class="hud-year-row"><span class="hud-year">1979–1980</span><span class="hud-year-tick"></span></div>
     <h3>ILM Invented a New Technique for the AT-ATs</h3>
-    <p>The AT-AT walkers were physical models animated frame-by-frame — but stop-motion produces an unnatural strobing effect. ILM's Phil Tippett developed go-motion: motorized rods moved the model during each exposure, introducing natural motion blur. It made the AT-ATs feel genuinely massive and heavy. The technique was used in films through the early 1990s.</p>
+    <p>The AT-AT walkers were physical models animated frame-by-frame, but stop-motion produces an unnatural strobing effect. ILM's Phil Tippett developed go-motion: motorized rods moved the model during each exposure, introducing natural motion blur. It made the AT-ATs feel genuinely massive and heavy. The technique was used in films through the early 1990s.</p>
     <div class="hud-bottom-bar">
-      <div class="hud-card-tags"><span class="tag">ILM</span><span class="tag">VFX</span><span class="tag">AT-AT</span></div>
+      <div class="hud-card-tags"><a class="tag" href="https://en.wikipedia.org/wiki/ILM" target="_blank" rel="noopener">ILM</a><a class="tag" href="https://en.wikipedia.org/wiki/VFX" target="_blank" rel="noopener">VFX</a><a class="tag" href="https://en.wikipedia.org/wiki/AT-AT" target="_blank" rel="noopener">AT-AT</a></div>
       <span class="hud-scan-code">VFX::NEW</span>
     </div>
   </div>
@@ -572,7 +604,7 @@
 <section class="section alt" id="locations">
   <div class="sec-label fi">Section 03 · The Three Worlds</div>
   <h2 class="sec-title fi" style="--d:0.05s">Hoth · Dagobah · Cloud City<span class="cursor-blink" style="color:var(--accent);">_</span></h2>
-  <p class="sec-intro fi" style="--d:0.1s">Empire is three films happening simultaneously in three radically different environments. Each was designed by Ralph McQuarrie from concept paintings before a single set was built. McQuarrie is arguably the most important person in the visual history of Star Wars — the films look the way they do because of his imagination.</p>
+  <p class="sec-intro fi" style="--d:0.1s">Empire is three films happening simultaneously in three radically different environments. Each was designed by Ralph McQuarrie from concept paintings before a single set was built. McQuarrie is arguably the most important person in the visual history of Star Wars, the films look the way they do because of his imagination.</p>
   <div class="hud-grid" style="grid-template-columns:1fr 1fr 1fr;">
 <div class="hud-card hud-a fi" style="--c-col:#B0D8FF">
   <div class="hud-corner hud-corner-tl"></div><div class="hud-corner hud-corner-br"></div>
@@ -587,7 +619,7 @@
     <h3>The Battle That Opened the Film</h3>
     <p>The opening Battle of Hoth was achieved with physical scale models, go-motion AT-ATs, pyrotechnics shot on the Norway glacier, and matte paintings. No CGI existed. The snowspeeders were models on wires. The trench explosions were real charges buried in Finse snow. 40 ILM staff worked on this sequence alone for eight months.</p>
     <div class="hud-bottom-bar">
-      <div class="hud-card-tags"><span class="tag">Hoth</span><span class="tag">ILM</span><span class="tag">Norway</span></div>
+      <div class="hud-card-tags"><a class="tag" href="https://en.wikipedia.org/wiki/Hoth" target="_blank" rel="noopener">Hoth</a><a class="tag" href="https://en.wikipedia.org/wiki/ILM" target="_blank" rel="noopener">ILM</a><a class="tag" href="https://en.wikipedia.org/wiki/Norway" target="_blank" rel="noopener">Norway</a></div>
       <span class="hud-scan-code">COORD::HOTH</span>
     </div>
   </div>
@@ -605,7 +637,7 @@
     <h3>900 Plants and a Genuine Smell</h3>
     <p>Dagobah was built entirely on Stage 3 at Elstree over six weeks. The crew sourced 900 live plants from a London nursery embedded in fog over standing water. It looked extraordinary on film and smelled genuinely foul on set. Hamill described the heat and humidity as nearly unbearable. The Yoda puppet required five operators working from below the stage floor.</p>
     <div class="hud-bottom-bar">
-      <div class="hud-card-tags"><span class="tag">Dagobah</span><span class="tag">Yoda</span><span class="tag">Practical Sets</span></div>
+      <div class="hud-card-tags"><a class="tag" href="https://en.wikipedia.org/wiki/Dagobah" target="_blank" rel="noopener">Dagobah</a><a class="tag" href="https://en.wikipedia.org/wiki/Yoda" target="_blank" rel="noopener">Yoda</a><a class="tag" href="https://en.wikipedia.org/wiki/Practical_Sets" target="_blank" rel="noopener">Practical Sets</a></div>
       <span class="hud-scan-code">COORD::DAGOBAH</span>
     </div>
   </div>
@@ -621,9 +653,9 @@
     <div class="hud-eyebrow">Cloud City · Bespin <span class="hud-eyebrow-aurabesh">KLMNO</span></div>
     <div class="hud-year-row"><span class="hud-year">McQuarrie's Vision</span><span class="hud-year-tick"></span></div>
     <h3>Built From a Painting</h3>
-    <p>Cloud City came entirely from McQuarrie's concept paintings before Norman Reynolds built it full scale. The reactor shaft where Luke falls was a vertical set 40 feet tall at Elstree. Luke's fall was shot with a stunt performer on wires against a separately filmed background. The white-and-grey corridors were designed to feel clinical and cold — a deliberate contrast to the warmth of the Rebellion.</p>
+    <p>Cloud City came entirely from McQuarrie's concept paintings before Norman Reynolds built it full scale. The reactor shaft where Luke falls was a vertical set 40 feet tall at Elstree. Luke's fall was shot with a stunt performer on wires against a separately filmed background. The white-and-grey corridors were designed to feel clinical and cold, a deliberate contrast to the warmth of the Rebellion.</p>
     <div class="hud-bottom-bar">
-      <div class="hud-card-tags"><span class="tag">Cloud City</span><span class="tag">McQuarrie</span><span class="tag">Design</span></div>
+      <div class="hud-card-tags"><a class="tag" href="https://en.wikipedia.org/wiki/Cloud_City" target="_blank" rel="noopener">Cloud City</a><a class="tag" href="https://en.wikipedia.org/wiki/McQuarrie" target="_blank" rel="noopener">McQuarrie</a><a class="tag" href="https://en.wikipedia.org/wiki/Design" target="_blank" rel="noopener">Design</a></div>
       <span class="hud-scan-code">COORD::BESPIN</span>
     </div>
   </div>
@@ -641,7 +673,7 @@
     <h3>The Man Who Invented How Star Wars Looks</h3>
     <p>Former NASA illustrator hired by Lucas in 1975 to paint key scenes before any sets, costumes, or props existed. McQuarrie's paintings became the visual language of the franchise: Vader's helmet, R2-D2's design, C-3PO's gold. For Empire he painted Hoth, Dagobah, and Cloud City. Everything physical followed his vision.</p>
     <div class="hud-bottom-bar">
-      <div class="hud-card-tags"><span class="tag">Ralph McQuarrie</span><span class="tag">Concept Art</span></div>
+      <div class="hud-card-tags"><a class="tag" href="https://en.wikipedia.org/wiki/Ralph_McQuarrie" target="_blank" rel="noopener">Ralph McQuarrie</a><a class="tag" href="https://en.wikipedia.org/wiki/Concept_Art" target="_blank" rel="noopener">Concept Art</a></div>
       <span class="hud-scan-code">ART::PRIMARY</span>
     </div>
   </div>
@@ -659,7 +691,7 @@
     <h3>The Mynocks Were an Afterthought</h3>
     <p>The asteroid sequence was added to fill running time while Dagobah sets were under construction. The mynock creatures were added even later in post-production after test screenings found the sequence too passive. The space slug was a puppet. The mynocks were hand-puppets photographed against a separately lit background. Both became iconic despite being improvised fixes.</p>
     <div class="hud-bottom-bar">
-      <div class="hud-card-tags"><span class="tag">Asteroid Field</span><span class="tag">Mynocks</span></div>
+      <div class="hud-card-tags"><a class="tag" href="https://en.wikipedia.org/wiki/Asteroid_Field" target="_blank" rel="noopener">Asteroid Field</a><a class="tag" href="https://en.wikipedia.org/wiki/Mynocks" target="_blank" rel="noopener">Mynocks</a></div>
       <span class="hud-scan-code">STATUS::LATE ADD</span>
     </div>
   </div>
@@ -675,9 +707,9 @@
     <div class="hud-eyebrow">John Barry <span class="hud-eyebrow-aurabesh">ABCDE</span></div>
     <div class="hud-year-row"><span class="hud-year">Production Design</span><span class="hud-year-tick"></span></div>
     <h3>The Man Who Built the Worlds</h3>
-    <p>Production designer John Barry — who won an Academy Award for A New Hope — died of meningitis during Empire's production in June 1979. He was 43. Norman Reynolds took over and completed the film. Barry's preliminary design work on Empire's look is preserved in Elstree records. The film is informally dedicated to his contribution.</p>
+    <p>Production designer John Barry, who won an Academy Award for A New Hope, died of meningitis during Empire's production in June 1979. He was 43. Norman Reynolds took over and completed the film. Barry's preliminary design work on Empire's look is preserved in Elstree records. The film is informally dedicated to his contribution.</p>
     <div class="hud-bottom-bar">
-      <div class="hud-card-tags"><span class="tag">John Barry</span><span class="tag">Norman Reynolds</span></div>
+      <div class="hud-card-tags"><a class="tag" href="https://en.wikipedia.org/wiki/John_Barry" target="_blank" rel="noopener">John Barry</a><a class="tag" href="https://en.wikipedia.org/wiki/Norman_Reynolds" target="_blank" rel="noopener">Norman Reynolds</a></div>
       <span class="hud-scan-code">MEM::BARRY</span>
     </div>
   </div>
@@ -686,8 +718,8 @@
 </section>
 
 <!-- VADER BAND -->
-<div class="vader-band" id="vader" style="background-image:url('empire/images/vader-small.jpg');background-size:auto 90%;background-repeat:no-repeat;background-position:right 5% center;">
-  <div style="position:absolute;inset:0;background:linear-gradient(to right,rgba(0,0,0,0.98) 50%,rgba(0,0,0,0.7) 100%);z-index:0;"></div>
+<div class="vader-band" id="vader" style="background-image:url('empire/images/vader-small-crop.png');background-size:auto 95%;background-repeat:no-repeat;background-position:left 2% bottom;">
+  <div style="position:absolute;inset:0;background:linear-gradient(to left,rgba(0,0,0,0.98) 40%,rgba(0,0,0,0.55) 100%);z-index:0;"></div>
   <div style="position:relative;z-index:1;display:contents;">
   <div class="vader-pre fi">Cloud City · Bespin · May 21, 1980</div>
   <div class="vader-line fi" style="--d:0.1s">&ldquo;No. I am<br><span class="reveal">your father.&rdquo;</span></div>
@@ -701,10 +733,10 @@
 </div>
 
 <!-- SECTION 04 -->
-<section class="section" id="thetwist">
-  <div class="sec-label fi">Section 04 · The Twist</div>
-  <h2 class="sec-title fi" style="--d:0.05s">How They Kept the Secret<span class="cursor-blink" style="color:var(--accent);">_</span></h2>
-  <p class="sec-intro fi" style="--d:0.1s">The Vader reveal is the most documented secret in cinema history. It held for three years — through an era of no internet, but with a leak-prone industry, hundreds of crew, and a cast that would have been the natural source. How it stayed secret, and what happened when it didn't, is its own story.</p>
+<section class="section" id="thetwist" style="background:#000;border-top:none;border-bottom:1px solid rgba(74,158,255,0.08);">
+  <div class="sec-label fi" style="color:rgba(74,158,255,0.7);">Section 04 · The Twist</div>
+  <h2 class="sec-title fi" style="--d:0.05s;color:#E8F4FF;">How They Kept the Secret<span class="cursor-blink" style="color:var(--accent);">_</span></h2>
+  <p class="sec-intro fi" style="--d:0.1s;color:rgba(180,210,240,0.7);">The Vader reveal is the most documented secret in cinema history. It held for three years, through an era of no internet, but with a leak-prone industry, hundreds of crew, and a cast that would have been the natural source. How it stayed secret, and what happened when it didn't, is its own story.</p>
   <div class="hud-grid" style="grid-template-columns:1fr 1fr;">
 <div class="hud-card hud-a fi" style="--c-col:#4A9EFF">
   <div class="hud-corner hud-corner-tl"></div><div class="hud-corner hud-corner-br"></div>
@@ -717,9 +749,9 @@
     <div class="hud-eyebrow">On Set <span class="hud-eyebrow-aurabesh">ABCDE</span></div>
     <div class="hud-year-row"><span class="hud-year">1979</span><span class="hud-year-tick"></span></div>
     <h3>David Prowse Got a Different Line</h3>
-    <p>Prowse — who physically performed Vader — was given the false line "Obi-Wan killed your father" to read on set. He delivered it in character. Hamill was told to react to whatever Vader says. The scene was shot multiple times. Prowse's dialogue was never going to appear in the finished film — it existed entirely to protect the secret. Prowse claimed for years he didn't know the real ending. Kershner and Lucas disputed this.</p>
+    <p>Prowse, who physically performed Vader, was given the false line "Obi-Wan killed your father" to read on set. He delivered it in character. Hamill was told to react to whatever Vader says. The scene was shot multiple times. Prowse's dialogue was never going to appear in the finished film, it existed entirely to protect the secret. Prowse claimed for years he didn't know the real ending. Kershner and Lucas disputed this.</p>
     <div class="hud-bottom-bar">
-      <div class="hud-card-tags"><span class="tag">David Prowse</span><span class="tag">Secrecy</span></div>
+      <div class="hud-card-tags"><a class="tag" href="https://en.wikipedia.org/wiki/David_Prowse" target="_blank" rel="noopener">David Prowse</a><a class="tag" href="https://en.wikipedia.org/wiki/Secrecy" target="_blank" rel="noopener">Secrecy</a></div>
       <span class="hud-scan-code">SEC::ACTIVE</span>
     </div>
   </div>
@@ -735,9 +767,9 @@
     <div class="hud-eyebrow">Hamill <span class="hud-eyebrow-aurabesh">FGHIJ</span></div>
     <div class="hud-year-row"><span class="hud-year">1979</span><span class="hud-year-tick"></span></div>
     <h3>Told the Truth Moments Before Filming</h3>
-    <p>Kershner told Hamill the real line shortly before cameras rolled. Hamill was instructed to react as if genuinely hearing it for the first time. His face in that sequence — the disbelief, the horror, the calculation — is largely unrehearsed. Hamill has said the emotional reality of the moment was genuinely destabilising. He considers it the finest acting he ever did in the franchise.</p>
+    <p>Kershner told Hamill the real line shortly before cameras rolled. Hamill was instructed to react as if genuinely hearing it for the first time. His face in that sequence, the disbelief, the horror, the calculation, is largely unrehearsed. Hamill has said the emotional reality of the moment was genuinely destabilising. He considers it the finest acting he ever did in the franchise.</p>
     <div class="hud-bottom-bar">
-      <div class="hud-card-tags"><span class="tag">Mark Hamill</span><span class="tag">Performance</span></div>
+      <div class="hud-card-tags"><a class="tag" href="https://en.wikipedia.org/wiki/Mark_Hamill" target="_blank" rel="noopener">Mark Hamill</a><a class="tag" href="https://en.wikipedia.org/wiki/Performance" target="_blank" rel="noopener">Performance</a></div>
       <span class="hud-scan-code">REACT::GENUINE</span>
     </div>
   </div>
@@ -753,9 +785,9 @@
     <div class="hud-eyebrow">James Earl Jones <span class="hud-eyebrow-aurabesh">KLMNO</span></div>
     <div class="hud-year-row"><span class="hud-year">Post-Production</span><span class="hud-year-tick"></span></div>
     <h3>Jones Recorded It Once</h3>
-    <p>Jones — given the real script, one of three people — recorded "No. I am your father" in a single post-production session. He delivered it with quiet certainty rather than dramatic emphasis. The calm is what makes it land as truth rather than revelation. His work on A New Hope and Empire was uncredited at his own request. He was first credited in Return of the Jedi.</p>
+    <p>Jones, given the real script, one of three people, recorded "No. I am your father" in a single post-production session. He delivered it with quiet certainty rather than dramatic emphasis. The calm is what makes it land as truth rather than revelation. His work on A New Hope and Empire was uncredited at his own request. He was first credited in Return of the Jedi.</p>
     <div class="hud-bottom-bar">
-      <div class="hud-card-tags"><span class="tag">James Earl Jones</span><span class="tag">Voice</span></div>
+      <div class="hud-card-tags"><a class="tag" href="https://en.wikipedia.org/wiki/James_Earl_Jones" target="_blank" rel="noopener">James Earl Jones</a><a class="tag" href="https://en.wikipedia.org/wiki/Voice" target="_blank" rel="noopener">Voice</a></div>
       <span class="hud-scan-code">TAKE::ONE</span>
     </div>
   </div>
@@ -771,9 +803,9 @@
     <div class="hud-eyebrow">The Audience <span class="hud-eyebrow-aurabesh">PQRST</span></div>
     <div class="hud-year-row"><span class="hud-year">May 1980</span><span class="hud-year-tick"></span></div>
     <h3>What Happened in Theaters</h3>
-    <p>Contemporary accounts describe audiences first laughing — assuming Vader was lying — then going quiet, then erupting. The NY Times noted the collective stunned silence. With no internet and no home video, the question of whether Vader was telling the truth lived entirely in memory and argument for three years. That uncertainty is a cultural artifact that cannot be recreated.</p>
+    <p>Contemporary accounts describe audiences first laughing, assuming Vader was lying, then going quiet, then erupting. The NY Times noted the collective stunned silence. With no internet and no home video, the question of whether Vader was telling the truth lived entirely in memory and argument for three years. That uncertainty is a cultural artifact that cannot be recreated.</p>
     <div class="hud-bottom-bar">
-      <div class="hud-card-tags"><span class="tag">Release</span><span class="tag">Audience</span><span class="tag">1980</span></div>
+      <div class="hud-card-tags"><a class="tag" href="https://en.wikipedia.org/wiki/Release" target="_blank" rel="noopener">Release</a><a class="tag" href="https://en.wikipedia.org/wiki/Audience" target="_blank" rel="noopener">Audience</a><a class="tag" href="https://en.wikipedia.org/wiki/1980" target="_blank" rel="noopener">1980</a></div>
       <span class="hud-scan-code">IMPACT::MAX</span>
     </div>
   </div>
@@ -785,7 +817,7 @@
 <section class="section alt" id="thefilm">
   <div class="sec-label fi">Section 05 · The Film</div>
   <h2 class="sec-title fi" style="--d:0.05s">What's Actually in It<span class="cursor-blink" style="color:var(--accent);">_</span></h2>
-  <p class="sec-intro fi" style="--d:0.1s">Empire is structurally unlike almost anything that came before it in mainstream Hollywood. It begins with a defeat. It ends without resolution. Its hero loses his hand, his mentor, and his certainty. Every major character relationship changes. These are not accidents — they were fought for, against significant pressure to deliver a more conventional entertainment.</p>
+  <p class="sec-intro fi" style="--d:0.1s">Empire is structurally unlike almost anything that came before it in mainstream Hollywood. It begins with a defeat. It ends without resolution. Its hero loses his hand, his mentor, and his certainty. Every major character relationship changes. These are not accidents, they were fought for, against significant pressure to deliver a more conventional entertainment.</p>
   <div class="hud-grid" style="grid-template-columns:1fr 1fr;">
 <div class="hud-card hud-a fi" style="--c-col:#4A9EFF">
   <div class="hud-corner hud-corner-tl"></div><div class="hud-corner hud-corner-br"></div>
@@ -797,10 +829,10 @@
   <div class="hud-card-inner">
     <div class="hud-eyebrow">Han and Leia <span class="hud-eyebrow-aurabesh">ABCDE</span></div>
     <div class="hud-year-row"><span class="hud-year">Lawrence Kasdan</span><span class="hud-year-tick"></span></div>
-    <h3>"I Know" — Ford's Improvisation</h3>
-    <p>The scripted line was simple: Leia says "I love you," Han says "I love you too." Ford tried the scripted version multiple times. Kershner kept the takes but sensed something was wrong — it made Han sound like a different character. On one take, Ford improvised "I know." Kershner immediately cut and said "print it." The two words contain everything about Han Solo: his ego, his terror, his love, his defiance. It is arguably the finest moment of character economy in the original trilogy.</p>
+    <h3>"I Know": Ford's Improvisation</h3>
+    <p>The scripted line was simple: Leia says "I love you," Han says "I love you too." Ford tried the scripted version multiple times. Kershner kept the takes but sensed something was wrong, it made Han sound like a different character. On one take, Ford improvised "I know." Kershner immediately cut and said "print it." The two words contain everything about Han Solo: his ego, his terror, his love, his defiance. It is arguably the finest moment of character economy in the original trilogy.</p>
     <div class="hud-bottom-bar">
-      <div class="hud-card-tags"><span class="tag">Harrison Ford</span><span class="tag">Improvisation</span><span class="tag">Han Solo</span></div>
+      <div class="hud-card-tags"><a class="tag" href="https://en.wikipedia.org/wiki/Harrison_Ford" target="_blank" rel="noopener">Harrison Ford</a><a class="tag" href="https://en.wikipedia.org/wiki/Improvisation" target="_blank" rel="noopener">Improvisation</a><a class="tag" href="https://en.wikipedia.org/wiki/Han_Solo" target="_blank" rel="noopener">Han Solo</a></div>
       <span class="hud-scan-code">LINE::ICONIC</span>
     </div>
   </div>
@@ -818,7 +850,7 @@
     <h3>The Face Is Partly Albert Einstein</h3>
     <p>Stuart Freeborn sculpted Yoda while seriously ill, basing the face on two sources: his own reflection and photographs of Albert Einstein. The combination of age, wisdom, and mischief is intentional and documented. Frank Oz operated the head and right arm while voicing the character; four additional puppeteers controlled the hands from below the stage. The scene where Yoda lifts the X-wing required all five working in perfect synchronisation.</p>
     <div class="hud-bottom-bar">
-      <div class="hud-card-tags"><span class="tag">Yoda</span><span class="tag">Stuart Freeborn</span><span class="tag">Frank Oz</span></div>
+      <div class="hud-card-tags"><a class="tag" href="https://en.wikipedia.org/wiki/Yoda" target="_blank" rel="noopener">Yoda</a><a class="tag" href="https://en.wikipedia.org/wiki/Stuart_Freeborn" target="_blank" rel="noopener">Stuart Freeborn</a><a class="tag" href="https://en.wikipedia.org/wiki/Frank_Oz" target="_blank" rel="noopener">Frank Oz</a></div>
       <span class="hud-scan-code">CHAR::YODA</span>
     </div>
   </div>
@@ -836,7 +868,7 @@
     <h3>The Ending That Broke the Formula</h3>
     <p>Empire ends in defeat. Han is frozen and taken by Boba Fett. Luke has lost his hand, his mentor, and his certainty about his own family. The Rebellion is scattered. There is no victory. The final image is the heroes standing at the viewport of a medical frigate looking into space with everything still unresolved. In 1980 this was considered a structural risk of the highest order. Kershner and Lucas held the line against every commercial instinct that said soften it.</p>
     <div class="hud-bottom-bar">
-      <div class="hud-card-tags"><span class="tag">Structure</span><span class="tag">Ending</span></div>
+      <div class="hud-card-tags"><a class="tag" href="https://en.wikipedia.org/wiki/Structure" target="_blank" rel="noopener">Structure</a><a class="tag" href="https://en.wikipedia.org/wiki/Ending" target="_blank" rel="noopener">Ending</a></div>
       <span class="hud-scan-code">STATUS::UNRESOLVED</span>
     </div>
   </div>
@@ -852,9 +884,9 @@
     <div class="hud-eyebrow">Boba Fett <span class="hud-eyebrow-aurabesh">PQRST</span></div>
     <div class="hud-year-row"><span class="hud-year">Jeremy Bulloch</span><span class="hud-year-tick"></span></div>
     <h3>Fewer Than 30 Words. Infinite Mythology.</h3>
-    <p>Boba Fett says fewer than 30 words across The Empire Strikes Back. Jeremy Bulloch communicates everything through posture — the tilt of the helmet, the stillness, the casual way Fett stands while others move. Fett became one of the most obsessively popular characters in the franchise despite almost no screen time. His first appearance was in the 1978 Star Wars Holiday Special — a production so widely disavowed that Lucas reportedly wanted every copy destroyed.</p>
+    <p>Boba Fett says fewer than 30 words across The Empire Strikes Back. Jeremy Bulloch communicates everything through posture, the tilt of the helmet, the stillness, the casual way Fett stands while others move. Fett became one of the most obsessively popular characters in the franchise despite almost no screen time. His first appearance was in the 1978 Star Wars Holiday Special, a production so widely disavowed that Lucas reportedly wanted every copy destroyed.</p>
     <div class="hud-bottom-bar">
-      <div class="hud-card-tags"><span class="tag">Boba Fett</span><span class="tag">Jeremy Bulloch</span></div>
+      <div class="hud-card-tags"><a class="tag" href="https://en.wikipedia.org/wiki/Boba_Fett" target="_blank" rel="noopener">Boba Fett</a><a class="tag" href="https://en.wikipedia.org/wiki/Jeremy_Bulloch" target="_blank" rel="noopener">Jeremy Bulloch</a></div>
       <span class="hud-scan-code">CHAR::FETT</span>
     </div>
   </div>
@@ -870,9 +902,9 @@
     <div class="hud-eyebrow">Lando <span class="hud-eyebrow-aurabesh">ABCDE</span></div>
     <div class="hud-year-row"><span class="hud-year">Billy Dee Williams</span><span class="hud-year-tick"></span></div>
     <h3>The Betrayal That Wasn't Simple</h3>
-    <p>Williams negotiated with Kershner and Lucas to play Lando as a man making impossible choices, not a straightforward traitor. His approach — charm covering desperation — makes the betrayal feel like genuine moral compromise. Williams has said he wanted audiences to understand that Lando had no choice: the Empire had arrived before the heroes and presented terms he couldn't refuse. That nuance is entirely Williams's contribution.</p>
+    <p>Williams negotiated with Kershner and Lucas to play Lando as a man making impossible choices, not a straightforward traitor. His approach, charm covering desperation, makes the betrayal feel like genuine moral compromise. Williams has said he wanted audiences to understand that Lando had no choice: the Empire had arrived before the heroes and presented terms he couldn't refuse. That nuance is entirely Williams's contribution.</p>
     <div class="hud-bottom-bar">
-      <div class="hud-card-tags"><span class="tag">Lando</span><span class="tag">Billy Dee Williams</span></div>
+      <div class="hud-card-tags"><a class="tag" href="https://en.wikipedia.org/wiki/Lando" target="_blank" rel="noopener">Lando</a><a class="tag" href="https://en.wikipedia.org/wiki/Billy_Dee_Williams" target="_blank" rel="noopener">Billy Dee Williams</a></div>
       <span class="hud-scan-code">CHAR::CALRISSIAN</span>
     </div>
   </div>
@@ -888,9 +920,9 @@
     <div class="hud-eyebrow">The Emperor <span class="hud-eyebrow-aurabesh">FGHIJ</span></div>
     <div class="hud-year-row"><span class="hud-year">Clive Revill</span><span class="hud-year-tick"></span></div>
     <h3>A Different Actor, Replaced 20 Years Later</h3>
-    <p>The Emperor appears in Empire in a single hologram scene. In the original 1980 release, the Emperor was performed by Marjorie Eaton in prosthetic makeup, with the voice dubbed by Clive Revill. The eyes were optically replaced with chimpanzee eyes. In the 2004 DVD release, Lucas replaced the scene entirely — digitally inserting Ian McDiarmid. The original version has never been officially released on home video in any modern format.</p>
+    <p>The Emperor appears in Empire in a single hologram scene. In the original 1980 release, the Emperor was performed by Marjorie Eaton in prosthetic makeup, with the voice dubbed by Clive Revill. The eyes were optically replaced with chimpanzee eyes. In the 2004 DVD release, Lucas replaced the scene entirely, digitally inserting Ian McDiarmid. The original version has never been officially released on home video in any modern format.</p>
     <div class="hud-bottom-bar">
-      <div class="hud-card-tags"><span class="tag">The Emperor</span><span class="tag">Special Editions</span></div>
+      <div class="hud-card-tags"><a class="tag" href="https://en.wikipedia.org/wiki/The_Emperor" target="_blank" rel="noopener">The Emperor</a><a class="tag" href="https://en.wikipedia.org/wiki/Special_Editions" target="_blank" rel="noopener">Special Editions</a></div>
       <span class="hud-scan-code">STATUS::ALTERED</span>
     </div>
   </div>
@@ -962,7 +994,7 @@
 <div class="quote-band">
   <div class="quote-band-inner">
     <span class="pq-mark fi">&ldquo;</span>
-    <p class="pq-text fi" style="--d:0.1s">The film I am most proud of. Not because it was successful — because <span class="pq-hl">it was true.</span></p>
+    <p class="pq-text fi" style="--d:0.1s">The film I am most proud of. Not because it was successful, because <span class="pq-hl">it was true.</span></p>
     <p class="pq-attr fi" style="--d:0.2s">— Irvin Kershner · Director · 1980</p>
   </div>
 </div>
@@ -971,7 +1003,7 @@
 <section class="section" id="music">
   <div class="sec-label fi">Section 06 · The Score</div>
   <h2 class="sec-title fi" style="--d:0.05s">John Williams and The Imperial March<span class="cursor-blink" style="color:var(--accent);">_</span></h2>
-  <p class="sec-intro fi" style="--d:0.1s">The A New Hope score established the universe. The Empire Strikes Back score defined its darkness. John Williams wrote the Imperial March specifically for Vader's entrance on Hoth — and in doing so created one of the most recognizable pieces of music ever composed.</p>
+  <p class="sec-intro fi" style="--d:0.1s">The A New Hope score established the universe. The Empire Strikes Back score defined its darkness. John Williams wrote the Imperial March specifically for Vader's entrance on Hoth, and in doing so created one of the most recognizable pieces of music ever composed.</p>
   <div class="hud-grid" style="grid-template-columns:1fr 1fr 1fr;">
 <div class="hud-card hud-a fi" style="--c-col:#4A9EFF">
   <div class="hud-corner hud-corner-tl"></div><div class="hud-corner hud-corner-br"></div>
@@ -984,9 +1016,9 @@
     <div class="hud-eyebrow">The Imperial March <span class="hud-eyebrow-aurabesh">ABCDE</span></div>
     <div class="hud-year-row"><span class="hud-year">1979–1980</span><span class="hud-year-tick"></span></div>
     <h3>Where the Imperial March Comes From</h3>
-    <p>Williams drew on the European military march tradition — specifically Holst's The Planets (Mars) and Chopin's Funeral March — to create a theme that communicated imperial power and inevitability simultaneously. The brass-heavy, rhythmically rigid structure was designed to feel like machinery: relentless, inhuman, unstoppable. Composed as a standalone piece first, then integrated as a leitmotif that could appear in fragments across future films.</p>
+    <p>Williams drew on the European military march tradition, specifically Holst's The Planets (Mars) and Chopin's Funeral March, to create a theme that communicated imperial power and inevitability simultaneously. The brass-heavy, rhythmically rigid structure was designed to feel like machinery: relentless, inhuman, unstoppable. Composed as a standalone piece first, then integrated as a leitmotif that could appear in fragments across future films.</p>
     <div class="hud-bottom-bar">
-      <div class="hud-card-tags"><span class="tag">Imperial March</span><span class="tag">Composition</span></div>
+      <div class="hud-card-tags"><a class="tag" href="https://en.wikipedia.org/wiki/Imperial_March" target="_blank" rel="noopener">Imperial March</a><a class="tag" href="https://en.wikipedia.org/wiki/Composition" target="_blank" rel="noopener">Composition</a></div>
       <span class="hud-scan-code">SCORE::MARCH</span>
     </div>
   </div>
@@ -1004,7 +1036,7 @@
     <h3>200+ Uses and Counting</h3>
     <p>The Imperial March has been used in over 200 films, television shows, political broadcasts, sporting events, and cultural moments. It has been played at the entrance of actual heads of state. The BBC used it in news coverage of the 2016 US election. Its cultural shorthand for menacing power is so complete that audiences understand the reference without any Star Wars context whatsoever.</p>
     <div class="hud-bottom-bar">
-      <div class="hud-card-tags"><span class="tag">Cultural Impact</span><span class="tag">Legacy</span></div>
+      <div class="hud-card-tags"><a class="tag" href="https://en.wikipedia.org/wiki/Cultural_Impact" target="_blank" rel="noopener">Cultural Impact</a><a class="tag" href="https://en.wikipedia.org/wiki/Legacy" target="_blank" rel="noopener">Legacy</a></div>
       <span class="hud-scan-code">USES::200+</span>
     </div>
   </div>
@@ -1020,9 +1052,9 @@
     <div class="hud-eyebrow">The Soundtrack <span class="hud-eyebrow-aurabesh">KLMNO</span></div>
     <div class="hud-year-row"><span class="hud-year">1980</span><span class="hud-year-tick"></span></div>
     <h3>2 Million Copies in the Year of Release</h3>
-    <p>The Empire Strikes Back soundtrack album sold over 2 million copies in 1980 — at a time when film soundtrack albums rarely cracked 500,000. Williams received his fourth Academy Award nomination. The album reached #22 on the Billboard pop chart, essentially unheard of for an orchestral film score. Williams recorded the complete score with the London Symphony Orchestra at Abbey Road over three weeks in January 1980.</p>
+    <p>The Empire Strikes Back soundtrack album sold over 2 million copies in 1980, at a time when film soundtrack albums rarely cracked 500,000. Williams received his fourth Academy Award nomination. The album reached #22 on the Billboard pop chart, essentially unheard of for an orchestral film score. Williams recorded the complete score with the London Symphony Orchestra at Abbey Road over three weeks in January 1980.</p>
     <div class="hud-bottom-bar">
-      <div class="hud-card-tags"><span class="tag">Soundtrack</span><span class="tag">John Williams</span></div>
+      <div class="hud-card-tags"><a class="tag" href="https://en.wikipedia.org/wiki/Soundtrack" target="_blank" rel="noopener">Soundtrack</a><a class="tag" href="https://en.wikipedia.org/wiki/John_Williams" target="_blank" rel="noopener">John Williams</a></div>
       <span class="hud-scan-code">SALES::2M</span>
     </div>
   </div>
@@ -1047,9 +1079,9 @@
     <div class="hud-eyebrow">Box Office <span class="hud-eyebrow-aurabesh">ABCDE</span></div>
     <div class="hud-year-row"><span class="hud-year">$10.8M</span><span class="hud-year-tick"></span></div>
     <h3>Opening Weekend</h3>
-    <p>Empire earned $10.8 million in its opening weekend across 823 theaters — the widest opening for any film to that point. It crossed $33 million in its first 10 days, becoming the fastest film to that milestone in history. It was the highest-grossing film of 1980, surpassing every competitor including Ordinary People, Coal Miner's Daughter, and Raging Bull.</p>
+    <p>Empire earned $10.8 million in its opening weekend across 823 theaters, the widest opening for any film to that point. It crossed $33 million in its first 10 days, becoming the fastest film to that milestone in history. It was the highest-grossing film of 1980, surpassing every competitor including Ordinary People, Coal Miner's Daughter, and Raging Bull.</p>
     <div class="hud-bottom-bar">
-      <div class="hud-card-tags"><span class="tag">Box Office</span><span class="tag">Records</span></div>
+      <div class="hud-card-tags"><a class="tag" href="https://en.wikipedia.org/wiki/Box_Office" target="_blank" rel="noopener">Box Office</a><a class="tag" href="https://en.wikipedia.org/wiki/Records" target="_blank" rel="noopener">Records</a></div>
       <span class="hud-scan-code">BO::RECORD</span>
     </div>
   </div>
@@ -1065,9 +1097,9 @@
     <div class="hud-eyebrow">Critical Reception <span class="hud-eyebrow-aurabesh">FGHIJ</span></div>
     <div class="hud-year-row"><span class="hud-year">1980</span><span class="hud-year-tick"></span></div>
     <h3>Not Immediately a Masterpiece</h3>
-    <p>Vincent Canby in the New York Times called it "essentially a Saturday afternoon serial." Pauline Kael was lukewarm. Gene Siskel gave it three and a half stars. The 1980 consensus: impressive technically, emotionally incomplete, a good middle chapter. The full critical rehabilitation — which took Empire's score from around 75% in early aggregations to 97% by 2024 — happened gradually over 25 years as retrospective criticism replaced opening-week notices.</p>
+    <p>Vincent Canby in the New York Times called it "essentially a Saturday afternoon serial." Pauline Kael was lukewarm. Gene Siskel gave it three and a half stars. The 1980 consensus: impressive technically, emotionally incomplete, a good middle chapter. The full critical rehabilitation, which took Empire's score from around 75% in early aggregations to 97% by 2024, happened gradually over 25 years as retrospective criticism replaced opening-week notices.</p>
     <div class="hud-bottom-bar">
-      <div class="hud-card-tags"><span class="tag">Critics</span><span class="tag">Reception</span></div>
+      <div class="hud-card-tags"><a class="tag" href="https://en.wikipedia.org/wiki/Critics" target="_blank" rel="noopener">Critics</a><a class="tag" href="https://en.wikipedia.org/wiki/Reception" target="_blank" rel="noopener">Reception</a></div>
       <span class="hud-scan-code">SCORE::EVOLVING</span>
     </div>
   </div>
@@ -1083,9 +1115,9 @@
     <div class="hud-eyebrow">Kenner <span class="hud-eyebrow-aurabesh">KLMNO</span></div>
     <div class="hud-year-row"><span class="hud-year">$150M</span><span class="hud-year-tick"></span></div>
     <h3>The AT-AT Sold Out in Two Weeks</h3>
-    <p>Kenner's AT-AT Walker toy sold out nationally within two weeks. Parents reported driving to three or four stores and finding empty shelves at each one. Kenner reported $150 million in Star Wars merchandise revenue for fiscal year 1980. The toy line had generated over $1 billion in cumulative sales by the time Return of the Jedi arrived. Boba Fett — introduced via a mail-in promotion in 1979 — was the most individually sought-after figure.</p>
+    <p>Kenner's AT-AT Walker toy sold out nationally within two weeks. Parents reported driving to three or four stores and finding empty shelves at each one. Kenner reported $150 million in Star Wars merchandise revenue for fiscal year 1980. The toy line had generated over $1 billion in cumulative sales by the time Return of the Jedi arrived. Boba Fett, introduced via a mail-in promotion in 1979, was the most individually sought-after figure.</p>
     <div class="hud-bottom-bar">
-      <div class="hud-card-tags"><span class="tag">Merchandise</span><span class="tag">Kenner</span></div>
+      <div class="hud-card-tags"><a class="tag" href="https://en.wikipedia.org/wiki/Merchandise" target="_blank" rel="noopener">Merchandise</a><a class="tag" href="https://en.wikipedia.org/wiki/Kenner" target="_blank" rel="noopener">Kenner</a></div>
       <span class="hud-scan-code">SALES::AT-AT</span>
     </div>
   </div>
@@ -1101,9 +1133,9 @@
     <div class="hud-eyebrow">The Academy <span class="hud-eyebrow-aurabesh">PQRST</span></div>
     <div class="hud-year-row"><span class="hud-year">1981</span><span class="hud-year-tick"></span></div>
     <h3>The Academy Missed It</h3>
-    <p>Empire received Academy Awards for Best Sound and a Special Achievement Award for visual effects. It was not nominated for Best Picture — an omission that has become one of the most discussed oversights in Academy history. The film that defined the blockbuster era and influenced virtually every major studio film of the following decade was considered, at the time, genre entertainment rather than cinema.</p>
+    <p>Empire received Academy Awards for Best Sound and a Special Achievement Award for visual effects. It was not nominated for Best Picture, an omission that has become one of the most discussed oversights in Academy history. The film that defined the blockbuster era and influenced virtually every major studio film of the following decade was considered, at the time, genre entertainment rather than cinema.</p>
     <div class="hud-bottom-bar">
-      <div class="hud-card-tags"><span class="tag">Oscars</span><span class="tag">Awards</span></div>
+      <div class="hud-card-tags"><a class="tag" href="https://en.wikipedia.org/wiki/Oscars" target="_blank" rel="noopener">Oscars</a><a class="tag" href="https://en.wikipedia.org/wiki/Awards" target="_blank" rel="noopener">Awards</a></div>
       <span class="hud-scan-code">AWARD::MISSED</span>
     </div>
   </div>
@@ -1124,9 +1156,9 @@
     <span class="hud-top-label" style="color:#4A9EFF;opacity:0.7;">Director</span>
     <span class="hud-status"><span class="hud-dot"></span>SYS::OK</span>
   </div>
-  <img class="person-photo" src="empire/images/people/irvin-kershner.jpg" alt="Irvin Kershner" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+  <img class="person-photo" src="empire/images/bio-Kershner.jpg" alt="Irvin Kershner" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
   <div class="person-placeholder" style="display:none">I</div>
-  <div class="person-era">1923 – 2010</div>
+  <div class="person-era">1923, 2010</div>
   <div class="person-name">Irvin Kershner</div>
   <div class="person-role">Director</div>
   <p class="person-bio">Lucas's former USC film professor. Went 25 days over schedule and $6 million over budget. Fought for every rehearsal, every beat of silence, every moment that didn't immediately advance plot. The film is better for every argument he won. Died in 2010 having never directed another film of this scale.</p>
@@ -1139,7 +1171,7 @@
     <span class="hud-top-label" style="color:#7AB8FF;opacity:0.7;">Creator / Producer</span>
     <span class="hud-status"><span class="hud-dot"></span>SYS::OK</span>
   </div>
-  <img class="person-photo" src="empire/images/people/george-lucas.jpg" alt="George Lucas" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+  <img class="person-photo" src="empire/images/bio-Lucas.jpg" alt="George Lucas" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
   <div class="person-placeholder" style="display:none">G</div>
   <div class="person-era">1944 –</div>
   <div class="person-name">George Lucas</div>
@@ -1154,12 +1186,12 @@
     <span class="hud-top-label" style="color:#C8E8FF;opacity:0.7;">Original Screenwriter</span>
     <span class="hud-status"><span class="hud-dot"></span>SYS::OK</span>
   </div>
-  <img class="person-photo" src="empire/images/people/leigh-brackett.jpg" alt="Leigh Brackett" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+  <img class="person-photo" src="empire/images/bio-Brackett.jpg" alt="Leigh Brackett" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
   <div class="person-placeholder" style="display:none">L</div>
-  <div class="person-era">1915 – 1978</div>
+  <div class="person-era">1915, 1978</div>
   <div class="person-name">Leigh Brackett</div>
   <div class="person-role">Original Screenwriter</div>
-  <p class="person-bio">Science fiction legend and Hollywood veteran — The Big Sleep, Rio Bravo, The Long Goodbye. Delivered her first draft of Empire in February 1978 and died of cancer six weeks later. She never saw the film she helped build. The film is dedicated to her memory.</p>
+  <p class="person-bio">Science fiction legend and Hollywood veteran, The Big Sleep, Rio Bravo, The Long Goodbye. Delivered her first draft of Empire in February 1978 and died of cancer six weeks later. She never saw the film she helped build. The film is dedicated to her memory.</p>
   <a class="person-link" href="https://en.wikipedia.org/wiki/Leigh_Brackett" target="_blank" rel="noopener">Wikipedia</a>
 </div>
 <div class="person-card hud-d" style="--p-accent:#4A9EFF;">
@@ -1169,7 +1201,7 @@
     <span class="hud-top-label" style="color:#4A9EFF;opacity:0.7;">Screenwriter</span>
     <span class="hud-status"><span class="hud-dot"></span>SYS::OK</span>
   </div>
-  <img class="person-photo" src="empire/images/people/lawrence-kasdan.jpg" alt="Lawrence Kasdan" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+  <img class="person-photo" src="empire/images/bio-Kasdan.jpg" alt="Lawrence Kasdan" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
   <div class="person-placeholder" style="display:none">L</div>
   <div class="person-era">1949 –</div>
   <div class="person-name">Lawrence Kasdan</div>
@@ -1184,12 +1216,12 @@
     <span class="hud-top-label" style="color:#6AACEE;opacity:0.7;">Yoda · Puppeteer & Voice</span>
     <span class="hud-status"><span class="hud-dot"></span>SYS::OK</span>
   </div>
-  <img class="person-photo" src="empire/images/people/frank-oz.jpg" alt="Frank Oz" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+  <img class="person-photo" src="empire/images/bio-oz.jpg" alt="Frank Oz" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
   <div class="person-placeholder" style="display:none">F</div>
   <div class="person-era">1944 –</div>
   <div class="person-name">Frank Oz</div>
   <div class="person-role">Yoda · Puppeteer & Voice</div>
-  <p class="person-bio">Muppets performer who built Yoda from the ground up — voice, movement, philosophy, comic timing. The misdirect of Yoda as a silly hermit before the revelation of his power is entirely Oz's interpretation. Five people operated the puppet simultaneously. Actors treated Yoda as a living colleague on set.</p>
+  <p class="person-bio">Muppets performer who built Yoda from the ground up, voice, movement, philosophy, comic timing. The misdirect of Yoda as a silly hermit before the revelation of his power is entirely Oz's interpretation. Five people operated the puppet simultaneously. Actors treated Yoda as a living colleague on set.</p>
   <a class="person-link" href="https://en.wikipedia.org/wiki/Frank_Oz" target="_blank" rel="noopener">Wikipedia</a>
 </div>
 <div class="person-card hud-b" style="--p-accent:#3A8ADD;">
@@ -1199,12 +1231,12 @@
     <span class="hud-top-label" style="color:#3A8ADD;opacity:0.7;">Composer</span>
     <span class="hud-status"><span class="hud-dot"></span>SYS::OK</span>
   </div>
-  <img class="person-photo" src="empire/images/people/john-williams.jpg" alt="John Williams" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+  <img class="person-photo" src="empire/images/bio-williams.jpg" alt="John Williams" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
   <div class="person-placeholder" style="display:none">J</div>
   <div class="person-era">1932 –</div>
   <div class="person-name">John Williams</div>
   <div class="person-role">Composer</div>
-  <p class="person-bio">Composed the complete Empire score including the Imperial March — designed as a leitmotif that could appear in fragments across future films. Recorded with the London Symphony Orchestra at Abbey Road over three weeks in January 1980. The soundtrack sold 2 million copies in the year of release.</p>
+  <p class="person-bio">Composed the complete Empire score including the Imperial March, designed as a leitmotif that could appear in fragments across future films. Recorded with the London Symphony Orchestra at Abbey Road over three weeks in January 1980. The soundtrack sold 2 million copies in the year of release.</p>
   <a class="person-link" href="https://en.wikipedia.org/wiki/John_Williams" target="_blank" rel="noopener">Wikipedia</a>
 </div>
 <div class="person-card hud-c" style="--p-accent:#8ABCF0;">
@@ -1214,9 +1246,9 @@
     <span class="hud-top-label" style="color:#8ABCF0;opacity:0.7;">Concept Artist</span>
     <span class="hud-status"><span class="hud-dot"></span>SYS::OK</span>
   </div>
-  <img class="person-photo" src="empire/images/people/ralph-mcquarrie.jpg" alt="Ralph McQuarrie" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+  <img class="person-photo" src="empire/images/bio-mcquarrie.jpg" alt="Ralph McQuarrie" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
   <div class="person-placeholder" style="display:none">R</div>
-  <div class="person-era">1929 – 2012</div>
+  <div class="person-era">1929, 2012</div>
   <div class="person-name">Ralph McQuarrie</div>
   <div class="person-role">Concept Artist</div>
   <p class="person-bio">Former NASA illustrator who created the visual language of Star Wars from 1975 onward. For Empire, his concept paintings established the look of Hoth, Dagobah, and Cloud City before any sets were built. Everything physical followed his vision. He is the most influential artist in the history of the franchise and among the least famous.</p>
@@ -1229,7 +1261,7 @@
     <span class="hud-top-label" style="color:#5098DD;opacity:0.7;">Luke Skywalker</span>
     <span class="hud-status"><span class="hud-dot"></span>SYS::OK</span>
   </div>
-  <img class="person-photo" src="empire/images/people/mark-hamill.jpg" alt="Mark Hamill" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+  <img class="person-photo" src="empire/images/bio-Hamill-2.jpg" alt="Mark Hamill" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
   <div class="person-placeholder" style="display:none">M</div>
   <div class="person-era">1951 –</div>
   <div class="person-name">Mark Hamill</div>
@@ -1244,7 +1276,7 @@
     <span class="hud-top-label" style="color:#A0D0FF;opacity:0.7;">Han Solo</span>
     <span class="hud-status"><span class="hud-dot"></span>SYS::OK</span>
   </div>
-  <img class="person-photo" src="empire/images/people/harrison-ford.jpg" alt="Harrison Ford" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+  <img class="person-photo" src="empire/images/bio-ford.jpg" alt="Harrison Ford" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
   <div class="person-placeholder" style="display:none">H</div>
   <div class="person-era">1942 –</div>
   <div class="person-name">Harrison Ford</div>
@@ -1259,12 +1291,12 @@
     <span class="hud-top-label" style="color:#2A7ACC;opacity:0.7;">Voice of Darth Vader</span>
     <span class="hud-status"><span class="hud-dot"></span>SYS::OK</span>
   </div>
-  <img class="person-photo" src="empire/images/people/james-earl-jones.jpg" alt="James Earl Jones" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+  <img class="person-photo" src="empire/images/bio-James_Earl_Jones.jpg" alt="James Earl Jones" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
   <div class="person-placeholder" style="display:none">J</div>
-  <div class="person-era">1931 – 2024</div>
+  <div class="person-era">1931, 2024</div>
   <div class="person-name">James Earl Jones</div>
   <div class="person-role">Voice of Darth Vader</div>
-  <p class="person-bio">Was given the real script — one of three people who were. Recorded "No. I am your father" in a single post-production session. His approach — calm, quiet, without theatrical menace — is what makes the line land as truth. Requested to be uncredited on both A New Hope and Empire. First appeared in the credits in Return of the Jedi.</p>
+  <p class="person-bio">Was given the real script, one of three people who were. Recorded "No. I am your father" in a single post-production session. His approach, calm, quiet, without theatrical menace, is what makes the line land as truth. Requested to be uncredited on both A New Hope and Empire. First appeared in the credits in Return of the Jedi.</p>
   <a class="person-link" href="https://en.wikipedia.org/wiki/James_Earl_Jones" target="_blank" rel="noopener">Wikipedia</a>
 </div>
 </div>
@@ -1287,9 +1319,9 @@
     <div class="hud-eyebrow">The Sequel Template <span class="hud-eyebrow-aurabesh">ABCDE</span></div>
     <div class="hud-year-row"><span class="hud-year">1980 →</span><span class="hud-year-tick"></span></div>
     <h3>Before Empire, Sequels Were Diminishing Returns</h3>
-    <p>Before 1980, the prevailing Hollywood wisdom was that sequels were contractual obligations that delivered less than the original. Empire was the first blockbuster sequel to be taken seriously as a standalone artistic achievement — and the first to outgross its predecessor domestically. Every franchise that followed — including the MCU's deliberate phase-ending darkening moves — runs on Empire's logic.</p>
+    <p>Before 1980, the prevailing Hollywood wisdom was that sequels were contractual obligations that delivered less than the original. Empire was the first blockbuster sequel to be taken seriously as a standalone artistic achievement, and the first to outgross its predecessor domestically. Every franchise that followed, including the MCU's deliberate phase-ending darkening moves, runs on Empire's logic.</p>
     <div class="hud-bottom-bar">
-      <div class="hud-card-tags"><span class="tag">Sequels</span><span class="tag">Industry</span></div>
+      <div class="hud-card-tags"><a class="tag" href="https://en.wikipedia.org/wiki/Sequels" target="_blank" rel="noopener">Sequels</a><a class="tag" href="https://en.wikipedia.org/wiki/Industry" target="_blank" rel="noopener">Industry</a></div>
       <span class="hud-scan-code">TEMPLATE::SET</span>
     </div>
   </div>
@@ -1305,9 +1337,9 @@
     <div class="hud-eyebrow">The Reveal Template <span class="hud-eyebrow-aurabesh">FGHIJ</span></div>
     <div class="hud-year-row"><span class="hud-year">1980 →</span><span class="hud-year-tick"></span></div>
     <h3>Every Plot Twist Since Is Measured Against This One</h3>
-    <p>The "I am your father" reveal demonstrated that a franchise mythology could be completely rewritten in a single scene. It established the late-film recontextualization as a viable and powerful tool. The Sixth Sense, Knives Out, The Usual Suspects, Parasite — the tradition of the twist that restructures everything retrospectively runs directly through Cloud City in 1980.</p>
+    <p>The "I am your father" reveal demonstrated that a franchise mythology could be completely rewritten in a single scene. It established the late-film recontextualization as a viable and powerful tool. The Sixth Sense, Knives Out, The Usual Suspects, Parasite, the tradition of the twist that restructures everything retrospectively runs directly through Cloud City in 1980.</p>
     <div class="hud-bottom-bar">
-      <div class="hud-card-tags"><span class="tag">Narrative</span><span class="tag">Influence</span></div>
+      <div class="hud-card-tags"><a class="tag" href="https://en.wikipedia.org/wiki/Narrative" target="_blank" rel="noopener">Narrative</a><a class="tag" href="https://en.wikipedia.org/wiki/Influence" target="_blank" rel="noopener">Influence</a></div>
       <span class="hud-scan-code">TWIST::ORIGIN</span>
     </div>
   </div>
@@ -1323,9 +1355,9 @@
     <div class="hud-eyebrow">The IP Economy <span class="hud-eyebrow-aurabesh">KLMNO</span></div>
     <div class="hud-year-row"><span class="hud-year">2012</span><span class="hud-year-tick"></span></div>
     <h3>The $4 Billion Acquisition</h3>
-    <p>When Disney acquired Lucasfilm for $4.05 billion in October 2012, the intellectual property being purchased included everything built from Empire forward. The franchise Lucas structured around ownership of his own work — rather than director's fees — became, 35 years later, one of the most valuable entertainment properties on earth.</p>
+    <p>When Disney acquired Lucasfilm for $4.05 billion in October 2012, the intellectual property being purchased included everything built from Empire forward. The franchise Lucas structured around ownership of his own work, rather than director's fees, became, 35 years later, one of the most valuable entertainment properties on earth.</p>
     <div class="hud-bottom-bar">
-      <div class="hud-card-tags"><span class="tag">Disney</span><span class="tag">Lucasfilm</span><span class="tag">Commerce</span></div>
+      <div class="hud-card-tags"><a class="tag" href="https://en.wikipedia.org/wiki/Disney" target="_blank" rel="noopener">Disney</a><a class="tag" href="https://en.wikipedia.org/wiki/Lucasfilm" target="_blank" rel="noopener">Lucasfilm</a><a class="tag" href="https://en.wikipedia.org/wiki/Commerce" target="_blank" rel="noopener">Commerce</a></div>
       <span class="hud-scan-code">SALE::4B</span>
     </div>
   </div>
@@ -1343,7 +1375,7 @@
     <h3>From Three-and-a-Half Stars to Canon</h3>
     <p>Gene Siskel gave Empire three and a half stars in 1980. By 2024, it sits at 97% on Rotten Tomatoes, appears in AFI's Top 100, and ranks #13 on IMDb's Top 250 as the highest-rated Star Wars film. The arc from "impressive middle chapter" to "one of the greatest films ever made" took four decades and represents one of the most complete critical rehabilitations in cinema history.</p>
     <div class="hud-bottom-bar">
-      <div class="hud-card-tags"><span class="tag">Canon</span><span class="tag">Reassessment</span></div>
+      <div class="hud-card-tags"><a class="tag" href="https://en.wikipedia.org/wiki/Canon" target="_blank" rel="noopener">Canon</a><a class="tag" href="https://en.wikipedia.org/wiki/Reassessment" target="_blank" rel="noopener">Reassessment</a></div>
       <span class="hud-scan-code">RT::97PCT</span>
     </div>
   </div>
@@ -1368,9 +1400,9 @@
     <div class="hud-eyebrow">Return of the Jedi <span class="hud-eyebrow-aurabesh">ABCDE</span></div>
     <div class="hud-year-row"><span class="hud-year">1983</span><span class="hud-year-tick"></span></div>
     <h3>Return of the Jedi</h3>
-    <p>Richard Marquand directed. Lucas produced. Kasdan returned to write. Jedi resolved the Vader question, freed Han Solo, and defeated the Empire. It grossed $475 million worldwide — slightly less than Empire. The Ewoks divided audiences in a way that continues to define the franchise's debates about commercial compromise.</p>
+    <p>Richard Marquand directed. Lucas produced. Kasdan returned to write. Jedi resolved the Vader question, freed Han Solo, and defeated the Empire. It grossed $475 million worldwide, slightly less than Empire. The Ewoks divided audiences in a way that continues to define the franchise's debates about commercial compromise.</p>
     <div class="hud-bottom-bar">
-      <div class="hud-card-tags"><span class="tag">Sequel</span><span class="tag">Resolution</span></div>
+      <div class="hud-card-tags"><a class="tag" href="https://en.wikipedia.org/wiki/Sequel" target="_blank" rel="noopener">Sequel</a><a class="tag" href="https://en.wikipedia.org/wiki/Resolution" target="_blank" rel="noopener">Resolution</a></div>
       <span class="hud-scan-code">JEDI::1983</span>
     </div>
   </div>
@@ -1386,9 +1418,9 @@
     <div class="hud-eyebrow">The Special Editions <span class="hud-eyebrow-aurabesh">FGHIJ</span></div>
     <div class="hud-year-row"><span class="hud-year">1997</span><span class="hud-year-tick"></span></div>
     <h3>The Special Editions</h3>
-    <p>Lucas re-released all three original films with updated visual effects. Empire's changes were the least controversial — mostly enhanced backgrounds in Cloud City. The most significant alteration was the replacement of the Emperor's hologram scene with a digitally inserted Ian McDiarmid. The 1980 theatrical cut has never been released officially on home video in any modern format.</p>
+    <p>Lucas re-released all three original films with updated visual effects. Empire's changes were the least controversial, mostly enhanced backgrounds in Cloud City. The most significant alteration was the replacement of the Emperor's hologram scene with a digitally inserted Ian McDiarmid. The 1980 theatrical cut has never been released officially on home video in any modern format.</p>
     <div class="hud-bottom-bar">
-      <div class="hud-card-tags"><span class="tag">Re-release</span><span class="tag">Changes</span></div>
+      <div class="hud-card-tags"><a class="tag" href="https://en.wikipedia.org/wiki/Re-release" target="_blank" rel="noopener">Re-release</a><a class="tag" href="https://en.wikipedia.org/wiki/Changes" target="_blank" rel="noopener">Changes</a></div>
       <span class="hud-scan-code">STATUS::ALTERED</span>
     </div>
   </div>
@@ -1404,9 +1436,9 @@
     <div class="hud-eyebrow">The Disney Era <span class="hud-eyebrow-aurabesh">KLMNO</span></div>
     <div class="hud-year-row"><span class="hud-year">2015 →</span><span class="hud-year-tick"></span></div>
     <h3>The Disney Era</h3>
-    <p>The Force Awakens, The Last Jedi, and The Rise of Skywalker arrived between 2015 and 2019. The Last Jedi — the darkest and most structurally experimental of the three — drew the most direct comparisons to Empire and generated the most divisive audience response. Empire remained the benchmark against which all new entries were measured. No sequel has matched it by consensus.</p>
+    <p>The Force Awakens, The Last Jedi, and The Rise of Skywalker arrived between 2015 and 2019. The Last Jedi, the darkest and most structurally experimental of the three, drew the most direct comparisons to Empire and generated the most divisive audience response. Empire remained the benchmark against which all new entries were measured. No sequel has matched it by consensus.</p>
     <div class="hud-bottom-bar">
-      <div class="hud-card-tags"><span class="tag">Disney</span><span class="tag">New Trilogy</span></div>
+      <div class="hud-card-tags"><a class="tag" href="https://en.wikipedia.org/wiki/Disney" target="_blank" rel="noopener">Disney</a><a class="tag" href="https://en.wikipedia.org/wiki/New_Trilogy" target="_blank" rel="noopener">New Trilogy</a></div>
       <span class="hud-scan-code">ERA::DISNEY</span>
     </div>
   </div>
@@ -1424,7 +1456,7 @@
     <h3>The Unanswerable Question</h3>
     <p>Empire raises a question no franchise has since answered: can a sequel built on unresolved darkness, without a redemptive ending, hold an audience's investment for three years with no resolution? In 1980, with no internet and no home video, it could. The conditions that made it possible no longer exist. Empire may be, in this specific way, a film that could only have been made and received exactly when and how it was.</p>
     <div class="hud-bottom-bar">
-      <div class="hud-card-tags"><span class="tag">Legacy</span><span class="tag">Unanswerable</span></div>
+      <div class="hud-card-tags"><a class="tag" href="https://en.wikipedia.org/wiki/Legacy" target="_blank" rel="noopener">Legacy</a><a class="tag" href="https://en.wikipedia.org/wiki/Unanswerable" target="_blank" rel="noopener">Unanswerable</a></div>
       <span class="hud-scan-code">STATUS::UNIQUE</span>
     </div>
   </div>
@@ -1453,7 +1485,7 @@
 
 <!-- COLOPHON -->
 <div class="colophon">
-  <div><div class="colophon-label">THE EMPIRE STRIKES BACK / FILM HISTORY</div><p class="colophon-blurb">The production, release, and cultural legacy of the 1980 sequel — from the Norway blizzards to the schoolyard arguments that lasted three years.</p></div>
+  <div><div class="colophon-label">THE EMPIRE STRIKES BACK / FILM HISTORY</div><p class="colophon-blurb">The production, release, and cultural legacy of the 1980 sequel, from the Norway blizzards to the schoolyard arguments that lasted three years.</p></div>
   <div>
     <div class="colophon-meta-label">PART OF</div>
     <div class="colophon-series">A <em>(Brief)</em> History of Everything<span class="cursor-blink">_</span></div>
@@ -1548,6 +1580,38 @@
   ];
   var g=document.getElementById('entityGrid');
   if(g){ents.forEach(function(e){var a=document.createElement('a');a.href=e.url;a.target='_blank';a.rel='noopener';a.className='entity-badge';a.textContent=e.name;a.style.background=e.c;a.style.color=e.t;a.style.borderColor=e.c;g.appendChild(a);});}
+
+  /* LIGHTSABER SOUND */
+  var saberPlayed = false;
+  var vaderSection = document.getElementById('vader');
+  if(vaderSection){
+    var saberObs = new IntersectionObserver(function(entries){
+      entries.forEach(function(e){
+        if(e.isIntersecting && !saberPlayed){
+          saberPlayed = true;
+          saberObs.disconnect();
+          try {
+            var saberAudio = new Audio('empire/images/lightsaber_02.mp3');
+            saberAudio.volume = 0.7;
+            var playPromise = saberAudio.play();
+            if(playPromise !== undefined){
+              playPromise.catch(function(){
+                // autoplay blocked - try on next user interaction
+                var resume = function(){
+                  saberAudio.play().catch(function(){});
+                  document.removeEventListener('click', resume);
+                  document.removeEventListener('scroll', resume);
+                };
+                document.addEventListener('click', resume, {once:true});
+                document.addEventListener('scroll', resume, {once:true});
+              });
+            }
+          } catch(e){}
+        }
+      });
+    },{threshold:0.15, rootMargin:'0px 0px -100px 0px'});
+    saberObs.observe(vaderSection);
+  }
 })();
 </script>
 </body>
