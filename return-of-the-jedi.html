@@ -1,0 +1,984 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>A (Brief) History of Return of the Jedi_</title>
+  <meta name="description" content="The full story of Return of the Jedi — the film where the machine started eating itself, the Ewoks nobody asked for, the director Lucas replaced, Vader's redemption, and how the greatest trilogy in cinema history ended.">
+  <link rel="canonical" href="https://abriefhistoryofeverything.com/return-of-the-jedi">
+  <meta property="og:title" content="A (Brief) History of Return of the Jedi_">
+  <meta property="og:description" content="The Ewoks. The ending. The exit. The machine eating itself. The full story of how the original trilogy closed.">
+  <meta property="og:image" content="https://www.abriefhistoryofeverything.com/og-return-of-the-jedi.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:url" content="https://www.abriefhistoryofeverything.com/return-of-the-jedi.html" />
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:image" content="https://www.abriefhistoryofeverything.com/og-return-of-the-jedi.png">
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-S80KBNWEJ5"></script>
+  <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-S80KBNWEJ5');</script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;1,9..40,400&family=Share+Tech+Mono&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;1,8..60,400&display=swap" rel="stylesheet">
+  <style>
+    @font-face {
+      font-family: 'SerifGothic';
+      src: url('fonts/ITC-Serif-Gothic-Std Heavy.woff2') format('woff2');
+      font-weight: 900;
+      font-display: swap;
+    }
+    @font-face {
+      font-family: 'Aurebesh';
+      src: url('fonts/AurebeshAF-Canon.woff2') format('woff2');
+      font-weight: 400;
+      font-display: swap;
+    }/* ── PAGE NAV DROPDOWN ── */
+        /* PAGE NAV */
+    .page-nav-wrap{position:relative;display:flex;align-items:center;height:50px;border-left:1px solid var(--nav-border);}
+    .page-nav-btn{display:flex;align-items:center;gap:8px;height:50px;padding:0 16px;background:none;border:none;font-family:var(--mono);font-size:0.9rem;letter-spacing:0.14em;text-transform:uppercase;color:var(--nav-text);cursor:pointer;transition:color .15s;white-space:nowrap;}
+    .page-nav-btn:hover{color:var(--nav-text-bright);}
+    .page-nav-arrow{font-size:0.7rem;transition:transform .2s;}
+    .page-nav-wrap.open .page-nav-arrow{transform:rotate(180deg);}
+    .page-nav-dropdown{position:absolute;top:calc(100% + 1px);right:0;background:var(--bg2);border:1px solid var(--rule2);min-width:220px;display:none;flex-direction:column;z-index:1000;}
+    .page-nav-wrap.open .page-nav-dropdown{display:flex;}
+    .pn-item{font-family:var(--mono);font-size:0.85rem;letter-spacing:0.1em;text-transform:uppercase;color:var(--text);text-decoration:none;padding:0.55rem 1rem;border-bottom:1px solid var(--rule);transition:background .15s,color .15s;}
+    .pn-item:last-child{border-bottom:none;}
+    .pn-item:hover{background:var(--bg3);color:var(--nav-text-bright);}
+    /* SAGA STRIP */
+    .saga-strip{padding:1.5rem 6vw;background:var(--bg1);border-top:1px solid var(--rule);}
+    .saga-strip-label{font-family:var(--mono);font-size:0.72rem;font-weight:700;letter-spacing:0.22em;text-transform:uppercase;color:var(--muted);margin-bottom:0.8rem;opacity:0.7;}
+    .saga-row{display:flex;flex-wrap:wrap;gap:0.4rem;}
+    .saga-tag{font-family:var(--mono);font-size:0.78rem;letter-spacing:0.1em;text-transform:uppercase;text-decoration:none;padding:0.25rem 0.65rem;border:1px solid var(--rule);color:var(--muted);transition:color .15s,border-color .15s,background .15s;}
+    .saga-tag.active{background:var(--accent);border-color:var(--accent);color:var(--bg);}
+    .saga-tag:not(.active):hover{color:var(--text);border-color:var(--rule2);}
+    </style>
+  <style>
+    /* ROTJ palette — deep forest green */
+    :root{--accent:#2A7A3B;--accent2:#4AAF5C;--accent-rgb:42,122,59;--bg:#010D03;--bg1:#051408;--bg2:#091A0C;--bg3:#0D2010;--card-bg:#061008;--card-hover:#0A180C;--rule:rgba(42,122,59,0.12);--rule2:rgba(42,122,59,0.22);--muted:#2A5A35;--dim:#4A8A55;--text:#90C89A;--bright:#D0ECD4;--nav-bg:rgba(1,13,3,0.92);--nav-border:rgba(42,122,59,0.15);--nav-text:#3A6A45;--nav-text-bright:#C0E8C8;--glow:0 0 40px rgba(42,122,59,0.3);--display:'SerifGothic','ITC Serif Gothic Std',sans-serif;--mono:'Share Tech Mono',monospace;--sans:'SerifGothic',sans-serif;--body:'Source Serif 4',Georgia,serif;--aurebesh:'Aurebesh',sans-serif;}
+    [data-theme="light"]{--accent:#1A6B2A;--accent2:#2A8A3A;--accent-rgb:26,107,42;--bg:#F2F8F3;--bg1:#E4F0E6;--bg2:#D4E8D8;--bg3:#C4E0C8;--card-bg:#EEF7F2;--card-hover:#E2F0E6;--rule:rgba(26,107,42,0.12);--rule2:rgba(26,107,42,0.22);--muted:#2A5A36;--dim:#0D2A16;--text:#0A2010;--bright:#020A04;--nav-bg:rgba(242,248,243,0.94);--nav-border:rgba(26,107,42,0.15);--nav-text:#4A7A54;--nav-text-bright:#0A2010;--glow:none;--card-dark:#0D2010;--card-dark-hover:#152818;}
+
+    [data-theme="light"] .hud-card{background:#D4EBDA;border-color:rgba(26,107,42,0.25);}
+    [data-theme="light"] .hud-card:hover{background:#C4E0CA;}
+    [data-theme="light"] .hud-card h3{color:#0A1F0E;}
+    [data-theme="light"] .hud-card p{color:#1A3A20;}
+    [data-theme="light"] .hud-top-bar{background:#0D2010;border-bottom-color:rgba(42,122,59,0.4);}
+    [data-theme="light"] .hud-top-label{color:rgba(74,175,92,0.85);}
+    [data-theme="light"] .hud-status{color:rgba(74,175,92,0.55);}
+    [data-theme="light"] .hud-bottom-bar{background:transparent;}
+    [data-theme="light"] .hud-card:hover{background:#E2F0E6;}
+    [data-theme="light"] .hud-card h3{color:#061A0A;}
+    [data-theme="light"] .hud-card p{color:#1A3A22;}
+    [data-theme="light"] .hud-top-bar{background:#1A6B2A;border-bottom-color:rgba(26,107,42,0.4);}
+    [data-theme="light"] .hud-top-label{color:#E0F5E6;font-weight:700;}
+    [data-theme="light"] .hud-top-aurebesh{color:#D0ECD4;opacity:0.25;}
+    [data-theme="light"] .hud-status{color:rgba(208,236,212,0.7);}
+    [data-theme="light"] .hud-dot{background:#6ADF8A;}
+    [data-theme="light"] .hud-year{color:#1A6B2A;}
+    [data-theme="light"] .hud-year-tick{background:linear-gradient(90deg,rgba(26,107,42,0.4),transparent);}
+    [data-theme="light"] .hud-card-tags .tag{color:rgba(26,107,42,0.7);border-color:rgba(26,107,42,0.25);}
+    [data-theme="light"] .hud-scan-code{color:rgba(26,107,42,0.4);}
+    [data-theme="light"] .hud-corner{--accent:#1A6B2A;}
+    [data-theme="light"] .split-ghost{color:#1A6B2A;}
+    [data-theme="light"] .hud-card h3{color:#061A0A;}
+    [data-theme="light"] .hud-card p{color:#1A3A22;}
+
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;min-width:0;}
+    html{scroll-behavior:smooth;overflow-x:hidden;}
+    body{background:var(--bg);color:var(--text);font-family:var(--body);font-size:1rem;line-height:1.7;transition:background .4s,color .4s;overflow-x:hidden;max-width:100vw;}
+    @media(max-width:600px){.hud-top-aurebesh{display:none;}.hud-status{display:none;}.hud-top-label{letter-spacing:0.1em;font-size:0.82rem;}}
+    a{color:inherit;text-decoration:none;}
+    @keyframes cursorBlink{0%,100%{opacity:1}50%{opacity:0}}
+    .cursor-blink{animation:cursorBlink 1.1s step-end infinite;display:inline-block;}
+    #progress{position:fixed;top:0;left:0;height:2px;background:var(--accent);width:0%;z-index:9100;transition:width .08s linear;}
+    @media(pointer:fine){body{cursor:none;}}
+    .cur{width:5px;height:5px;background:var(--accent);position:fixed;pointer-events:none;z-index:9999;transform:translate(-50%,-50%);border-radius:0;}
+    .cur.active{transform:translate(-50%,-50%) scale(1.8);}
+    .cur-ring{width:26px;height:26px;border:1px solid var(--accent);position:fixed;pointer-events:none;z-index:9998;transform:translate(-50%,-50%);border-radius:0;transition:left .09s,top .09s,width .2s,height .2s,opacity .2s;opacity:.7;}
+    .tt{position:fixed;background:var(--bg2);color:var(--text);font-family:var(--mono);font-size:0.9rem;padding:.35rem .7rem;border:1px solid var(--rule2);pointer-events:none;z-index:8000;opacity:0;transition:opacity .15s;letter-spacing:.08em;max-width:260px;line-height:1.55;}
+    .nav{height:50px;position:fixed;top:0;left:0;right:0;z-index:900;display:flex;align-items:stretch;background:var(--nav-bg);border-bottom:1px solid var(--nav-border);backdrop-filter:blur(14px);transition:background .4s,border-color .4s;}
+    .nav-tag{display:flex;align-items:stretch;text-decoration:none;flex-shrink:0;border-right:1px solid var(--nav-border);}
+    .nav-tag:hover .nav-topic{color:var(--nav-text-bright);}
+    .nav-index-box{width:52px;min-width:52px;height:50px;display:flex;align-items:center;justify-content:center;background:var(--accent);color:#fff;font-family:var(--mono);font-size:0.9rem;font-weight:700;letter-spacing:0.12em;flex-shrink:0;}
+    .nav-topic{display:flex;align-items:center;padding:0 20px 0 16px;font-family:var(--mono);font-size:0.9rem;font-weight:700;letter-spacing:0.16em;text-transform:uppercase;color:var(--nav-text);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;transition:color 0.15s;}
+    .nav-right{display:flex;align-items:center;margin-left:auto;}
+    .share-wrap{position:relative;display:flex;align-items:center;height:50px;border-left:1px solid var(--nav-border);padding:0 16px;}
+    .share-btn{background:none;border:1px solid var(--rule2);color:var(--nav-text);font-family:var(--mono);font-size:0.9rem;letter-spacing:0.14em;text-transform:uppercase;padding:.3rem .8rem;cursor:pointer;transition:color .15s,border-color .15s;}
+    .share-btn:hover{color:var(--accent);border-color:var(--accent);}
+    .share-dropdown{position:absolute;top:calc(100% + 4px);right:0;background:var(--bg2);border:1px solid var(--rule2);min-width:160px;display:none;flex-direction:column;z-index:1000;}
+    .share-dropdown.open{display:flex;}
+    .share-dropdown a{font-family:var(--mono);font-size:0.9rem;letter-spacing:0.1em;text-transform:uppercase;color:var(--text);text-decoration:none;padding:.6rem 1rem;border-bottom:1px solid var(--rule);transition:background .15s,color .15s;}
+    .share-dropdown a:last-child{border-bottom:none;}
+    .share-dropdown a:hover{background:var(--accent);color:var(--bg);}
+    .star-field{position:fixed;inset:0;pointer-events:none;z-index:0;overflow:hidden;transition:opacity .5s;}
+    [data-theme="light"] .star-field{opacity:0;}
+    .star{position:absolute;background:#fff;border-radius:50%;animation:twinkle var(--dur,3s) ease-in-out infinite var(--delay,0s);}
+    @keyframes twinkle{0%,100%{opacity:var(--base-op,0.6)}50%{opacity:0.1}}
+    .page{margin-top:50px;position:relative;z-index:1;overflow-x:hidden;max-width:100vw;}
+    .hero-splash{position:relative;width:100%;height:100vh;min-height:600px;display:flex;flex-direction:column;align-items:center;justify-content:center;overflow:hidden;border-bottom:1px solid rgba(42,122,59,0.08);}
+    .hero-splash-bg{position:absolute;inset:0;background-image:url('rotj/images/rotj-bg-2.jpg');background-size:cover;background-position:center center;z-index:0;}
+    .hero-splash-fade{position:absolute;inset:0;background:rgba(1,13,3,0.1);z-index:1;}
+    .hero-splash-content{position:relative;z-index:2;display:flex;flex-direction:column;align-items:center;justify-content:flex-end;height:100%;padding-bottom:4rem;text-align:center;padding-left:2rem;padding-right:2rem;}
+    .hero-splash-logo{width:clamp(200px,32vw,400px);margin-bottom:1.2rem;object-fit:contain;filter:drop-shadow(0 2px 20px rgba(0,0,0,0.6));}
+    @media(max-width:600px){.hero-splash-logo{width:65vw;}}
+    .hero-splash-brief{font-family:var(--display);font-size:clamp(1.4rem,3vw,2.2rem);letter-spacing:0.18em;text-transform:uppercase;color:#fff;margin-bottom:1.4rem;text-shadow:0 2px 20px rgba(0,0,0,0.6);font-weight:400;}
+    [data-theme="light"] .hero-splash-brief{color:#1A4A24;text-shadow:none;}
+    [data-theme="light"] .hero-splash-logo{filter:drop-shadow(0 2px 12px rgba(0,0,0,0.2)) brightness(0.2) sepia(1) hue-rotate(80deg) saturate(3);}
+    .hero-splash-hook{font-family:var(--body);font-size:clamp(0.9rem,1.6vw,1.05rem);line-height:1.8;color:#0A1A0C;max-width:580px;margin-bottom:2rem;font-weight:500;}
+    .hero-splash-trailer{display:inline-flex;align-items:center;gap:0.7rem;font-family:var(--mono);font-size:0.9rem;letter-spacing:0.18em;text-transform:uppercase;color:#fff;background:var(--accent);border:2px solid var(--accent);padding:0.7rem 1.6rem;text-decoration:none;transition:background .2s,color .2s,border-color .2s;margin-bottom:2.5rem;}
+    .hero-splash-trailer:hover{background:transparent;color:var(--accent);}
+    .hero-splash-scroll{font-family:var(--mono);font-size:0.9rem;letter-spacing:0.2em;text-transform:uppercase;color:rgba(255,255,255,0.28);display:flex;flex-direction:column;align-items:center;gap:0.4rem;animation:scrollHint 2.2s ease-in-out infinite;}
+    @keyframes scrollHint{0%,100%{opacity:0.28;transform:translateY(0)}50%{opacity:0.6;transform:translateY(5px)}}
+    .hero-splash-scroll::after{content:'↓';font-size:0.9rem;}
+    .stats-hero{padding:4rem 6vw;border-bottom:1px solid var(--rule);background:var(--bg);}
+    .stats-hud-frame{position:relative;border:1px solid rgba(42,122,59,0.22);clip-path:polygon(0 0,calc(100% - 20px) 0,100% 20px,100% 100%,20px 100%,0 calc(100% - 20px));background:var(--card-bg);}
+    [data-theme="light"] .stats-hud-frame{background:#EEF7F2;border-color:rgba(26,107,42,0.25);}
+    [data-theme="light"] .h-stat{background:#EEF7F2;}
+    [data-theme="light"] .h-stat:hover{background:#E2F0E6;}
+    [data-theme="light"] .stat-num{color:#1A6B2A;}
+    [data-theme="light"] .stat-label{color:#2A5A36;}
+    [data-theme="light"] .stat-sub{color:#1A3A22;}
+    .stats-hud-frame-corner-tl{position:absolute;top:0;left:0;width:20px;height:20px;border-top:1px solid var(--accent);border-left:1px solid var(--accent);opacity:0.6;pointer-events:none;}
+    .stats-hud-frame-corner-br{position:absolute;bottom:0;right:0;width:20px;height:20px;border-bottom:1px solid var(--accent);border-right:1px solid var(--accent);opacity:0.6;pointer-events:none;}
+    .stats-hud-bar{display:flex;align-items:center;justify-content:space-between;padding:0.5rem 1.4rem;border-bottom:1px solid rgba(42,122,59,0.1);background:rgba(42,122,59,0.03);}
+    .stats-hud-bar-label{font-family:var(--mono);font-size:0.9rem;letter-spacing:0.22em;text-transform:uppercase;color:rgba(42,122,59,0.95);font-weight:600;}
+    .stats-hud-bar-status{display:flex;align-items:center;gap:0.4rem;font-family:var(--mono);font-size:0.9rem;letter-spacing:0.14em;color:rgba(42,122,59,0.3);}
+    .stats-hero-inner{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:rgba(42,122,59,0.08);}
+    @media(max-width:900px){.stats-hero-inner{grid-template-columns:repeat(2,1fr);}}
+    .h-stat{background:var(--card-bg);padding:1.4rem 1.2rem;cursor:default;transition:background .2s;}
+    .h-stat:hover{background:var(--card-hover);}
+    .stat-num{font-family:var(--display);font-size:clamp(2rem,3.8vw,2.8rem);line-height:1;color:var(--accent);margin-bottom:0.3rem;}
+    .stat-label{font-family:var(--mono);font-size:0.9rem;letter-spacing:0.16em;text-transform:uppercase;color:var(--muted);margin-bottom:0.2rem;}
+    .stat-sub{font-family:var(--body);font-size:1rem;color:var(--dim);line-height:1.4;}
+    .section{padding:5rem 6vw;border-bottom:1px solid var(--rule);overflow-x:hidden;}
+    @media(max-width:768px){.section{padding:4rem 2rem;}}
+    .section.alt{background:var(--bg1);}
+    .sec-label{font-family:var(--mono);font-size:1rem;letter-spacing:0.3em;text-transform:uppercase;color:var(--accent);margin-bottom:0.6rem;}
+    .sec-title{font-family:var(--display);font-size:clamp(1.8rem,4vw,3rem);color:var(--bright);text-transform:uppercase;letter-spacing:0.04em;line-height:1.05;margin-bottom:1rem;}
+    .sec-intro{font-family:var(--body);font-size:1rem;line-height:1.85;color:var(--dim);max-width:780px;margin-bottom:3rem;}
+    .hud-grid{display:grid;grid-template-columns:1fr 1fr;gap:2rem;}
+    @media(max-width:900px){.hud-grid{grid-template-columns:1fr !important;gap:1rem;}}
+    @media(max-width:900px){.hud-grid[style*="1fr 1fr 1fr"]{grid-template-columns:1fr !important;}}
+    .hud-card{background:var(--card-bg);padding:0;position:relative;transition:background .2s;border:1px solid rgba(42,122,59,0.18);isolation:isolate;display:flex;flex-direction:column;min-width:0;}
+    .hud-card:hover{background:var(--card-hover);}
+    .hud-a{clip-path:polygon(0 0,calc(100% - 16px) 0,100% 16px,100% 100%,16px 100%,0 calc(100% - 16px));border:none;outline:1px solid rgba(42,122,59,0.18);}
+    .hud-b{clip-path:polygon(16px 0,100% 0,100% calc(100% - 16px),calc(100% - 16px) 100%,0 100%,0 16px);border:none;outline:1px solid rgba(42,122,59,0.18);}
+    .hud-c{clip-path:polygon(12px 0,calc(100% - 12px) 0,100% 12px,100% calc(100% - 12px),calc(100% - 12px) 100%,12px 100%,0 calc(100% - 12px),0 12px);border:none;outline:1px solid rgba(42,122,59,0.18);}
+    .hud-d{clip-path:polygon(14px 0,calc(100% - 14px) 0,100% 14px,100% 100%,0 100%,0 14px);border:none;outline:1px solid rgba(42,122,59,0.18);}
+    .hud-corner{position:absolute;pointer-events:none;z-index:1;}
+    .hud-corner-tl{top:0;left:0;width:20px;height:20px;border-top:1px solid var(--accent);border-left:1px solid var(--accent);opacity:0.55;}
+    .hud-corner-tr{top:0;right:0;width:20px;height:20px;border-top:1px solid var(--accent);border-right:1px solid var(--accent);opacity:0.55;}
+    .hud-corner-bl{bottom:0;left:0;width:20px;height:20px;border-bottom:1px solid var(--accent);border-left:1px solid var(--accent);opacity:0.55;}
+    .hud-corner-br{bottom:0;right:0;width:20px;height:20px;border-bottom:1px solid var(--accent);border-right:1px solid var(--accent);opacity:0.55;}
+    .hud-top-bar{display:flex;align-items:center;justify-content:space-between;padding:0.5rem 1.1rem;border-bottom:1px solid rgba(42,122,59,0.1);background:rgba(42,122,59,0.04);gap:0.6rem;}
+    .hud-top-label{font-family:var(--mono);font-size:0.9rem;letter-spacing:0.22em;text-transform:uppercase;color:rgba(42,122,59,0.7);flex-shrink:0;}
+    .hud-top-aurebesh{font-family:var(--aurebesh);font-size:1.2rem;color:var(--accent);opacity:0.14;flex:1;overflow:hidden;white-space:nowrap;text-overflow:ellipsis;}
+    .hud-status{display:flex;align-items:center;gap:0.4rem;font-family:var(--mono);font-size:0.9rem;letter-spacing:0.14em;color:rgba(42,122,59,0.3);flex-shrink:0;}
+    .hud-dot{width:6px;height:6px;background:var(--accent);border-radius:50%;animation:dotPulse 2s ease-in-out infinite;flex-shrink:0;}
+    @keyframes dotPulse{0%,100%{opacity:0.5}50%{opacity:1}}
+    .hud-card-inner{padding:1.4rem 1.4rem 0.4rem;flex:1;display:flex;flex-direction:column;}
+    .hud-year-row{display:flex;align-items:center;gap:0.8rem;margin-bottom:0.8rem;}
+    .hud-year{font-family:var(--mono);font-size:0.9rem;letter-spacing:0.14em;color:var(--accent);opacity:0.8;}
+    .hud-year-tick{flex:1;height:1px;background:linear-gradient(90deg,rgba(42,122,59,0.4),transparent);}
+    .hud-card h3{font-family:var(--display);font-size:clamp(1rem,1.6vw,1.2rem);color:var(--bright);text-transform:uppercase;letter-spacing:0.03em;line-height:1.2;margin-bottom:0.8rem;}
+    .hud-card p{font-family:var(--body);font-size:0.95rem;line-height:1.75;color:var(--dim);}
+    .hud-bottom-bar{display:flex;align-items:flex-end;justify-content:space-between;padding:0.5rem 1.4rem 0.9rem;margin-top:auto;gap:0.6rem;overflow:hidden;}
+    .hud-card-tags{display:flex;flex-wrap:wrap;gap:0.3rem;flex-shrink:1;min-width:0;overflow:hidden;align-content:flex-end;margin-left:-20px;}
+    .tag{font-family:var(--mono);font-size:0.9rem;letter-spacing:0.1em;text-transform:uppercase;color:rgba(42,122,59,0.55);border:1px solid rgba(42,122,59,0.18);padding:.15rem .5rem;text-decoration:none;transition:color .15s,border-color .15s;}
+    .tag:hover{color:var(--accent);border-color:var(--accent);}
+    .hud-scan-code{font-family:var(--mono);font-size:0.9rem;letter-spacing:0.1em;text-transform:uppercase;color:rgba(42,122,59,0.25);flex-shrink:0;}
+    .hud-scan-line{position:absolute;inset:0;height:1px;top:50%;background:linear-gradient(90deg,transparent,rgba(42,122,59,0.15),transparent);animation:scanAnim 3s ease-in-out infinite;pointer-events:none;z-index:0;}
+    @keyframes scanAnim{0%,100%{top:20%;opacity:0}50%{top:80%;opacity:1}}
+    .img-strip{display:grid;grid-template-columns:1fr 1fr 1fr;gap:1rem;}
+    @media(max-width:768px){.img-strip-caption{display:none !important;}}
+    @media(max-width:700px){.img-strip{grid-template-columns:1fr;}}
+    .img-strip-item{position:relative;overflow:hidden;aspect-ratio:16/9;}
+    .img-strip-item img{width:100%;height:100%;object-fit:cover;display:block;filter:grayscale(0.3) contrast(1.05);transition:filter .4s;}
+    .img-strip-item:hover img{filter:grayscale(0) contrast(1.1);}
+    .img-strip-overlay{position:absolute;inset:0;background:linear-gradient(to top,rgba(1,13,3,0.7) 0%,transparent 55%);}
+    .img-strip-caption{position:absolute;bottom:0;left:0;right:0;display:flex;align-items:flex-end;justify-content:space-between;padding:0.6rem 0.9rem;gap:1rem;}
+    .img-strip-caption span{font-family:var(--mono);font-size:0.9rem;letter-spacing:0.1em;text-transform:uppercase;color:rgba(208,236,212,0.7);}
+    .img-strip-caption-code{color:rgba(42,122,59,0.5);flex-shrink:0;}
+    .img-strip-corner-tl{position:absolute;top:0;left:0;width:14px;height:14px;border-top:1px solid var(--accent);border-left:1px solid var(--accent);opacity:0.5;z-index:2;}
+    .img-strip-corner-br{position:absolute;bottom:0;right:0;width:14px;height:14px;border-bottom:1px solid var(--accent);border-right:1px solid var(--accent);opacity:0.5;z-index:2;}
+
+
+    .ewok-left{position:relative;overflow:hidden;min-height:400px;}
+    .ewok-left img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center center;display:block;filter:grayscale(0.15) contrast(1.1) brightness(.8);}
+    .ewok-left-fade{position:absolute;inset:0;background:linear-gradient(to right,transparent 55%,var(--bg) 100%);z-index:1;}
+    @media(max-width:860px){.ewok-left-fade{background:linear-gradient(to top,var(--bg) 0%,transparent 50%);}}
+    .ewok-right{background:var(--bg);padding:4rem 4rem 4rem 2rem;display:flex;flex-direction:column;justify-content:center;}
+    @media(max-width:860px){.ewok-right{padding:3rem 2rem;}}
+    .ewok-label{font-family:var(--mono);font-size:0.9rem;letter-spacing:0.3em;text-transform:uppercase;color:var(--accent);opacity:0.7;margin-bottom:1rem;}
+    .ewok-title{font-family:var(--display);font-size:clamp(1.8rem,4vw,3rem);color:var(--bright);text-transform:uppercase;letter-spacing:0.04em;line-height:1.05;margin-bottom:1.2rem;}
+    .ewok-body{font-family:var(--body);font-size:1rem;line-height:1.85;color:var(--dim);margin-bottom:1.5rem;max-width:540px;}
+    .ewok-body strong{color:var(--bright);}
+    .ewok-facts{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:rgba(42,122,59,0.1);margin-top:1.5rem;}
+    .ewok-fact{background:var(--card-bg);padding:1rem 1.1rem;}
+    [data-theme="light"] .ewok-fact{background:#EEF7F2;}
+    .ewok-fact-num{font-family:var(--display);font-size:clamp(1.4rem,2.5vw,2rem);color:var(--accent);line-height:1;margin-bottom:0.2rem;}
+    .ewok-fact-label{font-family:var(--mono);font-size:0.9rem;letter-spacing:0.12em;text-transform:uppercase;color:rgba(208,236,212,0.4);}
+
+    /* WHAT COMES NEXT BAND */
+    .next-band{background:#000;padding:6rem 6vw;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;border-top:1px solid rgba(42,122,59,0.12);border-bottom:1px solid rgba(42,122,59,0.12);position:relative;overflow:hidden;}
+    [data-theme="light"] .next-band{background:#020D04;}
+    .next-band::before{content:'16';position:absolute;font-family:var(--display);font-size:clamp(18rem,45vw,42rem);color:var(--accent);opacity:0.03;pointer-events:none;line-height:1;user-select:none;letter-spacing:-0.06em;}
+    .next-pre{font-family:var(--mono);font-size:0.9rem;letter-spacing:0.35em;text-transform:uppercase;color:var(--accent);margin-bottom:2rem;opacity:0.75;}
+    .next-line{font-family:var(--display);font-size:clamp(1.8rem,5vw,4.2rem);color:#D0ECD4;text-transform:uppercase;letter-spacing:0.06em;line-height:1.18;margin-bottom:0.8rem;}
+    [data-theme="light"] .next-line{color:#D0ECD4;}
+    .next-line .next-hl{color:var(--accent);animation:nextPulse 3s ease-in-out infinite;}
+    @keyframes nextPulse{0%,100%{text-shadow:0 0 18px rgba(42,122,59,0.25)}50%{text-shadow:0 0 60px rgba(42,122,59,0.85),0 0 120px rgba(42,122,59,0.12)}}
+    .next-sub{font-family:var(--body);font-size:1rem;line-height:1.8;color:rgba(144,200,154,0.8);max-width:620px;margin:0 auto 2.5rem;}
+    .next-facts{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:rgba(42,122,59,0.08);border:1px solid rgba(42,122,59,0.07);max-width:900px;width:100%;margin-top:1rem;box-sizing:border-box;}
+    @media(max-width:700px){.next-facts{grid-template-columns:1fr 1fr;max-width:100%;}}
+    .nf{padding:1.4rem 1rem;background:rgba(1,13,3,0.6);}
+    .nf-num{font-family:var(--display);font-size:clamp(1.6rem,3vw,2.4rem);color:var(--accent);line-height:1;margin-bottom:0.3rem;}
+    .nf-label{font-family:var(--mono);font-size:0.9rem;letter-spacing:0.14em;text-transform:uppercase;color:rgba(144,200,154,0.4);margin-bottom:0.2rem;}
+    .nf-sub{font-family:var(--body);font-size:1rem;color:rgba(144,200,154,0.7);line-height:1.4;}
+    .next-divider{width:60px;height:1px;background:rgba(42,122,59,0.3);margin:3rem auto 0;}
+    .quote-band{min-height:260px;padding:5rem 6vw;display:flex;align-items:center;justify-content:center;border-bottom:1px solid var(--rule);background:var(--bg1);}
+    .quote-band-inner{max-width:880px;text-align:center;width:100%;}
+    .pq-mark{font-family:var(--display);font-size:clamp(4rem,10vw,8rem);color:var(--accent);opacity:0.15;line-height:0.8;display:block;margin-bottom:0.8rem;}
+    .pq-text{font-family:var(--display);font-size:clamp(1.3rem,2.8vw,2.1rem);line-height:1.4;color:var(--bright);text-transform:uppercase;letter-spacing:0.04em;margin-bottom:1.2rem;}
+    .pq-hl{color:var(--accent);}
+    .pq-attr{font-family:var(--mono);font-size:0.9rem;letter-spacing:0.2em;text-transform:uppercase;color:var(--muted);}
+    .people-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:1px;background:var(--rule);}
+    @media(max-width:1100px){.people-grid{grid-template-columns:repeat(3,1fr);}}
+    @media(max-width:700px){.people-grid{grid-template-columns:repeat(2,1fr);}}
+    @media(max-width:500px){.people-grid{grid-template-columns:1fr;}}
+    .person-card{background:var(--card-bg);padding:0;position:relative;overflow:hidden;display:flex;flex-direction:column;transition:background .2s;}
+    .person-card::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:var(--p-accent,var(--accent));transform:scaleX(0);transform-origin:left;transition:transform .35s ease;z-index:1;}
+    .person-card:hover::before{transform:scaleX(1);}
+    .person-photo{width:100%;aspect-ratio:1/1;object-fit:cover;object-position:center top;display:block;flex-shrink:0;filter:grayscale(1) contrast(1.1) brightness(.75);transition:filter .4s ease;}
+    .person-card:hover .person-photo{filter:grayscale(.2) contrast(1.1) brightness(.9);}
+    .person-placeholder{width:100%;aspect-ratio:1/1;flex-shrink:0;display:flex;align-items:center;justify-content:center;font-family:var(--display);font-size:clamp(3rem,6vw,4.5rem);color:var(--p-accent,var(--accent));background:color-mix(in srgb,var(--p-accent,var(--accent)) 10%,var(--card-bg));}
+    .person-era,.person-name,.person-role,.person-bio,.person-link{padding-left:1.3rem;padding-right:1.3rem;}
+    .person-era{display:none;}
+    .person-name{padding-top:1rem;}
+    .person-name{padding-top:1rem;font-size:clamp(1rem,1.8vw,1.25rem);font-weight:700;text-transform:uppercase;letter-spacing:.02em;line-height:1;color:var(--bright);margin-bottom:.3rem;font-family:var(--display);}
+    .person-role{font-size:0.9rem;letter-spacing:.1em;text-transform:uppercase;color:#2A7A3B;margin-bottom:.7rem;font-family:var(--mono);}
+    [data-theme="light"] .person-role{color:#1A6B2A;}
+    .person-bio{font-size:0.95rem;line-height:1.75;color:var(--dim);font-family:var(--body);flex:1;}
+    .person-link{padding-bottom:1.3rem;display:inline-flex;align-items:center;gap:.4rem;margin-top:.7rem;font-size:0.9rem;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);text-decoration:none;transition:color .2s;font-family:var(--mono);}
+    .person-link:hover{color:var(--accent);}
+    .person-link::after{content:'↗';}
+    .marquee{display:none;}
+    
+    
+    
+    @keyframes mScroll{0%{transform:translateX(0)}100%{transform:translateX(-50%)}}
+    .entity-badge:hover{transform:scale(1.12) rotate(-2deg);box-shadow:0 4px 18px rgba(0,0,0,.4);}
+    [data-theme="light"] .entity-badge{border-color:var(--rule2)!important;}
+    .eco-links{padding:5rem 6vw;background:var(--bg1);border-top:1px solid var(--rule);}
+    .eco-header{font-family:var(--mono);font-size:0.9rem;font-weight:700;letter-spacing:0.3em;color:var(--accent);text-transform:uppercase;margin-bottom:2.5rem;padding-bottom:1rem;border-bottom:1px solid var(--rule2);}
+    .eco-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:3rem;}
+    .eco-group-label{font-family:var(--mono);font-size:0.9rem;font-weight:700;letter-spacing:0.22em;text-transform:uppercase;color:var(--muted);margin-bottom:0.9rem;padding-bottom:0.6rem;border-bottom:1px solid var(--rule);}
+    .eco-link{display:block;font-family:var(--body);font-size:1.05rem;color:var(--text);padding:0.35rem 0;border-bottom:1px solid transparent;text-decoration:none;transition:color 0.15s,border-color 0.15s;}
+    .eco-link:hover{color:var(--accent);border-bottom-color:var(--rule2);}
+    .colophon{display:grid;grid-template-columns:1fr 1fr;gap:3rem;padding:3.5rem 6vw;border-top:1px solid var(--rule);background:var(--bg1);}
+    @media(max-width:768px){.colophon{grid-template-columns:1fr;padding:2.5rem 1.5rem;gap:2rem;}}
+    .colophon-label{font-family:var(--mono);font-size:0.9rem;font-weight:700;letter-spacing:0.22em;text-transform:uppercase;color:var(--accent);margin-bottom:0.65rem;}
+    .colophon-blurb{font-family:var(--body);font-size:1rem;color:var(--muted);line-height:1.6;max-width:42ch;margin:0;}
+    .colophon-meta-label{font-family:var(--mono);font-size:0.9rem;font-weight:700;letter-spacing:0.22em;text-transform:uppercase;color:var(--muted);margin-bottom:0.55rem;}
+    .colophon-series{font-family:var(--display);font-size:1.05rem;font-weight:700;text-transform:uppercase;letter-spacing:0.04em;color:var(--bright);margin-bottom:0.35rem;}
+    .colophon-series em{font-style:normal;color:var(--accent);}
+    .colophon-url{display:block;font-family:var(--mono);font-size:0.9rem;color:var(--accent);text-decoration:none;border-bottom:1px solid transparent;margin-bottom:1.1rem;transition:border-color 0.15s;}
+    .colophon-url:hover{border-bottom-color:var(--accent);}
+    .colophon-share{display:flex;gap:0.6rem;flex-wrap:wrap;}
+    .colophon-share-link{font-family:var(--mono);font-size:0.9rem;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:var(--accent);text-decoration:none;border:1px solid rgba(42,122,59,0.4);padding:0.25rem 0.65rem;transition:background 0.15s,color 0.15s;}
+    .colophon-share-link:hover{background:var(--accent);color:var(--bg);}
+    .footer{background:var(--bg);border-top:1px solid var(--border); height:auto; min-height:52px; padding:1rem 32px max(1.5rem, env(safe-area-inset-bottom)); display:flex; align-items:center; justify-content:space-between; }
+    @media(max-width:768px){.footer{height:auto;padding:1.2rem 1.5rem;flex-wrap:wrap;gap:.6rem;justify-content:center;}.footer-copy{width:100%;text-align:center;}}
+    .footer-lockup{display:flex;align-items:center;gap:12px;flex-shrink:0;text-decoration:none;}
+    .footer-series{font-family:var(--display);font-weight:700;font-size:13px;text-transform:uppercase;letter-spacing:.05em;color:var(--bright);line-height:1;white-space:nowrap;}
+    .footer-series em{font-style:normal;color:var(--accent);}
+    .footer-copy{font-family:var(--mono);font-size:0.9rem;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);}
+    .footer-mouth{animation:cursorBlink 1.1s step-end infinite;}
+    .fi{opacity:1;transform:translateY(0);}
+    .js-ready .fi{opacity:0;transform:translateY(18px);transition:opacity .65s ease,transform .65s ease;}
+    .js-ready .fi.visible{opacity:1;transform:translateY(0);}
+    @media print{body{background:#fff;color:#222;}.nav,#progress,.cur,.cur-ring,.tt,.star-field,.marquee{display:none!important;}.page{margin-top:0;}}
+
+    /* TRILOGY CLOSE CARD */
+    .trilogy-close{padding:6rem 6vw;background:var(--bg);border-bottom:1px solid var(--rule);display:flex;flex-direction:column;align-items:center;text-align:center;}
+    .trilogy-close-label{font-family:var(--mono);font-size:0.9rem;letter-spacing:0.35em;text-transform:uppercase;color:var(--accent);opacity:0.7;margin-bottom:1.5rem;}
+    .trilogy-close-title{font-family:var(--display);font-size:clamp(2rem,5vw,4rem);color:var(--bright);text-transform:uppercase;letter-spacing:0.05em;line-height:1.0;margin-bottom:2.5rem;}
+    .trilogy-close-title em{font-style:normal;color:var(--accent);}
+    .trilogy-films{display:grid;grid-template-columns:1fr 1fr 1fr;gap:1px;background:rgba(42,122,59,0.12);border:1px solid rgba(42,122,59,0.12);max-width:900px;width:100%;margin-bottom:3rem;box-sizing:border-box;}
+    @media(max-width:600px){.trilogy-films{grid-template-columns:1fr;max-width:100%;}}
+    .trilogy-film{padding:2rem 1.2rem;}
+    .trilogy-film-year{font-family:var(--mono);font-size:0.9rem;letter-spacing:0.2em;color:var(--accent);opacity:0.6;margin-bottom:0.4rem;}
+    .trilogy-film-title{font-family:var(--display);font-size:clamp(0.75rem,1.1vw,1rem);color:var(--bright);text-transform:uppercase;letter-spacing:0.03em;margin-bottom:0.5rem;white-space:nowrap;}
+    .trilogy-film-line{font-family:var(--body);font-size:0.95rem;color:var(--dim);line-height:1.6;}
+    .trilogy-close-body{font-family:var(--body);font-size:1.05rem;line-height:1.9;color:var(--dim);max-width:720px;}
+    .trilogy-close-body strong{color:var(--bright);}
+  </style>
+</head>
+<body>
+<div id="progress"></div>
+<div class="cur" id="cur"></div>
+<div class="cur-ring" id="curRing"></div>
+<div class="tt" id="tt"></div>
+<div class="star-field" id="starField"></div>
+
+<nav class="nav">
+  <a href="#top" class="nav-tag">
+    <div class="nav-index-box">017</div>
+    <span class="nav-topic">RETURN OF THE JEDI<span class="cursor-blink" style="color:var(--accent);">_</span></span>
+  </a>
+  <div class="nav-right">
+  <div class="page-nav-wrap" id="pageNavWrap">
+    <button class="page-nav-btn" id="pageNavBtn">SECTIONS <span class="page-nav-arrow">▾</span></button>
+    <div class="page-nav-dropdown" id="pageNavDropdown">
+      <a class="pn-item" href="#top">↑ Top</a>
+      <a class="pn-item" href="#before">01 · Before Jedi</a>
+      <a class="pn-item" href="#making">02 · The Making</a>
+      <a class="pn-item" href="#thefilm">03 · The Film</a>
+      <a class="pn-item" href="#ewoks">04 · The Ewoks</a>
+      <a class="pn-item" href="#whatcamesnext">What Came Next</a>
+      <a class="pn-item" href="#legacy">05 · Legacy</a>
+      <a class="pn-item" href="#keyfigures">06 · Key Figures</a>
+      <a class="pn-item" href="#trilogy">The Trilogy</a>
+    </div>
+  </div>
+  </div>
+</nav>
+
+<div class="page" id="top">
+
+<section class="hero-splash">
+  <div class="hero-splash-bg"></div>
+  <div class="hero-splash-fade"></div>
+  <div class="hero-splash-content">
+    <img src="rotj/images/rotj-logo.png" alt="Return of the Jedi" class="hero-splash-logo fi" style="--d:0s;">
+    <div class="hero-splash-brief fi">A (Brief) History</div>
+    <p class="hero-splash-hook fi" style="--d:0.1s">The director was replaced. The Ewoks were a toy decision. Lucas essentially directed it himself. A villain got a redemption arc nobody saw coming. A bounty hunter beloved by millions died in under thirty seconds, killed by a blind man. The machine that started in a Tunisia sandstorm ended in a forest on a moon.</p>
+    <a class="hero-splash-trailer fi" style="--d:0.2s" href="https://www.youtube.com/watch?v=6AanE-s7KoI" target="_blank" rel="noopener">▶ Watch the 1983 Theatrical Trailer</a>
+    <div class="hero-splash-scroll fi" style="--d:0.35s">Scroll to explore</div>
+  </div>
+</section>
+
+<!-- STATS -->
+<section class="stats-hero">
+  <div class="stats-hud-frame fi">
+    <div class="stats-hud-frame-corner-tl"></div>
+    <div class="stats-hud-frame-corner-br"></div>
+    <div class="stats-hud-bar">
+      <span class="stats-hud-bar-label">Episode VI · Combat Data · 1983</span>
+      <span class="stats-hud-bar-status"><span class="hud-dot"></span>DATABANK::ACTIVE</span>
+    </div>
+    <div class="stats-hero-inner">
+      <div class="h-stat" data-tip="Return of the Jedi opened May 25, 1983 — exactly six years after A New Hope — and grossed $475 million worldwide on a $32.5 million budget."><div class="stat-num">$475M</div><div class="stat-label">Worldwide Gross</div><div class="stat-sub">On a $32.5M budget</div></div>
+      <div class="h-stat" data-tip="Jedi opened in 1,002 theaters on its first Wednesday — the widest opening in Star Wars history to that point. Advance ticket sales broke every existing record."><div class="stat-num">1,002</div><div class="stat-label">Opening Theaters</div><div class="stat-sub">May 25, 1983</div></div>
+      <div class="h-stat" data-tip="Richard Marquand received the director's credit, but multiple crew members and cast have said on record that Lucas directed the majority of principal photography — particularly the actor scenes."><div class="stat-num">2</div><div class="stat-label">Effective Directors</div><div class="stat-sub">One got the credit</div></div>
+      <div class="h-stat" data-tip="Jedi sits at 82% on Rotten Tomatoes — the lowest of the original trilogy. Critics in 1983 noted the shift toward merchandising-friendly spectacle. Time has been kinder than initial reviews."><div class="stat-num">82%</div><div class="stat-label">Rotten Tomatoes</div><div class="stat-sub">Lowest of the trilogy</div></div>
+      <div class="h-stat" data-tip="Kenner produced over 100 distinct Ewok-related action figures, playsets, and accessories. The Ewok Village playset was the best-selling toy of Christmas 1983."><div class="stat-num">100+</div><div class="stat-label">Ewok Products</div><div class="stat-sub">Kenner's toy machine</div></div>
+      <div class="h-stat" data-tip="Boba Fett — the most mythologized bounty hunter in the galaxy, subject of fan obsession since 1978 — appears in Return of the Jedi for approximately 100 seconds before falling into the Sarlacc pit, knocked in by a blind Han Solo."><div class="stat-num">~100s</div><div class="stat-label">Boba Fett Screen Time</div><div class="stat-sub">Then: the pit</div></div>
+      <div class="h-stat" data-tip="Ewok costumes were operated by 42 performers, many of them children. 11 distinct Ewok characters had named roles in the script. Warwick Davis was 11 years old when cast as Wicket."><div class="stat-num">42</div><div class="stat-label">Ewok Performers</div><div class="stat-sub">Warwick Davis was 11</div></div>
+      <div class="h-stat" data-tip="The Emperor's throne room set at Elstree was the largest set built for any Star Wars film to that point — 300 feet long with a 50-foot ceiling. The final duel was filmed over 8 days."><div class="stat-num">8</div><div class="stat-label">Days — Final Duel</div><div class="stat-sub">300ft throne room set</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- SECTION 01 -->
+<section class="section alt" id="before">
+  <div class="sec-label fi">Section 01 · 1980–1982</div>
+  <h2 class="sec-title fi" style="--d:0.05s">Before the Film Existed<span class="cursor-blink" style="color:var(--accent);">_</span></h2>
+  <p class="sec-intro fi" style="--d:0.1s">Empire had ended without resolution. Han was frozen. Luke had learned something that changed everything. The audience had waited three years with no internet, no leaks, and no way to rewatch it. Return of the Jedi was the most anticipated film in history before a frame was shot. That pressure shaped every decision made during its production.</p>
+  <div class="hud-grid" style="grid-template-columns:1fr 1fr;">
+<div class="hud-card hud-a fi" style="--c-col:#2A7A3B">
+  <div class="hud-corner hud-corner-tl"></div><div class="hud-corner hud-corner-br"></div>
+  <div class="hud-scan-line"></div>
+  <div class="hud-top-bar"><span class="hud-top-label">The Title</span><span class="hud-top-aurebesh" aria-hidden="true">The Titl</span><span class="hud-status"><span class="hud-dot"></span>SYS::OK</span></div>
+  <div class="hud-card-inner">
+  <div class="hud-year-row"><span class="hud-year">1982</span><span class="hud-year-tick"></span></div>
+    <h3>Revenge of the Jedi, Then Revenge Was Wrong</h3>
+    <p>The film was announced and marketed for nearly a year as Revenge of the Jedi. Promotional posters were printed. Convention materials were distributed. Lucas changed the title in 1982 after deciding that a Jedi would not seek revenge — revenge is a Sith concept. The Revenge posters became instant collectibles. Several crew members kept their working copies. The title change is one of the more quietly revealing moments of Lucas thinking carefully about what the Force actually means.</p>
+    <div class="hud-bottom-bar"><div class="hud-card-tags"><a class="tag" href="https://en.wikipedia.org/wiki/Return_of_the_Jedi" target="_blank" rel="noopener">Title Change</a></div><span class="hud-scan-code">TITLE::REVISED</span></div>
+  </div>
+</div>
+<div class="hud-card hud-b fi" style="--c-col:#4AAF5C">
+  <div class="hud-corner hud-corner-tr"></div><div class="hud-corner hud-corner-bl"></div>
+  <div class="hud-scan-line" style="animation-delay:-1.1s;"></div>
+  <div class="hud-top-bar"><span class="hud-top-label">The Director</span><span class="hud-top-aurebesh" aria-hidden="true">Director</span><span class="hud-status"><span class="hud-dot" style="animation-delay:-0.8s;"></span>SYS::OK</span></div>
+  <div class="hud-card-inner">
+  <div class="hud-year-row"><span class="hud-year">Richard Marquand</span><span class="hud-year-tick"></span></div>
+    <h3>The Man Who Got the Credit</h3>
+    <p>Lucas approached David Lynch, who declined. He approached David Cronenberg, who declined. He considered directing it himself, then chose Richard Marquand — a British director known for Eye of the Needle — reportedly because Marquand was sufficiently deferential to work under Lucas's supervision. Multiple cast and crew members have stated on record that Lucas directed the majority of the film, particularly all actor scenes. Marquand operated a camera on several sequences. He received the director's credit. Lucas received a producer credit. The actual division of labor has never been formally documented.</p>
+    <div class="hud-bottom-bar"><div class="hud-card-tags"><a class="tag" href="https://en.wikipedia.org/wiki/Richard_Marquand" target="_blank" rel="noopener">Richard Marquand</a></div><span class="hud-scan-code">DIR::CONTESTED</span></div>
+  </div>
+</div>
+<div class="hud-card hud-c fi" style="--c-col:#2A7A3B">
+  <div class="hud-corner hud-corner-tl"></div><div class="hud-corner hud-corner-tr"></div><div class="hud-corner hud-corner-bl"></div><div class="hud-corner hud-corner-br"></div>
+  <div class="hud-scan-line" style="animation-delay:-2.2s;"></div>
+  <div class="hud-top-bar"><span class="hud-top-label">Kasdan's Draft</span><span class="hud-top-aurebesh" aria-hidden="true">Kasdan</span><span class="hud-status"><span class="hud-dot" style="animation-delay:-1.6s;"></span>SYS::OK</span></div>
+  <div class="hud-card-inner">
+  <div class="hud-year-row"><span class="hud-year">1981–1982</span><span class="hud-year-tick"></span></div>
+    <h3>Kasdan Wanted to Kill Han Solo</h3>
+    <p>Lawrence Kasdan, co-writer of Empire and the screenwriter of Jedi, argued in story conferences that Han Solo should die at the end of the film. He felt a death would give the ending genuine weight and prevent the resolution from feeling entirely consequence-free. Lucas refused, citing merchandise: a dead Han Solo couldn't anchor future stories or sell product. Ford has confirmed he also wanted Han killed. The story conferences, partially recorded and later released, are among the most candid documents of the commercial pressures on the original trilogy.</p>
+    <div class="hud-bottom-bar"><div class="hud-card-tags"><a class="tag" href="https://en.wikipedia.org/wiki/Lawrence_Kasdan" target="_blank" rel="noopener">Lawrence Kasdan</a></div><span class="hud-scan-code">DRAFT::CONFLICT</span></div>
+  </div>
+</div>
+<div class="hud-card hud-d fi" style="--c-col:#4AAF5C">
+  <div class="hud-corner hud-corner-tl"></div><div class="hud-corner hud-corner-tr"></div>
+  <div class="hud-scan-line" style="animation-delay:-3.3s;"></div>
+  <div class="hud-top-bar"><span class="hud-top-label">The Ewoks</span><span class="hud-top-aurebesh" aria-hidden="true">Ewoks</span><span class="hud-status"><span class="hud-dot"></span>SYS::OK</span></div>
+  <div class="hud-card-inner">
+  <div class="hud-year-row"><span class="hud-year">The Toy Decision</span><span class="hud-year-tick"></span></div>
+    <h3>The Original Endor Inhabitants Were Wookiees</h3>
+    <p>The original plan had the forest moon of Endor defended by Wookiees — a callback to Chewbacca's home planet that had been part of the mythology since the first film. Lucas changed this to Ewoks for reasons that have never been fully explained on record. The leading theory, supported by the merchandising that followed, is that small, cute, child-friendly creatures were more commercially viable than large bipedal aliens. Wookiees had already been associated with the Star Wars Holiday Special — a production so disavowed that Lucas allegedly wanted all copies destroyed.</p>
+    <div class="hud-bottom-bar"><div class="hud-card-tags"><a class="tag" href="https://en.wikipedia.org/wiki/Ewok" target="_blank" rel="noopener">Ewoks</a></div><span class="hud-scan-code">DESIGN::CHANGED</span></div>
+  </div>
+</div>
+</div>
+</section>
+
+<!-- SECTION 02 -->
+<section class="section" id="making">
+  <div class="sec-label fi">Section 02 · 1982–1983</div>
+  <h2 class="sec-title fi" style="--d:0.05s">Making Return of the Jedi<span class="cursor-blink" style="color:var(--accent);">_</span></h2>
+  <p class="sec-intro fi" style="--d:0.1s">Principal photography began January 11, 1982 at Elstree Studios and at Crescent City, California for the Endor sequences. The production ran under a code name — "Blue Harvest: Horror Beyond Imagination" — to prevent location leaks. Crew wore Blue Harvest t-shirts. Local press reported on an obscure horror film being made in the redwoods. Nobody was fooled for long.</p>
+  <div class="hud-grid" style="grid-template-columns:1fr 1fr;">
+<div class="hud-card hud-a fi" style="--c-col:#2A7A3B">
+  <div class="hud-corner hud-corner-tl"></div><div class="hud-corner hud-corner-br"></div>
+  <div class="hud-scan-line"></div>
+  <div class="hud-top-bar"><span class="hud-top-label">Blue Harvest</span><span class="hud-top-aurebesh" aria-hidden="true">Blue Har</span><span class="hud-status"><span class="hud-dot"></span>SYS::OK</span></div>
+  <div class="hud-card-inner">
+  <div class="hud-year-row"><span class="hud-year">1982</span><span class="hud-year-tick"></span></div>
+    <h3>The Most Elaborate Fake Production in Hollywood History</h3>
+    <p>Lucasfilm registered a dummy production company and gave the film a fake name, a fake genre, and a fake poster. Crew received badges identifying them as "Blue Harvest" employees. The fake tagline was "Horror Beyond Imagination." Catering trucks were labeled with the fake title. The ruse kept location fees manageable and reporters at a distance — for a few weeks. When the scale of the operation in the Humboldt County redwoods became apparent, the cover collapsed. The fake production materials are now collector's items.</p>
+    <div class="hud-bottom-bar"><div class="hud-card-tags"><a class="tag" href="https://en.wikipedia.org/wiki/Blue_Harvest" target="_blank" rel="noopener">Blue Harvest</a></div><span class="hud-scan-code">COVER::BLOWN</span></div>
+  </div>
+</div>
+<div class="hud-card hud-b fi" style="--c-col:#4AAF5C">
+  <div class="hud-corner hud-corner-tr"></div><div class="hud-corner hud-corner-bl"></div>
+  <div class="hud-scan-line" style="animation-delay:-1.1s;"></div>
+  <div class="hud-top-bar"><span class="hud-top-label">The Redwoods</span><span class="hud-top-aurebesh" aria-hidden="true">Redwoods</span><span class="hud-status"><span class="hud-dot" style="animation-delay:-0.8s;"></span>SYS::OK</span></div>
+  <div class="hud-card-inner">
+  <div class="hud-year-row"><span class="hud-year">Humboldt County · 1982</span><span class="hud-year-tick"></span></div>
+    <h3>Endor Was California All Along</h3>
+    <p>The Endor forest sequences were shot in the redwood groves of Humboldt County and Smith River, California. The ancient redwoods provided a sense of scale that no set could replicate — trees 300 feet tall dwarfing the Ewok village structures built among them. The speeder bike chase sequence was achieved by strapping a Steadicam to a camera operator and running through the forest at low speed, then dramatically overcranking the playback. The resulting footage, processed through optical printing, became one of the most kinetically exciting sequences in the trilogy.</p>
+    <div class="hud-bottom-bar"><div class="hud-card-tags"><a class="tag" href="https://en.wikipedia.org/wiki/Endor" target="_blank" rel="noopener">Endor</a></div><span class="hud-scan-code">LOC::ENDOR</span></div>
+  </div>
+</div>
+<div class="hud-card hud-c fi" style="--c-col:#2A7A3B">
+  <div class="hud-corner hud-corner-tl"></div><div class="hud-corner hud-corner-tr"></div><div class="hud-corner hud-corner-bl"></div><div class="hud-corner hud-corner-br"></div>
+  <div class="hud-scan-line" style="animation-delay:-2.2s;"></div>
+  <div class="hud-top-bar"><span class="hud-top-label">The Throne Room</span><span class="hud-top-aurebesh" aria-hidden="true">Throne R</span><span class="hud-status"><span class="hud-dot" style="animation-delay:-1.6s;"></span>SYS::OK</span></div>
+  <div class="hud-card-inner">
+  <div class="hud-year-row"><span class="hud-year">Elstree · Stage 8</span><span class="hud-year-tick"></span></div>
+    <h3>The Largest Set in Star Wars History</h3>
+    <p>The Emperor's throne room was built at Elstree at 300 feet long with a 50-foot ceiling — the largest set constructed for any film in the original trilogy. The final confrontation between Luke, Vader, and the Emperor was filmed over eight days. Ian McDiarmid, in full Emperor makeup, sat for four hours in the makeup chair each morning. Hamill and the stunt performers worked through the lightsaber choreography in the weeks before shooting. The vertical reactor shaft was a separate set, shot with a stunt performer on wires against matte paintings.</p>
+    <div class="hud-bottom-bar"><div class="hud-card-tags"><a class="tag" href="https://en.wikipedia.org/wiki/Ian_McDiarmid" target="_blank" rel="noopener">Ian McDiarmid</a></div><span class="hud-scan-code">SET::LARGEST</span></div>
+  </div>
+</div>
+<div class="hud-card hud-d fi" style="--c-col:#4AAF5C">
+  <div class="hud-corner hud-corner-tl"></div><div class="hud-corner hud-corner-tr"></div>
+  <div class="hud-scan-line" style="animation-delay:-3.3s;"></div>
+  <div class="hud-top-bar"><span class="hud-top-label">Jabba's Palace</span><span class="hud-top-aurebesh" aria-hidden="true">Jabba Pa</span><span class="hud-status"><span class="hud-dot"></span>SYS::OK</span></div>
+  <div class="hud-card-inner">
+  <div class="hud-year-row"><span class="hud-year">Yuma, Arizona</span><span class="hud-year-tick"></span></div>
+    <h3>Jabba Required Five Puppeteers and a Hydraulic Rig</h3>
+    <p>The Jabba the Hutt puppet required a team of five puppeteers operating from inside and around the structure, which weighed over two tons and sat on a hydraulic platform allowing limited movement. The Rancor monster in the pit sequence was a combination of a large mechanical puppet and a man in a suit filmed against separately scaled sets. The Sarlacc pit was built in the Arizona desert at Yuma, with practical sand dunes dressed around a constructed pit set. The 48-hour shoot in Arizona was conducted at temperatures exceeding 110°F.</p>
+    <div class="hud-bottom-bar"><div class="hud-card-tags"><a class="tag" href="https://en.wikipedia.org/wiki/Jabba_the_Hutt" target="_blank" rel="noopener">Jabba the Hutt</a></div><span class="hud-scan-code">PUPPET::5OPS</span></div>
+  </div>
+</div>
+</div>
+  <div style="margin-top:2rem;">
+  <div class="img-strip">
+  <div class="img-strip-item hud-a">
+    <div class="img-strip-corner-tl"></div><div class="img-strip-corner-br"></div>
+    <img src="rotj/images/strip-1.1.jpg" alt="Wicket meets Leia. Awwww." onerror="this.style.display='none'">
+    <div class="img-strip-overlay"></div>
+    <div class="img-strip-caption"><span>Wicket meets Leia. Awwww.</span><span class="img-strip-caption-code">IMG::01</span></div>
+  </div>
+  <div class="img-strip-item hud-b">
+    <div class="img-strip-corner-tl"></div><div class="img-strip-corner-br"></div>
+    <img src="rotj/images/strip-1.2-throne.jpg" alt="Emperor's Throne Room · Elstree Stage 8 · 300ft set" onerror="this.style.display:'none'">
+    <div class="img-strip-overlay"></div>
+    <div class="img-strip-caption"><span>Throne Room · Elstree Stage 8</span><span class="img-strip-caption-code">IMG::02</span></div>
+  </div>
+  <div class="img-strip-item hud-c">
+    <div class="img-strip-corner-tl"></div><div class="img-strip-corner-br"></div>
+    <img src="rotj/images/strip-1.3-jabba.jpg" alt="Jabba the Hutt puppet · Five operators " onerror="this.style.display:'none'">
+    <div class="img-strip-overlay"></div>
+    <div class="img-strip-caption"><span>Jabba puppet needed five operators</span><span class="img-strip-caption-code">IMG::03</span></div>
+  </div>
+</div>
+  </div>
+</section>
+
+<!-- SECTION 03 — BOBA FETT + THE FILM -->
+<section class="section alt" id="thefilm">
+  <div class="sec-label fi">Section 03 · The Film</div>
+  <h2 class="sec-title fi" style="--d:0.05s">What's Actually in It<span class="cursor-blink" style="color:var(--accent);">_</span></h2>
+  <p class="sec-intro fi" style="--d:0.1s">Return of the Jedi is a film in three movements: the Jabba's palace rescue, the Endor campaign, and the throne room. The first is the most fun. The second is the most divisive. The third is the most important. The whole enterprise is messier than Empire and more complete than anyone gives it credit for — because the messiness is inseparable from the machine that produced it.</p>
+  <div class="hud-grid" style="grid-template-columns:1fr 1fr;">
+<div class="hud-card hud-a fi" style="--c-col:#2A7A3B">
+  <div class="hud-corner hud-corner-tl"></div><div class="hud-corner hud-corner-br"></div>
+  <div class="hud-scan-line"></div>
+  <div class="hud-top-bar"><span class="hud-top-label">Vader's Redemption</span><span class="hud-top-aurebesh" aria-hidden="true">Vader Re</span><span class="hud-status"><span class="hud-dot"></span>SYS::OK</span></div>
+  <div class="hud-card-inner">
+  <div class="hud-year-row"><span class="hud-year">The Throne Room</span><span class="hud-year-tick"></span></div>
+    <h3>The Arc Nobody Saw Coming in 1977</h3>
+    <p>In A New Hope, Darth Vader is a force of pure menace with no interiority. In Empire he becomes a father. In Jedi he becomes a man. The redemption arc — watching Vader choose his son over the Emperor — works because it was built over three films without ever being explicitly telegraphed. Hamill plays Luke's absolute certainty that his father can be saved as genuine faith rather than naivety, and the film validates it completely. The unmasking scene, with Sebastian Shaw as the dying Anakin, is one of the quietest and most effective moments in the entire series.</p>
+    <div class="hud-bottom-bar"><div class="hud-card-tags"><a class="tag" href="https://en.wikipedia.org/wiki/Darth_Vader" target="_blank" rel="noopener">Darth Vader</a></div><span class="hud-scan-code">ARC::COMPLETE</span></div>
+  </div>
+</div>
+<div class="hud-card hud-b fi" style="--c-col:#4AAF5C">
+  <div class="hud-corner hud-corner-tr"></div><div class="hud-corner hud-corner-bl"></div>
+  <div class="hud-scan-line" style="animation-delay:-1.1s;"></div>
+  <div class="hud-top-bar"><span class="hud-top-label">The Emperor</span><span class="hud-top-aurebesh" aria-hidden="true">Emperor</span><span class="hud-status"><span class="hud-dot" style="animation-delay:-0.8s;"></span>SYS::OK</span></div>
+  <div class="hud-card-inner">
+  <div class="hud-year-row"><span class="hud-year">Ian McDiarmid</span><span class="hud-year-tick"></span></div>
+    <h3>The Villain Who Earned It</h3>
+    <p>Ian McDiarmid was 37 years old when cast as the Emperor — playing a character meant to read as ancient and corrupted. The prosthetic makeup took four hours each morning and left him unable to eat solid food on set. His performance — all quiet menace and theatrical cruelty — anchors the throne room scenes in something that feels genuinely dangerous. McDiarmid has said the character's pleasure at Luke's suffering was the most useful thing he found to play. The Emperor is not afraid of anything in those scenes. That's what makes the eventual pivot so forceful.</p>
+    <div class="hud-bottom-bar"><div class="hud-card-tags"><a class="tag" href="https://en.wikipedia.org/wiki/Ian_McDiarmid" target="_blank" rel="noopener">Ian McDiarmid</a></div><span class="hud-scan-code">CHAR::EMPEROR</span></div>
+  </div>
+</div>
+
+<!-- BOBA FETT CARD — the ignominious exit -->
+<div class="hud-card hud-c fi" style="--c-col:#2A7A3B;grid-column:1/-1;">
+  <div class="hud-corner hud-corner-tl"></div><div class="hud-corner hud-corner-tr"></div><div class="hud-corner hud-corner-bl"></div><div class="hud-corner hud-corner-br"></div>
+  <div class="hud-scan-line" style="animation-delay:-2.2s;"></div>
+  <div class="hud-top-bar"><span class="hud-top-label">Boba Fett · The Most Overhyped Exit in Cinema History</span><span class="hud-top-aurebesh" aria-hidden="true">Boba Fet</span><span class="hud-status"><span class="hud-dot" style="animation-delay:-1.6s;"></span>STATUS::DIGESTING</span></div>
+  <div class="hud-card-inner">
+  <div class="hud-year-row"><span class="hud-year">The Sarlacc Pit · Tatooine · ~30 Seconds</span><span class="hud-year-tick"></span></div>
+    <h3>A Blind Man. A Stick. The End of a Legend.</h3>
+    <p>Boba Fett debuted in the 1978 Star Wars Holiday Special, appeared briefly in The Empire Strikes Back with fewer than 30 words of dialogue, and became one of the most obsessively mythologized characters in the history of the franchise — a bounty hunter of mysterious origin, lethal reputation, and iconic armor. Then Return of the Jedi arrived. Han Solo, still partially blind from carbonite exposure, is handed a stick and accidentally backs into Fett's jet pack, activating it uncontrollably. Fett pinwheels across the sky and falls, screaming, into the Sarlacc pit. The creature, which takes a thousand years to digest its prey, begins its work. That is the exit. Thirty seconds. A stick. And decades of fan fiction trying to explain it away.</p>
+    <div class="hud-bottom-bar"><div class="hud-card-tags"><a class="tag" href="https://en.wikipedia.org/wiki/Boba_Fett" target="_blank" rel="noopener">Boba Fett</a></div><span class="hud-scan-code">FETT::DIGESTED</span></div>
+  </div>
+</div>
+
+<div class="hud-card hud-d fi" style="--c-col:#4AAF5C">
+  <div class="hud-corner hud-corner-tl"></div><div class="hud-corner hud-corner-tr"></div>
+  <div class="hud-scan-line" style="animation-delay:-3.3s;"></div>
+  <div class="hud-top-bar"><span class="hud-top-label">Leia's Revelation</span><span class="hud-top-aurebesh" aria-hidden="true">Leia Rev</span><span class="hud-status"><span class="hud-dot"></span>SYS::OK</span></div>
+  <div class="hud-card-inner">
+  <div class="hud-year-row"><span class="hud-year">Luke and Leia · Endor</span><span class="hud-year-tick"></span></div>
+    <h3>The Second Reveal That Restructures Everything</h3>
+    <p>"Leia, I am your brother." The scene between Luke and Leia in the Endor forest — where Luke reveals their relationship and his plan to surrender to Vader — is the film's emotional center and its quietest achievement. Fisher plays the moment with complete simplicity. There is no dramatic musical sting. The scene confirms that the Force runs through both of them, and that Luke's faith in Vader is inseparable from his understanding of himself. Kasdan wrote this scene late in the drafting process. It is the moment where the trilogy's personal stakes become fully legible.</p>
+    <div class="hud-bottom-bar"><div class="hud-card-tags"><a class="tag" href="https://en.wikipedia.org/wiki/Leia_Organa" target="_blank" rel="noopener">Leia Organa</a></div><span class="hud-scan-code">REVEAL::FAMILY</span></div>
+  </div>
+</div>
+<div class="hud-card hud-a fi" style="--c-col:#2A7A3B">
+  <div class="hud-corner hud-corner-tl"></div><div class="hud-corner hud-corner-br"></div>
+  <div class="hud-scan-line"></div>
+  <div class="hud-top-bar"><span class="hud-top-label">The Ending</span><span class="hud-top-aurebesh" aria-hidden="true">Ending</span><span class="hud-status"><span class="hud-dot"></span>SYS::OK</span></div>
+  <div class="hud-card-inner">
+  <div class="hud-year-row"><span class="hud-year">Everything Resolved</span><span class="hud-year-tick"></span></div>
+    <h3>The Film That Had to Close Everything</h3>
+    <p>Jedi ends with the Death Star destroyed, the Emperor dead, Vader redeemed and burned on a pyre, the Rebellion victorious, Han and Leia together, and Luke alone with three Force ghosts at the edge of the celebration — present but separate. Critics at the time found the resolution too clean, the Ewok victory too convenient, the celebration too long. These criticisms are accurate. They are also beside the point. The film closes a loop that began in 1977 with a kid watching two suns set. That it closes it with sincerity rather than irony is precisely what makes it work.</p>
+    <div class="hud-bottom-bar"><div class="hud-card-tags"><a class="tag" href="https://en.wikipedia.org/wiki/Return_of_the_Jedi" target="_blank" rel="noopener">Ending</a></div><span class="hud-scan-code">LOOP::CLOSED</span></div>
+  </div>
+</div>
+</div>
+  <div style="margin-top:2rem;">
+  <div class="img-strip">
+  <div class="img-strip-item hud-a">
+    <div class="img-strip-corner-tl"></div><div class="img-strip-corner-br"></div>
+    <img src="rotj/images/strip-2.1.jpg" alt="Vader's pyre · Endor · The redemption" onerror="this.style.display:'none'">
+    <div class="img-strip-overlay"></div>
+    <div class="img-strip-caption"><span>3 Force ghosts. 0 Haydyn</span><span class="img-strip-caption-code">IMG::04</span></div>
+  </div>
+  <div class="img-strip-item hud-b">
+    <div class="img-strip-corner-tl"></div><div class="img-strip-corner-br"></div>
+    <img src="rotj/images/strip-2.2.jpg" alt="The final duel · Death Star II · 1983" onerror="this.style.display:'none'">
+    <div class="img-strip-overlay"></div>
+    <div class="img-strip-caption"><span>Gooood! Strike me down.</span><span class="img-strip-caption-code">IMG::05</span></div>
+  </div>
+  <div class="img-strip-item hud-c">
+    <div class="img-strip-corner-tl"></div><div class="img-strip-corner-br"></div>
+    <img src="rotj/images/strip-2.3.jpg" alt="Celebration · Endor · The end of the trilogy" onerror="this.style.display:'none'">
+    <div class="img-strip-overlay"></div>
+    <div class="img-strip-caption"><span>The final Death Star? TBD.</span><span class="img-strip-caption-code">IMG::06</span></div>
+  </div>
+</div>
+  </div>
+</section>
+
+
+<section class="section" id="ewoks" style="overflow:hidden;">
+  <div class="sec-label fi">Section 04 · The Ewoks</div>
+  <h2 class="sec-title fi" style="--d:0.05s">The Creatures Who Divided a Fandom<span class="cursor-blink" style="color:var(--accent);">_</span></h2>
+  <p class="sec-intro fi" style="--d:0.1s">No element of the original trilogy has generated more sustained controversy than the Ewoks. No element was more commercially successful per minute of screen time. These are not contradictions — they are the same thing viewed from different angles.</p>
+  <div class="hud-grid" style="grid-template-columns:1fr 1fr 1fr;">
+<div class="hud-card hud-a fi" style="--c-col:#2A7A3B">
+  <div class="hud-corner hud-corner-tl"></div><div class="hud-corner hud-corner-br"></div>
+  <div class="hud-scan-line"></div>
+  <div class="hud-top-bar"><span class="hud-top-label">Warwick Davis</span><span class="hud-top-aurebesh" aria-hidden="true">Warwick</span><span class="hud-status"><span class="hud-dot"></span>SYS::OK</span></div>
+  <div class="hud-card-inner">
+  <div class="hud-year-row"><span class="hud-year">Wicket · Age 11</span><span class="hud-year-tick"></span></div>
+    <h3>The Ewok Who Launched a Career</h3>
+    <p>Warwick Davis was cast as Wicket the Ewok at age 11, stepping in after the original performer became ill. He had no professional acting experience. His performance — communicating emotion entirely through body language and head tilts under a full puppet head — caught Marquand and Lucas's attention enough to give him more screen time. Davis went on to play Willow, Filius Flitwick in Harry Potter, and Griphook, and became one of the most consistently employed short-statured actors in the history of cinema. It started because another Ewok got sick.</p>
+    <div class="hud-bottom-bar"><div class="hud-card-tags"><a class="tag" href="https://en.wikipedia.org/wiki/Warwick_Davis" target="_blank" rel="noopener">Warwick Davis</a></div><span class="hud-scan-code">CAST::BREAKOUT</span></div>
+  </div>
+</div>
+<div class="hud-card hud-b fi" style="--c-col:#4AAF5C">
+  <div class="hud-corner hud-corner-tr"></div><div class="hud-corner hud-corner-bl"></div>
+  <div class="hud-scan-line" style="animation-delay:-1.1s;"></div>
+  <div class="hud-top-bar"><span class="hud-top-label">The Backlash</span><span class="hud-top-aurebesh" aria-hidden="true">Backlash</span><span class="hud-status"><span class="hud-dot" style="animation-delay:-0.8s;"></span>SYS::OK</span></div>
+  <div class="hud-card-inner">
+  <div class="hud-year-row"><span class="hud-year">1983 — Present</span><span class="hud-year-tick"></span></div>
+    <h3>When Critics Noticed the Machine</h3>
+    <p>The backlash to the Ewoks was the first significant moment when critics and audiences articulated what they perceived as a commercial compromise in the Star Wars mythology. Pauline Kael wrote that the Ewoks felt "engineered for the toy store." The New York Times noted the demographic calculation in every frame of the Endor sequences. These were not wrong observations. What they missed was that the Ewoks work emotionally within the film — their victory over the Empire is preposterous and the film knows it, which is part of why Vader's quiet choice in the throne room hits so hard by contrast.</p>
+    <div class="hud-bottom-bar"><div class="hud-card-tags"><a class="tag" href="https://en.wikipedia.org/wiki/Ewok" target="_blank" rel="noopener">Backlash</a></div><span class="hud-scan-code">CRITICAL::DIVIDED</span></div>
+  </div>
+</div>
+<div class="hud-card hud-c fi" style="--c-col:#2A7A3B">
+  <div class="hud-corner hud-corner-tl"></div><div class="hud-corner hud-corner-tr"></div><div class="hud-corner hud-corner-bl"></div><div class="hud-corner hud-corner-br"></div>
+  <div class="hud-scan-line" style="animation-delay:-2.2s;"></div>
+  <div class="hud-top-bar"><span class="hud-top-label">The TV Movies</span><span class="hud-top-aurebesh" aria-hidden="true">TV Movie</span><span class="hud-status"><span class="hud-dot" style="animation-delay:-1.6s;"></span>SYS::OK</span></div>
+  <div class="hud-card-inner">
+  <div class="hud-year-row"><span class="hud-year">1984 · 1985</span><span class="hud-year-tick"></span></div>
+    <h3>Caravan of Courage and the Limits of a Brand</h3>
+    <p>Lucasfilm produced two Ewok television movies: Caravan of Courage: An Ewok Adventure (1984) and Ewoks: The Battle for Endor (1985). Both were made for ABC, both featured child protagonists, and neither had any connection to the main cast. Caravan of Courage won an Emmy for Outstanding Special Visual Effects. Battle for Endor was darker in tone, killing off several characters in its opening minutes. Both films are almost entirely unknown outside of children who watched ABC in the mid-1980s. Warwick Davis reprised Wicket in both.</p>
+    <div class="hud-bottom-bar"><div class="hud-card-tags"><a class="tag" href="https://en.wikipedia.org/wiki/Caravan_of_Courage:_An_Ewok_Adventure" target="_blank" rel="noopener">Caravan of Courage</a></div><span class="hud-scan-code">SPINOFF::TV</span></div>
+  </div>
+</div>
+</div>
+  
+</div>
+  </div>
+</section>
+
+<!-- QUOTE BAND -->
+<div class="quote-band">
+  <div class="quote-band-inner">
+    <span class="pq-mark fi">&ldquo;</span>
+    <p class="pq-text fi" style="--d:0.1s">I wanted a bunch of primitive little guys who defeat the Empire. The ewoks were <span class="pq-hl">the point.</span></p>
+    <p class="pq-attr fi" style="--d:0.2s">— George Lucas · On the Ewoks · 1983</p>
+  </div>
+</div>
+
+<!-- WHAT COMES NEXT BAND -->
+<div class="next-band" id="whatcamesnext">
+  <div class="next-pre fi">May 25, 1983 · The Credits Roll · The Machine Keeps Moving</div>
+  <div class="next-line fi" style="--d:0.05s;">SIXTEEN YEARS.<br>ONE GALAXY.<br><span class="next-hl">EVERYTHING THAT FOLLOWED.</span></div>
+  <p class="next-sub fi" style="--d:0.1s;">Jedi ended the story. It didn't end Star Wars. Between 1983 and 1999 — before a single prequel frame was shot — the franchise Lucas built became an industry unto itself. Books. Games. Comics. Theme parks. Toys. A mythology that outlived the films that created it. Then the Phantom Menace arrived and proved that none of it had actually stopped.</p>
+  <div class="next-facts fi" style="--d:0.15s;">
+    <div class="nf"><div class="nf-num">$4B</div><div class="nf-label">Merchandise Revenue</div><div class="nf-sub">1977–1999 · Before the prequels</div></div>
+    <div class="nf"><div class="nf-num">100+</div><div class="nf-label">Expanded Universe Novels</div><div class="nf-sub">Published 1991–1999</div></div>
+    <div class="nf"><div class="nf-num">3</div><div class="nf-label">Special Edition Re-releases</div><div class="nf-sub">1997 · Altered. Contested. Seen by millions.</div></div>
+    <div class="nf"><div class="nf-num">16</div><div class="nf-label">Years of Silence</div><div class="nf-sub">No new film. The mythology kept growing.</div></div>
+    <div class="nf"><div class="nf-num">2</div><div class="nf-label">Ewok TV Movies</div><div class="nf-sub">1984 &amp; 1985 · ABC · The machine finds its mascot</div></div>
+    <div class="nf"><div class="nf-num">1987</div><div class="nf-label">Droids &amp; Ewoks Animated</div><div class="nf-sub">Two series · Saturday morning · 35 episodes</div></div>
+    <div class="nf"><div class="nf-num">$500M+</div><div class="nf-label">Video Game Revenue</div><div class="nf-sub">TIE Fighter. Dark Forces. Shadows of the Empire.</div></div>
+    <div class="nf"><div class="nf-num">1994</div><div class="nf-label">Star Wars Galaxy Card Set</div><div class="nf-sub">140 artists · The franchise becomes fine art</div></div>
+  </div>
+  <div class="next-divider fi" style="--d:0.2s;"></div>
+</div>
+
+<!-- SECTION 05 -->
+<section class="section alt" id="legacy">
+  <div class="sec-label fi">Section 05 · Legacy</div>
+  <h2 class="sec-title fi" style="--d:0.05s">What It Changed<span class="cursor-blink" style="color:var(--accent);">_</span></h2>
+  <p class="sec-intro fi" style="--d:0.1s">Return of the Jedi is the film where the machine that Star Wars built became fully visible. The toy decisions, the franchise logic, the commercial calculations — all of it surfaces in 1983 in a way it hadn't before. The film survives this because its emotional core is genuine. But Jedi is also the beginning of something: the franchise eating itself. What came next took decades to arrive and several billion dollars to produce.</p>
+  <div class="hud-grid" style="grid-template-columns:1fr 1fr;">
+<div class="hud-card hud-a fi" style="--c-col:#2A7A3B">
+  <div class="hud-corner hud-corner-tl"></div><div class="hud-corner hud-corner-br"></div>
+  <div class="hud-scan-line"></div>
+  <div class="hud-top-bar"><span class="hud-top-label">The Prequel Gap</span><span class="hud-top-aurebesh" aria-hidden="true">Prequels</span><span class="hud-status"><span class="hud-dot"></span>SYS::OK</span></div>
+  <div class="hud-card-inner">
+  <div class="hud-year-row"><span class="hud-year">1983 → 1999</span><span class="hud-year-tick"></span></div>
+    <h3>Sixteen Years of Silence</h3>
+    <p>After Jedi, Lucas publicly stated the saga was complete and he had no plans to continue it. He spent the intervening years on the Special Editions, the Indiana Jones franchise, and Lucasfilm's other divisions. The Phantom Menace arrived in 1999 — sixteen years later — with a level of cultural anticipation that has not been matched before or since. The prequels are their own complicated story. What matters here is that Jedi was, for a generation, genuinely believed to be the end. That belief is part of what makes it feel like a conclusion rather than a chapter.</p>
+    <div class="hud-bottom-bar"><div class="hud-card-tags"><a class="tag" href="https://en.wikipedia.org/wiki/Star_Wars_prequel_trilogy" target="_blank" rel="noopener">Prequel Trilogy</a></div><span class="hud-scan-code">GAP::16YRS</span></div>
+  </div>
+</div>
+<div class="hud-card hud-b fi" style="--c-col:#4AAF5C">
+  <div class="hud-corner hud-corner-tr"></div><div class="hud-corner hud-corner-bl"></div>
+  <div class="hud-scan-line" style="animation-delay:-1.1s;"></div>
+  <div class="hud-top-bar"><span class="hud-top-label">The Franchise Template</span><span class="hud-top-aurebesh" aria-hidden="true">Franchis</span><span class="hud-status"><span class="hud-dot" style="animation-delay:-0.8s;"></span>SYS::OK</span></div>
+  <div class="hud-card-inner">
+  <div class="hud-year-row"><span class="hud-year">1983 → Now</span><span class="hud-year-tick"></span></div>
+    <h3>The Blueprint for Everything That Followed</h3>
+    <p>The original trilogy established the commercial grammar that the entire entertainment industry still speaks: a self-contained story told across multiple installments, each with its own tone and visual identity, building to a culminating emotional event, wrapped in a merchandise ecosystem that outlasts the films themselves. The MCU, the DC universe, the Harry Potter franchise, the Fast and Furious series — all of them are operating on the logic Lucas assembled between 1977 and 1983. Return of the Jedi is where that logic became fully institutionalized.</p>
+    <div class="hud-bottom-bar"><div class="hud-card-tags"><a class="tag" href="https://en.wikipedia.org/wiki/Media_franchise" target="_blank" rel="noopener">Franchise Era</a></div><span class="hud-scan-code">TEMPLATE::SET</span></div>
+  </div>
+</div>
+<div class="hud-card hud-c fi" style="--c-col:#2A7A3B">
+  <div class="hud-corner hud-corner-tl"></div><div class="hud-corner hud-corner-tr"></div><div class="hud-corner hud-corner-bl"></div><div class="hud-corner hud-corner-br"></div>
+  <div class="hud-scan-line" style="animation-delay:-2.2s;"></div>
+  <div class="hud-top-bar"><span class="hud-top-label">$4 Billion</span><span class="hud-top-aurebesh" aria-hidden="true">Disney</span><span class="hud-status"><span class="hud-dot" style="animation-delay:-1.6s;"></span>SYS::OK</span></div>
+  <div class="hud-card-inner">
+  <div class="hud-year-row"><span class="hud-year">October 2012</span><span class="hud-year-tick"></span></div>
+    <h3>What Lucas Built Was Worth Four Billion Dollars</h3>
+    <p>When Disney acquired Lucasfilm in 2012, the intellectual property being purchased included every character, world, vehicle, and story element introduced across the original trilogy — from Luke's binary sunset to Boba Fett's armor to the Ewok Village playset. Lucas had insisted on owning all of it since 1973. The deal that Fox executives thought was generous turned out to be worth $4.05 billion. Disney has since produced seven additional Star Wars films and multiple television series on that foundation. The original trilogy remains the center of gravity for all of it.</p>
+    <div class="hud-bottom-bar"><div class="hud-card-tags"><a class="tag" href="https://en.wikipedia.org/wiki/Acquisition_of_Lucasfilm_by_The_Walt_Disney_Company" target="_blank" rel="noopener">Disney Acquisition</a></div><span class="hud-scan-code">SALE::4B</span></div>
+  </div>
+</div>
+<div class="hud-card hud-d fi" style="--c-col:#4AAF5C">
+  <div class="hud-corner hud-corner-tl"></div><div class="hud-corner hud-corner-tr"></div>
+  <div class="hud-scan-line" style="animation-delay:-3.3s;"></div>
+  <div class="hud-top-bar"><span class="hud-top-label">Reassessment</span><span class="hud-top-aurebesh" aria-hidden="true">Reassess</span><span class="hud-status"><span class="hud-dot"></span>SYS::OK</span></div>
+  <div class="hud-card-inner">
+  <div class="hud-year-row"><span class="hud-year">1983 → 2024</span><span class="hud-year-tick"></span></div>
+    <h3>The Film Time Has Been Kinder To</h3>
+    <p>Jedi's reputation bottomed out in the 1990s — a period when Empire was being canonized as the definitive Star Wars film and Jedi was being retroactively reframed as the beginning of the end. The prequel era and the sequel trilogy gave it new context. Relative to what came after, Jedi's emotional coherence, its commitment to completing its characters' arcs, and its willingness to let Vader's redemption be the actual point — not a twist, not a reversal, just the thing that was true all along — look considerably more accomplished than they did in 1983.</p>
+    <div class="hud-bottom-bar"><div class="hud-card-tags"><a class="tag" href="https://en.wikipedia.org/wiki/Return_of_the_Jedi" target="_blank" rel="noopener">Reassessment</a></div><span class="hud-scan-code">RT::82PCT</span></div>
+  </div>
+</div>
+</div>
+</section>
+
+
+<!-- SECTION 06 · KEY FIGURES -->
+<section class="section alt" id="keyfigures">
+  <div class="sec-label fi">Section 06 · Key Figures</div>
+  <h2 class="sec-title fi" style="--d:0.05s">The People Who Made It<span class="cursor-blink" style="color:var(--accent);">_</span></h2>
+  <div class="people-grid fi" style="--d:0.1s">
+
+<div class="person-card" style="--p-accent:#2A7A3B;">
+  <img class="person-photo" src="rotj/images/bio-george-lucas.jpg" alt="" onerror="this.style.display='none'">
+  <div class="person-era">Director · Producer</div>
+  <div class="person-name">George Lucas</div>
+  <div class="person-role">Producer / De Facto Director</div>
+  <p class="person-bio">Produced and, by most accounts, directed the majority of the film. Closed the story he had been building since 1977. Sold Lucasfilm to Disney for $4.05 billion in 2012.</p>
+  <a class="person-link" href="https://en.wikipedia.org/wiki/George_Lucas" target="_blank" rel="noopener">Wikipedia</a>
+</div>
+
+<div class="person-card" style="--p-accent:#4AAF5C;">
+  <img class="person-photo" src="rotj/images/bio-hammil.jpg" alt="" onerror="this.style.display='none'">
+  <div class="person-era">Actor · Luke Skywalker</div>
+  <div class="person-name">Mark Hamill</div>
+  <div class="person-role">Luke Skywalker</div>
+  <p class="person-bio">His throne room performance — Luke's refusal to kill Vader, his surrender, his certainty his father can be saved — is the finest work he did in the original trilogy.</p>
+  <a class="person-link" href="https://en.wikipedia.org/wiki/Mark_Hamill" target="_blank" rel="noopener">Wikipedia</a>
+</div>
+
+<div class="person-card" style="--p-accent:#2A7A3B;">
+  <img class="person-photo" src="rotj/images/bio-leia.jpg" alt="" onerror="this.style.display='none'">
+  <div class="person-era">Actor · Princess Leia</div>
+  <div class="person-name">Carrie Fisher</div>
+  <div class="person-role">Princess Leia</div>
+  <p class="person-bio">Her scene with Hamill in the Endor forest, where Leia learns the truth of their relationship, is the film's quietest and most affecting moment. The bikini became its own cultural chapter.</p>
+  <a class="person-link" href="https://en.wikipedia.org/wiki/Carrie_Fisher" target="_blank" rel="noopener">Wikipedia</a>
+</div>
+
+<div class="person-card" style="--p-accent:#4AAF5C;">
+  <img class="person-photo" src="rotj/images/bio-ford.jpg" alt="" onerror="this.style.display='none'">
+  <div class="person-era">Actor · Han Solo</div>
+  <div class="person-name">Harrison Ford</div>
+  <div class="person-role">Han Solo</div>
+  <p class="person-bio">Wanted Han killed. Was overruled. Accidentally killed Boba Fett with a stick while blind. Delivered a performance that feels like a man going through the motions — which, given the circumstances, fits.</p>
+  <a class="person-link" href="https://en.wikipedia.org/wiki/Harrison_Ford" target="_blank" rel="noopener">Wikipedia</a>
+</div>
+
+<div class="person-card" style="--p-accent:#2A7A3B;">
+  <img class="person-photo" src="rotj/images/bio-emperor.jpg" alt="" onerror="this.style.display='none'">
+  <div class="person-era">Actor · The Emperor</div>
+  <div class="person-name">Ian McDiarmid</div>
+  <div class="person-role">Emperor Palpatine</div>
+  <p class="person-bio">Was 37. Spent four hours in makeup daily. Could not eat solid food on set. Played ancient corrupted power with complete conviction. Has never really stopped being the Emperor.</p>
+  <a class="person-link" href="https://en.wikipedia.org/wiki/Ian_McDiarmid" target="_blank" rel="noopener">Wikipedia</a>
+</div>
+
+<div class="person-card" style="--p-accent:#4AAF5C;">
+  <img class="person-photo" src="rotj/images/bio-prowse.png" alt="" onerror="this.style.display='none'">
+  <div class="person-era">Actor · Darth Vader</div>
+  <div class="person-name">David Prowse</div>
+  <div class="person-role">Darth Vader (body)</div>
+  <p class="person-bio">Performed Vader's physical presence across all three films. Was barred from the Jedi premiere for revealing plot details. Did not know Sebastian Shaw would play Anakin's face until he saw the film.</p>
+  <a class="person-link" href="https://en.wikipedia.org/wiki/David_Prowse" target="_blank" rel="noopener">Wikipedia</a>
+</div>
+
+<div class="person-card" style="--p-accent:#2A7A3B;">
+  <img class="person-photo" src="rotj/images/bio-shaw.jpg" alt="" onerror="this.style.display='none'">
+  <div class="person-era">Actor · Anakin Skywalker</div>
+  <div class="person-name">Sebastian Shaw</div>
+  <div class="person-role">Anakin Skywalker (unmasked)</div>
+  <p class="person-bio">Appeared in a single scene. Made the unmasking of Vader quietly devastating. Was replaced in the 2004 DVD re-release by Hayden Christensen and has never been reinstated.</p>
+  <a class="person-link" href="https://en.wikipedia.org/wiki/Sebastian_Shaw_(actor)" target="_blank" rel="noopener">Wikipedia</a>
+</div>
+
+<div class="person-card" style="--p-accent:#4AAF5C;">
+  <img class="person-photo" src="rotj/images/bio-davis.jpg" alt="" onerror="this.style.display='none'">
+  <div class="person-era">Actor · Wicket</div>
+  <div class="person-name">Warwick Davis</div>
+  <div class="person-role">Wicket the Ewok</div>
+  <p class="person-bio">Was 11. A last-minute replacement. Communicated more through a sealed puppet head than most actors manage with their full face. Launched a sustained career from a bear suit in the California redwoods.</p>
+  <a class="person-link" href="https://en.wikipedia.org/wiki/Warwick_Davis" target="_blank" rel="noopener">Wikipedia</a>
+</div>
+
+<div class="person-card" style="--p-accent:#2A7A3B;">
+  <img class="person-photo" src="rotj/images/bio-richard-marquand.jpg" alt="" onerror="this.style.display='none'">
+  <div class="person-era">Director · Credited</div>
+  <div class="person-name">Richard Marquand</div>
+  <div class="person-role">Director of Record</div>
+  <p class="person-bio">Received the director's credit. Lucas was present on set for most of production. The actual creative division of labor was never formally documented. Marquand died in 1987 at 49.</p>
+  <a class="person-link" href="https://en.wikipedia.org/wiki/Richard_Marquand" target="_blank" rel="noopener">Wikipedia</a>
+</div>
+
+<div class="person-card" style="--p-accent:#4AAF5C;">
+  <img class="person-photo" src="rotj/images/bio-williams.jpg" alt="" onerror="this.style.display='none'">
+  <div class="person-era">Composer</div>
+  <div class="person-name">John Williams</div>
+  <div class="person-role">Composer</div>
+  <p class="person-bio">Completed the trilogy's musical architecture — introducing the Emperor's theme, Ewok Celebration, and the end titles. His score tracks the film exactly: warmer, more resolved, and deliberately less dark than Empire.</p>
+  <a class="person-link" href="https://en.wikipedia.org/wiki/John_Williams" target="_blank" rel="noopener">Wikipedia</a>
+</div>
+
+</div>
+</section>
+
+<!-- TRILOGY CLOSING CARD -->
+<section class="trilogy-close" id="trilogy">
+  <div class="trilogy-close-label fi">May 25, 1983 · When the Credits Roll · End of an Era</div>
+  <h2 class="trilogy-close-title fi" style="--d:0.05s;">The Original<br><em>Trilogy</em></h2>
+  <div class="trilogy-films fi" style="--d:0.1s;">
+    <div class="trilogy-film" style="background:var(--card-bg);">
+      <div class="trilogy-film-year">1977</div>
+      <div class="trilogy-film-title">A New Hope</div>
+      <div class="trilogy-film-line">The film nobody believed in. A kid, a desert, two suns. The beginning of everything.</div>
+    </div>
+    <div class="trilogy-film" style="background:var(--card-bg);">
+      <div class="trilogy-film-year">1980</div>
+      <div class="trilogy-film-title">The Empire Strikes Back</div>
+      <div class="trilogy-film-line">The film that ended in defeat. Three people knew the secret. The best sequel ever made.</div>
+    </div>
+    <div class="trilogy-film" style="background:var(--card-bg);">
+      <div class="trilogy-film-year">1983</div>
+      <div class="trilogy-film-title">Return of the Jedi</div>
+      <div class="trilogy-film-line">The film that closed the loop. Ewoks, a redemption, and a pyre in the forest.</div>
+    </div>
+  </div>
+  <p class="trilogy-close-body fi" style="--d:0.15s;">Between May 1977 and May 1983, George Lucas made three films that <strong>permanently reorganized the economics of Hollywood, the grammar of blockbuster cinema, and the expectations of an entire generation of audiences.</strong> He did it by refusing to give the studio his rights, by hiring directors who would let him work the way he wanted, by building a visual effects company from a warehouse in Van Nuys, and by writing a story so structurally ancient that it worked across every language and culture it reached.</p>
+  <p class="trilogy-close-body fi" style="--d:0.2s;margin-top:1.5rem;">The trilogy is not perfect. Empire is the best film. Jedi is the most commercial. A New Hope is the one that started everything on a desert planet nobody believed in. <strong>Together they are the most influential three films in the history of popular cinema.</strong> Everything else — the prequels, the sequels, the Disney era, the television series, the $4 billion acquisition — is a response to what happened between 1977 and 1983 in Tunisia, Norway, a California redwood forest, and a warehouse full of model spaceships.</p>
+	<p class="trilogy-close-body fi" style="--d:0.25s;margin-top:1.5rem;"><em>Sixteen years later the machine would start again. I have a bad feeling about this.</em></p>
+</section>
+
+
+<!-- ECO -->
+<div class="eco-links">
+  <div class="eco-header">ECOSYSTEM · RETURN OF THE JEDI</div>
+  <div class="eco-grid">
+    <div class="eco-group"><div class="eco-group-label">Watch</div><a href="https://www.disneyplus.com/movies/star-wars-return-of-the-jedi/1HuBKRDJqBEa" class="eco-link" target="_blank" rel="noopener">Disney+ ↗</a><a href="https://www.imdb.com/title/tt0086190/" class="eco-link" target="_blank" rel="noopener">IMDB ↗</a><a href="https://letterboxd.com/film/return-of-the-jedi/" class="eco-link" target="_blank" rel="noopener">Letterboxd ↗</a></div>
+    <div class="eco-group"><div class="eco-group-label">Reference</div><a href="https://en.wikipedia.org/wiki/Return_of_the_Jedi" class="eco-link" target="_blank" rel="noopener">Wikipedia ↗</a><a href="https://starwars.fandom.com/wiki/Star_Wars:_Episode_VI_Return_of_the_Jedi" class="eco-link" target="_blank" rel="noopener">Wookieepedia ↗</a><a href="https://www.starwars.com/films/star-wars-episode-vi-return-of-the-jedi" class="eco-link" target="_blank" rel="noopener">StarWars.com ↗</a></div>
+    <div class="eco-group"><div class="eco-group-label">Listen</div><a href="https://open.spotify.com/album/2bWaFMfkCOHmQx8uh9XSDI" class="eco-link" target="_blank" rel="noopener">Soundtrack · Spotify ↗</a><a href="https://www.youtube.com/watch?v=0LT5KHiLm5E" class="eco-link" target="_blank" rel="noopener">End Titles · YouTube ↗</a></div>
+    <div class="eco-group"><div class="eco-group-label">Numbers</div><a href="https://www.rottentomatoes.com/m/return_of_the_jedi" class="eco-link" target="_blank" rel="noopener">Rotten Tomatoes ↗</a><a href="https://boxofficemojo.com/title/tt0086190/" class="eco-link" target="_blank" rel="noopener">Box Office Mojo ↗</a></div>
+    <div class="eco-group"><div class="eco-group-label">Context</div><a href="https://en.wikipedia.org/wiki/Warwick_Davis" class="eco-link" target="_blank" rel="noopener">Warwick Davis ↗</a><a href="https://en.wikipedia.org/wiki/Ian_McDiarmid" class="eco-link" target="_blank" rel="noopener">Ian McDiarmid ↗</a><a href="https://en.wikipedia.org/wiki/Lawrence_Kasdan" class="eco-link" target="_blank" rel="noopener">Lawrence Kasdan ↗</a></div>
+  </div>
+</div>
+
+<div class="saga-strip">
+  <div class="saga-strip-label">THE SAGA · A (BRIEF) HISTORY</div>
+  <div class="saga-row">
+    <a class="saga-tag" href="./a-new-hope.html">EP IV · A New Hope</a>
+    <a class="saga-tag" href="./the-empire-strikes-back.html">EP V · The Empire Strikes Back</a>
+    <a class="saga-tag active" href="#">EP VI · Return of the Jedi</a>
+  </div>
+</div>
+<div class="colophon">
+  <div><div class="colophon-label">RETURN OF THE JEDI / FILM HISTORY</div><p class="colophon-blurb">The production, release, and cultural legacy of the 1983 film — the Ewoks, the exit, the redemption, and the end of the original trilogy.</p></div>
+  <div>
+    <div class="colophon-meta-label">PART OF</div>
+    <div class="colophon-series">A <em>(Brief)</em> History of Everything<span class="cursor-blink">_</span></div>
+    <a href="https://abriefhistoryofeverything.com" class="colophon-url" target="_blank" rel="noopener">abriefhistoryofeverything.com ↗</a>
+    <div class="colophon-share">
+      <a href="https://twitter.com/intent/tweet?url=https%3A%2F%2Fabriefhistoryofeverything.com%2Freturn-of-the-jedi&text=A%20(Brief)%20History%20of%20Return%20of%20the%20Jedi" class="colophon-share-link" target="_blank" rel="noopener">Share on X</a>
+      <a href="https://bsky.app/intent/compose?text=A%20(Brief)%20History%20of%20Return%20of%20the%20Jedi%20https%3A%2F%2Fabriefhistoryofeverything.com%2Freturn-of-the-jedi" class="colophon-share-link" target="_blank" rel="noopener">Share on Bluesky</a>
+    </div>
+  </div>
+</div>
+
+<footer class="footer">
+  <a href="https://abriefhistoryofeverything.com" class="footer-lockup" target="_blank" rel="noopener">
+    <svg width="32" height="32" viewBox="0 0 400 400" xmlns="http://www.w3.org/2000/svg"><rect width="400" height="400" fill="#00D4F0"/><rect x="55" y="118" width="46" height="46" fill="#08090C" opacity="0.22"/><rect x="178" y="118" width="46" height="46" fill="#08090C" opacity="0.22"/><rect class="footer-mouth" x="55" y="278" width="170" height="36" fill="#08090C"/></svg>
+    <div class="footer-series">A <em>(Brief)</em> History of Everything_</div>
+  </a>
+  <div class="footer-copy">© 2026 A (Brief) History of Everything</div>
+</footer>
+
+</div>
+<script>
+(function(){
+  'use strict';
+  var html=document.documentElement;
+  html.classList.add('js-ready');
+  var sf=document.getElementById('starField');
+  if(sf){for(var i=0;i<200;i++){var s=document.createElement('div');s.className='star';var sz=Math.random()<0.8?1:Math.random()<0.5?2:3;s.style.cssText='width:'+sz+'px;height:'+sz+'px;left:'+(Math.random()*100)+'%;top:'+(Math.random()*100)+'%;--dur:'+(2+Math.random()*4)+'s;--delay:'+(-Math.random()*5)+'s;--base-op:'+(0.3+Math.random()*0.7);sf.appendChild(s);}}
+  var prog=document.getElementById('progress');
+  window.addEventListener('scroll',function(){var h=document.documentElement;var pct=Math.min(100,Math.max(0,(window.scrollY/(h.scrollHeight-h.clientHeight))*100));if(prog)prog.style.width=pct+'%';},{passive:true});
+  function revealAll(){document.querySelectorAll('.fi').forEach(function(el){el.classList.add('visible');});}
+  if('IntersectionObserver' in window){
+    var obs=new IntersectionObserver(function(entries){entries.forEach(function(e){if(e.isIntersecting){var el=e.target;var d=parseFloat(el.style.getPropertyValue('--d')||'0')*1000;setTimeout(function(){el.classList.add('visible');},d);obs.unobserve(el);}});},{threshold:0,rootMargin:'200px 0px 200px 0px'});
+    document.querySelectorAll('.fi').forEach(function(el){obs.observe(el);});
+    [100,400,1000].forEach(function(ms){setTimeout(function(){if(document.querySelectorAll('.fi:not(.visible)').length>0)revealAll();},ms);});
+  }else{revealAll();}
+
+  var isMobile=('ontouchstart' in window)||(navigator.maxTouchPoints>0);
+  var cur=document.getElementById('cur');var ring=document.getElementById('curRing');
+  if(isMobile){if(cur)cur.style.display='none';if(ring)ring.style.display='none';}
+  else{
+    document.addEventListener('mousemove',function(e){if(cur){cur.style.left=e.clientX+'px';cur.style.top=e.clientY+'px';}if(ring){ring.style.left=e.clientX+'px';ring.style.top=e.clientY+'px';}});
+    document.querySelectorAll('a,button,.hud-card,.h-stat,.entity-badge,.person-card').forEach(function(el){el.addEventListener('mouseenter',function(){if(ring){ring.style.width='42px';ring.style.height='42px';}if(cur)cur.classList.add('active');});el.addEventListener('mouseleave',function(){if(ring){ring.style.width='26px';ring.style.height='26px';}if(cur)cur.classList.remove('active');});});
+  }
+  var tt=document.getElementById('tt');
+  if(!isMobile&&tt){document.querySelectorAll('[data-tip]').forEach(function(el){el.addEventListener('mouseenter',function(){tt.textContent=el.dataset.tip;tt.style.opacity='1';});el.addEventListener('mousemove',function(e){tt.style.left=(e.clientX+14)+'px';tt.style.top=(e.clientY-8)+'px';});el.addEventListener('mouseleave',function(){tt.style.opacity='0';});});}
+  function initShare(btnId,dropId,copyId){
+    var btn=document.getElementById(btnId);var drop=document.getElementById(dropId);if(!btn||!drop)return;
+    btn.addEventListener('click',function(e){e.stopPropagation();drop.classList.toggle('open');});
+    if(copyId){var cl=document.getElementById(copyId);if(cl){cl.addEventListener('click',function(e){e.preventDefault();navigator.clipboard.writeText('https://abriefhistoryofeverything.com/return-of-the-jedi').then(function(){cl.textContent='Copied!';setTimeout(function(){cl.textContent='Copy Link';},1500);});});}}
+  }
+  initShare('shareBtn','shareDropdown','copyLink');
+  var ents=[
+    {name:'Return of the Jedi',url:'https://en.wikipedia.org/wiki/Return_of_the_Jedi',c:'var(--accent)',t:'#fff'},
+    {name:'George Lucas',url:'https://en.wikipedia.org/wiki/George_Lucas',c:'rgba(42,122,59,0.2)',t:'var(--text)'},
+    {name:'Richard Marquand',url:'https://en.wikipedia.org/wiki/Richard_Marquand',c:'rgba(42,122,59,0.15)',t:'var(--text)'},
+    {name:'Mark Hamill',url:'https://en.wikipedia.org/wiki/Mark_Hamill',c:'rgba(42,122,59,0.15)',t:'var(--text)'},
+    {name:'Harrison Ford',url:'https://en.wikipedia.org/wiki/Harrison_Ford',c:'rgba(42,122,59,0.15)',t:'var(--text)'},
+    {name:'Carrie Fisher',url:'https://en.wikipedia.org/wiki/Carrie_Fisher',c:'rgba(42,122,59,0.15)',t:'var(--text)'},
+    {name:'Ian McDiarmid',url:'https://en.wikipedia.org/wiki/Ian_McDiarmid',c:'rgba(42,122,59,0.18)',t:'var(--text)'},
+    {name:'David Prowse',url:'https://en.wikipedia.org/wiki/David_Prowse',c:'rgba(42,122,59,0.12)',t:'var(--text)'},
+    {name:'Sebastian Shaw',url:'https://en.wikipedia.org/wiki/Sebastian_Shaw_(actor)',c:'rgba(42,122,59,0.1)',t:'var(--text)'},
+    {name:'Warwick Davis',url:'https://en.wikipedia.org/wiki/Warwick_Davis',c:'rgba(42,122,59,0.15)',t:'var(--text)'},
+    {name:'Jeremy Bulloch',url:'https://en.wikipedia.org/wiki/Jeremy_Bulloch',c:'rgba(42,122,59,0.1)',t:'var(--text)'},
+    {name:'Lawrence Kasdan',url:'https://en.wikipedia.org/wiki/Lawrence_Kasdan',c:'rgba(42,122,59,0.12)',t:'var(--text)'},
+    {name:'John Williams',url:'https://en.wikipedia.org/wiki/John_Williams',c:'rgba(42,122,59,0.15)',t:'var(--text)'},
+    {name:'Lucasfilm',url:'https://en.wikipedia.org/wiki/Lucasfilm',c:'rgba(42,122,59,0.15)',t:'var(--text)'},
+    {name:'Industrial Light & Magic',url:'https://en.wikipedia.org/wiki/Industrial_Light_%26_Magic',c:'rgba(42,122,59,0.12)',t:'var(--text)'},
+    {name:'Kenner Products',url:'https://en.wikipedia.org/wiki/Kenner_Products',c:'rgba(42,122,59,0.1)',t:'var(--text)'},
+    {name:'Ewoks',url:'https://en.wikipedia.org/wiki/Ewok',c:'rgba(42,122,59,0.12)',t:'var(--text)'},
+    {name:'Wicket',url:'https://en.wikipedia.org/wiki/Wicket_W._Warrick',c:'rgba(42,122,59,0.1)',t:'var(--text)'},
+    {name:'Endor',url:'https://en.wikipedia.org/wiki/Endor',c:'rgba(42,122,59,0.1)',t:'var(--text)'},
+    {name:'Boba Fett',url:'https://en.wikipedia.org/wiki/Boba_Fett',c:'rgba(42,122,59,0.12)',t:'var(--text)'},
+    {name:'The Sarlacc',url:'https://en.wikipedia.org/wiki/Sarlacc',c:'var(--accent)',t:'#fff'},
+    {name:'Jabba the Hutt',url:'https://en.wikipedia.org/wiki/Jabba_the_Hutt',c:'rgba(42,122,59,0.1)',t:'var(--text)'},
+    {name:'Emperor Palpatine',url:'https://en.wikipedia.org/wiki/Emperor_Palpatine',c:'rgba(42,122,59,0.12)',t:'var(--text)'},
+    {name:'Darth Vader',url:'https://en.wikipedia.org/wiki/Darth_Vader',c:'rgba(42,122,59,0.12)',t:'var(--text)'},
+    {name:'Anakin Skywalker',url:'https://en.wikipedia.org/wiki/Anakin_Skywalker',c:'rgba(42,122,59,0.1)',t:'var(--text)'},
+    {name:'Blue Harvest',url:'https://en.wikipedia.org/wiki/Blue_Harvest',c:'rgba(42,122,59,0.08)',t:'var(--text)'},
+    {name:'Caravan of Courage',url:'https://en.wikipedia.org/wiki/Caravan_of_Courage:_An_Ewok_Adventure',c:'rgba(42,122,59,0.08)',t:'var(--text)'},
+    {name:'Revenge of the Jedi',url:'https://en.wikipedia.org/wiki/Return_of_the_Jedi',c:'rgba(42,122,59,0.08)',t:'var(--text)'},
+    {name:'Han Shot First',url:'https://en.wikipedia.org/wiki/Han_shot_first',c:'rgba(42,122,59,0.06)',t:'var(--text)'},
+    {name:'Disney Acquisition 2012',url:'https://en.wikipedia.org/wiki/Acquisition_of_Lucasfilm_by_The_Walt_Disney_Company',c:'rgba(42,122,59,0.08)',t:'var(--text)'},
+    {name:'The Monomyth',url:'https://en.wikipedia.org/wiki/Monomyth',c:'rgba(42,122,59,0.08)',t:'var(--text)'},
+    {name:'Elstree Studios',url:'https://en.wikipedia.org/wiki/Elstree_Studios',c:'rgba(42,122,59,0.08)',t:'var(--text)'},
+    {name:'Humboldt County',url:'https://en.wikipedia.org/wiki/Humboldt_County,_California',c:'rgba(42,122,59,0.06)',t:'var(--text)'},
+    {name:'Death Star II',url:'https://en.wikipedia.org/wiki/Death_Star',c:'rgba(42,122,59,0.08)',t:'var(--text)'},
+    {name:'A New Hope',url:'https://en.wikipedia.org/wiki/Star_Wars_(film)',c:'rgba(42,122,59,0.08)',t:'var(--text)'},
+    {name:'The Empire Strikes Back',url:'https://en.wikipedia.org/wiki/The_Empire_Strikes_Back',c:'rgba(42,122,59,0.08)',t:'var(--text)'},
+  ];
+
+})();
+
+
+  /* Page nav dropdown */
+  var pageNavBtn = document.getElementById('pageNavBtn');
+  var pageNavWrap = document.getElementById('pageNavWrap');
+  if(pageNavBtn && pageNavWrap){
+    pageNavBtn.addEventListener('click', function(e){
+      e.stopPropagation();
+      pageNavWrap.classList.toggle('open');
+    });
+    document.addEventListener('click', function(e){
+      if(pageNavWrap && !pageNavWrap.contains(e.target)){
+        pageNavWrap.classList.remove('open');
+      }
+    });
+    pageNavWrap.querySelectorAll('.pn-item').forEach(function(a){
+      a.addEventListener('click', function(){ pageNavWrap.classList.remove('open'); });
+    });
+  }
+</script>
+</body>
+</html>

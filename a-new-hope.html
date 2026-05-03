@@ -8,16 +8,17 @@
   <link rel="canonical" href="https://abriefhistoryofeverything.com/a-new-hope">
   <meta property="og:title" content="A (Brief) History of A New Hope_">
   <meta property="og:description" content="The film nobody believed in. The desert that almost broke everything. The moment that changed movies forever.">
-  <meta property="og:image" content="og-a-new-hope.png">
+  <meta property="og:image" content="https://www.abriefhistoryofeverything.com/og-a-new-hope.png">
   <meta property="og:image:width" content="1200">
   <meta property="og:image:height" content="630">
+  <meta property="og:url" content="https://www.abriefhistoryofeverything.com/a-new-hope.html" />
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:image" content="og-a-new-hope.png">
+  <meta name="twitter:image" content="https://www.abriefhistoryofeverything.com/og-a-new-hope.png">
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-S80KBNWEJ5"></script>
   <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-S80KBNWEJ5');</script>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;1,9..40,400&family=Share+Tech+Mono&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;1,9..40,400&family=Share+Tech+Mono&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;1,8..60,400&display=swap" rel="stylesheet">
   <style>
     @font-face {
       font-family: 'SerifGothic';
@@ -31,30 +32,72 @@
       font-weight: 400;
       font-display: swap;
     }
-  </style>
+  
+    /* ── FILMS DROPDOWN NAV ── */
+    .films-wrap{position:relative;display:flex;align-items:center;height:50px;border-left:1px solid var(--nav-border);}
+    .films-btn{display:flex;align-items:center;gap:8px;height:50px;padding:0 16px;background:none;border:none;font-family:var(--mono);font-size:0.9rem;letter-spacing:0.14em;text-transform:uppercase;color:var(--nav-text);cursor:pointer;transition:color .15s;white-space:nowrap;}
+    .films-btn:hover{color:var(--nav-text-bright);}
+    .films-btn-arrow{font-size:0.7rem;transition:transform .2s;}
+    .films-wrap.open .films-btn-arrow{transform:rotate(180deg);}
+    .films-dropdown{position:absolute;top:calc(100% + 1px);right:0;background:var(--bg2);border:1px solid var(--rule2);min-width:260px;display:none;flex-direction:column;z-index:1000;}
+    .films-wrap.open .films-dropdown{display:flex;}
+    .films-trilogy-label{font-family:var(--mono);font-size:0.72rem;letter-spacing:0.22em;text-transform:uppercase;color:var(--muted);padding:0.6rem 1rem 0.3rem;border-bottom:1px solid var(--rule);}
+    .film-item{display:flex;align-items:center;gap:10px;padding:0.5rem 1rem;text-decoration:none;border-bottom:1px solid var(--rule);transition:background .15s;}
+    .film-item:last-child{border-bottom:none;}
+    .film-item.active{background:rgba(var(--accent-rgb),0.08);}
+    .film-item.active .film-item-title{color:var(--accent);}
+    .film-item.disabled{opacity:0.35;cursor:default;pointer-events:none;}
+    .film-item-num{font-family:var(--mono);font-size:0.8rem;letter-spacing:0.1em;color:var(--muted);flex-shrink:0;width:24px;}
+    .film-item-title{font-family:var(--mono);font-size:0.85rem;letter-spacing:0.1em;text-transform:uppercase;color:var(--text);transition:color .15s;}
+    .film-item-soon{font-family:var(--mono);font-size:0.7rem;letter-spacing:0.1em;color:var(--muted);margin-left:auto;flex-shrink:0;}
+    .film-item:not(.disabled):not(.active):hover{background:var(--bg3);}
+    .film-item:not(.disabled):not(.active):hover .film-item-title{color:var(--nav-text-bright);}
+    /* ── SAGA STRIP (compact) ── */
+    .saga-strip{padding:1.5rem 6vw;background:var(--bg1);border-top:1px solid var(--rule);}
+    .saga-strip-label{font-family:var(--mono);font-size:0.72rem;font-weight:700;letter-spacing:0.22em;text-transform:uppercase;color:var(--muted);margin-bottom:0.8rem;opacity:0.7;}
+    .saga-row{display:flex;flex-wrap:wrap;gap:0.4rem;}
+    .saga-tag{font-family:var(--mono);font-size:0.78rem;letter-spacing:0.1em;text-transform:uppercase;text-decoration:none;padding:0.25rem 0.65rem;border:1px solid var(--rule);color:var(--muted);transition:color .15s,border-color .15s,background .15s;}
+    .saga-tag.active{background:var(--accent);border-color:var(--accent);color:var(--bg);}
+    .saga-tag.disabled{opacity:0.28;cursor:default;pointer-events:none;}
+    .saga-tag:not(.disabled):not(.active):hover{color:var(--text);border-color:var(--rule2);}
+    
+    /* ── PAGE NAV DROPDOWN ── */
+    .page-nav-wrap{position:relative;display:flex;align-items:center;height:50px;border-left:1px solid var(--nav-border);}
+    .page-nav-btn{display:flex;align-items:center;gap:8px;height:50px;padding:0 16px;background:none;border:none;font-family:var(--mono);font-size:0.9rem;letter-spacing:0.14em;text-transform:uppercase;color:var(--nav-text);cursor:pointer;transition:color .15s;white-space:nowrap;}
+    .page-nav-btn:hover{color:var(--nav-text-bright);}
+    .page-nav-arrow{font-size:0.7rem;transition:transform .2s;}
+    .page-nav-wrap.open .page-nav-arrow{transform:rotate(180deg);}
+    .page-nav-dropdown{position:absolute;top:calc(100% + 1px);right:0;background:var(--bg2);border:1px solid var(--rule2);min-width:220px;display:none;flex-direction:column;z-index:1000;}
+    .page-nav-wrap.open .page-nav-dropdown{display:flex;}
+    .pn-item{font-family:var(--mono);font-size:0.85rem;letter-spacing:0.1em;text-transform:uppercase;color:var(--text);text-decoration:none;padding:0.55rem 1rem;border-bottom:1px solid var(--rule);transition:background .15s,color .15s;}
+    .pn-item:last-child{border-bottom:none;}
+    .pn-item:hover{background:var(--bg3);color:var(--nav-text-bright);}
+    </style>
   <style>
     /* ANH palette — desert amber/gold replacing blue */
-    :root{--accent:#C8860A;--accent2:#F5C842;--accent-rgb:200,134,10;--bg:#0D0800;--bg1:#150D00;--bg2:#1C1200;--bg3:#221700;--card-bg:#140E00;--card-hover:#1C1600;--rule:rgba(200,134,10,0.12);--rule2:rgba(200,134,10,0.22);--muted:#6B5020;--dim:#9A7830;--text:#C8B070;--bright:#F5E8C0;--nav-bg:rgba(13,8,0,0.92);--nav-border:rgba(200,134,10,0.15);--nav-text:#7A6030;--nav-text-bright:#F5E0A0;--glow:0 0 40px rgba(200,134,10,0.3);--display:'SerifGothic','ITC Serif Gothic Std',sans-serif;--mono:'Share Tech Mono',monospace;--sans:'SerifGothic',sans-serif;--body:'DM Sans',sans-serif;--aurebesh:'Aurebesh',sans-serif;}
+    :root{--accent:#C8860A;--accent2:#F5C842;--accent-rgb:200,134,10;--bg:#0D0800;--bg1:#150D00;--bg2:#1C1200;--bg3:#221700;--card-bg:#140E00;--card-hover:#1C1600;--rule:rgba(200,134,10,0.12);--rule2:rgba(200,134,10,0.22);--muted:#6B5020;--dim:#9A7830;--text:#C8B070;--bright:#F5E8C0;--nav-bg:rgba(13,8,0,0.92);--nav-border:rgba(200,134,10,0.15);--nav-text:#7A6030;--nav-text-bright:#F5E0A0;--glow:0 0 40px rgba(200,134,10,0.3);--display:'SerifGothic','ITC Serif Gothic Std',sans-serif;--mono:'Share Tech Mono',monospace;--sans:'SerifGothic',sans-serif;--body:'Source Serif 4',Georgia,serif;--aurebesh:'Aurebesh',sans-serif;}
     [data-theme="light"]{--accent:#9A6200;--accent2:#C8900A;--accent-rgb:154,98,0;--bg:#FBF5E8;--bg1:#F5EDD6;--bg2:#EDE1C4;--bg3:#E4D4B0;--card-bg:#F7F1E0;--card-hover:#EFE7CE;--rule:rgba(154,98,0,0.12);--rule2:rgba(154,98,0,0.22);--muted:#8A6830;--dim:#4A3010;--text:#2A1800;--bright:#0A0500;--nav-bg:rgba(251,245,232,0.94);--nav-border:rgba(154,98,0,0.15);--nav-text:#8A6830;--nav-text-bright:#2A1800;--glow:none;--card-dark:#2A1E0A;--card-dark-hover:#332510;}
 
-    /* HUD cards stay dark in light mode */
-    [data-theme="light"] .hud-card{background:#2A1E0A;border-color:rgba(200,134,10,0.25);}
-    [data-theme="light"] .hud-card:hover{background:#332510;}
-    [data-theme="light"] .hud-card h3{color:#F5E8C0;}
-    [data-theme="light"] .hud-card p{color:#C8A060;}
-    [data-theme="light"] .hud-top-bar{background:rgba(200,134,10,0.06);border-bottom-color:rgba(200,134,10,0.15);}
-    [data-theme="light"] .hud-top-label{color:rgba(200,134,10,0.7);}
-    [data-theme="light"] .hud-eyebrow{color:#C8860A;}
-    [data-theme="light"] .hud-year{color:#C8860A;}
-    [data-theme="light"] .hud-year-tick{background:linear-gradient(90deg,rgba(200,134,10,0.4),transparent);}
-    [data-theme="light"] .hud-card-tags .tag{color:rgba(200,134,10,0.6);border-color:rgba(200,134,10,0.2);}
-    [data-theme="light"] .hud-scan-code{color:rgba(200,134,10,0.3);}
-    [data-theme="light"] .hud-corner{--accent:#C8860A;}
-    [data-theme="light"] .split-ghost{color:#C8860A;}
+    /* Era cards: light brown body, dark header bar */
+    [data-theme="light"] .hud-card{background:#EDD9B8;border-color:rgba(160,100,10,0.25);}
+    [data-theme="light"] .hud-card:hover{background:#E4CCAA;}
+    [data-theme="light"] .hud-card h3{color:#2A1500;}
+    [data-theme="light"] .hud-card p{color:#3A2010;}
+    [data-theme="light"] .hud-top-bar{background:#2A1A05;border-bottom-color:rgba(200,134,10,0.25);}
+    [data-theme="light"] .hud-top-label{color:rgba(200,134,10,0.85);}
+    [data-theme="light"] .hud-status{color:rgba(200,134,10,0.55);}
+    [data-theme="light"] .hud-eyebrow{color:#8B5E0A;}
+    [data-theme="light"] .hud-year{color:#8B5E0A;}
+    [data-theme="light"] .hud-year-tick{background:linear-gradient(90deg,rgba(160,100,10,0.4),transparent);}
+    [data-theme="light"] .hud-bottom-bar{background:transparent;}
+    [data-theme="light"] .hud-card-tags .tag{color:rgba(139,94,10,0.75);border-color:rgba(139,94,10,0.3);}
+    [data-theme="light"] .hud-scan-code{color:rgba(139,94,10,0.4);}
+    [data-theme="light"] .hud-corner{--accent:#8B5E0A;}
+    [data-theme="light"] .split-ghost{color:#8B5E0A;}
 
     *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
     html{scroll-behavior:smooth;}
-    body{background:var(--bg);color:var(--text);font-family:var(--body);font-size:1rem;line-height:1.7;transition:background .4s,color .4s;overflow-x:hidden;}
+    body{background:var(--bg);color:var(--text);font-family:var(--body);font-size:1rem;line-height:1.7;transition:background .4s,color .4s;overflow-x:hidden;max-width:100vw;}
     a{color:inherit;text-decoration:none;}
     @keyframes cursorBlink{0%,100%{opacity:1}50%{opacity:0}}
     .cursor-blink{animation:cursorBlink 1.1s step-end infinite;display:inline-block;}
@@ -93,10 +136,18 @@
     .hero-splash-bg{position:absolute;inset:0;background-image:url('a-new-hope/images/new-hope-bg-1.jpg');background-size:cover;background-position:center center;z-index:0;}
     .hero-splash-fade{position:absolute;inset:0;background:rgba(13,8,0,0.08);z-index:1;}
     .hero-splash-content{position:relative;z-index:2;display:flex;flex-direction:column;align-items:center;justify-content:flex-end;height:100%;padding-bottom:4rem;text-align:center;padding-left:2rem;padding-right:2rem;}
-    .hero-splash-logo{width:clamp(200px,32vw,400px);margin-bottom:1.2rem;object-fit:contain;filter:drop-shadow(0 2px 20px rgba(0,0,0,0.6));}
+    .hero-splash-logo{width:clamp(200px,32vw,400px);margin-bottom:1.2rem;object-fit:contain;filter:drop-shadow(0 1px 8px rgba(0,0,0,0.2));}
     @media(max-width:600px){.hero-splash-logo{width:65vw;}}
-    .hero-splash-brief{font-family:var(--display);font-size:clamp(1.4rem,3vw,2.2rem);letter-spacing:0.18em;text-transform:uppercase;color:#fff;margin-bottom:1.4rem;text-shadow:0 2px 20px rgba(0,0,0,0.6);font-weight:400;}
-    .hero-splash-hook{font-family:var(--body);font-size:clamp(0.9rem,1.6vw,1.05rem);line-height:1.8;color:#1A0E00;max-width:580px;margin-bottom:2rem;font-weight:500;}
+    .hero-splash-brief{font-family:var(--display);font-size:clamp(1.4rem,3vw,2.2rem);letter-spacing:0.18em;text-transform:uppercase;color:#3A1E00;margin-bottom:1.4rem;text-shadow:none;font-weight:400;}
+    .hero-splash-hook{
+    font-family: var(--body);
+    font-size: clamp(0.9rem,1.6vw,1.05rem);
+    line-height: 1.8;
+    color: #3F2B03;
+    max-width: 580px;
+    margin-bottom: 2rem;
+    font-weight: 400;
+}
     .hero-splash-trailer{display:inline-flex;align-items:center;gap:0.7rem;font-family:var(--mono);font-size:0.9rem;letter-spacing:0.18em;text-transform:uppercase;color:#fff;background:var(--accent);border:2px solid var(--accent);padding:0.7rem 1.6rem;text-decoration:none;transition:background .2s,color .2s,border-color .2s;margin-bottom:2.5rem;}
     .hero-splash-trailer:hover{background:transparent;color:var(--accent);border-color:var(--accent);}
     .hero-splash-scroll{font-family:var(--mono);font-size:0.9rem;letter-spacing:0.2em;text-transform:uppercase;color:rgba(255,255,255,0.28);display:flex;flex-direction:column;align-items:center;gap:0.4rem;animation:scrollHint 2.2s ease-in-out infinite;}
@@ -155,11 +206,10 @@
 
     /* ── HUD CARD SYSTEM ── */
     .hud-grid{display:grid;grid-template-columns:1fr 1fr;gap:2rem;}
-    @media(max-width:960px){.hud-grid[style*="repeat(4"]{grid-template-columns:1fr 1fr !important;}}
-    @media(max-width:900px){.hud-grid[style*="1fr 1fr 1fr"]{grid-template-columns:1fr 1fr !important;}}
-    @media(max-width:700px){.hud-grid{grid-template-columns:1fr !important;}}
+    @media(max-width:900px){.hud-grid{grid-template-columns:1fr !important;gap:1rem;}}
+    @media(max-width:900px){.hud-grid[style*="1fr 1fr 1fr"]{grid-template-columns:1fr !important;}}
 
-    .hud-card{background:var(--card-bg);padding:0;position:relative;transition:background .2s;border:1px solid rgba(200,134,10,0.18);isolation:isolate;}
+    .hud-card{background:var(--card-bg);padding:0;position:relative;transition:background .2s;border:1px solid rgba(200,134,10,0.18);isolation:isolate;display:flex;flex-direction:column;min-width:0;}
     .hud-card:hover{background:var(--card-hover);}
     .hud-a{clip-path:polygon(0 0,calc(100% - 16px) 0,100% 16px,100% 100%,16px 100%,0 calc(100% - 16px));border:none;outline:1px solid rgba(200,134,10,0.18);}
     .hud-b{clip-path:polygon(16px 0,100% 0,100% calc(100% - 16px),calc(100% - 16px) 100%,0 100%,0 16px);border:none;outline:1px solid rgba(200,134,10,0.18);}
@@ -171,29 +221,52 @@
     .hud-corner-tr{top:0;right:0;width:20px;height:20px;border-top:1px solid var(--accent);border-right:1px solid var(--accent);opacity:0.55;}
     .hud-corner-bl{bottom:0;left:0;width:20px;height:20px;border-bottom:1px solid var(--accent);border-left:1px solid var(--accent);opacity:0.55;}
     .hud-corner-br{bottom:0;right:0;width:20px;height:20px;border-bottom:1px solid var(--accent);border-right:1px solid var(--accent);opacity:0.55;}
-    .hud-top-bar{display:flex;align-items:center;justify-content:space-between;padding:0.5rem 1.1rem;border-bottom:1px solid rgba(200,134,10,0.1);background:rgba(200,134,10,0.04);gap:0.6rem;}
-    .hud-top-label{font-family:var(--mono);font-size:0.9rem;letter-spacing:0.22em;text-transform:uppercase;color:rgba(200,134,10,0.7);flex-shrink:0;}
+    .hud-top-bar{display:flex;align-items:center;justify-content:space-between;padding:0.5rem 1.1rem;border-bottom:1px solid rgba(200,134,10,0.25);background:#120900;gap:0.6rem;}
+    .hud-top-label{font-family:var(--mono);font-size:0.9rem;letter-spacing:0.22em;text-transform:uppercase;color:rgba(200,134,10,0.7);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;flex-shrink:1;min-width:0;}
     .hud-top-aurebesh{font-family:var(--aurebesh);font-size:1.2rem;color:var(--accent);opacity:0.14;flex:1;overflow:hidden;white-space:nowrap;text-overflow:ellipsis;}
     .hud-status{display:flex;align-items:center;gap:0.4rem;font-family:var(--mono);font-size:0.9rem;letter-spacing:0.14em;color:rgba(200,134,10,0.3);flex-shrink:0;}
+    @media(max-width:600px){.hud-top-aurebesh{display:none;}.hud-status{display:none;}.hud-top-label{letter-spacing:0.1em;font-size:0.82rem;}}
     .hud-dot{width:6px;height:6px;background:var(--accent);border-radius:50%;animation:dotPulse 2s ease-in-out infinite;flex-shrink:0;}
     @keyframes dotPulse{0%,100%{opacity:0.5}50%{opacity:1}}
-    .hud-card-inner{padding:1.4rem 1.4rem 0.8rem;}
+    .hud-card-inner{padding:1.4rem 1.4rem 0.4rem;flex:1;display:flex;flex-direction:column;}
+    .hud-bottom-bar{display:flex;align-items:flex-end;justify-content:space-between;padding:0.5rem 1.4rem 0.9rem;margin-top:auto;gap:0.6rem;overflow:hidden;}
     .hud-eyebrow{font-family:var(--mono);font-size:0.9rem;letter-spacing:0.2em;text-transform:uppercase;color:var(--accent);margin-bottom:0.4rem;opacity:0.7;}
     .hud-year-row{display:flex;align-items:center;gap:0.8rem;margin-bottom:0.8rem;}
     .hud-year{font-family:var(--mono);font-size:0.9rem;letter-spacing:0.14em;color:var(--accent);opacity:0.8;}
     .hud-year-tick{flex:1;height:1px;background:linear-gradient(90deg,rgba(200,134,10,0.4),transparent);}
     .hud-card h3{font-family:var(--display);font-size:clamp(1rem,1.6vw,1.2rem);color:var(--bright);text-transform:uppercase;letter-spacing:0.03em;line-height:1.2;margin-bottom:0.8rem;}
     .hud-card p{font-family:var(--body);font-size:0.95rem;line-height:1.75;color:var(--dim);}
-    .hud-bottom-bar{display:flex;align-items:center;justify-content:space-between;padding:0.6rem 1.1rem 0.8rem;margin-top:0.8rem;gap:0.5rem;}
-    .hud-card-tags{display:flex;flex-wrap:wrap;gap:0.4rem;}
+
+    .hud-card-tags{display:flex;flex-wrap:wrap;gap:0.3rem;flex-shrink:1;min-width:0;overflow:hidden;align-content:flex-end;margin-left:-20px;}
     .tag{font-family:var(--mono);font-size:0.9rem;letter-spacing:0.1em;text-transform:uppercase;color:rgba(200,134,10,0.55);border:1px solid rgba(200,134,10,0.18);padding:.15rem .5rem;text-decoration:none;transition:color .15s,border-color .15s;}
     .tag:hover{color:var(--accent);border-color:var(--accent);}
     .hud-scan-code{font-family:var(--mono);font-size:0.9rem;letter-spacing:0.1em;text-transform:uppercase;color:rgba(200,134,10,0.25);flex-shrink:0;}
     .hud-scan-line{position:absolute;inset:0;height:1px;top:50%;background:linear-gradient(90deg,transparent,rgba(200,134,10,0.15),transparent);animation:scanAnim 3s ease-in-out infinite;pointer-events:none;z-index:0;}
     @keyframes scanAnim{0%,100%{top:20%;opacity:0}50%{top:80%;opacity:1}}
 
+    /* HAN SHOT FIRST — unified dark section */
+    .han-shot-section{position:relative;overflow:hidden;border-top:1px solid rgba(200,134,10,0.15);border-bottom:1px solid rgba(200,134,10,0.15);}
+    .hsf-bg{position:absolute;inset:0;background-size:cover;background-position:center 30%;z-index:0;filter:brightness(0.4) saturate(0.5);}
+    .hsf-overlay{position:absolute;inset:0;background:linear-gradient(to bottom,rgba(8,4,0,0.55) 0%,rgba(8,4,0,0.4) 50%,rgba(8,4,0,0.7) 100%);z-index:1;}
+    .hsf-inner{position:relative;z-index:2;display:flex;flex-direction:column;align-items:center;text-align:center;padding:6rem 6vw;}
+    .hsf-divider{width:60px;height:1px;background:rgba(200,134,10,0.3);margin:3rem auto;}
+
+    /* CANTINA DIALOGUE — inside dark section */
+    .cantina-dialogue{width:100%;max-width:720px;text-align:left;}
+    .cd-label{font-family:var(--mono);font-size:0.9rem;letter-spacing:0.2em;text-transform:uppercase;color:rgba(200,134,10,0.45);margin-bottom:2rem;}
+    .cd-inner{display:flex;flex-direction:column;gap:0.75rem;margin-bottom:2rem;}
+    .cd-line{display:grid;grid-template-columns:90px 1fr;gap:1.2rem;align-items:baseline;}
+    .cd-speaker{font-family:var(--mono);font-size:0.85rem;letter-spacing:0.2em;text-transform:uppercase;font-weight:700;flex-shrink:0;}
+    .cd-greedo .cd-speaker{color:rgba(200,134,10,0.5);}
+    .cd-han .cd-speaker{color:#F5C842;}
+    .cd-text{font-family:var(--body);font-size:1rem;line-height:1.7;color:rgba(245,232,192,0.75);}
+    .cd-han .cd-text{color:#F5E8C0;}
+    .cd-last .cd-text{color:#F5C842;font-style:italic;}
+    .cd-verdict{font-family:var(--body);font-size:0.95rem;line-height:1.8;color:rgba(200,134,10,0.6);border-top:1px solid rgba(200,134,10,0.15);padding-top:1.5rem;}
+
     /* IMG STRIP */
     .img-strip{display:grid;grid-template-columns:1fr 1fr 1fr;gap:1rem;}
+    @media(max-width:768px){.img-strip-caption{display:none !important;}}
     @media(max-width:700px){.img-strip{grid-template-columns:1fr;}}
     .img-strip-item{position:relative;overflow:hidden;aspect-ratio:16/9;}
     .img-strip-item img{width:100%;height:100%;object-fit:cover;display:block;filter:grayscale(0.3) contrast(1.05);transition:filter .4s;}
@@ -220,8 +293,12 @@
     .han-quote{position:relative;padding-left:1.4rem;border-left:2px solid rgba(200,134,10,0.3);opacity:0;transform:translateY(14px);transition:opacity .5s ease,transform .5s ease;}
     .han-interlude.visible .han-quote{opacity:1;transform:translateY(0);}
     .han-interlude.visible .han-quote:nth-child(2){transition-delay:0.15s;}
+    .han-read-more{margin-top:1.5rem;font-family:var(--mono);font-size:0.85rem;letter-spacing:0.2em;text-transform:uppercase;color:rgba(200,134,10,0.6);background:transparent;border:1px solid rgba(200,134,10,0.25);padding:0.5rem 1.2rem;cursor:pointer;transition:color .2s,border-color .2s;}
+    .han-read-more:hover{color:#F5C842;border-color:rgba(245,200,66,0.5);}
+    .han-interlude.visible .han-quote:nth-child(4){transition-delay:0.45s;}
+    .han-interlude.visible .han-quote:nth-child(5){transition-delay:0.6s;}
     .han-interlude.visible .han-quote:nth-child(3){transition-delay:0.3s;}
-    .han-quote-mark{font-family:var(--display);font-size:2.5rem;color:var(--accent);opacity:0.4;line-height:0.8;display:block;margin-bottom:0.5rem;}
+    .han-quote-mark{display:none;}
     .han-quote-text{font-family:var(--body);font-size:1rem;line-height:1.8;color:var(--dim);}
     .han-quote-emphasis{color:var(--bright);font-weight:700;}
     .han-quote-attr{font-family:var(--mono);font-size:0.9rem;letter-spacing:0.16em;text-transform:uppercase;color:var(--muted);margin-top:0.6rem;}
@@ -230,16 +307,16 @@
     .moment-band{padding:6rem 6vw;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;border-bottom:1px solid var(--rule);position:relative;overflow:hidden;background:var(--bg);}
     .moment-band::before{content:'☀';position:absolute;font-family:var(--display);font-size:clamp(14rem,35vw,32rem);color:var(--accent);opacity:0.025;pointer-events:none;line-height:1;user-select:none;}
     .moment-pre{font-family:var(--mono);font-size:0.9rem;letter-spacing:0.35em;text-transform:uppercase;color:var(--accent);margin-bottom:2rem;opacity:0.75;}
-    .moment-line{font-family:var(--display);font-size:clamp(1.8rem,5vw,4.2rem);color:var(--bright);text-transform:uppercase;letter-spacing:0.06em;line-height:1.18;margin-bottom:2.5rem;}
+    .moment-line{font-family:var(--display);font-size:clamp(1.8rem,5vw,4.2rem);color:#F5E8C0;text-transform:uppercase;letter-spacing:0.06em;line-height:1.18;margin-bottom:2.5rem;}
     .moment-line .hl{color:var(--accent);animation:solarPulse 3s ease-in-out infinite;}
     @keyframes solarPulse{0%,100%{text-shadow:0 0 18px rgba(200,134,10,0.25)}50%{text-shadow:0 0 60px rgba(200,134,10,0.85),0 0 120px rgba(200,134,10,0.12)}}
-    .moment-facts{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:rgba(200,134,10,0.08);border:1px solid rgba(200,134,10,0.07);max-width:800px;width:100%;margin-top:1rem;}
+    .moment-facts{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:rgba(200,134,10,0.15);border:1px solid rgba(200,134,10,0.2);max-width:800px;width:100%;margin-top:1rem;}
     @media(max-width:700px){.moment-facts{grid-template-columns:1fr 1fr;}}
     .mf{padding:1.4rem 1rem;background:rgba(13,8,0,0.5);}
     [data-theme="light"] .mf{background:rgba(42,14,0,0.35);}
     .mf-num{font-family:var(--display);font-size:clamp(1.6rem,3vw,2.4rem);color:var(--accent);line-height:1;margin-bottom:0.3rem;}
-    .mf-label{font-family:var(--mono);font-size:0.9rem;letter-spacing:0.14em;text-transform:uppercase;color:rgba(245,232,192,0.4);margin-bottom:0.2rem;}
-    .mf-sub{font-family:var(--body);font-size:1rem;color:rgba(245,232,192,0.28);line-height:1.4;}
+    .mf-label{font-family:var(--mono);font-size:0.9rem;letter-spacing:0.14em;text-transform:uppercase;color:rgba(245,232,192,0.75);margin-bottom:0.2rem;}
+    .mf-sub{font-family:var(--body);font-size:1rem;color:rgba(245,232,192,0.65);line-height:1.4;}
 
     .quote-band{min-height:260px;padding:5rem 6vw;display:flex;align-items:center;justify-content:center;border-bottom:1px solid var(--rule);background:var(--bg1);}
     .quote-band-inner{max-width:880px;text-align:center;width:100%;}
@@ -250,32 +327,28 @@
     .people-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:1px;background:var(--rule);}
     @media(max-width:1100px){.people-grid{grid-template-columns:repeat(3,1fr);}}
     @media(max-width:700px){.people-grid{grid-template-columns:repeat(2,1fr);}}
+    @media(max-width:500px){.people-grid{grid-template-columns:1fr;}}
     .person-card{background:var(--card-bg);padding:0;position:relative;overflow:hidden;display:flex;flex-direction:column;transition:background .2s;}
     .person-card::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:var(--p-accent,var(--accent));transform:scaleX(0);transform-origin:left;transition:transform .35s ease;z-index:1;}
     .person-card:hover::before{transform:scaleX(1);}
     .person-photo{width:100%;aspect-ratio:1/1;object-fit:cover;object-position:center top;display:block;flex-shrink:0;filter:grayscale(1) contrast(1.1) brightness(.75);transition:filter .4s ease;}
     .person-card:hover .person-photo{filter:grayscale(.2) contrast(1.1) brightness(.9);}
-    .person-placeholder{width:100%;aspect-ratio:1/1;flex-shrink:0;display:flex;align-items:center;justify-content:center;font-family:var(--display);font-size:clamp(3rem,6vw,4.5rem);color:var(--p-accent,var(--accent));background:color-mix(in srgb,var(--p-accent,var(--accent)) 10%,var(--card-bg));}
+    .person-placeholder{width:100%;aspect-ratio:1/1;flex-shrink:0;display:flex;align-items:center;justify-content:center;font-family:var(--display);font-size:clamp(3rem,6vw,4.5rem);color:var(--p-accent,var(--accent));background:color-mix(in srgb,var(--p-accent,var(--accent)) 10%,var(--card-bg));overflow:hidden;position:relative;}
+    .person-placeholder img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center top;display:block;}
     .person-era,.person-name,.person-role,.person-bio,.person-link{padding-left:1.3rem;padding-right:1.3rem;}
     .person-era{padding-top:1rem;font-size:0.9rem;letter-spacing:.18em;text-transform:uppercase;color:var(--muted);margin-bottom:.3rem;font-family:var(--mono);}
-    .person-name{font-size:clamp(1rem,1.8vw,1.25rem);font-weight:700;text-transform:uppercase;letter-spacing:.02em;line-height:1;color:var(--bright);margin-bottom:.3rem;font-family:var(--display);}
-    .person-role{font-size:0.9rem;letter-spacing:.1em;text-transform:uppercase;color:var(--p-accent,var(--accent));margin-bottom:.7rem;font-family:var(--mono);}
-    .person-bio{font-size:0.95rem;line-height:1.75;color:var(--dim);font-family:var(--body);}
+    .person-name{font-size:clamp(1rem,1.8vw,1.25rem);font-weight:700;text-transform:uppercase;letter-spacing:.02em;line-height:1;color:var(--bright);margin-bottom:.3rem;font-family:var(--display);padding-top:1rem;}
+    .person-role{font-size:0.9rem;letter-spacing:.1em;text-transform:uppercase;color:#C8860A;margin-bottom:.7rem;font-family:var(--mono);}
+    [data-theme="light"] .person-role{color:#8B5E0A;}
+    .person-bio{font-size:0.95rem;line-height:1.75;color:var(--dim);font-family:var(--body);flex:1;}
     .person-link{padding-bottom:1.3rem;display:inline-flex;align-items:center;gap:.4rem;margin-top:.7rem;font-size:0.9rem;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);text-decoration:none;transition:color .2s;font-family:var(--mono);}
     .person-link:hover{color:var(--accent);}
     .person-link::after{content:'↗';}
-    .marquee{overflow:hidden;background:var(--bg);border-top:1px solid var(--rule);border-bottom:1px solid var(--rule);padding:.55rem 0;}
-    [data-theme="light"] .marquee{background:var(--bg2);}
-    .marquee-track{display:flex;white-space:nowrap;animation:mScroll 40s linear infinite;font-family:var(--display);font-size:0.9rem;letter-spacing:0.18em;text-transform:uppercase;color:var(--accent);opacity:0.55;}
-    .marquee-track span{margin-right:2rem;}
+    .marquee{display:none;}
+    
+    
+    
     @keyframes mScroll{0%{transform:translateX(0)}100%{transform:translateX(-50%)}}
-    .entity-section{background:#000;padding:5rem 2rem;border-bottom:1px solid var(--rule);}
-    [data-theme="light"] .entity-section{background:var(--bg1)!important;}
-    .entity-heading{font-family:var(--display);font-size:clamp(1.5rem,4vw,3rem);font-weight:900;color:var(--accent);text-shadow:var(--glow);letter-spacing:.05em;text-transform:uppercase;margin-bottom:.5rem;padding:0 2rem;}
-    [data-theme="light"] .entity-heading{text-shadow:none!important;}
-    .entity-sub{font-family:var(--mono);font-size:.78rem;color:var(--muted);letter-spacing:.1em;text-transform:uppercase;margin-bottom:2.5rem;padding:0 2rem;}
-    .entity-grid{display:flex;flex-wrap:wrap;gap:.5rem;padding:0 2rem;}
-    .entity-badge{font-family:var(--mono);font-size:.68rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;padding:.35rem .8rem;border:1px solid rgba(255,255,255,.1);display:inline-block;text-decoration:none;transition:transform .2s,box-shadow .2s;cursor:pointer;}
     .entity-badge:hover{transform:scale(1.12) rotate(-2deg);box-shadow:0 4px 18px rgba(0,0,0,.4);}
     [data-theme="light"] .entity-badge{border-color:var(--rule2)!important;}
     .eco-links{padding:5rem 6vw;background:var(--bg1);border-top:1px solid var(--rule);}
@@ -296,7 +369,7 @@
     .colophon-share{display:flex;gap:0.6rem;flex-wrap:wrap;}
     .colophon-share-link{font-family:var(--mono);font-size:0.9rem;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:var(--accent);text-decoration:none;border:1px solid rgba(200,134,10,0.4);padding:0.25rem 0.65rem;transition:background 0.15s,color 0.15s;}
     .colophon-share-link:hover{background:var(--accent);color:var(--bg);}
-    .footer{background:var(--bg);border-top:1px solid var(--rule);padding:0 2.5rem;height:56px;display:flex;align-items:center;justify-content:space-between;padding-bottom:env(safe-area-inset-bottom);}
+    .footer{background:var(--bg); border-top:1px solid var(--border); height:auto; min-height:52px; padding:1rem 32px max(1.5rem, env(safe-area-inset-bottom)); display:flex; align-items:center; justify-content:space-between; }
     @media(max-width:768px){.footer{height:auto;padding:1.2rem 1.5rem;flex-wrap:wrap;gap:.6rem;justify-content:center;}.footer-copy{width:100%;text-align:center;}}
     .footer-lockup{display:flex;align-items:center;gap:12px;flex-shrink:0;text-decoration:none;}
     .footer-lockup svg{display:block;width:32px;height:32px;flex-shrink:0;}
@@ -319,18 +392,25 @@
 
 <nav class="nav">
   <a href="#top" class="nav-tag">
-    <div class="nav-index-box">001</div>
+    <div class="nav-index-box">015</div>
     <span class="nav-topic">A NEW HOPE<span class="cursor-blink" style="color:var(--accent);">_</span></span>
   </a>
   <div class="nav-right">
-    <div class="share-wrap" id="shareWrap">
-      <button class="share-btn" id="shareBtn">↗ SHARE</button>
-      <div class="share-dropdown" id="shareDropdown">
-        <a href="https://twitter.com/intent/tweet?url=https%3A%2F%2Fabriefhistoryofeverything.com%2Fa-new-hope&text=A%20(Brief)%20History%20of%20A%20New%20Hope" target="_blank" rel="noopener">Share on X</a>
-        <a href="https://bsky.app/intent/compose?text=A%20(Brief)%20History%20of%20A%20New%20Hope%20https%3A%2F%2Fabriefhistoryofeverything.com%2Fa-new-hope" target="_blank" rel="noopener">Share on Bluesky</a>
-        <a href="#" id="copyLink">Copy Link</a>
-      </div>
+  <div class="page-nav-wrap" id="pageNavWrap">
+    <button class="page-nav-btn" id="pageNavBtn">SECTIONS <span class="page-nav-arrow">▾</span></button>
+    <div class="page-nav-dropdown" id="pageNavDropdown">
+      <a class="pn-item" href="#top">↑ Top</a>
+      <a class="pn-item" href="#before">01 · Before Star Wars</a>
+      <a class="pn-item" href="#making">02 · The Making</a>
+      <a class="pn-item" href="#worlds">03 · The Three Worlds</a>
+      <a class="pn-item" href="#thefilm">04 · The Film</a>
+      <a class="pn-item" href="#moment">Han Shot First</a>
+      <a class="pn-item" href="#music">05 · The Score</a>
+      <a class="pn-item" href="#release">06 · Release</a>
+      <a class="pn-item" href="#keyfigures">07 · Key Figures</a>
+      <a class="pn-item" href="#legacy">08 · Legacy</a>
     </div>
+  </div>
   </div>
 </nav>
 
@@ -389,7 +469,7 @@
     <h3>Flash Gordon and Joseph Campbell</h3>
     <p>Lucas spent two years researching myth, fairy tale, and pulp science fiction before writing a single scene. He drew heavily on Joseph Campbell's The Hero with a Thousand Faces — the monomyth structure that underlies folklore across cultures. He read Carlos Castaneda. He studied Japanese cinema, particularly Akira Kurosawa's The Hidden Fortress, which directly influenced the structure of two droids guiding a story through history-changing events. The source material was global and ancient. The setting was space opera.</p>
     <div class="hud-bottom-bar">
-      <div class="hud-card-tags"><a class="tag" href="https://en.wikipedia.org/wiki/George_Lucas" target="_blank" rel="noopener">George Lucas</a><a class="tag" href="https://en.wikipedia.org/wiki/Joseph_Campbell" target="_blank" rel="noopener">Joseph Campbell</a></div>
+      <div class="hud-card-tags"><a class="tag" href="https://en.wikipedia.org/wiki/George_Lucas" target="_blank" rel="noopener">George Lucas</a></div>
       <span class="hud-scan-code">ORIGIN::MYTH</span>
     </div>
   </div>
@@ -407,7 +487,7 @@
     <h3>Fox Thought They Won</h3>
     <p>Lucas pitched to Universal first. They passed. Fox's Alan Ladd Jr. said yes, partly on instinct. Lucas accepted a below-market directing fee in exchange for full ownership of sequel, character, and merchandise rights. Fox executives considered it a reasonable concession on a film they expected to fail quietly. When the toys alone generated $100 million in the first two years, the full weight of the error became apparent. Lucas structured this deal deliberately. Nobody on the Fox side understood what they were agreeing to.</p>
     <div class="hud-bottom-bar">
-      <div class="hud-card-tags"><a class="tag" href="https://en.wikipedia.org/wiki/20th_Century_Fox" target="_blank" rel="noopener">20th Century Fox</a><a class="tag" href="https://en.wikipedia.org/wiki/Alan_Ladd_Jr." target="_blank" rel="noopener">Alan Ladd Jr.</a></div>
+      <div class="hud-card-tags"><a class="tag" href="https://en.wikipedia.org/wiki/20th_Century_Fox" target="_blank" rel="noopener">20th Century Fox</a></div>
       <span class="hud-scan-code">DEAL::HISTORIC</span>
     </div>
   </div>
@@ -425,7 +505,7 @@
     <h3>The Man Who Made Fox Believe</h3>
     <p>Lucas hired Ralph McQuarrie, a former NASA illustrator, to paint five key scenes before the script was finalized. The paintings showed Vader's helmet, C-3PO and R2-D2 on a desert planet, a dogfight in space, and the Death Star. Lucas brought them to Fox. Executives who had read the script with confusion and alarm looked at McQuarrie's paintings and understood the film for the first time. McQuarrie's visual imagination is the reason this film got made.</p>
     <div class="hud-bottom-bar">
-      <div class="hud-card-tags"><a class="tag" href="https://en.wikipedia.org/wiki/Ralph_McQuarrie" target="_blank" rel="noopener">Ralph McQuarrie</a><a class="tag" href="https://en.wikipedia.org/wiki/Concept_Art" target="_blank" rel="noopener">Concept Art</a></div>
+      <div class="hud-card-tags"><a class="tag" href="https://en.wikipedia.org/wiki/Ralph_McQuarrie" target="_blank" rel="noopener">Ralph McQuarrie</a></div>
       <span class="hud-scan-code">ART::PRIMARY</span>
     </div>
   </div>
@@ -443,7 +523,7 @@
     <h3>Four Drafts, Twelve Rewrites</h3>
     <p>The first draft was 200 pages of impenetrable world-building. The second introduced the Jedi. The third gave us Luke Starkiller. The fourth is close to what was filmed. Lucas rewrote it over three years while simultaneously developing American Graffiti and running Lucasfilm. Brian De Palma and William Huyck both gave notes. Gloria Katz co-wrote portions. By the time it went to production, so many hands had touched it that the WGA credited Lucas alone as a compromise.</p>
     <div class="hud-bottom-bar">
-      <div class="hud-card-tags"><a class="tag" href="https://en.wikipedia.org/wiki/Screenplay" target="_blank" rel="noopener">Screenplay</a><a class="tag" href="https://en.wikipedia.org/wiki/Development" target="_blank" rel="noopener">Development</a></div>
+      <div class="hud-card-tags"><a class="tag" href="https://en.wikipedia.org/wiki/Screenplay" target="_blank" rel="noopener">Screenplay</a></div>
       <span class="hud-scan-code">DRAFT::FOUR</span>
     </div>
   </div>
@@ -471,7 +551,7 @@
     <h3>Tatooine Almost Killed the Production</h3>
     <p>The shoot in Tunisia went catastrophically wrong from day one. The morning after the crew arrived in the desert, it rained — the first significant rain in decades. Equipment sank. Sandstorms buried cameras. R2-D2's remote control failed every time the temperature exceeded 90°F, which was almost always. The Jawas' sandcrawler broke down. Mark Hamill got sunburn so severe he couldn't shoot. Anthony Daniels, inside the C-3PO suit, passed out from heat. Lucas ate antacids by the handful and barely spoke to anyone. After six days in Tunisia, he was already behind schedule.</p>
     <div class="hud-bottom-bar">
-      <div class="hud-card-tags"><a class="tag" href="https://en.wikipedia.org/wiki/Tunisia" target="_blank" rel="noopener">Tunisia</a><a class="tag" href="https://en.wikipedia.org/wiki/Tatooine" target="_blank" rel="noopener">Tatooine</a></div>
+      <div class="hud-card-tags"><a class="tag" href="https://en.wikipedia.org/wiki/Tunisia" target="_blank" rel="noopener">Tunisia</a></div>
       <span class="hud-scan-code">LOC::DESERT</span>
     </div>
   </div>
@@ -489,7 +569,7 @@
     <h3>The Stage That Wasn't Big Enough</h3>
     <p>The Millennium Falcon set at Elstree was the largest indoor set ever built in Britain at the time. It had to be. Lucas had imagined a ship that felt lived-in and industrial — dirty, asymmetrical, full of character. The production design team, led by John Barry, had to solve problems nobody had ever faced before. The Death Star interiors were shot on overlapping sets, redressed between takes. Lucas, not a comfortable director of actors, relied heavily on Alec Guinness and Harrison Ford to pull performances from one another.</p>
     <div class="hud-bottom-bar">
-      <div class="hud-card-tags"><a class="tag" href="https://en.wikipedia.org/wiki/Elstree_Studios" target="_blank" rel="noopener">Elstree Studios</a><a class="tag" href="https://en.wikipedia.org/wiki/John_Barry_(production_designer)" target="_blank" rel="noopener">John Barry</a></div>
+      <div class="hud-card-tags"><a class="tag" href="https://en.wikipedia.org/wiki/Elstree_Studios" target="_blank" rel="noopener">Elstree Studios</a></div>
       <span class="hud-scan-code">LOC::ELSTREE</span>
     </div>
   </div>
@@ -507,7 +587,7 @@
     <h3>The Director Who Almost Didn't Finish</h3>
     <p>By the end of principal photography, Lucas was in poor health. He had hypertension and exhaustion. He had not been sleeping. The crew at Elstree, used to relaxed productions, found his minimalist communication style ("faster and more intense" was his most common note) alienating. Several senior crew members were openly hostile. Lucas completed his director's cut in a state of near-collapse. When John Jympson's assembly cut came back and was unwatchable, he had a breakdown in the parking lot of the editing facility. He hired new editors. They started over.</p>
     <div class="hud-bottom-bar">
-      <div class="hud-card-tags"><a class="tag" href="https://en.wikipedia.org/wiki/George_Lucas" target="_blank" rel="noopener">George Lucas</a><a class="tag" href="https://en.wikipedia.org/wiki/Editing" target="_blank" rel="noopener">Editing</a></div>
+      <div class="hud-card-tags"><a class="tag" href="https://en.wikipedia.org/wiki/George_Lucas" target="_blank" rel="noopener">George Lucas</a></div>
       <span class="hud-scan-code">STATUS::CRISIS</span>
     </div>
   </div>
@@ -525,7 +605,7 @@
     <h3>The Company Built to Make This One Film</h3>
     <p>Industrial Light & Magic was founded in a warehouse in Van Nuys, California specifically to create the visual effects for Star Wars. Fox had no existing facility capable of producing what Lucas needed. John Dykstra built a motion-control camera system — the Dykstraflex — that allowed the camera to move around stationary models on a repeatable programmed path, enabling seamless compositing of multiple passes. Every technique ILM invented for this film — motion control, layered matte photography, practical miniatures — was standard practice for the next twenty years.</p>
     <div class="hud-bottom-bar">
-      <div class="hud-card-tags"><a class="tag" href="https://en.wikipedia.org/wiki/Industrial_Light_%26_Magic" target="_blank" rel="noopener">ILM</a><a class="tag" href="https://en.wikipedia.org/wiki/John_Dykstra" target="_blank" rel="noopener">John Dykstra</a></div>
+      <div class="hud-card-tags"><a class="tag" href="https://en.wikipedia.org/wiki/Industrial_Light_%26_Magic" target="_blank" rel="noopener">ILM</a></div>
       <span class="hud-scan-code">VFX::ORIGIN</span>
     </div>
   </div>
@@ -536,21 +616,21 @@
   <div class="img-strip-item hud-a">
     <div class="img-strip-corner-tl"></div>
     <div class="img-strip-corner-br"></div>
-    <img src="a-new-hope/images/anh-bts-tunisia.jpg" alt="Tunisia · March 1976 · Tatooine exteriors" onerror="this.style.display='none'">
+    <img src="a-new-hope/images/strip-1.1.jpg" alt="Tunisia · March 1976 · Tatooine exteriors" onerror="this.style.display='none'">
     <div class="img-strip-overlay"></div>
     <div class="img-strip-caption"><span>Tunisia · March 1976 · Tatooine exteriors</span><span class="img-strip-caption-code">IMG::01</span></div>
   </div>
   <div class="img-strip-item hud-b">
     <div class="img-strip-corner-tl"></div>
     <div class="img-strip-corner-br"></div>
-    <img src="a-new-hope/images/anh-millenium-falcon-set.jpg" alt="Elstree Studios · Millennium Falcon set" onerror="this.style.display='none'">
+    <img src="a-new-hope/images/strip-1.2-3p0.jpg" alt="George Lucas · On set in Tunisia" onerror="this.style.display='none'">
     <div class="img-strip-overlay"></div>
     <div class="img-strip-caption"><span>Elstree Studios · Millennium Falcon set</span><span class="img-strip-caption-code">IMG::02</span></div>
   </div>
   <div class="img-strip-item hud-c">
     <div class="img-strip-corner-tl"></div>
     <div class="img-strip-corner-br"></div>
-    <img src="a-new-hope/images/anh-ilm-bts.jpg" alt="ILM · Van Nuys · Dykstraflex motion control" onerror="this.style.display='none'">
+    <img src="a-new-hope/images/strip-1.3-dykstra.jpg" alt="ILM · Van Nuys · Dykstraflex motion control" onerror="this.style.display='none'">
     <div class="img-strip-overlay"></div>
     <div class="img-strip-caption"><span>ILM · Van Nuys · Dykstraflex motion control</span><span class="img-strip-caption-code">IMG::03</span></div>
   </div>
@@ -563,7 +643,7 @@
   <div class="sec-label fi">Section 03 · The Three Worlds</div>
   <h2 class="sec-title fi" style="--d:0.05s">Tatooine · The Death Star · Yavin IV<span class="cursor-blink" style="color:var(--accent);">_</span></h2>
   <p class="sec-intro fi" style="--d:0.1s">A New Hope takes place in three radically different visual environments. The dust and poverty of Tatooine, the industrial scale of the Death Star, the lush jungle canopy of Yavin IV. Each was designed by Ralph McQuarrie from paintings before a set was built. John Barry translated them into physical space. Norman Reynolds finished what Barry began.</p>
-  <div class="hud-grid" style="grid-template-columns:1fr 1fr 1fr;">
+  <div class="hud-grid" style="grid-template-columns:1fr 1fr;">
 <div class="hud-card hud-a fi" style="--c-col:#C8860A">
   <div class="hud-corner hud-corner-tl"></div><div class="hud-corner hud-corner-br"></div>
   <div class="hud-scan-line" style="animation-delay:-0s;"></div>
@@ -577,7 +657,7 @@
     <h3>The Edge of the Galaxy</h3>
     <p>Tatooine was built from two locations: the real desert landscape of Matmata and Djerba in Tunisia, and interior sets at Elstree. The Lars homestead exterior is a real troglodyte dwelling in Matmata still visible today. The Cantina was built at Elstree on a tight schedule — many of the alien costumes were repurposed from a BBC production. The intent was a kind of interplanetary port town: broken-down, multiracial, and dangerous. A frontier in the oldest sense.</p>
     <div class="hud-bottom-bar">
-      <div class="hud-card-tags"><a class="tag" href="https://en.wikipedia.org/wiki/Tatooine" target="_blank" rel="noopener">Tatooine</a><a class="tag" href="https://en.wikipedia.org/wiki/Mos_Eisley" target="_blank" rel="noopener">Mos Eisley</a></div>
+      <div class="hud-card-tags"><a class="tag" href="https://en.wikipedia.org/wiki/Tatooine" target="_blank" rel="noopener">Tatooine</a></div>
       <span class="hud-scan-code">COORD::TATOOINE</span>
     </div>
   </div>
@@ -595,7 +675,7 @@
     <h3>The Machine That Should Feel Infinite</h3>
     <p>The Death Star corridors were deliberately designed to feel industrial and institutional — white, angular, inhuman. John Barry used forced perspective and overlapping redressed sets to suggest an impossibly large structure on a limited budget. The trench run was achieved by filming a physical model of the trench at ILM, running the camera along it at high speed, then using the Dykstraflex to add the X-wings as separate passes. The explosion was a miniature inside a studio, composited with layers of matte painting.</p>
     <div class="hud-bottom-bar">
-      <div class="hud-card-tags"><a class="tag" href="https://en.wikipedia.org/wiki/Death_Star" target="_blank" rel="noopener">Death Star</a><a class="tag" href="https://en.wikipedia.org/wiki/ILM" target="_blank" rel="noopener">ILM</a></div>
+      <div class="hud-card-tags"><a class="tag" href="https://en.wikipedia.org/wiki/Death_Star" target="_blank" rel="noopener">Death Star</a></div>
       <span class="hud-scan-code">COORD::DEATHSTAR</span>
     </div>
   </div>
@@ -613,7 +693,7 @@
     <h3>The Rebel Base in the Jungle</h3>
     <p>The Rebel hangar and medal ceremony exterior sequences were shot at Tikal, the ancient Mayan ruin complex in Guatemala. The jungle canopy and the stone pyramid temple visible in the establishing shot are real. The Rebel hangar interiors were built at Elstree at enormous scale. The X-wing models used in the climactic trench run were 66 inches long and built with the same obsessive accuracy that would define ILM's work for the next two decades.</p>
     <div class="hud-bottom-bar">
-      <div class="hud-card-tags"><a class="tag" href="https://en.wikipedia.org/wiki/Yavin" target="_blank" rel="noopener">Yavin IV</a><a class="tag" href="https://en.wikipedia.org/wiki/Tikal" target="_blank" rel="noopener">Tikal, Guatemala</a></div>
+      <div class="hud-card-tags"><a class="tag" href="https://en.wikipedia.org/wiki/Yavin" target="_blank" rel="noopener">Yavin IV</a></div>
       <span class="hud-scan-code">COORD::YAVIN</span>
     </div>
   </div>
@@ -631,7 +711,7 @@
     <h3>Built in Five Days. Iconic Forever.</h3>
     <p>The Mos Eisley Cantina sequence was shot over five days. The alien costumes were assembled from whatever the makeup department had available, recycled from other productions or built hurriedly on set. The band — Figrin D'an and the Modal Nodes — performed "Mad About Me" (known colloquially as the Cantina Band) live in costume. John Williams later scored it for the film. The scene was intended to establish that Star Wars existed in a universe that predated the story, populated by creatures with their own histories and agendas.</p>
     <div class="hud-bottom-bar">
-      <div class="hud-card-tags"><a class="tag" href="https://en.wikipedia.org/wiki/Mos_Eisley_Cantina" target="_blank" rel="noopener">Mos Eisley Cantina</a><a class="tag" href="https://en.wikipedia.org/wiki/Cantina_Band" target="_blank" rel="noopener">Cantina Band</a></div>
+      <div class="hud-card-tags"><a class="tag" href="https://en.wikipedia.org/wiki/Mos_Eisley_Cantina" target="_blank" rel="noopener">Mos Eisley Cantina</a></div>
       <span class="hud-scan-code">LOC::CANTINA</span>
     </div>
   </div>
@@ -658,7 +738,7 @@
     <h3>The Star Destroyer That Changed Cinema</h3>
     <p>The opening sequence — a small blockade runner pursued by an Imperial Star Destroyer that keeps coming, and coming, and keeps coming — communicated scale that had never been put on screen before. The Star Destroyer model was 91 inches long. The camera tracked beneath it on a motion-control rig. The hull detail was the result of kit-bashing hundreds of model parts. Audiences in the first screenings reportedly gasped and then went quiet. In 1977, nothing had looked like this.</p>
     <div class="hud-bottom-bar">
-      <div class="hud-card-tags"><a class="tag" href="https://en.wikipedia.org/wiki/Star_Destroyer" target="_blank" rel="noopener">Star Destroyer</a><a class="tag" href="https://en.wikipedia.org/wiki/ILM" target="_blank" rel="noopener">ILM</a></div>
+      <div class="hud-card-tags"><a class="tag" href="https://en.wikipedia.org/wiki/Star_Destroyer" target="_blank" rel="noopener">Star Destroyer</a></div>
       <span class="hud-scan-code">SHOT::FIRST</span>
     </div>
   </div>
@@ -676,7 +756,7 @@
     <h3>The Character Who Wasn't Supposed to Be That</h3>
     <p>Ford was not seriously considered for the role during casting. He was installing a door at Francis Ford Coppola's office when Lucas walked in and asked him to feed lines to other actors auditioning for Han Solo. He read so well that Lucas asked him back. The character as written was a cynical mercenary with no arc. Ford took him further — the smirk, the slouch, the improvised attitude. Han Solo's personality as audiences understand it is largely Harrison Ford's invention, filtered through what Lucas let into the final cut.</p>
     <div class="hud-bottom-bar">
-      <div class="hud-card-tags"><a class="tag" href="https://en.wikipedia.org/wiki/Han_Solo" target="_blank" rel="noopener">Han Solo</a><a class="tag" href="https://en.wikipedia.org/wiki/Harrison_Ford" target="_blank" rel="noopener">Harrison Ford</a></div>
+      <div class="hud-card-tags"><a class="tag" href="https://en.wikipedia.org/wiki/Han_Solo" target="_blank" rel="noopener">Han Solo</a></div>
       <span class="hud-scan-code">CHAR::SOLO</span>
     </div>
   </div>
@@ -694,7 +774,7 @@
     <h3>The Actor Who Hated the Script</h3>
     <p>Guinness agreed to play Obi-Wan after a meeting with Lucas, citing curiosity about the project and a modest fee plus 2% of the gross. He reportedly told his friends it was "fairy tale rubbish" and struggled with the dialogue throughout shooting. He improvised several scenes and pushed for his character's death, arguing that a living Obi-Wan would have to be explained in subsequent films. His decision to ask for the death gave the film its most significant emotional beat. His 2% of the gross made him one of the highest-paid actors in history.</p>
     <div class="hud-bottom-bar">
-      <div class="hud-card-tags"><a class="tag" href="https://en.wikipedia.org/wiki/Alec_Guinness" target="_blank" rel="noopener">Alec Guinness</a><a class="tag" href="https://en.wikipedia.org/wiki/Obi-Wan_Kenobi" target="_blank" rel="noopener">Obi-Wan Kenobi</a></div>
+      <div class="hud-card-tags"><a class="tag" href="https://en.wikipedia.org/wiki/Alec_Guinness" target="_blank" rel="noopener">Alec Guinness</a></div>
       <span class="hud-scan-code">CHAR::KENOBI</span>
     </div>
   </div>
@@ -712,7 +792,7 @@
     <h3>The Shot That Explains the Whole Film</h3>
     <p>Luke Skywalker stands on a ridge in Tunisia and watches two suns set. Nothing in this film is more important than this moment. It is a completely silent image — no dialogue, no action, just John Williams's theme swelling beneath it. The shot communicates everything the film is about: a young person standing at the edge of something vast, knowing they belong somewhere else, not yet knowing how to get there. It was not in the original screenplay. Lucas added it in post. It is the film's center of gravity.</p>
     <div class="hud-bottom-bar">
-      <div class="hud-card-tags"><a class="tag" href="https://en.wikipedia.org/wiki/Binary_sunset" target="_blank" rel="noopener">Binary Sunset</a><a class="tag" href="https://en.wikipedia.org/wiki/Luke_Skywalker" target="_blank" rel="noopener">Luke Skywalker</a></div>
+      <div class="hud-card-tags"><a class="tag" href="https://en.wikipedia.org/wiki/Binary_sunset" target="_blank" rel="noopener">Binary Sunset</a></div>
       <span class="hud-scan-code">SHOT::DEFINING</span>
     </div>
   </div>
@@ -730,7 +810,7 @@
     <h3>The Climax Nobody Thought Would Work</h3>
     <p>The Death Star trench run was assembled from over 360 separate optical effects shots — the most in any film made to that point. The editors had no footage for weeks; ILM was delivering scenes two days before the premiere. Lucas edited the trench run using footage from World War II aerial combat films to show editors the rhythm he wanted. The finished sequence, with Williams's score building to the final torpedo shot, is one of the most precisely engineered pieces of film editing in mainstream cinema history.</p>
     <div class="hud-bottom-bar">
-      <div class="hud-card-tags"><a class="tag" href="https://en.wikipedia.org/wiki/Star_Wars_(film)" target="_blank" rel="noopener">Trench Run</a><a class="tag" href="https://en.wikipedia.org/wiki/VFX" target="_blank" rel="noopener">VFX</a></div>
+      <div class="hud-card-tags"><a class="tag" href="https://en.wikipedia.org/wiki/Star_Wars_(film)" target="_blank" rel="noopener">Trench Run</a></div>
       <span class="hud-scan-code">VFX::360SHOTS</span>
     </div>
   </div>
@@ -748,7 +828,7 @@
     <h3>Three People Made One Villain</h3>
     <p>Darth Vader exists as an entity because three people contributed to him simultaneously. McQuarrie designed the helmet and armor from scratch — the mask was based on a Japanese kabuto and a World War II gas mask. David Prowse performed the body on set. James Earl Jones recorded the voice in post-production and, at his own request, went uncredited. The combination of Prowse's physical menace and Jones's voice created something Hollywood had not previously produced: a villain who read as purely, categorically powerful from his first frame.</p>
     <div class="hud-bottom-bar">
-      <div class="hud-card-tags"><a class="tag" href="https://en.wikipedia.org/wiki/Darth_Vader" target="_blank" rel="noopener">Darth Vader</a><a class="tag" href="https://en.wikipedia.org/wiki/David_Prowse" target="_blank" rel="noopener">David Prowse</a><a class="tag" href="https://en.wikipedia.org/wiki/James_Earl_Jones" target="_blank" rel="noopener">James Earl Jones</a></div>
+      <div class="hud-card-tags"><a class="tag" href="https://en.wikipedia.org/wiki/Darth_Vader" target="_blank" rel="noopener">Darth Vader</a></div>
       <span class="hud-scan-code">CHAR::VADER</span>
     </div>
   </div>
@@ -759,21 +839,21 @@
   <div class="img-strip-item hud-a">
     <div class="img-strip-corner-tl"></div>
     <div class="img-strip-corner-br"></div>
-    <img src="a-new-hope/images/anh-binary-sunset.jpg" alt="Binary Sunset · Tunisia · The defining shot" onerror="this.style.display='none'">
+    <img src="a-new-hope/images/strip-2.1.png" alt="Mark Hamill, Sir Alec Guiness, George Lucas" onerror="this.style.display='none'">
     <div class="img-strip-overlay"></div>
     <div class="img-strip-caption"><span>Binary Sunset · Tunisia · The defining shot</span><span class="img-strip-caption-code">IMG::04</span></div>
   </div>
   <div class="img-strip-item hud-b">
     <div class="img-strip-corner-tl"></div>
     <div class="img-strip-corner-br"></div>
-    <img src="a-new-hope/images/anh-cantina.jpg" alt="Mos Eisley Cantina · Elstree · Five days to build" onerror="this.style.display='none'">
+    <img src="a-new-hope/images/strip-2.2.jpg" alt="On the Milennium Falcon set" onerror="this.style.display='none'">
     <div class="img-strip-overlay"></div>
     <div class="img-strip-caption"><span>Mos Eisley Cantina · Elstree · Five days to build</span><span class="img-strip-caption-code">IMG::05</span></div>
   </div>
   <div class="img-strip-item hud-c">
     <div class="img-strip-corner-tl"></div>
     <div class="img-strip-corner-br"></div>
-    <img src="a-new-hope/images/anh-trench-run.jpg" alt="Death Star Trench · ILM · 360 optical composites" onerror="this.style.display='none'">
+    <img src="a-new-hope/images/strip-2.3.jpg" alt="Explaining blasters" onerror="this.style.display='none'">
     <div class="img-strip-overlay"></div>
     <div class="img-strip-caption"><span>Death Star Trench · ILM · 360 optical composites</span><span class="img-strip-caption-code">IMG::06</span></div>
   </div>
@@ -782,43 +862,87 @@
 </section>
 
 <!-- MOMENT BAND: Binary Sunset / Who Shot First -->
-<div class="moment-band" id="moment">
-  <div class="moment-pre fi">Mos Eisley Cantina · Tatooine · 1977</div>
-  <div class="moment-line fi" style="--d:0.1s;">HAN.<br>SHOT.<br><span class="hl">FIRST.</span></div>
-  <div class="moment-facts fi" style="--d:0.2s">
-    <div class="mf"><div class="mf-num">1977</div><div class="mf-label">Original Cut</div><div class="mf-sub">Han fires. Greedo does not.</div></div>
-    <div class="mf"><div class="mf-num">1997</div><div class="mf-label">Special Edition</div><div class="mf-sub">Greedo fires first. CGI added.</div></div>
-    <div class="mf"><div class="mf-num">2004</div><div class="mf-label">DVD Version</div><div class="mf-sub">They fire simultaneously</div></div>
-    <div class="mf"><div class="mf-num">∞</div><div class="mf-label">Arguments Since</div><div class="mf-sub">The internet never forgot</div></div>
+<div class="han-shot-section" id="moment">
+  <div class="hsf-bg" style="background-image:url('a-new-hope/images/han-shot-first.jpg');"></div>
+  <div class="hsf-overlay"></div>
+  <div class="hsf-inner">
+    <div class="moment-pre fi">Mos Eisley Cantina · Tatooine · 1977</div>
+    <div class="moment-line fi" style="--d:0.1s;">HAN.<br>SHOT.<br><span class="hl">FIRST.</span></div>
+    <div class="moment-facts fi" style="--d:0.2s">
+      <div class="mf"><div class="mf-num">1977</div><div class="mf-label">Original Cut</div><div class="mf-sub">Han fires. Greedo does not.</div></div>
+      <div class="mf"><div class="mf-num">1997</div><div class="mf-label">Special Edition</div><div class="mf-sub">Greedo fires first. CGI added.</div></div>
+      <div class="mf"><div class="mf-num">2004</div><div class="mf-label">DVD Version</div><div class="mf-sub">They fire simultaneously</div></div>
+      <div class="mf"><div class="mf-num">∞</div><div class="mf-label">Arguments Since</div><div class="mf-sub">The internet never forgot</div></div>
+    </div>
+    <div class="hsf-divider"></div>
+    <!-- HAN/GREEDO DIALOGUE -->
+    <div class="cantina-dialogue fi" id="cantina-dialogue">
+      <div class="cd-label">Mos Eisley Cantina · The Exchange · 1977 Theatrical Cut</div>
+      <div class="cd-inner">
+        <div class="cd-line cd-greedo"><span class="cd-speaker">GREEDO</span><span class="cd-text">Going somewhere, Solo?</span></div>
+        <div class="cd-line cd-han"><span class="cd-speaker">HAN</span><span class="cd-text">Yes, Greedo, as a matter of fact, I was just going to see your boss. Tell Jabba that I've got his money.</span></div>
+        <div class="cd-line cd-greedo"><span class="cd-speaker">GREEDO</span><span class="cd-text">It's too late. I'm not going back to Jabba with one of your stories.</span></div>
+        <div class="cd-line cd-han"><span class="cd-speaker">HAN</span><span class="cd-text">Yeah, but this time I've got the money.</span></div>
+        <div class="cd-line cd-greedo"><span class="cd-speaker">GREEDO</span><span class="cd-text">Then I'll take it now.</span></div>
+        <div class="cd-line cd-greedo"><span class="cd-speaker">GREEDO</span><span class="cd-text">Jabba would rather have your ship.</span></div>
+        <div class="cd-line cd-han"><span class="cd-speaker">HAN</span><span class="cd-text">Over my dead body.</span></div>
+        <div class="cd-line cd-greedo"><span class="cd-speaker">GREEDO</span><span class="cd-text">That's the idea. I've been looking forward to this for a long time.</span></div>
+        <div class="cd-line cd-han cd-last"><span class="cd-speaker">HAN</span><span class="cd-text">Yes, I'll bet you have.</span></div>
+      </div>
+      <div class="cd-verdict">In the 1977 cut, Han fires under the table before Greedo finishes the sentence. No hesitation. No warning. That single beat defines who Han Solo is — and why Lucas changing it was never just a technical correction.</div>
+    </div>
   </div>
 </div>
 
 <!-- HAN SOLO INTERLUDE -->
 <div class="han-interlude fi" id="han-interlude">
   <div class="han-left">
-    <img src="a-new-hope/images/han-solo-illustration.jpg" alt="Han Solo" onerror="this.style.display='none'">
+    <img src="a-new-hope/images/solo-profile.jpg"
+		 alt="Han Solo" onerror="this.style.display='none'">
     <div class="han-left-fade"></div>
   </div>
   <div class="han-right">
     <div class="han-label">Mos Eisley · The Millennium Falcon · The Voice of the Cynical</div>
-    <h2 class="han-title">The Philosophy<br>of Han Solo</h2>
+    <h2 class="han-title">Twelve Parsecs<br>and No Illusions</h2>
     <div class="han-quotes">
       <div class="han-quote">
-        <span class="han-quote-mark">&ldquo;</span>
+        <p class="han-quote-text"><span class="han-quote-emphasis">I've got a bad feeling about this.</span></p>
+        <div class="han-quote-attr">Han Solo · The Millennium Falcon · A New Hope</div>
+      </div>
+      <div class="han-quote">
+        <p class="han-quote-text">Kid, I've flown from one side of this galaxy to the other. I've seen a lot of strange stuff, but I've never seen anything to make me believe there's one all-powerful force controlling everything. <span class="han-quote-emphasis">There's no mystical energy field that controls my destiny.</span></p>
+        <div class="han-quote-attr">Han Solo · On the Force · Yavin IV</div>
+      </div>
+      <div class="han-quote">
         <p class="han-quote-text">Hokey religions and ancient weapons are no match for a good blaster at your side, kid. <span class="han-quote-emphasis">Never tell me the odds.</span></p>
         <div class="han-quote-attr">Han Solo · On the Force · A New Hope</div>
       </div>
-      <div class="han-quote">
-        <span class="han-quote-mark">&ldquo;</span>
-        <p class="han-quote-text">You know, sometimes I amaze even myself. <span class="han-quote-emphasis">Wonderful girl. Either I'm going to kill her or I'm beginning to like her.</span></p>
-        <div class="han-quote-attr">Han Solo · On Leia · Death Star escape</div>
-      </div>
-      <div class="han-quote">
-        <span class="han-quote-mark">&ldquo;</span>
-        <p class="han-quote-text"><span class="han-quote-emphasis">Great, kid. Don't get cocky.</span></p>
-        <div class="han-quote-attr">Han Solo · To Luke · During the trench run</div>
+    </div>
+    <div class="han-more-wrap" id="han-more-wrap" style="display:none;">
+      <div class="han-quotes" style="margin-top:1.5rem;">
+        <div class="han-quote">
+          <p class="han-quote-text">Kid, I've flown from one side of this galaxy to the other. I've seen a lot of strange stuff, but I've never seen anything to make me believe there's one all-powerful force controlling everything. <span class="han-quote-emphasis">There's no mystical energy field that controls my destiny.</span></p>
+          <div class="han-quote-attr">Han Solo · On the Force · Yavin IV</div>
+        </div>
+        <div class="han-quote">
+          <p class="han-quote-text">You know, sometimes I amaze even myself. <span class="han-quote-emphasis">Wonderful girl. Either I'm going to kill her or I'm beginning to like her.</span></p>
+          <div class="han-quote-attr">Han Solo · On Leia · Death Star escape</div>
+        </div>
+        <div class="han-quote">
+          <p class="han-quote-text"><span class="han-quote-emphasis">Bring them on! I prefer a straight fight to all this sneaking around.</span></p>
+          <div class="han-quote-attr">Han Solo · Death Star detention block</div>
+        </div>
+        <div class="han-quote">
+          <p class="han-quote-text"><span class="han-quote-emphasis">Look, Your Worshipfulness, let's get one thing straight! I take orders from one person! Me!</span></p>
+          <div class="han-quote-attr">Han Solo · To Princess Leia · The Falcon</div>
+        </div>
+        <div class="han-quote">
+          <p class="han-quote-text"><span class="han-quote-emphasis">What good's a reward if you ain't around to use it? Besides, attacking that battle station ain't my idea of courage.</span></p>
+          <div class="han-quote-attr">Han Solo · Before the trench run</div>
+        </div>
       </div>
     </div>
+    <button class="han-read-more" id="han-read-more-btn" onclick="(function(){var w=document.getElementById('han-more-wrap');var b=document.getElementById('han-read-more-btn');if(w.style.display==='none'){w.style.display='block';b.textContent='LESS ↑';}else{w.style.display='none';b.textContent='MORE QUOTES ↓';}})()">MORE QUOTES ↓</button>
   </div>
 </div>
 
@@ -850,7 +974,7 @@
     <h3>The First Seven Notes</h3>
     <p>Williams drew on the brass fanfare tradition of Golden Age Hollywood — Korngold, Steiner, Herrmann — to write a theme of near-impossible boldness. The opening five notes of the Main Title are a perfect fourth followed by a fifth, a progression so instantly recognizable it functions as a single word. Williams designed the theme to convey heroism and possibility simultaneously, specifically the feeling of standing at a threshold before the adventure has started. It was the first note audiences heard before a single image appeared.</p>
     <div class="hud-bottom-bar">
-      <div class="hud-card-tags"><a class="tag" href="https://en.wikipedia.org/wiki/Star_Wars_(Main_Title)" target="_blank" rel="noopener">Main Title</a><a class="tag" href="https://en.wikipedia.org/wiki/John_Williams" target="_blank" rel="noopener">John Williams</a></div>
+      <div class="hud-card-tags"><a class="tag" href="https://en.wikipedia.org/wiki/Star_Wars_(Main_Title)" target="_blank" rel="noopener">Main Title</a></div>
       <span class="hud-scan-code">SCORE::TITLE</span>
     </div>
   </div>
@@ -868,7 +992,7 @@
     <h3>The Sounds That Don't Exist</h3>
     <p>Ben Burtt, a film student hired by Lucas, created every major sonic identity in A New Hope from scratch. The lightsaber hum is a combination of an old TV set's idle frequency and a film projector motor. The blaster sound is a guy wire hit with a hammer. R2-D2 speaks in a mix of baby sounds and synthesizer tones that Burtt manipulated for weeks. The TIE Fighter scream is an elephant's call combined with a car on wet pavement, sped up. No film before Star Wars treated sound design as a creative discipline of equal weight to visual effects.</p>
     <div class="hud-bottom-bar">
-      <div class="hud-card-tags"><a class="tag" href="https://en.wikipedia.org/wiki/Ben_Burtt" target="_blank" rel="noopener">Ben Burtt</a><a class="tag" href="https://en.wikipedia.org/wiki/Sound_design" target="_blank" rel="noopener">Sound Design</a></div>
+      <div class="hud-card-tags"><a class="tag" href="https://en.wikipedia.org/wiki/Ben_Burtt" target="_blank" rel="noopener">Ben Burtt</a></div>
       <span class="hud-scan-code">SOUND::ORIGIN</span>
     </div>
   </div>
@@ -886,7 +1010,7 @@
     <h3>6 Wins Including a Special Award for ILM</h3>
     <p>Star Wars won 6 Academy Awards at the 1978 ceremony: Film Editing, Art Direction, Costume Design, Sound, Visual Effects, and Original Score. The Academy of Motion Picture Arts and Sciences created a special achievement award specifically for the visual effects team because the existing categories didn't adequately describe what ILM had accomplished. Lucas did not win for directing. Annie Hall won Best Picture. These facts are noted in every piece of cultural criticism about the year the blockbuster era began.</p>
     <div class="hud-bottom-bar">
-      <div class="hud-card-tags"><a class="tag" href="https://en.wikipedia.org/wiki/50th_Academy_Awards" target="_blank" rel="noopener">1978 Oscars</a><a class="tag" href="https://en.wikipedia.org/wiki/ILM" target="_blank" rel="noopener">ILM</a></div>
+      <div class="hud-card-tags"><a class="tag" href="https://en.wikipedia.org/wiki/50th_Academy_Awards" target="_blank" rel="noopener">1978 Oscars</a></div>
       <span class="hud-scan-code">AWARD::SIX</span>
     </div>
   </div>
@@ -913,7 +1037,7 @@
     <h3>32 Theaters. Lines Before Dawn.</h3>
     <p>Fox initially resisted a wide release, scheduling the film in only 32 theaters. Theater owners who refused to play Star Wars in favor of other summer titles would later regret that decision. The theaters that did have it reported lines forming hours before opening. Contemporary accounts describe audiences watching it multiple times in a single day, a behavior that had no precedent. Fox expanded to 360 theaters by the second week, then to 1,750 by July. The expansion rate outpaced anything the studio had infrastructure to manage.</p>
     <div class="hud-bottom-bar">
-      <div class="hud-card-tags"><a class="tag" href="https://en.wikipedia.org/wiki/Box_Office" target="_blank" rel="noopener">Box Office</a><a class="tag" href="https://en.wikipedia.org/wiki/1977" target="_blank" rel="noopener">1977</a></div>
+      <div class="hud-card-tags"><a class="tag" href="https://en.wikipedia.org/wiki/Box_Office" target="_blank" rel="noopener">Box Office</a></div>
       <span class="hud-scan-code">OPENING::32</span>
     </div>
   </div>
@@ -931,7 +1055,7 @@
     <h3>Kenner's Early Bird Certificate</h3>
     <p>Kenner Products had the Star Wars toy license but couldn't manufacture product fast enough for Christmas 1977. Their solution was the Early Bird Certificate Package: a box containing a certificate promising four action figures to be mailed to the buyer in early 1978. Parents bought empty boxes for their children. The figures — Luke, Leia, R2-D2, and Chewbacca — were mailed out in January. It was an act of brand desperation that became a collector's artifact. $100 million in toy sales followed in 1977 and 1978 combined.</p>
     <div class="hud-bottom-bar">
-      <div class="hud-card-tags"><a class="tag" href="https://en.wikipedia.org/wiki/Kenner_Products" target="_blank" rel="noopener">Kenner Products</a><a class="tag" href="https://en.wikipedia.org/wiki/Merchandise" target="_blank" rel="noopener">Merchandise</a></div>
+      <div class="hud-card-tags"><a class="tag" href="https://en.wikipedia.org/wiki/Kenner_Products" target="_blank" rel="noopener">Kenner Products</a></div>
       <span class="hud-scan-code">TOY::EARLY_BIRD</span>
     </div>
   </div>
@@ -949,7 +1073,7 @@
     <h3>Divided Reviews. Undivided Audiences.</h3>
     <p>Pauline Kael called it "an epic without irony." Vincent Canby of the New York Times found it "silly." Roger Ebert gave it four stars and wrote that it restored his faith in the movies. The critical reception was positive overall but cautious — reviewers sensed something culturally significant was happening without being able to name it precisely. What they all agreed on was that audiences were responding in a way that had not been seen since Jaws two years earlier, and that Jaws had been an anomaly too.</p>
     <div class="hud-bottom-bar">
-      <div class="hud-card-tags"><a class="tag" href="https://en.wikipedia.org/wiki/Critical_Reception" target="_blank" rel="noopener">Critical Reception</a><a class="tag" href="https://en.wikipedia.org/wiki/Roger_Ebert" target="_blank" rel="noopener">Roger Ebert</a></div>
+      <div class="hud-card-tags"><a class="tag" href="https://en.wikipedia.org/wiki/Critical_Reception" target="_blank" rel="noopener">Critical Reception</a></div>
       <span class="hud-scan-code">CRITICS::DIVIDED</span>
     </div>
   </div>
@@ -967,7 +1091,7 @@
     <h3>The Film Lucas Changed Three Times</h3>
     <p>In 1997, Lucas released a Special Edition with digital alterations: Jabba the Hutt inserted into a deleted scene, CGI crowds at Mos Eisley, and — most controversially — Greedo firing before Han in the cantina. The 2004 DVD added further changes. The 2011 Blu-ray added more. The original theatrical cut has never been officially released on any modern home format. Fans have created restoration projects from laserdisc masters. Lucas has repeatedly said the original cut is not the film he intended and that the Special Edition is the definitive version. This remains, in certain corners, a matter of active debate.</p>
     <div class="hud-bottom-bar">
-      <div class="hud-card-tags"><a class="tag" href="https://en.wikipedia.org/wiki/Star_Wars_Special_Edition" target="_blank" rel="noopener">Special Edition</a><a class="tag" href="https://en.wikipedia.org/wiki/Han_shot_first" target="_blank" rel="noopener">Han Shot First</a></div>
+      <div class="hud-card-tags"><a class="tag" href="https://en.wikipedia.org/wiki/Star_Wars_Special_Edition" target="_blank" rel="noopener">Special Edition</a></div>
       <span class="hud-scan-code">STATUS::ALTERED</span>
     </div>
   </div>
@@ -975,13 +1099,7 @@
 </div>
 </section>
 
-<!-- MARQUEE -->
-<div class="marquee">
-  <div class="marquee-track" aria-hidden="true">
-    <span>GEORGE LUCAS</span><span>·</span><span>HARRISON FORD</span><span>·</span><span>MARK HAMILL</span><span>·</span><span>CARRIE FISHER</span><span>·</span><span>ALEC GUINNESS</span><span>·</span><span>RALPH MCQUARRIE</span><span>·</span><span>JOHN WILLIAMS</span><span>·</span><span>BEN BURTT</span><span>·</span><span>ILM</span><span>·</span><span>ALAN LADD JR.</span><span>·</span><span>TATOOINE</span><span>·</span><span>DEATH STAR</span><span>·</span><span>YAVIN IV</span><span>·</span>
-    <span>GEORGE LUCAS</span><span>·</span><span>HARRISON FORD</span><span>·</span><span>MARK HAMILL</span><span>·</span><span>CARRIE FISHER</span><span>·</span><span>ALEC GUINNESS</span><span>·</span><span>RALPH MCQUARRIE</span><span>·</span><span>JOHN WILLIAMS</span><span>·</span><span>BEN BURTT</span><span>·</span><span>ILM</span><span>·</span><span>ALAN LADD JR.</span><span>·</span><span>TATOOINE</span><span>·</span><span>DEATH STAR</span><span>·</span><span>YAVIN IV</span><span>·</span>
-  </div>
-</div>
+
 
 <!-- SECTION 07 -->
 <section class="section alt" id="keyfigures">
@@ -991,92 +1109,82 @@
   <div class="people-grid fi" style="--d:0.1s">
 
 <div class="person-card" style="--p-accent:#C8860A;">
-  <div class="person-placeholder">G</div>
-  <div class="person-era">Director · Writer</div>
+  <div class="person-placeholder"><img src="a-new-hope/images/bio-george-lucas.jpg"></div>
   <div class="person-name">George Lucas</div>
   <div class="person-role">Director / Screenwriter</div>
-  <p class="person-bio">Wrote four drafts over three years, directed the film under conditions that nearly broke him, and structured a deal with Fox that made him one of the most powerful people in the history of the entertainment industry. He has not directed a feature since Revenge of the Sith in 2005.</p>
+  <p class="person-bio">Wrote four drafts over three years and directed under conditions that nearly broke him. Structured a deal with Fox that gave him the merchandise rights. Has not directed a feature film since Revenge of the Sith.</p>
   <a class="person-link" href="https://en.wikipedia.org/wiki/George_Lucas" target="_blank" rel="noopener">Wikipedia</a>
 </div>
 
 <div class="person-card" style="--p-accent:#F5C842;">
-  <div class="person-placeholder">H</div>
-  <div class="person-era">Actor · Han Solo</div>
+  <div class="person-placeholder"><img src="a-new-hope/images/bio-ford.jpg"></div>
   <div class="person-name">Harrison Ford</div>
   <div class="person-role">Han Solo</div>
-  <p class="person-bio">Was not supposed to get the role. Was reading lines to other actors when Lucas realized he was looking at Han Solo. Built the character's personality from attitude and improvisation. Was working as a carpenter before this film. Was a movie star after it.</p>
+  <p class="person-bio">Was not supposed to get the role — was reading lines for other actors when Lucas realized he was looking at Han Solo. Built the character from attitude and improvisation. Was a carpenter before this film.</p>
   <a class="person-link" href="https://en.wikipedia.org/wiki/Harrison_Ford" target="_blank" rel="noopener">Wikipedia</a>
 </div>
 
 <div class="person-card" style="--p-accent:#C8860A;">
-  <div class="person-placeholder">M</div>
-  <div class="person-era">Actor · Luke Skywalker</div>
+  <div class="person-placeholder"><img src="a-new-hope/images/bio-hamill.jpg"></div>
   <div class="person-name">Mark Hamill</div>
   <div class="person-role">Luke Skywalker</div>
-  <p class="person-bio">Committed completely to a role that required him to carry the emotional arc of the entire film as an unknown actor. Played sincerity against cynicism (Ford) and wisdom (Guinness) without being diminished. Has remained one of the most thoughtful interpreters of the Star Wars mythology for nearly five decades.</p>
+  <p class="person-bio">Carried the emotional arc of the film as an unknown. Played sincerity against Ford's cynicism and Guinness's wisdom without being diminished. Has spent nearly five decades as one of the most thoughtful interpreters of Star Wars.</p>
   <a class="person-link" href="https://en.wikipedia.org/wiki/Mark_Hamill" target="_blank" rel="noopener">Wikipedia</a>
 </div>
 
 <div class="person-card" style="--p-accent:#F5C842;">
-  <div class="person-placeholder">C</div>
-  <div class="person-era">Actor · Princess Leia</div>
+  <div class="person-placeholder"><img src="a-new-hope/images/bio-carrie-fisher.jpg"></div>
   <div class="person-name">Carrie Fisher</div>
   <div class="person-role">Princess Leia</div>
-  <p class="person-bio">Was 19 years old during production and made Leia the most competent person in any room she occupied. The character, as written, was a catalyst for the male leads. As performed by Fisher, she became the film's moral center. Her performance and subsequent career as a writer defined her as one of the most original voices in Hollywood.</p>
+  <p class="person-bio">Was 19 during production and made Leia the most competent person in every room. The character was written as a catalyst for the male leads. Fisher made her the film's moral center.</p>
   <a class="person-link" href="https://en.wikipedia.org/wiki/Carrie_Fisher" target="_blank" rel="noopener">Wikipedia</a>
 </div>
 
 <div class="person-card" style="--p-accent:#C8860A;">
-  <div class="person-placeholder">A</div>
-  <div class="person-era">Actor · Obi-Wan Kenobi</div>
+  <div class="person-placeholder"><img src="a-new-hope/images/bio-obi-wan.jpg"></div>
   <div class="person-name">Alec Guinness</div>
   <div class="person-role">Obi-Wan Kenobi</div>
-  <p class="person-bio">Hated the dialogue, improvised several scenes, and asked to be killed off to avoid further obligations. His 2% of the gross made him more money than any studio contract he had ever signed. One of the great actors of the twentieth century making a children's film — and making it work completely.</p>
+  <p class="person-bio">Hated the dialogue and improvised key scenes. Asked to be killed off to limit his obligations. His 2% of the gross earned more than any studio contract he had signed. Made the film work completely.</p>
   <a class="person-link" href="https://en.wikipedia.org/wiki/Alec_Guinness" target="_blank" rel="noopener">Wikipedia</a>
 </div>
 
 <div class="person-card" style="--p-accent:#F5C842;">
-  <div class="person-placeholder">R</div>
-  <div class="person-era">Concept Artist</div>
+  <div class="person-placeholder"><img src="a-new-hope/images/bio-mcquarrie.jpg"></div>
   <div class="person-name">Ralph McQuarrie</div>
   <div class="person-role">Visual Architect</div>
-  <p class="person-bio">Painted the visual language of Star Wars before a set was built or a costume was made. His five original paintings are the reason Fox greenlit the film. Darth Vader's helmet, C-3PO's design, the Tatooine landscape, the Death Star — all McQuarrie before they were anything else.</p>
+  <p class="person-bio">Painted the visual language of Star Wars before a set was built. His five original paintings are the reason Fox greenlit the film. Vader's helmet, C-3PO's gold, the Tatooine landscape — all McQuarrie first.</p>
   <a class="person-link" href="https://en.wikipedia.org/wiki/Ralph_McQuarrie" target="_blank" rel="noopener">Wikipedia</a>
 </div>
 
 <div class="person-card" style="--p-accent:#C8860A;">
-  <div class="person-placeholder">J</div>
-  <div class="person-era">Composer</div>
+  <div class="person-placeholder"><img src="a-new-hope/images/bio-williams.jpg"></div>
   <div class="person-name">John Williams</div>
   <div class="person-role">Composer</div>
-  <p class="person-bio">Composed what may be the most recognizable film score in history. Won the Academy Award. Wrote the Main Title, the Force Theme, Leia's Theme, the Cantina Band, and the Death Star motif for the same film. Recorded it all with the London Symphony Orchestra at Abbey Road in three weeks. Had previously scored Jaws. Would go on to score Indiana Jones, Schindler's List, and nearly every major Spielberg and Lucas film for thirty years.</p>
+  <p class="person-bio">Composed what may be the most recognizable film score in history. Won the Academy Award. Wrote the Main Title, the Force Theme, Leia's Theme, the Cantina Band, and the Death Star motif for the same film.</p>
   <a class="person-link" href="https://en.wikipedia.org/wiki/John_Williams" target="_blank" rel="noopener">Wikipedia</a>
 </div>
 
 <div class="person-card" style="--p-accent:#F5C842;">
-  <div class="person-placeholder">B</div>
-  <div class="person-era">Sound Designer</div>
+  <div class="person-placeholder"><img src="a-new-hope/images/bio-ben-burtt.jpg"></div>
   <div class="person-name">Ben Burtt</div>
   <div class="person-role">Sound Designer</div>
-  <p class="person-bio">Invented the sonic identity of Star Wars from scratch using analog recordings of found sounds. The lightsaber, R2-D2, the blasters, the TIE Fighter scream, the hyperspace jump — none of these sounds existed before Burtt created them. His work established sound design as a creative discipline equal to cinematography or editing. Won a Special Achievement Academy Award.</p>
+  <p class="person-bio">Invented the sonic identity of Star Wars from analog recordings of found sounds. The lightsaber, R2-D2, the blasters, TIE Fighter scream — none existed before Burtt created them. Won a Special Achievement Academy Award.</p>
   <a class="person-link" href="https://en.wikipedia.org/wiki/Ben_Burtt" target="_blank" rel="noopener">Wikipedia</a>
 </div>
 
 <div class="person-card" style="--p-accent:#C8860A;">
-  <div class="person-placeholder">J</div>
-  <div class="person-era">VFX Supervisor</div>
+  <div class="person-placeholder"><img src="a-new-hope/images/bio-dykstra.jpg"></div>
   <div class="person-name">John Dykstra</div>
   <div class="person-role">Visual Effects Supervisor</div>
-  <p class="person-bio">Built the Dykstraflex motion-control camera system in a Van Nuys warehouse and used it to create visual effects that had never been achieved before. His team produced over 360 optical composites for the film. ILM, which he helped found, became the dominant visual effects company in the world for the next two decades. Won the Special Achievement Academy Award alongside his team.</p>
+  <p class="person-bio">Built the Dykstraflex motion-control camera system in a warehouse and used it to produce over 360 optical composites. ILM, which he helped found, became the dominant visual effects company in the world.</p>
   <a class="person-link" href="https://en.wikipedia.org/wiki/John_Dykstra" target="_blank" rel="noopener">Wikipedia</a>
 </div>
 
 <div class="person-card" style="--p-accent:#F5C842;">
-  <div class="person-placeholder">A</div>
-  <div class="person-era">Studio Executive</div>
+  <div class="person-placeholder"><img src="a-new-hope/images/bio-ladd.jpg"></div>
   <div class="person-name">Alan Ladd Jr.</div>
   <div class="person-role">President, 20th Century Fox</div>
-  <p class="person-bio">Said yes when nobody else would. Greenlit Star Wars on instinct when the script was confusing Fox readers and Lucas had no track record in this genre. Fought internally to protect the film. Did not trade away his profit points, as several colleagues did. The man who made the call that launched the franchise era of Hollywood.</p>
+  <p class="person-bio">Said yes when nobody else would. Greenlit Star Wars on instinct when Fox readers found the script confusing. Fought internally to protect the film. The man who made the call that launched the franchise era of Hollywood.</p>
   <a class="person-link" href="https://en.wikipedia.org/wiki/Alan_Ladd_Jr." target="_blank" rel="noopener">Wikipedia</a>
 </div>
 
@@ -1102,7 +1210,7 @@
     <h3>Jaws Started It. Star Wars Finished It.</h3>
     <p>Jaws in 1975 introduced the wide summer release. Star Wars in 1977 proved it could work twice — and that the franchise, not the single film, was the commercial unit. Every major studio reorganized around tentpole event releases within three years. The New Hollywood directors who had prioritized personal vision — Coppola, Ashby, Bogdanovich — watched their budgets shrink as studios chased the next Star Wars. The blockbuster era is the world we still live in. It began with a desert, two suns, and a kid who wanted to leave.</p>
     <div class="hud-bottom-bar">
-      <div class="hud-card-tags"><a class="tag" href="https://en.wikipedia.org/wiki/Blockbuster_film" target="_blank" rel="noopener">Blockbuster Era</a><a class="tag" href="https://en.wikipedia.org/wiki/New_Hollywood" target="_blank" rel="noopener">New Hollywood</a></div>
+      <div class="hud-card-tags"><a class="tag" href="https://en.wikipedia.org/wiki/Blockbuster_film" target="_blank" rel="noopener">Blockbuster Era</a></div>
       <span class="hud-scan-code">ERA::DEFINED</span>
     </div>
   </div>
@@ -1120,7 +1228,7 @@
     <h3>The $4 Billion Decision Made in 1973</h3>
     <p>Lucas's insistence on retaining sequel and merchandise rights — dismissed by Fox as minor concessions — became the template for how creators engage with studios. When Disney purchased Lucasfilm for $4.05 billion in 2012, the asset being acquired was built entirely on the rights structure Lucas had insisted on forty years earlier. The deal Lucas made in 1973 is studied in business schools. The creative lesson — own your IP — is now a cliché because of how completely he proved it worked.</p>
     <div class="hud-bottom-bar">
-      <div class="hud-card-tags"><a class="tag" href="https://en.wikipedia.org/wiki/Lucasfilm" target="_blank" rel="noopener">Lucasfilm</a><a class="tag" href="https://en.wikipedia.org/wiki/Disney" target="_blank" rel="noopener">Disney</a></div>
+      <div class="hud-card-tags"><a class="tag" href="https://en.wikipedia.org/wiki/Lucasfilm" target="_blank" rel="noopener">Lucasfilm</a></div>
       <span class="hud-scan-code">IP::OWNED</span>
     </div>
   </div>
@@ -1138,7 +1246,7 @@
     <h3>The Company That Changed Visual Effects</h3>
     <p>Industrial Light & Magic, founded to make one film, became the dominant visual effects company in Hollywood for the next twenty years. ILM invented digital compositing, digital character animation, and motion capture — technologies that define modern filmmaking. The Terminator. Indiana Jones. Jurassic Park. Schindler's List. Forrest Gump. The Matrix. Every significant visual effects breakthrough from 1977 to 2000 either originated at ILM or was developed in direct response to what ILM had done.</p>
     <div class="hud-bottom-bar">
-      <div class="hud-card-tags"><a class="tag" href="https://en.wikipedia.org/wiki/Industrial_Light_%26_Magic" target="_blank" rel="noopener">ILM</a><a class="tag" href="https://en.wikipedia.org/wiki/VFX" target="_blank" rel="noopener">VFX</a></div>
+      <div class="hud-card-tags"><a class="tag" href="https://en.wikipedia.org/wiki/Industrial_Light_%26_Magic" target="_blank" rel="noopener">ILM</a></div>
       <span class="hud-scan-code">ILM::ORIGIN</span>
     </div>
   </div>
@@ -1156,7 +1264,7 @@
     <h3>The Hero's Journey Made Mainstream</h3>
     <p>Lucas built A New Hope on Joseph Campbell's monomyth framework — the hero called from ordinary life, the mentor's sacrifice, the threshold crossing, the return with knowledge. This structure, which Campbell identified across thousands of years of folklore, had never been deployed so explicitly in a Hollywood blockbuster. The result was a film that resonated across cultures and languages without translation. The Force is the mystical unknown by any other name. The Empire is authority by any other name. Luke is anyone who has ever wanted to be more than where they started.</p>
     <div class="hud-bottom-bar">
-      <div class="hud-card-tags"><a class="tag" href="https://en.wikipedia.org/wiki/Monomyth" target="_blank" rel="noopener">Monomyth</a><a class="tag" href="https://en.wikipedia.org/wiki/Joseph_Campbell" target="_blank" rel="noopener">Joseph Campbell</a></div>
+      <div class="hud-card-tags"><a class="tag" href="https://en.wikipedia.org/wiki/Monomyth" target="_blank" rel="noopener">Monomyth</a></div>
       <span class="hud-scan-code">MYTH::APPLIED</span>
     </div>
   </div>
@@ -1165,7 +1273,7 @@
 </section>
 
 <!-- WHAT COMES NEXT -->
-<section class="section" id="next" style="background:var(--bg1);padding-bottom:5rem;">
+<section class="section" id="next" style="background:var(--bg);padding-bottom:5rem;">
   <div class="hud-card hud-c fi" style="--d:0.05s;max-width:900px;--c-col:#9A6200;background:#F5EDD6;border-color:rgba(154,98,0,0.3);">
     <div class="hud-corner hud-corner-tl" style="border-color:#9A6200;opacity:0.5;"></div>
     <div class="hud-corner hud-corner-tr" style="border-color:#9A6200;opacity:0.5;"></div>
@@ -1186,12 +1294,6 @@
   </div>
 </section>
 
-<!-- ENTITY GRID -->
-<section class="entity-section" id="entities">
-  <div class="entity-heading fi">Key Players<span class="cursor-blink">_</span></div>
-  <div class="entity-sub">People · Places · Works · Companies · Concepts · Moments</div>
-  <div class="entity-grid" id="entityGrid"></div>
-</section>
 
 <!-- ECO -->
 <div class="eco-links">
@@ -1206,6 +1308,20 @@
 </div>
 
 <!-- COLOPHON -->
+<div class="saga-strip">
+  <div class="saga-strip-label">THE SAGA · A (BRIEF) HISTORY</div>
+  <div class="saga-row">
+  <a class="saga-tag active" href="#">EP IV · A New Hope</a>
+  <a class="saga-tag" href="./the-empire-strikes-back.html">EP V · The Empire Strikes Back</a>
+  <a class="saga-tag" href="./return-of-the-jedi.html">EP VI · Return of the Jedi</a>
+  <!-- <a class="saga-tag disabled" href="#">EP I · The Phantom Menace</a> -->
+  <!-- <a class="saga-tag disabled" href="#">EP II · Attack of the Clones</a> -->
+  <!-- <a class="saga-tag disabled" href="#">EP III · Revenge of the Sith</a> -->
+  <!-- <a class="saga-tag disabled" href="#">EP VII · The Force Awakens</a> -->
+  <!-- <a class="saga-tag disabled" href="#">EP VIII · The Last Jedi</a> -->
+  <!-- <a class="saga-tag disabled" href="#">EP IX · The Rise of Skywalker</a> -->
+  </div>
+</div>
 <div class="colophon">
   <div><div class="colophon-label">A NEW HOPE / FILM HISTORY</div><p class="colophon-blurb">The production, release, and cultural legacy of the 1977 film that ended New Hollywood and began the franchise era — from a Tunisia sandstorm to the highest-grossing film in history.</p></div>
   <div>
@@ -1265,56 +1381,28 @@
     if(copyId){var cl=document.getElementById(copyId);if(cl){cl.addEventListener('click',function(e){e.preventDefault();navigator.clipboard.writeText('https://abriefhistoryofeverything.com/a-new-hope').then(function(){cl.textContent='Copied!';setTimeout(function(){cl.textContent='Copy Link';},1500);});});}}
   }
   initShare('shareBtn','shareDropdown','copyLink');
-  document.addEventListener('click',function(){document.querySelectorAll('.share-dropdown').forEach(function(d){d.classList.remove('open');});});
-  /* Entity grid */
-  var ents=[
-    {name:'A New Hope',url:'https://en.wikipedia.org/wiki/Star_Wars_(film)',c:'var(--accent)',t:'#fff'},
-    {name:'George Lucas',url:'https://en.wikipedia.org/wiki/George_Lucas',c:'rgba(200,134,10,0.2)',t:'var(--text)'},
-    {name:'Harrison Ford',url:'https://en.wikipedia.org/wiki/Harrison_Ford',c:'rgba(200,134,10,0.18)',t:'var(--text)'},
-    {name:'Mark Hamill',url:'https://en.wikipedia.org/wiki/Mark_Hamill',c:'rgba(200,134,10,0.15)',t:'var(--text)'},
-    {name:'Carrie Fisher',url:'https://en.wikipedia.org/wiki/Carrie_Fisher',c:'rgba(200,134,10,0.15)',t:'var(--text)'},
-    {name:'Alec Guinness',url:'https://en.wikipedia.org/wiki/Alec_Guinness',c:'rgba(200,134,10,0.15)',t:'var(--text)'},
-    {name:'Ralph McQuarrie',url:'https://en.wikipedia.org/wiki/Ralph_McQuarrie',c:'rgba(200,134,10,0.18)',t:'var(--text)'},
-    {name:'John Williams',url:'https://en.wikipedia.org/wiki/John_Williams',c:'rgba(200,134,10,0.15)',t:'var(--text)'},
-    {name:'Ben Burtt',url:'https://en.wikipedia.org/wiki/Ben_Burtt',c:'rgba(200,134,10,0.15)',t:'var(--text)'},
-    {name:'John Dykstra',url:'https://en.wikipedia.org/wiki/John_Dykstra',c:'rgba(200,134,10,0.12)',t:'var(--text)'},
-    {name:'Alan Ladd Jr.',url:'https://en.wikipedia.org/wiki/Alan_Ladd_Jr.',c:'rgba(200,134,10,0.12)',t:'var(--text)'},
-    {name:'David Prowse',url:'https://en.wikipedia.org/wiki/David_Prowse',c:'rgba(200,134,10,0.1)',t:'var(--text)'},
-    {name:'James Earl Jones',url:'https://en.wikipedia.org/wiki/James_Earl_Jones',c:'rgba(200,134,10,0.1)',t:'var(--text)'},
-    {name:'Peter Cushing',url:'https://en.wikipedia.org/wiki/Peter_Cushing',c:'rgba(200,134,10,0.1)',t:'var(--text)'},
-    {name:'Anthony Daniels',url:'https://en.wikipedia.org/wiki/Anthony_Daniels',c:'rgba(200,134,10,0.1)',t:'var(--text)'},
-    {name:'Kenny Baker',url:'https://en.wikipedia.org/wiki/Kenny_Baker',c:'rgba(200,134,10,0.08)',t:'var(--text)'},
-    {name:'Peter Mayhew',url:'https://en.wikipedia.org/wiki/Peter_Mayhew',c:'rgba(200,134,10,0.08)',t:'var(--text)'},
-    {name:'John Barry',url:'https://en.wikipedia.org/wiki/John_Barry_(production_designer)',c:'rgba(200,134,10,0.1)',t:'var(--text)'},
-    {name:'Industrial Light & Magic',url:'https://en.wikipedia.org/wiki/Industrial_Light_%26_Magic',c:'rgba(200,134,10,0.15)',t:'var(--text)'},
-    {name:'Lucasfilm',url:'https://en.wikipedia.org/wiki/Lucasfilm',c:'rgba(200,134,10,0.15)',t:'var(--text)'},
-    {name:'20th Century Fox',url:'https://en.wikipedia.org/wiki/20th_Century_Fox',c:'rgba(200,134,10,0.1)',t:'var(--text)'},
-    {name:'Kenner Products',url:'https://en.wikipedia.org/wiki/Kenner_Products',c:'rgba(200,134,10,0.08)',t:'var(--text)'},
-    {name:'Elstree Studios',url:'https://en.wikipedia.org/wiki/Elstree_Studios',c:'rgba(200,134,10,0.08)',t:'var(--text)'},
-    {name:'Tatooine',url:'https://en.wikipedia.org/wiki/Tatooine',c:'rgba(200,134,10,0.1)',t:'var(--text)'},
-    {name:'Death Star',url:'https://en.wikipedia.org/wiki/Death_Star',c:'rgba(200,134,10,0.1)',t:'var(--text)'},
-    {name:'Yavin IV',url:'https://en.wikipedia.org/wiki/Yavin',c:'rgba(200,134,10,0.08)',t:'var(--text)'},
-    {name:'Mos Eisley',url:'https://en.wikipedia.org/wiki/Mos_Eisley',c:'rgba(200,134,10,0.08)',t:'var(--text)'},
-    {name:'The Force',url:'https://en.wikipedia.org/wiki/The_Force',c:'rgba(200,134,10,0.12)',t:'var(--text)'},
-    {name:'Joseph Campbell',url:'https://en.wikipedia.org/wiki/Joseph_Campbell',c:'rgba(200,134,10,0.12)',t:'var(--text)'},
-    {name:'Binary Sunset',url:'https://en.wikipedia.org/wiki/Star_Wars_(film)',c:'var(--accent)',t:'#fff'},
-    {name:'Han Shot First',url:'https://en.wikipedia.org/wiki/Han_shot_first',c:'rgba(200,134,10,0.12)',t:'var(--text)'},
-    {name:'Main Title Theme',url:'https://en.wikipedia.org/wiki/Star_Wars_(Main_Title)',c:'rgba(200,134,10,0.15)',t:'var(--text)'},
-    {name:'Cantina Band',url:'https://en.wikipedia.org/wiki/Mad_About_Me_(Star_Wars_song)',c:'rgba(200,134,10,0.1)',t:'var(--text)'},
-    {name:'Dykstraflex',url:'https://en.wikipedia.org/wiki/Dykstraflex',c:'rgba(200,134,10,0.1)',t:'var(--text)'},
-    {name:'Monomyth',url:'https://en.wikipedia.org/wiki/Monomyth',c:'rgba(200,134,10,0.1)',t:'var(--text)'},
-    {name:'Star Wars Holiday Special',url:'https://en.wikipedia.org/wiki/The_Star_Wars_Holiday_Special',c:'rgba(200,134,10,0.06)',t:'var(--text)'},
-    {name:'Special Edition 1997',url:'https://en.wikipedia.org/wiki/Star_Wars_Special_Edition',c:'rgba(200,134,10,0.06)',t:'var(--text)'},
-    {name:'Disney Acquisition 2012',url:'https://en.wikipedia.org/wiki/Acquisition_of_Lucasfilm_by_The_Walt_Disney_Company',c:'rgba(200,134,10,0.06)',t:'var(--text)'},
-    {name:'The Empire Strikes Back',url:'https://en.wikipedia.org/wiki/The_Empire_Strikes_Back',c:'rgba(200,134,10,0.08)',t:'var(--text)'},
-    {name:'Return of the Jedi',url:'https://en.wikipedia.org/wiki/Return_of_the_Jedi',c:'rgba(200,134,10,0.08)',t:'var(--text)'},
-    {name:'Abbey Road Studios',url:'https://en.wikipedia.org/wiki/Abbey_Road_Studios',c:'rgba(200,134,10,0.06)',t:'var(--text)'},
-    {name:'Tikal, Guatemala',url:'https://en.wikipedia.org/wiki/Tikal',c:'rgba(200,134,10,0.06)',t:'var(--text)'},
-    {name:'Tunisia',url:'https://en.wikipedia.org/wiki/Tunisia',c:'rgba(200,134,10,0.06)',t:'var(--text)'},
-  ];
-  var g=document.getElementById('entityGrid');
-  if(g){ents.forEach(function(e){var a=document.createElement('a');a.href=e.url;a.target='_blank';a.rel='noopener';a.className='entity-badge';a.textContent=e.name;a.style.background=e.c;a.style.color=e.t;a.style.borderColor=e.c;g.appendChild(a);});}
 })();
+
+
+  /* Page nav dropdown */
+  var pageNavBtn = document.getElementById('pageNavBtn');
+  var pageNavWrap = document.getElementById('pageNavWrap');
+  if(pageNavBtn && pageNavWrap){
+    pageNavBtn.addEventListener('click', function(e){
+      e.stopPropagation();
+      pageNavWrap.classList.toggle('open');
+    });
+    document.addEventListener('click', function(e){
+      if(pageNavWrap && !pageNavWrap.contains(e.target)){
+        pageNavWrap.classList.remove('open');
+      }
+    });
+    // Close on item click
+    pageNavWrap.querySelectorAll('.pn-item').forEach(function(a){
+      a.addEventListener('click', function(){ pageNavWrap.classList.remove('open'); });
+    });
+  }
+
 </script>
 </body>
 </html>
