@@ -1093,19 +1093,56 @@ br.desk-br{display:block;}
 </section>
 
 <!-- FEATURED -->
-<section class="featured-section">
-  <div class="featured-eyebrow"><span class="featured-eyebrow-line"></span>Featured this week</div>
-  <a class="featured-panel" href="taylor-swift.html">
-    <img src="taylor-swift/images/sequin-costume-wide.jpg" alt="Taylor Swift Eras Tour sequin costume">
-    <div class="featured-overlay">
-      <div class="featured-text">
-        <div class="featured-badge">013 — Culture</div>
-        <div class="featured-title">A (Brief) History of <br>Taylor Swift<span class="cursor-blink">_</span></div>
-        <div class="featured-sub">From a Pennsylvania teenager with a guitar to the most-streamed artist in Spotify history. Every heartbreak became a #1 hit. This is how that happened.</div>
-        <div class="featured-cta">Read the (Brief) History →</div>
+<style>
+.sw-featured{padding:2.5rem 2.5rem 0;}
+.sw-featured-eyebrow{display:flex;align-items:center;gap:10px;font-family:var(--mono);font-size:0.82rem;font-weight:600;letter-spacing:.2em;text-transform:uppercase;color:#C8860A;margin-bottom:1.2rem;}
+.sw-featured-eyebrow-line{display:inline-block;width:28px;height:2px;background:#C8860A;flex-shrink:0;}
+.sw-trilogy{display:grid;grid-template-columns:1fr 1fr 1fr;gap:3px;}
+@media(max-width:768px){.sw-trilogy{grid-template-columns:1fr;}.sw-featured{padding:1.5rem 1.5rem 0;}}
+.sw-card{position:relative;overflow:hidden;min-height:400px;display:flex;flex-direction:column;justify-content:flex-end;text-decoration:none;cursor:pointer;}
+.sw-card img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center center;transition:transform .6s ease;}
+.sw-card:hover img{transform:scale(1.04);}
+.sw-card-overlay{position:absolute;inset:0;z-index:2;display:flex;flex-direction:column;justify-content:flex-end;padding:1.8rem 1.6rem;background:linear-gradient(to top,rgba(0,0,0,.88) 0%,rgba(0,0,0,.45) 55%,transparent 100%);}
+.sw-card-num{font-family:var(--mono);font-size:0.68rem;letter-spacing:.18em;text-transform:uppercase;margin-bottom:6px;}
+.sw-card-title{font-family:var(--cond);font-weight:700;font-size:clamp(1.1rem,2vw,1.5rem);color:#fff;line-height:1.15;margin-bottom:8px;}
+.sw-card-sub{font-family:var(--sans);font-size:0.85rem;font-weight:300;line-height:1.55;margin-bottom:12px;}
+.sw-card-cta{font-family:var(--mono);font-size:0.75rem;font-weight:600;letter-spacing:.1em;border-bottom:1px solid;padding-bottom:2px;transition:opacity .2s;display:inline-block;}
+.sw-card:hover .sw-card-cta{opacity:1;}
+.sw-card-anh .sw-card-num{color:#C8860A;}.sw-card-anh .sw-card-sub{color:rgba(245,232,192,.6);}.sw-card-anh .sw-card-cta{color:#C8860A;border-color:rgba(200,134,10,.4);}
+.sw-card-esb .sw-card-num{color:#4A9EFF;}.sw-card-esb .sw-card-sub{color:rgba(200,228,255,.6);}.sw-card-esb .sw-card-cta{color:#4A9EFF;border-color:rgba(74,158,255,.4);}
+.sw-card-rotj .sw-card-num{color:#4AAF5C;}.sw-card-rotj .sw-card-sub{color:rgba(192,236,200,.6);}.sw-card-rotj .sw-card-cta{color:#4AAF5C;border-color:rgba(74,175,92,.4);}
+</style>
+<section class="sw-featured">
+  <div class="sw-featured-eyebrow"><span class="sw-featured-eyebrow-line"></span>The Original Trilogy — Live Now</div>
+  <div class="sw-trilogy">
+    <a class="sw-card sw-card-anh" href="a-new-hope.html">
+      <img src="images/poster-anh.jpg" alt="A New Hope">
+      <div class="sw-card-overlay">
+        <div class="sw-card-num">015 — Film History</div>
+        <div class="sw-card-title">A (Brief) History of<br>A New Hope<span class="cursor-blink" style="color:#C8860A;">_</span></div>
+        <div class="sw-card-sub">Fox thought the merchandise rights were the scraps. The toys made $100 million in year one.</div>
+        <div class="sw-card-cta">Read the guide →</div>
       </div>
-    </div>
-  </a>
+    </a>
+    <a class="sw-card sw-card-esb" href="the-empire-strikes-back.html">
+      <img src="images/poster-esb.jpg" alt="The Empire Strikes Back">
+      <div class="sw-card-overlay">
+        <div class="sw-card-num">016 — Film History</div>
+        <div class="sw-card-title">A (Brief) History of<br>The Empire Strikes Back<span class="cursor-blink" style="color:#4A9EFF;">_</span></div>
+        <div class="sw-card-sub">Lucas mortgaged his house. Three people knew the ending. The director went 25 days over schedule.</div>
+        <div class="sw-card-cta">Read the guide →</div>
+      </div>
+    </a>
+    <a class="sw-card sw-card-rotj" href="return-of-the-jedi.html">
+      <img src="images/poster-rotj.jpg" alt="Return of the Jedi">
+      <div class="sw-card-overlay">
+        <div class="sw-card-num">017 — Film History</div>
+        <div class="sw-card-title">A (Brief) History of<br>Return of the Jedi<span class="cursor-blink" style="color:#4AAF5C;">_</span></div>
+        <div class="sw-card-sub">The director was replaced. The Ewoks were a toy decision. The machine wins anyway.</div>
+        <div class="sw-card-cta">Read the guide →</div>
+      </div>
+    </a>
+  </div>
 </section>
 
 <!-- GUIDES -->
@@ -1295,13 +1332,48 @@ br.desk-br{display:block;}
       </div>
     </a>
 	  
+	   <!-- Star WArs: A New Hope  -->
+	<a class="grid-card" href="a-new-hope.html">
+      <div class="grid-card-inner">
+        <img src="images/poster-anh.jpg" alt="A New Hope">
+      </div>
+      <div class="grid-card-issue" data-group="3">015</div>
+      <div class="grid-card-overlay">
+        <span class="grid-card-title">Star Wars: A New Hope</span>
+        <span class="grid-card-era">May 25, 1977</span>
+      </div>
+    </a>
+	  
+	   <!-- Star WArs: The Empire Strikes Back  -->
+	<a class="grid-card" href="the-empire-strikes-back.html">
+      <div class="grid-card-inner">
+        <img src="images/poster-esb.jpg" alt="The Empire Strikes Back">
+      </div>
+      <div class="grid-card-issue" data-group="4">016</div>
+      <div class="grid-card-overlay">
+        <span class="grid-card-title">Star Wars: The Empire Strikes Back</span>
+        <span class="grid-card-era">May 21, 1980</span>
+      </div>
+    </a>
+	  
+	  <!-- Star WArs: Return of the Jedi  -->
+	<a class="grid-card" href="return-of-the-jedi.html">
+      <div class="grid-card-inner">
+        <img src="images/poster-rotj.jpg" alt="Return of the Jedi">
+      </div>
+      <div class="grid-card-issue" data-group="4">017</div>
+      <div class="grid-card-overlay">
+        <span class="grid-card-title">Star Wars: Return of the Jedi</span>
+        <span class="grid-card-era">May 25, 1983</span>
+      </div>
+    </a>
+	  
 	    <!-- The Future  -->
-
-	  <div class="grid-card is-coming-soon">
+	<div class="grid-card is-coming-soon">
       <div class="grid-card-inner">
         <img src="images/poster-the-future.jpg" alt="The Future">
       </div>
-      <div class="grid-card-issue" data-group="3">015</div>
+      <div class="grid-card-issue" data-group="4">018</div>
       <div class="cs-center">
         <span class="cs-center-text">Coming Soon</span>
       </div>
@@ -1310,6 +1382,9 @@ br.desk-br{display:block;}
         <span class="grid-card-era">A Transmission from 2225</span>
       </div>
     </div>
+	  
+	    
+	  
     <!--
     ════════════════════════════════════════════════════════
     ADD NEW GUIDE CARDS HERE — copy the block above and paste
