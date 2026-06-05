@@ -1094,52 +1094,52 @@ br.desk-br{display:block;}
 
 <!-- FEATURED -->
 <style>
-.sw-featured{padding:2.5rem 2.5rem 0;}
-.sw-featured-eyebrow{display:flex;align-items:center;gap:10px;font-family:var(--mono);font-size:0.82rem;font-weight:600;letter-spacing:.2em;text-transform:uppercase;color:#C8860A;margin-bottom:1.2rem;}
-.sw-featured-eyebrow-line{display:inline-block;width:28px;height:2px;background:#C8860A;flex-shrink:0;}
-.sw-trilogy{display:grid;grid-template-columns:1fr 1fr 1fr;gap:3px;}
-@media(max-width:768px){.sw-trilogy{grid-template-columns:1fr;}.sw-featured{padding:1.5rem 1.5rem 0;}}
-.sw-card{position:relative;overflow:hidden;min-height:400px;display:flex;flex-direction:column;justify-content:flex-end;text-decoration:none;cursor:pointer;}
-.sw-card img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center center;transition:transform .6s ease;}
-.sw-card:hover img{transform:scale(1.04);}
-.sw-card-overlay{position:absolute;inset:0;z-index:2;display:flex;flex-direction:column;justify-content:flex-end;padding:1.8rem 1.6rem;background:linear-gradient(to top,rgba(0,0,0,.88) 0%,rgba(0,0,0,.45) 55%,transparent 100%);}
-.sw-card-num{font-family:var(--mono);font-size:0.68rem;letter-spacing:.18em;text-transform:uppercase;margin-bottom:6px;}
-.sw-card-title{font-family:var(--cond);font-weight:700;font-size:clamp(1.1rem,2vw,1.5rem);color:#fff;line-height:1.15;margin-bottom:8px;}
-.sw-card-sub{font-family:var(--sans);font-size:0.85rem;font-weight:300;line-height:1.55;margin-bottom:12px;}
-.sw-card-cta{font-family:var(--mono);font-size:0.75rem;font-weight:600;letter-spacing:.1em;border-bottom:1px solid;padding-bottom:2px;transition:opacity .2s;display:inline-block;}
-.sw-card:hover .sw-card-cta{opacity:1;}
-.sw-card-anh .sw-card-num{color:#C8860A;}.sw-card-anh .sw-card-sub{color:rgba(245,232,192,.6);}.sw-card-anh .sw-card-cta{color:#C8860A;border-color:rgba(200,134,10,.4);}
-.sw-card-esb .sw-card-num{color:#4A9EFF;}.sw-card-esb .sw-card-sub{color:rgba(200,228,255,.6);}.sw-card-esb .sw-card-cta{color:#4A9EFF;border-color:rgba(74,158,255,.4);}
-.sw-card-rotj .sw-card-num{color:#4AAF5C;}.sw-card-rotj .sw-card-sub{color:rgba(192,236,200,.6);}.sw-card-rotj .sw-card-cta{color:#4AAF5C;border-color:rgba(74,175,92,.4);}
+.tri-featured{padding:2.5rem 2.5rem 0;}
+.tri-eyebrow{display:flex;align-items:center;gap:10px;font-family:var(--mono);font-size:0.82rem;font-weight:600;letter-spacing:.2em;text-transform:uppercase;color:var(--muted);margin-bottom:1.2rem;}
+.tri-eyebrow-line{display:inline-block;width:28px;height:2px;background:var(--rule);flex-shrink:0;}
+.tri-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:3px;}
+@media(max-width:768px){.tri-grid{grid-template-columns:1fr;}.tri-featured{padding:1.5rem 1.5rem 0;}}
+.tri-card{position:relative;overflow:hidden;min-height:400px;display:flex;flex-direction:column;justify-content:flex-end;text-decoration:none;cursor:pointer;}
+.tri-card img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center center;transition:transform .6s ease;}
+.tri-card:hover img{transform:scale(1.04);}
+.tri-card-overlay{position:absolute;inset:0;z-index:2;display:flex;flex-direction:column;justify-content:flex-end;padding:1.8rem 1.6rem;background:linear-gradient(to top,rgba(0,0,0,.88) 0%,rgba(0,0,0,.45) 55%,transparent 100%);}
+.tri-card-num{font-family:var(--mono);font-size:0.68rem;letter-spacing:.18em;text-transform:uppercase;margin-bottom:6px;}
+.tri-card-title{font-family:var(--cond);font-weight:700;font-size:clamp(1.1rem,2vw,1.5rem);color:#fff;line-height:1.15;margin-bottom:8px;}
+.tri-card-sub{font-family:var(--sans);font-size:0.85rem;font-weight:300;line-height:1.55;margin-bottom:12px;}
+.tri-card-cta{font-family:var(--mono);font-size:0.75rem;font-weight:600;letter-spacing:.1em;border-bottom:1px solid;padding-bottom:2px;transition:opacity .2s;display:inline-block;}
+.tri-card:hover .tri-card-cta{opacity:1;}
+.tri-card-past .tri-card-num{color:#C084FC;}.tri-card-past .tri-card-sub{color:rgba(220,200,255,.6);}.tri-card-past .tri-card-cta{color:#C084FC;border-color:rgba(192,132,252,.4);}
+.tri-card-now .tri-card-num{color:#00D4F0;}.tri-card-now .tri-card-sub{color:rgba(180,240,255,.6);}.tri-card-now .tri-card-cta{color:#00D4F0;border-color:rgba(0,212,240,.4);}
+.tri-card-future .tri-card-num{color:#39FF14;}.tri-card-future .tri-card-sub{color:rgba(190,255,180,.6);}.tri-card-future .tri-card-cta{color:#39FF14;border-color:rgba(57,255,20,.4);}
 </style>
-<section class="sw-featured">
-  <div class="sw-featured-eyebrow"><span class="sw-featured-eyebrow-line"></span>The Original Trilogy — Live Now</div>
-  <div class="sw-trilogy">
-    <a class="sw-card sw-card-anh" href="a-new-hope.html">
-      <img src="images/poster-anh.jpg" alt="A New Hope">
-      <div class="sw-card-overlay">
-        <div class="sw-card-num">015 — Film History</div>
-        <div class="sw-card-title">A (Brief) History of<br>A New Hope<span class="cursor-blink" style="color:#C8860A;">_</span></div>
-        <div class="sw-card-sub">Fox thought the merchandise rights were the scraps. The toys made $100 million in year one.</div>
-        <div class="sw-card-cta">Read the (Brief) History →</div>
+<section class="tri-featured">
+  <div class="tri-eyebrow"><span class="tri-eyebrow-line"></span>Time, Memory &amp; What Comes Next</div>
+  <div class="tri-grid">
+    <a class="tri-card tri-card-past" href="the-past.html">
+      <img src="images/poster-the-past.jpg" alt="The Past">
+      <div class="tri-card-overlay">
+        <div class="tri-card-num">018 — Time</div>
+        <div class="tri-card-title">A (Brief) History of<br>The Past<span class="cursor-blink" style="color:#C084FC;">_</span></div>
+        <div class="tri-card-sub">The past you're chasing never existed. And you can't escape it — because you're made of it.</div>
+        <div class="tri-card-cta">Read the (Brief) History →</div>
       </div>
     </a>
-    <a class="sw-card sw-card-esb" href="the-empire-strikes-back.html">
-      <img src="images/poster-esb.jpg" alt="The Empire Strikes Back">
-      <div class="sw-card-overlay" style="background:linear-gradient(to top,rgba(0,0,0,.92) 0%,rgba(0,0,0,.55) 45%,rgba(0,0,0,.1) 100%);">
-        <div class="sw-card-num">016 — Film History</div>
-        <div class="sw-card-title">A (Brief) History of<br>The Empire Strikes Back<span class="cursor-blink" style="color:#4A9EFF;">_</span></div>
-        <div class="sw-card-sub">Lucas mortgaged his house. Three people knew the ending. The director went 25 days over schedule.</div>
-        <div class="sw-card-cta">Read the (Brief) History →</div>
+    <a class="tri-card tri-card-now" href="now.html">
+      <img src="images/poster-now.jpg" alt="Now">
+      <div class="tri-card-overlay">
+        <div class="tri-card-num">019 — Time</div>
+        <div class="tri-card-title">A (Brief) History of<br>Now<span class="cursor-blink" style="color:#00D4F0;">_</span></div>
+        <div class="tri-card-sub">The present moment is the only thing that has ever existed. It has already moved on.</div>
+        <div class="tri-card-cta">Read the (Brief) History →</div>
       </div>
     </a>
-    <a class="sw-card sw-card-rotj" href="return-of-the-jedi.html">
-      <img src="images/poster-rotj.jpg" alt="Return of the Jedi">
-      <div class="sw-card-overlay">
-        <div class="sw-card-num">017 — Film History</div>
-        <div class="sw-card-title">A (Brief) History of<br>Return of the Jedi<span class="cursor-blink" style="color:#4AAF5C;">_</span></div>
-        <div class="sw-card-sub">The director was replaced. The Ewoks were a toy decision. The machine wins anyway.</div>
-        <div class="sw-card-cta">Read the (Brief) History →</div>
+    <a class="tri-card tri-card-future" href="the-future.html">
+      <img src="images/poster-the-future.jpg" alt="The Future">
+      <div class="tri-card-overlay">
+        <div class="tri-card-num">020 — Time</div>
+        <div class="tri-card-title">A (Brief) History of<br>The Future<span class="cursor-blink" style="color:#39FF14;">_</span></div>
+        <div class="tri-card-sub">Written from 2225. Two transmissions. Same 200 years. Different outcomes.</div>
+        <div class="tri-card-cta">Read the (Brief) History →</div>
       </div>
     </a>
   </div>
@@ -1368,20 +1368,129 @@ br.desk-br{display:block;}
       </div>
     </a>
 	  
-	    <!-- The Future  -->
-	<div class="grid-card is-coming-soon">
+    <!-- THE PAST -->
+    <a class="grid-card" href="the-past.html">
+      <div class="grid-card-inner">
+        <img src="images/poster-the-past.jpg" alt="The Past">
+      </div>
+      <div class="grid-card-dot"></div>
+      <div class="grid-card-issue" data-group="4">018</div>
+      <div class="grid-card-overlay">
+        <span class="grid-card-title">The Past</span>
+        <span class="grid-card-era">Then — Still Now</span>
+      </div>
+    </a>
+
+    <!-- NOW -->
+    <a class="grid-card" href="now.html">
+      <div class="grid-card-inner">
+        <img src="images/poster-now.jpg" alt="Now">
+      </div>
+      <div class="grid-card-dot"></div>
+      <div class="grid-card-issue" data-group="4">019</div>
+      <div class="grid-card-overlay">
+        <span class="grid-card-title">Now</span>
+        <span class="grid-card-era">This Exact Moment</span>
+      </div>
+    </a>
+
+    <!-- THE FUTURE -->
+    <a class="grid-card" href="the-future.html">
       <div class="grid-card-inner">
         <img src="images/poster-the-future.jpg" alt="The Future">
       </div>
-      <div class="grid-card-issue" data-group="4">018</div>
-      <div class="cs-center">
-        <span class="cs-center-text">Coming Soon</span>
-      </div>
+      <div class="grid-card-dot"></div>
+      <div class="grid-card-issue" data-group="4">020</div>
       <div class="grid-card-overlay">
         <span class="grid-card-title">The Future</span>
         <span class="grid-card-era">A Transmission from 2225</span>
       </div>
-    </div>
+    </a>
+
+    <!-- THE FUTURE UNFILTERED -->
+    <style>
+    @keyframes glitch-shift{
+      0%,100%{clip-path:inset(0 0 100% 0);transform:translate(0);}
+      5%{clip-path:inset(8% 0 88% 0);transform:translate(-4px,0);}
+      10%{clip-path:inset(30% 0 60% 0);transform:translate(3px,0);}
+      15%{clip-path:inset(55% 0 35% 0);transform:translate(-2px,0);}
+      20%{clip-path:inset(70% 0 20% 0);transform:translate(4px,0);}
+      25%{clip-path:inset(0 0 100% 0);transform:translate(0);}
+    }
+    @keyframes glitch-rgb{
+      0%,89%,100%{opacity:0;}
+      90%{opacity:.55;transform:translate(-3px,0);}
+      93%{opacity:.45;transform:translate(3px,0);}
+      96%{opacity:.3;transform:translate(-1px,0);}
+    }
+    @keyframes glitch-flicker{
+      0%,100%{opacity:1;}
+      7%{opacity:.7;}
+      14%{opacity:1;}
+      41%{opacity:.85;}
+      52%{opacity:1;}
+      73%{opacity:.6;}
+      80%{opacity:1;}
+    }
+    @keyframes scanline{
+      0%{transform:translateY(-100%);}
+      100%{transform:translateY(400px);}
+    }
+    .grid-card-glitch{position:relative;}
+    .grid-card-glitch img{animation:glitch-flicker 4.5s infinite;}
+    .grid-card-glitch::before{
+      content:'';position:absolute;inset:0;z-index:3;pointer-events:none;
+      background:repeating-linear-gradient(0deg,transparent,transparent 2px,rgba(0,0,0,.08) 2px,rgba(0,0,0,.08) 4px);
+    }
+    .glitch-layer{
+      position:absolute;inset:0;z-index:4;pointer-events:none;
+      background:inherit;
+      animation:glitch-shift 6s infinite;
+    }
+    .glitch-rgb{
+      position:absolute;inset:0;z-index:5;pointer-events:none;
+      mix-blend-mode:screen;
+      background:rgba(57,255,20,.15);
+      animation:glitch-rgb 5s infinite;
+    }
+    .glitch-scan{
+      position:absolute;left:0;right:0;height:60px;z-index:6;pointer-events:none;
+      background:linear-gradient(to bottom,transparent,rgba(57,255,20,.06),transparent);
+      animation:scanline 3s linear infinite;
+    }
+    .grid-card-glitch .grid-card-issue{
+      font-family:var(--mono);
+      letter-spacing:.14em;
+      animation:glitch-flicker 3.2s infinite;
+    }
+    </style>
+    <a class="grid-card grid-card-glitch" href="the-future-unfiltered.html">
+      <div class="grid-card-inner">
+        <img src="images/poster-the-future-unfiltered.jpg" alt="The Future Unfiltered">
+      </div>
+      <div class="glitch-layer"></div>
+      <div class="glitch-rgb"></div>
+      <div class="glitch-scan"></div>
+      <div class="grid-card-dot"></div>
+      <div class="grid-card-issue" data-group="4">&#x221E;</div>
+      <div class="grid-card-overlay">
+        <span class="grid-card-title">The Future [Unfiltered]</span>
+        <span class="grid-card-era">Pre-translation &middot; Signal unstable</span>
+      </div>
+    </a>
+
+    <!-- HACKERS -->
+    <a class="grid-card" href="hackers.html">
+      <div class="grid-card-inner">
+        <img src="images/poster-hackers.jpg" alt="Hackers">
+      </div>
+      <div class="grid-card-dot"></div>
+      <div class="grid-card-issue" data-group="4">X_X</div>
+      <div class="grid-card-overlay">
+        <span class="grid-card-title">Hackers</span>
+        <span class="grid-card-era">1950s — Present</span>
+      </div>
+    </a>
 	  
 	    
 	  
@@ -1805,7 +1914,7 @@ br.desk-br{display:block;}
       title: 'A (Brief) History of Taylor Swift',
       url: 'taylor-swift.html',
       color: '#C084FC',
-      mostRecent: true,
+      mostRecent: false,
       tags: [
         'Taylor Swift','Eras Tour','Swifties','Re-Recording','Pop Phenomenon',
       ],
@@ -1821,7 +1930,7 @@ br.desk-br{display:block;}
       title: 'A (Brief) History of Kanye West',
       url: 'kanye-west.html',
       color: '#E5E5E5',
-      mostRecent: true,
+      mostRecent: false,
       tags: [
         'Kanye West','Yeezy','College Dropout','Donda','Ye',
       ],
@@ -1830,6 +1939,91 @@ br.desk-br{display:block;}
         'Louis','Adidas','Gap','Beyoncé','Taylor',
         'Sunday','Service','Def Jam','Roc-A-Fella','808s',
         'MBDTF','Yeezus','Pablo','Grammy','Arc',
+      ],
+    },
+    {
+      id: 'the-past',
+      title: 'A (Brief) History of The Past',
+      url: 'the-past.html',
+      color: '#C084FC',
+      mostRecent: false,
+      tags: [
+        'Memory','Nostalgia','History','Time','The Past',
+      ],
+      words: [
+        'Memory','Nostalgia','Yesterday','Archive',
+        'Before','Relic','Trace','Record',
+        'Then','Grief','Myth','Origin',
+        'Artifact','Recall','Lost','Remains',
+        'Echo','Ancestor','Legacy','Revision',
+      ],
+    },
+    {
+      id: 'now',
+      title: 'A (Brief) History of Now',
+      url: 'now.html',
+      color: '#00D4F0',
+      mostRecent: false,
+      tags: [
+        'Present','Consciousness','Moment','Time','Now',
+      ],
+      words: [
+        'Present','Moment','Instant','Flow',
+        'Attention','Awareness','Perception','Here',
+        'Breath','Clock','Now','Pulse',
+        'Flux','Presence','Threshold','Flash',
+        'Blink','Current','Witness','Today',
+      ],
+    },
+    {
+      id: 'the-future',
+      title: 'A (Brief) History of The Future',
+      url: 'the-future.html',
+      color: '#39FF14',
+      mostRecent: false,
+      tags: [
+        'Future','2225','Transmission','Time','Prediction',
+      ],
+      words: [
+        'Future','2225','Transmission','Forecast',
+        'Horizon','Tomorrow','Collapse','Rebuild',
+        'Signal','Archive','Possible','Probable',
+        'Divergence','Climate','AI','Civilization',
+        'Terraform','Survive','Species','Unknown',
+      ],
+    },
+    {
+      id: 'the-future-unfiltered',
+      title: 'A (Brief) History of the Future [Unfiltered]',
+      url: 'the-future-unfiltered.html',
+      color: '#39FF14',
+      mostRecent: false,
+      tags: [
+        'Unfiltered','Raw Signal','\u221e','Transmission','Glitch',
+      ],
+      words: [
+        'Unfiltered','Signal','Noise','Parse',
+        'Corrupt','Fragment','Infinity','Glitch',
+        'Error','Transmission','Lost','Raw',
+        'Untranslated','Feed','Static','Break',
+        'Overflow','Void','\u221e','Unknown',
+      ],
+    },
+    {
+      id: 'hackers',
+      title: 'A (Brief) History of Hackers',
+      url: 'hackers.html',
+      color: '#39E07A',
+      mostRecent: true,
+      tags: [
+        'Hackers','Phone Phreaking','Cyberweapons','Silk Road','Anonymous',
+      ],
+      words: [
+        'Hacker','Phreaker','Exploit','Zero-day',
+        'Worm','Virus','Anonymous','Stuxnet',
+        'Mitnick','Terminal','Root','Payload',
+        'Darknet','NSA','Breach','Cipher',
+        'Backdoor','Shell','Botnet','Nation-state',
       ],
     },
   ];
