@@ -1407,75 +1407,200 @@ br.desk-br{display:block;}
       </div>
     </a>
 
-    <!-- THE FUTURE UNFILTERED -->
+    <!-- THE FUTURE UNFILTERED — ABERRANT CARD -->
     <style>
-    @keyframes glitch-shift{
+    /* ── Card shake — whole card convulses ── */
+    @keyframes uf-shake{
+      0%,100%{transform:translate(0,0) rotate(0deg);}
+      2%{transform:translate(-3px,1px) rotate(-.3deg);}
+      4%{transform:translate(3px,-2px) rotate(.2deg);}
+      6%{transform:translate(-2px,3px) rotate(-.15deg);}
+      8%{transform:translate(4px,-1px) rotate(.3deg);}
+      10%{transform:translate(-1px,2px) rotate(0deg);}
+      12%{transform:translate(0,0);}
+      /* long rest then another burst */
+      54%{transform:translate(0,0);}
+      55%{transform:translate(-5px,2px) rotate(-.4deg);}
+      56%{transform:translate(4px,-3px) rotate(.3deg);}
+      57%{transform:translate(-3px,1px) rotate(-.2deg);}
+      58%{transform:translate(2px,2px) rotate(.1deg);}
+      59%{transform:translate(0,0);}
+      /* single violent jerk */
+      83%{transform:translate(0,0);}
+      83.5%{transform:translate(-8px,0) rotate(-.5deg);}
+      84%{transform:translate(6px,0) rotate(.4deg);}
+      84.5%{transform:translate(0,0);}
+    }
+    /* ── Horizontal slice tears ── */
+    @keyframes uf-slice-a{
       0%,100%{clip-path:inset(0 0 100% 0);transform:translate(0);}
-      5%{clip-path:inset(8% 0 88% 0);transform:translate(-4px,0);}
-      10%{clip-path:inset(30% 0 60% 0);transform:translate(3px,0);}
-      15%{clip-path:inset(55% 0 35% 0);transform:translate(-2px,0);}
-      20%{clip-path:inset(70% 0 20% 0);transform:translate(4px,0);}
-      25%{clip-path:inset(0 0 100% 0);transform:translate(0);}
+      3%{clip-path:inset(12% 0 82% 0);transform:translate(-8px,0);}
+      6%{clip-path:inset(40% 0 48% 0);transform:translate(6px,0);}
+      9%{clip-path:inset(65% 0 22% 0);transform:translate(-5px,0);}
+      12%{clip-path:inset(0 0 100% 0);}
+      55%{clip-path:inset(0 0 100% 0);}
+      57%{clip-path:inset(5% 0 90% 0);transform:translate(-10px,0);}
+      59%{clip-path:inset(70% 0 10% 0);transform:translate(8px,0);}
+      61%{clip-path:inset(0 0 100% 0);}
     }
-    @keyframes glitch-rgb{
-      0%,89%,100%{opacity:0;}
-      90%{opacity:.55;transform:translate(-3px,0);}
-      93%{opacity:.45;transform:translate(3px,0);}
-      96%{opacity:.3;transform:translate(-1px,0);}
+    @keyframes uf-slice-b{
+      0%,100%{clip-path:inset(0 0 100% 0);transform:translate(0);}
+      4%{clip-path:inset(28% 0 68% 0);transform:translate(7px,0);}
+      7%{clip-path:inset(52% 0 36% 0);transform:translate(-6px,0);}
+      10%{clip-path:inset(80% 0 8% 0);transform:translate(4px,0);}
+      13%{clip-path:inset(0 0 100% 0);}
+      83.5%{clip-path:inset(0 0 100% 0);}
+      84%{clip-path:inset(20% 0 75% 0);transform:translate(-12px,0);}
+      84.5%{clip-path:inset(0 0 100% 0);}
     }
-    @keyframes glitch-flicker{
-      0%,100%{opacity:1;}
-      7%{opacity:.7;}
-      14%{opacity:1;}
-      41%{opacity:.85;}
-      52%{opacity:1;}
-      73%{opacity:.6;}
-      80%{opacity:1;}
+    /* ── Red/pink/cyan chromatic terror ── */
+    @keyframes uf-chrom{
+      0%,100%{opacity:0;}
+      3%{opacity:.7;transform:translate(-5px,0);}
+      3.5%{opacity:.5;transform:translate(4px,0);}
+      4%{opacity:.6;transform:translate(-2px,0);}
+      4.5%{opacity:0;}
+      55%{opacity:0;}
+      56%{opacity:.8;transform:translate(-7px,0);}
+      56.5%{opacity:.6;transform:translate(5px,0);}
+      57%{opacity:0;}
+      83.5%{opacity:0;}
+      83.7%{opacity:.9;transform:translate(-9px,0);}
+      83.9%{opacity:.7;transform:translate(7px,0);}
+      84.1%{opacity:0;}
     }
-    @keyframes scanline{
+    /* ── Scanline sweep ── */
+    @keyframes uf-scan{
       0%{transform:translateY(-100%);}
-      100%{transform:translateY(400px);}
+      100%{transform:translateY(500px);}
     }
-    .grid-card-glitch{position:relative;}
-    .grid-card-glitch img{animation:glitch-flicker 4.5s infinite;}
-    .grid-card-glitch::before{
+    /* ── Noise flicker on image ── */
+    @keyframes uf-flicker{
+      0%,100%{opacity:1;filter:brightness(1) saturate(1);}
+      3%{opacity:.75;filter:brightness(1.3) saturate(0) hue-rotate(180deg);}
+      4%{opacity:1;filter:brightness(1) saturate(1);}
+      55%{opacity:1;}
+      56%{opacity:.6;filter:brightness(.8) saturate(0);}
+      57%{opacity:1;filter:brightness(1.2) saturate(.5) hue-rotate(90deg);}
+      58%{opacity:1;filter:brightness(1) saturate(1);}
+      83.5%{opacity:1;}
+      83.7%{opacity:.4;filter:brightness(2) saturate(0);}
+      84%{opacity:1;filter:brightness(1) saturate(1);}
+    }
+    /* ── Border pulse ── */
+    @keyframes uf-border{
+      0%,100%{box-shadow:0 0 0 1px rgba(255,60,172,0),0 0 0 rgba(255,60,172,0);}
+      3%{box-shadow:0 0 0 2px rgba(255,60,172,.9),0 0 30px rgba(255,60,172,.4);}
+      4%{box-shadow:0 0 0 1px rgba(200,255,0,.6),0 0 15px rgba(200,255,0,.2);}
+      5%{box-shadow:0 0 0 1px rgba(255,60,172,0);}
+      55%{box-shadow:none;}
+      56%{box-shadow:0 0 0 3px rgba(255,0,60,.8),0 0 40px rgba(255,0,60,.3);}
+      57%{box-shadow:0 0 0 1px rgba(0,200,255,.5);}
+      58%{box-shadow:none;}
+      83.5%{box-shadow:none;}
+      83.8%{box-shadow:0 0 0 4px rgba(255,60,172,1),0 0 60px rgba(255,60,172,.5);}
+      84.1%{box-shadow:none;}
+    }
+    /* ── Issue badge glitch ── */
+    @keyframes uf-badge{
+      0%,100%{opacity:1;transform:translate(0);color:#FF3CAC;}
+      3%{opacity:0;transform:translate(-4px,0);}
+      3.5%{opacity:1;transform:translate(3px,0);color:#C8FF00;}
+      4%{opacity:1;transform:translate(0);color:#FF3CAC;}
+      55%{color:#FF3CAC;}
+      56%{color:#00C8FF;transform:translate(-6px,0);}
+      56.5%{color:#FF3CAC;transform:translate(0);}
+    }
+    /* ── Text corruption ── */
+    @keyframes uf-text{
+      0%,100%{opacity:1;letter-spacing:inherit;}
+      3%{opacity:.3;letter-spacing:.3em;}
+      3.5%{opacity:1;letter-spacing:inherit;}
+      55%{opacity:1;}
+      56%{opacity:.5;letter-spacing:-.05em;}
+      56.5%{opacity:1;letter-spacing:inherit;}
+    }
+
+    .grid-card-uf{
+      grid-column: span 2;
+      position:relative;
+      animation: uf-shake 8s infinite;
+      animation-timing-function: ease-in-out;
+      box-sizing:border-box;
+    }
+    @media(max-width:900px){.grid-card-uf{grid-column:span 1;}}
+    .grid-card-uf img{animation:uf-flicker 8s infinite;}
+    .grid-card-uf{animation:uf-shake 8s infinite, uf-border 8s infinite;}
+
+    /* scanlines always-on texture */
+    .grid-card-uf::before{
       content:'';position:absolute;inset:0;z-index:3;pointer-events:none;
-      background:repeating-linear-gradient(0deg,transparent,transparent 2px,rgba(0,0,0,.08) 2px,rgba(0,0,0,.08) 4px);
+      background:repeating-linear-gradient(0deg,transparent,transparent 3px,rgba(0,0,0,.12) 3px,rgba(0,0,0,.12) 4px);
     }
-    .glitch-layer{
+    /* red terror overlay — always present, pulses */
+    .uf-red{
       position:absolute;inset:0;z-index:4;pointer-events:none;
-      background:inherit;
-      animation:glitch-shift 6s infinite;
+      background:linear-gradient(135deg,rgba(255,0,60,.18) 0%,rgba(255,60,172,.08) 50%,rgba(0,0,0,0) 100%);
     }
-    .glitch-rgb{
+    /* RGB slice layers */
+    .uf-slice-a{
       position:absolute;inset:0;z-index:5;pointer-events:none;
+      background:rgba(255,60,172,.55);
       mix-blend-mode:screen;
-      background:rgba(57,255,20,.15);
-      animation:glitch-rgb 5s infinite;
+      animation:uf-slice-a 8s infinite;
     }
-    .glitch-scan{
-      position:absolute;left:0;right:0;height:60px;z-index:6;pointer-events:none;
-      background:linear-gradient(to bottom,transparent,rgba(57,255,20,.06),transparent);
-      animation:scanline 3s linear infinite;
+    .uf-slice-b{
+      position:absolute;inset:0;z-index:6;pointer-events:none;
+      background:rgba(0,200,255,.45);
+      mix-blend-mode:screen;
+      animation:uf-slice-b 8s infinite;
     }
-    .grid-card-glitch .grid-card-issue{
-      font-family:var(--mono);
-      letter-spacing:.14em;
-      animation:glitch-flicker 3.2s infinite;
+    /* chromatic bleed */
+    .uf-chrom{
+      position:absolute;inset:0;z-index:7;pointer-events:none;
+      background:rgba(255,0,60,.4);
+      mix-blend-mode:multiply;
+      animation:uf-chrom 8s infinite;
+    }
+    /* fast scanline sweep */
+    .uf-scan{
+      position:absolute;left:0;right:0;height:80px;z-index:8;pointer-events:none;
+      background:linear-gradient(to bottom,transparent,rgba(255,60,172,.07),rgba(200,255,0,.04),transparent);
+      animation:uf-scan 2.2s linear infinite;
+    }
+    /* noise texture overlay */
+    .uf-noise{
+      position:absolute;inset:0;z-index:9;pointer-events:none;opacity:.06;
+      background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+      background-size:200px 200px;
+    }
+    .grid-card-uf .grid-card-issue{
+      color:#FF3CAC !important;
+      animation:uf-badge 8s infinite;
+      font-style:italic;
+    }
+    .grid-card-uf .grid-card-title{animation:uf-text 8s infinite;}
+    .grid-card-uf .grid-card-era{
+      font-family:monospace;
+      letter-spacing:.06em;
+      color:rgba(200,255,0,.7) !important;
     }
     </style>
-    <a class="grid-card grid-card-glitch" href="the-future-unfiltered.html">
+    <a class="grid-card grid-card-uf" href="the-future-unfiltered.html">
       <div class="grid-card-inner">
         <img src="images/poster-the-future-unfiltered.jpg" alt="The Future Unfiltered">
       </div>
-      <div class="glitch-layer"></div>
-      <div class="glitch-rgb"></div>
-      <div class="glitch-scan"></div>
+      <div class="uf-red"></div>
+      <div class="uf-slice-a"></div>
+      <div class="uf-slice-b"></div>
+      <div class="uf-chrom"></div>
+      <div class="uf-scan"></div>
+      <div class="uf-noise"></div>
       <div class="grid-card-dot"></div>
       <div class="grid-card-issue" data-group="4">&#x221E;</div>
       <div class="grid-card-overlay">
         <span class="grid-card-title">The Future [Unfiltered]</span>
-        <span class="grid-card-era">Pre-translation &middot; Signal unstable</span>
+        <span class="grid-card-era">PRE-TRANSLATION &middot; BHOE-&#x221E;-FUTURE &middot; SIGNAL CRITICAL</span>
       </div>
     </a>
 
